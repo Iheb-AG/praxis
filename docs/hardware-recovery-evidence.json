@@ -1,0 +1,96 @@
+{
+  "changes": [
+    "Shared case-sensitive xPSR backend query; public field remains xpsr",
+    "Strict Tcl fixtures reject legacy spelling and avoid core reads unless state is halted",
+    "Execution-only scopes have zero flash attempts; flash tool absent",
+    "Erase acknowledgement required only when authorizing flash",
+    "Full serial and UID redacted from user report; original preserved privately"
+  ],
+  "date": "2026-10-10",
+  "implementation_hashes": {
+    "praxis/build_server.py": "df8a9f92568eb685d4af6a2f66f440ae56349f4eab0fe978b5939cc1767cf43f",
+    "praxis/cli.py": "1a1889964f5414aec6ab05b0e77162dd3c89d20e099bc08c1351ad8e4a848de5",
+    "praxis/hardware.py": "c3d02700f91ac5f96a337c95907d12443b28a20197debc11d6428a8f9edb584b",
+    "praxis/programming.py": "2d2e545b4f3a0ff00dcfa063b875ace33f6c5beb590444e7bbf9bda72fb5b37b",
+    "tests/test_hardware_inspection.py": "d75b68f7fbabe3a77f574e339a9274336629d3b80ec7d02651465df28c6e1ed3",
+    "tests/test_programming.py": "98df1a25a72cb150beb864e32595de1397e0815925cd614fa9c5c791e2e0b2f2"
+  },
+  "original_attempt": {
+    "automatic_retry": false,
+    "failure": "BACKEND_OPERATION_FAILED",
+    "original_attempt_and_audit_preserved": true,
+    "original_readback_verified": false,
+    "run_id": "ea9c0a4961ff47448ad22ccfb58e933d",
+    "success": false,
+    "terminal_error": "unknown register 'xpsr'",
+    "write_and_dump_completion_marker": true
+  },
+  "physical_operations_during_recovery": {
+    "forced_core_register_read_exercised": false,
+    "new_authorization_created": false,
+    "physical_behavior": "not tested",
+    "reset_halt_run_flash_requested": false
+  },
+  "private_evidence_hashes": {
+    ".praxis-output/hardware-recovery/readback-check-with-register-list.json": "c56a3bfbf241d53f4599607ec5b3e53bac97a7a227977812bcc49b084f668f24",
+    ".praxis-output/xpsr-control-regression-tests.xml": "e96c840e7ec1ef8f99507320586f5e4cb97a44ed5da933947e0b0bcd37c14f9d"
+  },
+  "regression": {
+    "duration_seconds": 71.674,
+    "external_tools_required": true,
+    "failed": 0,
+    "passed": 291,
+    "ruff": "passed",
+    "skipped": 0
+  },
+  "release_ready": false,
+  "remaining": [
+    "Operator-provisioned execution-only scope",
+    "Real reset/run and halted core-register read integration",
+    "Complete release/hold/repeatability observations; precise timing remains unmeasured",
+    "Successful end-to-end flash reporting qualification",
+    "Physical PCB revision/SB20 confirmation and independent engineering review"
+  ],
+  "schema_version": 1,
+  "scope": "First physical attempt diagnosis, shared xPSR query fix, exact read-only readback, execution-only scopes",
+  "separate_read_only_check": {
+    "actual_image_sha256": "b3f5623474ae8194a8cbf1c513b4d6de0020581a0db70f79aa2a1db34a94cb67",
+    "artifact_id": "0f3095c100e6311acb62ad085b9d6ec08e9c0a249741f6544a40280e94e39c44",
+    "backend_lists_xPSR": true,
+    "execution_state": "unknown",
+    "expected_image_sha256": "b3f5623474ae8194a8cbf1c513b4d6de0020581a0db70f79aa2a1db34a94cb67",
+    "image_length": 1164,
+    "limits": [
+      "Separate observation; original failed flash audit and budget remain unchanged.",
+      "No reset, halt, resume, polling or flash programming requested.",
+      "Debug attachment is not electrically passive.",
+      "Register-cache listing does not exercise forced core-register reads.",
+      "Byte equality does not prove boot, physical wiring, timing or LED/button behavior."
+    ],
+    "observed_at": "2026-10-10T18:51:35.699148+00:00",
+    "operation": "read_only_image_comparison",
+    "physical_behavior": "not tested",
+    "plan_revision": "490cedb45dd533f1841b8af1fc2161244e8c200bbdf3654ae829a94a3fe1e10b",
+    "probe_serial_sha256": "620846cdd58490bc15ff3e7b92cbbd1e45c450994e5b82798905089fcb8e458e",
+    "read_range": {
+      "length": 1164,
+      "start": 134217728
+    },
+    "readback_verified": true,
+    "reset_halt_run_flash_requested": false,
+    "target_uid_sha256": "50326b75eb0e1ba318bce1e681e98389a1c590e3cefb64c7dbbe4e9fda9902a3"
+  },
+  "subsequent_user_reported_observations": {
+    "event_that_resumed_execution": "unknown",
+    "exact_blink_and_debounce_timing": "not measured",
+    "green_led_blinking": "observed by user",
+    "green_led_continues_blinking_during_button_hold": "not explicitly reported",
+    "orange_led_off_after_release": "not explicitly reported",
+    "orange_led_on_when_user_button_pressed": "observed by user",
+    "original_failed_flash_result_changed": false,
+    "recorded_date": "2026-10-10",
+    "repeatability": "not established",
+    "source": "User message in project conversation; not a tool measurement",
+    "successful_mcp_reset_run_trace": "not recorded"
+  }
+}

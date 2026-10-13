@@ -1,0 +1,275 @@
+{
+  "aliases": {
+    "gpioa": "gpio",
+    "usart2": "usart"
+  },
+  "bundle_revision": "b283ed10bbc173c8932d185fb022c8d27829bef7011656840889b14b736c033d",
+  "compiler_version": "0.1.0",
+  "dependencies": [
+    {
+      "entity": "gpio",
+      "requires": [
+        "rcc"
+      ]
+    },
+    {
+      "entity": "nvic",
+      "requires": [
+        "usart"
+      ]
+    },
+    {
+      "entity": "rcc",
+      "requires": []
+    },
+    {
+      "entity": "usart",
+      "requires": [
+        "gpio"
+      ]
+    }
+  ],
+  "documents": {
+    "index": "wiki/index.md",
+    "peripherals/gpio": "wiki/peripherals/gpio.md",
+    "peripherals/nvic": "wiki/peripherals/nvic.md",
+    "peripherals/rcc": "wiki/peripherals/rcc.md",
+    "peripherals/usart": "wiki/peripherals/usart.md",
+    "schemas/custom_pcb_netlist": "wiki/schemas/custom_pcb_netlist.md",
+    "schemas/devicetree": "wiki/schemas/devicetree.md",
+    "sources": "wiki/sources.md"
+  },
+  "extractor_versions": {
+    "arm-none-eabi-gcc": "arm-none-eabi-gcc (Arch Repository) 16.2.0",
+    "clang": "clang version 23.1.1",
+    "dtc": "Version: DTC v1.8.1",
+    "fdtoverlay": "Version: DTC v1.8.1",
+    "libclang": "18.1.1",
+    "netlist": "KiCad XML adapter v1 (pre-exported source)",
+    "praxis": "0.1.0"
+  },
+  "file_hashes": {
+    "wiki/index.md": "ca54bd8cc0beca18d1a94dd6a71cd74753d050e3afc86e9528dae733c8109541",
+    "wiki/peripherals/gpio.md": "b6460afc93cff3e1112b462498614ec8279072bd01ef42daea61c00be1243422",
+    "wiki/peripherals/nvic.md": "c4679342119c4f68d2ee78a9a5cbdbad3f68e4d1c4fc46b6c1fb36a93dcf3bcb",
+    "wiki/peripherals/rcc.md": "3e018c5af75daf4851ab729015fa04891b92e9fe27af726db11cb3166444b40a",
+    "wiki/peripherals/usart.md": "ac0d597e5048bad63cee87f2e58ea4116bc7857bf42bc0559aa2620b6df992fe",
+    "wiki/schemas/custom_pcb_netlist.md": "5ed884980ffaba199a7585ff51d080eaff9064fdb5cc8cc2025aeea23c72e837",
+    "wiki/schemas/devicetree.md": "c74be59b6e5a174967e4ee7b74e5177c6ce7e9c41028436be8398d99b8eaa299",
+    "wiki/sources.md": "391bacdf5a6eaf8dfe8ec727683b01989e059f25f0e9b5b3d78a5f54f2dddb04"
+  },
+  "netlist": "wiki/schemas/custom_pcb_netlist.md",
+  "peripherals": {
+    "gpio": "wiki/peripherals/gpio.md",
+    "nvic": "wiki/peripherals/nvic.md",
+    "rcc": "wiki/peripherals/rcc.md",
+    "usart": "wiki/peripherals/usart.md"
+  },
+  "review": {
+    "basis": "Checked against the linked vendor manuals and pinned declarations; independent hardware sign-off remains pending.",
+    "reviewer": "Codex source-backed fixture editorial review",
+    "status": "reviewed"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "authority": "semantics",
+      "id": "definitions",
+      "license": "MIT",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0368-stm32f401xb-c-d-e-mb-reference-manual-stmicroelectronics.pdf",
+      "path": "reviewed/peripherals.json",
+      "sha256": "c7512a64f43a7e5d13d537e82e37a3d1ae0d90b11a6663c27ece0b9ad22e2780",
+      "version": "fixture-1"
+    },
+    {
+      "authority": "configuration",
+      "id": "dts",
+      "license": "MIT",
+      "origin": "Self-contained synthetic DT fixture",
+      "path": "raw/topology.dts",
+      "sha256": "b37c7f17e6097949ce55b8e1c35deb5f564137e72d64b1897864b14a774ff53e",
+      "version": "synthetic-1"
+    },
+    {
+      "authority": "semantics",
+      "id": "gpio_review",
+      "license": "MIT",
+      "origin": "https://www.st.com/resource/en/datasheet/stm32f401re.pdf",
+      "path": "reviewed/gpio.md",
+      "sha256": "4449fe1d75d086a88b940c2f6875bf804d68df23fe8102044bf80ef4b11ef74a",
+      "version": "fixture-1"
+    },
+    {
+      "authority": "declarations",
+      "id": "header",
+      "license": "BSD-3-Clause",
+      "origin": "STMicroelectronics cmsis-device-f4",
+      "path": "raw/vendor/stm32f401xe.h",
+      "sha256": "9db8f3e317c6029ebdd1538f827885cf538850a20b17ac8491247e783134098c",
+      "version": "ST commit recorded in raw/vendor/provenance.json"
+    },
+    {
+      "authority": "connectivity",
+      "id": "netlist",
+      "license": "MIT",
+      "origin": "Hand-authored KiCad XML example; live export comparison pending",
+      "path": "raw/netlist.xml",
+      "sha256": "94b0b922bb3a33c2cc58f5e44896923c1e3c914f2fb022e3e8aed3056c49f223",
+      "version": "fixture-1"
+    },
+    {
+      "authority": "semantics",
+      "id": "nvic_review",
+      "license": "MIT",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0368-stm32f401xb-c-d-e-mb-reference-manual-stmicroelectronics.pdf",
+      "path": "reviewed/nvic.md",
+      "sha256": "ff11df1a97d48a1e19441e4af1cca85d1df12b7514948caff8f0ec8f328fe14d",
+      "version": "fixture-1"
+    },
+    {
+      "authority": "configuration",
+      "id": "overlay",
+      "license": "MIT",
+      "origin": "Enable synthetic UART",
+      "path": "raw/enable_uart.dtso",
+      "sha256": "ff2875ef4d1f512231851396f5151f53c326a6eba9d438915092914fd8f0f436",
+      "version": "synthetic-1"
+    },
+    {
+      "authority": "configuration",
+      "id": "profile",
+      "license": "MIT",
+      "origin": "Local target profile",
+      "path": "profile.json",
+      "sha256": "0764a362d329bc9505b1b72cb0009aa67938a970e80bc7f9580190d8d2bc9889",
+      "version": "1"
+    },
+    {
+      "authority": "semantics",
+      "id": "rcc_review",
+      "license": "MIT",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0368-stm32f401xb-c-d-e-mb-reference-manual-stmicroelectronics.pdf",
+      "path": "reviewed/rcc.md",
+      "sha256": "2dfc632ef889358ae320ebabfeffd8a351dea8a5db9d91d0c03cd33288287983",
+      "version": "fixture-1"
+    },
+    {
+      "authority": "connectivity",
+      "id": "schematic",
+      "license": "MIT",
+      "origin": "Original partial KiCad schematic; live export validation required",
+      "path": "raw/board.kicad_sch",
+      "sha256": "d1271564abb70daf5d16ff8b8aa203ab09e037f74cf3dee7a3aa15cef5411986",
+      "version": "fixture-1"
+    },
+    {
+      "authority": "semantics",
+      "id": "usart_review",
+      "license": "MIT",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0368-stm32f401xb-c-d-e-mb-reference-manual-stmicroelectronics.pdf",
+      "path": "reviewed/usart.md",
+      "sha256": "81c47ef022d5d4573f43f16abc235d96da69c32e040922279ca61ea9b1623297",
+      "version": "fixture-1"
+    },
+    {
+      "authority": "declarations",
+      "id": "vendor_0",
+      "license": "Apache-2.0",
+      "origin": "Upstream source and license included in raw/vendor",
+      "path": "raw/vendor/LICENSE-CMSIS.txt",
+      "sha256": "b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1",
+      "version": "pinned source bytes"
+    },
+    {
+      "authority": "declarations",
+      "id": "vendor_1",
+      "license": "Apache-2.0",
+      "origin": "Upstream source and license included in raw/vendor",
+      "path": "raw/vendor/LICENSE-ST.md",
+      "sha256": "dadb755f51d36614173b28c5790cb4a991e8f4cc822e5b634fd66a4f4145824d",
+      "version": "pinned source bytes"
+    },
+    {
+      "authority": "declarations",
+      "id": "vendor_2",
+      "license": "Apache-2.0",
+      "origin": "Upstream source and license included in raw/vendor",
+      "path": "raw/vendor/cmsis_compiler.h",
+      "sha256": "b51963d271c1571ca3463654c76aa7ea50c4eac5d0a2710df10414ac64d9e0f8",
+      "version": "pinned source bytes"
+    },
+    {
+      "authority": "declarations",
+      "id": "vendor_3",
+      "license": "Apache-2.0",
+      "origin": "Upstream source and license included in raw/vendor",
+      "path": "raw/vendor/cmsis_gcc.h",
+      "sha256": "43bfd1fe69fbbc2ca70aaf7d43cc3e20f16e0c7f66e1bdef9b51af6dc14b2617",
+      "version": "pinned source bytes"
+    },
+    {
+      "authority": "declarations",
+      "id": "vendor_4",
+      "license": "Apache-2.0",
+      "origin": "Upstream source and license included in raw/vendor",
+      "path": "raw/vendor/cmsis_version.h",
+      "sha256": "184c19fd3ee73632edf35a0b4d49cd48be75fbf49e6ccb19d9db05fa83bea4b3",
+      "version": "pinned source bytes"
+    },
+    {
+      "authority": "declarations",
+      "id": "vendor_5",
+      "license": "Apache-2.0",
+      "origin": "Upstream source and license included in raw/vendor",
+      "path": "raw/vendor/core_cm4.h",
+      "sha256": "f5b63d52dd1557b15ca414cb59c264f595a7b5669db2a5878dffe22f4caedc8c",
+      "version": "pinned source bytes"
+    },
+    {
+      "authority": "declarations",
+      "id": "vendor_6",
+      "license": "Apache-2.0",
+      "origin": "Upstream source and license included in raw/vendor",
+      "path": "raw/vendor/mpu_armv7.h",
+      "sha256": "29206b52ee02290ed6f5a5415ebd4187de802cf176d9b3cb844390d8e5571372",
+      "version": "pinned source bytes"
+    },
+    {
+      "authority": "declarations",
+      "id": "vendor_7",
+      "license": "Apache-2.0",
+      "origin": "Upstream source and license included in raw/vendor",
+      "path": "raw/vendor/provenance.json",
+      "sha256": "fedaf1a9e91a1739eafdd7af3d6dc056a6a2478a23e9a20c10d78ea388ec9e66",
+      "version": "pinned source bytes"
+    },
+    {
+      "authority": "declarations",
+      "id": "vendor_9",
+      "license": "BSD-3-Clause",
+      "origin": "Upstream source and license included in raw/vendor",
+      "path": "raw/vendor/system_stm32f4xx.h",
+      "sha256": "02c067d5a135f540c03215dc834b1e60a97bbd4e55bfd3994b0c82a15ea3012a",
+      "version": "pinned source bytes"
+    }
+  ],
+  "target": {
+    "board_revision": "praxis-example-1",
+    "clock_assumptions": [
+      "HSI16 selected; HCLK, PCLK1 and PCLK2 all /1 at nominal 16 MHz.",
+      "Startup must confirm readiness; HSI tolerance is not simulated."
+    ],
+    "clock_hz": 16000000,
+    "example_only": true,
+    "family": "stm32",
+    "fuse_assumptions": [],
+    "id": "stm32f401re_fixture",
+    "mcu": "STM32F401RE",
+    "package": "Package_QFP:LQFP-64_10x10mm_P0.5mm",
+    "primary_mcu_ref": "U1",
+    "silicon_revision": "Unspecified; fixture uses RM0368 Rev 6 semantics"
+  },
+  "topology": [
+    "wiki/schemas/devicetree.md"
+  ]
+}

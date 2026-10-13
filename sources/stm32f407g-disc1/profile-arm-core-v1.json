@@ -1,0 +1,4331 @@
+{
+  "aliases": {
+    "gpioa": "gpio",
+    "usart2": "usart"
+  },
+  "board": "board",
+  "clock_plan": {
+    "ahb_div": 1,
+    "apb1_div": 4,
+    "apb2_div": 2,
+    "flash_wait_states": 5,
+    "hse_hz": 8000000,
+    "pll_m": 8,
+    "pll_n": 336,
+    "pll_p": 2,
+    "pll_q": 7,
+    "vdd_mv": 3300
+  },
+  "definition_extensions": [
+    "adc_extension",
+    "i2c_extension",
+    "dac_extension",
+    "can_extension",
+    "can_rx_extension",
+    "arm_core_extension"
+  ],
+  "definitions": "definitions",
+  "devicetree": null,
+  "discovery": {
+    "automatic": true,
+    "default_prerequisites": [
+      "rcc"
+    ],
+    "exclude": [],
+    "peripherals": {
+      "adc": {
+        "prefix": "ADC",
+        "prerequisites": [
+          "adc_common"
+        ],
+        "structure": "ADC_TypeDef"
+      },
+      "adc_common": {
+        "prefix": "ADC",
+        "prerequisites": [
+          "rcc",
+          "flash",
+          "pwr"
+        ],
+        "structure": "ADC_Common_TypeDef"
+      },
+      "can": {
+        "prefix": "CAN",
+        "prerequisites": [
+          "rcc",
+          "flash",
+          "pwr",
+          "nvic"
+        ],
+        "register_fields": {
+          "BTR": [
+            "BRP",
+            "TS1",
+            "TS2",
+            "SJW",
+            "LBKM",
+            "SILM"
+          ],
+          "ESR": [
+            "EWGF",
+            "EPVF",
+            "BOFF",
+            "LEC",
+            "TEC",
+            "REC"
+          ],
+          "FA1R": [
+            "FACT"
+          ],
+          "FFA1R": [
+            "FFA"
+          ],
+          "FM1R": [
+            "FBM"
+          ],
+          "FMR": [
+            "FINIT",
+            "CAN2SB"
+          ],
+          "FS1R": [
+            "FSC"
+          ],
+          "IER": [
+            "TMEIE",
+            "FMPIE0",
+            "FFIE0",
+            "FOVIE0",
+            "FMPIE1",
+            "FFIE1",
+            "FOVIE1",
+            "EWGIE",
+            "EPVIE",
+            "BOFIE",
+            "LECIE",
+            "ERRIE",
+            "WKUIE",
+            "SLKIE"
+          ],
+          "MCR": [
+            "INRQ",
+            "SLEEP",
+            "TXFP",
+            "RFLM",
+            "NART",
+            "AWUM",
+            "ABOM",
+            "TTCM",
+            "RESET",
+            "DBF"
+          ],
+          "MSR": [
+            "INAK",
+            "SLAK",
+            "ERRI",
+            "WKUI",
+            "SLAKI",
+            "TXM",
+            "RXM",
+            "SAMP",
+            "RX"
+          ],
+          "RF0R": [
+            "FMP0",
+            "FULL0",
+            "FOVR0",
+            "RFOM0"
+          ],
+          "RF1R": [
+            "FMP1",
+            "FULL1",
+            "FOVR1",
+            "RFOM1"
+          ],
+          "TSR": [
+            "RQCP0",
+            "TXOK0",
+            "ALST0",
+            "TERR0",
+            "ABRQ0",
+            "RQCP1",
+            "TXOK1",
+            "ALST1",
+            "TERR1",
+            "ABRQ1",
+            "RQCP2",
+            "TXOK2",
+            "ALST2",
+            "TERR2",
+            "ABRQ2",
+            "CODE",
+            "TME",
+            "LOW"
+          ],
+          "sFIFOMailBox_0__RDHR": [
+            "DATA4",
+            "DATA5",
+            "DATA6",
+            "DATA7"
+          ],
+          "sFIFOMailBox_0__RDLR": [
+            "DATA0",
+            "DATA1",
+            "DATA2",
+            "DATA3"
+          ],
+          "sFIFOMailBox_0__RDTR": [
+            "DLC",
+            "FMI",
+            "TIME"
+          ],
+          "sFIFOMailBox_0__RIR": [
+            "RTR",
+            "IDE",
+            "EXID",
+            "STID"
+          ],
+          "sTxMailBox_0__TDHR": [
+            "DATA4",
+            "DATA5",
+            "DATA6",
+            "DATA7"
+          ],
+          "sTxMailBox_0__TDLR": [
+            "DATA0",
+            "DATA1",
+            "DATA2",
+            "DATA3"
+          ],
+          "sTxMailBox_0__TDTR": [
+            "DLC",
+            "TGT",
+            "TIME"
+          ],
+          "sTxMailBox_0__TIR": [
+            "TXRQ",
+            "RTR",
+            "IDE",
+            "EXID",
+            "STID"
+          ]
+        },
+        "register_prefixes": {
+          "sFIFOMailBox_0__RDHR": "CAN_RDH0R",
+          "sFIFOMailBox_0__RDLR": "CAN_RDL0R",
+          "sFIFOMailBox_0__RDTR": "CAN_RDT0R",
+          "sFIFOMailBox_0__RIR": "CAN_RI0R",
+          "sTxMailBox_0__TDHR": "CAN_TDH0R",
+          "sTxMailBox_0__TDLR": "CAN_TDL0R",
+          "sTxMailBox_0__TDTR": "CAN_TDT0R",
+          "sTxMailBox_0__TIR": "CAN_TI0R"
+        },
+        "structure": "CAN_TypeDef"
+      },
+      "coredebug": {
+        "prefix": "CoreDebug",
+        "prerequisites": [],
+        "structure": "CoreDebug_Type"
+      },
+      "dac": {
+        "prefix": "DAC",
+        "prerequisites": [
+          "rcc",
+          "flash",
+          "pwr",
+          "gpio",
+          "tim"
+        ],
+        "structure": "DAC_TypeDef"
+      },
+      "dma_stream": {
+        "prerequisites": [
+          "dma"
+        ],
+        "register_prefixes": {
+          "CR": "DMA_SxCR",
+          "FCR": "DMA_SxFCR",
+          "M0AR": "DMA_SxM0AR",
+          "M1AR": "DMA_SxM1AR",
+          "NDTR": "DMA_SxNDTR",
+          "PAR": "DMA_SxPAR"
+        },
+        "structure": "DMA_Stream_TypeDef"
+      },
+      "exti": {
+        "prerequisites": [
+          "syscfg"
+        ],
+        "register_fields": {
+          "EMR": [
+            "MR0",
+            "MR1",
+            "MR2",
+            "MR3",
+            "MR4",
+            "MR5",
+            "MR6",
+            "MR7",
+            "MR8",
+            "MR9",
+            "MR10",
+            "MR11",
+            "MR12",
+            "MR13",
+            "MR14",
+            "MR15",
+            "MR16",
+            "MR17",
+            "MR18",
+            "MR19",
+            "MR20",
+            "MR21",
+            "MR22"
+          ],
+          "IMR": [
+            "MR0",
+            "MR1",
+            "MR2",
+            "MR3",
+            "MR4",
+            "MR5",
+            "MR6",
+            "MR7",
+            "MR8",
+            "MR9",
+            "MR10",
+            "MR11",
+            "MR12",
+            "MR13",
+            "MR14",
+            "MR15",
+            "MR16",
+            "MR17",
+            "MR18",
+            "MR19",
+            "MR20",
+            "MR21",
+            "MR22"
+          ]
+        },
+        "structure": "EXTI_TypeDef"
+      },
+      "flash": {
+        "prefix": "FLASH",
+        "prerequisites": [
+          "rcc"
+        ],
+        "register_fields": {
+          "ACR": [
+            "LATENCY",
+            "PRFTEN",
+            "ICEN",
+            "DCEN",
+            "ICRST",
+            "DCRST"
+          ]
+        },
+        "structure": "FLASH_TypeDef"
+      },
+      "nvic": {
+        "prefix": "NVIC",
+        "prerequisites": [
+          "usart",
+          "tim",
+          "exti"
+        ],
+        "structure": "NVIC_Type"
+      },
+      "rng": {
+        "prefix": "RNG",
+        "prerequisites": [
+          "rcc",
+          "flash",
+          "pwr"
+        ],
+        "structure": "RNG_TypeDef"
+      },
+      "scb": {
+        "prefix": "SCB",
+        "prerequisites": [],
+        "register_fields": {
+          "AIRCR": [
+            "VECTRESET",
+            "VECTCLRACTIVE",
+            "SYSRESETREQ",
+            "PRIGROUP",
+            "ENDIANESS",
+            "VECTKEY"
+          ],
+          "CCR": [
+            "NONBASETHRDENA",
+            "USERSETMPEND",
+            "UNALIGN_TRP",
+            "DIV_0_TRP",
+            "BFHFNMIGN",
+            "STKALIGN"
+          ],
+          "CFSR": [
+            "MEMFAULTSR",
+            "BUSFAULTSR",
+            "USGFAULTSR"
+          ],
+          "CPUID": [
+            "REVISION",
+            "PARTNO",
+            "ARCHITECTURE",
+            "VARIANT",
+            "IMPLEMENTER"
+          ],
+          "DFSR": [
+            "HALTED",
+            "BKPT",
+            "DWTTRAP",
+            "VCATCH",
+            "EXTERNAL"
+          ],
+          "HFSR": [
+            "VECTTBL",
+            "FORCED",
+            "DEBUGEVT"
+          ],
+          "SCR": [
+            "SLEEPONEXIT",
+            "SLEEPDEEP",
+            "SEVONPEND"
+          ],
+          "SHCSR": [
+            "MEMFAULTACT",
+            "BUSFAULTACT",
+            "USGFAULTACT",
+            "SVCALLACT",
+            "MONITORACT",
+            "PENDSVACT",
+            "SYSTICKACT",
+            "USGFAULTPENDED",
+            "MEMFAULTPENDED",
+            "BUSFAULTPENDED",
+            "SVCALLPENDED",
+            "MEMFAULTENA",
+            "BUSFAULTENA",
+            "USGFAULTENA"
+          ]
+        },
+        "structure": "SCB_Type"
+      },
+      "syscfg": {
+        "expand_arrays": [
+          "EXTICR"
+        ],
+        "prerequisites": [
+          "gpio"
+        ],
+        "register_prefixes": {
+          "EXTICR0": "SYSCFG_EXTICR1",
+          "EXTICR1": "SYSCFG_EXTICR2",
+          "EXTICR2": "SYSCFG_EXTICR3",
+          "EXTICR3": "SYSCFG_EXTICR4"
+        },
+        "structure": "SYSCFG_TypeDef"
+      },
+      "systick": {
+        "prefix": "SysTick",
+        "prerequisites": [
+          "rcc",
+          "scb"
+        ],
+        "structure": "SysTick_Type"
+      },
+      "tim": {
+        "prerequisites": [
+          "rcc"
+        ],
+        "register_fields": {
+          "CCMR1": [
+            "CC1S",
+            "OC1FE",
+            "OC1PE",
+            "OC1M",
+            "OC1CE",
+            "CC2S",
+            "OC2FE",
+            "OC2PE",
+            "OC2M",
+            "OC2CE"
+          ],
+          "CCMR2": [
+            "CC3S",
+            "OC3FE",
+            "OC3PE",
+            "OC3M",
+            "OC3CE",
+            "CC4S",
+            "OC4FE",
+            "OC4PE",
+            "OC4M",
+            "OC4CE"
+          ]
+        },
+        "structure": "TIM_TypeDef"
+      },
+      "usb_otg_device": {
+        "instances": {
+          "USB_OTG_FS_DEVICE": "USB_OTG_FS_PERIPH_BASE + USB_OTG_DEVICE_BASE",
+          "USB_OTG_HS_DEVICE": "USB_OTG_HS_PERIPH_BASE + USB_OTG_DEVICE_BASE"
+        },
+        "prefix": "USB_OTG",
+        "structure": "USB_OTG_DeviceTypeDef"
+      },
+      "usb_otg_global": {
+        "instances": {
+          "USB_OTG_FS_GLOBAL": "USB_OTG_FS_PERIPH_BASE + USB_OTG_GLOBAL_BASE",
+          "USB_OTG_HS_GLOBAL": "USB_OTG_HS_PERIPH_BASE + USB_OTG_GLOBAL_BASE"
+        },
+        "prefix": "USB_OTG",
+        "structure": "USB_OTG_GlobalTypeDef"
+      },
+      "usb_otg_host": {
+        "instances": {
+          "USB_OTG_FS_HOST": "USB_OTG_FS_PERIPH_BASE + USB_OTG_HOST_BASE",
+          "USB_OTG_HS_HOST": "USB_OTG_HS_PERIPH_BASE + USB_OTG_HOST_BASE"
+        },
+        "prefix": "USB_OTG",
+        "structure": "USB_OTG_HostTypeDef"
+      }
+    }
+  },
+  "header": {
+    "constant_macros": {
+      "FLASH_ACR_LATENCY_5WS": 5,
+      "FLASH_BASE": 134217728,
+      "PWR_CR_VOS": 16384,
+      "RCC_CFGR_PPRE1_DIV4": 5120,
+      "RCC_CFGR_PPRE2_DIV2": 32768,
+      "USART_CR1_UE": 8192,
+      "__NVIC_PRIO_BITS": 4
+    },
+    "defines": [
+      "-DSTM32F407xx"
+    ],
+    "discover": true,
+    "include_directories": [
+      "raw/vendor"
+    ],
+    "kind": "cmsis",
+    "required_registers": {
+      "crc": [
+        "DR",
+        "IDR",
+        "CR"
+      ],
+      "dma": [
+        "LISR",
+        "HISR",
+        "LIFCR",
+        "HIFCR"
+      ],
+      "dma_stream": [
+        "CR",
+        "NDTR",
+        "PAR",
+        "M0AR",
+        "FCR"
+      ],
+      "exti": [
+        "IMR",
+        "EMR",
+        "RTSR",
+        "FTSR",
+        "SWIER",
+        "PR"
+      ],
+      "gpio": [
+        "MODER",
+        "OTYPER",
+        "OSPEEDR",
+        "PUPDR",
+        "IDR",
+        "ODR",
+        "BSRR",
+        "LCKR",
+        "AFRL",
+        "AFRH"
+      ],
+      "iwdg": [
+        "KR",
+        "PR",
+        "RLR",
+        "SR"
+      ],
+      "nvic": [
+        "ISER",
+        "ICER",
+        "ISPR",
+        "ICPR",
+        "IABR",
+        "IP",
+        "STIR"
+      ],
+      "rcc": [
+        "CR",
+        "PLLCFGR",
+        "CFGR",
+        "AHB1ENR",
+        "APB1ENR",
+        "APB1RSTR",
+        "APB2ENR",
+        "AHB2ENR"
+      ],
+      "rng": [
+        "CR",
+        "SR",
+        "DR"
+      ],
+      "spi": [
+        "CR1",
+        "CR2",
+        "SR",
+        "DR",
+        "I2SCFGR"
+      ],
+      "syscfg": [
+        "EXTICR0"
+      ],
+      "tim": [
+        "CR1",
+        "DIER",
+        "SR",
+        "EGR",
+        "CNT",
+        "PSC",
+        "ARR"
+      ],
+      "usart": [
+        "SR",
+        "DR",
+        "BRR",
+        "CR1",
+        "CR2",
+        "CR3",
+        "GTPR"
+      ]
+    },
+    "source": "header"
+  },
+  "manuals": {
+    "pm0214_arm_v1": {
+      "register_symbols": {
+        "scb": {
+          "ICSR": [
+            "ICSR"
+          ],
+          "SHP": [
+            "SHPR1",
+            "SHPR2",
+            "SHPR3"
+          ],
+          "VTOR": [
+            "VTOR"
+          ]
+        },
+        "systick": {
+          "CALIB": [
+            "STK_CALIB"
+          ],
+          "CTRL": [
+            "STK_CTRL"
+          ],
+          "LOAD": [
+            "STK_LOAD"
+          ],
+          "VAL": [
+            "STK_VAL"
+          ]
+        }
+      },
+      "table_scopes": {}
+    }
+  },
+  "netlist": "board_netlist",
+  "netlist_format": "reviewed",
+  "pin_map": {
+    "1": "PE2",
+    "10": "VSS",
+    "100": "VDD",
+    "11": "VDD",
+    "12": "PH0",
+    "13": "PH1",
+    "14": "NRST",
+    "15": "PC0",
+    "16": "PC1",
+    "17": "PC2",
+    "18": "PC3",
+    "19": "VDD",
+    "2": "PE3",
+    "20": "VSSA",
+    "21": "VREF+",
+    "22": "VDDA",
+    "23": "PA0",
+    "24": "PA1",
+    "25": "PA2",
+    "26": "PA3",
+    "27": "VSS",
+    "28": "VDD",
+    "29": "PA4",
+    "3": "PE4",
+    "30": "PA5",
+    "31": "PA6",
+    "32": "PA7",
+    "33": "PC4",
+    "34": "PC5",
+    "35": "PB0",
+    "36": "PB1",
+    "37": "PB2",
+    "38": "PE7",
+    "39": "PE8",
+    "4": "PE5",
+    "40": "PE9",
+    "41": "PE10",
+    "42": "PE11",
+    "43": "PE12",
+    "44": "PE13",
+    "45": "PE14",
+    "46": "PE15",
+    "47": "PB10",
+    "48": "PB11",
+    "49": "VCAP_1",
+    "5": "PE6",
+    "50": "VDD",
+    "51": "PB12",
+    "52": "PB13",
+    "53": "PB14",
+    "54": "PB15",
+    "55": "PD8",
+    "56": "PD9",
+    "57": "PD10",
+    "58": "PD11",
+    "59": "PD12",
+    "6": "VBAT",
+    "60": "PD13",
+    "61": "PD14",
+    "62": "PD15",
+    "63": "PC6",
+    "64": "PC7",
+    "65": "PC8",
+    "66": "PC9",
+    "67": "PA8",
+    "68": "PA9",
+    "69": "PA10",
+    "7": "PC13",
+    "70": "PA11",
+    "71": "PA12",
+    "72": "PA13",
+    "73": "VCAP_2",
+    "74": "VSS",
+    "75": "VDD",
+    "76": "PA14",
+    "77": "PA15",
+    "78": "PC10",
+    "79": "PC11",
+    "8": "PC14",
+    "80": "PC12",
+    "81": "PD0",
+    "82": "PD1",
+    "83": "PD2",
+    "84": "PD3",
+    "85": "PD4",
+    "86": "PD5",
+    "87": "PD6",
+    "88": "PD7",
+    "89": "PB3",
+    "9": "PC15",
+    "90": "PB4",
+    "91": "PB5",
+    "92": "PB6",
+    "93": "PB7",
+    "94": "BOOT0",
+    "95": "PB8",
+    "96": "PB9",
+    "97": "PE0",
+    "98": "PE1",
+    "99": "VSS"
+  },
+  "publication_requires": [
+    "gpio_led_button",
+    "uart_timer_interrupts",
+    "crc_word_feed",
+    "dma2_memory_copy",
+    "flash_latency_168mhz",
+    "feature_pwr",
+    "pll_hse8_168mhz",
+    "rng_pll_polling",
+    "feature_adc",
+    "adc1_internal_reference",
+    "i2c1_controller_transmit",
+    "dac_channel1_software_trigger",
+    "can1_silent_loopback_irq",
+    "can1_rx_guarded_loopback_irq",
+    "arm_hsi16_core_checked",
+    "arm_flash_vector_table",
+    "systick_core_polling",
+    "systick_1khz_interrupt"
+  ],
+  "required_workflows": [
+    "led_button_polling"
+  ],
+  "review": {
+    "basis": "RM0090 Rev22 cached page evidence, import 76d4cc4fa4349310f75544d572bd2c6d326309e98f52dff9b1e044d17c85bd39. Target-scoped textual requirements; independent engineering review and new hardware qualification pending.; ADC1 internal-reference and TIM2 polling subset reviewed from complete MCP evidence; independent review pending; scoped I2C1 standard-mode transmitter reviewed from actual ingestion MCP; no wiring/errata qualification; MCP evidence-backed candidate PD0 AF9 pull-up prerequisite and finite RX/ack checks; hypothesis only, physical success and independent review pending.",
+    "reviewer": "Codex source-backed editorial review through Praxis ingestion MCP",
+    "status": "reviewed"
+  },
+  "schema_version": 1,
+  "signal_aliases": {
+    "PA2": [
+      "USART2_TX",
+      "P1_UART_TX"
+    ],
+    "PA3": [
+      "USART2_RX",
+      "P1_UART_RX"
+    ],
+    "PD0": [
+      "CAN1_RX",
+      "CAN1_RX_SYNC"
+    ]
+  },
+  "sources": [
+    {
+      "authority": "semantics",
+      "id": "definitions",
+      "license": "MIT",
+      "origin": "Reviewed records from actual Praxis ingestion MCP evidence; independent review pending",
+      "path": "reviewed/clock-v1/peripherals.json",
+      "version": "clock-v1"
+    },
+    {
+      "authority": "semantics",
+      "id": "rcc_review",
+      "license": "MIT",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "reviewed/clock-v1/rcc.md",
+      "version": "clock-v1"
+    },
+    {
+      "authority": "semantics",
+      "id": "gpio_review",
+      "license": "MIT",
+      "origin": "https://www.st.com/resource/en/datasheet/stm32f407vg.pdf",
+      "path": "reviewed/uart-loopback/gpio.md",
+      "version": "f407-fixture-1"
+    },
+    {
+      "authority": "semantics",
+      "id": "usart_review",
+      "license": "MIT",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "reviewed/uart-loopback/usart.md",
+      "version": "f407-fixture-1"
+    },
+    {
+      "authority": "semantics",
+      "id": "nvic_review",
+      "license": "MIT",
+      "origin": "Arm CMSIS core NVIC and ST device IRQ declarations",
+      "path": "reviewed/uart-loopback/nvic.md",
+      "version": "f407-fixture-1"
+    },
+    {
+      "authority": "semantics",
+      "id": "clock_review",
+      "license": "BSD-3-Clause",
+      "origin": "https://raw.githubusercontent.com/STMicroelectronics/STM32CubeF4/v1.28.1/Projects/STM32F4-Discovery/Examples/UART/UART_TwoBoards_ComPolling/Src/main.c",
+      "path": "raw/st_clock_example.c",
+      "version": "STM32CubeF4 v1.28.1"
+    },
+    {
+      "authority": "declarations",
+      "id": "vendor_0",
+      "license": "Apache-2.0",
+      "origin": "https://raw.githubusercontent.com/ARM-software/CMSIS_5/5.9.0/LICENSE.txt",
+      "path": "raw/vendor/LICENSE-CMSIS.txt",
+      "version": "ST commit 3c77349ce04c8af401454cc51f85ea9a50e34fc1 / Arm CMSIS 5.9.0"
+    },
+    {
+      "authority": "declarations",
+      "id": "vendor_1",
+      "license": "BSD-3-Clause",
+      "origin": "https://raw.githubusercontent.com/STMicroelectronics/cmsis-device-f4/3c77349ce04c8af401454cc51f85ea9a50e34fc1/LICENSE.md",
+      "path": "raw/vendor/LICENSE-ST.md",
+      "version": "ST commit 3c77349ce04c8af401454cc51f85ea9a50e34fc1 / Arm CMSIS 5.9.0"
+    },
+    {
+      "authority": "declarations",
+      "id": "vendor_2",
+      "license": "Apache-2.0",
+      "origin": "https://raw.githubusercontent.com/ARM-software/CMSIS_5/5.9.0/CMSIS/Core/Include/cmsis_compiler.h",
+      "path": "raw/vendor/cmsis_compiler.h",
+      "version": "ST commit 3c77349ce04c8af401454cc51f85ea9a50e34fc1 / Arm CMSIS 5.9.0"
+    },
+    {
+      "authority": "declarations",
+      "id": "vendor_3",
+      "license": "Apache-2.0",
+      "origin": "https://raw.githubusercontent.com/ARM-software/CMSIS_5/5.9.0/CMSIS/Core/Include/cmsis_gcc.h",
+      "path": "raw/vendor/cmsis_gcc.h",
+      "version": "ST commit 3c77349ce04c8af401454cc51f85ea9a50e34fc1 / Arm CMSIS 5.9.0"
+    },
+    {
+      "authority": "declarations",
+      "id": "vendor_4",
+      "license": "Apache-2.0",
+      "origin": "https://raw.githubusercontent.com/ARM-software/CMSIS_5/5.9.0/CMSIS/Core/Include/cmsis_version.h",
+      "path": "raw/vendor/cmsis_version.h",
+      "version": "ST commit 3c77349ce04c8af401454cc51f85ea9a50e34fc1 / Arm CMSIS 5.9.0"
+    },
+    {
+      "authority": "declarations",
+      "id": "cmsis_core",
+      "license": "Apache-2.0",
+      "origin": "https://raw.githubusercontent.com/ARM-software/CMSIS_5/5.9.0/CMSIS/Core/Include/core_cm4.h",
+      "path": "raw/vendor/core_cm4.h",
+      "version": "ST commit 3c77349ce04c8af401454cc51f85ea9a50e34fc1 / Arm CMSIS 5.9.0"
+    },
+    {
+      "authority": "declarations",
+      "id": "vendor_6",
+      "license": "Apache-2.0",
+      "origin": "https://raw.githubusercontent.com/ARM-software/CMSIS_5/5.9.0/CMSIS/Core/Include/mpu_armv7.h",
+      "path": "raw/vendor/mpu_armv7.h",
+      "version": "ST commit 3c77349ce04c8af401454cc51f85ea9a50e34fc1 / Arm CMSIS 5.9.0"
+    },
+    {
+      "authority": "declarations",
+      "id": "vendor_7",
+      "license": "MIT",
+      "origin": "Pinned vendor source inventory",
+      "path": "raw/vendor/provenance.json",
+      "version": "ST commit 3c77349ce04c8af401454cc51f85ea9a50e34fc1 / Arm CMSIS 5.9.0"
+    },
+    {
+      "authority": "declarations",
+      "id": "header",
+      "license": "BSD-3-Clause",
+      "origin": "https://raw.githubusercontent.com/STMicroelectronics/cmsis-device-f4/3c77349ce04c8af401454cc51f85ea9a50e34fc1/Include/stm32f407xx.h",
+      "path": "raw/vendor/stm32f407xx.h",
+      "version": "ST commit 3c77349ce04c8af401454cc51f85ea9a50e34fc1 / Arm CMSIS 5.9.0"
+    },
+    {
+      "authority": "declarations",
+      "id": "vendor_9",
+      "license": "BSD-3-Clause",
+      "origin": "https://raw.githubusercontent.com/STMicroelectronics/cmsis-device-f4/3c77349ce04c8af401454cc51f85ea9a50e34fc1/Include/system_stm32f4xx.h",
+      "path": "raw/vendor/system_stm32f4xx.h",
+      "version": "ST commit 3c77349ce04c8af401454cc51f85ea9a50e34fc1 / Arm CMSIS 5.9.0"
+    },
+    {
+      "authority": "connectivity",
+      "id": "board_netlist",
+      "license": "ST source document terms apply; local normalized records are MIT",
+      "origin": "Reviewed transcription of ST MB997 E-01; not a CAD export",
+      "path": "reviewed/can-rx-v1/netlist.json",
+      "version": "MB997-E-01 subset with CAN RX candidate v1"
+    },
+    {
+      "authority": "semantics",
+      "id": "board",
+      "license": "ST source document terms apply; local normalized records are MIT",
+      "origin": "Reviewed board role/polarity assertions; not automatic PDF wire reconstruction",
+      "path": "reviewed/uart-loopback/board.json",
+      "version": "MB997-E-01 subset v1"
+    },
+    {
+      "authority": "connectivity",
+      "id": "schematic_e01",
+      "license": "ST source document terms apply; local normalized records are MIT",
+      "origin": "https://www.st.com/resource/en/schematic_pack/mb997-f407vgt6-e01_schematic.pdf",
+      "path": "reviewed/schematic-e01.provenance.json",
+      "version": "MB997-E-01 2020-04-09"
+    },
+    {
+      "authority": "configuration",
+      "id": "board_manual",
+      "license": "ST source document terms apply; local normalized records are MIT",
+      "origin": "https://www.st.com/resource/en/user_manual/dm00039084-discovery-kit-with-stm32f407vg-mcu-stmicroelectronics.pdf",
+      "path": "reviewed/um1472.provenance.json",
+      "version": "UM1472 Rev 9"
+    },
+    {
+      "authority": "semantics",
+      "id": "tim_review",
+      "license": "MIT",
+      "origin": "Editorial review of actual source evidence retrieved through ingestion MCP",
+      "path": "reviewed/uart-loopback/tim.md",
+      "version": "uart-scenario-1"
+    },
+    {
+      "authority": "semantics",
+      "id": "exti_review",
+      "license": "MIT",
+      "origin": "Editorial review of actual source evidence retrieved through ingestion MCP",
+      "path": "reviewed/uart-loopback/exti.md",
+      "version": "uart-scenario-1"
+    },
+    {
+      "authority": "semantics",
+      "id": "syscfg_review",
+      "license": "MIT",
+      "origin": "Editorial review of actual source evidence retrieved through ingestion MCP",
+      "path": "reviewed/uart-loopback/syscfg.md",
+      "version": "uart-scenario-1"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_clock",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_uart/extracted/part-0001.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_hsi",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_uart/extracted/part-0002.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_apb2_reset",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_uart/extracted/part-0003.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_apb2_gate",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_uart/extracted/part-0005.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_gpio_speed",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_uart/extracted/part-0006.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_syscfg1",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_uart/extracted/part-0007.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_syscfg2",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_uart/extracted/part-0008.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_syscfg3",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_uart/extracted/part-0009.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_exti_mask",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_uart/extracted/part-0010.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_exti_edges",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_uart/extracted/part-0011.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_exti_pending",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_uart/extracted/part-0012.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_tim_cr1",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_uart/extracted/part-0013.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_tim_control",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_uart/extracted/part-0014.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_tim_dier",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_uart/extracted/part-0015.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_tim_sr",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_uart/extracted/part-0016.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_tim_status",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_uart/extracted/part-0017.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_tim_egr",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_uart/extracted/part-0018.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_tim_values",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_uart/extracted/part-0019.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_tim_arr",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_uart/extracted/part-0020.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_uart_baud",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_uart/extracted/part-0021.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_uart_irq",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_uart/extracted/part-0022.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_uart_sr",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_uart/extracted/part-0023.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_uart_errors",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_uart/extracted/part-0024.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_uart_brr",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_uart/extracted/part-0025.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_uart_cr1",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_uart/extracted/part-0026.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_uart_rx",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_uart/extracted/part-0027.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_uart_cr3",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_uart/extracted/part-0028.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "connectivity",
+      "id": "schematic_uart",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/schematic_pack/mb997-f407vgt6-e01_schematic.pdf",
+      "path": "imports/uart-scenario/mb997_e01/extracted/part-0002.json",
+      "version": "MB997 E-01"
+    },
+    {
+      "authority": "connectivity",
+      "id": "schematic_mcu",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/schematic_pack/mb997-f407vgt6-e01_schematic.pdf",
+      "path": "imports/uart-scenario/mb997_e01/extracted/part-0007.json",
+      "version": "MB997 E-01"
+    },
+    {
+      "authority": "configuration",
+      "id": "uart_connector",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/user_manual/dm00039084-discovery-kit-with-stm32f407vg-mcu-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/um1472/extracted/part-0018.json",
+      "version": "UM1472 Rev9"
+    },
+    {
+      "authority": "configuration",
+      "id": "uart_connector_table",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/user_manual/dm00039084-discovery-kit-with-stm32f407vg-mcu-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/um1472/extracted/part-0026.json",
+      "version": "UM1472 Rev9"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_features_113",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_features_v1/extracted/part-0001.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_features_114",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_features_v1/extracted/part-0002.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_features_115",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_features_v1/extracted/part-0003.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_features_243",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_features_v1/extracted/part-0004.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_features_244",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_features_v1/extracted/part-0005.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_features_245",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_features_v1/extracted/part-0006.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_features_246",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_features_v1/extracted/part-0007.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_features_247",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_features_v1/extracted/part-0008.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_features_248",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_features_v1/extracted/part-0009.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_features_249",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_features_v1/extracted/part-0010.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_features_250",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_features_v1/extracted/part-0011.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_features_306",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_features_v1/extracted/part-0012.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_features_311",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_features_v1/extracted/part-0013.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_features_313",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_features_v1/extracted/part-0014.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_features_324",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_features_v1/extracted/part-0015.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_features_325",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_features_v1/extracted/part-0016.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_features_327",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_features_v1/extracted/part-0017.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_features_328",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_features_v1/extracted/part-0018.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_features_329",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_features_v1/extracted/part-0019.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_features_330",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_features_v1/extracted/part-0020.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_features_331",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_features_v1/extracted/part-0021.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_features_332",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_features_v1/extracted/part-0022.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_features_333",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_features_v1/extracted/part-0023.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_features_334",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_features_v1/extracted/part-0024.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_features_335",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_features_v1/extracted/part-0025.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_features_336",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_features_v1/extracted/part-0026.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_features_704",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_features_v1/extracted/part-0027.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_features_705",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_features_v1/extracted/part-0028.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_features_706",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_features_v1/extracted/part-0029.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_features_707",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_features_v1/extracted/part-0030.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_features_708",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_features_v1/extracted/part-0031.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_features_763",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_features_v1/extracted/part-0032.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_features_764",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_features_v1/extracted/part-0033.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_features_765",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_features_v1/extracted/part-0034.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_features_766",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_features_v1/extracted/part-0035.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_features_877",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_features_v1/extracted/part-0036.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_features_880",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_features_v1/extracted/part-0037.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_features_881",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_features_v1/extracted/part-0038.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_features_882",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_features_v1/extracted/part-0039.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_features_883",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_features_v1/extracted/part-0040.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_features_887",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_features_v1/extracted/part-0041.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_features_888",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_features_v1/extracted/part-0042.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_features_889",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_features_v1/extracted/part-0043.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_features_890",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_features_v1/extracted/part-0044.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_features_891",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_features_v1/extracted/part-0045.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_features_892",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_features_v1/extracted/part-0046.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_features_911",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_features_v1/extracted/part-0047.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_features_912",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_features_v1/extracted/part-0048.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_features_913",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_features_v1/extracted/part-0049.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_features_914",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_features_v1/extracted/part-0050.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_features_915",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_features_v1/extracted/part-0051.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_features_916",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_features_v1/extracted/part-0052.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_features_917",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_features_v1/extracted/part-0053.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_features_918",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_features_v1/extracted/part-0054.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_features_919",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_features_v1/extracted/part-0055.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "crc_features_review",
+      "license": "MIT",
+      "origin": "Editorial synthesis of actual Praxis ingestion MCP evidence; independent review pending",
+      "path": "reviewed/features-v1/crc.md",
+      "version": "features-v1"
+    },
+    {
+      "authority": "semantics",
+      "id": "dma_features_review",
+      "license": "MIT",
+      "origin": "Editorial synthesis of actual Praxis ingestion MCP evidence; independent review pending",
+      "path": "reviewed/features-v1/dma.md",
+      "version": "features-v1"
+    },
+    {
+      "authority": "semantics",
+      "id": "dma_stream_features_review",
+      "license": "MIT",
+      "origin": "Editorial synthesis of actual Praxis ingestion MCP evidence; independent review pending",
+      "path": "reviewed/features-v1/dma_stream.md",
+      "version": "features-v1"
+    },
+    {
+      "authority": "semantics",
+      "id": "spi_features_review",
+      "license": "MIT",
+      "origin": "Editorial synthesis of actual Praxis ingestion MCP evidence; independent review pending",
+      "path": "reviewed/features-v1/spi.md",
+      "version": "features-v1"
+    },
+    {
+      "authority": "semantics",
+      "id": "rng_features_review",
+      "license": "MIT",
+      "origin": "Editorial synthesis of actual Praxis ingestion MCP evidence; independent review pending",
+      "path": "reviewed/clock-v1/rng.md",
+      "version": "clock-v1"
+    },
+    {
+      "authority": "semantics",
+      "id": "iwdg_features_review",
+      "license": "MIT",
+      "origin": "Editorial synthesis of actual Praxis ingestion MCP evidence; independent review pending",
+      "path": "reviewed/features-v1/iwdg.md",
+      "version": "features-v1"
+    },
+    {
+      "authority": "semantics",
+      "id": "flash_review",
+      "license": "MIT; cited vendor source terms remain applicable",
+      "origin": "Editorial synthesis from actual ingestion MCP full-page evidence; independent review pending",
+      "path": "reviewed/clock-v1/flash.md",
+      "version": "clock-v1"
+    },
+    {
+      "authority": "semantics",
+      "id": "pwr_review",
+      "license": "MIT; cited vendor source terms remain applicable",
+      "origin": "Editorial synthesis from actual ingestion MCP full-page evidence; independent review pending",
+      "path": "reviewed/clock-v1/pwr.md",
+      "version": "clock-v1"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_clock_v1_80",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_clock_v1/extracted/part-0001.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_clock_v1_81",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_clock_v1/extracted/part-0002.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_clock_v1_82",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_clock_v1/extracted/part-0003.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_clock_v1_98",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_clock_v1/extracted/part-0004.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_clock_v1_120",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_clock_v1/extracted/part-0005.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_clock_v1_141",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_clock_v1/extracted/part-0006.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_clock_v1_142",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_clock_v1/extracted/part-0007.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_clock_v1_143",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_clock_v1/extracted/part-0008.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_clock_v1_144",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_clock_v1/extracted/part-0009.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_clock_v1_218",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_clock_v1/extracted/part-0010.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_clock_v1_219",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_clock_v1/extracted/part-0011.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_clock_v1_220",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_clock_v1/extracted/part-0012.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_clock_v1_221",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_clock_v1/extracted/part-0013.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_clock_v1_225",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_clock_v1/extracted/part-0014.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_clock_v1_226",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_clock_v1/extracted/part-0015.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_clock_v1_227",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_clock_v1/extracted/part-0016.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_clock_v1_228",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_clock_v1/extracted/part-0017.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_clock_v1_229",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_clock_v1/extracted/part-0018.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_clock_v1_230",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_clock_v1/extracted/part-0019.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_clock_v1_231",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_clock_v1/extracted/part-0020.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_clock_v1_247",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/uart-scenario/rm0090_clock_v1/extracted/part-0021.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_adc_392",
+      "license": "Source terms retained; generated editorial metadata does not relicense vendor material",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/adc-scenario/rm_adc_review/extracted/part-0001.json",
+      "version": "aab12bc5e6884568f581bfbbda187411379fd14bb60629eb33e7f44dad549709"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_adc_393",
+      "license": "Source terms retained; generated editorial metadata does not relicense vendor material",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/adc-scenario/rm_adc_review/extracted/part-0002.json",
+      "version": "aab12bc5e6884568f581bfbbda187411379fd14bb60629eb33e7f44dad549709"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_adc_417",
+      "license": "Source terms retained; generated editorial metadata does not relicense vendor material",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/adc-scenario/rm_adc_review/extracted/part-0003.json",
+      "version": "aab12bc5e6884568f581bfbbda187411379fd14bb60629eb33e7f44dad549709"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_adc_418",
+      "license": "Source terms retained; generated editorial metadata does not relicense vendor material",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/adc-scenario/rm_adc_review/extracted/part-0004.json",
+      "version": "aab12bc5e6884568f581bfbbda187411379fd14bb60629eb33e7f44dad549709"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_adc_419",
+      "license": "Source terms retained; generated editorial metadata does not relicense vendor material",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/adc-scenario/rm_adc_review/extracted/part-0005.json",
+      "version": "aab12bc5e6884568f581bfbbda187411379fd14bb60629eb33e7f44dad549709"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_adc_420",
+      "license": "Source terms retained; generated editorial metadata does not relicense vendor material",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/adc-scenario/rm_adc_review/extracted/part-0006.json",
+      "version": "aab12bc5e6884568f581bfbbda187411379fd14bb60629eb33e7f44dad549709"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_adc_421",
+      "license": "Source terms retained; generated editorial metadata does not relicense vendor material",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/adc-scenario/rm_adc_review/extracted/part-0007.json",
+      "version": "aab12bc5e6884568f581bfbbda187411379fd14bb60629eb33e7f44dad549709"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_adc_422",
+      "license": "Source terms retained; generated editorial metadata does not relicense vendor material",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/adc-scenario/rm_adc_review/extracted/part-0008.json",
+      "version": "aab12bc5e6884568f581bfbbda187411379fd14bb60629eb33e7f44dad549709"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_adc_423",
+      "license": "Source terms retained; generated editorial metadata does not relicense vendor material",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/adc-scenario/rm_adc_review/extracted/part-0009.json",
+      "version": "aab12bc5e6884568f581bfbbda187411379fd14bb60629eb33e7f44dad549709"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_adc_424",
+      "license": "Source terms retained; generated editorial metadata does not relicense vendor material",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/adc-scenario/rm_adc_review/extracted/part-0010.json",
+      "version": "aab12bc5e6884568f581bfbbda187411379fd14bb60629eb33e7f44dad549709"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_adc_425",
+      "license": "Source terms retained; generated editorial metadata does not relicense vendor material",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/adc-scenario/rm_adc_review/extracted/part-0011.json",
+      "version": "aab12bc5e6884568f581bfbbda187411379fd14bb60629eb33e7f44dad549709"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_adc_426",
+      "license": "Source terms retained; generated editorial metadata does not relicense vendor material",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/adc-scenario/rm_adc_review/extracted/part-0012.json",
+      "version": "aab12bc5e6884568f581bfbbda187411379fd14bb60629eb33e7f44dad549709"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_adc_427",
+      "license": "Source terms retained; generated editorial metadata does not relicense vendor material",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/adc-scenario/rm_adc_review/extracted/part-0013.json",
+      "version": "aab12bc5e6884568f581bfbbda187411379fd14bb60629eb33e7f44dad549709"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_adc_429",
+      "license": "Source terms retained; generated editorial metadata does not relicense vendor material",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/adc-scenario/rm_adc_review/extracted/part-0014.json",
+      "version": "aab12bc5e6884568f581bfbbda187411379fd14bb60629eb33e7f44dad549709"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_adc_430",
+      "license": "Source terms retained; generated editorial metadata does not relicense vendor material",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/adc-scenario/rm_adc_review/extracted/part-0015.json",
+      "version": "aab12bc5e6884568f581bfbbda187411379fd14bb60629eb33e7f44dad549709"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_adc_431",
+      "license": "Source terms retained; generated editorial metadata does not relicense vendor material",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/adc-scenario/rm_adc_review/extracted/part-0016.json",
+      "version": "aab12bc5e6884568f581bfbbda187411379fd14bb60629eb33e7f44dad549709"
+    },
+    {
+      "authority": "semantics",
+      "id": "ds_adc_reference",
+      "license": "Source terms retained; generated editorial metadata does not relicense vendor material",
+      "origin": "https://www.st.com/resource/en/datasheet/stm32f407vg.pdf",
+      "path": "imports/adc-scenario/ds_adc_review/extracted/part-0001.json",
+      "version": "54c1120683cfbf9802c18dd7a800941326a6e1e4bd35359a01541ff59c3e33b1"
+    },
+    {
+      "authority": "semantics",
+      "id": "ds_adc_135",
+      "license": "Source terms retained; generated editorial metadata does not relicense vendor material",
+      "origin": "https://www.st.com/resource/en/datasheet/stm32f407vg.pdf",
+      "path": "imports/adc-scenario/ds_adc_limits/extracted/part-0001.json",
+      "version": "bb801e52f3dee24fa531b137e840c1d447554f26ec0fdd7e9d7e059a6803b8fd"
+    },
+    {
+      "authority": "semantics",
+      "id": "ds_adc_136",
+      "license": "Source terms retained; generated editorial metadata does not relicense vendor material",
+      "origin": "https://www.st.com/resource/en/datasheet/stm32f407vg.pdf",
+      "path": "imports/adc-scenario/ds_adc_limits/extracted/part-0002.json",
+      "version": "bb801e52f3dee24fa531b137e840c1d447554f26ec0fdd7e9d7e059a6803b8fd"
+    },
+    {
+      "authority": "semantics",
+      "id": "st_adc_gate",
+      "license": "Source terms retained; generated editorial metadata does not relicense vendor material",
+      "origin": "https://raw.githubusercontent.com/STMicroelectronics/stm32f4xx-hal-driver/master/Inc/stm32f4xx_hal_rcc.h",
+      "path": "imports/adc-scenario/st_hal_rcc/extracted/part-0001.json",
+      "version": "5f71b582dc7cc5bd6e267bd92b093600d91bf7710c2e7527041382600f9ca87e"
+    },
+    {
+      "authority": "semantics",
+      "id": "adc_adc_review",
+      "license": "Source terms retained; generated editorial metadata does not relicense vendor material",
+      "origin": "Scoped source-backed editorial review via ingestion MCP",
+      "path": "reviewed/adc-v1/adc.md",
+      "version": "adc-v1"
+    },
+    {
+      "authority": "semantics",
+      "id": "adc_common_adc_review",
+      "license": "Source terms retained; generated editorial metadata does not relicense vendor material",
+      "origin": "Scoped source-backed editorial review via ingestion MCP",
+      "path": "reviewed/adc-v1/adc_common.md",
+      "version": "adc-v1"
+    },
+    {
+      "authority": "semantics",
+      "id": "rcc_adc_review",
+      "license": "Source terms retained; generated editorial metadata does not relicense vendor material",
+      "origin": "Scoped source-backed editorial review via ingestion MCP",
+      "path": "reviewed/adc-v1/rcc.md",
+      "version": "adc-v1"
+    },
+    {
+      "authority": "semantics",
+      "id": "tim_adc_review",
+      "license": "Source terms retained; generated editorial metadata does not relicense vendor material",
+      "origin": "Scoped source-backed editorial review via ingestion MCP",
+      "path": "reviewed/adc-v1/tim.md",
+      "version": "adc-v1"
+    },
+    {
+      "authority": "semantics",
+      "id": "adc_extension",
+      "license": "Source terms retained; generated editorial metadata does not relicense vendor material",
+      "origin": "Scoped reviewed normalized records from actual ingestion MCP evidence",
+      "path": "reviewed/adc-v1/extension.json",
+      "version": "adc-v1"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_i2c_238",
+      "license": "Source terms retained; editorial metadata does not relicense vendor material",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/i2c-scenario/rm_i2c_review/extracted/part-0001.json",
+      "version": "67744262f694ca78af5c85ebdbc19e77c5f865488a20e5f4c50b216dccdf629f"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_i2c_239",
+      "license": "Source terms retained; editorial metadata does not relicense vendor material",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/i2c-scenario/rm_i2c_review/extracted/part-0002.json",
+      "version": "67744262f694ca78af5c85ebdbc19e77c5f865488a20e5f4c50b216dccdf629f"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_i2c_247",
+      "license": "Source terms retained; editorial metadata does not relicense vendor material",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/i2c-scenario/rm_i2c_review/extracted/part-0003.json",
+      "version": "67744262f694ca78af5c85ebdbc19e77c5f865488a20e5f4c50b216dccdf629f"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_i2c_836",
+      "license": "Source terms retained; editorial metadata does not relicense vendor material",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/i2c-scenario/rm_i2c_review/extracted/part-0004.json",
+      "version": "67744262f694ca78af5c85ebdbc19e77c5f865488a20e5f4c50b216dccdf629f"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_i2c_841",
+      "license": "Source terms retained; editorial metadata does not relicense vendor material",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/i2c-scenario/rm_i2c_review/extracted/part-0005.json",
+      "version": "67744262f694ca78af5c85ebdbc19e77c5f865488a20e5f4c50b216dccdf629f"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_i2c_842",
+      "license": "Source terms retained; editorial metadata does not relicense vendor material",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/i2c-scenario/rm_i2c_review/extracted/part-0006.json",
+      "version": "67744262f694ca78af5c85ebdbc19e77c5f865488a20e5f4c50b216dccdf629f"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_i2c_843",
+      "license": "Source terms retained; editorial metadata does not relicense vendor material",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/i2c-scenario/rm_i2c_review/extracted/part-0007.json",
+      "version": "67744262f694ca78af5c85ebdbc19e77c5f865488a20e5f4c50b216dccdf629f"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_i2c_844",
+      "license": "Source terms retained; editorial metadata does not relicense vendor material",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/i2c-scenario/rm_i2c_review/extracted/part-0008.json",
+      "version": "67744262f694ca78af5c85ebdbc19e77c5f865488a20e5f4c50b216dccdf629f"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_i2c_846",
+      "license": "Source terms retained; editorial metadata does not relicense vendor material",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/i2c-scenario/rm_i2c_review/extracted/part-0009.json",
+      "version": "67744262f694ca78af5c85ebdbc19e77c5f865488a20e5f4c50b216dccdf629f"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_i2c_855",
+      "license": "Source terms retained; editorial metadata does not relicense vendor material",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/i2c-scenario/rm_i2c_review/extracted/part-0010.json",
+      "version": "67744262f694ca78af5c85ebdbc19e77c5f865488a20e5f4c50b216dccdf629f"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_i2c_856",
+      "license": "Source terms retained; editorial metadata does not relicense vendor material",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/i2c-scenario/rm_i2c_review/extracted/part-0011.json",
+      "version": "67744262f694ca78af5c85ebdbc19e77c5f865488a20e5f4c50b216dccdf629f"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_i2c_857",
+      "license": "Source terms retained; editorial metadata does not relicense vendor material",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/i2c-scenario/rm_i2c_review/extracted/part-0012.json",
+      "version": "67744262f694ca78af5c85ebdbc19e77c5f865488a20e5f4c50b216dccdf629f"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_i2c_858",
+      "license": "Source terms retained; editorial metadata does not relicense vendor material",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/i2c-scenario/rm_i2c_review/extracted/part-0013.json",
+      "version": "67744262f694ca78af5c85ebdbc19e77c5f865488a20e5f4c50b216dccdf629f"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_i2c_859",
+      "license": "Source terms retained; editorial metadata does not relicense vendor material",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/i2c-scenario/rm_i2c_review/extracted/part-0014.json",
+      "version": "67744262f694ca78af5c85ebdbc19e77c5f865488a20e5f4c50b216dccdf629f"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_i2c_860",
+      "license": "Source terms retained; editorial metadata does not relicense vendor material",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/i2c-scenario/rm_i2c_review/extracted/part-0015.json",
+      "version": "67744262f694ca78af5c85ebdbc19e77c5f865488a20e5f4c50b216dccdf629f"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_i2c_861",
+      "license": "Source terms retained; editorial metadata does not relicense vendor material",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/i2c-scenario/rm_i2c_review/extracted/part-0016.json",
+      "version": "67744262f694ca78af5c85ebdbc19e77c5f865488a20e5f4c50b216dccdf629f"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_i2c_862",
+      "license": "Source terms retained; editorial metadata does not relicense vendor material",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/i2c-scenario/rm_i2c_review/extracted/part-0017.json",
+      "version": "67744262f694ca78af5c85ebdbc19e77c5f865488a20e5f4c50b216dccdf629f"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_i2c_863",
+      "license": "Source terms retained; editorial metadata does not relicense vendor material",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/i2c-scenario/rm_i2c_review/extracted/part-0018.json",
+      "version": "67744262f694ca78af5c85ebdbc19e77c5f865488a20e5f4c50b216dccdf629f"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_i2c_864",
+      "license": "Source terms retained; editorial metadata does not relicense vendor material",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/i2c-scenario/rm_i2c_review/extracted/part-0019.json",
+      "version": "67744262f694ca78af5c85ebdbc19e77c5f865488a20e5f4c50b216dccdf629f"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_i2c_865",
+      "license": "Source terms retained; editorial metadata does not relicense vendor material",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/i2c-scenario/rm_i2c_review/extracted/part-0020.json",
+      "version": "67744262f694ca78af5c85ebdbc19e77c5f865488a20e5f4c50b216dccdf629f"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_i2c_866",
+      "license": "Source terms retained; editorial metadata does not relicense vendor material",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/i2c-scenario/rm_i2c_review/extracted/part-0021.json",
+      "version": "67744262f694ca78af5c85ebdbc19e77c5f865488a20e5f4c50b216dccdf629f"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_i2c_867",
+      "license": "Source terms retained; editorial metadata does not relicense vendor material",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/i2c-scenario/rm_i2c_review/extracted/part-0022.json",
+      "version": "67744262f694ca78af5c85ebdbc19e77c5f865488a20e5f4c50b216dccdf629f"
+    },
+    {
+      "authority": "semantics",
+      "id": "i2c_review",
+      "license": "Source terms retained; editorial metadata does not relicense vendor material",
+      "origin": "Scoped actual-MCP source-backed editorial review",
+      "path": "reviewed/i2c-v1/i2c.md",
+      "version": "i2c-v1"
+    },
+    {
+      "authority": "semantics",
+      "id": "rcc_i2c_review",
+      "license": "Source terms retained; editorial metadata does not relicense vendor material",
+      "origin": "Scoped actual-MCP source-backed editorial review",
+      "path": "reviewed/i2c-v1/rcc.md",
+      "version": "i2c-v1"
+    },
+    {
+      "authority": "semantics",
+      "id": "i2c_extension",
+      "license": "Source terms retained; editorial metadata does not relicense vendor material",
+      "origin": "Reviewed MCP evidence; exact base and composed parent state bound",
+      "path": "reviewed/i2c-v1/extension.json",
+      "version": "i2c-v1"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_dac_238",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/dac-scenario/rm_dac_review/extracted/part-0001.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_dac_239",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/dac-scenario/rm_dac_review/extracted/part-0002.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_dac_247",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/dac-scenario/rm_dac_review/extracted/part-0003.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_dac_435",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/dac-scenario/rm_dac_review/extracted/part-0004.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_dac_436",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/dac-scenario/rm_dac_review/extracted/part-0005.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_dac_437",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/dac-scenario/rm_dac_review/extracted/part-0006.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_dac_438",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/dac-scenario/rm_dac_review/extracted/part-0007.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_dac_439",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/dac-scenario/rm_dac_review/extracted/part-0008.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_dac_440",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/dac-scenario/rm_dac_review/extracted/part-0009.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_dac_441",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/dac-scenario/rm_dac_review/extracted/part-0010.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_dac_442",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/dac-scenario/rm_dac_review/extracted/part-0011.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_dac_443",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/dac-scenario/rm_dac_review/extracted/part-0012.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_dac_444",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/dac-scenario/rm_dac_review/extracted/part-0013.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_dac_445",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/dac-scenario/rm_dac_review/extracted/part-0014.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_dac_446",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/dac-scenario/rm_dac_review/extracted/part-0015.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_dac_447",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/dac-scenario/rm_dac_review/extracted/part-0016.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_dac_448",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/dac-scenario/rm_dac_review/extracted/part-0017.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_dac_449",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/dac-scenario/rm_dac_review/extracted/part-0018.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_dac_450",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/dac-scenario/rm_dac_review/extracted/part-0019.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_dac_451",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/dac-scenario/rm_dac_review/extracted/part-0020.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_dac_452",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/dac-scenario/rm_dac_review/extracted/part-0021.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_dac_453",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/dac-scenario/rm_dac_review/extracted/part-0022.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_dac_454",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/dac-scenario/rm_dac_review/extracted/part-0023.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_dac_455",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/dac-scenario/rm_dac_review/extracted/part-0024.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_dac_456",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/dac-scenario/rm_dac_review/extracted/part-0025.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "ds_dac_141",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/datasheet/stm32f407vg.pdf",
+      "path": "imports/dac-scenario/ds_dac_review/extracted/part-0001.json",
+      "version": "DS8626 Rev12"
+    },
+    {
+      "authority": "semantics",
+      "id": "ds_dac_142",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/datasheet/stm32f407vg.pdf",
+      "path": "imports/dac-scenario/ds_dac_review/extracted/part-0002.json",
+      "version": "DS8626 Rev12"
+    },
+    {
+      "authority": "semantics",
+      "id": "ds_dac_143",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/datasheet/stm32f407vg.pdf",
+      "path": "imports/dac-scenario/ds_dac_review/extracted/part-0003.json",
+      "version": "DS8626 Rev12"
+    },
+    {
+      "authority": "semantics",
+      "id": "dac_extension",
+      "license": "Source terms retained; editorial records do not relicense vendor material",
+      "origin": "Scoped implementing-author review from actual ingestion MCP evidence; independent review pending",
+      "path": "reviewed/dac-v1/extension.json",
+      "version": "dac-v1"
+    },
+    {
+      "authority": "semantics",
+      "id": "dac_review",
+      "license": "Source terms retained; editorial records do not relicense vendor material",
+      "origin": "Scoped implementing-author review from actual ingestion MCP evidence; independent review pending",
+      "path": "reviewed/dac-v1/dac.md",
+      "version": "dac-v1"
+    },
+    {
+      "authority": "semantics",
+      "id": "dac_rcc_review",
+      "license": "Source terms retained; editorial records do not relicense vendor material",
+      "origin": "Scoped implementing-author review from actual ingestion MCP evidence; independent review pending",
+      "path": "reviewed/dac-v1/rcc.md",
+      "version": "dac-v1"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_can_1070",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/can-scenario/rm_can_review/extracted/part-0002.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_can_1073",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/can-scenario/rm_can_review/extracted/part-0005.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_can_1075",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/can-scenario/rm_can_review/extracted/part-0007.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_can_1076",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/can-scenario/rm_can_review/extracted/part-0008.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_can_1077",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/can-scenario/rm_can_review/extracted/part-0009.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_can_1078",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/can-scenario/rm_can_review/extracted/part-0010.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_can_1079",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/can-scenario/rm_can_review/extracted/part-0011.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_can_1080",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/can-scenario/rm_can_review/extracted/part-0012.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_can_1081",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/can-scenario/rm_can_review/extracted/part-0013.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_can_1084",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/can-scenario/rm_can_review/extracted/part-0016.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_can_1086",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/can-scenario/rm_can_review/extracted/part-0018.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_can_1087",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/can-scenario/rm_can_review/extracted/part-0019.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_can_1088",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/can-scenario/rm_can_review/extracted/part-0020.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_can_1089",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/can-scenario/rm_can_review/extracted/part-0021.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_can_1090",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/can-scenario/rm_can_review/extracted/part-0022.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_can_1091",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/can-scenario/rm_can_review/extracted/part-0023.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_can_1092",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/can-scenario/rm_can_review/extracted/part-0024.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_can_1093",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/can-scenario/rm_can_review/extracted/part-0025.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_can_1094",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/can-scenario/rm_can_review/extracted/part-0026.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_can_1095",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/can-scenario/rm_can_review/extracted/part-0027.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_can_1096",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/can-scenario/rm_can_review/extracted/part-0028.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_can_1097",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/can-scenario/rm_can_review/extracted/part-0029.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_can_1098",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/can-scenario/rm_can_review/extracted/part-0030.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_can_1099",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/can-scenario/rm_can_review/extracted/part-0031.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_can_1100",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/can-scenario/rm_can_review/extracted/part-0032.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_can_1101",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/can-scenario/rm_can_review/extracted/part-0033.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_can_1102",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/can-scenario/rm_can_review/extracted/part-0034.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_can_1103",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/can-scenario/rm_can_review/extracted/part-0035.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_can_1104",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/can-scenario/rm_can_review/extracted/part-0036.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_can_1105",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/can-scenario/rm_can_review/extracted/part-0037.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_can_1106",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/can-scenario/rm_can_review/extracted/part-0038.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_can_1107",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/can-scenario/rm_can_review/extracted/part-0039.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_can_1109",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/can-scenario/rm_can_review/extracted/part-0041.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_can_1110",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/can-scenario/rm_can_review/extracted/part-0042.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_can_1111",
+      "license": "ST document terms apply",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/can-scenario/rm_can_review/extracted/part-0043.json",
+      "version": "RM0090 Rev22"
+    },
+    {
+      "authority": "semantics",
+      "id": "can_extension",
+      "license": "Source terms retained; editorial records do not relicense vendor material",
+      "origin": "Scoped implementing-author review from actual ingestion MCP; independent review pending",
+      "path": "reviewed/can-v1/extension.json",
+      "version": "can-v1"
+    },
+    {
+      "authority": "semantics",
+      "id": "can_review",
+      "license": "Source terms retained; editorial records do not relicense vendor material",
+      "origin": "Scoped implementing-author review from actual ingestion MCP; independent review pending",
+      "path": "reviewed/can-v1/can.md",
+      "version": "can-v1"
+    },
+    {
+      "authority": "semantics",
+      "id": "can_rcc_review",
+      "license": "Source terms retained; editorial records do not relicense vendor material",
+      "origin": "Scoped implementing-author review from actual ingestion MCP; independent review pending",
+      "path": "reviewed/can-v1/rcc.md",
+      "version": "can-v1"
+    },
+    {
+      "authority": "semantics",
+      "id": "can_nvic_review",
+      "license": "Source terms retained; editorial records do not relicense vendor material",
+      "origin": "Scoped implementing-author review from actual ingestion MCP; independent review pending",
+      "path": "reviewed/can-v1/nvic.md",
+      "version": "can-v1"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_can_rx_283",
+      "license": "Original manufacturer source terms retained; independent review pending",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/can-scenario/rm_can_rx/extracted/part-0001.json",
+      "version": "7845db1ad5c2537ad03a628bb7186eed90e3456616c29f11d14a8c271ffb2f5c"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_can_rx_285",
+      "license": "Original manufacturer source terms retained; independent review pending",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/can-scenario/rm_can_rx/extracted/part-0002.json",
+      "version": "7845db1ad5c2537ad03a628bb7186eed90e3456616c29f11d14a8c271ffb2f5c"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_can_rx_287",
+      "license": "Original manufacturer source terms retained; independent review pending",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/can-scenario/rm_can_rx/extracted/part-0003.json",
+      "version": "7845db1ad5c2537ad03a628bb7186eed90e3456616c29f11d14a8c271ffb2f5c"
+    },
+    {
+      "authority": "semantics",
+      "id": "rm_can_rx_1074",
+      "license": "Original manufacturer source terms retained; independent review pending",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "imports/can-scenario/rm_can_rx/extracted/part-0005.json",
+      "version": "7845db1ad5c2537ad03a628bb7186eed90e3456616c29f11d14a8c271ffb2f5c"
+    },
+    {
+      "authority": "semantics",
+      "id": "ds_can_rx_58",
+      "license": "Original manufacturer source terms retained; independent review pending",
+      "origin": "https://www.st.com/resource/en/datasheet/stm32f407vg.pdf",
+      "path": "imports/can-scenario/ds_can_rx/extracted/part-0001.json",
+      "version": "589183f3e32ffa38da8b0e8067adbdf16cc6bc55caf6c31f35496da1278f5217"
+    },
+    {
+      "authority": "semantics",
+      "id": "ds_can_rx_67",
+      "license": "Original manufacturer source terms retained; independent review pending",
+      "origin": "https://www.st.com/resource/en/datasheet/stm32f407vg.pdf",
+      "path": "imports/can-scenario/ds_can_rx/extracted/part-0002.json",
+      "version": "589183f3e32ffa38da8b0e8067adbdf16cc6bc55caf6c31f35496da1278f5217"
+    },
+    {
+      "authority": "semantics",
+      "id": "can_rx_extension",
+      "license": "Source terms retained; editorial records do not relicense vendor material",
+      "origin": "Scoped implementing-author review through actual ingestion MCP; physical and independent qualification pending",
+      "path": "reviewed/can-rx-v1/extension.json",
+      "version": "can-rx-v1"
+    },
+    {
+      "authority": "semantics",
+      "id": "can_rx_gpio_review",
+      "license": "Source terms retained; editorial records do not relicense vendor material",
+      "origin": "Scoped implementing-author review through actual ingestion MCP; physical and independent qualification pending",
+      "path": "reviewed/can-rx-v1/gpio.md",
+      "version": "can-rx-v1"
+    },
+    {
+      "authority": "semantics",
+      "id": "can_rx_review",
+      "license": "Source terms retained; editorial records do not relicense vendor material",
+      "origin": "Scoped implementing-author review through actual ingestion MCP; physical and independent qualification pending",
+      "path": "reviewed/can-rx-v1/can.md",
+      "version": "can-rx-v1"
+    },
+    {
+      "authority": "semantics",
+      "id": "arm_core_extension",
+      "license": "MIT editorial records; vendor source terms retained",
+      "origin": "Implementing-author editorial review via actual Praxis MCP; independent review pending",
+      "path": "reviewed/arm-core-v1/extension.json",
+      "version": "arm-core-v1"
+    },
+    {
+      "authority": "semantics",
+      "id": "arm_scb_review",
+      "license": "MIT editorial records; vendor source terms retained",
+      "origin": "Implementing-author editorial review via actual Praxis MCP; independent review pending",
+      "path": "reviewed/arm-core-v1/scb.md",
+      "version": "arm-core-v1"
+    },
+    {
+      "authority": "semantics",
+      "id": "arm_systick_review",
+      "license": "MIT editorial records; vendor source terms retained",
+      "origin": "Implementing-author editorial review via actual Praxis MCP; independent review pending",
+      "path": "reviewed/arm-core-v1/systick.md",
+      "version": "arm-core-v1"
+    },
+    {
+      "authority": "semantics",
+      "id": "arm_rcc_review",
+      "license": "MIT editorial records; vendor source terms retained",
+      "origin": "Implementing-author editorial review via actual Praxis MCP; independent review pending",
+      "path": "reviewed/arm-core-v1/rcc.md",
+      "version": "arm-core-v1"
+    },
+    {
+      "authority": "semantics",
+      "id": "arm_core_resolution",
+      "license": "MIT editorial records; vendor source terms retained",
+      "origin": "Implementing-author editorial review via actual Praxis MCP; independent review pending",
+      "path": "reviewed/arm-core-v1/resolutions.md",
+      "version": "arm-core-v1"
+    },
+    {
+      "authority": "semantics",
+      "id": "arm_asset_contract",
+      "license": "MIT editorial records; vendor source terms retained",
+      "origin": "Implementing-author editorial review via actual Praxis MCP; independent review pending",
+      "path": "reviewed/arm-core-v1/assets-contract.json",
+      "version": "arm-core-v1"
+    },
+    {
+      "authority": "semantics",
+      "id": "pm_core_22",
+      "license": "ST document terms; source bytes not redistributed",
+      "origin": "ST PM0214 Rev10; exact-byte evidence acquired and reviewed through Praxis ingestion MCP",
+      "path": "imports/arm-core-scenario/pm0214_arm_v1/extracted/part-0003.json",
+      "version": "PM0214 Rev10; arm-core-v1 review"
+    },
+    {
+      "authority": "semantics",
+      "id": "pm_core_24",
+      "license": "ST document terms; source bytes not redistributed",
+      "origin": "ST PM0214 Rev10; exact-byte evidence acquired and reviewed through Praxis ingestion MCP",
+      "path": "imports/arm-core-scenario/pm0214_arm_v1/extracted/part-0005.json",
+      "version": "PM0214 Rev10; arm-core-v1 review"
+    },
+    {
+      "authority": "semantics",
+      "id": "pm_core_39",
+      "license": "ST document terms; source bytes not redistributed",
+      "origin": "ST PM0214 Rev10; exact-byte evidence acquired and reviewed through Praxis ingestion MCP",
+      "path": "imports/arm-core-scenario/pm0214_arm_v1/extracted/part-0011.json",
+      "version": "PM0214 Rev10; arm-core-v1 review"
+    },
+    {
+      "authority": "semantics",
+      "id": "pm_core_40",
+      "license": "ST document terms; source bytes not redistributed",
+      "origin": "ST PM0214 Rev10; exact-byte evidence acquired and reviewed through Praxis ingestion MCP",
+      "path": "imports/arm-core-scenario/pm0214_arm_v1/extracted/part-0012.json",
+      "version": "PM0214 Rev10; arm-core-v1 review"
+    },
+    {
+      "authority": "semantics",
+      "id": "pm_core_41",
+      "license": "ST document terms; source bytes not redistributed",
+      "origin": "ST PM0214 Rev10; exact-byte evidence acquired and reviewed through Praxis ingestion MCP",
+      "path": "imports/arm-core-scenario/pm0214_arm_v1/extracted/part-0013.json",
+      "version": "PM0214 Rev10; arm-core-v1 review"
+    },
+    {
+      "authority": "semantics",
+      "id": "pm_core_184",
+      "license": "ST document terms; source bytes not redistributed",
+      "origin": "ST PM0214 Rev10; exact-byte evidence acquired and reviewed through Praxis ingestion MCP",
+      "path": "imports/arm-core-scenario/pm0214_arm_v1/extracted/part-0017.json",
+      "version": "PM0214 Rev10; arm-core-v1 review"
+    },
+    {
+      "authority": "semantics",
+      "id": "pm_core_185",
+      "license": "ST document terms; source bytes not redistributed",
+      "origin": "ST PM0214 Rev10; exact-byte evidence acquired and reviewed through Praxis ingestion MCP",
+      "path": "imports/arm-core-scenario/pm0214_arm_v1/extracted/part-0018.json",
+      "version": "PM0214 Rev10; arm-core-v1 review"
+    },
+    {
+      "authority": "semantics",
+      "id": "pm_core_225",
+      "license": "ST document terms; source bytes not redistributed",
+      "origin": "ST PM0214 Rev10; exact-byte evidence acquired and reviewed through Praxis ingestion MCP",
+      "path": "imports/arm-core-scenario/pm0214_arm_v1/extracted/part-0023.json",
+      "version": "PM0214 Rev10; arm-core-v1 review"
+    },
+    {
+      "authority": "semantics",
+      "id": "pm_core_226",
+      "license": "ST document terms; source bytes not redistributed",
+      "origin": "ST PM0214 Rev10; exact-byte evidence acquired and reviewed through Praxis ingestion MCP",
+      "path": "imports/arm-core-scenario/pm0214_arm_v1/extracted/part-0024.json",
+      "version": "PM0214 Rev10; arm-core-v1 review"
+    },
+    {
+      "authority": "semantics",
+      "id": "pm_core_227",
+      "license": "ST document terms; source bytes not redistributed",
+      "origin": "ST PM0214 Rev10; exact-byte evidence acquired and reviewed through Praxis ingestion MCP",
+      "path": "imports/arm-core-scenario/pm0214_arm_v1/extracted/part-0025.json",
+      "version": "PM0214 Rev10; arm-core-v1 review"
+    },
+    {
+      "authority": "semantics",
+      "id": "pm_core_233",
+      "license": "ST document terms; source bytes not redistributed",
+      "origin": "ST PM0214 Rev10; exact-byte evidence acquired and reviewed through Praxis ingestion MCP",
+      "path": "imports/arm-core-scenario/pm0214_arm_v1/extracted/part-0031.json",
+      "version": "PM0214 Rev10; arm-core-v1 review"
+    },
+    {
+      "authority": "semantics",
+      "id": "pm_core_234",
+      "license": "ST document terms; source bytes not redistributed",
+      "origin": "ST PM0214 Rev10; exact-byte evidence acquired and reviewed through Praxis ingestion MCP",
+      "path": "imports/arm-core-scenario/pm0214_arm_v1/extracted/part-0032.json",
+      "version": "PM0214 Rev10; arm-core-v1 review"
+    },
+    {
+      "authority": "semantics",
+      "id": "pm_core_246",
+      "license": "ST document terms; source bytes not redistributed",
+      "origin": "ST PM0214 Rev10; exact-byte evidence acquired and reviewed through Praxis ingestion MCP",
+      "path": "imports/arm-core-scenario/pm0214_arm_v1/extracted/part-0044.json",
+      "version": "PM0214 Rev10; arm-core-v1 review"
+    },
+    {
+      "authority": "semantics",
+      "id": "pm_core_247",
+      "license": "ST document terms; source bytes not redistributed",
+      "origin": "ST PM0214 Rev10; exact-byte evidence acquired and reviewed through Praxis ingestion MCP",
+      "path": "imports/arm-core-scenario/pm0214_arm_v1/extracted/part-0045.json",
+      "version": "PM0214 Rev10; arm-core-v1 review"
+    },
+    {
+      "authority": "semantics",
+      "id": "pm_core_248",
+      "license": "ST document terms; source bytes not redistributed",
+      "origin": "ST PM0214 Rev10; exact-byte evidence acquired and reviewed through Praxis ingestion MCP",
+      "path": "imports/arm-core-scenario/pm0214_arm_v1/extracted/part-0046.json",
+      "version": "PM0214 Rev10; arm-core-v1 review"
+    },
+    {
+      "authority": "semantics",
+      "id": "pm_core_249",
+      "license": "ST document terms; source bytes not redistributed",
+      "origin": "ST PM0214 Rev10; exact-byte evidence acquired and reviewed through Praxis ingestion MCP",
+      "path": "imports/arm-core-scenario/pm0214_arm_v1/extracted/part-0047.json",
+      "version": "PM0214 Rev10; arm-core-v1 review"
+    },
+    {
+      "authority": "semantics",
+      "id": "pm_core_250",
+      "license": "ST document terms; source bytes not redistributed",
+      "origin": "ST PM0214 Rev10; exact-byte evidence acquired and reviewed through Praxis ingestion MCP",
+      "path": "imports/arm-core-scenario/pm0214_arm_v1/extracted/part-0048.json",
+      "version": "PM0214 Rev10; arm-core-v1 review"
+    },
+    {
+      "authority": "semantics",
+      "id": "pm_core_251",
+      "license": "ST document terms; source bytes not redistributed",
+      "origin": "ST PM0214 Rev10; exact-byte evidence acquired and reviewed through Praxis ingestion MCP",
+      "path": "imports/arm-core-scenario/pm0214_arm_v1/extracted/part-0049.json",
+      "version": "PM0214 Rev10; arm-core-v1 review"
+    }
+  ],
+  "target": {
+    "board_revision": "MB997-E-01",
+    "clock_assumptions": [
+      "Reference board: STM32F407G-DISC1, MB997 E-01 schematic. Actual card revision is unconfirmed.",
+      "8 MHz X2 crystal is documented for E-01; verify oscillator assembly and solder bridges against the actual card.",
+      "168 MHz is a validated software clock recipe, NOT a claim about the running firmware. Preserve a known working clock setup for GPIO tests.",
+      "Recipe only: PLLM=8, PLLN=336, PLLP=2, PLLQ=7; AHB /1; APB1 /4 (42 MHz); APB2 /2 (84 MHz); 5 FLASH wait states, supply within the reviewed range.",
+      "SysTick_Config uses the processor clock. For 1 ms use actual SystemCoreClock / 1000 after synchronizing SystemCoreClock; do not divide by 8.",
+      "UART loopback application explicitly selects HSI nominal 16 MHz, AHB/APB1/APB2 all /1; the 168 MHz recipe is not used for this scenario. See RCC/USART/TIM2 reviewed notes; timing remains unmeasured.",
+      "ADC example additionally assumes VDDA/VREF+ in the reviewed 2.7\u20133.6 V operating range; analog supply is not measured or physically qualified."
+    ],
+    "clock_hz": 168000000,
+    "example_only": false,
+    "family": "stm32",
+    "id": "stm32f407g_disc1_mb997_e01",
+    "mcu": "STM32F407VGT6",
+    "package": "Package_QFP:LQFP-100_14x14mm_P0.5mm",
+    "primary_mcu_ref": "U4",
+    "silicon_revision": "Unspecified; errata review pending"
+  },
+  "web_imports": {
+    "ds_adc_135": "imports/adc-scenario/ds_adc_limits",
+    "ds_adc_136": "imports/adc-scenario/ds_adc_limits",
+    "ds_adc_reference": "imports/adc-scenario/ds_adc_review",
+    "ds_can_rx_58": "imports/can-scenario/ds_can_rx",
+    "ds_can_rx_67": "imports/can-scenario/ds_can_rx",
+    "ds_dac_141": "imports/dac-scenario/ds_dac_review",
+    "ds_dac_142": "imports/dac-scenario/ds_dac_review",
+    "ds_dac_143": "imports/dac-scenario/ds_dac_review",
+    "pm_core_184": "imports/arm-core-scenario/pm0214_arm_v1",
+    "pm_core_185": "imports/arm-core-scenario/pm0214_arm_v1",
+    "pm_core_22": "imports/arm-core-scenario/pm0214_arm_v1",
+    "pm_core_225": "imports/arm-core-scenario/pm0214_arm_v1",
+    "pm_core_226": "imports/arm-core-scenario/pm0214_arm_v1",
+    "pm_core_227": "imports/arm-core-scenario/pm0214_arm_v1",
+    "pm_core_233": "imports/arm-core-scenario/pm0214_arm_v1",
+    "pm_core_234": "imports/arm-core-scenario/pm0214_arm_v1",
+    "pm_core_24": "imports/arm-core-scenario/pm0214_arm_v1",
+    "pm_core_246": "imports/arm-core-scenario/pm0214_arm_v1",
+    "pm_core_247": "imports/arm-core-scenario/pm0214_arm_v1",
+    "pm_core_248": "imports/arm-core-scenario/pm0214_arm_v1",
+    "pm_core_249": "imports/arm-core-scenario/pm0214_arm_v1",
+    "pm_core_250": "imports/arm-core-scenario/pm0214_arm_v1",
+    "pm_core_251": "imports/arm-core-scenario/pm0214_arm_v1",
+    "pm_core_39": "imports/arm-core-scenario/pm0214_arm_v1",
+    "pm_core_40": "imports/arm-core-scenario/pm0214_arm_v1",
+    "pm_core_41": "imports/arm-core-scenario/pm0214_arm_v1",
+    "rm_adc_392": "imports/adc-scenario/rm_adc_review",
+    "rm_adc_393": "imports/adc-scenario/rm_adc_review",
+    "rm_adc_417": "imports/adc-scenario/rm_adc_review",
+    "rm_adc_418": "imports/adc-scenario/rm_adc_review",
+    "rm_adc_419": "imports/adc-scenario/rm_adc_review",
+    "rm_adc_420": "imports/adc-scenario/rm_adc_review",
+    "rm_adc_421": "imports/adc-scenario/rm_adc_review",
+    "rm_adc_422": "imports/adc-scenario/rm_adc_review",
+    "rm_adc_423": "imports/adc-scenario/rm_adc_review",
+    "rm_adc_424": "imports/adc-scenario/rm_adc_review",
+    "rm_adc_425": "imports/adc-scenario/rm_adc_review",
+    "rm_adc_426": "imports/adc-scenario/rm_adc_review",
+    "rm_adc_427": "imports/adc-scenario/rm_adc_review",
+    "rm_adc_429": "imports/adc-scenario/rm_adc_review",
+    "rm_adc_430": "imports/adc-scenario/rm_adc_review",
+    "rm_adc_431": "imports/adc-scenario/rm_adc_review",
+    "rm_apb2_gate": "imports/uart-scenario/rm0090_uart",
+    "rm_apb2_reset": "imports/uart-scenario/rm0090_uart",
+    "rm_can_1070": "imports/can-scenario/rm_can_review",
+    "rm_can_1073": "imports/can-scenario/rm_can_review",
+    "rm_can_1075": "imports/can-scenario/rm_can_review",
+    "rm_can_1076": "imports/can-scenario/rm_can_review",
+    "rm_can_1077": "imports/can-scenario/rm_can_review",
+    "rm_can_1078": "imports/can-scenario/rm_can_review",
+    "rm_can_1079": "imports/can-scenario/rm_can_review",
+    "rm_can_1080": "imports/can-scenario/rm_can_review",
+    "rm_can_1081": "imports/can-scenario/rm_can_review",
+    "rm_can_1084": "imports/can-scenario/rm_can_review",
+    "rm_can_1086": "imports/can-scenario/rm_can_review",
+    "rm_can_1087": "imports/can-scenario/rm_can_review",
+    "rm_can_1088": "imports/can-scenario/rm_can_review",
+    "rm_can_1089": "imports/can-scenario/rm_can_review",
+    "rm_can_1090": "imports/can-scenario/rm_can_review",
+    "rm_can_1091": "imports/can-scenario/rm_can_review",
+    "rm_can_1092": "imports/can-scenario/rm_can_review",
+    "rm_can_1093": "imports/can-scenario/rm_can_review",
+    "rm_can_1094": "imports/can-scenario/rm_can_review",
+    "rm_can_1095": "imports/can-scenario/rm_can_review",
+    "rm_can_1096": "imports/can-scenario/rm_can_review",
+    "rm_can_1097": "imports/can-scenario/rm_can_review",
+    "rm_can_1098": "imports/can-scenario/rm_can_review",
+    "rm_can_1099": "imports/can-scenario/rm_can_review",
+    "rm_can_1100": "imports/can-scenario/rm_can_review",
+    "rm_can_1101": "imports/can-scenario/rm_can_review",
+    "rm_can_1102": "imports/can-scenario/rm_can_review",
+    "rm_can_1103": "imports/can-scenario/rm_can_review",
+    "rm_can_1104": "imports/can-scenario/rm_can_review",
+    "rm_can_1105": "imports/can-scenario/rm_can_review",
+    "rm_can_1106": "imports/can-scenario/rm_can_review",
+    "rm_can_1107": "imports/can-scenario/rm_can_review",
+    "rm_can_1109": "imports/can-scenario/rm_can_review",
+    "rm_can_1110": "imports/can-scenario/rm_can_review",
+    "rm_can_1111": "imports/can-scenario/rm_can_review",
+    "rm_can_rx_1074": "imports/can-scenario/rm_can_rx",
+    "rm_can_rx_283": "imports/can-scenario/rm_can_rx",
+    "rm_can_rx_285": "imports/can-scenario/rm_can_rx",
+    "rm_can_rx_287": "imports/can-scenario/rm_can_rx",
+    "rm_clock": "imports/uart-scenario/rm0090_uart",
+    "rm_clock_v1_120": "imports/uart-scenario/rm0090_clock_v1",
+    "rm_clock_v1_141": "imports/uart-scenario/rm0090_clock_v1",
+    "rm_clock_v1_142": "imports/uart-scenario/rm0090_clock_v1",
+    "rm_clock_v1_143": "imports/uart-scenario/rm0090_clock_v1",
+    "rm_clock_v1_144": "imports/uart-scenario/rm0090_clock_v1",
+    "rm_clock_v1_218": "imports/uart-scenario/rm0090_clock_v1",
+    "rm_clock_v1_219": "imports/uart-scenario/rm0090_clock_v1",
+    "rm_clock_v1_220": "imports/uart-scenario/rm0090_clock_v1",
+    "rm_clock_v1_221": "imports/uart-scenario/rm0090_clock_v1",
+    "rm_clock_v1_225": "imports/uart-scenario/rm0090_clock_v1",
+    "rm_clock_v1_226": "imports/uart-scenario/rm0090_clock_v1",
+    "rm_clock_v1_227": "imports/uart-scenario/rm0090_clock_v1",
+    "rm_clock_v1_228": "imports/uart-scenario/rm0090_clock_v1",
+    "rm_clock_v1_229": "imports/uart-scenario/rm0090_clock_v1",
+    "rm_clock_v1_230": "imports/uart-scenario/rm0090_clock_v1",
+    "rm_clock_v1_231": "imports/uart-scenario/rm0090_clock_v1",
+    "rm_clock_v1_247": "imports/uart-scenario/rm0090_clock_v1",
+    "rm_clock_v1_80": "imports/uart-scenario/rm0090_clock_v1",
+    "rm_clock_v1_81": "imports/uart-scenario/rm0090_clock_v1",
+    "rm_clock_v1_82": "imports/uart-scenario/rm0090_clock_v1",
+    "rm_clock_v1_98": "imports/uart-scenario/rm0090_clock_v1",
+    "rm_dac_238": "imports/dac-scenario/rm_dac_review",
+    "rm_dac_239": "imports/dac-scenario/rm_dac_review",
+    "rm_dac_247": "imports/dac-scenario/rm_dac_review",
+    "rm_dac_435": "imports/dac-scenario/rm_dac_review",
+    "rm_dac_436": "imports/dac-scenario/rm_dac_review",
+    "rm_dac_437": "imports/dac-scenario/rm_dac_review",
+    "rm_dac_438": "imports/dac-scenario/rm_dac_review",
+    "rm_dac_439": "imports/dac-scenario/rm_dac_review",
+    "rm_dac_440": "imports/dac-scenario/rm_dac_review",
+    "rm_dac_441": "imports/dac-scenario/rm_dac_review",
+    "rm_dac_442": "imports/dac-scenario/rm_dac_review",
+    "rm_dac_443": "imports/dac-scenario/rm_dac_review",
+    "rm_dac_444": "imports/dac-scenario/rm_dac_review",
+    "rm_dac_445": "imports/dac-scenario/rm_dac_review",
+    "rm_dac_446": "imports/dac-scenario/rm_dac_review",
+    "rm_dac_447": "imports/dac-scenario/rm_dac_review",
+    "rm_dac_448": "imports/dac-scenario/rm_dac_review",
+    "rm_dac_449": "imports/dac-scenario/rm_dac_review",
+    "rm_dac_450": "imports/dac-scenario/rm_dac_review",
+    "rm_dac_451": "imports/dac-scenario/rm_dac_review",
+    "rm_dac_452": "imports/dac-scenario/rm_dac_review",
+    "rm_dac_453": "imports/dac-scenario/rm_dac_review",
+    "rm_dac_454": "imports/dac-scenario/rm_dac_review",
+    "rm_dac_455": "imports/dac-scenario/rm_dac_review",
+    "rm_dac_456": "imports/dac-scenario/rm_dac_review",
+    "rm_exti_edges": "imports/uart-scenario/rm0090_uart",
+    "rm_exti_mask": "imports/uart-scenario/rm0090_uart",
+    "rm_exti_pending": "imports/uart-scenario/rm0090_uart",
+    "rm_features_113": "imports/uart-scenario/rm0090_features_v1",
+    "rm_features_114": "imports/uart-scenario/rm0090_features_v1",
+    "rm_features_115": "imports/uart-scenario/rm0090_features_v1",
+    "rm_features_243": "imports/uart-scenario/rm0090_features_v1",
+    "rm_features_244": "imports/uart-scenario/rm0090_features_v1",
+    "rm_features_245": "imports/uart-scenario/rm0090_features_v1",
+    "rm_features_246": "imports/uart-scenario/rm0090_features_v1",
+    "rm_features_247": "imports/uart-scenario/rm0090_features_v1",
+    "rm_features_248": "imports/uart-scenario/rm0090_features_v1",
+    "rm_features_249": "imports/uart-scenario/rm0090_features_v1",
+    "rm_features_250": "imports/uart-scenario/rm0090_features_v1",
+    "rm_features_306": "imports/uart-scenario/rm0090_features_v1",
+    "rm_features_311": "imports/uart-scenario/rm0090_features_v1",
+    "rm_features_313": "imports/uart-scenario/rm0090_features_v1",
+    "rm_features_324": "imports/uart-scenario/rm0090_features_v1",
+    "rm_features_325": "imports/uart-scenario/rm0090_features_v1",
+    "rm_features_327": "imports/uart-scenario/rm0090_features_v1",
+    "rm_features_328": "imports/uart-scenario/rm0090_features_v1",
+    "rm_features_329": "imports/uart-scenario/rm0090_features_v1",
+    "rm_features_330": "imports/uart-scenario/rm0090_features_v1",
+    "rm_features_331": "imports/uart-scenario/rm0090_features_v1",
+    "rm_features_332": "imports/uart-scenario/rm0090_features_v1",
+    "rm_features_333": "imports/uart-scenario/rm0090_features_v1",
+    "rm_features_334": "imports/uart-scenario/rm0090_features_v1",
+    "rm_features_335": "imports/uart-scenario/rm0090_features_v1",
+    "rm_features_336": "imports/uart-scenario/rm0090_features_v1",
+    "rm_features_704": "imports/uart-scenario/rm0090_features_v1",
+    "rm_features_705": "imports/uart-scenario/rm0090_features_v1",
+    "rm_features_706": "imports/uart-scenario/rm0090_features_v1",
+    "rm_features_707": "imports/uart-scenario/rm0090_features_v1",
+    "rm_features_708": "imports/uart-scenario/rm0090_features_v1",
+    "rm_features_763": "imports/uart-scenario/rm0090_features_v1",
+    "rm_features_764": "imports/uart-scenario/rm0090_features_v1",
+    "rm_features_765": "imports/uart-scenario/rm0090_features_v1",
+    "rm_features_766": "imports/uart-scenario/rm0090_features_v1",
+    "rm_features_877": "imports/uart-scenario/rm0090_features_v1",
+    "rm_features_880": "imports/uart-scenario/rm0090_features_v1",
+    "rm_features_881": "imports/uart-scenario/rm0090_features_v1",
+    "rm_features_882": "imports/uart-scenario/rm0090_features_v1",
+    "rm_features_883": "imports/uart-scenario/rm0090_features_v1",
+    "rm_features_887": "imports/uart-scenario/rm0090_features_v1",
+    "rm_features_888": "imports/uart-scenario/rm0090_features_v1",
+    "rm_features_889": "imports/uart-scenario/rm0090_features_v1",
+    "rm_features_890": "imports/uart-scenario/rm0090_features_v1",
+    "rm_features_891": "imports/uart-scenario/rm0090_features_v1",
+    "rm_features_892": "imports/uart-scenario/rm0090_features_v1",
+    "rm_features_911": "imports/uart-scenario/rm0090_features_v1",
+    "rm_features_912": "imports/uart-scenario/rm0090_features_v1",
+    "rm_features_913": "imports/uart-scenario/rm0090_features_v1",
+    "rm_features_914": "imports/uart-scenario/rm0090_features_v1",
+    "rm_features_915": "imports/uart-scenario/rm0090_features_v1",
+    "rm_features_916": "imports/uart-scenario/rm0090_features_v1",
+    "rm_features_917": "imports/uart-scenario/rm0090_features_v1",
+    "rm_features_918": "imports/uart-scenario/rm0090_features_v1",
+    "rm_features_919": "imports/uart-scenario/rm0090_features_v1",
+    "rm_gpio_speed": "imports/uart-scenario/rm0090_uart",
+    "rm_hsi": "imports/uart-scenario/rm0090_uart",
+    "rm_i2c_238": "imports/i2c-scenario/rm_i2c_review",
+    "rm_i2c_239": "imports/i2c-scenario/rm_i2c_review",
+    "rm_i2c_247": "imports/i2c-scenario/rm_i2c_review",
+    "rm_i2c_836": "imports/i2c-scenario/rm_i2c_review",
+    "rm_i2c_841": "imports/i2c-scenario/rm_i2c_review",
+    "rm_i2c_842": "imports/i2c-scenario/rm_i2c_review",
+    "rm_i2c_843": "imports/i2c-scenario/rm_i2c_review",
+    "rm_i2c_844": "imports/i2c-scenario/rm_i2c_review",
+    "rm_i2c_846": "imports/i2c-scenario/rm_i2c_review",
+    "rm_i2c_855": "imports/i2c-scenario/rm_i2c_review",
+    "rm_i2c_856": "imports/i2c-scenario/rm_i2c_review",
+    "rm_i2c_857": "imports/i2c-scenario/rm_i2c_review",
+    "rm_i2c_858": "imports/i2c-scenario/rm_i2c_review",
+    "rm_i2c_859": "imports/i2c-scenario/rm_i2c_review",
+    "rm_i2c_860": "imports/i2c-scenario/rm_i2c_review",
+    "rm_i2c_861": "imports/i2c-scenario/rm_i2c_review",
+    "rm_i2c_862": "imports/i2c-scenario/rm_i2c_review",
+    "rm_i2c_863": "imports/i2c-scenario/rm_i2c_review",
+    "rm_i2c_864": "imports/i2c-scenario/rm_i2c_review",
+    "rm_i2c_865": "imports/i2c-scenario/rm_i2c_review",
+    "rm_i2c_866": "imports/i2c-scenario/rm_i2c_review",
+    "rm_i2c_867": "imports/i2c-scenario/rm_i2c_review",
+    "rm_syscfg1": "imports/uart-scenario/rm0090_uart",
+    "rm_syscfg2": "imports/uart-scenario/rm0090_uart",
+    "rm_syscfg3": "imports/uart-scenario/rm0090_uart",
+    "rm_tim_arr": "imports/uart-scenario/rm0090_uart",
+    "rm_tim_control": "imports/uart-scenario/rm0090_uart",
+    "rm_tim_cr1": "imports/uart-scenario/rm0090_uart",
+    "rm_tim_dier": "imports/uart-scenario/rm0090_uart",
+    "rm_tim_egr": "imports/uart-scenario/rm0090_uart",
+    "rm_tim_sr": "imports/uart-scenario/rm0090_uart",
+    "rm_tim_status": "imports/uart-scenario/rm0090_uart",
+    "rm_tim_values": "imports/uart-scenario/rm0090_uart",
+    "rm_uart_baud": "imports/uart-scenario/rm0090_uart",
+    "rm_uart_brr": "imports/uart-scenario/rm0090_uart",
+    "rm_uart_cr1": "imports/uart-scenario/rm0090_uart",
+    "rm_uart_cr3": "imports/uart-scenario/rm0090_uart",
+    "rm_uart_errors": "imports/uart-scenario/rm0090_uart",
+    "rm_uart_irq": "imports/uart-scenario/rm0090_uart",
+    "rm_uart_rx": "imports/uart-scenario/rm0090_uart",
+    "rm_uart_sr": "imports/uart-scenario/rm0090_uart",
+    "schematic_mcu": "imports/uart-scenario/mb997_e01",
+    "schematic_uart": "imports/uart-scenario/mb997_e01",
+    "st_adc_gate": "imports/adc-scenario/st_hal_rcc",
+    "uart_connector": "imports/uart-scenario/um1472",
+    "uart_connector_table": "imports/uart-scenario/um1472"
+  },
+  "workflows": {
+    "adc1_internal_reference": {
+      "instances": {
+        "adc": [
+          "ADC1"
+        ],
+        "tim": [
+          "TIM2"
+        ]
+      },
+      "modes": {
+        "adc": [
+          "single_conversion"
+        ],
+        "tim": [
+          "polling_update_delay"
+        ]
+      },
+      "operating_semantics": true,
+      "peripherals": [
+        "adc",
+        "tim"
+      ],
+      "registers": {},
+      "signals": []
+    },
+    "arm_flash_vector_table": {
+      "instances": {
+        "scb": [
+          "SCB"
+        ],
+        "systick": [
+          "SysTick"
+        ]
+      },
+      "modes": {
+        "scb": [
+          "flash_vector_table"
+        ]
+      },
+      "peripherals": [
+        "rcc",
+        "scb",
+        "systick"
+      ],
+      "registers": {
+        "rcc": [
+          "CR",
+          "CFGR"
+        ],
+        "scb": [
+          "VTOR"
+        ],
+        "systick": [
+          "CTRL"
+        ]
+      }
+    },
+    "arm_hsi16_core_checked": {
+      "instances": {
+        "rcc": [
+          "RCC"
+        ]
+      },
+      "modes": {
+        "rcc": [
+          "hsi16_core_checked"
+        ]
+      },
+      "peripherals": [
+        "rcc"
+      ],
+      "registers": {
+        "rcc": [
+          "CR",
+          "CFGR"
+        ]
+      }
+    },
+    "can1_external_bus": {
+      "instances": {
+        "can": [
+          "CAN1"
+        ]
+      },
+      "modes": {
+        "can": [
+          "normal_bus"
+        ]
+      },
+      "operating_semantics": true,
+      "peripherals": [
+        "can"
+      ],
+      "registers": {
+        "can": [
+          "MCR",
+          "MSR",
+          "TSR",
+          "RF0R",
+          "RF1R",
+          "IER",
+          "ESR",
+          "BTR",
+          "FMR",
+          "FM1R",
+          "FS1R",
+          "FFA1R",
+          "FA1R",
+          "sTxMailBox_0__TIR",
+          "sTxMailBox_0__TDTR",
+          "sTxMailBox_0__TDLR",
+          "sTxMailBox_0__TDHR",
+          "sFIFOMailBox_0__RIR",
+          "sFIFOMailBox_0__RDTR",
+          "sFIFOMailBox_0__RDLR",
+          "sFIFOMailBox_0__RDHR",
+          "sFilterRegister_0__FR1",
+          "sFilterRegister_0__FR2"
+        ]
+      },
+      "signals": [
+        "CAN1_TX",
+        "CAN1_RX",
+        "CAN_TRANSCEIVER"
+      ]
+    },
+    "can1_rx_guarded_loopback_irq": {
+      "instances": {
+        "can": [
+          "CAN1"
+        ],
+        "gpio": [
+          "GPIOD"
+        ]
+      },
+      "modes": {
+        "can": [
+          "silent_loopback_fifo0_irq"
+        ],
+        "gpio": [
+          "can1_rx_pd0"
+        ]
+      },
+      "operating_semantics": true,
+      "peripherals": [
+        "can",
+        "gpio"
+      ],
+      "registers": {
+        "can": [
+          "MCR",
+          "MSR",
+          "TSR",
+          "RF0R",
+          "RF1R",
+          "IER",
+          "ESR",
+          "BTR",
+          "FMR",
+          "FM1R",
+          "FS1R",
+          "FFA1R",
+          "FA1R",
+          "sTxMailBox_0__TIR",
+          "sTxMailBox_0__TDTR",
+          "sTxMailBox_0__TDLR",
+          "sTxMailBox_0__TDHR",
+          "sFIFOMailBox_0__RIR",
+          "sFIFOMailBox_0__RDTR",
+          "sFIFOMailBox_0__RDLR",
+          "sFIFOMailBox_0__RDHR",
+          "sFilterRegister_0__FR1",
+          "sFilterRegister_0__FR2"
+        ],
+        "gpio": [
+          "MODER",
+          "PUPDR",
+          "AFRL",
+          "IDR",
+          "LCKR"
+        ]
+      },
+      "signals": [
+        "CAN1_RX_SYNC"
+      ]
+    },
+    "can1_silent_loopback": {
+      "instances": {
+        "can": [
+          "CAN1"
+        ]
+      },
+      "modes": {
+        "can": [
+          "silent_loopback"
+        ]
+      },
+      "operating_semantics": true,
+      "peripherals": [
+        "can"
+      ],
+      "registers": {
+        "can": [
+          "MCR",
+          "MSR",
+          "TSR",
+          "RF0R",
+          "RF1R",
+          "IER",
+          "ESR",
+          "BTR",
+          "FMR",
+          "FM1R",
+          "FS1R",
+          "FFA1R",
+          "FA1R",
+          "sTxMailBox_0__TIR",
+          "sTxMailBox_0__TDTR",
+          "sTxMailBox_0__TDLR",
+          "sTxMailBox_0__TDHR",
+          "sFIFOMailBox_0__RIR",
+          "sFIFOMailBox_0__RDTR",
+          "sFIFOMailBox_0__RDLR",
+          "sFIFOMailBox_0__RDHR",
+          "sFilterRegister_0__FR1",
+          "sFilterRegister_0__FR2"
+        ]
+      },
+      "signals": []
+    },
+    "can1_silent_loopback_irq": {
+      "instances": {
+        "can": [
+          "CAN1"
+        ]
+      },
+      "modes": {
+        "can": [
+          "silent_loopback_fifo0_irq"
+        ]
+      },
+      "operating_semantics": true,
+      "peripherals": [
+        "can"
+      ],
+      "registers": {
+        "can": [
+          "MCR",
+          "MSR",
+          "TSR",
+          "RF0R",
+          "RF1R",
+          "IER",
+          "ESR",
+          "BTR",
+          "FMR",
+          "FM1R",
+          "FS1R",
+          "FFA1R",
+          "FA1R",
+          "sTxMailBox_0__TIR",
+          "sTxMailBox_0__TDTR",
+          "sTxMailBox_0__TDLR",
+          "sTxMailBox_0__TDHR",
+          "sFIFOMailBox_0__RIR",
+          "sFIFOMailBox_0__RDTR",
+          "sFIFOMailBox_0__RDLR",
+          "sFIFOMailBox_0__RDHR",
+          "sFilterRegister_0__FR1",
+          "sFilterRegister_0__FR2"
+        ]
+      },
+      "signals": []
+    },
+    "crc_word_feed": {
+      "instances": {
+        "crc": [
+          "CRC"
+        ]
+      },
+      "modes": {
+        "crc": [
+          "word_feed"
+        ]
+      },
+      "operating_semantics": true,
+      "peripherals": [
+        "crc"
+      ],
+      "registers": {
+        "crc": [
+          "DR",
+          "IDR",
+          "CR"
+        ]
+      },
+      "signals": []
+    },
+    "dac_channel1_software_trigger": {
+      "instances": {
+        "dac": [
+          "DAC"
+        ]
+      },
+      "modes": {
+        "dac": [
+          "channel1_software_trigger"
+        ]
+      },
+      "operating_semantics": true,
+      "peripherals": [
+        "dac"
+      ],
+      "registers": {
+        "dac": [
+          "CR",
+          "SWTRIGR",
+          "DHR12R1",
+          "DOR1",
+          "SR"
+        ]
+      },
+      "signals": []
+    },
+    "dac_channel1_wired_output": {
+      "instances": {
+        "dac": [
+          "DAC"
+        ]
+      },
+      "modes": {
+        "dac": [
+          "channel1_software_trigger"
+        ]
+      },
+      "operating_semantics": true,
+      "peripherals": [
+        "dac"
+      ],
+      "registers": {
+        "dac": [
+          "CR",
+          "SWTRIGR",
+          "DHR12R1",
+          "DOR1",
+          "SR"
+        ]
+      },
+      "signals": [
+        "DAC1_OUT",
+        "DAC_REFERENCE"
+      ]
+    },
+    "dma2_memory_copy": {
+      "instances": {
+        "dma": [
+          "DMA2"
+        ],
+        "dma_stream": [
+          "DMA2_Stream0"
+        ]
+      },
+      "modes": {
+        "dma": [
+          "poll_status_clear"
+        ],
+        "dma_stream": [
+          "memory_copy_polling"
+        ]
+      },
+      "operating_semantics": true,
+      "peripherals": [
+        "dma_stream",
+        "dma"
+      ],
+      "registers": {
+        "dma": [
+          "LISR",
+          "LIFCR"
+        ],
+        "dma_stream": [
+          "CR",
+          "NDTR",
+          "PAR",
+          "M0AR",
+          "FCR"
+        ]
+      }
+    },
+    "feature_adc": {
+      "instances": {
+        "adc": [
+          "ADC1"
+        ]
+      },
+      "modes": {
+        "adc": [
+          "single_conversion"
+        ]
+      },
+      "operating_semantics": true,
+      "peripherals": [
+        "adc"
+      ],
+      "registers": {
+        "adc": [
+          "SR",
+          "CR1",
+          "CR2",
+          "SQR1",
+          "SQR3",
+          "SMPR2",
+          "DR"
+        ]
+      },
+      "signals": []
+    },
+    "feature_can": {
+      "instances": {
+        "can": [
+          "CAN1"
+        ]
+      },
+      "modes": {
+        "can": [
+          "normal_bus"
+        ]
+      },
+      "operating_semantics": true,
+      "peripherals": [
+        "can"
+      ],
+      "registers": {
+        "can": [
+          "MCR",
+          "MSR",
+          "BTR"
+        ]
+      },
+      "signals": []
+    },
+    "feature_dac": {
+      "instances": {
+        "dac": [
+          "DAC"
+        ]
+      },
+      "modes": {
+        "dac": [
+          "single_output"
+        ]
+      },
+      "operating_semantics": true,
+      "peripherals": [
+        "dac"
+      ],
+      "registers": {
+        "dac": [
+          "CR",
+          "DHR12R1"
+        ]
+      },
+      "signals": []
+    },
+    "feature_eth": {
+      "instances": {
+        "eth": [
+          "ETH"
+        ]
+      },
+      "modes": {
+        "eth": [
+          "ethernet"
+        ]
+      },
+      "operating_semantics": true,
+      "peripherals": [
+        "eth"
+      ],
+      "registers": {
+        "eth": [
+          "MACCR",
+          "DMAOMR"
+        ]
+      },
+      "signals": []
+    },
+    "feature_flash": {
+      "instances": {
+        "flash": [
+          "FLASH"
+        ]
+      },
+      "modes": {
+        "flash": [
+          "program_erase"
+        ]
+      },
+      "operating_semantics": true,
+      "peripherals": [
+        "flash"
+      ],
+      "registers": {
+        "flash": [
+          "ACR",
+          "KEYR",
+          "SR",
+          "CR"
+        ]
+      },
+      "signals": []
+    },
+    "feature_fsmc_bank1": {
+      "instances": {
+        "fsmc_bank1": [
+          "FSMC_Bank1"
+        ]
+      },
+      "modes": {
+        "fsmc_bank1": [
+          "external_memory"
+        ]
+      },
+      "operating_semantics": true,
+      "peripherals": [
+        "fsmc_bank1"
+      ],
+      "registers": {
+        "fsmc_bank1": [
+          "BTCR"
+        ]
+      },
+      "signals": []
+    },
+    "feature_i2c": {
+      "instances": {
+        "i2c": [
+          "I2C1"
+        ]
+      },
+      "modes": {
+        "i2c": [
+          "master_polling"
+        ]
+      },
+      "operating_semantics": true,
+      "peripherals": [
+        "i2c"
+      ],
+      "registers": {
+        "i2c": [
+          "CR1",
+          "CR2",
+          "SR1",
+          "SR2",
+          "DR",
+          "CCR",
+          "TRISE"
+        ]
+      },
+      "signals": []
+    },
+    "feature_pwr": {
+      "instances": {
+        "pwr": [
+          "PWR"
+        ]
+      },
+      "modes": {
+        "pwr": [
+          "voltage_scale"
+        ]
+      },
+      "operating_semantics": true,
+      "peripherals": [
+        "pwr"
+      ],
+      "registers": {
+        "pwr": [
+          "CR",
+          "CSR"
+        ]
+      },
+      "signals": []
+    },
+    "feature_rtc": {
+      "instances": {
+        "rtc": [
+          "RTC"
+        ]
+      },
+      "modes": {
+        "rtc": [
+          "calendar"
+        ]
+      },
+      "operating_semantics": true,
+      "peripherals": [
+        "rtc"
+      ],
+      "registers": {
+        "rtc": [
+          "TR",
+          "DR",
+          "CR",
+          "ISR",
+          "PRER"
+        ]
+      },
+      "signals": []
+    },
+    "feature_sdio": {
+      "instances": {
+        "sdio": [
+          "SDIO"
+        ]
+      },
+      "modes": {
+        "sdio": [
+          "card_transfer"
+        ]
+      },
+      "operating_semantics": true,
+      "peripherals": [
+        "sdio"
+      ],
+      "registers": {
+        "sdio": [
+          "POWER",
+          "CLKCR",
+          "ARG",
+          "CMD",
+          "STA"
+        ]
+      },
+      "signals": []
+    },
+    "feature_usb_otg_global": {
+      "instances": {
+        "usb_otg_global": [
+          "USB_OTG_FS_GLOBAL"
+        ]
+      },
+      "modes": {
+        "usb_otg_global": [
+          "usb_device"
+        ]
+      },
+      "operating_semantics": true,
+      "peripherals": [
+        "usb_otg_global"
+      ],
+      "registers": {
+        "usb_otg_global": [
+          "GAHBCFG",
+          "GUSBCFG"
+        ]
+      },
+      "signals": []
+    },
+    "flash_latency_168mhz": {
+      "instances": {
+        "flash": [
+          "FLASH"
+        ]
+      },
+      "modes": {
+        "flash": [
+          "latency_168mhz"
+        ]
+      },
+      "operating_semantics": true,
+      "peripherals": [
+        "flash"
+      ],
+      "registers": {},
+      "signals": []
+    },
+    "gpio_led_button": {
+      "operating_semantics": true,
+      "peripherals": [
+        "gpio"
+      ],
+      "registers": {
+        "gpio": [
+          "MODER",
+          "IDR",
+          "BSRR"
+        ]
+      }
+    },
+    "i2c1_controller_transmit": {
+      "instances": {
+        "i2c": [
+          "I2C1"
+        ]
+      },
+      "modes": {
+        "i2c": [
+          "controller_transmit_polling"
+        ]
+      },
+      "operating_semantics": true,
+      "peripherals": [
+        "i2c"
+      ],
+      "registers": {
+        "i2c": [
+          "CR1",
+          "CR2",
+          "OAR1",
+          "OAR2",
+          "DR",
+          "SR1",
+          "SR2",
+          "CCR",
+          "TRISE"
+        ]
+      },
+      "signals": []
+    },
+    "i2c1_wired_transmit": {
+      "instances": {
+        "i2c": [
+          "I2C1"
+        ]
+      },
+      "modes": {
+        "i2c": [
+          "controller_transmit_polling"
+        ]
+      },
+      "operating_semantics": true,
+      "peripherals": [
+        "i2c"
+      ],
+      "registers": {
+        "i2c": [
+          "CR1",
+          "CR2",
+          "OAR1",
+          "OAR2",
+          "DR",
+          "SR1",
+          "SR2",
+          "CCR",
+          "TRISE"
+        ]
+      },
+      "signals": [
+        "I2C1_SCL",
+        "I2C1_SDA"
+      ]
+    },
+    "iwdg_configure_refresh": {
+      "instances": {
+        "iwdg": [
+          "IWDG"
+        ]
+      },
+      "modes": {
+        "iwdg": [
+          "configure_refresh"
+        ]
+      },
+      "operating_semantics": true,
+      "peripherals": [
+        "iwdg"
+      ],
+      "registers": {
+        "iwdg": [
+          "KR",
+          "PR",
+          "RLR",
+          "SR"
+        ]
+      },
+      "signals": []
+    },
+    "pll_hse8_168mhz": {
+      "instances": {
+        "rcc": [
+          "RCC"
+        ]
+      },
+      "modes": {
+        "rcc": [
+          "pll_hse8_168mhz"
+        ]
+      },
+      "operating_semantics": true,
+      "peripherals": [
+        "rcc"
+      ],
+      "registers": {},
+      "signals": []
+    },
+    "rng_pll_polling": {
+      "instances": {
+        "rng": [
+          "RNG"
+        ]
+      },
+      "modes": {
+        "rng": [
+          "pll_polling"
+        ]
+      },
+      "operating_semantics": true,
+      "peripherals": [
+        "rng"
+      ],
+      "registers": {},
+      "signals": []
+    },
+    "spi1_wired_polling": {
+      "instances": {
+        "spi": [
+          "SPI1"
+        ]
+      },
+      "modes": {
+        "spi": [
+          "master_full_duplex_polling"
+        ]
+      },
+      "operating_semantics": true,
+      "peripherals": [
+        "spi"
+      ],
+      "registers": {
+        "spi": [
+          "CR1",
+          "CR2",
+          "SR",
+          "DR",
+          "I2SCFGR"
+        ]
+      },
+      "signals": [
+        "SPI1_SCK",
+        "SPI1_MOSI",
+        "SPI1_MISO"
+      ]
+    },
+    "systick_1khz_interrupt": {
+      "instances": {
+        "scb": [
+          "SCB"
+        ],
+        "systick": [
+          "SysTick"
+        ]
+      },
+      "modes": {
+        "systick": [
+          "core_clock_interrupt"
+        ]
+      },
+      "peripherals": [
+        "rcc",
+        "scb",
+        "systick"
+      ],
+      "registers": {
+        "rcc": [
+          "CR",
+          "CFGR"
+        ],
+        "scb": [
+          "ICSR",
+          "VTOR",
+          "SHP"
+        ],
+        "systick": [
+          "CTRL",
+          "LOAD",
+          "VAL"
+        ]
+      }
+    },
+    "systick_core_polling": {
+      "instances": {
+        "systick": [
+          "SysTick"
+        ]
+      },
+      "modes": {
+        "systick": [
+          "core_clock_polling"
+        ]
+      },
+      "peripherals": [
+        "rcc",
+        "scb",
+        "systick"
+      ],
+      "registers": {
+        "rcc": [
+          "CR",
+          "CFGR"
+        ],
+        "scb": [
+          "ICSR",
+          "VTOR",
+          "SHP"
+        ],
+        "systick": [
+          "CTRL",
+          "LOAD",
+          "VAL"
+        ]
+      }
+    },
+    "uart_timer_interrupts": {
+      "operating_semantics": true,
+      "peripherals": [
+        "usart",
+        "tim",
+        "exti",
+        "syscfg",
+        "nvic"
+      ],
+      "registers": {
+        "exti": [
+          "IMR",
+          "EMR",
+          "RTSR",
+          "FTSR",
+          "SWIER",
+          "PR"
+        ],
+        "syscfg": [
+          "EXTICR0"
+        ],
+        "tim": [
+          "CR1",
+          "DIER",
+          "SR",
+          "EGR",
+          "CNT",
+          "PSC",
+          "ARR"
+        ]
+      }
+    }
+  }
+}

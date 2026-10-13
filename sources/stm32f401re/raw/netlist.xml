@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Hand-authored KiCad XML fixture, not a claimed live CLI export. Cross-check board.kicad_sch with kicad-cli. -->
+<export version="E">
+  <design><source>board.kicad_sch</source><tool>Praxis illustrative fixture</tool></design>
+  <components>
+    <comp ref="U1"><value>STM32F401RE</value><footprint>Package_QFP:LQFP-64_10x10mm_P0.5mm</footprint><sheetpath names="/" tstamps="/"/></comp>
+    <comp ref="J1"><value>UART header</value><footprint>Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical</footprint><sheetpath names="/" tstamps="/"/></comp>
+    <comp ref="R1"><value>33R</value><footprint>Resistor_SMD:R_0603_1608Metric</footprint><sheetpath names="/" tstamps="/"/></comp>
+    <comp ref="C1"><value>100nF</value><footprint>Capacitor_SMD:C_0603_1608Metric</footprint><sheetpath names="/" tstamps="/"/></comp>
+  </components>
+  <nets>
+    <net code="1" name="UART_TX_MCU">
+      <node ref="U1" pin="16" pinfunction="PA2"/>
+      <node ref="R1" pin="1" pinfunction="1"/>
+    </net>
+    <net code="2" name="UART_TX_CONNECTOR">
+      <node ref="R1" pin="2" pinfunction="2"/>
+      <node ref="J1" pin="1" pinfunction="TX"/>
+    </net>
+    <net code="3" name="UART_RX">
+      <node ref="U1" pin="17" pinfunction="PA3"/>
+      <node ref="J1" pin="2" pinfunction="RX"/>
+    </net>
+    <net code="4" name="VCC">
+      <node ref="U1" pin="19" pinfunction="VDD"/>
+      <node ref="J1" pin="3" pinfunction="VCC"/>
+      <node ref="C1" pin="1" pinfunction="1"/>
+    </net>
+    <net code="5" name="GND">
+      <node ref="U1" pin="18" pinfunction="VSS"/>
+      <node ref="J1" pin="4" pinfunction="GND"/>
+      <node ref="C1" pin="2" pinfunction="2"/>
+    </net>
+  </nets>
+</export>
+

@@ -1,0 +1,144 @@
+{
+  "build": {
+    "artifact_id": "4d9a7c6da5c981bdc36aabf978cb7795759675404e325e9ca3d660fab4714d55",
+    "asset_revision": "22310c7ad54daa553cf5cb11e4db08e4c8f9e93e191f3f12ec8410dd1fb40b59",
+    "bundle_revision": "3e0deab3da3c5a4404782e2845e9e24206045912fb324bafd801fbe40212fc7e",
+    "compile_passed": true,
+    "compiler_versions": {
+      "arm-none-eabi-gcc": "arm-none-eabi-gcc (15:12.2.rel1-1) 12.2.1 20221205",
+      "avr-gcc": "avr-gcc (GCC) 5.4.0"
+    },
+    "image": "sha256:4748b01d5c1d2313e5617878f9450ff1d432f8244416732d0cc57aa1867cc120",
+    "image_validated": true,
+    "physical_behavior": "not tested",
+    "source_sha256": "538a91325ddeb01e8bf4e063a575c9ea83f302da7313ed2842d5cd5ca9e678bf",
+    "validation": {
+      "asset_revision": "22310c7ad54daa553cf5cb11e4db08e4c8f9e93e191f3f12ec8410dd1fb40b59",
+      "checks": [
+        "ELF architecture",
+        "load/section memory bounds",
+        "main-SRAM stack",
+        "98-entry vendor/header vector layout",
+        "startup copy/zero symbols"
+      ],
+      "elf_sha256": "5e782c8195cabb4afcd9483636fe8c171cfe91fe9761c3b08eb6e3d68fea480c",
+      "errors": [],
+      "initial_sp": "0x20020000",
+      "physical_behavior": "not tested",
+      "profile": "stm32f407vg-c11-flash",
+      "valid": true
+    }
+  },
+  "date": "2026-10-11",
+  "deterministic_publication": {
+    "bundle_revision": "3e0deab3da3c5a4404782e2845e9e24206045912fb324bafd801fbe40212fc7e",
+    "byte_identical": true,
+    "counts": {
+      "blocked": 1,
+      "fields": 2100,
+      "published": 41,
+      "register_blocks": 42,
+      "registers": 523,
+      "reviewed_subsets": 18,
+      "unmapped_types": 11
+    },
+    "generated_files": 49,
+    "maximum_document_bytes": 50996,
+    "mode_contracts": 18,
+    "source_catalog_bytes": 47918,
+    "workflows_ready": 12,
+    "workflows_total": 23
+  },
+  "format": "praxis-i2c-expansion-evidence-v1",
+  "hardware_operations": 0,
+  "limits": [
+    "No probe operation, flashing, reset, debug attachment or physical I2C transaction.",
+    "Generic feature_i2c and i2c1_wired_transmit remain blocked.",
+    "Receive, fast, ten-bit, target/slave, multicontroller, IRQ, DMA and SMBus operating contracts are not added.",
+    "No board SCL/SDA route, pull-up or target-device protocol is qualified.",
+    "The linked example configures with PE=0; its unused transmitter entry may be removed by linker garbage collection.",
+    "Host effect models establish supported software cases, not electrical correctness or arbitrary generated firmware ordering.",
+    "Source metadata normalization preserves all registry values; no register table is truncated.",
+    "Overall MCU completion is unknown; authored scope is not an exhaustive feature inventory.",
+    "No clean-machine or hosted CI run is claimed."
+  ],
+  "mcp": {
+    "bundle_revision": "3e0deab3da3c5a4404782e2845e9e24206045912fb324bafd801fbe40212fc7e",
+    "checks": {
+      "absent-register:i2c/FLTR": true,
+      "artifact_revalidated": true,
+      "complete_documents_within_limit": true,
+      "index_gate": true,
+      "matching_bundle_pair": true,
+      "mode:i2c/controller_transmit_polling": true,
+      "mode:rcc/i2c1_gate_reset": true,
+      "no_hardware_tools": true,
+      "target_compilation": true,
+      "three_readonly_tools": true,
+      "workflow:feature_i2c:False": true,
+      "workflow:i2c1_controller_transmit:True": true,
+      "workflow:i2c1_wired_transmit:False": true
+    },
+    "passed": true,
+    "tool_calls": 10
+  },
+  "mcu": "STM32F407VGT6",
+  "physical_board_revision": "unconfirmed",
+  "reference_board_revision": "MB997-E-01",
+  "regression": {
+    "errors": 0,
+    "failures": 0,
+    "junit_sha256": "735fdc1a1e614493409213acd6361219d9b1dcc2122912fb252f798133c9ef54",
+    "passed": 574,
+    "ruff": "passed",
+    "seconds": 99.632,
+    "skipped": 4,
+    "skips": "Four KiCad-dependent checks: kicad-cli unavailable",
+    "tests": 578
+  },
+  "release_gate": {
+    "blockers": [
+      "Missing external tool: kicad-cli",
+      "Independent review of the exact current bundle revisions is missing",
+      "Independent review of the exact firmware asset revision is missing"
+    ],
+    "release_ready": false
+  },
+  "review": "Implementing-author scoped source-backed editorial review; independent review and silicon errata qualification pending",
+  "scope": "I2C1 seven-bit standard100kHz controller transmitter at PCLK1=42MHz; configuration-only firmware example",
+  "source_evidence": {
+    "actual_authoring_calls": 68,
+    "pages": [
+      238,
+      239,
+      247,
+      836,
+      841,
+      842,
+      843,
+      844,
+      846,
+      855,
+      856,
+      857,
+      858,
+      859,
+      860,
+      861,
+      862,
+      863,
+      864,
+      865,
+      866,
+      867
+    ],
+    "parent_hash_advertised_through_mcp": true,
+    "reviewed_parent_hash": "b5cd458fb4239736f52aaee293321c451aa4adf45f4899c095a257f8814aae51",
+    "rm0090_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca",
+    "tool_errors": [
+      "Error executing tool publish_reviewed_bundle: SOURCE_AUTHORITY: rcc.APB1RSTR: mode needs reviewed bus access widths and semantics"
+    ],
+    "transport": "Actual ingestion MCP, local cached complete source parts and registered reviewed records"
+  },
+  "target": "stm32f407g_disc1_mb997_e01"
+}

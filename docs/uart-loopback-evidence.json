@@ -1,0 +1,198 @@
+{
+  "artifact_id": "c408ee091107bbe5b741c1ec6648d2239c74098140c1a7194625552eef0dfc7d",
+  "asset_revision": "22310c7ad54daa553cf5cb11e4db08e4c8f9e93e191f3f12ec8410dd1fb40b59",
+  "build_readiness_calls": 1,
+  "bundle_revision": "1e7e9f44e7e8a4a9c2f1730ae725a2fed50cd80271b75adf63cdaa495899900b",
+  "compile_passed": true,
+  "container_image": "sha256:4748b01d5c1d2313e5617878f9450ff1d432f8244416732d0cc57aa1867cc120",
+  "date": "2026-10-10",
+  "erase_bytes": 16384,
+  "erase_start": "0x8000000",
+  "followup_tests": {
+    "failed": 0,
+    "includes_two_new_pdf_and_path_cases": true,
+    "passed": 14,
+    "skipped": 0
+  },
+  "full_suite": {
+    "external_tools_required": true,
+    "failed": 0,
+    "passed": 316,
+    "skipped": 0
+  },
+  "hardware_operations": {
+    "flash": 1,
+    "read_only_inspection_and_plan": true,
+    "reset_run": 1,
+    "standalone_halt": 0
+  },
+  "host_uart_tests_passed": 7,
+  "image_bytes": 2568,
+  "image_validated": true,
+  "independent_review": "pending",
+  "ingestion_calls": [
+    {
+      "calls": 9,
+      "directory": "temp/uart-ingestion-mcp-01",
+      "tool_errors": 0
+    },
+    {
+      "calls": 29,
+      "directory": "temp/uart-ingestion-mcp-02",
+      "tool_errors": 0
+    },
+    {
+      "calls": 16,
+      "directory": "temp/uart-ingestion-mcp-03",
+      "tool_errors": 0
+    },
+    {
+      "calls": 7,
+      "directory": "temp/uart-ingestion-mcp-04",
+      "tool_errors": 0
+    },
+    {
+      "calls": 4,
+      "directory": "temp/uart-ingestion-mcp-05",
+      "tool_errors": 0
+    },
+    {
+      "calls": 8,
+      "directory": "temp/uart-ingestion-mcp-06",
+      "tool_errors": 0
+    },
+    {
+      "calls": 4,
+      "directory": "temp/uart-ingestion-mcp-07",
+      "tool_errors": 1
+    },
+    {
+      "calls": 28,
+      "directory": "temp/uart-ingestion-mcp-08",
+      "tool_errors": 0
+    },
+    {
+      "calls": 1,
+      "directory": "temp/uart-ingestion-mcp-09",
+      "tool_errors": 0
+    }
+  ],
+  "knowledge_readiness_calls": 22,
+  "last_sector": 0,
+  "limits": [
+    "Reference revision only; physical PCB revision unknown.",
+    "No measured electrical timing or ISR execution trace.",
+    "No jumper state sensing or UART packet capture.",
+    "A successful HEDG retrieval does not prove firmware write order."
+  ],
+  "linked_sections": [
+    {
+      "bytes": 392,
+      "section": ".isr_vector"
+    },
+    {
+      "bytes": 2172,
+      "section": ".text"
+    },
+    {
+      "bytes": 4,
+      "section": ".data"
+    },
+    {
+      "bytes": 156,
+      "section": ".bss"
+    }
+  ],
+  "packaging": {
+    "private_and_raw_paths_excluded": true,
+    "source_distribution": "passed",
+    "wheel": "passed"
+  },
+  "physical_board_revision": null,
+  "physical_failure_recovery_observation": {
+    "artifact_id": "c408ee091107bbe5b741c1ec6648d2239c74098140c1a7194625552eef0dfc7d",
+    "limitations": [
+      "Human observation only; no independently captured UART traffic or measured deadline.",
+      "The report does not distinguish UART receive error from receive timeout with the wire removed.",
+      "Repetition count, held-button behavior and precise timing were not supplied."
+    ],
+    "method": "User report in response to the preceding jumper-removed failure and restored-jumper recovery procedure.",
+    "procedure_context": [
+      "Pause, disconnect all power, remove the loopback jumper.",
+      "Reconnect power and press USER: expect red on, blue off, green continuing to blink.",
+      "Disconnect power, restore jumper, reconnect and start: expect orange activity and blue success to return."
+    ],
+    "reported_on": "2026-10-11",
+    "reported_outcome": "Failure and recovery behavior worked as described.",
+    "user_answer": "everything is going good i tested them"
+  },
+  "physical_observation": {
+    "artifact_id": "c408ee091107bbe5b741c1ec6648d2239c74098140c1a7194625552eef0dfc7d",
+    "loopback_jumper": "User previously reported PA2/P1-14 to PA3/P1-13 fitted.",
+    "method": "User observation of LEDs and USER button; no automated packet capture or optical measurement.",
+    "not_established": [
+      "Exact UART packet count, electrical baud rate or timer/interrupt timing.",
+      "Held-button behavior, restart without a power cycle and repetition count.",
+      "Physical PCB revision or support for other hardware/peripheral modes."
+    ],
+    "observed": {
+      "blue_result_latches_after_wait": true,
+      "green_continues_and_blue_remains_on_when_paused": true,
+      "green_heartbeat_continues": true,
+      "orange_activity_after_start": true,
+      "red_remains_off_during_positive_run": true,
+      "second_user_press_stops_orange_activity": true
+    },
+    "reported_on": "2026-10-11",
+    "user_answer": "All these behaviors work"
+  },
+  "physical_uart_behavior": "positive loopback, pause, jumper-removed failure and restored-jumper recovery passed by user observation",
+  "programming": {
+    "approved_by": "User explicit approval in conversation, 2026-10-10",
+    "artifact_id": "c408ee091107bbe5b741c1ec6648d2239c74098140c1a7194625552eef0dfc7d",
+    "authorization_revision": "8b030dfbbba81c04f266173ee8627099bcaa49a578fb095415acf2f7105ef6c3",
+    "control_attempts_consumed": 1,
+    "control_run_id": "d562ae2f979e485ab891f311ffa67599",
+    "erase_bytes": 16384,
+    "flash_attempts_consumed": 1,
+    "flash_core_registers": {
+      "lr": "0xffffffff",
+      "pc": "0x8000424",
+      "sp": "0x20020000",
+      "xpsr": "0x1000000"
+    },
+    "flash_passed": true,
+    "flash_run_id": "bb66e5164eef42e09b378355681b3b36",
+    "flash_state": "halted",
+    "image_bytes": 2568,
+    "observation_window_ms": 1000,
+    "persistent_audit_matches_responses": true,
+    "physical_behavior_at_programming": "Awaiting user observation at programming time; see physical_observation for the later confirmation.",
+    "readback_verified": true,
+    "reset_run_passed": true,
+    "reset_run_state": "running",
+    "subsequent_read_only_sample": {
+      "cfsr": "0x0",
+      "execution_state": "unknown",
+      "hclk_hz": 16000000.0,
+      "hfsr": "0x0",
+      "limitation": "Sequential register sample; no forced halt. Unknown state does not contradict earlier reset/run evidence.",
+      "nominal_clock": "HSI nominal 16 MHz",
+      "run_id": "1b9e2581838c4f91a9805445802e88cf",
+      "signals": {
+        "button_input_sample": false,
+        "gpioa_clock_enabled": true,
+        "gpiod_clock_enabled": true,
+        "led_a_output_latch": true,
+        "led_b_output_latch": false,
+        "limits": "Disabled GPIO clocks suppress port reads; running firmware can change clock gates during sampling."
+      }
+    }
+  },
+  "reproduction": {
+    "byte_identical": true,
+    "files": 48,
+    "method": "Repeated actual ingestion MCP publication into a separate output root; compared every file SHA-256."
+  },
+  "source_sha256": "5fc586ef72bba0058fde62fdc6e439856c34dd27c98e426defef6f99d017cfd4"
+}

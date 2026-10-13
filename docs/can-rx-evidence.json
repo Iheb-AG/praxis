@@ -1,0 +1,508 @@
+{
+  "asset_revision": "22310c7ad54daa553cf5cb11e4db08e4c8f9e93e191f3f12ec8410dd1fb40b59",
+  "bundle_revision": "123a65450d9ff6849c1368aa595f9f575d8da71d740cdb68dcaa42cfc4e41a93",
+  "candidate": {
+    "artifact_id": "1f4413a435cfae5cee4ecbc500e56dc1bed56fc434642aafe5b818ba67b09b9c",
+    "erase_length": 16384,
+    "erase_start": 134217728,
+    "image_length": 4920,
+    "image_sha256": "40fa85839117db8c2b36c324dd32eadf804d11711e017e1f8d1a0301efdbb494",
+    "last_sector": 0,
+    "physical_board_revision": null
+  },
+  "coverage": {
+    "authored_workflows": 29,
+    "blocked": 1,
+    "blocks_without_mode_contracts": 25,
+    "declared_instances": 99,
+    "external_can_ready": false,
+    "fields": 2131,
+    "overall_mcu_completion": null,
+    "published": 41,
+    "ready_authored_workflows": 16,
+    "register_blocks": 42,
+    "registers": 523,
+    "reviewed_mode_contracts": 26,
+    "reviewed_subsets": 20,
+    "unmapped_types": 11
+  },
+  "date": "2026-10-12",
+  "elf_sha256": "9f87dfbf567fe11702f3d19303e3dac36a3460d260d1107c2edfaf04fecc0069",
+  "format": "praxis-can-rx-followup-v1",
+  "hardware_preflight": {
+    "actual_mcp_calls": 5,
+    "candidate_sram_read": false,
+    "candidate_telemetry_rejected": "READBACK_MISMATCH",
+    "exact_candidate_plan_prepared": true,
+    "flash_operations": 0,
+    "halt_resume_operations": 0,
+    "reset_operations": 0,
+    "selected_probe_found": true,
+    "target_inspected": true
+  },
+  "ingestion": {
+    "ds8626_pages": [
+      58,
+      67
+    ],
+    "ds8626_pdf_sha256": "1f41b4fa49a9960215ebb76cd0a75f20241db82eed60d308345a80463caeed22",
+    "editorial_review": "Implementing author; not independent engineering sign-off",
+    "generated_files": 49,
+    "hardware_fact_tables_truncated": false,
+    "maximum_markdown_bytes": 60793,
+    "maximum_markdown_path": "wiki/sources.md",
+    "publication_limit_bytes": 65536,
+    "repeated_publication_byte_identical": true,
+    "rm0090_pages": [
+      283,
+      285,
+      287,
+      1073,
+      1074,
+      1075,
+      1092
+    ],
+    "rm0090_pdf_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca",
+    "schematic_pages": [
+      2,
+      7
+    ],
+    "schematic_pdf_sha256": "7e22bb651b93c90f7fa3ea0b976254fc23e0e09b3123b89c4655ae1cb700f8d4",
+    "transport": "Actual stdio ingestion MCP; complete source text and selected page images"
+  },
+  "initial_short_spacing": {
+    "firmware_changed_between_captures": false,
+    "qualification": {
+      "artifact_id": "1f4413a435cfae5cee4ecbc500e56dc1bed56fc434642aafe5b818ba67b09b9c",
+      "bundle_revision": "123a65450d9ff6849c1368aa595f9f575d8da71d740cdb68dcaa42cfc4e41a93",
+      "expected": "passed",
+      "format": "praxis-can-qualification-v1",
+      "input_sha256": [
+        "cb144ab3a393d7a2b3cf7b9b379dfec5a7270ce8a5251eee64eb4fdc613a0a50",
+        "e6da541f1c7d23c67f348a46a99f9430beb4281bd8b8969186e5254a8039af44"
+      ],
+      "limits": [
+        "Qualifies firmware self-reports; no independent CAN wire capture or timing measurement.",
+        "Internal silent loopback does not qualify GPIO routes, a transceiver or an external CAN bus.",
+        "Publication progress is a software heartbeat, not a timer or oscillator measurement.",
+        "Image checks in recorded observations are reported evidence, not re-executed offline.",
+        "No boot-unique identity: reset versus rollover cannot always be distinguished.",
+        "A passing window does not establish repeatability or arbitrary firmware correctness."
+      ],
+      "mutating_operations": 0,
+      "ordered_publication_progress": false,
+      "passed": false,
+      "repeatability_qualified": false,
+      "same_image": true,
+      "terminal_result_stable": true,
+      "windows": [
+        {
+          "assessment": {
+            "firmware_failure_reported": false,
+            "fresh_publication_progress": false,
+            "limits": [
+              "Qualifies firmware self-reports; no independent CAN wire capture or timing measurement.",
+              "Internal silent loopback does not qualify GPIO routes, a transceiver or an external CAN bus.",
+              "Publication progress is a software heartbeat, not a timer or oscillator measurement.",
+              "Image checks in recorded observations are reported evidence, not re-executed offline.",
+              "No boot-unique identity: reset versus rollover cannot always be distinguished.",
+              "A passing window does not establish repeatability or arbitrary firmware correctness."
+            ],
+            "loopback_success_reported": false,
+            "sample_checks": {
+              "clock_and_cleanup_flags": true,
+              "fixed_request": true,
+              "interrupt_receipt": true,
+              "no_saved_errors": true,
+              "passed_status": true,
+              "received_frame": true,
+              "source_and_line_disabled": true,
+              "tx_completed": true
+            },
+            "terminal_result_stable": true
+          },
+          "checks": {
+            "abi_matches": true,
+            "artifact_matches": true,
+            "bundle_matches": true,
+            "clock_and_cleanup_flags": true,
+            "cpu_running_reported": true,
+            "fixed_request": true,
+            "fresh_publication_progress": false,
+            "image_checks_reported": true,
+            "image_identity_present": true,
+            "interrupt_receipt": true,
+            "no_saved_errors": true,
+            "passed_status": true,
+            "received_frame": true,
+            "source_and_line_disabled": true,
+            "terminal_result_stable": true,
+            "tx_completed": true
+          },
+          "failures": [
+            "fresh_publication_progress"
+          ],
+          "passed": false,
+          "sample_count": 5
+        },
+        {
+          "assessment": {
+            "firmware_failure_reported": false,
+            "fresh_publication_progress": false,
+            "limits": [
+              "Qualifies firmware self-reports; no independent CAN wire capture or timing measurement.",
+              "Internal silent loopback does not qualify GPIO routes, a transceiver or an external CAN bus.",
+              "Publication progress is a software heartbeat, not a timer or oscillator measurement.",
+              "Image checks in recorded observations are reported evidence, not re-executed offline.",
+              "No boot-unique identity: reset versus rollover cannot always be distinguished.",
+              "A passing window does not establish repeatability or arbitrary firmware correctness."
+            ],
+            "loopback_success_reported": false,
+            "sample_checks": {
+              "clock_and_cleanup_flags": true,
+              "fixed_request": true,
+              "interrupt_receipt": true,
+              "no_saved_errors": true,
+              "passed_status": true,
+              "received_frame": true,
+              "source_and_line_disabled": true,
+              "tx_completed": true
+            },
+            "terminal_result_stable": true
+          },
+          "checks": {
+            "abi_matches": true,
+            "artifact_matches": true,
+            "bundle_matches": true,
+            "clock_and_cleanup_flags": true,
+            "cpu_running_reported": true,
+            "fixed_request": true,
+            "fresh_publication_progress": false,
+            "image_checks_reported": true,
+            "image_identity_present": true,
+            "interrupt_receipt": true,
+            "no_saved_errors": true,
+            "passed_status": true,
+            "received_frame": true,
+            "source_and_line_disabled": true,
+            "terminal_result_stable": true,
+            "tx_completed": true
+          },
+          "failures": [
+            "fresh_publication_progress"
+          ],
+          "passed": false,
+          "sample_count": 5
+        }
+      ]
+    },
+    "retained_privately": true,
+    "spacing_ms": 250
+  },
+  "limits": [
+    "Digital models and target compilation do not establish physical success.",
+    "Physical PCB revision and independent review remain unconfirmed.",
+    "Source-backed route is an authored candidate policy, not a universal vendor loopback requirement.",
+    "All MCU features and external CAN are not supported.",
+    "Probe identity, raw observations and authorization records remain private."
+  ],
+  "physical_observations": [
+    {
+      "assessment": {
+        "firmware_failure_reported": false,
+        "fresh_publication_progress": true,
+        "limits": [
+          "Qualifies firmware self-reports; no independent CAN wire capture or timing measurement.",
+          "Internal silent loopback does not qualify GPIO routes, a transceiver or an external CAN bus.",
+          "Publication progress is a software heartbeat, not a timer or oscillator measurement.",
+          "Image checks in recorded observations are reported evidence, not re-executed offline.",
+          "No boot-unique identity: reset versus rollover cannot always be distinguished.",
+          "A passing window does not establish repeatability or arbitrary firmware correctness."
+        ],
+        "loopback_success_reported": true,
+        "sample_checks": {
+          "clock_and_cleanup_flags": true,
+          "fixed_request": true,
+          "interrupt_receipt": true,
+          "no_saved_errors": true,
+          "passed_status": true,
+          "received_frame": true,
+          "source_and_line_disabled": true,
+          "tx_completed": true
+        },
+        "terminal_result_stable": true
+      },
+      "generations": [
+        422,
+        426,
+        428,
+        432,
+        434
+      ],
+      "publications": [
+        211,
+        213,
+        214,
+        216,
+        217
+      ],
+      "requested_spacing_ms": 1000,
+      "sample_count": 5,
+      "terminal_result": {
+        "clock_step": 24,
+        "end_ier": 0,
+        "end_irq_enabled": 0,
+        "flags": 255,
+        "irq_count": 1,
+        "last_esr": 0,
+        "last_rf0": 0,
+        "last_tsr": 469762051,
+        "phase_name": "passed",
+        "rx_high": 4278211401,
+        "rx_identifier": 610271232,
+        "rx_length": 8,
+        "rx_low": 1480675920,
+        "rx_words_read_mask": 15,
+        "status_name": "ok"
+      }
+    },
+    {
+      "assessment": {
+        "firmware_failure_reported": false,
+        "fresh_publication_progress": true,
+        "limits": [
+          "Qualifies firmware self-reports; no independent CAN wire capture or timing measurement.",
+          "Internal silent loopback does not qualify GPIO routes, a transceiver or an external CAN bus.",
+          "Publication progress is a software heartbeat, not a timer or oscillator measurement.",
+          "Image checks in recorded observations are reported evidence, not re-executed offline.",
+          "No boot-unique identity: reset versus rollover cannot always be distinguished.",
+          "A passing window does not establish repeatability or arbitrary firmware correctness."
+        ],
+        "loopback_success_reported": true,
+        "sample_checks": {
+          "clock_and_cleanup_flags": true,
+          "fixed_request": true,
+          "interrupt_receipt": true,
+          "no_saved_errors": true,
+          "passed_status": true,
+          "received_frame": true,
+          "source_and_line_disabled": true,
+          "tx_completed": true
+        },
+        "terminal_result_stable": true
+      },
+      "generations": [
+        436,
+        440,
+        442,
+        446,
+        448
+      ],
+      "publications": [
+        218,
+        220,
+        221,
+        223,
+        224
+      ],
+      "requested_spacing_ms": 1000,
+      "sample_count": 5,
+      "terminal_result": {
+        "clock_step": 24,
+        "end_ier": 0,
+        "end_irq_enabled": 0,
+        "flags": 255,
+        "irq_count": 1,
+        "last_esr": 0,
+        "last_rf0": 0,
+        "last_tsr": 469762051,
+        "phase_name": "passed",
+        "rx_high": 4278211401,
+        "rx_identifier": 610271232,
+        "rx_length": 8,
+        "rx_low": 1480675920,
+        "rx_words_read_mask": 15,
+        "status_name": "ok"
+      }
+    }
+  ],
+  "physical_result": {
+    "candidate_installed": true,
+    "candidate_tested": true,
+    "hypothesis": "Initialization-side RX synchronization; high input and mandatory real controller acknowledgement",
+    "p2_34_external_connection_confirmed_clear": true,
+    "prior_can_result": "init_timeout; preserved failed run",
+    "root_cause_confirmed": false,
+    "scope": "One internal-loopback transaction; artifact-bound firmware self-report"
+  },
+  "programming": {
+    "both_budgets_consumed": true,
+    "flash_attempts": 1,
+    "persistent_results_match_returned_responses": true,
+    "reset_run_attempts": 1,
+    "results": [
+      {
+        "action": "flash",
+        "execution_state": "halted",
+        "readback_verified": true,
+        "success": true
+      },
+      {
+        "action": "reset_run",
+        "execution_state": "running",
+        "readback_verified": true,
+        "success": true
+      }
+    ],
+    "user_approved_exact_image": true
+  },
+  "qualification": {
+    "artifact_id": "1f4413a435cfae5cee4ecbc500e56dc1bed56fc434642aafe5b818ba67b09b9c",
+    "bundle_revision": "123a65450d9ff6849c1368aa595f9f575d8da71d740cdb68dcaa42cfc4e41a93",
+    "expected": "passed",
+    "format": "praxis-can-qualification-v1",
+    "input_sha256": [
+      "23d387bdb9991854083ac73aeb3bd6c966c750aff0aba5f93d32d035e1a8029a",
+      "c37e47e707e72c82dce092f4fdac5d0bf8ec4205d9a638e068073db6ac45c3ba"
+    ],
+    "limits": [
+      "Qualifies firmware self-reports; no independent CAN wire capture or timing measurement.",
+      "Internal silent loopback does not qualify GPIO routes, a transceiver or an external CAN bus.",
+      "Publication progress is a software heartbeat, not a timer or oscillator measurement.",
+      "Image checks in recorded observations are reported evidence, not re-executed offline.",
+      "No boot-unique identity: reset versus rollover cannot always be distinguished.",
+      "A passing window does not establish repeatability or arbitrary firmware correctness."
+    ],
+    "mutating_operations": 0,
+    "ordered_publication_progress": true,
+    "passed": true,
+    "repeatability_qualified": false,
+    "same_image": true,
+    "terminal_result_stable": true,
+    "windows": [
+      {
+        "assessment": {
+          "firmware_failure_reported": false,
+          "fresh_publication_progress": true,
+          "limits": [
+            "Qualifies firmware self-reports; no independent CAN wire capture or timing measurement.",
+            "Internal silent loopback does not qualify GPIO routes, a transceiver or an external CAN bus.",
+            "Publication progress is a software heartbeat, not a timer or oscillator measurement.",
+            "Image checks in recorded observations are reported evidence, not re-executed offline.",
+            "No boot-unique identity: reset versus rollover cannot always be distinguished.",
+            "A passing window does not establish repeatability or arbitrary firmware correctness."
+          ],
+          "loopback_success_reported": true,
+          "sample_checks": {
+            "clock_and_cleanup_flags": true,
+            "fixed_request": true,
+            "interrupt_receipt": true,
+            "no_saved_errors": true,
+            "passed_status": true,
+            "received_frame": true,
+            "source_and_line_disabled": true,
+            "tx_completed": true
+          },
+          "terminal_result_stable": true
+        },
+        "checks": {
+          "abi_matches": true,
+          "artifact_matches": true,
+          "bundle_matches": true,
+          "clock_and_cleanup_flags": true,
+          "cpu_running_reported": true,
+          "fixed_request": true,
+          "fresh_publication_progress": true,
+          "image_checks_reported": true,
+          "image_identity_present": true,
+          "interrupt_receipt": true,
+          "no_saved_errors": true,
+          "passed_status": true,
+          "received_frame": true,
+          "source_and_line_disabled": true,
+          "terminal_result_stable": true,
+          "tx_completed": true
+        },
+        "failures": [],
+        "passed": true,
+        "sample_count": 5
+      },
+      {
+        "assessment": {
+          "firmware_failure_reported": false,
+          "fresh_publication_progress": true,
+          "limits": [
+            "Qualifies firmware self-reports; no independent CAN wire capture or timing measurement.",
+            "Internal silent loopback does not qualify GPIO routes, a transceiver or an external CAN bus.",
+            "Publication progress is a software heartbeat, not a timer or oscillator measurement.",
+            "Image checks in recorded observations are reported evidence, not re-executed offline.",
+            "No boot-unique identity: reset versus rollover cannot always be distinguished.",
+            "A passing window does not establish repeatability or arbitrary firmware correctness."
+          ],
+          "loopback_success_reported": true,
+          "sample_checks": {
+            "clock_and_cleanup_flags": true,
+            "fixed_request": true,
+            "interrupt_receipt": true,
+            "no_saved_errors": true,
+            "passed_status": true,
+            "received_frame": true,
+            "source_and_line_disabled": true,
+            "tx_completed": true
+          },
+          "terminal_result_stable": true
+        },
+        "checks": {
+          "abi_matches": true,
+          "artifact_matches": true,
+          "bundle_matches": true,
+          "clock_and_cleanup_flags": true,
+          "cpu_running_reported": true,
+          "fixed_request": true,
+          "fresh_publication_progress": true,
+          "image_checks_reported": true,
+          "image_identity_present": true,
+          "interrupt_receipt": true,
+          "no_saved_errors": true,
+          "passed_status": true,
+          "received_frame": true,
+          "source_and_line_disabled": true,
+          "terminal_result_stable": true,
+          "tx_completed": true
+        },
+        "failures": [],
+        "passed": true,
+        "sample_count": 5
+      }
+    ]
+  },
+  "source_sha256": "dfebf4a0579de3d12558e2e952f603efe5e66c133f5d039a9350c428524bd521",
+  "target": "stm32f407g_disc1_mb997_e01",
+  "toolchain_image": "sha256:4748b01d5c1d2313e5617878f9450ff1d432f8244416732d0cc57aa1867cc120",
+  "verification": {
+    "compile_passed": true,
+    "elf_validated": true,
+    "focused_checks_passed": 155,
+    "full_suite_passed": 772,
+    "full_suite_skipped": 4,
+    "knowledge_build_mcp_calls": 18,
+    "mcp_checks": {
+      "artifact_revalidated": true,
+      "complete_documents_within_limit": true,
+      "index_gate": true,
+      "matching_bundle_pair": true,
+      "mode:can/silent_loopback_fifo0_irq": true,
+      "mode:gpio/can1_rx_pd0": true,
+      "no_hardware_tools": true,
+      "signal:CAN1_RX_SYNC": true,
+      "signal:P2:34": true,
+      "target_compilation": true,
+      "three_readonly_tools": true,
+      "workflow:can1_external_bus:False": true,
+      "workflow:can1_rx_guarded_loopback_irq:True": true
+    },
+    "model_scope": "GPIO ownership/order/readback and CAN finite consecutive-recessive sampling; no electrical/timing simulation",
+    "ruff_passed": true,
+    "skip_reason": "Native KiCad checks unavailable"
+  }
+}

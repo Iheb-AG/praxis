@@ -1,0 +1,150 @@
+{
+  "aliases": {
+    "clock0": "clock",
+    "irqctrl0": "interrupts",
+    "pinmux0": "pins",
+    "uart0": "uart"
+  },
+  "bundle_revision": "549fac8ec55251b7f49c77d6d458229394ddeef3b628f8f25000e6cf55db63e4",
+  "compiler_version": "0.1.0",
+  "dependencies": [
+    {
+      "entity": "clock",
+      "requires": []
+    },
+    {
+      "entity": "interrupts",
+      "requires": [
+        "uart"
+      ]
+    },
+    {
+      "entity": "pins",
+      "requires": [
+        "clock"
+      ]
+    },
+    {
+      "entity": "uart",
+      "requires": [
+        "pins"
+      ]
+    }
+  ],
+  "documents": {
+    "coverage": "wiki/coverage.md",
+    "features": "wiki/features.md",
+    "index": "wiki/index.md",
+    "peripherals/clock": "wiki/peripherals/clock.md",
+    "peripherals/interrupts": "wiki/peripherals/interrupts.md",
+    "peripherals/pins": "wiki/peripherals/pins.md",
+    "peripherals/uart": "wiki/peripherals/uart.md",
+    "schemas/custom_pcb_netlist": "wiki/schemas/custom_pcb_netlist.md",
+    "sources": "wiki/sources.md"
+  },
+  "extractor_versions": {
+    "arm-none-eabi-gcc": "arm-none-eabi-gcc (Arch Repository) 16.2.0",
+    "clang": "clang version 23.1.1",
+    "cmsis-discovery": "v1; Clang layouts and restricted object-macro evaluation",
+    "libclang": "18.1.1",
+    "netlist": "KiCad XML adapter v1 (pre-exported source)",
+    "praxis": "0.1.0"
+  },
+  "file_hashes": {
+    "wiki/coverage.md": "4076be396cf70c258f255c5e8fc1e2d59a5003ba979fb5c77b7ea97b44305344",
+    "wiki/features.md": "cf0f1a6c5532da89b1360dab41bd010d38abc98fb2382498f148b84cc1d5ff65",
+    "wiki/index.md": "ae321455ab9367b274437bf9eb3f51c7a1a063689bcf261fb06e0f09cd4e5321",
+    "wiki/peripherals/clock.md": "a20155164636d2391bdbe339170a4d076a0d2a7941de6e4efdd08999427e7e06",
+    "wiki/peripherals/interrupts.md": "e56dee3dff2428ebed9f2a2a992d09ba8a12c993632a246cd002b91677a590b5",
+    "wiki/peripherals/pins.md": "666b5fb8ce485b60290fe557966426d81ca1626667cc158ce945437ee21e7737",
+    "wiki/peripherals/uart.md": "8a2fed56f3dc3afbcb483c6dcd13c2d5556089b71119fc40c74ba5be38de5048",
+    "wiki/schemas/custom_pcb_netlist.md": "ab8afd178d6fdd36802c118918b95f92437f41806f80f6edf2b8f81da4c86eaa",
+    "wiki/sources.md": "41c8557207430c7b36d66c00f4e0f6a4b1feb57a6f7f80607b2a857fcb8ae0f4"
+  },
+  "netlist": "wiki/schemas/custom_pcb_netlist.md",
+  "peripherals": {
+    "clock": "wiki/peripherals/clock.md",
+    "interrupts": "wiki/peripherals/interrupts.md",
+    "pins": "wiki/peripherals/pins.md",
+    "uart": "wiki/peripherals/uart.md"
+  },
+  "review": {
+    "basis": "Reviewed as fictional parser test data only; no real device semantics or physical qualification.",
+    "reviewer": "Praxis synthetic fixture authors",
+    "status": "reviewed"
+  },
+  "schema_version": 2,
+  "sources": [
+    {
+      "authority": "semantics",
+      "id": "definitions",
+      "license": "MIT",
+      "origin": "Empty reviewed operating definitions; all discovered blocks are declarations only",
+      "path": "reviewed/peripherals.json",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "version": "synthetic-v1"
+    },
+    {
+      "authority": "declarations",
+      "id": "header",
+      "license": "MIT",
+      "origin": "Authored fictional register declarations",
+      "path": "raw/demo_m3.h",
+      "sha256": "5a851a24246dafdc9dfef6b8b7ec6a42f2314e51adf18542ae5d0a91cc52c46a",
+      "version": "synthetic-v1"
+    },
+    {
+      "authority": "configuration",
+      "id": "profile",
+      "license": "MIT",
+      "origin": "Local target profile",
+      "path": "profile.json",
+      "sha256": "df9855c1fdad1671abf293f3465fa62e8255f58cc64bfbf72475684bd8ad7d48",
+      "version": "1"
+    },
+    {
+      "authority": "connectivity",
+      "id": "schematic",
+      "license": "MIT",
+      "origin": "Hand-authored KiCad XML-shaped synthetic fixture; no CAD export or physical board claimed",
+      "path": "raw/netlist.xml",
+      "sha256": "873429cdc5d32d228ac6489e895a62a3bcce795132e9da17a64e5cd480b7ff2d",
+      "version": "synthetic-v1"
+    },
+    {
+      "authority": "declarations",
+      "id": "vendor_blocks",
+      "license": "MIT",
+      "origin": "Authored fictional vendor structures, not ARM core registers",
+      "path": "raw/vendor_blocks.h",
+      "sha256": "510095cbd22f7e85954597b1d3a7f21ff19ac0cbf6a4ed0100e07068d0b792ee",
+      "version": "synthetic-v1"
+    }
+  ],
+  "target": {
+    "board_revision": "synthetic-1",
+    "clock_assumptions": [
+      "Fictional fixed 12 MHz clock. No manufactured MCU or board is represented."
+    ],
+    "clock_hz": 12000000,
+    "example_only": true,
+    "family": "praxis_demo",
+    "fuse_assumptions": [],
+    "id": "synthetic_cortex_m3",
+    "knowledge_adapter": {
+      "cpu": "cortex-m3",
+      "header_identity": [
+        "PRAXIS_DEMO_M3_H",
+        "PRAXIS_DEMO_PART"
+      ],
+      "kind": "cmsis_cortex_m",
+      "mask_suffix": "_MASK",
+      "position_suffix": "_SHIFT"
+    },
+    "mcu": "PRAXIS-DEMO-M3",
+    "package": "Fixture:QFP-16",
+    "primary_mcu_ref": "U1",
+    "silicon_revision": "fictional-v1"
+  },
+  "topology": []
+}

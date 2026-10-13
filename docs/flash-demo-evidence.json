@@ -1,0 +1,124 @@
+{
+  "after_inspection": {
+    "clock": {
+      "ahb_divisor": 1,
+      "basis": "HSI nominal 16 MHz",
+      "nominal_hclk_hz": 16000000.0,
+      "stable_sample": true,
+      "systick_period_if_processor_clock_ms": 1.0,
+      "systick_reload": 15999,
+      "systick_source": "unverified: CTRL omitted because reading clears COUNTFLAG"
+    },
+    "execution_state": "unknown",
+    "fault_address_valid": {
+      "bfar": false,
+      "mmfar": false
+    },
+    "fault_status": {
+      "bfar": "0x40020010",
+      "cfsr": "0x0",
+      "hfsr": "0x0",
+      "mmfar": "0x40020010"
+    },
+    "observed_at": "2026-10-10T21:54:23.240271+00:00",
+    "run_id": "03a6aff2a7fa497db56a44d1fb837e14",
+    "signals": {
+      "button_input_sample": false,
+      "gpioa_clock_enabled": true,
+      "gpiod_clock_enabled": true,
+      "led_a_output_latch": true,
+      "led_b_output_latch": false,
+      "limits": "Disabled GPIO clocks suppress port reads; running firmware can change clock gates during sampling."
+    }
+  },
+  "artifact_id": "0f3095c100e6311acb62ad085b9d6ec08e9c0a249741f6544a40280e94e39c44",
+  "asset_revision": "22310c7ad54daa553cf5cb11e4db08e4c8f9e93e191f3f12ec8410dd1fb40b59",
+  "authorization": {
+    "actions": [
+      "flash",
+      "reset_run"
+    ],
+    "approval": "Explicit user reply: Approve this flash and reset/run",
+    "control_attempts_used": 1,
+    "flash_attempts_used": 1,
+    "persistent_audit_matches_mcp_responses": true,
+    "revision": "98b00a8dd78ca24fc752a7f1b027b34647a676c75f656c9784dbb7f61c726250"
+  },
+  "bundle_revision": "53474b5de83dddffbdccfb86057c6ec9ad362f1949afd6a74e90effb2c27fc9b",
+  "client_date": "2026-10-10",
+  "compile_passed": true,
+  "erase_range": {
+    "bytes": 16384,
+    "end_inclusive": "0x08003FFF",
+    "sectors": [
+      0
+    ],
+    "start": "0x08000000"
+  },
+  "flash": {
+    "core_registers": {
+      "lr": "0xffffffff",
+      "pc": "0x8000424",
+      "sp": "0x20020000",
+      "xpsr": "0x1000000"
+    },
+    "erased_range": {
+      "length": 16384,
+      "start": 134217728
+    },
+    "execution_state": "halted",
+    "finished_at": "2026-10-10T21:54:21.195046+00:00",
+    "observed_at": "2026-10-10T21:54:19.223644+00:00",
+    "programmed_range": {
+      "length": 1164,
+      "start": 134217728
+    },
+    "readback_verified": true,
+    "run_id": "c0722355ef5548d89e7ee4270a9c90e7",
+    "success": true
+  },
+  "human_observation": {
+    "answer": "Both behaviors work",
+    "green_blinks": true,
+    "green_continues_during_button_use": true,
+    "orange_off_after_release": true,
+    "orange_on_while_user_held": true,
+    "question": "After this flash, does the green LED blink, and does the orange LED turn on while you hold USER and turn off after release, with green continuing to blink?",
+    "repeat_count": "Not recorded",
+    "source": "Direct user reply to the post-flash observation question",
+    "timing_measured": false
+  },
+  "image_bytes": 1164,
+  "image_sha256": "b3f5623474ae8194a8cbf1c513b4d6de0020581a0db70f79aa2a1db34a94cb67",
+  "image_validated": true,
+  "kind": "actual MCP build/plan/programming/execution demonstration",
+  "limits": [
+    "Physical PCB revision remains unconfirmed; MB997-E-01 is the reference.",
+    "One successful flash/reset-run path for this exact board/artifact/profile; not general hardware qualification.",
+    "Image readback covers all 1164 programmed bytes, not an independent dump of every erased-sector byte.",
+    "Physical LED/button behavior is user-observed; precise timing, debounce and repetition count were not measured.",
+    "Standalone halt/resume, breakpoints, stepping and UART loopback were not tested.",
+    "Fresh-attachment inspection reported execution state unknown; the reset_run call separately reported running."
+  ],
+  "mutating_operations": 2,
+  "physical_board_revision": null,
+  "plan_revision": "490cedb45dd533f1841b8af1fc2161244e8c200bbdf3654ae829a94a3fe1e10b",
+  "reset_run": {
+    "execution_state": "running",
+    "finished_at": "2026-10-10T21:54:22.760565+00:00",
+    "observation_window_ms": 1000,
+    "observed_at": "2026-10-10T21:54:21.210716+00:00",
+    "readback_verified": true,
+    "run_id": "625b8dd4839343849a9b530b5d0f4666",
+    "success": true
+  },
+  "response_file_hashes": {
+    "after.json": "3e9321a8874830687eedcf88733188b94492e0e3de3ae79b89ec5aece273fb88",
+    "events.jsonl": "cc304612b0cf0bd4911cb08a6ecbf197cdb3eb6863283f6c2b4335c98d5c8db1",
+    "flash.json": "5ebf41c55410e954ef20cac176d7e3f95dfbac1ff66cdc03eedba3fcecfdea5d",
+    "reset-run.json": "be1e373c1363c3d9e0ff5acfd20a4e699525a965c90754518ee9387a4da32bab"
+  },
+  "status": "passed: physical flash/readback, reset/run and human LED/button check",
+  "target": "stm32f407g_disc1_mb997_e01",
+  "wiring": "No jumper required for the LED/button demonstration"
+}

@@ -1,0 +1,284 @@
+{
+  "aliases": {
+    "portd": "gpio",
+    "usart0": "usart"
+  },
+  "definitions": "definitions",
+  "devicetree": null,
+  "header": {
+    "base_macros": {},
+    "constant_macros": {
+      "RXCIE0": 7,
+      "USART_RX_vect_num": 18
+    },
+    "defines": [],
+    "field_expressions": {
+      "clock.CLKPR.CLKPCE": "1 << CLKPCE",
+      "clock.CLKPR.CLKPS": "1 << CLKPS0 | 1 << CLKPS1 | 1 << CLKPS2 | 1 << CLKPS3",
+      "clock.PRR.PRADC": "1 << PRADC",
+      "clock.PRR.PRSPI": "1 << PRSPI",
+      "clock.PRR.PRTIM0": "1 << PRTIM0",
+      "clock.PRR.PRTIM1": "1 << PRTIM1",
+      "clock.PRR.PRTIM2": "1 << PRTIM2",
+      "clock.PRR.PRTWI": "1 << PRTWI",
+      "clock.PRR.PRUSART0": "1 << PRUSART0",
+      "gpio.DDRD.DDD0": "1 << DDD0",
+      "gpio.DDRD.DDD1": "1 << DDD1",
+      "gpio.DDRD.DDD2": "1 << DDD2",
+      "gpio.DDRD.DDD3": "1 << DDD3",
+      "gpio.DDRD.DDD4": "1 << DDD4",
+      "gpio.DDRD.DDD5": "1 << DDD5",
+      "gpio.DDRD.DDD6": "1 << DDD6",
+      "gpio.DDRD.DDD7": "1 << DDD7",
+      "gpio.PIND.PIND0": "1 << PIND0",
+      "gpio.PIND.PIND1": "1 << PIND1",
+      "gpio.PIND.PIND2": "1 << PIND2",
+      "gpio.PIND.PIND3": "1 << PIND3",
+      "gpio.PIND.PIND4": "1 << PIND4",
+      "gpio.PIND.PIND5": "1 << PIND5",
+      "gpio.PIND.PIND6": "1 << PIND6",
+      "gpio.PIND.PIND7": "1 << PIND7",
+      "gpio.PORTD.PORTD0": "1 << PORTD0",
+      "gpio.PORTD.PORTD1": "1 << PORTD1",
+      "gpio.PORTD.PORTD2": "1 << PORTD2",
+      "gpio.PORTD.PORTD3": "1 << PORTD3",
+      "gpio.PORTD.PORTD4": "1 << PORTD4",
+      "gpio.PORTD.PORTD5": "1 << PORTD5",
+      "gpio.PORTD.PORTD6": "1 << PORTD6",
+      "gpio.PORTD.PORTD7": "1 << PORTD7",
+      "interrupts.SREG.C": "1 << SREG_C",
+      "interrupts.SREG.H": "1 << SREG_H",
+      "interrupts.SREG.I": "1 << SREG_I",
+      "interrupts.SREG.N": "1 << SREG_N",
+      "interrupts.SREG.S": "1 << SREG_S",
+      "interrupts.SREG.T": "1 << SREG_T",
+      "interrupts.SREG.V": "1 << SREG_V",
+      "interrupts.SREG.Z": "1 << SREG_Z",
+      "usart.UBRR0H.UBRR0_HIGH": "1 << UBRR0_8 | 1 << UBRR0_9 | 1 << UBRR0_10 | 1 << UBRR0_11",
+      "usart.UBRR0L.UBRR0_LOW": "1 << UBRR0_0 | 1 << UBRR0_1 | 1 << UBRR0_2 | 1 << UBRR0_3 | 1 << UBRR0_4 | 1 << UBRR0_5 | 1 << UBRR0_6 | 1 << UBRR0_7",
+      "usart.UCSR0A.DOR0": "1 << DOR0",
+      "usart.UCSR0A.FE0": "1 << FE0",
+      "usart.UCSR0A.MPCM0": "1 << MPCM0",
+      "usart.UCSR0A.RXC0": "1 << RXC0",
+      "usart.UCSR0A.TXC0": "1 << TXC0",
+      "usart.UCSR0A.U2X0": "1 << U2X0",
+      "usart.UCSR0A.UDRE0": "1 << UDRE0",
+      "usart.UCSR0A.UPE0": "1 << UPE0",
+      "usart.UCSR0B.RXB80": "1 << RXB80",
+      "usart.UCSR0B.RXCIE0": "1 << RXCIE0",
+      "usart.UCSR0B.RXEN0": "1 << RXEN0",
+      "usart.UCSR0B.TXB80": "1 << TXB80",
+      "usart.UCSR0B.TXCIE0": "1 << TXCIE0",
+      "usart.UCSR0B.TXEN0": "1 << TXEN0",
+      "usart.UCSR0B.UCSZ02": "1 << UCSZ02",
+      "usart.UCSR0B.UDRIE0": "1 << UDRIE0",
+      "usart.UCSR0C.UCPOL0": "1 << UCPOL0",
+      "usart.UCSR0C.UCSZ0": "1 << UCSZ00 | 1 << UCSZ01",
+      "usart.UCSR0C.UMSEL0": "1 << UMSEL00 | 1 << UMSEL01",
+      "usart.UCSR0C.UPM0": "1 << UPM00 | 1 << UPM01",
+      "usart.UCSR0C.USBS0": "1 << USBS0",
+      "usart.UDR0.DATA": "(1 << 8) - 1"
+    },
+    "include_directories": [
+      "raw/vendor"
+    ],
+    "kind": "avr",
+    "members": {},
+    "source": "header",
+    "structures": {}
+  },
+  "netlist": "netlist",
+  "pin_map": {
+    "2": "PD0",
+    "3": "PD1",
+    "7": "VCC",
+    "8": "GND"
+  },
+  "review": {
+    "basis": "Checked against the linked vendor manuals and pinned declarations; independent hardware sign-off remains pending.",
+    "reviewer": "Codex source-backed fixture editorial review",
+    "status": "reviewed"
+  },
+  "schema_version": 1,
+  "signal_aliases": {
+    "UART_RX": [
+      "USART0_RX"
+    ],
+    "UART_TX_MCU": [
+      "USART0_TX"
+    ]
+  },
+  "sources": [
+    {
+      "authority": "semantics",
+      "id": "definitions",
+      "license": "MIT",
+      "origin": "https://ww1.microchip.com/downloads/en/devicedoc/atmel-7810-automotive-microcontrollers-atmega328p_datasheet.pdf",
+      "path": "reviewed/peripherals.json",
+      "version": "fixture-1"
+    },
+    {
+      "authority": "connectivity",
+      "id": "netlist",
+      "license": "MIT",
+      "origin": "Hand-authored KiCad XML example; live export comparison pending",
+      "path": "raw/netlist.xml",
+      "version": "fixture-1"
+    },
+    {
+      "authority": "semantics",
+      "id": "clock_review",
+      "license": "MIT",
+      "origin": "https://ww1.microchip.com/downloads/en/devicedoc/atmel-7810-automotive-microcontrollers-atmega328p_datasheet.pdf",
+      "path": "reviewed/clock.md",
+      "version": "fixture-1"
+    },
+    {
+      "authority": "semantics",
+      "id": "gpio_review",
+      "license": "MIT",
+      "origin": "https://ww1.microchip.com/downloads/en/devicedoc/atmel-7810-automotive-microcontrollers-atmega328p_datasheet.pdf",
+      "path": "reviewed/gpio.md",
+      "version": "fixture-1"
+    },
+    {
+      "authority": "semantics",
+      "id": "usart_review",
+      "license": "MIT",
+      "origin": "https://ww1.microchip.com/downloads/en/devicedoc/atmel-7810-automotive-microcontrollers-atmega328p_datasheet.pdf",
+      "path": "reviewed/usart.md",
+      "version": "fixture-1"
+    },
+    {
+      "authority": "semantics",
+      "id": "interrupts_review",
+      "license": "MIT",
+      "origin": "https://ww1.microchip.com/downloads/en/devicedoc/atmel-7810-automotive-microcontrollers-atmega328p_datasheet.pdf",
+      "path": "reviewed/interrupts.md",
+      "version": "fixture-1"
+    },
+    {
+      "authority": "declarations",
+      "id": "header",
+      "license": "MIT",
+      "origin": "Entry point to vendored avr-libc subset",
+      "path": "raw/registers.h",
+      "version": "fixture-1"
+    },
+    {
+      "authority": "declarations",
+      "id": "vendor_0",
+      "license": "BSD-3-Clause",
+      "origin": "Upstream source and license included in raw/vendor",
+      "path": "raw/vendor/LICENSE",
+      "version": "pinned source bytes"
+    },
+    {
+      "authority": "declarations",
+      "id": "vendor_2",
+      "license": "BSD-3-Clause",
+      "origin": "Upstream source and license included in raw/vendor",
+      "path": "raw/vendor/avr/common.h",
+      "version": "pinned source bytes"
+    },
+    {
+      "authority": "declarations",
+      "id": "vendor_3",
+      "license": "BSD-3-Clause",
+      "origin": "Upstream source and license included in raw/vendor",
+      "path": "raw/vendor/avr/fuse.h",
+      "version": "pinned source bytes"
+    },
+    {
+      "authority": "declarations",
+      "id": "vendor_4",
+      "license": "BSD-3-Clause",
+      "origin": "Upstream source and license included in raw/vendor",
+      "path": "raw/vendor/avr/interrupt.h",
+      "version": "pinned source bytes"
+    },
+    {
+      "authority": "declarations",
+      "id": "vendor_5",
+      "license": "BSD-3-Clause",
+      "origin": "Upstream source and license included in raw/vendor",
+      "path": "raw/vendor/avr/io.h",
+      "version": "pinned source bytes"
+    },
+    {
+      "authority": "declarations",
+      "id": "vendor_6",
+      "license": "BSD-3-Clause",
+      "origin": "Upstream source and license included in raw/vendor",
+      "path": "raw/vendor/avr/iom328p.h",
+      "version": "pinned source bytes"
+    },
+    {
+      "authority": "declarations",
+      "id": "vendor_7",
+      "license": "BSD-3-Clause",
+      "origin": "Upstream source and license included in raw/vendor",
+      "path": "raw/vendor/avr/lock.h",
+      "version": "pinned source bytes"
+    },
+    {
+      "authority": "declarations",
+      "id": "vendor_8",
+      "license": "BSD-3-Clause",
+      "origin": "Upstream source and license included in raw/vendor",
+      "path": "raw/vendor/avr/portpins.h",
+      "version": "pinned source bytes"
+    },
+    {
+      "authority": "declarations",
+      "id": "vendor_9",
+      "license": "BSD-3-Clause",
+      "origin": "Upstream source and license included in raw/vendor",
+      "path": "raw/vendor/avr/sfr_defs.h",
+      "version": "pinned source bytes"
+    },
+    {
+      "authority": "declarations",
+      "id": "vendor_10",
+      "license": "BSD-3-Clause",
+      "origin": "Upstream source and license included in raw/vendor",
+      "path": "raw/vendor/avr/version.h",
+      "version": "pinned source bytes"
+    },
+    {
+      "authority": "declarations",
+      "id": "vendor_12",
+      "license": "BSD-3-Clause",
+      "origin": "Upstream source and license included in raw/vendor",
+      "path": "raw/vendor/bits/devinfo.h",
+      "version": "pinned source bytes"
+    },
+    {
+      "authority": "connectivity",
+      "id": "schematic",
+      "license": "MIT",
+      "origin": "Original partial KiCad schematic; live export validation required",
+      "path": "raw/board.kicad_sch",
+      "version": "fixture-1"
+    }
+  ],
+  "target": {
+    "board_revision": "praxis-example-1",
+    "clock_assumptions": [
+      "External 16 MHz clock supplied; CLKPR=/1; suitable supply assumed.",
+      "Partial connectivity fixture omits complete power/reset/oscillator circuitry."
+    ],
+    "clock_hz": 16000000,
+    "example_only": true,
+    "family": "avr",
+    "fuse_assumptions": [
+      "CKDIV8 unprogrammed; external clock selection configured before application startup.",
+      "Factory defaults are not assumed; no fuse write is performed."
+    ],
+    "id": "atmega328p_fixture",
+    "mcu": "ATmega328P-PU",
+    "package": "Package_DIP:DIP-28_W7.62mm",
+    "primary_mcu_ref": "U1",
+    "silicon_revision": "Unspecified; fixture based on ATmega328P datasheet"
+  }
+}

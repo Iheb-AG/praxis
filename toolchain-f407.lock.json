@@ -1,0 +1,13 @@
+{
+  "asset_revision": "22310c7ad54daa553cf5cb11e4db08e4c8f9e93e191f3f12ec8410dd1fb40b59",
+  "base_image": "sha256:d4c45f66efc59f89b0597d343a9bd72808493c0eacecde5285961743252cee23",
+  "base_image_registry": "docker.io/library/debian@sha256:7c7b2c966bc9ee8cedfeef67e0e279108992c77681fa595db4a9d65c06ccc587",
+  "compiler_versions": {
+    "arm-none-eabi-gcc": "arm-none-eabi-gcc (15:12.2.rel1-1) 12.2.1 20221205",
+    "avr-gcc": "avr-gcc (GCC) 5.4.0"
+  },
+  "image": "sha256:4748b01d5c1d2313e5617878f9450ff1d432f8244416732d0cc57aa1867cc120",
+  "profile": "stm32f407vg-c11-flash",
+  "provisioning": "Run praxis sandbox-build with a pre-pulled immutable Debian image; runtime builds never pull.",
+  "schema_version": 1
+}

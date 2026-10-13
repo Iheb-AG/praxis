@@ -1,0 +1,256 @@
+{
+  "actual_stdio_mcp": {
+    "complete_part_selection_passed": true,
+    "error_codes": [
+      "UNKNOWN_LOCATOR",
+      "INVALID_INPUT"
+    ],
+    "expected_errors": 2,
+    "repeated_packet_identical": true,
+    "successful_calls": 13,
+    "tool_calls": 15,
+    "tool_discovery_count": 10
+  },
+  "cli": {
+    "cli_and_mcp_packets_byte_identical": true,
+    "compared_entity": "crc",
+    "repeated_outputs_byte_identical": true
+  },
+  "counts": {
+    "conflict_groups": 4,
+    "peripheral_groups": 10,
+    "unreviewed_candidates": 319
+  },
+  "date": "2026-10-11",
+  "entities": [
+    {
+      "conflicts": [],
+      "counts": {
+        "candidates": 7,
+        "conflicts": 0,
+        "matching_parts": 2,
+        "parts_examined": 55,
+        "registers_with_candidates": 3
+      },
+      "declaration_sha256": "2b430673be41f9c2724d9e720f6bc481c05b29de92f09374db5e5b54df371d9f",
+      "entity": "crc",
+      "extraction_issues": 1,
+      "import_revision": "76d4cc4fa4349310f75544d572bd2c6d326309e98f52dff9b1e044d17c85bd39",
+      "missing_field_positions": 2,
+      "packet_sha256": "9539f63dba1f125b8922d34dadb17f346b9abfbd1f30bd1254cbe1c0b3511538",
+      "parser_config_sha256": "fd1979a21d8c2af5c8336e429475b995ce7fdfe9123e0254bbff7921053935fe",
+      "publication_ready": false
+    },
+    {
+      "conflicts": [],
+      "counts": {
+        "candidates": 52,
+        "conflicts": 0,
+        "matching_parts": 8,
+        "parts_examined": 55,
+        "registers_with_candidates": 9
+      },
+      "declaration_sha256": "96a33fc86dc91f75f240343a8e226766a280cf4c5d179cc9868df059b9f59f28",
+      "entity": "spi",
+      "extraction_issues": 1,
+      "import_revision": "76d4cc4fa4349310f75544d572bd2c6d326309e98f52dff9b1e044d17c85bd39",
+      "missing_field_positions": 10,
+      "packet_sha256": "92b2b8b89e52c446095cc7466fbf2679c9623575e14ddb137c1f17bcba74adfe",
+      "parser_config_sha256": "fd1979a21d8c2af5c8336e429475b995ce7fdfe9123e0254bbff7921053935fe",
+      "publication_ready": false
+    },
+    {
+      "conflicts": [],
+      "counts": {
+        "candidates": 14,
+        "conflicts": 0,
+        "matching_parts": 5,
+        "parts_examined": 55,
+        "registers_with_candidates": 6
+      },
+      "declaration_sha256": "71dee867141a298fe854a71eca8d2da975dca76476257b1f74b4699c3cb5888c",
+      "entity": "dma_stream",
+      "extraction_issues": 8,
+      "import_revision": "76d4cc4fa4349310f75544d572bd2c6d326309e98f52dff9b1e044d17c85bd39",
+      "missing_field_positions": 19,
+      "packet_sha256": "b0046bfcd5665cde49630bbf427cce82ac234e83df2e95dc22c5b6784c51662d",
+      "parser_config_sha256": "fd1979a21d8c2af5c8336e429475b995ce7fdfe9123e0254bbff7921053935fe",
+      "publication_ready": false
+    },
+    {
+      "conflicts": [],
+      "counts": {
+        "candidates": 13,
+        "conflicts": 0,
+        "matching_parts": 2,
+        "parts_examined": 55,
+        "registers_with_candidates": 3
+      },
+      "declaration_sha256": "9223c1ff197bcc01c32552c62652b52fb26dfa49f6d0657976ac66b6f3922657",
+      "entity": "rng",
+      "extraction_issues": 1,
+      "import_revision": "76d4cc4fa4349310f75544d572bd2c6d326309e98f52dff9b1e044d17c85bd39",
+      "missing_field_positions": 0,
+      "packet_sha256": "6bee283932604aadae6e25a839dde8027dceac589d6fa0f31c98e5c263b013d7",
+      "parser_config_sha256": "fd1979a21d8c2af5c8336e429475b995ce7fdfe9123e0254bbff7921053935fe",
+      "publication_ready": false
+    },
+    {
+      "conflicts": [],
+      "counts": {
+        "candidates": 12,
+        "conflicts": 0,
+        "matching_parts": 3,
+        "parts_examined": 55,
+        "registers_with_candidates": 4
+      },
+      "declaration_sha256": "2ad3001839f75b426a9c7c283f730832fb7551ce8206a932d4a4eae397693fe0",
+      "entity": "iwdg",
+      "extraction_issues": 0,
+      "import_revision": "76d4cc4fa4349310f75544d572bd2c6d326309e98f52dff9b1e044d17c85bd39",
+      "missing_field_positions": 1,
+      "packet_sha256": "e8c05c537f19e310a8ce7b793ca3307cfa00ec9ac0ecd00e1f210b010059bdfc",
+      "parser_config_sha256": "fd1979a21d8c2af5c8336e429475b995ce7fdfe9123e0254bbff7921053935fe",
+      "publication_ready": false
+    },
+    {
+      "conflicts": [
+        {
+          "field": "SNB",
+          "kind": "field",
+          "reason": "Conflicting source values or disagreement with the header; reviewed resolution required",
+          "register": "CR"
+        }
+      ],
+      "counts": {
+        "candidates": 33,
+        "conflicts": 1,
+        "matching_parts": 19,
+        "parts_examined": 1741,
+        "registers_with_candidates": 6
+      },
+      "declaration_sha256": "20e74043f8eb67a5645faa081cf11cba3cd51a9ec33f58289c713091123220a1",
+      "entity": "flash",
+      "extraction_issues": 33,
+      "import_revision": "f81311bab1ad00f9402306253a49440339a33654fd879e7361fc7ff22fa1fef3",
+      "missing_field_positions": 3,
+      "packet_sha256": "30aa75b9c96ee6e42ed6f42316f8e83f4b41ec48db1b23aafe132ca0701a7de7",
+      "parser_config_sha256": "fd1979a21d8c2af5c8336e429475b995ce7fdfe9123e0254bbff7921053935fe",
+      "publication_ready": false
+    },
+    {
+      "conflicts": [
+        {
+          "field": "VOS",
+          "kind": "field",
+          "reason": "Conflicting source values or disagreement with the header; reviewed resolution required",
+          "register": "CR"
+        },
+        {
+          "field": null,
+          "kind": "reset",
+          "reason": "Conflicting source values or disagreement with the header; reviewed resolution required",
+          "register": "CR"
+        }
+      ],
+      "counts": {
+        "candidates": 17,
+        "conflicts": 2,
+        "matching_parts": 9,
+        "parts_examined": 1741,
+        "registers_with_candidates": 2
+      },
+      "declaration_sha256": "995c43773582c4d0a36dd8857d8cfdf4916c92e0e0ef528c689e91b4b4443448",
+      "entity": "pwr",
+      "extraction_issues": 9,
+      "import_revision": "f81311bab1ad00f9402306253a49440339a33654fd879e7361fc7ff22fa1fef3",
+      "missing_field_positions": 5,
+      "packet_sha256": "003f322a28d91ec19388fbaddeff70bc4f8bc3c2780c1b51208ab1634ab890c8",
+      "parser_config_sha256": "fd1979a21d8c2af5c8336e429475b995ce7fdfe9123e0254bbff7921053935fe",
+      "publication_ready": false
+    },
+    {
+      "conflicts": [],
+      "counts": {
+        "candidates": 54,
+        "conflicts": 0,
+        "matching_parts": 14,
+        "parts_examined": 1741,
+        "registers_with_candidates": 9
+      },
+      "declaration_sha256": "a4d216742db3559adfb0e519b942aba8384c37bcd750dc5c7800c224eeb740d2",
+      "entity": "i2c",
+      "extraction_issues": 5,
+      "import_revision": "f81311bab1ad00f9402306253a49440339a33654fd879e7361fc7ff22fa1fef3",
+      "missing_field_positions": 24,
+      "packet_sha256": "4bee09f9161d2710a13ddab4adbae440abfe86f2a02dfec52b38af35c9f4f65f",
+      "parser_config_sha256": "fd1979a21d8c2af5c8336e429475b995ce7fdfe9123e0254bbff7921053935fe",
+      "publication_ready": false
+    },
+    {
+      "conflicts": [
+        {
+          "field": "SQ12",
+          "kind": "field",
+          "reason": "Conflicting source values or disagreement with the header; reviewed resolution required",
+          "register": "SQR2"
+        }
+      ],
+      "counts": {
+        "candidates": 69,
+        "conflicts": 1,
+        "matching_parts": 12,
+        "parts_examined": 1741,
+        "registers_with_candidates": 20
+      },
+      "declaration_sha256": "f69e3727b777261827e40c6465150da83412d186537659b20854014e802d8567",
+      "entity": "adc",
+      "extraction_issues": 1,
+      "import_revision": "f81311bab1ad00f9402306253a49440339a33654fd879e7361fc7ff22fa1fef3",
+      "missing_field_positions": 48,
+      "packet_sha256": "c537180c8b5029c21b088d5952c153fad17e1181d1dbbbd3c7c2cfd693a35d23",
+      "parser_config_sha256": "fd1979a21d8c2af5c8336e429475b995ce7fdfe9123e0254bbff7921053935fe",
+      "publication_ready": false
+    },
+    {
+      "conflicts": [],
+      "counts": {
+        "candidates": 48,
+        "conflicts": 0,
+        "matching_parts": 9,
+        "parts_examined": 1741,
+        "registers_with_candidates": 8
+      },
+      "declaration_sha256": "102fa7dbfa4e80e9f8a509540311b4040c66f839be45cb55406426551febb59c",
+      "entity": "can",
+      "extraction_issues": 6,
+      "import_revision": "f81311bab1ad00f9402306253a49440339a33654fd879e7361fc7ff22fa1fef3",
+      "missing_field_positions": 39,
+      "packet_sha256": "9a583e84de8bc1eff5d7a8e7901b72b7f1c1629129379ff41a6696698be710de",
+      "parser_config_sha256": "fd1979a21d8c2af5c8336e429475b995ce7fdfe9123e0254bbff7921053935fe",
+      "publication_ready": false
+    }
+  ],
+  "format": "praxis-manual-review-evaluation/v1",
+  "hardware_operations": 0,
+  "limits": [
+    "Every candidate requires editorial and engineering review.",
+    "Shared manuals contain target variants; exact applicability is not inferred.",
+    "Unsupported text/table layouts, diagrams and operating semantics remain explicit gaps.",
+    "Configured synthetic vocabulary tests do not establish support for another MCU architecture.",
+    "Published feature/mode counts and installed firmware are unchanged."
+  ],
+  "new_bundles_published": 0,
+  "profile_sha256": "8334cb7bc695063278fe6017433f9b904c271e85c7621c18d2a65fd9cc77adfb",
+  "publication_ready": false,
+  "scope": "Offline extraction candidate preparation, not approved operating knowledge or physical MCU support",
+  "source_document_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca",
+  "target": "STM32F407VGT6",
+  "validation": {
+    "additional_final_stdio_integration_passed": 1,
+    "external_tools_required": true,
+    "full_suite_passed": 438,
+    "full_suite_skipped": 0,
+    "ruff_passed": true
+  }
+}

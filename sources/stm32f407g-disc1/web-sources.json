@@ -1,0 +1,23 @@
+{
+  "allowed_hosts": [
+    "www.st.com",
+    "st.com"
+  ],
+  "schema_version": 1,
+  "sources": [
+    {
+      "id": "mb997_e01",
+      "kind": "pdf",
+      "target": "STM32F407VGT6",
+      "title": "STM32F407G-DISC1 MB997 E-01 reference schematic",
+      "url": "https://www.st.com/resource/en/schematic_pack/mb997-f407vgt6-e01_schematic.pdf"
+    },
+    {
+      "id": "um1472",
+      "kind": "pdf",
+      "target": "STM32F407VGT6",
+      "title": "STM32F407G-DISC1 board manual UM1472; check revision",
+      "url": "https://www.st.com/resource/en/user_manual/dm00039084-discovery-kit-with-stm32f407vg-mcu-stmicroelectronics.pdf"
+    }
+  ]
+}

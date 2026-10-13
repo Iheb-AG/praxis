@@ -1,0 +1,30 @@
+name: Bug report
+description: Report a reproducible ingestion, retrieval, build or hardware-tool problem.
+title: "[Bug]: "
+body:
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment and target
+      description: Include the Praxis version/commit, OS, client, Docker image ID if used, and target/bundle revision.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      description: Include the command or MCP call, relevant configuration and expected behavior.
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual result
+      description: Include sanitized diagnostics. Omit credentials, operator approvals, private probe identifiers and raw manuals.
+    validations:
+      required: true
+  - type: textarea
+    id: verification
+    attributes:
+      label: Verification boundary
+      description: Say whether this was retrieval, compilation, a modeled test or a physical observation. Include exact board revision if known.

@@ -1,0 +1,13 @@
+# Allowlist the small runtime build context. Never send manuals, approvals, USB
+# profiles, firmware artifacts, credentials, or the working tree to the daemon.
+**
+!Dockerfile
+!.dockerignore
+!pyproject.toml
+!uv.lock
+!README.md
+!LICENSE
+!praxis/
+!praxis/**
+praxis/**/__pycache__/
+praxis/**/*.pyc

@@ -1,0 +1,18 @@
+{
+  "archive_import_revision": "011719f374157cf8e81ba9a698d873e9ac9e0be5b607c80c7a6d043c30e44154",
+  "bytes": 1193456,
+  "extractors": {
+    "pdfminer.six": "20260107",
+    "pdfplumber": "0.11.10"
+  },
+  "locators": [
+    "page:21",
+    "page:23",
+    "page:24"
+  ],
+  "method": "Visual schematic inspection plus source text cross-check; normalized facts, not reproduced source pages",
+  "reviewer": "Codex source-backed editorial review; independent review pending",
+  "sha256": "1d4ad5f36fb9b6bed159be57461cdce5dbbb6ab602099c34da11943206abb8fd",
+  "source_id": "board_manual",
+  "url": "https://www.st.com/resource/en/user_manual/dm00039084-discovery-kit-with-stm32f407vg-mcu-stmicroelectronics.pdf"
+}

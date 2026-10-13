@@ -1,0 +1,40 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "project-praxis": {
+      "type": "local",
+      "command": [
+        "/absolute/path/Praxis_Bundle/.venv/bin/praxis",
+        "serve",
+        "--bundle",
+        "/absolute/path/Praxis_Bundle/bundles/stm32f407g-disc1-e01-can-v1"
+      ],
+      "enabled": true
+    },
+    "project-praxis-build": {
+      "type": "local",
+      "command": [
+        "/absolute/path/Praxis_Bundle/.venv/bin/praxis",
+        "build-serve",
+        "--bundle",
+        "/absolute/path/Praxis_Bundle/bundles/stm32f407g-disc1-e01-can-v1",
+        "--assets",
+        "/absolute/path/Praxis_Bundle/assets/stm32f407vg",
+        "--workspace",
+        "/absolute/path/Praxis_Bundle/examples",
+        "--artifacts",
+        "/absolute/path/Praxis_Bundle/.praxis-output/firmware-artifacts",
+        "--lock",
+        "/absolute/path/Praxis_Bundle/toolchain-f407.lock.json",
+        "--hardware-profile",
+        "/absolute/path/Praxis_Bundle/.praxis-output/hardware-profile-can.json",
+        "--telemetry-artifact",
+        "REPLACE_WITH_ACCEPTED_CAN_TELEMETRY_ARTIFACT_ID",
+        "--telemetry-kind",
+        "can-loopback-v1"
+      ],
+      "enabled": true,
+      "timeout": 60000
+    }
+  }
+}

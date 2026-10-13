@@ -1,0 +1,35 @@
+/dts-v1/;
+/ {
+    compatible = "praxis,synthetic-topology";
+    model = "Praxis synthetic DT ingestion fixture";
+    #address-cells = <1>;
+    #size-cells = <1>;
+    clk: clock {
+        compatible = "fixed-clock";
+        #clock-cells = <0>;
+        clock-frequency = <42000000>;
+    };
+    irq: interrupt-controller {
+        compatible = "praxis,fixture-interrupts";
+        interrupt-controller;
+        #interrupt-cells = <1>;
+        #address-cells = <0>;
+    };
+    bus {
+        compatible = "simple-bus";
+        #address-cells = <1>;
+        #size-cells = <1>;
+        ranges = <0x0 0x40000000 0x10000>;
+        serial0: serial@4400 {
+            compatible = "praxis,fixture-uart";
+            reg = <0x4400 0x400>;
+            clocks = <&clk>;
+            interrupt-parent = <&irq>;
+            interrupts = <38>;
+            status = "disabled";
+            praxis,pins = "PA2", "PA3";
+            praxis,unknown = <0x1234>;
+        };
+    };
+};
+

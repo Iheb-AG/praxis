@@ -1,0 +1,127 @@
+{
+  "base_image": "sha256:d4c45f66efc59f89b0597d343a9bd72808493c0eacecde5285961743252cee23",
+  "base_image_registry": "docker.io/library/debian@sha256:7c7b2c966bc9ee8cedfeef67e0e279108992c77681fa595db4a9d65c06ccc587",
+  "compiler_versions": {
+    "arm-none-eabi-gcc": "arm-none-eabi-gcc (15:12.2.rel1-1) 12.2.1 20221205",
+    "avr-gcc": "avr-gcc (GCC) 5.4.0"
+  },
+  "headers": [
+    {
+      "destination": "cmsis_compiler.h",
+      "family": "stm32",
+      "path": "sources/stm32f401re/raw/vendor/cmsis_compiler.h",
+      "sha256": "b51963d271c1571ca3463654c76aa7ea50c4eac5d0a2710df10414ac64d9e0f8"
+    },
+    {
+      "destination": "cmsis_gcc.h",
+      "family": "stm32",
+      "path": "sources/stm32f401re/raw/vendor/cmsis_gcc.h",
+      "sha256": "43bfd1fe69fbbc2ca70aaf7d43cc3e20f16e0c7f66e1bdef9b51af6dc14b2617"
+    },
+    {
+      "destination": "cmsis_version.h",
+      "family": "stm32",
+      "path": "sources/stm32f401re/raw/vendor/cmsis_version.h",
+      "sha256": "184c19fd3ee73632edf35a0b4d49cd48be75fbf49e6ccb19d9db05fa83bea4b3"
+    },
+    {
+      "destination": "core_cm4.h",
+      "family": "stm32",
+      "path": "sources/stm32f401re/raw/vendor/core_cm4.h",
+      "sha256": "f5b63d52dd1557b15ca414cb59c264f595a7b5669db2a5878dffe22f4caedc8c"
+    },
+    {
+      "destination": "mpu_armv7.h",
+      "family": "stm32",
+      "path": "sources/stm32f401re/raw/vendor/mpu_armv7.h",
+      "sha256": "29206b52ee02290ed6f5a5415ebd4187de802cf176d9b3cb844390d8e5571372"
+    },
+    {
+      "destination": "stm32f401xe.h",
+      "family": "stm32",
+      "path": "sources/stm32f401re/raw/vendor/stm32f401xe.h",
+      "sha256": "9db8f3e317c6029ebdd1538f827885cf538850a20b17ac8491247e783134098c"
+    },
+    {
+      "destination": "system_stm32f4xx.h",
+      "family": "stm32",
+      "path": "sources/stm32f401re/raw/vendor/system_stm32f4xx.h",
+      "sha256": "02c067d5a135f540c03215dc834b1e60a97bbd4e55bfd3994b0c82a15ea3012a"
+    },
+    {
+      "destination": "praxis_sequence.h",
+      "family": "stm32",
+      "path": "examples/include/praxis_sequence.h",
+      "sha256": "59b5312a1e953e053af875d17692e4c9ff7804b543993d56a289cdb19e013158"
+    },
+    {
+      "destination": "avr/common.h",
+      "family": "avr",
+      "path": "sources/atmega328p/raw/vendor/avr/common.h",
+      "sha256": "c139d2f0537a04c90f0c48bb46b9cb9a81e41ddc66e3f888904a6b2fb18ee4f3"
+    },
+    {
+      "destination": "avr/fuse.h",
+      "family": "avr",
+      "path": "sources/atmega328p/raw/vendor/avr/fuse.h",
+      "sha256": "cd3e6d2b0869fafe2ec7c7245939f732e59f7c4a1ff5db5ff685dc643f6346ec"
+    },
+    {
+      "destination": "avr/interrupt.h",
+      "family": "avr",
+      "path": "sources/atmega328p/raw/vendor/avr/interrupt.h",
+      "sha256": "3312cb9c4ea88b3756770d4a7dba3fd2363eccf2d95bbe339809a4ad881b96d3"
+    },
+    {
+      "destination": "avr/io.h",
+      "family": "avr",
+      "path": "sources/atmega328p/raw/vendor/avr/io.h",
+      "sha256": "d7b8af97116c16665d91ae8675ec6420f005254c16b4fd9e6f007bbc1608f2a9"
+    },
+    {
+      "destination": "avr/iom328p.h",
+      "family": "avr",
+      "path": "sources/atmega328p/raw/vendor/avr/iom328p.h",
+      "sha256": "c7227f0fb809ecd959087a79b3a8618bad60d1a6a92bc2050618e0c22f407024"
+    },
+    {
+      "destination": "avr/lock.h",
+      "family": "avr",
+      "path": "sources/atmega328p/raw/vendor/avr/lock.h",
+      "sha256": "07ca647f8cfecf38e4fafc1fbfd8ca5897a8a9dedf284d91ba3760877e92d687"
+    },
+    {
+      "destination": "avr/portpins.h",
+      "family": "avr",
+      "path": "sources/atmega328p/raw/vendor/avr/portpins.h",
+      "sha256": "94d0e0e5ee7c0a6bec166e2c1e484a12b54ef27949a1ad95b50ac476c621ae3d"
+    },
+    {
+      "destination": "avr/sfr_defs.h",
+      "family": "avr",
+      "path": "sources/atmega328p/raw/vendor/avr/sfr_defs.h",
+      "sha256": "cc722e1abb189dd6d836d73af5e59527f315453e9d7a2d6422f3b19ea2b8539a"
+    },
+    {
+      "destination": "avr/version.h",
+      "family": "avr",
+      "path": "sources/atmega328p/raw/vendor/avr/version.h",
+      "sha256": "be10dc83b9b70b7e37b74f9cbcb0291f8decc8a1626c8a1c0d93b6ee2764eadf"
+    },
+    {
+      "destination": "bits/devinfo.h",
+      "family": "avr",
+      "path": "sources/atmega328p/raw/vendor/bits/devinfo.h",
+      "sha256": "123219f9630d10c02022acc5b744a03eed40cbd70cc07af0dd2b65bf78feb25c"
+    },
+    {
+      "destination": "praxis_sequence.h",
+      "family": "avr",
+      "path": "examples/include/praxis_sequence.h",
+      "sha256": "59b5312a1e953e053af875d17692e4c9ff7804b543993d56a289cdb19e013158"
+    }
+  ],
+  "image": "sha256:4748b01d5c1d2313e5617878f9450ff1d432f8244416732d0cc57aa1867cc120",
+  "schema_version": 1,
+  "status": "Unprovisioned: rootless Podman and a digest-pinned toolchain image are required."
+}

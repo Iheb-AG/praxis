@@ -1,0 +1,4106 @@
+[
+  {
+    "id": "rcc",
+    "title": "RCC: HSI clock and bus gates",
+    "prerequisites": [],
+    "instances": [
+      {
+        "name": "RCC",
+        "base_address": 1073887232,
+        "bus": "AHB1",
+        "clock": "HSI16",
+        "sources": [
+          {
+            "source": "header",
+            "locator": "instance:RCC"
+          },
+          {
+            "source": "rcc_review",
+            "locator": "clock:RCC"
+          }
+        ]
+      }
+    ],
+    "registers": [
+      {
+        "name": "CR",
+        "offset": 0,
+        "width": 32,
+        "io_address": null,
+        "access": "mixed",
+        "reset": 131,
+        "side_effects": "Ready flags are read-only; preserve calibration/reserved bits.",
+        "fields": [
+          {
+            "name": "HSION",
+            "lsb": 0,
+            "width": 1,
+            "mask": 1,
+            "meaning": "1 enables HSI16",
+            "sources": [
+              {
+                "source": "rcc_review",
+                "locator": "field:HSION"
+              }
+            ]
+          },
+          {
+            "name": "HSIRDY",
+            "lsb": 1,
+            "width": 1,
+            "mask": 2,
+            "meaning": "Wait until 1 with timeout",
+            "sources": [
+              {
+                "source": "rcc_review",
+                "locator": "field:HSIRDY"
+              }
+            ]
+          },
+          {
+            "name": "HSITRIM",
+            "lsb": 3,
+            "width": 5,
+            "mask": 248,
+            "meaning": "Factory default trim 16",
+            "sources": [
+              {
+                "source": "rcc_review",
+                "locator": "field:HSITRIM"
+              }
+            ]
+          },
+          {
+            "name": "HSICAL",
+            "lsb": 8,
+            "width": 8,
+            "mask": 65280,
+            "meaning": "Read-only factory calibration",
+            "sources": [
+              {
+                "source": "rcc_review",
+                "locator": "field:HSICAL"
+              }
+            ]
+          },
+          {
+            "name": "HSEON",
+            "lsb": 16,
+            "width": 1,
+            "mask": 65536,
+            "meaning": "External oscillator enable; not used by fixture",
+            "sources": [
+              {
+                "source": "rcc_review",
+                "locator": "field:HSEON"
+              }
+            ]
+          },
+          {
+            "name": "HSERDY",
+            "lsb": 17,
+            "width": 1,
+            "mask": 131072,
+            "meaning": "HSE ready",
+            "sources": [
+              {
+                "source": "rcc_review",
+                "locator": "field:HSERDY"
+              }
+            ]
+          },
+          {
+            "name": "HSEBYP",
+            "lsb": 18,
+            "width": 1,
+            "mask": 262144,
+            "meaning": "HSE bypass",
+            "sources": [
+              {
+                "source": "rcc_review",
+                "locator": "field:HSEBYP"
+              }
+            ]
+          },
+          {
+            "name": "CSSON",
+            "lsb": 19,
+            "width": 1,
+            "mask": 524288,
+            "meaning": "Clock security",
+            "sources": [
+              {
+                "source": "rcc_review",
+                "locator": "field:CSSON"
+              }
+            ]
+          },
+          {
+            "name": "PLLON",
+            "lsb": 24,
+            "width": 1,
+            "mask": 16777216,
+            "meaning": "PLL enable",
+            "sources": [
+              {
+                "source": "rcc_review",
+                "locator": "field:PLLON"
+              }
+            ]
+          },
+          {
+            "name": "PLLRDY",
+            "lsb": 25,
+            "width": 1,
+            "mask": 33554432,
+            "meaning": "PLL ready",
+            "sources": [
+              {
+                "source": "rcc_review",
+                "locator": "field:PLLRDY"
+              }
+            ]
+          },
+          {
+            "name": "PLLI2SON",
+            "lsb": 26,
+            "width": 1,
+            "mask": 67108864,
+            "meaning": "PLLI2S enable",
+            "sources": [
+              {
+                "source": "rcc_review",
+                "locator": "field:PLLI2SON"
+              }
+            ]
+          },
+          {
+            "name": "PLLI2SRDY",
+            "lsb": 27,
+            "width": 1,
+            "mask": 134217728,
+            "meaning": "PLLI2S ready",
+            "sources": [
+              {
+                "source": "rcc_review",
+                "locator": "field:PLLI2SRDY"
+              }
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "source": "header",
+            "locator": "register:CR"
+          },
+          {
+            "source": "rcc_review",
+            "locator": "register:CR"
+          }
+        ]
+      },
+      {
+        "name": "CFGR",
+        "offset": 8,
+        "width": 32,
+        "io_address": null,
+        "access": "mixed",
+        "reset": 0,
+        "side_effects": "SWS reflects selected source; wait after changing SW.",
+        "fields": [
+          {
+            "name": "SW",
+            "lsb": 0,
+            "width": 2,
+            "mask": 3,
+            "meaning": "00 HSI; 01 HSE; 10 PLL",
+            "sources": [
+              {
+                "source": "rcc_review",
+                "locator": "field:SW"
+              }
+            ]
+          },
+          {
+            "name": "SWS",
+            "lsb": 2,
+            "width": 2,
+            "mask": 12,
+            "meaning": "Read-only active source",
+            "sources": [
+              {
+                "source": "rcc_review",
+                "locator": "field:SWS"
+              }
+            ]
+          },
+          {
+            "name": "HPRE",
+            "lsb": 4,
+            "width": 4,
+            "mask": 240,
+            "meaning": "0xxx /1; 1000 /2; see manual for other divisors",
+            "sources": [
+              {
+                "source": "rcc_review",
+                "locator": "field:HPRE"
+              }
+            ]
+          },
+          {
+            "name": "PPRE1",
+            "lsb": 10,
+            "width": 3,
+            "mask": 7168,
+            "meaning": "0xx /1; 100 /2; 101 /4; 110 /8; 111 /16",
+            "sources": [
+              {
+                "source": "rcc_review",
+                "locator": "field:PPRE1"
+              }
+            ]
+          },
+          {
+            "name": "PPRE2",
+            "lsb": 13,
+            "width": 3,
+            "mask": 57344,
+            "meaning": "Same encoding as PPRE1",
+            "sources": [
+              {
+                "source": "rcc_review",
+                "locator": "field:PPRE2"
+              }
+            ]
+          },
+          {
+            "name": "RTCPRE",
+            "lsb": 16,
+            "width": 5,
+            "mask": 2031616,
+            "meaning": "RTC HSE division",
+            "sources": [
+              {
+                "source": "rcc_review",
+                "locator": "field:RTCPRE"
+              }
+            ]
+          },
+          {
+            "name": "MCO1",
+            "lsb": 21,
+            "width": 2,
+            "mask": 6291456,
+            "meaning": "Clock output source",
+            "sources": [
+              {
+                "source": "rcc_review",
+                "locator": "field:MCO1"
+              }
+            ]
+          },
+          {
+            "name": "I2SSRC",
+            "lsb": 23,
+            "width": 1,
+            "mask": 8388608,
+            "meaning": "I2S source",
+            "sources": [
+              {
+                "source": "rcc_review",
+                "locator": "field:I2SSRC"
+              }
+            ]
+          },
+          {
+            "name": "MCO1PRE",
+            "lsb": 24,
+            "width": 3,
+            "mask": 117440512,
+            "meaning": "MCO1 division",
+            "sources": [
+              {
+                "source": "rcc_review",
+                "locator": "field:MCO1PRE"
+              }
+            ]
+          },
+          {
+            "name": "MCO2PRE",
+            "lsb": 27,
+            "width": 3,
+            "mask": 939524096,
+            "meaning": "MCO2 division",
+            "sources": [
+              {
+                "source": "rcc_review",
+                "locator": "field:MCO2PRE"
+              }
+            ]
+          },
+          {
+            "name": "MCO2",
+            "lsb": 30,
+            "width": 2,
+            "mask": 3221225472,
+            "meaning": "MCO2 source",
+            "sources": [
+              {
+                "source": "rcc_review",
+                "locator": "field:MCO2"
+              }
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "source": "header",
+            "locator": "register:CFGR"
+          },
+          {
+            "source": "rcc_review",
+            "locator": "register:CFGR"
+          }
+        ]
+      },
+      {
+        "name": "APB1RSTR",
+        "offset": 32,
+        "width": 32,
+        "io_address": null,
+        "access": "RW",
+        "reset": 0,
+        "side_effects": "Pulse only the required reset bit; clear it before use.",
+        "fields": [
+          {
+            "name": "USART2RST",
+            "lsb": 17,
+            "width": 1,
+            "mask": 131072,
+            "meaning": "1 holds USART2 in reset",
+            "sources": [
+              {
+                "source": "rcc_review",
+                "locator": "field:USART2RST"
+              }
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "source": "header",
+            "locator": "register:APB1RSTR"
+          },
+          {
+            "source": "rcc_review",
+            "locator": "register:APB1RSTR"
+          }
+        ]
+      },
+      {
+        "name": "AHB1ENR",
+        "offset": 48,
+        "width": 32,
+        "io_address": null,
+        "access": "RW",
+        "reset": 0,
+        "side_effects": "Read back after enabling a clock before peripheral access.",
+        "fields": [
+          {
+            "name": "GPIOAEN",
+            "lsb": 0,
+            "width": 1,
+            "mask": 1,
+            "meaning": "1 enables port clock",
+            "sources": [
+              {
+                "source": "rcc_review",
+                "locator": "field:GPIOAEN"
+              }
+            ]
+          },
+          {
+            "name": "GPIOBEN",
+            "lsb": 1,
+            "width": 1,
+            "mask": 2,
+            "meaning": "1 enables port clock",
+            "sources": [
+              {
+                "source": "rcc_review",
+                "locator": "field:GPIOBEN"
+              }
+            ]
+          },
+          {
+            "name": "GPIOCEN",
+            "lsb": 2,
+            "width": 1,
+            "mask": 4,
+            "meaning": "1 enables port clock",
+            "sources": [
+              {
+                "source": "rcc_review",
+                "locator": "field:GPIOCEN"
+              }
+            ]
+          },
+          {
+            "name": "GPIODEN",
+            "lsb": 3,
+            "width": 1,
+            "mask": 8,
+            "meaning": "1 enables port clock",
+            "sources": [
+              {
+                "source": "rcc_review",
+                "locator": "field:GPIODEN"
+              }
+            ]
+          },
+          {
+            "name": "GPIOEEN",
+            "lsb": 4,
+            "width": 1,
+            "mask": 16,
+            "meaning": "1 enables port clock",
+            "sources": [
+              {
+                "source": "rcc_review",
+                "locator": "field:GPIOEEN"
+              }
+            ]
+          },
+          {
+            "name": "GPIOHEN",
+            "lsb": 7,
+            "width": 1,
+            "mask": 128,
+            "meaning": "GPIOH gate",
+            "sources": [
+              {
+                "source": "rcc_review",
+                "locator": "field:GPIOHEN"
+              }
+            ]
+          },
+          {
+            "name": "CRCEN",
+            "lsb": 12,
+            "width": 1,
+            "mask": 4096,
+            "meaning": "CRC gate",
+            "sources": [
+              {
+                "source": "rcc_review",
+                "locator": "field:CRCEN"
+              }
+            ]
+          },
+          {
+            "name": "DMA1EN",
+            "lsb": 21,
+            "width": 1,
+            "mask": 2097152,
+            "meaning": "DMA1 gate",
+            "sources": [
+              {
+                "source": "rcc_review",
+                "locator": "field:DMA1EN"
+              }
+            ]
+          },
+          {
+            "name": "DMA2EN",
+            "lsb": 22,
+            "width": 1,
+            "mask": 4194304,
+            "meaning": "DMA2 gate",
+            "sources": [
+              {
+                "source": "rcc_review",
+                "locator": "field:DMA2EN"
+              }
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "source": "header",
+            "locator": "register:AHB1ENR"
+          },
+          {
+            "source": "rcc_review",
+            "locator": "register:AHB1ENR"
+          }
+        ]
+      },
+      {
+        "name": "APB1ENR",
+        "offset": 64,
+        "width": 32,
+        "io_address": null,
+        "access": "RW",
+        "reset": 0,
+        "side_effects": "Read back before accessing the newly enabled peripheral.",
+        "fields": [
+          {
+            "name": "TIM2EN",
+            "lsb": 0,
+            "width": 1,
+            "mask": 1,
+            "meaning": "Timer gate",
+            "sources": [
+              {
+                "source": "rcc_review",
+                "locator": "field:TIM2EN"
+              }
+            ]
+          },
+          {
+            "name": "TIM3EN",
+            "lsb": 1,
+            "width": 1,
+            "mask": 2,
+            "meaning": "Timer gate",
+            "sources": [
+              {
+                "source": "rcc_review",
+                "locator": "field:TIM3EN"
+              }
+            ]
+          },
+          {
+            "name": "TIM4EN",
+            "lsb": 2,
+            "width": 1,
+            "mask": 4,
+            "meaning": "Timer gate",
+            "sources": [
+              {
+                "source": "rcc_review",
+                "locator": "field:TIM4EN"
+              }
+            ]
+          },
+          {
+            "name": "TIM5EN",
+            "lsb": 3,
+            "width": 1,
+            "mask": 8,
+            "meaning": "Timer gate",
+            "sources": [
+              {
+                "source": "rcc_review",
+                "locator": "field:TIM5EN"
+              }
+            ]
+          },
+          {
+            "name": "WWDGEN",
+            "lsb": 11,
+            "width": 1,
+            "mask": 2048,
+            "meaning": "Window watchdog gate",
+            "sources": [
+              {
+                "source": "rcc_review",
+                "locator": "field:WWDGEN"
+              }
+            ]
+          },
+          {
+            "name": "SPI2EN",
+            "lsb": 14,
+            "width": 1,
+            "mask": 16384,
+            "meaning": "SPI2 gate",
+            "sources": [
+              {
+                "source": "rcc_review",
+                "locator": "field:SPI2EN"
+              }
+            ]
+          },
+          {
+            "name": "SPI3EN",
+            "lsb": 15,
+            "width": 1,
+            "mask": 32768,
+            "meaning": "SPI3 gate",
+            "sources": [
+              {
+                "source": "rcc_review",
+                "locator": "field:SPI3EN"
+              }
+            ]
+          },
+          {
+            "name": "USART2EN",
+            "lsb": 17,
+            "width": 1,
+            "mask": 131072,
+            "meaning": "USART2 PCLK1 gate",
+            "sources": [
+              {
+                "source": "rcc_review",
+                "locator": "field:USART2EN"
+              }
+            ]
+          },
+          {
+            "name": "I2C1EN",
+            "lsb": 21,
+            "width": 1,
+            "mask": 2097152,
+            "meaning": "I2C1 gate",
+            "sources": [
+              {
+                "source": "rcc_review",
+                "locator": "field:I2C1EN"
+              }
+            ]
+          },
+          {
+            "name": "I2C2EN",
+            "lsb": 22,
+            "width": 1,
+            "mask": 4194304,
+            "meaning": "I2C2 gate",
+            "sources": [
+              {
+                "source": "rcc_review",
+                "locator": "field:I2C2EN"
+              }
+            ]
+          },
+          {
+            "name": "I2C3EN",
+            "lsb": 23,
+            "width": 1,
+            "mask": 8388608,
+            "meaning": "I2C3 gate",
+            "sources": [
+              {
+                "source": "rcc_review",
+                "locator": "field:I2C3EN"
+              }
+            ]
+          },
+          {
+            "name": "PWREN",
+            "lsb": 28,
+            "width": 1,
+            "mask": 268435456,
+            "meaning": "Power control gate",
+            "sources": [
+              {
+                "source": "rcc_review",
+                "locator": "field:PWREN"
+              }
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "source": "header",
+            "locator": "register:APB1ENR"
+          },
+          {
+            "source": "rcc_review",
+            "locator": "register:APB1ENR"
+          }
+        ]
+      }
+    ],
+    "reviewed_markdown": "reviewed/rcc.md",
+    "review": {
+      "status": "reviewed",
+      "reviewer": "Codex source-backed fixture editorial review",
+      "basis": "Checked against the linked vendor manuals and pinned declarations; independent hardware sign-off remains pending."
+    }
+  },
+  {
+    "id": "gpio",
+    "title": "GPIOA: multiplexing and USART2 pins",
+    "prerequisites": [
+      "rcc"
+    ],
+    "instances": [
+      {
+        "name": "GPIOA",
+        "base_address": 1073872896,
+        "bus": "AHB1",
+        "clock": "RCC_AHB1ENR.GPIOAEN",
+        "sources": [
+          {
+            "source": "header",
+            "locator": "instance:GPIOA"
+          },
+          {
+            "source": "gpio_review",
+            "locator": "clock:GPIOA"
+          }
+        ]
+      }
+    ],
+    "registers": [
+      {
+        "name": "MODER",
+        "offset": 0,
+        "width": 32,
+        "io_address": null,
+        "access": "RW",
+        "reset": 2818572288,
+        "side_effects": "Preserve SWD/debug pins.",
+        "fields": [
+          {
+            "name": "MODER0",
+            "lsb": 0,
+            "width": 2,
+            "mask": 3,
+            "meaning": "00 input; 01 output; 10 alternate function; 11 analog",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:MODER0"
+              }
+            ]
+          },
+          {
+            "name": "MODER1",
+            "lsb": 2,
+            "width": 2,
+            "mask": 12,
+            "meaning": "00 input; 01 output; 10 alternate function; 11 analog",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:MODER1"
+              }
+            ]
+          },
+          {
+            "name": "MODER2",
+            "lsb": 4,
+            "width": 2,
+            "mask": 48,
+            "meaning": "00 input; 01 output; 10 alternate function; 11 analog",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:MODER2"
+              }
+            ]
+          },
+          {
+            "name": "MODER3",
+            "lsb": 6,
+            "width": 2,
+            "mask": 192,
+            "meaning": "00 input; 01 output; 10 alternate function; 11 analog",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:MODER3"
+              }
+            ]
+          },
+          {
+            "name": "MODER4",
+            "lsb": 8,
+            "width": 2,
+            "mask": 768,
+            "meaning": "00 input; 01 output; 10 alternate function; 11 analog",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:MODER4"
+              }
+            ]
+          },
+          {
+            "name": "MODER5",
+            "lsb": 10,
+            "width": 2,
+            "mask": 3072,
+            "meaning": "00 input; 01 output; 10 alternate function; 11 analog",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:MODER5"
+              }
+            ]
+          },
+          {
+            "name": "MODER6",
+            "lsb": 12,
+            "width": 2,
+            "mask": 12288,
+            "meaning": "00 input; 01 output; 10 alternate function; 11 analog",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:MODER6"
+              }
+            ]
+          },
+          {
+            "name": "MODER7",
+            "lsb": 14,
+            "width": 2,
+            "mask": 49152,
+            "meaning": "00 input; 01 output; 10 alternate function; 11 analog",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:MODER7"
+              }
+            ]
+          },
+          {
+            "name": "MODER8",
+            "lsb": 16,
+            "width": 2,
+            "mask": 196608,
+            "meaning": "00 input; 01 output; 10 alternate function; 11 analog",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:MODER8"
+              }
+            ]
+          },
+          {
+            "name": "MODER9",
+            "lsb": 18,
+            "width": 2,
+            "mask": 786432,
+            "meaning": "00 input; 01 output; 10 alternate function; 11 analog",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:MODER9"
+              }
+            ]
+          },
+          {
+            "name": "MODER10",
+            "lsb": 20,
+            "width": 2,
+            "mask": 3145728,
+            "meaning": "00 input; 01 output; 10 alternate function; 11 analog",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:MODER10"
+              }
+            ]
+          },
+          {
+            "name": "MODER11",
+            "lsb": 22,
+            "width": 2,
+            "mask": 12582912,
+            "meaning": "00 input; 01 output; 10 alternate function; 11 analog",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:MODER11"
+              }
+            ]
+          },
+          {
+            "name": "MODER12",
+            "lsb": 24,
+            "width": 2,
+            "mask": 50331648,
+            "meaning": "00 input; 01 output; 10 alternate function; 11 analog",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:MODER12"
+              }
+            ]
+          },
+          {
+            "name": "MODER13",
+            "lsb": 26,
+            "width": 2,
+            "mask": 201326592,
+            "meaning": "00 input; 01 output; 10 alternate function; 11 analog",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:MODER13"
+              }
+            ]
+          },
+          {
+            "name": "MODER14",
+            "lsb": 28,
+            "width": 2,
+            "mask": 805306368,
+            "meaning": "00 input; 01 output; 10 alternate function; 11 analog",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:MODER14"
+              }
+            ]
+          },
+          {
+            "name": "MODER15",
+            "lsb": 30,
+            "width": 2,
+            "mask": 3221225472,
+            "meaning": "00 input; 01 output; 10 alternate function; 11 analog",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:MODER15"
+              }
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "source": "header",
+            "locator": "register:MODER"
+          },
+          {
+            "source": "gpio_review",
+            "locator": "register:MODER"
+          }
+        ]
+      },
+      {
+        "name": "OTYPER",
+        "offset": 4,
+        "width": 32,
+        "io_address": null,
+        "access": "RW",
+        "reset": 0,
+        "side_effects": "Upper 16 bits reserved.",
+        "fields": [
+          {
+            "name": "OT0",
+            "lsb": 0,
+            "width": 1,
+            "mask": 1,
+            "meaning": "0 push-pull; 1 open-drain",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:OT0"
+              }
+            ]
+          },
+          {
+            "name": "OT1",
+            "lsb": 1,
+            "width": 1,
+            "mask": 2,
+            "meaning": "0 push-pull; 1 open-drain",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:OT1"
+              }
+            ]
+          },
+          {
+            "name": "OT2",
+            "lsb": 2,
+            "width": 1,
+            "mask": 4,
+            "meaning": "0 push-pull; 1 open-drain",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:OT2"
+              }
+            ]
+          },
+          {
+            "name": "OT3",
+            "lsb": 3,
+            "width": 1,
+            "mask": 8,
+            "meaning": "0 push-pull; 1 open-drain",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:OT3"
+              }
+            ]
+          },
+          {
+            "name": "OT4",
+            "lsb": 4,
+            "width": 1,
+            "mask": 16,
+            "meaning": "0 push-pull; 1 open-drain",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:OT4"
+              }
+            ]
+          },
+          {
+            "name": "OT5",
+            "lsb": 5,
+            "width": 1,
+            "mask": 32,
+            "meaning": "0 push-pull; 1 open-drain",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:OT5"
+              }
+            ]
+          },
+          {
+            "name": "OT6",
+            "lsb": 6,
+            "width": 1,
+            "mask": 64,
+            "meaning": "0 push-pull; 1 open-drain",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:OT6"
+              }
+            ]
+          },
+          {
+            "name": "OT7",
+            "lsb": 7,
+            "width": 1,
+            "mask": 128,
+            "meaning": "0 push-pull; 1 open-drain",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:OT7"
+              }
+            ]
+          },
+          {
+            "name": "OT8",
+            "lsb": 8,
+            "width": 1,
+            "mask": 256,
+            "meaning": "0 push-pull; 1 open-drain",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:OT8"
+              }
+            ]
+          },
+          {
+            "name": "OT9",
+            "lsb": 9,
+            "width": 1,
+            "mask": 512,
+            "meaning": "0 push-pull; 1 open-drain",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:OT9"
+              }
+            ]
+          },
+          {
+            "name": "OT10",
+            "lsb": 10,
+            "width": 1,
+            "mask": 1024,
+            "meaning": "0 push-pull; 1 open-drain",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:OT10"
+              }
+            ]
+          },
+          {
+            "name": "OT11",
+            "lsb": 11,
+            "width": 1,
+            "mask": 2048,
+            "meaning": "0 push-pull; 1 open-drain",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:OT11"
+              }
+            ]
+          },
+          {
+            "name": "OT12",
+            "lsb": 12,
+            "width": 1,
+            "mask": 4096,
+            "meaning": "0 push-pull; 1 open-drain",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:OT12"
+              }
+            ]
+          },
+          {
+            "name": "OT13",
+            "lsb": 13,
+            "width": 1,
+            "mask": 8192,
+            "meaning": "0 push-pull; 1 open-drain",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:OT13"
+              }
+            ]
+          },
+          {
+            "name": "OT14",
+            "lsb": 14,
+            "width": 1,
+            "mask": 16384,
+            "meaning": "0 push-pull; 1 open-drain",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:OT14"
+              }
+            ]
+          },
+          {
+            "name": "OT15",
+            "lsb": 15,
+            "width": 1,
+            "mask": 32768,
+            "meaning": "0 push-pull; 1 open-drain",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:OT15"
+              }
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "source": "header",
+            "locator": "register:OTYPER"
+          },
+          {
+            "source": "gpio_review",
+            "locator": "register:OTYPER"
+          }
+        ]
+      },
+      {
+        "name": "OSPEEDR",
+        "offset": 8,
+        "width": 32,
+        "io_address": null,
+        "access": "RW",
+        "reset": null,
+        "side_effects": "Choose slew rate for the board signal.",
+        "fields": [
+          {
+            "name": "OSPEED0",
+            "lsb": 0,
+            "width": 2,
+            "mask": 3,
+            "meaning": "00 low; 01 medium; 10 fast; 11 high",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:OSPEED0"
+              }
+            ]
+          },
+          {
+            "name": "OSPEED1",
+            "lsb": 2,
+            "width": 2,
+            "mask": 12,
+            "meaning": "00 low; 01 medium; 10 fast; 11 high",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:OSPEED1"
+              }
+            ]
+          },
+          {
+            "name": "OSPEED2",
+            "lsb": 4,
+            "width": 2,
+            "mask": 48,
+            "meaning": "00 low; 01 medium; 10 fast; 11 high",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:OSPEED2"
+              }
+            ]
+          },
+          {
+            "name": "OSPEED3",
+            "lsb": 6,
+            "width": 2,
+            "mask": 192,
+            "meaning": "00 low; 01 medium; 10 fast; 11 high",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:OSPEED3"
+              }
+            ]
+          },
+          {
+            "name": "OSPEED4",
+            "lsb": 8,
+            "width": 2,
+            "mask": 768,
+            "meaning": "00 low; 01 medium; 10 fast; 11 high",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:OSPEED4"
+              }
+            ]
+          },
+          {
+            "name": "OSPEED5",
+            "lsb": 10,
+            "width": 2,
+            "mask": 3072,
+            "meaning": "00 low; 01 medium; 10 fast; 11 high",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:OSPEED5"
+              }
+            ]
+          },
+          {
+            "name": "OSPEED6",
+            "lsb": 12,
+            "width": 2,
+            "mask": 12288,
+            "meaning": "00 low; 01 medium; 10 fast; 11 high",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:OSPEED6"
+              }
+            ]
+          },
+          {
+            "name": "OSPEED7",
+            "lsb": 14,
+            "width": 2,
+            "mask": 49152,
+            "meaning": "00 low; 01 medium; 10 fast; 11 high",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:OSPEED7"
+              }
+            ]
+          },
+          {
+            "name": "OSPEED8",
+            "lsb": 16,
+            "width": 2,
+            "mask": 196608,
+            "meaning": "00 low; 01 medium; 10 fast; 11 high",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:OSPEED8"
+              }
+            ]
+          },
+          {
+            "name": "OSPEED9",
+            "lsb": 18,
+            "width": 2,
+            "mask": 786432,
+            "meaning": "00 low; 01 medium; 10 fast; 11 high",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:OSPEED9"
+              }
+            ]
+          },
+          {
+            "name": "OSPEED10",
+            "lsb": 20,
+            "width": 2,
+            "mask": 3145728,
+            "meaning": "00 low; 01 medium; 10 fast; 11 high",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:OSPEED10"
+              }
+            ]
+          },
+          {
+            "name": "OSPEED11",
+            "lsb": 22,
+            "width": 2,
+            "mask": 12582912,
+            "meaning": "00 low; 01 medium; 10 fast; 11 high",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:OSPEED11"
+              }
+            ]
+          },
+          {
+            "name": "OSPEED12",
+            "lsb": 24,
+            "width": 2,
+            "mask": 50331648,
+            "meaning": "00 low; 01 medium; 10 fast; 11 high",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:OSPEED12"
+              }
+            ]
+          },
+          {
+            "name": "OSPEED13",
+            "lsb": 26,
+            "width": 2,
+            "mask": 201326592,
+            "meaning": "00 low; 01 medium; 10 fast; 11 high",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:OSPEED13"
+              }
+            ]
+          },
+          {
+            "name": "OSPEED14",
+            "lsb": 28,
+            "width": 2,
+            "mask": 805306368,
+            "meaning": "00 low; 01 medium; 10 fast; 11 high",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:OSPEED14"
+              }
+            ]
+          },
+          {
+            "name": "OSPEED15",
+            "lsb": 30,
+            "width": 2,
+            "mask": 3221225472,
+            "meaning": "00 low; 01 medium; 10 fast; 11 high",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:OSPEED15"
+              }
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "source": "header",
+            "locator": "register:OSPEEDR"
+          },
+          {
+            "source": "gpio_review",
+            "locator": "register:OSPEEDR"
+          }
+        ]
+      },
+      {
+        "name": "PUPDR",
+        "offset": 12,
+        "width": 32,
+        "io_address": null,
+        "access": "RW",
+        "reset": null,
+        "side_effects": "11 encoding is reserved.",
+        "fields": [
+          {
+            "name": "PUPD0",
+            "lsb": 0,
+            "width": 2,
+            "mask": 3,
+            "meaning": "00 none; 01 pull-up; 10 pull-down",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:PUPD0"
+              }
+            ]
+          },
+          {
+            "name": "PUPD1",
+            "lsb": 2,
+            "width": 2,
+            "mask": 12,
+            "meaning": "00 none; 01 pull-up; 10 pull-down",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:PUPD1"
+              }
+            ]
+          },
+          {
+            "name": "PUPD2",
+            "lsb": 4,
+            "width": 2,
+            "mask": 48,
+            "meaning": "00 none; 01 pull-up; 10 pull-down",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:PUPD2"
+              }
+            ]
+          },
+          {
+            "name": "PUPD3",
+            "lsb": 6,
+            "width": 2,
+            "mask": 192,
+            "meaning": "00 none; 01 pull-up; 10 pull-down",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:PUPD3"
+              }
+            ]
+          },
+          {
+            "name": "PUPD4",
+            "lsb": 8,
+            "width": 2,
+            "mask": 768,
+            "meaning": "00 none; 01 pull-up; 10 pull-down",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:PUPD4"
+              }
+            ]
+          },
+          {
+            "name": "PUPD5",
+            "lsb": 10,
+            "width": 2,
+            "mask": 3072,
+            "meaning": "00 none; 01 pull-up; 10 pull-down",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:PUPD5"
+              }
+            ]
+          },
+          {
+            "name": "PUPD6",
+            "lsb": 12,
+            "width": 2,
+            "mask": 12288,
+            "meaning": "00 none; 01 pull-up; 10 pull-down",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:PUPD6"
+              }
+            ]
+          },
+          {
+            "name": "PUPD7",
+            "lsb": 14,
+            "width": 2,
+            "mask": 49152,
+            "meaning": "00 none; 01 pull-up; 10 pull-down",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:PUPD7"
+              }
+            ]
+          },
+          {
+            "name": "PUPD8",
+            "lsb": 16,
+            "width": 2,
+            "mask": 196608,
+            "meaning": "00 none; 01 pull-up; 10 pull-down",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:PUPD8"
+              }
+            ]
+          },
+          {
+            "name": "PUPD9",
+            "lsb": 18,
+            "width": 2,
+            "mask": 786432,
+            "meaning": "00 none; 01 pull-up; 10 pull-down",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:PUPD9"
+              }
+            ]
+          },
+          {
+            "name": "PUPD10",
+            "lsb": 20,
+            "width": 2,
+            "mask": 3145728,
+            "meaning": "00 none; 01 pull-up; 10 pull-down",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:PUPD10"
+              }
+            ]
+          },
+          {
+            "name": "PUPD11",
+            "lsb": 22,
+            "width": 2,
+            "mask": 12582912,
+            "meaning": "00 none; 01 pull-up; 10 pull-down",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:PUPD11"
+              }
+            ]
+          },
+          {
+            "name": "PUPD12",
+            "lsb": 24,
+            "width": 2,
+            "mask": 50331648,
+            "meaning": "00 none; 01 pull-up; 10 pull-down",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:PUPD12"
+              }
+            ]
+          },
+          {
+            "name": "PUPD13",
+            "lsb": 26,
+            "width": 2,
+            "mask": 201326592,
+            "meaning": "00 none; 01 pull-up; 10 pull-down",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:PUPD13"
+              }
+            ]
+          },
+          {
+            "name": "PUPD14",
+            "lsb": 28,
+            "width": 2,
+            "mask": 805306368,
+            "meaning": "00 none; 01 pull-up; 10 pull-down",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:PUPD14"
+              }
+            ]
+          },
+          {
+            "name": "PUPD15",
+            "lsb": 30,
+            "width": 2,
+            "mask": 3221225472,
+            "meaning": "00 none; 01 pull-up; 10 pull-down",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:PUPD15"
+              }
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "source": "header",
+            "locator": "register:PUPDR"
+          },
+          {
+            "source": "gpio_review",
+            "locator": "register:PUPDR"
+          }
+        ]
+      },
+      {
+        "name": "IDR",
+        "offset": 16,
+        "width": 32,
+        "io_address": null,
+        "access": "RO",
+        "reset": null,
+        "side_effects": "Sampled input; no read-to-clear.",
+        "fields": [
+          {
+            "name": "IDR0",
+            "lsb": 0,
+            "width": 1,
+            "mask": 1,
+            "meaning": "Input sample",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:IDR0"
+              }
+            ]
+          },
+          {
+            "name": "IDR1",
+            "lsb": 1,
+            "width": 1,
+            "mask": 2,
+            "meaning": "Input sample",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:IDR1"
+              }
+            ]
+          },
+          {
+            "name": "IDR2",
+            "lsb": 2,
+            "width": 1,
+            "mask": 4,
+            "meaning": "Input sample",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:IDR2"
+              }
+            ]
+          },
+          {
+            "name": "IDR3",
+            "lsb": 3,
+            "width": 1,
+            "mask": 8,
+            "meaning": "Input sample",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:IDR3"
+              }
+            ]
+          },
+          {
+            "name": "IDR4",
+            "lsb": 4,
+            "width": 1,
+            "mask": 16,
+            "meaning": "Input sample",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:IDR4"
+              }
+            ]
+          },
+          {
+            "name": "IDR5",
+            "lsb": 5,
+            "width": 1,
+            "mask": 32,
+            "meaning": "Input sample",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:IDR5"
+              }
+            ]
+          },
+          {
+            "name": "IDR6",
+            "lsb": 6,
+            "width": 1,
+            "mask": 64,
+            "meaning": "Input sample",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:IDR6"
+              }
+            ]
+          },
+          {
+            "name": "IDR7",
+            "lsb": 7,
+            "width": 1,
+            "mask": 128,
+            "meaning": "Input sample",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:IDR7"
+              }
+            ]
+          },
+          {
+            "name": "IDR8",
+            "lsb": 8,
+            "width": 1,
+            "mask": 256,
+            "meaning": "Input sample",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:IDR8"
+              }
+            ]
+          },
+          {
+            "name": "IDR9",
+            "lsb": 9,
+            "width": 1,
+            "mask": 512,
+            "meaning": "Input sample",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:IDR9"
+              }
+            ]
+          },
+          {
+            "name": "IDR10",
+            "lsb": 10,
+            "width": 1,
+            "mask": 1024,
+            "meaning": "Input sample",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:IDR10"
+              }
+            ]
+          },
+          {
+            "name": "IDR11",
+            "lsb": 11,
+            "width": 1,
+            "mask": 2048,
+            "meaning": "Input sample",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:IDR11"
+              }
+            ]
+          },
+          {
+            "name": "IDR12",
+            "lsb": 12,
+            "width": 1,
+            "mask": 4096,
+            "meaning": "Input sample",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:IDR12"
+              }
+            ]
+          },
+          {
+            "name": "IDR13",
+            "lsb": 13,
+            "width": 1,
+            "mask": 8192,
+            "meaning": "Input sample",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:IDR13"
+              }
+            ]
+          },
+          {
+            "name": "IDR14",
+            "lsb": 14,
+            "width": 1,
+            "mask": 16384,
+            "meaning": "Input sample",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:IDR14"
+              }
+            ]
+          },
+          {
+            "name": "IDR15",
+            "lsb": 15,
+            "width": 1,
+            "mask": 32768,
+            "meaning": "Input sample",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:IDR15"
+              }
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "source": "header",
+            "locator": "register:IDR"
+          },
+          {
+            "source": "gpio_review",
+            "locator": "register:IDR"
+          }
+        ]
+      },
+      {
+        "name": "ODR",
+        "offset": 20,
+        "width": 32,
+        "io_address": null,
+        "access": "RW",
+        "reset": 0,
+        "side_effects": "Use BSRR for atomic pin changes.",
+        "fields": [
+          {
+            "name": "ODR0",
+            "lsb": 0,
+            "width": 1,
+            "mask": 1,
+            "meaning": "Output latch",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:ODR0"
+              }
+            ]
+          },
+          {
+            "name": "ODR1",
+            "lsb": 1,
+            "width": 1,
+            "mask": 2,
+            "meaning": "Output latch",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:ODR1"
+              }
+            ]
+          },
+          {
+            "name": "ODR2",
+            "lsb": 2,
+            "width": 1,
+            "mask": 4,
+            "meaning": "Output latch",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:ODR2"
+              }
+            ]
+          },
+          {
+            "name": "ODR3",
+            "lsb": 3,
+            "width": 1,
+            "mask": 8,
+            "meaning": "Output latch",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:ODR3"
+              }
+            ]
+          },
+          {
+            "name": "ODR4",
+            "lsb": 4,
+            "width": 1,
+            "mask": 16,
+            "meaning": "Output latch",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:ODR4"
+              }
+            ]
+          },
+          {
+            "name": "ODR5",
+            "lsb": 5,
+            "width": 1,
+            "mask": 32,
+            "meaning": "Output latch",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:ODR5"
+              }
+            ]
+          },
+          {
+            "name": "ODR6",
+            "lsb": 6,
+            "width": 1,
+            "mask": 64,
+            "meaning": "Output latch",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:ODR6"
+              }
+            ]
+          },
+          {
+            "name": "ODR7",
+            "lsb": 7,
+            "width": 1,
+            "mask": 128,
+            "meaning": "Output latch",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:ODR7"
+              }
+            ]
+          },
+          {
+            "name": "ODR8",
+            "lsb": 8,
+            "width": 1,
+            "mask": 256,
+            "meaning": "Output latch",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:ODR8"
+              }
+            ]
+          },
+          {
+            "name": "ODR9",
+            "lsb": 9,
+            "width": 1,
+            "mask": 512,
+            "meaning": "Output latch",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:ODR9"
+              }
+            ]
+          },
+          {
+            "name": "ODR10",
+            "lsb": 10,
+            "width": 1,
+            "mask": 1024,
+            "meaning": "Output latch",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:ODR10"
+              }
+            ]
+          },
+          {
+            "name": "ODR11",
+            "lsb": 11,
+            "width": 1,
+            "mask": 2048,
+            "meaning": "Output latch",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:ODR11"
+              }
+            ]
+          },
+          {
+            "name": "ODR12",
+            "lsb": 12,
+            "width": 1,
+            "mask": 4096,
+            "meaning": "Output latch",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:ODR12"
+              }
+            ]
+          },
+          {
+            "name": "ODR13",
+            "lsb": 13,
+            "width": 1,
+            "mask": 8192,
+            "meaning": "Output latch",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:ODR13"
+              }
+            ]
+          },
+          {
+            "name": "ODR14",
+            "lsb": 14,
+            "width": 1,
+            "mask": 16384,
+            "meaning": "Output latch",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:ODR14"
+              }
+            ]
+          },
+          {
+            "name": "ODR15",
+            "lsb": 15,
+            "width": 1,
+            "mask": 32768,
+            "meaning": "Output latch",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:ODR15"
+              }
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "source": "header",
+            "locator": "register:ODR"
+          },
+          {
+            "source": "gpio_review",
+            "locator": "register:ODR"
+          }
+        ]
+      },
+      {
+        "name": "BSRR",
+        "offset": 24,
+        "width": 32,
+        "io_address": null,
+        "access": "WO",
+        "reset": 0,
+        "side_effects": "Write ones to set/reset; never read-modify-write.",
+        "fields": [
+          {
+            "name": "BS0",
+            "lsb": 0,
+            "width": 1,
+            "mask": 1,
+            "meaning": "Write 1 sets output",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:BS0"
+              }
+            ]
+          },
+          {
+            "name": "BS1",
+            "lsb": 1,
+            "width": 1,
+            "mask": 2,
+            "meaning": "Write 1 sets output",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:BS1"
+              }
+            ]
+          },
+          {
+            "name": "BS2",
+            "lsb": 2,
+            "width": 1,
+            "mask": 4,
+            "meaning": "Write 1 sets output",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:BS2"
+              }
+            ]
+          },
+          {
+            "name": "BS3",
+            "lsb": 3,
+            "width": 1,
+            "mask": 8,
+            "meaning": "Write 1 sets output",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:BS3"
+              }
+            ]
+          },
+          {
+            "name": "BS4",
+            "lsb": 4,
+            "width": 1,
+            "mask": 16,
+            "meaning": "Write 1 sets output",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:BS4"
+              }
+            ]
+          },
+          {
+            "name": "BS5",
+            "lsb": 5,
+            "width": 1,
+            "mask": 32,
+            "meaning": "Write 1 sets output",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:BS5"
+              }
+            ]
+          },
+          {
+            "name": "BS6",
+            "lsb": 6,
+            "width": 1,
+            "mask": 64,
+            "meaning": "Write 1 sets output",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:BS6"
+              }
+            ]
+          },
+          {
+            "name": "BS7",
+            "lsb": 7,
+            "width": 1,
+            "mask": 128,
+            "meaning": "Write 1 sets output",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:BS7"
+              }
+            ]
+          },
+          {
+            "name": "BS8",
+            "lsb": 8,
+            "width": 1,
+            "mask": 256,
+            "meaning": "Write 1 sets output",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:BS8"
+              }
+            ]
+          },
+          {
+            "name": "BS9",
+            "lsb": 9,
+            "width": 1,
+            "mask": 512,
+            "meaning": "Write 1 sets output",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:BS9"
+              }
+            ]
+          },
+          {
+            "name": "BS10",
+            "lsb": 10,
+            "width": 1,
+            "mask": 1024,
+            "meaning": "Write 1 sets output",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:BS10"
+              }
+            ]
+          },
+          {
+            "name": "BS11",
+            "lsb": 11,
+            "width": 1,
+            "mask": 2048,
+            "meaning": "Write 1 sets output",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:BS11"
+              }
+            ]
+          },
+          {
+            "name": "BS12",
+            "lsb": 12,
+            "width": 1,
+            "mask": 4096,
+            "meaning": "Write 1 sets output",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:BS12"
+              }
+            ]
+          },
+          {
+            "name": "BS13",
+            "lsb": 13,
+            "width": 1,
+            "mask": 8192,
+            "meaning": "Write 1 sets output",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:BS13"
+              }
+            ]
+          },
+          {
+            "name": "BS14",
+            "lsb": 14,
+            "width": 1,
+            "mask": 16384,
+            "meaning": "Write 1 sets output",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:BS14"
+              }
+            ]
+          },
+          {
+            "name": "BS15",
+            "lsb": 15,
+            "width": 1,
+            "mask": 32768,
+            "meaning": "Write 1 sets output",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:BS15"
+              }
+            ]
+          },
+          {
+            "name": "BR0",
+            "lsb": 16,
+            "width": 1,
+            "mask": 65536,
+            "meaning": "Write 1 resets output",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:BR0"
+              }
+            ]
+          },
+          {
+            "name": "BR1",
+            "lsb": 17,
+            "width": 1,
+            "mask": 131072,
+            "meaning": "Write 1 resets output",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:BR1"
+              }
+            ]
+          },
+          {
+            "name": "BR2",
+            "lsb": 18,
+            "width": 1,
+            "mask": 262144,
+            "meaning": "Write 1 resets output",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:BR2"
+              }
+            ]
+          },
+          {
+            "name": "BR3",
+            "lsb": 19,
+            "width": 1,
+            "mask": 524288,
+            "meaning": "Write 1 resets output",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:BR3"
+              }
+            ]
+          },
+          {
+            "name": "BR4",
+            "lsb": 20,
+            "width": 1,
+            "mask": 1048576,
+            "meaning": "Write 1 resets output",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:BR4"
+              }
+            ]
+          },
+          {
+            "name": "BR5",
+            "lsb": 21,
+            "width": 1,
+            "mask": 2097152,
+            "meaning": "Write 1 resets output",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:BR5"
+              }
+            ]
+          },
+          {
+            "name": "BR6",
+            "lsb": 22,
+            "width": 1,
+            "mask": 4194304,
+            "meaning": "Write 1 resets output",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:BR6"
+              }
+            ]
+          },
+          {
+            "name": "BR7",
+            "lsb": 23,
+            "width": 1,
+            "mask": 8388608,
+            "meaning": "Write 1 resets output",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:BR7"
+              }
+            ]
+          },
+          {
+            "name": "BR8",
+            "lsb": 24,
+            "width": 1,
+            "mask": 16777216,
+            "meaning": "Write 1 resets output",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:BR8"
+              }
+            ]
+          },
+          {
+            "name": "BR9",
+            "lsb": 25,
+            "width": 1,
+            "mask": 33554432,
+            "meaning": "Write 1 resets output",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:BR9"
+              }
+            ]
+          },
+          {
+            "name": "BR10",
+            "lsb": 26,
+            "width": 1,
+            "mask": 67108864,
+            "meaning": "Write 1 resets output",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:BR10"
+              }
+            ]
+          },
+          {
+            "name": "BR11",
+            "lsb": 27,
+            "width": 1,
+            "mask": 134217728,
+            "meaning": "Write 1 resets output",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:BR11"
+              }
+            ]
+          },
+          {
+            "name": "BR12",
+            "lsb": 28,
+            "width": 1,
+            "mask": 268435456,
+            "meaning": "Write 1 resets output",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:BR12"
+              }
+            ]
+          },
+          {
+            "name": "BR13",
+            "lsb": 29,
+            "width": 1,
+            "mask": 536870912,
+            "meaning": "Write 1 resets output",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:BR13"
+              }
+            ]
+          },
+          {
+            "name": "BR14",
+            "lsb": 30,
+            "width": 1,
+            "mask": 1073741824,
+            "meaning": "Write 1 resets output",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:BR14"
+              }
+            ]
+          },
+          {
+            "name": "BR15",
+            "lsb": 31,
+            "width": 1,
+            "mask": 2147483648,
+            "meaning": "Write 1 resets output",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:BR15"
+              }
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "source": "header",
+            "locator": "register:BSRR"
+          },
+          {
+            "source": "gpio_review",
+            "locator": "register:BSRR"
+          }
+        ]
+      },
+      {
+        "name": "LCKR",
+        "offset": 28,
+        "width": 32,
+        "io_address": null,
+        "access": "RW",
+        "reset": 0,
+        "side_effects": "Lock sequence is deliberate; fixture leaves pins unlocked.",
+        "fields": [
+          {
+            "name": "LCK0",
+            "lsb": 0,
+            "width": 1,
+            "mask": 1,
+            "meaning": "Pin configuration lock",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:LCK0"
+              }
+            ]
+          },
+          {
+            "name": "LCK1",
+            "lsb": 1,
+            "width": 1,
+            "mask": 2,
+            "meaning": "Pin configuration lock",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:LCK1"
+              }
+            ]
+          },
+          {
+            "name": "LCK2",
+            "lsb": 2,
+            "width": 1,
+            "mask": 4,
+            "meaning": "Pin configuration lock",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:LCK2"
+              }
+            ]
+          },
+          {
+            "name": "LCK3",
+            "lsb": 3,
+            "width": 1,
+            "mask": 8,
+            "meaning": "Pin configuration lock",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:LCK3"
+              }
+            ]
+          },
+          {
+            "name": "LCK4",
+            "lsb": 4,
+            "width": 1,
+            "mask": 16,
+            "meaning": "Pin configuration lock",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:LCK4"
+              }
+            ]
+          },
+          {
+            "name": "LCK5",
+            "lsb": 5,
+            "width": 1,
+            "mask": 32,
+            "meaning": "Pin configuration lock",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:LCK5"
+              }
+            ]
+          },
+          {
+            "name": "LCK6",
+            "lsb": 6,
+            "width": 1,
+            "mask": 64,
+            "meaning": "Pin configuration lock",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:LCK6"
+              }
+            ]
+          },
+          {
+            "name": "LCK7",
+            "lsb": 7,
+            "width": 1,
+            "mask": 128,
+            "meaning": "Pin configuration lock",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:LCK7"
+              }
+            ]
+          },
+          {
+            "name": "LCK8",
+            "lsb": 8,
+            "width": 1,
+            "mask": 256,
+            "meaning": "Pin configuration lock",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:LCK8"
+              }
+            ]
+          },
+          {
+            "name": "LCK9",
+            "lsb": 9,
+            "width": 1,
+            "mask": 512,
+            "meaning": "Pin configuration lock",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:LCK9"
+              }
+            ]
+          },
+          {
+            "name": "LCK10",
+            "lsb": 10,
+            "width": 1,
+            "mask": 1024,
+            "meaning": "Pin configuration lock",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:LCK10"
+              }
+            ]
+          },
+          {
+            "name": "LCK11",
+            "lsb": 11,
+            "width": 1,
+            "mask": 2048,
+            "meaning": "Pin configuration lock",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:LCK11"
+              }
+            ]
+          },
+          {
+            "name": "LCK12",
+            "lsb": 12,
+            "width": 1,
+            "mask": 4096,
+            "meaning": "Pin configuration lock",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:LCK12"
+              }
+            ]
+          },
+          {
+            "name": "LCK13",
+            "lsb": 13,
+            "width": 1,
+            "mask": 8192,
+            "meaning": "Pin configuration lock",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:LCK13"
+              }
+            ]
+          },
+          {
+            "name": "LCK14",
+            "lsb": 14,
+            "width": 1,
+            "mask": 16384,
+            "meaning": "Pin configuration lock",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:LCK14"
+              }
+            ]
+          },
+          {
+            "name": "LCK15",
+            "lsb": 15,
+            "width": 1,
+            "mask": 32768,
+            "meaning": "Pin configuration lock",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:LCK15"
+              }
+            ]
+          },
+          {
+            "name": "LCKK",
+            "lsb": 16,
+            "width": 1,
+            "mask": 65536,
+            "meaning": "Lock sequence key",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:LCKK"
+              }
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "source": "header",
+            "locator": "register:LCKR"
+          },
+          {
+            "source": "gpio_review",
+            "locator": "register:LCKR"
+          }
+        ]
+      },
+      {
+        "name": "AFRL",
+        "offset": 32,
+        "width": 32,
+        "io_address": null,
+        "access": "RW",
+        "reset": 0,
+        "side_effects": "Write selected four-bit field; preserve adjacent pins.",
+        "fields": [
+          {
+            "name": "AFSEL0",
+            "lsb": 0,
+            "width": 4,
+            "mask": 15,
+            "meaning": "AF0–AF15; only datasheet-listed mappings are valid",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:AFSEL0"
+              }
+            ]
+          },
+          {
+            "name": "AFSEL1",
+            "lsb": 4,
+            "width": 4,
+            "mask": 240,
+            "meaning": "AF0–AF15; only datasheet-listed mappings are valid",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:AFSEL1"
+              }
+            ]
+          },
+          {
+            "name": "AFSEL2",
+            "lsb": 8,
+            "width": 4,
+            "mask": 3840,
+            "meaning": "AF0–AF15; only datasheet-listed mappings are valid",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:AFSEL2"
+              }
+            ]
+          },
+          {
+            "name": "AFSEL3",
+            "lsb": 12,
+            "width": 4,
+            "mask": 61440,
+            "meaning": "AF0–AF15; only datasheet-listed mappings are valid",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:AFSEL3"
+              }
+            ]
+          },
+          {
+            "name": "AFSEL4",
+            "lsb": 16,
+            "width": 4,
+            "mask": 983040,
+            "meaning": "AF0–AF15; only datasheet-listed mappings are valid",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:AFSEL4"
+              }
+            ]
+          },
+          {
+            "name": "AFSEL5",
+            "lsb": 20,
+            "width": 4,
+            "mask": 15728640,
+            "meaning": "AF0–AF15; only datasheet-listed mappings are valid",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:AFSEL5"
+              }
+            ]
+          },
+          {
+            "name": "AFSEL6",
+            "lsb": 24,
+            "width": 4,
+            "mask": 251658240,
+            "meaning": "AF0–AF15; only datasheet-listed mappings are valid",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:AFSEL6"
+              }
+            ]
+          },
+          {
+            "name": "AFSEL7",
+            "lsb": 28,
+            "width": 4,
+            "mask": 4026531840,
+            "meaning": "AF0–AF15; only datasheet-listed mappings are valid",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:AFSEL7"
+              }
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "source": "header",
+            "locator": "register:AFRL"
+          },
+          {
+            "source": "gpio_review",
+            "locator": "register:AFRL"
+          }
+        ]
+      },
+      {
+        "name": "AFRH",
+        "offset": 36,
+        "width": 32,
+        "io_address": null,
+        "access": "RW",
+        "reset": 0,
+        "side_effects": "Pins 8–15 use this register.",
+        "fields": [
+          {
+            "name": "AFSEL8",
+            "lsb": 0,
+            "width": 4,
+            "mask": 15,
+            "meaning": "AF0–AF15; only datasheet-listed mappings are valid",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:AFSEL8"
+              }
+            ]
+          },
+          {
+            "name": "AFSEL9",
+            "lsb": 4,
+            "width": 4,
+            "mask": 240,
+            "meaning": "AF0–AF15; only datasheet-listed mappings are valid",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:AFSEL9"
+              }
+            ]
+          },
+          {
+            "name": "AFSEL10",
+            "lsb": 8,
+            "width": 4,
+            "mask": 3840,
+            "meaning": "AF0–AF15; only datasheet-listed mappings are valid",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:AFSEL10"
+              }
+            ]
+          },
+          {
+            "name": "AFSEL11",
+            "lsb": 12,
+            "width": 4,
+            "mask": 61440,
+            "meaning": "AF0–AF15; only datasheet-listed mappings are valid",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:AFSEL11"
+              }
+            ]
+          },
+          {
+            "name": "AFSEL12",
+            "lsb": 16,
+            "width": 4,
+            "mask": 983040,
+            "meaning": "AF0–AF15; only datasheet-listed mappings are valid",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:AFSEL12"
+              }
+            ]
+          },
+          {
+            "name": "AFSEL13",
+            "lsb": 20,
+            "width": 4,
+            "mask": 15728640,
+            "meaning": "AF0–AF15; only datasheet-listed mappings are valid",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:AFSEL13"
+              }
+            ]
+          },
+          {
+            "name": "AFSEL14",
+            "lsb": 24,
+            "width": 4,
+            "mask": 251658240,
+            "meaning": "AF0–AF15; only datasheet-listed mappings are valid",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:AFSEL14"
+              }
+            ]
+          },
+          {
+            "name": "AFSEL15",
+            "lsb": 28,
+            "width": 4,
+            "mask": 4026531840,
+            "meaning": "AF0–AF15; only datasheet-listed mappings are valid",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:AFSEL15"
+              }
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "source": "header",
+            "locator": "register:AFRH"
+          },
+          {
+            "source": "gpio_review",
+            "locator": "register:AFRH"
+          }
+        ]
+      }
+    ],
+    "reviewed_markdown": "reviewed/gpio.md",
+    "review": {
+      "status": "reviewed",
+      "reviewer": "Codex source-backed fixture editorial review",
+      "basis": "Checked against the linked vendor manuals and pinned declarations; independent hardware sign-off remains pending."
+    }
+  },
+  {
+    "id": "usart",
+    "title": "USART2: registers and baud calculation",
+    "prerequisites": [
+      "gpio"
+    ],
+    "instances": [
+      {
+        "name": "USART2",
+        "base_address": 1073759232,
+        "bus": "APB1",
+        "clock": "PCLK1; RCC_APB1ENR.USART2EN",
+        "sources": [
+          {
+            "source": "header",
+            "locator": "instance:USART2"
+          },
+          {
+            "source": "usart_review",
+            "locator": "clock:USART2"
+          }
+        ]
+      }
+    ],
+    "registers": [
+      {
+        "name": "SR",
+        "offset": 0,
+        "width": 32,
+        "io_address": null,
+        "access": "mixed",
+        "reset": 192,
+        "side_effects": "PE/FE/NF/ORE/IDLE clear by SR-read then DR-read. RXNE clears by DR-read. TC also has SR-read then DR-write sequence. See manual for write-zero flag clears.",
+        "fields": [
+          {
+            "name": "PE",
+            "lsb": 0,
+            "width": 1,
+            "mask": 1,
+            "meaning": "Parity error",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:PE"
+              }
+            ]
+          },
+          {
+            "name": "FE",
+            "lsb": 1,
+            "width": 1,
+            "mask": 2,
+            "meaning": "Framing error",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:FE"
+              }
+            ]
+          },
+          {
+            "name": "NF",
+            "lsb": 2,
+            "width": 1,
+            "mask": 4,
+            "meaning": "Noise detected",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:NF"
+              }
+            ]
+          },
+          {
+            "name": "ORE",
+            "lsb": 3,
+            "width": 1,
+            "mask": 8,
+            "meaning": "Overrun",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:ORE"
+              }
+            ]
+          },
+          {
+            "name": "IDLE",
+            "lsb": 4,
+            "width": 1,
+            "mask": 16,
+            "meaning": "Idle line",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:IDLE"
+              }
+            ]
+          },
+          {
+            "name": "RXNE",
+            "lsb": 5,
+            "width": 1,
+            "mask": 32,
+            "meaning": "Receive data ready",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:RXNE"
+              }
+            ]
+          },
+          {
+            "name": "TC",
+            "lsb": 6,
+            "width": 1,
+            "mask": 64,
+            "meaning": "Transmission complete",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:TC"
+              }
+            ]
+          },
+          {
+            "name": "TXE",
+            "lsb": 7,
+            "width": 1,
+            "mask": 128,
+            "meaning": "Transmit data register empty",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:TXE"
+              }
+            ]
+          },
+          {
+            "name": "LBD",
+            "lsb": 8,
+            "width": 1,
+            "mask": 256,
+            "meaning": "LIN break detected",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:LBD"
+              }
+            ]
+          },
+          {
+            "name": "CTS",
+            "lsb": 9,
+            "width": 1,
+            "mask": 512,
+            "meaning": "CTS changed",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:CTS"
+              }
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "source": "header",
+            "locator": "register:SR"
+          },
+          {
+            "source": "usart_review",
+            "locator": "register:SR"
+          }
+        ]
+      },
+      {
+        "name": "DR",
+        "offset": 4,
+        "width": 32,
+        "io_address": null,
+        "access": "mixed",
+        "reset": null,
+        "side_effects": "Read consumes received data; write queues transmit data.",
+        "fields": [
+          {
+            "name": "DR",
+            "lsb": 0,
+            "width": 9,
+            "mask": 511,
+            "meaning": "Data; use low 8 bits for 8N1",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:DR"
+              }
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "source": "header",
+            "locator": "register:DR"
+          },
+          {
+            "source": "usart_review",
+            "locator": "register:DR"
+          }
+        ]
+      },
+      {
+        "name": "BRR",
+        "offset": 8,
+        "width": 32,
+        "io_address": null,
+        "access": "RW",
+        "reset": 0,
+        "side_effects": "Change only while communication is quiescent.",
+        "fields": [
+          {
+            "name": "DIV_Fraction",
+            "lsb": 0,
+            "width": 4,
+            "mask": 15,
+            "meaning": "Four bits at OVER8=0; bit3 must be zero at OVER8=1",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:DIV_Fraction"
+              }
+            ]
+          },
+          {
+            "name": "DIV_Mantissa",
+            "lsb": 4,
+            "width": 12,
+            "mask": 65520,
+            "meaning": "Integer USARTDIV",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:DIV_Mantissa"
+              }
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "source": "header",
+            "locator": "register:BRR"
+          },
+          {
+            "source": "usart_review",
+            "locator": "register:BRR"
+          }
+        ]
+      },
+      {
+        "name": "CR1",
+        "offset": 12,
+        "width": 32,
+        "io_address": null,
+        "access": "RW",
+        "reset": 0,
+        "side_effects": "Configure frame/baud before UE; enable interrupt sources only with handler ready.",
+        "fields": [
+          {
+            "name": "SBK",
+            "lsb": 0,
+            "width": 1,
+            "mask": 1,
+            "meaning": "Send break",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:SBK"
+              }
+            ]
+          },
+          {
+            "name": "RWU",
+            "lsb": 1,
+            "width": 1,
+            "mask": 2,
+            "meaning": "Receiver wakeup",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:RWU"
+              }
+            ]
+          },
+          {
+            "name": "RE",
+            "lsb": 2,
+            "width": 1,
+            "mask": 4,
+            "meaning": "Receiver enable",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:RE"
+              }
+            ]
+          },
+          {
+            "name": "TE",
+            "lsb": 3,
+            "width": 1,
+            "mask": 8,
+            "meaning": "Transmitter enable",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:TE"
+              }
+            ]
+          },
+          {
+            "name": "IDLEIE",
+            "lsb": 4,
+            "width": 1,
+            "mask": 16,
+            "meaning": "Idle IRQ",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:IDLEIE"
+              }
+            ]
+          },
+          {
+            "name": "RXNEIE",
+            "lsb": 5,
+            "width": 1,
+            "mask": 32,
+            "meaning": "Receive IRQ",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:RXNEIE"
+              }
+            ]
+          },
+          {
+            "name": "TCIE",
+            "lsb": 6,
+            "width": 1,
+            "mask": 64,
+            "meaning": "Complete IRQ",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:TCIE"
+              }
+            ]
+          },
+          {
+            "name": "TXEIE",
+            "lsb": 7,
+            "width": 1,
+            "mask": 128,
+            "meaning": "Empty IRQ",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:TXEIE"
+              }
+            ]
+          },
+          {
+            "name": "PEIE",
+            "lsb": 8,
+            "width": 1,
+            "mask": 256,
+            "meaning": "Parity IRQ",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:PEIE"
+              }
+            ]
+          },
+          {
+            "name": "PS",
+            "lsb": 9,
+            "width": 1,
+            "mask": 512,
+            "meaning": "Parity selection",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:PS"
+              }
+            ]
+          },
+          {
+            "name": "PCE",
+            "lsb": 10,
+            "width": 1,
+            "mask": 1024,
+            "meaning": "Parity enable",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:PCE"
+              }
+            ]
+          },
+          {
+            "name": "WAKE",
+            "lsb": 11,
+            "width": 1,
+            "mask": 2048,
+            "meaning": "Wake method",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:WAKE"
+              }
+            ]
+          },
+          {
+            "name": "M",
+            "lsb": 12,
+            "width": 1,
+            "mask": 4096,
+            "meaning": "0: 8 data bits; 1: 9 (parity consumes a bit)",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:M"
+              }
+            ]
+          },
+          {
+            "name": "UE",
+            "lsb": 13,
+            "width": 1,
+            "mask": 8192,
+            "meaning": "USART enable",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:UE"
+              }
+            ]
+          },
+          {
+            "name": "OVER8",
+            "lsb": 15,
+            "width": 1,
+            "mask": 32768,
+            "meaning": "0: oversample16; 1: oversample8",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:OVER8"
+              }
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "source": "header",
+            "locator": "register:CR1"
+          },
+          {
+            "source": "usart_review",
+            "locator": "register:CR1"
+          }
+        ]
+      },
+      {
+        "name": "CR2",
+        "offset": 16,
+        "width": 32,
+        "io_address": null,
+        "access": "RW",
+        "reset": 0,
+        "side_effects": "Asynchronous 8N1: STOP=00 and CLKEN=0.",
+        "fields": [
+          {
+            "name": "ADD",
+            "lsb": 0,
+            "width": 4,
+            "mask": 15,
+            "meaning": "USART node address",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:ADD"
+              }
+            ]
+          },
+          {
+            "name": "LBDL",
+            "lsb": 5,
+            "width": 1,
+            "mask": 32,
+            "meaning": "LIN break length",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:LBDL"
+              }
+            ]
+          },
+          {
+            "name": "LBDIE",
+            "lsb": 6,
+            "width": 1,
+            "mask": 64,
+            "meaning": "LIN break IRQ",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:LBDIE"
+              }
+            ]
+          },
+          {
+            "name": "LBCL",
+            "lsb": 8,
+            "width": 1,
+            "mask": 256,
+            "meaning": "Last bit clock",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:LBCL"
+              }
+            ]
+          },
+          {
+            "name": "CPHA",
+            "lsb": 9,
+            "width": 1,
+            "mask": 512,
+            "meaning": "Clock phase",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:CPHA"
+              }
+            ]
+          },
+          {
+            "name": "CPOL",
+            "lsb": 10,
+            "width": 1,
+            "mask": 1024,
+            "meaning": "Clock polarity",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:CPOL"
+              }
+            ]
+          },
+          {
+            "name": "CLKEN",
+            "lsb": 11,
+            "width": 1,
+            "mask": 2048,
+            "meaning": "Synchronous clock enable",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:CLKEN"
+              }
+            ]
+          },
+          {
+            "name": "STOP",
+            "lsb": 12,
+            "width": 2,
+            "mask": 12288,
+            "meaning": "00 one; 01 half; 10 two; 11 one-and-half stop bits",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:STOP"
+              }
+            ]
+          },
+          {
+            "name": "LINEN",
+            "lsb": 14,
+            "width": 1,
+            "mask": 16384,
+            "meaning": "LIN enable",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:LINEN"
+              }
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "source": "header",
+            "locator": "register:CR2"
+          },
+          {
+            "source": "usart_review",
+            "locator": "register:CR2"
+          }
+        ]
+      },
+      {
+        "name": "CR3",
+        "offset": 20,
+        "width": 32,
+        "io_address": null,
+        "access": "RW",
+        "reset": 0,
+        "side_effects": "Set DMAR/DMAT only after DMA stream configuration.",
+        "fields": [
+          {
+            "name": "EIE",
+            "lsb": 0,
+            "width": 1,
+            "mask": 1,
+            "meaning": "See reviewed operating semantics and RM0368",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:EIE"
+              }
+            ]
+          },
+          {
+            "name": "IREN",
+            "lsb": 1,
+            "width": 1,
+            "mask": 2,
+            "meaning": "See reviewed operating semantics and RM0368",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:IREN"
+              }
+            ]
+          },
+          {
+            "name": "IRLP",
+            "lsb": 2,
+            "width": 1,
+            "mask": 4,
+            "meaning": "See reviewed operating semantics and RM0368",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:IRLP"
+              }
+            ]
+          },
+          {
+            "name": "HDSEL",
+            "lsb": 3,
+            "width": 1,
+            "mask": 8,
+            "meaning": "See reviewed operating semantics and RM0368",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:HDSEL"
+              }
+            ]
+          },
+          {
+            "name": "NACK",
+            "lsb": 4,
+            "width": 1,
+            "mask": 16,
+            "meaning": "See reviewed operating semantics and RM0368",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:NACK"
+              }
+            ]
+          },
+          {
+            "name": "SCEN",
+            "lsb": 5,
+            "width": 1,
+            "mask": 32,
+            "meaning": "See reviewed operating semantics and RM0368",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:SCEN"
+              }
+            ]
+          },
+          {
+            "name": "DMAR",
+            "lsb": 6,
+            "width": 1,
+            "mask": 64,
+            "meaning": "See reviewed operating semantics and RM0368",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:DMAR"
+              }
+            ]
+          },
+          {
+            "name": "DMAT",
+            "lsb": 7,
+            "width": 1,
+            "mask": 128,
+            "meaning": "See reviewed operating semantics and RM0368",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:DMAT"
+              }
+            ]
+          },
+          {
+            "name": "RTSE",
+            "lsb": 8,
+            "width": 1,
+            "mask": 256,
+            "meaning": "See reviewed operating semantics and RM0368",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:RTSE"
+              }
+            ]
+          },
+          {
+            "name": "CTSE",
+            "lsb": 9,
+            "width": 1,
+            "mask": 512,
+            "meaning": "See reviewed operating semantics and RM0368",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:CTSE"
+              }
+            ]
+          },
+          {
+            "name": "CTSIE",
+            "lsb": 10,
+            "width": 1,
+            "mask": 1024,
+            "meaning": "See reviewed operating semantics and RM0368",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:CTSIE"
+              }
+            ]
+          },
+          {
+            "name": "ONEBIT",
+            "lsb": 11,
+            "width": 1,
+            "mask": 2048,
+            "meaning": "See reviewed operating semantics and RM0368",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:ONEBIT"
+              }
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "source": "header",
+            "locator": "register:CR3"
+          },
+          {
+            "source": "usart_review",
+            "locator": "register:CR3"
+          }
+        ]
+      },
+      {
+        "name": "GTPR",
+        "offset": 24,
+        "width": 32,
+        "io_address": null,
+        "access": "RW",
+        "reset": 0,
+        "side_effects": "Smartcard/IrDA; unused for asynchronous fixture.",
+        "fields": [
+          {
+            "name": "PSC",
+            "lsb": 0,
+            "width": 8,
+            "mask": 255,
+            "meaning": "Prescaler",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:PSC"
+              }
+            ]
+          },
+          {
+            "name": "GT",
+            "lsb": 8,
+            "width": 8,
+            "mask": 65280,
+            "meaning": "Guard time",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:GT"
+              }
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "source": "header",
+            "locator": "register:GTPR"
+          },
+          {
+            "source": "usart_review",
+            "locator": "register:GTPR"
+          }
+        ]
+      }
+    ],
+    "reviewed_markdown": "reviewed/usart.md",
+    "review": {
+      "status": "reviewed",
+      "reviewer": "Codex source-backed fixture editorial review",
+      "basis": "Checked against the linked vendor manuals and pinned declarations; independent hardware sign-off remains pending."
+    }
+  },
+  {
+    "id": "nvic",
+    "title": "NVIC: final interrupt and DMA enablement",
+    "prerequisites": [
+      "usart"
+    ],
+    "instances": [
+      {
+        "name": "NVIC",
+        "base_address": 3758153984,
+        "bus": "Cortex-M4 system",
+        "clock": "Core clock",
+        "sources": [
+          {
+            "source": "header",
+            "locator": "instance:NVIC"
+          },
+          {
+            "source": "nvic_review",
+            "locator": "clock:NVIC"
+          }
+        ]
+      }
+    ],
+    "registers": [
+      {
+        "name": "ISER0",
+        "offset": 0,
+        "width": 32,
+        "io_address": null,
+        "access": "RW",
+        "reset": 0,
+        "side_effects": "Write 1 enables; writing 0 has no effect.",
+        "fields": [
+          {
+            "name": "SETENA",
+            "lsb": 0,
+            "width": 32,
+            "mask": 4294967295,
+            "meaning": "External IRQs 0–31",
+            "sources": [
+              {
+                "source": "nvic_review",
+                "locator": "field:SETENA"
+              }
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "source": "header",
+            "locator": "register:ISER0"
+          },
+          {
+            "source": "nvic_review",
+            "locator": "register:ISER0"
+          }
+        ]
+      },
+      {
+        "name": "ISER1",
+        "offset": 4,
+        "width": 32,
+        "io_address": null,
+        "access": "RW",
+        "reset": 0,
+        "side_effects": "Write 1 enables; do not use read-modify-write.",
+        "fields": [
+          {
+            "name": "SETENA",
+            "lsb": 0,
+            "width": 32,
+            "mask": 4294967295,
+            "meaning": "External IRQs 32–63; USART2 IRQ38 uses bit6",
+            "sources": [
+              {
+                "source": "nvic_review",
+                "locator": "field:SETENA"
+              }
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "source": "header",
+            "locator": "register:ISER1"
+          },
+          {
+            "source": "nvic_review",
+            "locator": "register:ISER1"
+          }
+        ]
+      },
+      {
+        "name": "ICER1",
+        "offset": 132,
+        "width": 32,
+        "io_address": null,
+        "access": "RW",
+        "reset": 0,
+        "side_effects": "Write 1 disables IRQ; writing 0 has no effect.",
+        "fields": [
+          {
+            "name": "CLRENA",
+            "lsb": 0,
+            "width": 32,
+            "mask": 4294967295,
+            "meaning": "Disable external IRQs 32–63",
+            "sources": [
+              {
+                "source": "nvic_review",
+                "locator": "field:CLRENA"
+              }
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "source": "header",
+            "locator": "register:ICER1"
+          },
+          {
+            "source": "nvic_review",
+            "locator": "register:ICER1"
+          }
+        ]
+      },
+      {
+        "name": "ICPR1",
+        "offset": 388,
+        "width": 32,
+        "io_address": null,
+        "access": "RW",
+        "reset": 0,
+        "side_effects": "Write 1 clears pending state; clear peripheral cause first.",
+        "fields": [
+          {
+            "name": "CLRPEND",
+            "lsb": 0,
+            "width": 32,
+            "mask": 4294967295,
+            "meaning": "Clear pending external IRQs 32–63",
+            "sources": [
+              {
+                "source": "nvic_review",
+                "locator": "field:CLRPEND"
+              }
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "source": "header",
+            "locator": "register:ICPR1"
+          },
+          {
+            "source": "nvic_review",
+            "locator": "register:ICPR1"
+          }
+        ]
+      },
+      {
+        "name": "IPR38",
+        "offset": 806,
+        "width": 8,
+        "io_address": null,
+        "access": "RW",
+        "reset": 0,
+        "side_effects": "STM32F401 implements four high priority bits; lower number is higher priority.",
+        "fields": [
+          {
+            "name": "PRI38",
+            "lsb": 4,
+            "width": 4,
+            "mask": 240,
+            "meaning": "Encoded priority for USART2 IRQ38",
+            "sources": [
+              {
+                "source": "nvic_review",
+                "locator": "field:PRI38"
+              }
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "source": "header",
+            "locator": "register:IPR38"
+          },
+          {
+            "source": "nvic_review",
+            "locator": "register:IPR38"
+          }
+        ]
+      }
+    ],
+    "reviewed_markdown": "reviewed/nvic.md",
+    "review": {
+      "status": "reviewed",
+      "reviewer": "Codex source-backed fixture editorial review",
+      "basis": "Checked against the linked vendor manuals and pinned declarations; independent hardware sign-off remains pending."
+    }
+  }
+]
+

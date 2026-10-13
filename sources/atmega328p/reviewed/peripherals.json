@@ -1,0 +1,1230 @@
+[
+  {
+    "id": "clock",
+    "title": "AVR clock prescaler and power reduction",
+    "prerequisites": [],
+    "instances": [
+      {
+        "name": "CPU",
+        "base_address": 0,
+        "bus": "AVR data space",
+        "clock": "16 MHz external fixture clock",
+        "sources": [
+          {
+            "source": "header",
+            "locator": "instance:CPU"
+          },
+          {
+            "source": "clock_review",
+            "locator": "clock:CPU"
+          }
+        ]
+      }
+    ],
+    "registers": [
+      {
+        "name": "CLKPR",
+        "offset": 97,
+        "width": 8,
+        "io_address": null,
+        "access": "RW",
+        "reset": null,
+        "side_effects": "Timed unlock sequence; CLKPS change must follow CLKPCE within four cycles.",
+        "fields": [
+          {
+            "name": "CLKPS",
+            "lsb": 0,
+            "width": 4,
+            "mask": 15,
+            "meaning": "0000 /1; 0001 /2; ... 1000 /256; higher codes reserved",
+            "sources": [
+              {
+                "source": "clock_review",
+                "locator": "field:CLKPS"
+              }
+            ]
+          },
+          {
+            "name": "CLKPCE",
+            "lsb": 7,
+            "width": 1,
+            "mask": 128,
+            "meaning": "Clock prescaler change enable",
+            "sources": [
+              {
+                "source": "clock_review",
+                "locator": "field:CLKPCE"
+              }
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "source": "header",
+            "locator": "register:CLKPR"
+          },
+          {
+            "source": "clock_review",
+            "locator": "register:CLKPR"
+          }
+        ]
+      },
+      {
+        "name": "PRR",
+        "offset": 100,
+        "width": 8,
+        "io_address": null,
+        "access": "RW",
+        "reset": 0,
+        "side_effects": "0 enables peripheral clock; do not confuse with STM32 gate polarity.",
+        "fields": [
+          {
+            "name": "PRADC",
+            "lsb": 0,
+            "width": 1,
+            "mask": 1,
+            "meaning": "ADC power reduction",
+            "sources": [
+              {
+                "source": "clock_review",
+                "locator": "field:PRADC"
+              }
+            ]
+          },
+          {
+            "name": "PRUSART0",
+            "lsb": 1,
+            "width": 1,
+            "mask": 2,
+            "meaning": "USART0 power reduction",
+            "sources": [
+              {
+                "source": "clock_review",
+                "locator": "field:PRUSART0"
+              }
+            ]
+          },
+          {
+            "name": "PRSPI",
+            "lsb": 2,
+            "width": 1,
+            "mask": 4,
+            "meaning": "SPI power reduction",
+            "sources": [
+              {
+                "source": "clock_review",
+                "locator": "field:PRSPI"
+              }
+            ]
+          },
+          {
+            "name": "PRTIM1",
+            "lsb": 3,
+            "width": 1,
+            "mask": 8,
+            "meaning": "Timer1 power reduction",
+            "sources": [
+              {
+                "source": "clock_review",
+                "locator": "field:PRTIM1"
+              }
+            ]
+          },
+          {
+            "name": "PRTIM0",
+            "lsb": 5,
+            "width": 1,
+            "mask": 32,
+            "meaning": "Timer0 power reduction",
+            "sources": [
+              {
+                "source": "clock_review",
+                "locator": "field:PRTIM0"
+              }
+            ]
+          },
+          {
+            "name": "PRTIM2",
+            "lsb": 6,
+            "width": 1,
+            "mask": 64,
+            "meaning": "Timer2 power reduction",
+            "sources": [
+              {
+                "source": "clock_review",
+                "locator": "field:PRTIM2"
+              }
+            ]
+          },
+          {
+            "name": "PRTWI",
+            "lsb": 7,
+            "width": 1,
+            "mask": 128,
+            "meaning": "TWI power reduction",
+            "sources": [
+              {
+                "source": "clock_review",
+                "locator": "field:PRTWI"
+              }
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "source": "header",
+            "locator": "register:PRR"
+          },
+          {
+            "source": "clock_review",
+            "locator": "register:PRR"
+          }
+        ]
+      }
+    ],
+    "reviewed_markdown": "reviewed/clock.md",
+    "review": {
+      "status": "reviewed",
+      "reviewer": "Codex source-backed fixture editorial review",
+      "basis": "Checked against the linked vendor manuals and pinned declarations; independent hardware sign-off remains pending."
+    }
+  },
+  {
+    "id": "gpio",
+    "title": "AVR Port D: fixed USART0 pins",
+    "prerequisites": [
+      "clock"
+    ],
+    "instances": [
+      {
+        "name": "PORTD",
+        "base_address": 0,
+        "bus": "AVR data space",
+        "clock": "CPU I/O clock",
+        "sources": [
+          {
+            "source": "header",
+            "locator": "instance:PORTD"
+          },
+          {
+            "source": "gpio_review",
+            "locator": "clock:PORTD"
+          }
+        ]
+      }
+    ],
+    "registers": [
+      {
+        "name": "PIND",
+        "offset": 41,
+        "width": 8,
+        "io_address": 9,
+        "access": "mixed",
+        "reset": null,
+        "side_effects": "Read samples pins. Writing a 1 toggles the PORTD latch.",
+        "fields": [
+          {
+            "name": "PIND0",
+            "lsb": 0,
+            "width": 1,
+            "mask": 1,
+            "meaning": "Input sample / write-one toggle",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:PIND0"
+              }
+            ]
+          },
+          {
+            "name": "PIND1",
+            "lsb": 1,
+            "width": 1,
+            "mask": 2,
+            "meaning": "Input sample / write-one toggle",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:PIND1"
+              }
+            ]
+          },
+          {
+            "name": "PIND2",
+            "lsb": 2,
+            "width": 1,
+            "mask": 4,
+            "meaning": "Input sample / write-one toggle",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:PIND2"
+              }
+            ]
+          },
+          {
+            "name": "PIND3",
+            "lsb": 3,
+            "width": 1,
+            "mask": 8,
+            "meaning": "Input sample / write-one toggle",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:PIND3"
+              }
+            ]
+          },
+          {
+            "name": "PIND4",
+            "lsb": 4,
+            "width": 1,
+            "mask": 16,
+            "meaning": "Input sample / write-one toggle",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:PIND4"
+              }
+            ]
+          },
+          {
+            "name": "PIND5",
+            "lsb": 5,
+            "width": 1,
+            "mask": 32,
+            "meaning": "Input sample / write-one toggle",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:PIND5"
+              }
+            ]
+          },
+          {
+            "name": "PIND6",
+            "lsb": 6,
+            "width": 1,
+            "mask": 64,
+            "meaning": "Input sample / write-one toggle",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:PIND6"
+              }
+            ]
+          },
+          {
+            "name": "PIND7",
+            "lsb": 7,
+            "width": 1,
+            "mask": 128,
+            "meaning": "Input sample / write-one toggle",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:PIND7"
+              }
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "source": "header",
+            "locator": "register:PIND"
+          },
+          {
+            "source": "gpio_review",
+            "locator": "register:PIND"
+          }
+        ]
+      },
+      {
+        "name": "DDRD",
+        "offset": 42,
+        "width": 8,
+        "io_address": 10,
+        "access": "RW",
+        "reset": 0,
+        "side_effects": "Preserve unrelated pins.",
+        "fields": [
+          {
+            "name": "DDD0",
+            "lsb": 0,
+            "width": 1,
+            "mask": 1,
+            "meaning": "0 input; 1 output",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:DDD0"
+              }
+            ]
+          },
+          {
+            "name": "DDD1",
+            "lsb": 1,
+            "width": 1,
+            "mask": 2,
+            "meaning": "0 input; 1 output",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:DDD1"
+              }
+            ]
+          },
+          {
+            "name": "DDD2",
+            "lsb": 2,
+            "width": 1,
+            "mask": 4,
+            "meaning": "0 input; 1 output",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:DDD2"
+              }
+            ]
+          },
+          {
+            "name": "DDD3",
+            "lsb": 3,
+            "width": 1,
+            "mask": 8,
+            "meaning": "0 input; 1 output",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:DDD3"
+              }
+            ]
+          },
+          {
+            "name": "DDD4",
+            "lsb": 4,
+            "width": 1,
+            "mask": 16,
+            "meaning": "0 input; 1 output",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:DDD4"
+              }
+            ]
+          },
+          {
+            "name": "DDD5",
+            "lsb": 5,
+            "width": 1,
+            "mask": 32,
+            "meaning": "0 input; 1 output",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:DDD5"
+              }
+            ]
+          },
+          {
+            "name": "DDD6",
+            "lsb": 6,
+            "width": 1,
+            "mask": 64,
+            "meaning": "0 input; 1 output",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:DDD6"
+              }
+            ]
+          },
+          {
+            "name": "DDD7",
+            "lsb": 7,
+            "width": 1,
+            "mask": 128,
+            "meaning": "0 input; 1 output",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:DDD7"
+              }
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "source": "header",
+            "locator": "register:DDRD"
+          },
+          {
+            "source": "gpio_review",
+            "locator": "register:DDRD"
+          }
+        ]
+      },
+      {
+        "name": "PORTD",
+        "offset": 43,
+        "width": 8,
+        "io_address": 11,
+        "access": "RW",
+        "reset": 0,
+        "side_effects": "When DDR=0, latch enables pull-up unless globally disabled.",
+        "fields": [
+          {
+            "name": "PORTD0",
+            "lsb": 0,
+            "width": 1,
+            "mask": 1,
+            "meaning": "Output latch / input pull-up",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:PORTD0"
+              }
+            ]
+          },
+          {
+            "name": "PORTD1",
+            "lsb": 1,
+            "width": 1,
+            "mask": 2,
+            "meaning": "Output latch / input pull-up",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:PORTD1"
+              }
+            ]
+          },
+          {
+            "name": "PORTD2",
+            "lsb": 2,
+            "width": 1,
+            "mask": 4,
+            "meaning": "Output latch / input pull-up",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:PORTD2"
+              }
+            ]
+          },
+          {
+            "name": "PORTD3",
+            "lsb": 3,
+            "width": 1,
+            "mask": 8,
+            "meaning": "Output latch / input pull-up",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:PORTD3"
+              }
+            ]
+          },
+          {
+            "name": "PORTD4",
+            "lsb": 4,
+            "width": 1,
+            "mask": 16,
+            "meaning": "Output latch / input pull-up",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:PORTD4"
+              }
+            ]
+          },
+          {
+            "name": "PORTD5",
+            "lsb": 5,
+            "width": 1,
+            "mask": 32,
+            "meaning": "Output latch / input pull-up",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:PORTD5"
+              }
+            ]
+          },
+          {
+            "name": "PORTD6",
+            "lsb": 6,
+            "width": 1,
+            "mask": 64,
+            "meaning": "Output latch / input pull-up",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:PORTD6"
+              }
+            ]
+          },
+          {
+            "name": "PORTD7",
+            "lsb": 7,
+            "width": 1,
+            "mask": 128,
+            "meaning": "Output latch / input pull-up",
+            "sources": [
+              {
+                "source": "gpio_review",
+                "locator": "field:PORTD7"
+              }
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "source": "header",
+            "locator": "register:PORTD"
+          },
+          {
+            "source": "gpio_review",
+            "locator": "register:PORTD"
+          }
+        ]
+      }
+    ],
+    "reviewed_markdown": "reviewed/gpio.md",
+    "review": {
+      "status": "reviewed",
+      "reviewer": "Codex source-backed fixture editorial review",
+      "basis": "Checked against the linked vendor manuals and pinned declarations; independent hardware sign-off remains pending."
+    }
+  },
+  {
+    "id": "usart",
+    "title": "AVR USART0: frame and baud registers",
+    "prerequisites": [
+      "gpio"
+    ],
+    "instances": [
+      {
+        "name": "USART0",
+        "base_address": 0,
+        "bus": "AVR data space",
+        "clock": "CPU clock; PRR.PRUSART0=0",
+        "sources": [
+          {
+            "source": "header",
+            "locator": "instance:USART0"
+          },
+          {
+            "source": "usart_review",
+            "locator": "clock:USART0"
+          }
+        ]
+      }
+    ],
+    "registers": [
+      {
+        "name": "UCSR0A",
+        "offset": 192,
+        "width": 8,
+        "io_address": null,
+        "access": "mixed",
+        "reset": 32,
+        "side_effects": "TXC0 is write-one-to-clear. Read status before UDR0 to preserve receive error association.",
+        "fields": [
+          {
+            "name": "MPCM0",
+            "lsb": 0,
+            "width": 1,
+            "mask": 1,
+            "meaning": "See reviewed USART operating semantics",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:MPCM0"
+              }
+            ]
+          },
+          {
+            "name": "U2X0",
+            "lsb": 1,
+            "width": 1,
+            "mask": 2,
+            "meaning": "See reviewed USART operating semantics",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:U2X0"
+              }
+            ]
+          },
+          {
+            "name": "UPE0",
+            "lsb": 2,
+            "width": 1,
+            "mask": 4,
+            "meaning": "See reviewed USART operating semantics",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:UPE0"
+              }
+            ]
+          },
+          {
+            "name": "DOR0",
+            "lsb": 3,
+            "width": 1,
+            "mask": 8,
+            "meaning": "See reviewed USART operating semantics",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:DOR0"
+              }
+            ]
+          },
+          {
+            "name": "FE0",
+            "lsb": 4,
+            "width": 1,
+            "mask": 16,
+            "meaning": "See reviewed USART operating semantics",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:FE0"
+              }
+            ]
+          },
+          {
+            "name": "UDRE0",
+            "lsb": 5,
+            "width": 1,
+            "mask": 32,
+            "meaning": "See reviewed USART operating semantics",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:UDRE0"
+              }
+            ]
+          },
+          {
+            "name": "TXC0",
+            "lsb": 6,
+            "width": 1,
+            "mask": 64,
+            "meaning": "See reviewed USART operating semantics",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:TXC0"
+              }
+            ]
+          },
+          {
+            "name": "RXC0",
+            "lsb": 7,
+            "width": 1,
+            "mask": 128,
+            "meaning": "See reviewed USART operating semantics",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:RXC0"
+              }
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "source": "header",
+            "locator": "register:UCSR0A"
+          },
+          {
+            "source": "usart_review",
+            "locator": "register:UCSR0A"
+          }
+        ]
+      },
+      {
+        "name": "UCSR0B",
+        "offset": 193,
+        "width": 8,
+        "io_address": null,
+        "access": "RW",
+        "reset": 0,
+        "side_effects": "Enable RXCIE0 only after receive handler/state is ready.",
+        "fields": [
+          {
+            "name": "TXB80",
+            "lsb": 0,
+            "width": 1,
+            "mask": 1,
+            "meaning": "See reviewed USART operating semantics",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:TXB80"
+              }
+            ]
+          },
+          {
+            "name": "RXB80",
+            "lsb": 1,
+            "width": 1,
+            "mask": 2,
+            "meaning": "See reviewed USART operating semantics",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:RXB80"
+              }
+            ]
+          },
+          {
+            "name": "UCSZ02",
+            "lsb": 2,
+            "width": 1,
+            "mask": 4,
+            "meaning": "See reviewed USART operating semantics",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:UCSZ02"
+              }
+            ]
+          },
+          {
+            "name": "TXEN0",
+            "lsb": 3,
+            "width": 1,
+            "mask": 8,
+            "meaning": "See reviewed USART operating semantics",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:TXEN0"
+              }
+            ]
+          },
+          {
+            "name": "RXEN0",
+            "lsb": 4,
+            "width": 1,
+            "mask": 16,
+            "meaning": "See reviewed USART operating semantics",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:RXEN0"
+              }
+            ]
+          },
+          {
+            "name": "UDRIE0",
+            "lsb": 5,
+            "width": 1,
+            "mask": 32,
+            "meaning": "See reviewed USART operating semantics",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:UDRIE0"
+              }
+            ]
+          },
+          {
+            "name": "TXCIE0",
+            "lsb": 6,
+            "width": 1,
+            "mask": 64,
+            "meaning": "See reviewed USART operating semantics",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:TXCIE0"
+              }
+            ]
+          },
+          {
+            "name": "RXCIE0",
+            "lsb": 7,
+            "width": 1,
+            "mask": 128,
+            "meaning": "See reviewed USART operating semantics",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:RXCIE0"
+              }
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "source": "header",
+            "locator": "register:UCSR0B"
+          },
+          {
+            "source": "usart_review",
+            "locator": "register:UCSR0B"
+          }
+        ]
+      },
+      {
+        "name": "UCSR0C",
+        "offset": 194,
+        "width": 8,
+        "io_address": null,
+        "access": "RW",
+        "reset": 6,
+        "side_effects": "8N1 asynchronous: UMSEL=00 UPM=00 USBS=0 UCSZ01:00=11.",
+        "fields": [
+          {
+            "name": "UCPOL0",
+            "lsb": 0,
+            "width": 1,
+            "mask": 1,
+            "meaning": "Clock polarity; zero in async mode",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:UCPOL0"
+              }
+            ]
+          },
+          {
+            "name": "UCSZ0",
+            "lsb": 1,
+            "width": 2,
+            "mask": 6,
+            "meaning": "Low character-size bits; 11 selects 8-bit when UCSZ02=0",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:UCSZ0"
+              }
+            ]
+          },
+          {
+            "name": "USBS0",
+            "lsb": 3,
+            "width": 1,
+            "mask": 8,
+            "meaning": "0 one; 1 two stop bits",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:USBS0"
+              }
+            ]
+          },
+          {
+            "name": "UPM0",
+            "lsb": 4,
+            "width": 2,
+            "mask": 48,
+            "meaning": "00 none; 10 even; 11 odd parity",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:UPM0"
+              }
+            ]
+          },
+          {
+            "name": "UMSEL0",
+            "lsb": 6,
+            "width": 2,
+            "mask": 192,
+            "meaning": "00 async; 01 synchronous; 11 master SPI",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:UMSEL0"
+              }
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "source": "header",
+            "locator": "register:UCSR0C"
+          },
+          {
+            "source": "usart_review",
+            "locator": "register:UCSR0C"
+          }
+        ]
+      },
+      {
+        "name": "UBRR0L",
+        "offset": 196,
+        "width": 8,
+        "io_address": null,
+        "access": "RW",
+        "reset": 0,
+        "side_effects": "Write high byte then low byte while communication is quiescent.",
+        "fields": [
+          {
+            "name": "UBRR0_LOW",
+            "lsb": 0,
+            "width": 8,
+            "mask": 255,
+            "meaning": "Low baud-divider bits",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:UBRR0_LOW"
+              }
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "source": "header",
+            "locator": "register:UBRR0L"
+          },
+          {
+            "source": "usart_review",
+            "locator": "register:UBRR0L"
+          }
+        ]
+      },
+      {
+        "name": "UBRR0H",
+        "offset": 197,
+        "width": 8,
+        "io_address": null,
+        "access": "RW",
+        "reset": 0,
+        "side_effects": "Upper four bits reserved.",
+        "fields": [
+          {
+            "name": "UBRR0_HIGH",
+            "lsb": 0,
+            "width": 4,
+            "mask": 15,
+            "meaning": "High baud-divider bits",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:UBRR0_HIGH"
+              }
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "source": "header",
+            "locator": "register:UBRR0H"
+          },
+          {
+            "source": "usart_review",
+            "locator": "register:UBRR0H"
+          }
+        ]
+      },
+      {
+        "name": "UDR0",
+        "offset": 198,
+        "width": 8,
+        "io_address": null,
+        "access": "mixed",
+        "reset": null,
+        "side_effects": "Reading consumes buffered RX byte; writing queues TX byte.",
+        "fields": [
+          {
+            "name": "DATA",
+            "lsb": 0,
+            "width": 8,
+            "mask": 255,
+            "meaning": "8-bit data",
+            "sources": [
+              {
+                "source": "usart_review",
+                "locator": "field:DATA"
+              }
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "source": "header",
+            "locator": "register:UDR0"
+          },
+          {
+            "source": "usart_review",
+            "locator": "register:UDR0"
+          }
+        ]
+      }
+    ],
+    "reviewed_markdown": "reviewed/usart.md",
+    "review": {
+      "status": "reviewed",
+      "reviewer": "Codex source-backed fixture editorial review",
+      "basis": "Checked against the linked vendor manuals and pinned declarations; independent hardware sign-off remains pending."
+    }
+  },
+  {
+    "id": "interrupts",
+    "title": "AVR global interrupt state and USART0 vector",
+    "prerequisites": [
+      "usart"
+    ],
+    "instances": [
+      {
+        "name": "CPU_IRQ",
+        "base_address": 0,
+        "bus": "AVR data space",
+        "clock": "CPU clock",
+        "sources": [
+          {
+            "source": "header",
+            "locator": "instance:CPU_IRQ"
+          },
+          {
+            "source": "interrupts_review",
+            "locator": "clock:CPU_IRQ"
+          }
+        ]
+      }
+    ],
+    "registers": [
+      {
+        "name": "SREG",
+        "offset": 95,
+        "width": 8,
+        "io_address": 63,
+        "access": "RW",
+        "reset": 0,
+        "side_effects": "I gates global interrupts. Save/restore prior state around protected operations.",
+        "fields": [
+          {
+            "name": "C",
+            "lsb": 0,
+            "width": 1,
+            "mask": 1,
+            "meaning": "CPU status flag",
+            "sources": [
+              {
+                "source": "interrupts_review",
+                "locator": "field:C"
+              }
+            ]
+          },
+          {
+            "name": "Z",
+            "lsb": 1,
+            "width": 1,
+            "mask": 2,
+            "meaning": "CPU status flag",
+            "sources": [
+              {
+                "source": "interrupts_review",
+                "locator": "field:Z"
+              }
+            ]
+          },
+          {
+            "name": "N",
+            "lsb": 2,
+            "width": 1,
+            "mask": 4,
+            "meaning": "CPU status flag",
+            "sources": [
+              {
+                "source": "interrupts_review",
+                "locator": "field:N"
+              }
+            ]
+          },
+          {
+            "name": "V",
+            "lsb": 3,
+            "width": 1,
+            "mask": 8,
+            "meaning": "CPU status flag",
+            "sources": [
+              {
+                "source": "interrupts_review",
+                "locator": "field:V"
+              }
+            ]
+          },
+          {
+            "name": "S",
+            "lsb": 4,
+            "width": 1,
+            "mask": 16,
+            "meaning": "CPU status flag",
+            "sources": [
+              {
+                "source": "interrupts_review",
+                "locator": "field:S"
+              }
+            ]
+          },
+          {
+            "name": "H",
+            "lsb": 5,
+            "width": 1,
+            "mask": 32,
+            "meaning": "CPU status flag",
+            "sources": [
+              {
+                "source": "interrupts_review",
+                "locator": "field:H"
+              }
+            ]
+          },
+          {
+            "name": "T",
+            "lsb": 6,
+            "width": 1,
+            "mask": 64,
+            "meaning": "CPU status flag",
+            "sources": [
+              {
+                "source": "interrupts_review",
+                "locator": "field:T"
+              }
+            ]
+          },
+          {
+            "name": "I",
+            "lsb": 7,
+            "width": 1,
+            "mask": 128,
+            "meaning": "Global interrupt enable",
+            "sources": [
+              {
+                "source": "interrupts_review",
+                "locator": "field:I"
+              }
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "source": "header",
+            "locator": "register:SREG"
+          },
+          {
+            "source": "interrupts_review",
+            "locator": "register:SREG"
+          }
+        ]
+      }
+    ],
+    "reviewed_markdown": "reviewed/interrupts.md",
+    "review": {
+      "status": "reviewed",
+      "reviewer": "Codex source-backed fixture editorial review",
+      "basis": "Checked against the linked vendor manuals and pinned declarations; independent hardware sign-off remains pending."
+    }
+  }
+]
+

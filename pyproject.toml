@@ -1,0 +1,44 @@
+[build-system]
+requires = ["hatchling>=1.27,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "project-praxis"
+version = "0.1.0"
+description = "Local, vectorless embedded hardware knowledge compiler and MCP server"
+classifiers = ["Development Status :: 3 - Alpha"]
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+dependencies = ["mcp[cli]>=1.12,<2", "pydantic>=2,<3"]
+
+[project.optional-dependencies]
+ingest = ["libclang>=18,<19", "defusedxml>=0.7,<1"]
+build = ["pyelftools>=0.32,<1"]
+web = ["httpx>=0.28,<1", "beautifulsoup4>=4.13,<5", "pdfplumber>=0.11,<0.12"]
+test = ["pytest>=8,<9", "pytest-asyncio>=0.24,<2", "ruff>=0.11,<1", "pyelftools>=0.32,<1"]
+
+[project.scripts]
+praxis = "praxis.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["praxis"]
+
+[tool.hatch.build.targets.sdist]
+only-include = ["praxis", "sources", "bundles", "assets", "examples", "tests", "tools", "docs", "sandbox", ".github", ".gitignore",
+                "README.md", "README_DETAILED.md", "CHANGELOG.md", "CONTRIBUTING.md", "LICENSE", "server.py", "compiler.py", "pyproject.toml", "uv.lock",
+                "toolchain.lock.json", "toolchain-f407.lock.json", "release-review.json", "Dockerfile", ".dockerignore"]
+exclude = ["**/imports/**", "**/__pycache__/**", "**/*.pyc", "**/.pytest_cache/**",
+           "**/.ruff_cache/**", "**/build/**", "**/*.elf", "**/*.bin", "**/*.hex", "**/*.map"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "B", "UP"]
+

@@ -1,0 +1,273 @@
+{
+  "calls": 21,
+  "evidence_sha256": "0678d8bf2b74b4fec9f66a316f5d61e3114619800a2b970a32b718e1a83001d6",
+  "external_model_evaluation": "Not run; user selected direct MCP analysis instead.",
+  "findings": [
+    "Aliases resolve to full canonical documents without truncation.",
+    "Missing index and missing transitive prerequisites return MCP errors.",
+    "TIM/SPI/I2C retrieval succeeds without reading USART/NVIC.",
+    "EXTI requires RCC/GPIO/SYSCFG; DMA streams require the DMA controller document.",
+    "New declaration documents explicitly state their operating semantics are unreviewed.",
+    "FLASH mask gaps are disclosed and ITM is not served.",
+    "LED_A/USER_BUTTON remain backed by the documented reference-board subset.",
+    "USART2_TX wiring is not in this partial schematic bundle; declarations do not add board nets."
+  ],
+  "kind": "actual MCP stdio replay; no external model",
+  "limits": [
+    "No live-model evaluation, firmware generation or target compilation in this replay.",
+    "No flash, reset, debug-probe or physical-board operations.",
+    "Retrieval success does not validate hardware behavior or unreviewed operating semantics."
+  ],
+  "passed": true,
+  "regression": {
+    "additional_tests": {
+      "oversize_publication_checks_passed": 2,
+      "skipped": 0
+    },
+    "external_tools_required": true,
+    "junit_sha256": "d64d0068fbcabeef332ec3b8c8eb01dba82761c46f9f26cbf4aed0f6e1f3698a",
+    "note": "Full suite: 301 passed; subsequently added automatic/explicit oversize publication checks: 2 passed.",
+    "ruff": "passed",
+    "skipped": 0,
+    "tests_passed": 301,
+    "wheel_and_sdist": "passed"
+  },
+  "revision": "84939f75664926a15854c881419d20d807ba7f93d98745ab0ac853e281ed9635",
+  "target": "stm32f407g_disc1_mb997_e01",
+  "tools": [
+    "query_schematic_netlist",
+    "read_peripheral_doc",
+    "read_wiki_index"
+  ],
+  "trace": [
+    {
+      "arguments": {
+        "peripheral_name": "tim2"
+      },
+      "bytes": 109,
+      "expected_error": "PREREQUISITE_REQUIRED",
+      "is_error": true,
+      "passed": true,
+      "sha256": "3ca77b575e2247321348bdea42ed2e09e77fd8324c366efe3260cb2b23ec1910",
+      "tool": "read_peripheral_doc"
+    },
+    {
+      "arguments": {},
+      "bytes": 16512,
+      "expected_error": null,
+      "is_error": false,
+      "passed": true,
+      "sha256": "a8e35667912a8c5dba3d292fb0d5f4456c2ff440c8bba7196ad4fcf2a6d30509",
+      "tool": "read_wiki_index"
+    },
+    {
+      "arguments": {
+        "peripheral_name": "tim2"
+      },
+      "bytes": 99,
+      "expected_error": "PREREQUISITE_REQUIRED",
+      "is_error": true,
+      "passed": true,
+      "sha256": "2c410b99c61a4355e5106be9bdadc8710fedddb641c6c6349382711bb5d427ac",
+      "tool": "read_peripheral_doc"
+    },
+    {
+      "arguments": {
+        "peripheral_name": "exti"
+      },
+      "bytes": 114,
+      "expected_error": "PREREQUISITE_REQUIRED",
+      "is_error": true,
+      "passed": true,
+      "sha256": "b9651266ab9f67e513e53b5f6f5497a4f21d4d61928652c0fd81b18b9becb422",
+      "tool": "read_peripheral_doc"
+    },
+    {
+      "arguments": {
+        "peripheral_name": "rcc"
+      },
+      "bytes": 40263,
+      "expected_error": null,
+      "is_error": false,
+      "passed": true,
+      "sha256": "325e7e5dd41fc76c6e6cc3dfc4b7e6dc024529b53213e530ee1338df24bdc1d9",
+      "tool": "read_peripheral_doc"
+    },
+    {
+      "arguments": {
+        "peripheral_name": "tim2"
+      },
+      "bytes": 21201,
+      "expected_error": null,
+      "is_error": false,
+      "passed": true,
+      "sha256": "b518bc040fd68020a45459f6cc2bfa2fc3fe0c2796b907101798e27e6b2e8b8f",
+      "tool": "read_peripheral_doc"
+    },
+    {
+      "arguments": {
+        "peripheral_name": "spi1"
+      },
+      "bytes": 9579,
+      "expected_error": null,
+      "is_error": false,
+      "passed": true,
+      "sha256": "76ef39ba0db03da7ea8450e2f0b462ba20795ca9288a96b732044511ed5d8118",
+      "tool": "read_peripheral_doc"
+    },
+    {
+      "arguments": {
+        "peripheral_name": "i2c1"
+      },
+      "bytes": 11404,
+      "expected_error": null,
+      "is_error": false,
+      "passed": true,
+      "sha256": "90effd29b0de031e2b5b3f635e7cfc5f98597b1b296f26eceeadfc2a4ff63bf8",
+      "tool": "read_peripheral_doc"
+    },
+    {
+      "arguments": {
+        "peripheral_name": "gpio"
+      },
+      "bytes": 24154,
+      "expected_error": null,
+      "is_error": false,
+      "passed": true,
+      "sha256": "3d1580327be6afa70ae926cd122624072cdf635853b3affdb08f25b9d643647f",
+      "tool": "read_peripheral_doc"
+    },
+    {
+      "arguments": {
+        "peripheral_name": "syscfg"
+      },
+      "bytes": 2827,
+      "expected_error": null,
+      "is_error": false,
+      "passed": true,
+      "sha256": "1dd1543c888132fd9eae0051c64b30c74b3dbbe72fd795812049c4405825bd39",
+      "tool": "read_peripheral_doc"
+    },
+    {
+      "arguments": {
+        "peripheral_name": "exti"
+      },
+      "bytes": 19071,
+      "expected_error": null,
+      "is_error": false,
+      "passed": true,
+      "sha256": "f26d3a42716a8f5a16424b558c67940cdc6b1463fe515a26f316a06f43ba1262",
+      "tool": "read_peripheral_doc"
+    },
+    {
+      "arguments": {
+        "peripheral_name": "dma1_stream0"
+      },
+      "bytes": 106,
+      "expected_error": "PREREQUISITE_REQUIRED",
+      "is_error": true,
+      "passed": true,
+      "sha256": "34f1aa352d146302624e789921157cf10dc21e84b7fd2d122f04ac2e3d151196",
+      "tool": "read_peripheral_doc"
+    },
+    {
+      "arguments": {
+        "peripheral_name": "dma"
+      },
+      "bytes": 14139,
+      "expected_error": null,
+      "is_error": false,
+      "passed": true,
+      "sha256": "2ef8d485a0a5e4adb5723d2183d69379c24d3ddb83f92f4e1a8075e615e1b5e8",
+      "tool": "read_peripheral_doc"
+    },
+    {
+      "arguments": {
+        "peripheral_name": "dma1_stream0"
+      },
+      "bytes": 7610,
+      "expected_error": null,
+      "is_error": false,
+      "passed": true,
+      "sha256": "34e59291a4074728526f5b0bb79424519258f5a010a795cdcbf832ed90b6a9e6",
+      "tool": "read_peripheral_doc"
+    },
+    {
+      "arguments": {
+        "peripheral_name": "flash"
+      },
+      "bytes": 6361,
+      "expected_error": null,
+      "is_error": false,
+      "passed": true,
+      "sha256": "fcfc106f339593d5fd63a623f225809828708f140939c256d053123918973051",
+      "tool": "read_peripheral_doc"
+    },
+    {
+      "arguments": {
+        "peripheral_name": "itm"
+      },
+      "bytes": 408,
+      "expected_error": "UNKNOWN_PERIPHERAL",
+      "is_error": true,
+      "passed": true,
+      "sha256": "4fbacf314e211c2c8d1ff7d10613c6c1edd0c0470be7318bcee43c55f1f41704",
+      "tool": "read_peripheral_doc"
+    },
+    {
+      "arguments": {
+        "peripheral_name": "clock"
+      },
+      "bytes": 410,
+      "expected_error": "UNKNOWN_PERIPHERAL",
+      "is_error": true,
+      "passed": true,
+      "sha256": "269e9e97b1451310dbe8d51ad013cd055950d3d6d1664459bdc6fd87504937f1",
+      "tool": "read_peripheral_doc"
+    },
+    {
+      "arguments": {
+        "query_target": "LED_A"
+      },
+      "bytes": 11058,
+      "expected_error": null,
+      "is_error": false,
+      "passed": true,
+      "sha256": "683545626293221bda0ba39e585bcf909151ace287c4ec27b4999272d5b0a2af",
+      "tool": "query_schematic_netlist"
+    },
+    {
+      "arguments": {
+        "query_target": "USER_BUTTON"
+      },
+      "bytes": 12491,
+      "expected_error": null,
+      "is_error": false,
+      "passed": true,
+      "sha256": "880354f0af96e8b43fadc406fe07bb76f19f3c7ce415315198fad71ff7d060bb",
+      "tool": "query_schematic_netlist"
+    },
+    {
+      "arguments": {
+        "query_target": "USART2_TX"
+      },
+      "bytes": 70,
+      "expected_error": null,
+      "is_error": false,
+      "passed": true,
+      "sha256": "cdeebfac4751160c78c1dc713ce5733e9a1e8543655c1cb765702cfb95f82c9d",
+      "tool": "query_schematic_netlist"
+    },
+    {
+      "arguments": {
+        "query_target": "PA20"
+      },
+      "bytes": 65,
+      "expected_error": null,
+      "is_error": false,
+      "passed": true,
+      "sha256": "0402c2c61712d7d80816789f43eb346404c505f849e37e0e66c009e76fddc633",
+      "tool": "query_schematic_netlist"
+    }
+  ]
+}

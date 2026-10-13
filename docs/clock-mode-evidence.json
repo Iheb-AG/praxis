@@ -1,0 +1,275 @@
+{
+  "all_mcu_features_supported": false,
+  "bundle_revision": "0e8737e667f05858aa39cf6484cd7a5c30125fd5ae2910c441187185380eccda",
+  "clock_import_revision": "35c03e12595b99c3cec2d43e99f6af74b8fefd24f467c62b8cc11635300c4d15",
+  "coverage_counts": {
+    "blocked": 1,
+    "fields": 2100,
+    "published": 41,
+    "register_blocks": 42,
+    "registers": 523,
+    "reviewed_subsets": 15,
+    "unmapped_types": 11
+  },
+  "date": "2026-10-11",
+  "editorial_review_sha256": "fc7128748ba038ecea210d4339b19743afcf4d54d732c5583507df3f5be296c9",
+  "example_flashed": false,
+  "feature_counts": {
+    "blocks_without_mode_contracts": 33,
+    "declared_instances": 99,
+    "register_blocks": 42,
+    "reviewed_mode_contracts": 12
+  },
+  "format": "praxis-clock-mode-evaluation/v1",
+  "hardware_operations": 0,
+  "independent_review": false,
+  "ingestion_mcp": {
+    "actual_calls": 72,
+    "deterministic_republication_byte_identical": true,
+    "initial_registration_rejection": "UNKNOWN_SOURCE",
+    "rejected_calls": 1,
+    "targeted_review_packets": [
+      {
+        "counts": {
+          "candidates": 8,
+          "conflicts": 0,
+          "matching_parts": 1,
+          "parts_examined": 1,
+          "registers_with_candidates": 1
+        },
+        "entity": "flash",
+        "packet_sha256": "e73eceb562cf2f2c2629bf220df3e63fd60691045dcad2206f7827058b0e284b",
+        "publication_ready": false
+      },
+      {
+        "counts": {
+          "candidates": 13,
+          "conflicts": 0,
+          "matching_parts": 2,
+          "parts_examined": 4,
+          "registers_with_candidates": 2
+        },
+        "entity": "pwr",
+        "packet_sha256": "5215cc6b4e6597bdd97159b322805d46624156655e87ffac6dfcda23b2ce613e",
+        "publication_ready": false
+      }
+    ]
+  },
+  "knowledge_build_mcp": {
+    "actual_calls": 20,
+    "artifact_id": "767f618be179e8454c645fc3ef455778230bc13ac90f16c7d4010f5c2a24e971",
+    "asset_revision": "22310c7ad54daa553cf5cb11e4db08e4c8f9e93e191f3f12ec8410dd1fb40b59",
+    "checks": {
+      "artifact_revalidated": true,
+      "build_without_hardware_tools": true,
+      "complete_reviewed_documents": true,
+      "crc_publication_gate": true,
+      "dma_publication_gate": true,
+      "explicit_clock_mode_route": true,
+      "feature_index": true,
+      "flash_programming_still_blocked": true,
+      "index_gate": true,
+      "matching_bundle_pair": true,
+      "missing_spi_pin_not_guessed": true,
+      "rng_clock_gate": true,
+      "spi_wiring_blocked": true,
+      "target_compilation": true,
+      "three_readonly_tools": true
+    },
+    "compile_passed": true,
+    "compiler_versions": {
+      "arm-none-eabi-gcc": "arm-none-eabi-gcc (15:12.2.rel1-1) 12.2.1 20221205",
+      "avr-gcc": "avr-gcc (GCC) 5.4.0"
+    },
+    "elf_sha256": "654ea2e8129b71b5934db6e96d498c5f5abe9369b1a4d019c613dc3832133ec2",
+    "image": "sha256:4748b01d5c1d2313e5617878f9450ff1d432f8244416732d0cc57aa1867cc120",
+    "image_validated": true,
+    "passed": true,
+    "source_sha256": "11fae2d162c61badc1e951d101d712aa1049d5a5abf745faf02bc38b5b95fd75"
+  },
+  "largest_document_bytes": 61133,
+  "limits": [
+    "Editor-reviewed F407 subset; independent engineering sign-off remains pending.",
+    "HSE8 crystal, internal regulator and 2.7-3.6V are assumptions, not physical measurements.",
+    "Register-model ordering and bounded waits do not establish hardware timing or arbitrary firmware correctness.",
+    "FLASH programming/option bytes, low-power transitions, entropy certification and unreviewed modes remain unsupported.",
+    "Existing UART firmware, client selections and earlier immutable bundles are unchanged."
+  ],
+  "release_blockers": [
+    "Independent review of the exact current bundle revisions is missing",
+    "Independent review of the exact firmware asset revision is missing"
+  ],
+  "release_ready": false,
+  "source_document_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca",
+  "target": "STM32F407VGT6",
+  "validation": {
+    "distribution_contents_passed": true,
+    "external_tools_required": true,
+    "failure_injection_stages": 24,
+    "focused_clock_model_and_routing_checks": 27,
+    "full_suite_passed": 472,
+    "full_suite_skipped": 0,
+    "private_and_raw_paths_excluded": true,
+    "public_documentation_file_links_passed": true,
+    "ruff_passed": true,
+    "same_target_register_callback_exercised": true,
+    "source_members": 591,
+    "wheel_members": 45
+  },
+  "workflows": {
+    "feature_flash": {
+      "closure": [
+        "flash",
+        "rcc"
+      ],
+      "instance_scope": {
+        "flash": [
+          "FLASH"
+        ]
+      },
+      "issues": [
+        "flash.CR: access/operating semantics unreviewed",
+        "flash.KEYR: access/operating semantics unreviewed",
+        "flash.SR: access/operating semantics unreviewed",
+        "flash.program_erase: operating mode not reviewed"
+      ],
+      "mode_scope": {
+        "flash": [
+          "program_erase"
+        ]
+      },
+      "ready": false,
+      "required_for_publication": false,
+      "required_signals": []
+    },
+    "feature_pwr": {
+      "closure": [
+        "pwr",
+        "rcc"
+      ],
+      "instance_scope": {
+        "pwr": [
+          "PWR"
+        ]
+      },
+      "issues": [],
+      "mode_order": [
+        "rcc/power_interface_gate",
+        "pwr/voltage_scale"
+      ],
+      "mode_scope": {
+        "pwr": [
+          "voltage_scale"
+        ]
+      },
+      "ready": true,
+      "required_for_publication": true,
+      "required_signals": []
+    },
+    "flash_latency_168mhz": {
+      "closure": [
+        "flash",
+        "rcc"
+      ],
+      "instance_scope": {
+        "flash": [
+          "FLASH"
+        ]
+      },
+      "issues": [],
+      "mode_scope": {
+        "flash": [
+          "latency_168mhz"
+        ]
+      },
+      "ready": true,
+      "required_for_publication": true,
+      "required_signals": []
+    },
+    "pll_hse8_168mhz": {
+      "closure": [
+        "flash",
+        "pwr",
+        "rcc"
+      ],
+      "instance_scope": {
+        "rcc": [
+          "RCC"
+        ]
+      },
+      "issues": [],
+      "mode_order": [
+        "flash/latency_168mhz",
+        "rcc/power_interface_gate",
+        "pwr/voltage_scale",
+        "rcc/pll_hse8_168mhz"
+      ],
+      "mode_scope": {
+        "rcc": [
+          "pll_hse8_168mhz"
+        ]
+      },
+      "ready": true,
+      "required_for_publication": true,
+      "required_signals": []
+    },
+    "rng_pll_polling": {
+      "closure": [
+        "flash",
+        "pwr",
+        "rcc",
+        "rng"
+      ],
+      "instance_scope": {
+        "rng": [
+          "RNG"
+        ]
+      },
+      "issues": [],
+      "mode_order": [
+        "flash/latency_168mhz",
+        "rcc/power_interface_gate",
+        "pwr/voltage_scale",
+        "rcc/pll_hse8_168mhz",
+        "rng/pll_polling"
+      ],
+      "mode_scope": {
+        "rng": [
+          "pll_polling"
+        ]
+      },
+      "ready": true,
+      "required_for_publication": true,
+      "required_signals": []
+    },
+    "spi1_wired_polling": {
+      "closure": [
+        "gpio",
+        "rcc",
+        "spi"
+      ],
+      "instance_scope": {
+        "spi": [
+          "SPI1"
+        ]
+      },
+      "issues": [
+        "SPI1_MISO: board connectivity not published",
+        "SPI1_MOSI: board connectivity not published",
+        "SPI1_SCK: board connectivity not published"
+      ],
+      "mode_scope": {
+        "spi": [
+          "master_full_duplex_polling"
+        ]
+      },
+      "ready": false,
+      "required_for_publication": false,
+      "required_signals": [
+        "SPI1_SCK",
+        "SPI1_MOSI",
+        "SPI1_MISO"
+      ]
+    }
+  }
+}

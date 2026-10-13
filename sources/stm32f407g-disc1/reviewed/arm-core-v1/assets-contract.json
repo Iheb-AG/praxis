@@ -1,0 +1,21 @@
+{
+  "asset_revision": "22310c7ad54daa553cf5cb11e4db08e4c8f9e93e191f3f12ec8410dd1fb40b59",
+  "clock": "Application must establish its clock basis; reference example selects HSI and updates SystemCoreClock",
+  "clock_validation": "ELF checks do not verify arbitrary clock logic. Establish AHB division, call SystemCoreClockUpdate, stop initialization on timeout, and check SysTick_Config's result. Reviewed fixture tests and optional probe diagnostics provide separate evidence.",
+  "mcu": "STM32F407VGT6",
+  "memory": {
+    "ccm_separate_unused": [
+      268435456,
+      65536
+    ],
+    "flash": [
+      134217728,
+      1048576
+    ],
+    "main_sram": [
+      536870912,
+      131072
+    ]
+  },
+  "vector_entries": 98
+}

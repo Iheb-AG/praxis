@@ -1,0 +1,286 @@
+{
+  "aliases": {
+    "gpioa": "gpio",
+    "usart2": "usart"
+  },
+  "bundle_revision": "8a794192394d9e5dacea00324bfd91e061b0c086628b096c1ddd7bf25268800c",
+  "compiler_version": "0.1.0",
+  "dependencies": [
+    {
+      "entity": "gpio",
+      "requires": [
+        "rcc"
+      ]
+    },
+    {
+      "entity": "nvic",
+      "requires": [
+        "usart"
+      ]
+    },
+    {
+      "entity": "rcc",
+      "requires": []
+    },
+    {
+      "entity": "usart",
+      "requires": [
+        "gpio"
+      ]
+    }
+  ],
+  "documents": {
+    "index": "wiki/index.md",
+    "peripherals/gpio": "wiki/peripherals/gpio.md",
+    "peripherals/nvic": "wiki/peripherals/nvic.md",
+    "peripherals/rcc": "wiki/peripherals/rcc.md",
+    "peripherals/usart": "wiki/peripherals/usart.md",
+    "schemas/board": "wiki/schemas/board.md",
+    "schemas/components": "wiki/schemas/components.md",
+    "schemas/custom_pcb_netlist": "wiki/schemas/custom_pcb_netlist.md",
+    "sources": "wiki/sources.md"
+  },
+  "extractor_versions": {
+    "arm-none-eabi-gcc": "arm-none-eabi-gcc (Arch Repository) 16.2.0",
+    "clang": "clang version 23.1.1",
+    "cmsis-discovery": "v1; Clang layouts and restricted object-macro evaluation",
+    "libclang": "18.1.1",
+    "netlist": "Reviewed PDF transcription adapter v1; no geometry inference",
+    "praxis": "0.1.0"
+  },
+  "file_hashes": {
+    "wiki/index.md": "01e7851e5e4915e5446da80254fc9922e2a4f088ce2e66c62db95604dc529513",
+    "wiki/peripherals/gpio.md": "3d1580327be6afa70ae926cd122624072cdf635853b3affdb08f25b9d643647f",
+    "wiki/peripherals/nvic.md": "f39a3d3485ec633600519ff70d409ad24ac8c2d92e0c76faf189b7ef236cba3f",
+    "wiki/peripherals/rcc.md": "325e7e5dd41fc76c6e6cc3dfc4b7e6dc024529b53213e530ee1338df24bdc1d9",
+    "wiki/peripherals/usart.md": "c59b3d021c976cdce8d6399c442514a65a14ab6e2868cea3fc0ee19492de472d",
+    "wiki/schemas/board.md": "c19b48a15718add3e40fff2ec3e66f15774c6ce6ed03a450b2ae704aa4055ba7",
+    "wiki/schemas/components.md": "3c0ab5fea89d0c6d520a2c5ebad570f6e6beaad58a5d3ffa7b3caf8a47ac18c7",
+    "wiki/schemas/custom_pcb_netlist.md": "9996d81a6f4b01fb2b84b93384d7daf57b3c27909d5a7ab780628aa749c66409",
+    "wiki/sources.md": "dfa1dd249f043e67001adee26c0a13c996d60c9f37650a50731c77d2e553d061"
+  },
+  "netlist": "wiki/schemas/custom_pcb_netlist.md",
+  "peripherals": {
+    "gpio": "wiki/peripherals/gpio.md",
+    "nvic": "wiki/peripherals/nvic.md",
+    "rcc": "wiki/peripherals/rcc.md",
+    "usart": "wiki/peripherals/usart.md"
+  },
+  "review": {
+    "basis": "Visual inspection of official MB997 E-01 pages 4/7 and UM1472 Rev9 sections 7.5/7.6/7.11/7.12; independent review pending; physical card revision unknown.",
+    "reviewer": "Codex source-backed board editorial review",
+    "status": "reviewed"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "authority": "semantics",
+      "id": "board",
+      "license": "ST source document terms apply; local normalized records are MIT",
+      "origin": "Reviewed board role/polarity assertions; not automatic PDF wire reconstruction",
+      "path": "reviewed/board.json",
+      "sha256": "7ad9b54c7cdc26e5cf31314952c924f5fda1911cfdb627c5222cd6de89424869",
+      "version": "MB997-E-01 subset v1"
+    },
+    {
+      "authority": "configuration",
+      "id": "board_manual",
+      "license": "ST source document terms apply; local normalized records are MIT",
+      "origin": "https://www.st.com/resource/en/user_manual/dm00039084-discovery-kit-with-stm32f407vg-mcu-stmicroelectronics.pdf",
+      "path": "reviewed/um1472.provenance.json",
+      "sha256": "9444efaa35b893134df31825580fbcafa01348cf1d7c85a85bae365a6f4280b6",
+      "version": "UM1472 Rev 9"
+    },
+    {
+      "authority": "connectivity",
+      "id": "board_netlist",
+      "license": "ST source document terms apply; local normalized records are MIT",
+      "origin": "Reviewed transcription of ST MB997 E-01; not a CAD export",
+      "path": "reviewed/netlist.json",
+      "sha256": "278e548d9b05b612831ddfb220710ed782fdd2fda81e5509f607b8245db14da4",
+      "version": "MB997-E-01 subset v1"
+    },
+    {
+      "authority": "semantics",
+      "id": "clock_review",
+      "license": "BSD-3-Clause",
+      "origin": "https://raw.githubusercontent.com/STMicroelectronics/STM32CubeF4/v1.28.1/Projects/STM32F4-Discovery/Examples/UART/UART_TwoBoards_ComPolling/Src/main.c",
+      "path": "raw/st_clock_example.c",
+      "sha256": "a7457a224958f949e69bbebf17abec2fabead2a6932a0cf8016fb342bfab6553",
+      "version": "STM32CubeF4 v1.28.1"
+    },
+    {
+      "authority": "declarations",
+      "id": "cmsis_core",
+      "license": "Apache-2.0",
+      "origin": "https://raw.githubusercontent.com/ARM-software/CMSIS_5/5.9.0/CMSIS/Core/Include/core_cm4.h",
+      "path": "raw/vendor/core_cm4.h",
+      "sha256": "f5b63d52dd1557b15ca414cb59c264f595a7b5669db2a5878dffe22f4caedc8c",
+      "version": "ST commit 3c77349ce04c8af401454cc51f85ea9a50e34fc1 / Arm CMSIS 5.9.0"
+    },
+    {
+      "authority": "semantics",
+      "id": "definitions",
+      "license": "MIT",
+      "origin": "Source-backed editorial facts; RM0090/DS8626; independent review pending",
+      "path": "reviewed/peripherals.json",
+      "sha256": "32de9bfa3972a28d408ccf79ced9e58f37bdd886b7f6cd079c1a2132a10ed9b2",
+      "version": "f407-fixture-1"
+    },
+    {
+      "authority": "semantics",
+      "id": "gpio_review",
+      "license": "MIT",
+      "origin": "https://www.st.com/resource/en/datasheet/stm32f407vg.pdf",
+      "path": "reviewed/gpio.md",
+      "sha256": "4f1288c45c1d0faffe4cbc7161b2fc4117a0b7b1466826146cb93e25164f8d94",
+      "version": "f407-fixture-1"
+    },
+    {
+      "authority": "declarations",
+      "id": "header",
+      "license": "BSD-3-Clause",
+      "origin": "https://raw.githubusercontent.com/STMicroelectronics/cmsis-device-f4/3c77349ce04c8af401454cc51f85ea9a50e34fc1/Include/stm32f407xx.h",
+      "path": "raw/vendor/stm32f407xx.h",
+      "sha256": "ae1ab57d8ab750f64f04fd73476bc2760c761e18e45bde648e0bc350c9a1d9ac",
+      "version": "ST commit 3c77349ce04c8af401454cc51f85ea9a50e34fc1 / Arm CMSIS 5.9.0"
+    },
+    {
+      "authority": "semantics",
+      "id": "nvic_review",
+      "license": "MIT",
+      "origin": "Arm CMSIS core NVIC and ST device IRQ declarations",
+      "path": "reviewed/nvic.md",
+      "sha256": "df0a8e990fdd61861aaec94259cd640a36e23da4b5e92cdb3c2d4cc8389d6957",
+      "version": "f407-fixture-1"
+    },
+    {
+      "authority": "configuration",
+      "id": "profile",
+      "license": "MIT",
+      "origin": "Local target profile",
+      "path": "profile.json",
+      "sha256": "94a77630378906c1bbbb47c919f5e84d6c49e600661ee1b541c639bfcd56319a",
+      "version": "1"
+    },
+    {
+      "authority": "semantics",
+      "id": "rcc_review",
+      "license": "MIT",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "reviewed/rcc.md",
+      "sha256": "775654d8e3649946dec736ff7ae943f493e76dc42e2b4c1649f3f97b8fdf2469",
+      "version": "f407-fixture-1"
+    },
+    {
+      "authority": "connectivity",
+      "id": "schematic_e01",
+      "license": "ST source document terms apply; local normalized records are MIT",
+      "origin": "https://www.st.com/resource/en/schematic_pack/mb997-f407vgt6-e01_schematic.pdf",
+      "path": "reviewed/schematic-e01.provenance.json",
+      "sha256": "730be31b0809943920e0a4e635d2a5d40e9e8fcff9d4e0aea2587de8dcdfdd26",
+      "version": "MB997-E-01 2020-04-09"
+    },
+    {
+      "authority": "semantics",
+      "id": "usart_review",
+      "license": "MIT",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "reviewed/usart.md",
+      "sha256": "7f66def9641ded5d70e59e845ebc8a89268e27c6a5ecf2526dd7ddd80c73f34b",
+      "version": "f407-fixture-1"
+    },
+    {
+      "authority": "declarations",
+      "id": "vendor_0",
+      "license": "Apache-2.0",
+      "origin": "https://raw.githubusercontent.com/ARM-software/CMSIS_5/5.9.0/LICENSE.txt",
+      "path": "raw/vendor/LICENSE-CMSIS.txt",
+      "sha256": "b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1",
+      "version": "ST commit 3c77349ce04c8af401454cc51f85ea9a50e34fc1 / Arm CMSIS 5.9.0"
+    },
+    {
+      "authority": "declarations",
+      "id": "vendor_1",
+      "license": "BSD-3-Clause",
+      "origin": "https://raw.githubusercontent.com/STMicroelectronics/cmsis-device-f4/3c77349ce04c8af401454cc51f85ea9a50e34fc1/LICENSE.md",
+      "path": "raw/vendor/LICENSE-ST.md",
+      "sha256": "dadb755f51d36614173b28c5790cb4a991e8f4cc822e5b634fd66a4f4145824d",
+      "version": "ST commit 3c77349ce04c8af401454cc51f85ea9a50e34fc1 / Arm CMSIS 5.9.0"
+    },
+    {
+      "authority": "declarations",
+      "id": "vendor_2",
+      "license": "Apache-2.0",
+      "origin": "https://raw.githubusercontent.com/ARM-software/CMSIS_5/5.9.0/CMSIS/Core/Include/cmsis_compiler.h",
+      "path": "raw/vendor/cmsis_compiler.h",
+      "sha256": "b51963d271c1571ca3463654c76aa7ea50c4eac5d0a2710df10414ac64d9e0f8",
+      "version": "ST commit 3c77349ce04c8af401454cc51f85ea9a50e34fc1 / Arm CMSIS 5.9.0"
+    },
+    {
+      "authority": "declarations",
+      "id": "vendor_3",
+      "license": "Apache-2.0",
+      "origin": "https://raw.githubusercontent.com/ARM-software/CMSIS_5/5.9.0/CMSIS/Core/Include/cmsis_gcc.h",
+      "path": "raw/vendor/cmsis_gcc.h",
+      "sha256": "43bfd1fe69fbbc2ca70aaf7d43cc3e20f16e0c7f66e1bdef9b51af6dc14b2617",
+      "version": "ST commit 3c77349ce04c8af401454cc51f85ea9a50e34fc1 / Arm CMSIS 5.9.0"
+    },
+    {
+      "authority": "declarations",
+      "id": "vendor_4",
+      "license": "Apache-2.0",
+      "origin": "https://raw.githubusercontent.com/ARM-software/CMSIS_5/5.9.0/CMSIS/Core/Include/cmsis_version.h",
+      "path": "raw/vendor/cmsis_version.h",
+      "sha256": "184c19fd3ee73632edf35a0b4d49cd48be75fbf49e6ccb19d9db05fa83bea4b3",
+      "version": "ST commit 3c77349ce04c8af401454cc51f85ea9a50e34fc1 / Arm CMSIS 5.9.0"
+    },
+    {
+      "authority": "declarations",
+      "id": "vendor_6",
+      "license": "Apache-2.0",
+      "origin": "https://raw.githubusercontent.com/ARM-software/CMSIS_5/5.9.0/CMSIS/Core/Include/mpu_armv7.h",
+      "path": "raw/vendor/mpu_armv7.h",
+      "sha256": "29206b52ee02290ed6f5a5415ebd4187de802cf176d9b3cb844390d8e5571372",
+      "version": "ST commit 3c77349ce04c8af401454cc51f85ea9a50e34fc1 / Arm CMSIS 5.9.0"
+    },
+    {
+      "authority": "declarations",
+      "id": "vendor_7",
+      "license": "MIT",
+      "origin": "Pinned vendor source inventory",
+      "path": "raw/vendor/provenance.json",
+      "sha256": "d942d06c396ff3f1dc9be5135ef1546f458c24702f027dca93afe60909872d91",
+      "version": "ST commit 3c77349ce04c8af401454cc51f85ea9a50e34fc1 / Arm CMSIS 5.9.0"
+    },
+    {
+      "authority": "declarations",
+      "id": "vendor_9",
+      "license": "BSD-3-Clause",
+      "origin": "https://raw.githubusercontent.com/STMicroelectronics/cmsis-device-f4/3c77349ce04c8af401454cc51f85ea9a50e34fc1/Include/system_stm32f4xx.h",
+      "path": "raw/vendor/system_stm32f4xx.h",
+      "sha256": "02c067d5a135f540c03215dc834b1e60a97bbd4e55bfd3994b0c82a15ea3012a",
+      "version": "ST commit 3c77349ce04c8af401454cc51f85ea9a50e34fc1 / Arm CMSIS 5.9.0"
+    }
+  ],
+  "target": {
+    "board_revision": "MB997-E-01",
+    "clock_assumptions": [
+      "Reference board: STM32F407G-DISC1, MB997 E-01 schematic. Actual card revision is unconfirmed.",
+      "8 MHz X2 crystal is documented for E-01; verify oscillator assembly and solder bridges against the actual card.",
+      "168 MHz is a validated software clock recipe, NOT a claim about the running firmware. Preserve a known working clock setup for GPIO tests.",
+      "Recipe only: PLLM=8, PLLN=336, PLLP=2, PLLQ=7; AHB /1; APB1 /4 (42 MHz); APB2 /2 (84 MHz); 5 FLASH wait states, supply within the reviewed range.",
+      "SysTick_Config uses the processor clock. For 1 ms use actual SystemCoreClock / 1000 after synchronizing SystemCoreClock; do not divide by 8."
+    ],
+    "clock_hz": 168000000,
+    "example_only": false,
+    "family": "stm32",
+    "fuse_assumptions": [],
+    "id": "stm32f407g_disc1_mb997_e01",
+    "mcu": "STM32F407VGT6",
+    "package": "Package_QFP:LQFP-100_14x14mm_P0.5mm",
+    "primary_mcu_ref": "U4",
+    "silicon_revision": "Unspecified; errata review pending"
+  },
+  "topology": []
+}

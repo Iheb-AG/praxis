@@ -1,0 +1,18 @@
+{
+  "archive_import_revision": "b7fc0104f2e49ab7fb46a25a0ae5e33e1f0b9e62c3c240d9d4750d338ec25268",
+  "bytes": 3308559,
+  "extractors": {
+    "pdfminer.six": "20260107",
+    "pdfplumber": "0.11.10"
+  },
+  "locators": [
+    "page:1",
+    "page:4",
+    "page:7"
+  ],
+  "method": "Visual schematic inspection plus source text cross-check; normalized facts, not reproduced source pages",
+  "reviewer": "Codex source-backed editorial review; independent review pending",
+  "sha256": "7e22bb651b93c90f7fa3ea0b976254fc23e0e09b3123b89c4655ae1cb700f8d4",
+  "source_id": "schematic_e01",
+  "url": "https://www.st.com/resource/en/schematic_pack/mb997-f407vgt6-e01_schematic.pdf"
+}

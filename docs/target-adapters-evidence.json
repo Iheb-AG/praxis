@@ -1,0 +1,273 @@
+{
+  "bundle_revision": "549fac8ec55251b7f49c77d6d458229394ddeef3b628f8f25000e6cf55db63e4",
+  "date": "2026-10-12",
+  "determinism": {
+    "cli_and_mcp_publications_identical": true,
+    "different_source_locations_tested": true,
+    "files": 10,
+    "largest_document_bytes": 5487
+  },
+  "format": "praxis-target-adapter-evidence-v1",
+  "ingestion_mcp": {
+    "calls": 4,
+    "network_requests": 0,
+    "passed": true,
+    "trace": [
+      {
+        "passed": true,
+        "response_sha256": "ab6b368287bd0253ba0fd9fac7acd4debd36d25fec0e7c12abf9f044b0172655",
+        "tool": "get_ingestion_profile"
+      },
+      {
+        "passed": true,
+        "response_sha256": "1f6417a3ba10118e380cac4b447679f917e7e0a04d924b972e0210e5f1206ab5",
+        "tool": "discover_source_declarations"
+      },
+      {
+        "passed": true,
+        "response_sha256": "73c8ea3110543f60bf6c50402c5dacf331f2ede8254e1b2005f505708462a4ef",
+        "tool": "read_source_evidence"
+      },
+      {
+        "passed": true,
+        "response_sha256": "83c169cc78318159818b3ead9025c2d9a00e14d06fa71f91588e066b68842198",
+        "tool": "publish_reviewed_bundle"
+      }
+    ]
+  },
+  "knowledge_mcp": {
+    "calls": 14,
+    "discovered_tools": [
+      "query_schematic_netlist",
+      "read_peripheral_doc",
+      "read_wiki_index"
+    ],
+    "limits": "Actual MCP retrieval and complete-byte checks only; no live LLM, operating-semantic, build or physical qualification.",
+    "passed": true,
+    "revision": "549fac8ec55251b7f49c77d6d458229394ddeef3b628f8f25000e6cf55db63e4",
+    "target": {
+      "board_revision": "synthetic-1",
+      "clock_assumptions": [
+        "Fictional fixed 12 MHz clock. No manufactured MCU or board is represented."
+      ],
+      "clock_hz": 12000000,
+      "example_only": true,
+      "family": "praxis_demo",
+      "fuse_assumptions": [],
+      "id": "synthetic_cortex_m3",
+      "knowledge_adapter": {
+        "cpu": "cortex-m3",
+        "header_identity": [
+          "PRAXIS_DEMO_M3_H",
+          "PRAXIS_DEMO_PART"
+        ],
+        "kind": "cmsis_cortex_m",
+        "mask_suffix": "_MASK",
+        "position_suffix": "_SHIFT"
+      },
+      "mcu": "PRAXIS-DEMO-M3",
+      "package": "Fixture:QFP-16",
+      "primary_mcu_ref": "U1",
+      "silicon_revision": "fictional-v1"
+    },
+    "trace": [
+      {
+        "arguments": {
+          "peripheral_name": "uart0"
+        },
+        "expected_error": "PREREQUISITE_REQUIRED",
+        "is_error": true,
+        "passed": true,
+        "response_bytes": 109,
+        "response_sha256": "3ca77b575e2247321348bdea42ed2e09e77fd8324c366efe3260cb2b23ec1910",
+        "tool": "read_peripheral_doc"
+      },
+      {
+        "arguments": {
+          "query_target": "UART0_TX"
+        },
+        "expected_error": "PREREQUISITE_REQUIRED",
+        "is_error": true,
+        "passed": true,
+        "response_bytes": 113,
+        "response_sha256": "7783e48ac11d4407db75aa9236db87cce6bf9c640794759a6740354abce3315f",
+        "tool": "query_schematic_netlist"
+      },
+      {
+        "arguments": {},
+        "expected_error": null,
+        "is_error": false,
+        "passed": true,
+        "response_bytes": 4445,
+        "response_sha256": "ae321455ab9367b274437bf9eb3f51c7a1a063689bcf261fb06e0f09cd4e5321",
+        "tool": "read_wiki_index"
+      },
+      {
+        "arguments": {
+          "peripheral_name": "uart0"
+        },
+        "expected_error": "PREREQUISITE_REQUIRED",
+        "is_error": true,
+        "passed": true,
+        "response_bytes": 108,
+        "response_sha256": "e75495b77c6baee975e23c577679cc69ff4ebd5e2d2cc6bb32d375ee431e73c1",
+        "tool": "read_peripheral_doc"
+      },
+      {
+        "arguments": {
+          "query_target": "UART0_TX"
+        },
+        "expected_error": null,
+        "is_error": false,
+        "passed": true,
+        "response_bytes": 731,
+        "response_sha256": "68c93716a11df60f6ae23fc651c217f2a3990d72531515c9055cfd65e3e879d7",
+        "tool": "query_schematic_netlist"
+      },
+      {
+        "arguments": {
+          "query_target": "praxis_absent_net"
+        },
+        "expected_error": null,
+        "is_error": false,
+        "passed": true,
+        "response_bytes": 78,
+        "response_sha256": "16ecb34476cd795bd536288752eed3dd4adfe734503f4d66bb3bf8873e43dc21",
+        "tool": "query_schematic_netlist"
+      },
+      {
+        "arguments": {
+          "peripheral_name": "praxis_absent_entity"
+        },
+        "expected_error": "UNKNOWN_PERIPHERAL",
+        "is_error": true,
+        "passed": true,
+        "response_bytes": 145,
+        "response_sha256": "9cc14153023a23a09c49bdeab025c8bcdf7b01bdbfd35853226b242e37b2407f",
+        "tool": "read_peripheral_doc"
+      },
+      {
+        "arguments": {
+          "peripheral_name": "../outside"
+        },
+        "expected_error": "INVALID_INPUT",
+        "is_error": true,
+        "passed": true,
+        "response_bytes": 135,
+        "response_sha256": "e769d6a8adfd62a3caeef79db4d8235733bb485cfce9ebfc2838d190c2395542",
+        "tool": "read_peripheral_doc"
+      },
+      {
+        "arguments": {
+          "peripheral_name": "clock"
+        },
+        "expected_error": null,
+        "is_error": false,
+        "passed": true,
+        "response_bytes": 1694,
+        "response_sha256": "a20155164636d2391bdbe339170a4d076a0d2a7941de6e4efdd08999427e7e06",
+        "tool": "read_peripheral_doc"
+      },
+      {
+        "arguments": {
+          "peripheral_name": "pins"
+        },
+        "expected_error": null,
+        "is_error": false,
+        "passed": true,
+        "response_bytes": 1709,
+        "response_sha256": "666b5fb8ce485b60290fe557966426d81ca1626667cc158ce945437ee21e7737",
+        "tool": "read_peripheral_doc"
+      },
+      {
+        "arguments": {
+          "peripheral_name": "uart"
+        },
+        "expected_error": null,
+        "is_error": false,
+        "passed": true,
+        "response_bytes": 1921,
+        "response_sha256": "8a2fed56f3dc3afbcb483c6dcd13c2d5556089b71119fc40c74ba5be38de5048",
+        "tool": "read_peripheral_doc"
+      },
+      {
+        "arguments": {
+          "peripheral_name": "interrupts"
+        },
+        "expected_error": null,
+        "is_error": false,
+        "passed": true,
+        "response_bytes": 1688,
+        "response_sha256": "e56dee3dff2428ebed9f2a2a992d09ba8a12c993632a246cd002b91677a590b5",
+        "tool": "read_peripheral_doc"
+      },
+      {
+        "arguments": {},
+        "expected_error": null,
+        "is_error": false,
+        "passed": true,
+        "response_bytes": 4445,
+        "response_sha256": "ae321455ab9367b274437bf9eb3f51c7a1a063689bcf261fb06e0f09cd4e5321",
+        "tool": "read_wiki_index"
+      },
+      {
+        "arguments": {
+          "peripheral_name": "UART0"
+        },
+        "expected_error": null,
+        "is_error": false,
+        "passed": true,
+        "response_bytes": 1921,
+        "response_sha256": "8a2fed56f3dc3afbcb483c6dcd13c2d5556089b71119fc40c74ba5be38de5048",
+        "tool": "read_peripheral_doc"
+      }
+    ]
+  },
+  "limits": [
+    "Fictional target only; no NXP or other real new board qualification.",
+    "All four blocks are declarations only. No reviewed UART operating workflow.",
+    "No firmware build, flash, reset, debug or physical test on the synthetic target.",
+    "Existing F407 feature coverage is unchanged; complete MCU support remains unknown.",
+    "Independent review and native KiCad checks still block qualified v1 release."
+  ],
+  "release_gate": {
+    "blockers": [
+      "Missing external tool: kicad-cli",
+      "Independent review of the exact current bundle revisions is missing",
+      "Independent review of the exact firmware asset revision is missing"
+    ],
+    "qualified_v1_ready": false
+  },
+  "target": {
+    "board_revision": "synthetic-1",
+    "clock_assumptions": [
+      "Fictional fixed 12 MHz clock. No manufactured MCU or board is represented."
+    ],
+    "clock_hz": 12000000,
+    "example_only": true,
+    "family": "praxis_demo",
+    "fuse_assumptions": [],
+    "id": "synthetic_cortex_m3",
+    "knowledge_adapter": {
+      "cpu": "cortex-m3",
+      "header_identity": [
+        "PRAXIS_DEMO_M3_H",
+        "PRAXIS_DEMO_PART"
+      ],
+      "kind": "cmsis_cortex_m",
+      "mask_suffix": "_MASK",
+      "position_suffix": "_SHIFT"
+    },
+    "mcu": "PRAXIS-DEMO-M3",
+    "package": "Fixture:QFP-16",
+    "primary_mcu_ref": "U1",
+    "silicon_revision": "fictional-v1"
+  },
+  "tests": {
+    "additional_topology_only_test_passed": 1,
+    "full_suite_passed": 802,
+    "full_suite_skipped": 4,
+    "ruff_passed": true,
+    "skip_reason": "Native KiCad CLI unavailable"
+  }
+}

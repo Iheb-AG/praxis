@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "allowed_hosts": ["www.st.com", "st.com"],
+  "sources": [
+    {
+      "id": "ds8626",
+      "target": "STM32F407VGT6",
+      "title": "STM32F405xx / STM32F407xx datasheet, DS8626",
+      "url": "https://www.st.com/resource/en/datasheet/stm32f407vg.pdf",
+      "kind": "pdf"
+    },
+    {
+      "id": "rm0090",
+      "target": "STM32F407VGT6",
+      "title": "STM32F4 reference manual, RM0090; verify F407-specific sections",
+      "url": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "kind": "pdf"
+    },
+    {
+      "id": "es0182",
+      "target": "STM32F407VGT6",
+      "title": "STM32F405/407xx and STM32F415/417xx device errata, ES0182",
+      "url": "https://www.st.com/resource/en/errata_sheet/es0182-stm32f405407xx-and-stm32f415417xx-device-errata-stmicroelectronics.pdf",
+      "kind": "pdf"
+    }
+  ]
+}

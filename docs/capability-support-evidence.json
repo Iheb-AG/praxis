@@ -1,0 +1,104 @@
+{
+  "bundle_revision": "0e8737e667f05858aa39cf6484cd7a5c30125fd5ae2910c441187185380eccda",
+  "catalog": {
+    "metric": {
+      "denominator": 26,
+      "numerator": 9,
+      "percent": 34.6,
+      "scope": "Unweighted, authored catalog goals only; changing the catalog changes the denominator"
+    },
+    "path": "examples/capabilities/stm32f407g-disc1.json",
+    "scope": "Initial contributor scope: the twenty workflows declared by the clock-v1 profile, plus six planned boot/update and power goals. These are uneven, unweighted goals, not an exhaustive STM32F407 capability inventory. Workflow-specific instances and limits come from the selected bundle; planned goals require target-applicability review.",
+    "sha256": "855af7624c9df7e3a63444e88f28f666cfe342b5ed75d28c87e37f42e902d603"
+  },
+  "distribution": {
+    "distribution_contents_passed": true,
+    "private_and_raw_paths_excluded": true,
+    "public_documentation_file_links_passed": true,
+    "source_members": 600,
+    "wheel_members": 46
+  },
+  "format": "praxis-support-evidence-v1",
+  "knowledge_mcp": {
+    "checks": {
+      "complete_reviewed_documents": true,
+      "crc_publication_gate": true,
+      "dma_publication_gate": true,
+      "explicit_clock_mode_route": true,
+      "feature_index": true,
+      "flash_programming_still_blocked": true,
+      "index_gate": true,
+      "missing_spi_pin_not_guessed": true,
+      "rng_clock_gate": true,
+      "spi_wiring_blocked": true,
+      "three_readonly_tools": true
+    },
+    "hardware_operations": 0,
+    "passed": true,
+    "report_sha256": "89952fcb32a41b03a8ce316356429f7049d206f1b1cdb28495a85dbbff16e10d",
+    "tool_calls": 17
+  },
+  "limits": [
+    "This extension adds no reviewed hardware modes or physical qualification.",
+    "Catalog goals are not exhaustive MCU capabilities; an authored denominator can change.",
+    "The strict external-tools qualification was not completed in this environment; KiCad and Podman are missing.",
+    "Installed-wheel support CLI worked from an unrelated directory using preinstalled runtime dependencies.",
+    "No network, flash, reset, halt, resume or physical board operation occurred.",
+    "Hosted CI and independent reviews are not claimed."
+  ],
+  "metrics": {
+    "blocks_with_mode_contract": {
+      "denominator": 42,
+      "numerator": 9,
+      "percent": 21.4,
+      "scope": "At least one explicit mode contract; legacy subsets may lack contracts"
+    },
+    "blocks_with_reviewed_subset": {
+      "denominator": 42,
+      "numerator": 15,
+      "percent": 35.7,
+      "scope": "At least some reviewed operating knowledge; not every mode of these blocks"
+    },
+    "declared_workflows_knowledge_ready": {
+      "denominator": 20,
+      "numerator": 9,
+      "percent": 45.0,
+      "scope": "Only workflows declared in this profile; neither exhaustive nor hardware qualification"
+    },
+    "published_register_blocks": {
+      "denominator": 42,
+      "numerator": 41,
+      "percent": 97.6,
+      "scope": "Recognized register blocks only; declarations do not establish operating support"
+    }
+  },
+  "overall_mcu_completion_percent": null,
+  "preflight_exit_codes": {
+    "feature_flash": 1,
+    "not_declared": 2,
+    "uart_timer_interrupts": 0
+  },
+  "regression": {
+    "errors": 0,
+    "external_tools_required": false,
+    "failures": 0,
+    "junit_sha256": "e36eeeffb89b1d2b32c818814ecd90f77aa33b049dc88e4ce52af34f944769c1",
+    "passed": 490,
+    "skip_reasons": {
+      "Optional external tool missing: kicad-cli": 4,
+      "Optional external tool missing: podman": 5
+    },
+    "skipped": 9,
+    "tests": 499
+  },
+  "release_gate": {
+    "blockers": [
+      "Missing external tool: kicad-cli",
+      "Missing external tool: podman",
+      "Independent review of the exact current bundle revisions is missing",
+      "Independent review of the exact firmware asset revision is missing"
+    ],
+    "release_ready": false
+  },
+  "reviewed_mode_contracts": 12
+}

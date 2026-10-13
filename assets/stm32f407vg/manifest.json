@@ -1,0 +1,122 @@
+{
+  "bundle_revision": "22310c7ad54daa553cf5cb11e4db08e4c8f9e93e191f3f12ec8410dd1fb40b59",
+  "files": [
+    {
+      "kind": "license",
+      "license": "Apache-2.0",
+      "origin": "https://raw.githubusercontent.com/ARM-software/CMSIS_5/5.9.0/LICENSE.txt",
+      "path": "LICENSE-CMSIS.txt",
+      "sha256": "b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1",
+      "version": "CMSIS 5.9.0"
+    },
+    {
+      "kind": "license",
+      "license": "See LICENSE-ST.md (file headers govern)",
+      "origin": "https://raw.githubusercontent.com/STMicroelectronics/cmsis-device-f4/3c77349ce04c8af401454cc51f85ea9a50e34fc1/LICENSE.md",
+      "path": "LICENSE-ST.md",
+      "sha256": "dadb755f51d36614173b28c5790cb4a991e8f4cc822e5b634fd66a4f4145824d",
+      "version": "3c77349ce04c8af401454cc51f85ea9a50e34fc1"
+    },
+    {
+      "kind": "header",
+      "license": "Apache-2.0",
+      "origin": "https://raw.githubusercontent.com/ARM-software/CMSIS_5/5.9.0/CMSIS/Core/Include/cmsis_compiler.h",
+      "path": "include/cmsis_compiler.h",
+      "sha256": "b51963d271c1571ca3463654c76aa7ea50c4eac5d0a2710df10414ac64d9e0f8",
+      "version": "CMSIS 5.9.0"
+    },
+    {
+      "kind": "header",
+      "license": "Apache-2.0",
+      "origin": "https://raw.githubusercontent.com/ARM-software/CMSIS_5/5.9.0/CMSIS/Core/Include/cmsis_gcc.h",
+      "path": "include/cmsis_gcc.h",
+      "sha256": "43bfd1fe69fbbc2ca70aaf7d43cc3e20f16e0c7f66e1bdef9b51af6dc14b2617",
+      "version": "CMSIS 5.9.0"
+    },
+    {
+      "kind": "header",
+      "license": "Apache-2.0",
+      "origin": "https://raw.githubusercontent.com/ARM-software/CMSIS_5/5.9.0/CMSIS/Core/Include/cmsis_version.h",
+      "path": "include/cmsis_version.h",
+      "sha256": "184c19fd3ee73632edf35a0b4d49cd48be75fbf49e6ccb19d9db05fa83bea4b3",
+      "version": "CMSIS 5.9.0"
+    },
+    {
+      "kind": "header",
+      "license": "Apache-2.0",
+      "origin": "https://raw.githubusercontent.com/ARM-software/CMSIS_5/5.9.0/CMSIS/Core/Include/core_cm4.h",
+      "path": "include/core_cm4.h",
+      "sha256": "f5b63d52dd1557b15ca414cb59c264f595a7b5669db2a5878dffe22f4caedc8c",
+      "version": "CMSIS 5.9.0"
+    },
+    {
+      "kind": "header",
+      "license": "Apache-2.0",
+      "origin": "https://raw.githubusercontent.com/ARM-software/CMSIS_5/5.9.0/CMSIS/Core/Include/mpu_armv7.h",
+      "path": "include/mpu_armv7.h",
+      "sha256": "29206b52ee02290ed6f5a5415ebd4187de802cf176d9b3cb844390d8e5571372",
+      "version": "CMSIS 5.9.0"
+    },
+    {
+      "kind": "header",
+      "license": "See LICENSE-ST.md (file headers govern)",
+      "origin": "https://raw.githubusercontent.com/STMicroelectronics/cmsis-device-f4/3c77349ce04c8af401454cc51f85ea9a50e34fc1/Include/stm32f407xx.h",
+      "path": "include/stm32f407xx.h",
+      "sha256": "ae1ab57d8ab750f64f04fd73476bc2760c761e18e45bde648e0bc350c9a1d9ac",
+      "version": "3c77349ce04c8af401454cc51f85ea9a50e34fc1"
+    },
+    {
+      "kind": "header",
+      "license": "See LICENSE-ST.md (file headers govern)",
+      "origin": "https://raw.githubusercontent.com/STMicroelectronics/cmsis-device-f4/3c77349ce04c8af401454cc51f85ea9a50e34fc1/Include/stm32f4xx.h",
+      "path": "include/stm32f4xx.h",
+      "sha256": "a19edea6b2f4df2ab3c567782c4d313a52319c4303bd56ad7dd1d0e077014657",
+      "version": "3c77349ce04c8af401454cc51f85ea9a50e34fc1"
+    },
+    {
+      "kind": "header",
+      "license": "See LICENSE-ST.md (file headers govern)",
+      "origin": "https://raw.githubusercontent.com/STMicroelectronics/cmsis-device-f4/3c77349ce04c8af401454cc51f85ea9a50e34fc1/Include/system_stm32f4xx.h",
+      "path": "include/system_stm32f4xx.h",
+      "sha256": "02c067d5a135f540c03215dc834b1e60a97bbd4e55bfd3994b0c82a15ea3012a",
+      "version": "3c77349ce04c8af401454cc51f85ea9a50e34fc1"
+    },
+    {
+      "kind": "runtime",
+      "license": "MIT",
+      "origin": "Praxis authored profile; ST DS8626 Rev12 memory map and pinned ST startup symbol contract",
+      "path": "runtime.c",
+      "sha256": "217846130f860da0259e0a53d4c862b63914a0eed127106265d44e846c41c526",
+      "version": "3c77349ce04c8af401454cc51f85ea9a50e34fc1"
+    },
+    {
+      "kind": "startup",
+      "license": "See LICENSE-ST.md (file headers govern)",
+      "origin": "https://raw.githubusercontent.com/STMicroelectronics/cmsis-device-f4/3c77349ce04c8af401454cc51f85ea9a50e34fc1/Source/Templates/gcc/startup_stm32f407xx.s",
+      "path": "startup_stm32f407xx.s",
+      "sha256": "430f14fd00db0f7aa88f354aee54064efb582ddc4cc264fb8e435dc7d7a2f53d",
+      "version": "3c77349ce04c8af401454cc51f85ea9a50e34fc1"
+    },
+    {
+      "kind": "linker",
+      "license": "MIT",
+      "origin": "Praxis authored profile; ST DS8626 Rev12 memory map and pinned ST startup symbol contract",
+      "path": "stm32f407vg_flash.ld",
+      "sha256": "5c0ba83a3a5aa76192e3099b3e7bf860769dfa7ed60bd0805c99e4bedfdd923c",
+      "version": "3c77349ce04c8af401454cc51f85ea9a50e34fc1"
+    },
+    {
+      "kind": "system",
+      "license": "See LICENSE-ST.md (file headers govern)",
+      "origin": "https://raw.githubusercontent.com/STMicroelectronics/cmsis-device-f4/3c77349ce04c8af401454cc51f85ea9a50e34fc1/Source/Templates/system_stm32f4xx.c",
+      "path": "system_stm32f4xx.c",
+      "sha256": "a31929eab936ac98db060c18917118acf79dc96e1f03ed4b57d614535dd06d70",
+      "version": "3c77349ce04c8af401454cc51f85ea9a50e34fc1"
+    }
+  ],
+  "mcu": "STM32F407VGT6",
+  "package": "Package_QFP:LQFP-100_14x14mm_P0.5mm",
+  "profile": "stm32f407vg-c11-flash",
+  "review": "Implementation review: memory banks checked against DS8626 Rev12; all vendor IRQ declarations cross-checked against pinned startup. Independent embedded review and physical qualification pending.",
+  "schema_version": 1
+}

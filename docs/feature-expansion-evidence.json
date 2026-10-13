@@ -1,0 +1,650 @@
+{
+  "advisory_mcp": {
+    "affected_documents_blocked": [
+      "crc"
+    ],
+    "issue": "PRAXIS-2026-001",
+    "passed": true,
+    "response_sha256": "e187bf3701224c12a73da017ace99504ed940c05a4ace6ca56d45f162d6237ed"
+  },
+  "all_mcu_features_supported": false,
+  "bundle_revision": "bd8b793388dff8303e5f7d46469b48afea1807dd2f7ae9b71541eb01779a3fbc",
+  "compiled_example": {
+    "artifact_id": "a40462305cd0971ad4c7b03cba7a5e330322db206aaf9d4ccab783d56c160e7d",
+    "compile_passed": true,
+    "image_validated": true,
+    "physical_behavior": "not tested",
+    "source_sha256": "d42630241ca4648262b589cf98d7f6c14fa45244cce8803db799ebeed912975d",
+    "validation": {
+      "asset_revision": "22310c7ad54daa553cf5cb11e4db08e4c8f9e93e191f3f12ec8410dd1fb40b59",
+      "checks": [
+        "ELF architecture",
+        "load/section memory bounds",
+        "main-SRAM stack",
+        "98-entry vendor/header vector layout",
+        "startup copy/zero symbols"
+      ],
+      "elf_sha256": "6bc1f4913c6e373da77b6c27d11face3231607fc833d64cbb983b113c7df518a",
+      "errors": [],
+      "initial_sp": "0x20020000",
+      "physical_behavior": "not tested",
+      "profile": "stm32f407vg-c11-flash",
+      "valid": true
+    }
+  },
+  "date": "2026-10-11",
+  "editorial_review_only": true,
+  "features": {
+    "blocks_without_mode_contracts": 35,
+    "declared_instances": 99,
+    "register_blocks": 42,
+    "reviewed_mode_contracts": 7
+  },
+  "format": "praxis-feature-expansion-evidence-v1",
+  "hardware_operations_this_change": 0,
+  "knowledge_build_mcp": {
+    "calls": 17,
+    "checks": {
+      "artifact_revalidated": true,
+      "build_without_hardware_tools": true,
+      "complete_reviewed_documents": true,
+      "crc_publication_gate": true,
+      "dma_publication_gate": true,
+      "feature_index": true,
+      "index_gate": true,
+      "matching_bundle_pair": true,
+      "missing_spi_pin_not_guessed": true,
+      "rng_clock_blocked": true,
+      "spi_wiring_blocked": true,
+      "target_compilation": true,
+      "three_readonly_tools": true
+    },
+    "raw_responses_sha256": "261a59e934d68f9d479dcfe644aabac9f44caed660a78ce7af8b9794adf78c30"
+  },
+  "limits": [
+    "No new board observations or programming in this change.",
+    "Initial recovery timeout and unintended new running session remain unexplained.",
+    "New peripheral modes are not physically qualified.",
+    "Independent source/engineering review remains pending."
+  ],
+  "publication": {
+    "deterministic_republication_passed": true,
+    "repeat_response_sha256": "2a54004622b35ea48db2523d7437fecedb9c94c07968e8c85224995f4f6787f4",
+    "response_sha256": "2a54004622b35ea48db2523d7437fecedb9c94c07968e8c85224995f4f6787f4"
+  },
+  "release_gate": {
+    "independent_review_pending": true,
+    "shipped_bundles_requiring_review": 9
+  },
+  "repeatability_qualified": false,
+  "reviewed_subsets": 13,
+  "target": "stm32f407g_disc1_mb997_e01",
+  "telemetry_qualification": [
+    {
+      "case": "negative-01",
+      "format": "praxis-telemetry-qualification-v1",
+      "input_sha256": [
+        "0e9e0fc36c09af6f762961c92bf86e3f6eee2954254c03419bc5fdb0928d0c0b"
+      ],
+      "mutating_operations": 0,
+      "passed": true,
+      "phase": "failure",
+      "repeatability_qualified": false,
+      "same_image": true,
+      "same_run_across_windows": true,
+      "windows": [
+        {
+          "artifact_id": "c192a736ed2958697e4c89022094ae3b896b01529c8f391e074068c1c2c71688",
+          "assessment": {
+            "blue_success_reported": false,
+            "counter_continuity_plausible": true,
+            "deltas_modulo_uint32": {
+              "exti_irqs": 0,
+              "frames_started": 0,
+              "frames_validated": 0,
+              "queue_overflows": 0,
+              "rx_bytes": 134,
+              "timer_irqs": 4250,
+              "tx_bytes": 0,
+              "uart_errors": 134,
+              "uart_irqs": 134,
+              "uptime_ms": 4250
+            },
+            "firmware_failure_reported": true,
+            "fresh_progress": true,
+            "limits": "No stimulus was generated; absent UART progress while paused is expected. A reset can mimic rollover; no boot-unique identity is implemented. These are firmware-reported outcomes, not independent packet capture.",
+            "same_run": true,
+            "uart_progress_observed": false
+          },
+          "bundle_revision": "1e7e9f44e7e8a4a9c2f1730ae725a2fed50cd80271b75adf63cdaa495899900b",
+          "checks": {
+            "abi_matches": true,
+            "artifact_matches": true,
+            "bundle_matches": true,
+            "counter_relations": true,
+            "cpu_running_reported": true,
+            "failed_state": true,
+            "frames_stopped": true,
+            "fresh_counter_progress": true,
+            "image_checks_reported": true,
+            "image_identity_present": true,
+            "same_run": true,
+            "success_off": true
+          },
+          "elf_sha256": "e17f4f602d569e9a10a572abe765236e04ac26af14c002855fd288944a2a0d92",
+          "failure_names": [
+            "uart_error"
+          ],
+          "failures": [],
+          "image_sha256": "ae0743630fda736973949f8c23e0d11e28fdce953e4b588fa6d93835bc20d8b6",
+          "limits": [
+            "Validates recorded firmware self-reports, not independent hardware measurements.",
+            "Reported image checks are not independently re-executed by this offline validator.",
+            "One passing window does not establish repeatability or explain earlier failures."
+          ],
+          "passed": true,
+          "phase": "failure",
+          "run_number": 1,
+          "sample_count": 5
+        }
+      ]
+    },
+    {
+      "case": "recovery-01",
+      "format": "praxis-telemetry-qualification-v1",
+      "input_sha256": [
+        "3d42b877e574fdec3ad07734c71156f9e274c120113b0345e56fea0417cb1478",
+        "60419a80b937bd16423a02c125f1938eea20484543d0b0bd0319181e9561abb6"
+      ],
+      "mutating_operations": 0,
+      "passed": false,
+      "phase": "running",
+      "repeatability_qualified": false,
+      "same_image": true,
+      "same_run_across_windows": true,
+      "windows": [
+        {
+          "artifact_id": "c192a736ed2958697e4c89022094ae3b896b01529c8f391e074068c1c2c71688",
+          "assessment": {
+            "blue_success_reported": false,
+            "counter_continuity_plausible": true,
+            "deltas_modulo_uint32": {
+              "exti_irqs": 0,
+              "frames_started": 0,
+              "frames_validated": 0,
+              "queue_overflows": 0,
+              "rx_bytes": 0,
+              "timer_irqs": 4000,
+              "tx_bytes": 0,
+              "uart_errors": 0,
+              "uart_irqs": 0,
+              "uptime_ms": 4000
+            },
+            "firmware_failure_reported": true,
+            "fresh_progress": true,
+            "limits": "No stimulus was generated; absent UART progress while paused is expected. A reset can mimic rollover; no boot-unique identity is implemented. These are firmware-reported outcomes, not independent packet capture.",
+            "same_run": true,
+            "uart_progress_observed": false
+          },
+          "bundle_revision": "1e7e9f44e7e8a4a9c2f1730ae725a2fed50cd80271b75adf63cdaa495899900b",
+          "checks": {
+            "abi_matches": true,
+            "artifact_matches": true,
+            "bundle_matches": true,
+            "byte_progress": false,
+            "counter_relations": true,
+            "cpu_running_reported": true,
+            "expected_state": false,
+            "fresh_counter_progress": true,
+            "image_checks_reported": true,
+            "image_identity_present": true,
+            "no_active_failure": false,
+            "no_uart_queue_errors": true,
+            "same_run": true,
+            "success_threshold": false,
+            "validated_progress": false
+          },
+          "elf_sha256": "e17f4f602d569e9a10a572abe765236e04ac26af14c002855fd288944a2a0d92",
+          "failure_names": [
+            "timeout"
+          ],
+          "failures": [
+            "byte_progress",
+            "expected_state",
+            "no_active_failure",
+            "success_threshold",
+            "validated_progress"
+          ],
+          "image_sha256": "ae0743630fda736973949f8c23e0d11e28fdce953e4b588fa6d93835bc20d8b6",
+          "limits": [
+            "Validates recorded firmware self-reports, not independent hardware measurements.",
+            "Reported image checks are not independently re-executed by this offline validator.",
+            "One passing window does not establish repeatability or explain earlier failures."
+          ],
+          "passed": false,
+          "phase": "running",
+          "run_number": 1,
+          "sample_count": 5
+        },
+        {
+          "artifact_id": "c192a736ed2958697e4c89022094ae3b896b01529c8f391e074068c1c2c71688",
+          "assessment": {
+            "blue_success_reported": false,
+            "counter_continuity_plausible": true,
+            "deltas_modulo_uint32": {
+              "exti_irqs": 2,
+              "frames_started": 31,
+              "frames_validated": 31,
+              "queue_overflows": 0,
+              "rx_bytes": 589,
+              "timer_irqs": 4250,
+              "tx_bytes": 589,
+              "uart_errors": 0,
+              "uart_irqs": 651,
+              "uptime_ms": 4250
+            },
+            "firmware_failure_reported": true,
+            "fresh_progress": true,
+            "limits": "No stimulus was generated; absent UART progress while paused is expected. A reset can mimic rollover; no boot-unique identity is implemented. These are firmware-reported outcomes, not independent packet capture.",
+            "same_run": false,
+            "uart_progress_observed": false
+          },
+          "bundle_revision": "1e7e9f44e7e8a4a9c2f1730ae725a2fed50cd80271b75adf63cdaa495899900b",
+          "checks": {
+            "abi_matches": true,
+            "artifact_matches": true,
+            "bundle_matches": true,
+            "byte_progress": true,
+            "counter_relations": true,
+            "cpu_running_reported": true,
+            "expected_state": false,
+            "fresh_counter_progress": true,
+            "image_checks_reported": true,
+            "image_identity_present": true,
+            "no_active_failure": false,
+            "no_uart_queue_errors": true,
+            "same_run": false,
+            "success_threshold": false,
+            "validated_progress": true
+          },
+          "elf_sha256": "e17f4f602d569e9a10a572abe765236e04ac26af14c002855fd288944a2a0d92",
+          "failure_names": [
+            "none",
+            "timeout"
+          ],
+          "failures": [
+            "expected_state",
+            "no_active_failure",
+            "same_run",
+            "success_threshold"
+          ],
+          "image_sha256": "ae0743630fda736973949f8c23e0d11e28fdce953e4b588fa6d93835bc20d8b6",
+          "limits": [
+            "Validates recorded firmware self-reports, not independent hardware measurements.",
+            "Reported image checks are not independently re-executed by this offline validator.",
+            "One passing window does not establish repeatability or explain earlier failures."
+          ],
+          "passed": false,
+          "phase": "running",
+          "run_number": 1,
+          "sample_count": 5
+        }
+      ]
+    },
+    {
+      "case": "recovery-02",
+      "format": "praxis-telemetry-qualification-v1",
+      "input_sha256": [
+        "7007a3807a20f1e3733b878c5b282d10724353665456814323c0061184666745",
+        "e307acd6302956bc827979118340717f909f00169c6bd3fb3ca3412b9128114f"
+      ],
+      "mutating_operations": 0,
+      "passed": true,
+      "phase": "running",
+      "repeatability_qualified": false,
+      "same_image": true,
+      "same_run_across_windows": true,
+      "windows": [
+        {
+          "artifact_id": "c192a736ed2958697e4c89022094ae3b896b01529c8f391e074068c1c2c71688",
+          "assessment": {
+            "blue_success_reported": true,
+            "counter_continuity_plausible": true,
+            "deltas_modulo_uint32": {
+              "exti_irqs": 0,
+              "frames_started": 42,
+              "frames_validated": 42,
+              "queue_overflows": 0,
+              "rx_bytes": 798,
+              "timer_irqs": 4250,
+              "tx_bytes": 798,
+              "uart_errors": 0,
+              "uart_irqs": 882,
+              "uptime_ms": 4250
+            },
+            "firmware_failure_reported": false,
+            "fresh_progress": true,
+            "limits": "No stimulus was generated; absent UART progress while paused is expected. A reset can mimic rollover; no boot-unique identity is implemented. These are firmware-reported outcomes, not independent packet capture.",
+            "same_run": true,
+            "uart_progress_observed": true
+          },
+          "bundle_revision": "1e7e9f44e7e8a4a9c2f1730ae725a2fed50cd80271b75adf63cdaa495899900b",
+          "checks": {
+            "abi_matches": true,
+            "artifact_matches": true,
+            "bundle_matches": true,
+            "byte_progress": true,
+            "counter_relations": true,
+            "cpu_running_reported": true,
+            "expected_state": true,
+            "fresh_counter_progress": true,
+            "image_checks_reported": true,
+            "image_identity_present": true,
+            "no_active_failure": true,
+            "no_uart_queue_errors": true,
+            "same_run": true,
+            "success_threshold": true,
+            "validated_progress": true
+          },
+          "elf_sha256": "e17f4f602d569e9a10a572abe765236e04ac26af14c002855fd288944a2a0d92",
+          "failure_names": [
+            "none"
+          ],
+          "failures": [],
+          "image_sha256": "ae0743630fda736973949f8c23e0d11e28fdce953e4b588fa6d93835bc20d8b6",
+          "limits": [
+            "Validates recorded firmware self-reports, not independent hardware measurements.",
+            "Reported image checks are not independently re-executed by this offline validator.",
+            "One passing window does not establish repeatability or explain earlier failures."
+          ],
+          "passed": true,
+          "phase": "running",
+          "run_number": 2,
+          "sample_count": 5
+        },
+        {
+          "artifact_id": "c192a736ed2958697e4c89022094ae3b896b01529c8f391e074068c1c2c71688",
+          "assessment": {
+            "blue_success_reported": true,
+            "counter_continuity_plausible": true,
+            "deltas_modulo_uint32": {
+              "exti_irqs": 0,
+              "frames_started": 43,
+              "frames_validated": 43,
+              "queue_overflows": 0,
+              "rx_bytes": 817,
+              "timer_irqs": 4250,
+              "tx_bytes": 817,
+              "uart_errors": 0,
+              "uart_irqs": 903,
+              "uptime_ms": 4250
+            },
+            "firmware_failure_reported": false,
+            "fresh_progress": true,
+            "limits": "No stimulus was generated; absent UART progress while paused is expected. A reset can mimic rollover; no boot-unique identity is implemented. These are firmware-reported outcomes, not independent packet capture.",
+            "same_run": true,
+            "uart_progress_observed": true
+          },
+          "bundle_revision": "1e7e9f44e7e8a4a9c2f1730ae725a2fed50cd80271b75adf63cdaa495899900b",
+          "checks": {
+            "abi_matches": true,
+            "artifact_matches": true,
+            "bundle_matches": true,
+            "byte_progress": true,
+            "counter_relations": true,
+            "cpu_running_reported": true,
+            "expected_state": true,
+            "fresh_counter_progress": true,
+            "image_checks_reported": true,
+            "image_identity_present": true,
+            "no_active_failure": true,
+            "no_uart_queue_errors": true,
+            "same_run": true,
+            "success_threshold": true,
+            "validated_progress": true
+          },
+          "elf_sha256": "e17f4f602d569e9a10a572abe765236e04ac26af14c002855fd288944a2a0d92",
+          "failure_names": [
+            "none"
+          ],
+          "failures": [],
+          "image_sha256": "ae0743630fda736973949f8c23e0d11e28fdce953e4b588fa6d93835bc20d8b6",
+          "limits": [
+            "Validates recorded firmware self-reports, not independent hardware measurements.",
+            "Reported image checks are not independently re-executed by this offline validator.",
+            "One passing window does not establish repeatability or explain earlier failures."
+          ],
+          "passed": true,
+          "phase": "running",
+          "run_number": 2,
+          "sample_count": 5
+        }
+      ]
+    },
+    {
+      "case": "pause-01",
+      "format": "praxis-telemetry-qualification-v1",
+      "input_sha256": [
+        "e2511fc5b0c9797a762e4a8fbb12cff947b3f425a1af33fbae67640dad60d78b"
+      ],
+      "mutating_operations": 0,
+      "passed": false,
+      "phase": "paused",
+      "repeatability_qualified": false,
+      "same_image": true,
+      "same_run_across_windows": true,
+      "windows": [
+        {
+          "artifact_id": "c192a736ed2958697e4c89022094ae3b896b01529c8f391e074068c1c2c71688",
+          "assessment": {
+            "blue_success_reported": true,
+            "counter_continuity_plausible": true,
+            "deltas_modulo_uint32": {
+              "exti_irqs": 0,
+              "frames_started": 42,
+              "frames_validated": 42,
+              "queue_overflows": 0,
+              "rx_bytes": 798,
+              "timer_irqs": 4250,
+              "tx_bytes": 798,
+              "uart_errors": 0,
+              "uart_irqs": 882,
+              "uptime_ms": 4250
+            },
+            "firmware_failure_reported": false,
+            "fresh_progress": true,
+            "limits": "No stimulus was generated; absent UART progress while paused is expected. A reset can mimic rollover; no boot-unique identity is implemented. These are firmware-reported outcomes, not independent packet capture.",
+            "same_run": true,
+            "uart_progress_observed": true
+          },
+          "bundle_revision": "1e7e9f44e7e8a4a9c2f1730ae725a2fed50cd80271b75adf63cdaa495899900b",
+          "checks": {
+            "abi_matches": true,
+            "artifact_matches": true,
+            "bundle_matches": true,
+            "counter_relations": true,
+            "cpu_running_reported": true,
+            "expected_state": false,
+            "fresh_counter_progress": true,
+            "image_checks_reported": true,
+            "image_identity_present": true,
+            "no_active_failure": true,
+            "no_uart_queue_errors": true,
+            "same_run": true,
+            "uart_stopped": false
+          },
+          "elf_sha256": "e17f4f602d569e9a10a572abe765236e04ac26af14c002855fd288944a2a0d92",
+          "failure_names": [
+            "none"
+          ],
+          "failures": [
+            "expected_state",
+            "uart_stopped"
+          ],
+          "image_sha256": "ae0743630fda736973949f8c23e0d11e28fdce953e4b588fa6d93835bc20d8b6",
+          "limits": [
+            "Validates recorded firmware self-reports, not independent hardware measurements.",
+            "Reported image checks are not independently re-executed by this offline validator.",
+            "One passing window does not establish repeatability or explain earlier failures."
+          ],
+          "passed": false,
+          "phase": "paused",
+          "run_number": 3,
+          "sample_count": 5
+        }
+      ]
+    },
+    {
+      "case": "followup-01",
+      "format": "praxis-telemetry-qualification-v1",
+      "input_sha256": [
+        "8d72ceb09798f439850f04a1b5df074e25c777bc17cbd5de5b24d8b034c2a9f3"
+      ],
+      "mutating_operations": 0,
+      "passed": true,
+      "phase": "running",
+      "repeatability_qualified": false,
+      "same_image": true,
+      "same_run_across_windows": true,
+      "windows": [
+        {
+          "artifact_id": "c192a736ed2958697e4c89022094ae3b896b01529c8f391e074068c1c2c71688",
+          "assessment": {
+            "blue_success_reported": true,
+            "counter_continuity_plausible": true,
+            "deltas_modulo_uint32": {
+              "exti_irqs": 0,
+              "frames_started": 43,
+              "frames_validated": 43,
+              "queue_overflows": 0,
+              "rx_bytes": 817,
+              "timer_irqs": 4250,
+              "tx_bytes": 817,
+              "uart_errors": 0,
+              "uart_irqs": 903,
+              "uptime_ms": 4250
+            },
+            "firmware_failure_reported": false,
+            "fresh_progress": true,
+            "limits": "No stimulus was generated; absent UART progress while paused is expected. A reset can mimic rollover; no boot-unique identity is implemented. These are firmware-reported outcomes, not independent packet capture.",
+            "same_run": true,
+            "uart_progress_observed": true
+          },
+          "bundle_revision": "1e7e9f44e7e8a4a9c2f1730ae725a2fed50cd80271b75adf63cdaa495899900b",
+          "checks": {
+            "abi_matches": true,
+            "artifact_matches": true,
+            "bundle_matches": true,
+            "byte_progress": true,
+            "counter_relations": true,
+            "cpu_running_reported": true,
+            "expected_state": true,
+            "fresh_counter_progress": true,
+            "image_checks_reported": true,
+            "image_identity_present": true,
+            "no_active_failure": true,
+            "no_uart_queue_errors": true,
+            "same_run": true,
+            "success_threshold": true,
+            "validated_progress": true
+          },
+          "elf_sha256": "e17f4f602d569e9a10a572abe765236e04ac26af14c002855fd288944a2a0d92",
+          "failure_names": [
+            "none"
+          ],
+          "failures": [],
+          "image_sha256": "ae0743630fda736973949f8c23e0d11e28fdce953e4b588fa6d93835bc20d8b6",
+          "limits": [
+            "Validates recorded firmware self-reports, not independent hardware measurements.",
+            "Reported image checks are not independently re-executed by this offline validator.",
+            "One passing window does not establish repeatability or explain earlier failures."
+          ],
+          "passed": true,
+          "phase": "running",
+          "run_number": 3,
+          "sample_count": 5
+        }
+      ]
+    },
+    {
+      "case": "pause-02",
+      "format": "praxis-telemetry-qualification-v1",
+      "input_sha256": [
+        "711eb979aeaed142e9b27fbe435d5d413dc5301bc26efcc27cbdec47b2311602"
+      ],
+      "mutating_operations": 0,
+      "passed": true,
+      "phase": "paused",
+      "repeatability_qualified": false,
+      "same_image": true,
+      "same_run_across_windows": true,
+      "windows": [
+        {
+          "artifact_id": "c192a736ed2958697e4c89022094ae3b896b01529c8f391e074068c1c2c71688",
+          "assessment": {
+            "blue_success_reported": true,
+            "counter_continuity_plausible": true,
+            "deltas_modulo_uint32": {
+              "exti_irqs": 0,
+              "frames_started": 0,
+              "frames_validated": 0,
+              "queue_overflows": 0,
+              "rx_bytes": 0,
+              "timer_irqs": 4250,
+              "tx_bytes": 0,
+              "uart_errors": 0,
+              "uart_irqs": 0,
+              "uptime_ms": 4250
+            },
+            "firmware_failure_reported": false,
+            "fresh_progress": true,
+            "limits": "No stimulus was generated; absent UART progress while paused is expected. A reset can mimic rollover; no boot-unique identity is implemented. These are firmware-reported outcomes, not independent packet capture.",
+            "same_run": true,
+            "uart_progress_observed": false
+          },
+          "bundle_revision": "1e7e9f44e7e8a4a9c2f1730ae725a2fed50cd80271b75adf63cdaa495899900b",
+          "checks": {
+            "abi_matches": true,
+            "artifact_matches": true,
+            "bundle_matches": true,
+            "counter_relations": true,
+            "cpu_running_reported": true,
+            "expected_state": true,
+            "fresh_counter_progress": true,
+            "image_checks_reported": true,
+            "image_identity_present": true,
+            "no_active_failure": true,
+            "no_uart_queue_errors": true,
+            "same_run": true,
+            "uart_stopped": true
+          },
+          "elf_sha256": "e17f4f602d569e9a10a572abe765236e04ac26af14c002855fd288944a2a0d92",
+          "failure_names": [
+            "none"
+          ],
+          "failures": [],
+          "image_sha256": "ae0743630fda736973949f8c23e0d11e28fdce953e4b588fa6d93835bc20d8b6",
+          "limits": [
+            "Validates recorded firmware self-reports, not independent hardware measurements.",
+            "Reported image checks are not independently re-executed by this offline validator.",
+            "One passing window does not establish repeatability or explain earlier failures."
+          ],
+          "passed": true,
+          "phase": "paused",
+          "run_number": 3,
+          "sample_count": 5
+        }
+      ]
+    }
+  ],
+  "validation": {
+    "deterministic_republication_passed": true,
+    "full_regression": {
+      "passed": 413,
+      "report_sha256": "bf36227e238a87af9b6c9832aff0dae0866fc8d0afdaefd46bf9560a39dfac7a",
+      "required_external_tools": true,
+      "skipped": 0
+    },
+    "ruff_passed": true
+  }
+}

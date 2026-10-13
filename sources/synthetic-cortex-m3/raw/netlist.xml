@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<export version="E">
+  <components>
+    <comp ref="U1"><value>PRAXIS-DEMO-M3</value><footprint>Fixture:QFP-16</footprint><sheetpath names="/fictional/"/></comp>
+    <comp ref="J1"><value>Fixture connector</value><footprint>Fixture:Header-2</footprint><sheetpath names="/fictional/"/></comp>
+  </components>
+  <nets>
+    <net code="1" name="TX"><node ref="U1" pin="1" pinfunction="P0_2"/><node ref="J1" pin="1" pinfunction="TX"/></net>
+    <net code="2" name="RX"><node ref="U1" pin="2" pinfunction="P0_3"/><node ref="J1" pin="2" pinfunction="RX"/></net>
+  </nets>
+</export>

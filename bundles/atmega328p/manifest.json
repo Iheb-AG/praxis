@@ -1,0 +1,270 @@
+{
+  "aliases": {
+    "portd": "gpio",
+    "usart0": "usart"
+  },
+  "bundle_revision": "9254f63b1d16f4296641e3bf5ab047593373d8a8fe42666b43b89362b1efc7e7",
+  "compiler_version": "0.1.0",
+  "dependencies": [
+    {
+      "entity": "clock",
+      "requires": []
+    },
+    {
+      "entity": "gpio",
+      "requires": [
+        "clock"
+      ]
+    },
+    {
+      "entity": "interrupts",
+      "requires": [
+        "usart"
+      ]
+    },
+    {
+      "entity": "usart",
+      "requires": [
+        "gpio"
+      ]
+    }
+  ],
+  "documents": {
+    "index": "wiki/index.md",
+    "peripherals/clock": "wiki/peripherals/clock.md",
+    "peripherals/gpio": "wiki/peripherals/gpio.md",
+    "peripherals/interrupts": "wiki/peripherals/interrupts.md",
+    "peripherals/usart": "wiki/peripherals/usart.md",
+    "schemas/custom_pcb_netlist": "wiki/schemas/custom_pcb_netlist.md",
+    "sources": "wiki/sources.md"
+  },
+  "extractor_versions": {
+    "avr-gcc": "avr-gcc (GCC) 16.1.0",
+    "netlist": "KiCad XML adapter v1 (pre-exported source)",
+    "praxis": "0.1.0"
+  },
+  "file_hashes": {
+    "wiki/index.md": "02d2e034b6c9961d420837fa7d1411bb74519846b5889b8134f9a2ae499cbeba",
+    "wiki/peripherals/clock.md": "418e7af3a6357ead16625da55bd712ae099e45248d3f219c804d3c3542c080c1",
+    "wiki/peripherals/gpio.md": "da1eb859e688a939017e2f675d2e24fe158028ea94d3f2913c89b9b78b69535c",
+    "wiki/peripherals/interrupts.md": "82438ef5bef3c362d7fd1cc41275c27b331320b50ea447fafc46318f50d3935b",
+    "wiki/peripherals/usart.md": "35777ca47cafd4b314d49ae4be5d467b84e9100004efec4b2555b675b1197038",
+    "wiki/schemas/custom_pcb_netlist.md": "65f4249aae3e066cd7ff35cc00ce7e6fb5d28a7900ec50e7f3811f40eabeb90a",
+    "wiki/sources.md": "e409d6a2e7fb18f125dbdf879fdc7346ba471647173637edd2344ec284510863"
+  },
+  "netlist": "wiki/schemas/custom_pcb_netlist.md",
+  "peripherals": {
+    "clock": "wiki/peripherals/clock.md",
+    "gpio": "wiki/peripherals/gpio.md",
+    "interrupts": "wiki/peripherals/interrupts.md",
+    "usart": "wiki/peripherals/usart.md"
+  },
+  "review": {
+    "basis": "Checked against the linked vendor manuals and pinned declarations; independent hardware sign-off remains pending.",
+    "reviewer": "Codex source-backed fixture editorial review",
+    "status": "reviewed"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "authority": "semantics",
+      "id": "clock_review",
+      "license": "MIT",
+      "origin": "https://ww1.microchip.com/downloads/en/devicedoc/atmel-7810-automotive-microcontrollers-atmega328p_datasheet.pdf",
+      "path": "reviewed/clock.md",
+      "sha256": "021df8d5b651132ad63e56168bd5ee562c7928ae00f6239888e31350839e4f2d",
+      "version": "fixture-1"
+    },
+    {
+      "authority": "semantics",
+      "id": "definitions",
+      "license": "MIT",
+      "origin": "https://ww1.microchip.com/downloads/en/devicedoc/atmel-7810-automotive-microcontrollers-atmega328p_datasheet.pdf",
+      "path": "reviewed/peripherals.json",
+      "sha256": "1944d11a87a55bbb4a7d40b908bc0fb5f38ab67555379f7a832e29bc1c3b2d0f",
+      "version": "fixture-1"
+    },
+    {
+      "authority": "semantics",
+      "id": "gpio_review",
+      "license": "MIT",
+      "origin": "https://ww1.microchip.com/downloads/en/devicedoc/atmel-7810-automotive-microcontrollers-atmega328p_datasheet.pdf",
+      "path": "reviewed/gpio.md",
+      "sha256": "aa761ddc3c9b200b0e2dc5f24065d315f1ac7b7fb565e2718799b73265e0bceb",
+      "version": "fixture-1"
+    },
+    {
+      "authority": "declarations",
+      "id": "header",
+      "license": "MIT",
+      "origin": "Entry point to vendored avr-libc subset",
+      "path": "raw/registers.h",
+      "sha256": "07ae83d2eb08c3c735e7cf332a394b0de37cb26122c85c759d7de167336afae9",
+      "version": "fixture-1"
+    },
+    {
+      "authority": "semantics",
+      "id": "interrupts_review",
+      "license": "MIT",
+      "origin": "https://ww1.microchip.com/downloads/en/devicedoc/atmel-7810-automotive-microcontrollers-atmega328p_datasheet.pdf",
+      "path": "reviewed/interrupts.md",
+      "sha256": "ce02de37d0babe4baa5298cd0b694f3638780d7ab5a9689eba7b3de5beb70008",
+      "version": "fixture-1"
+    },
+    {
+      "authority": "connectivity",
+      "id": "netlist",
+      "license": "MIT",
+      "origin": "Hand-authored KiCad XML example; live export comparison pending",
+      "path": "raw/netlist.xml",
+      "sha256": "23b99e04921066547d9788dc45fbfac0cc8d9149c4a935970a385e66bc4897b1",
+      "version": "fixture-1"
+    },
+    {
+      "authority": "configuration",
+      "id": "profile",
+      "license": "MIT",
+      "origin": "Local target profile",
+      "path": "profile.json",
+      "sha256": "c8c422b90164a7d22d14ae617a0b4ff03eafff5edde5f7883ee5fa3356374cf2",
+      "version": "1"
+    },
+    {
+      "authority": "connectivity",
+      "id": "schematic",
+      "license": "MIT",
+      "origin": "Original partial KiCad schematic; live export validation required",
+      "path": "raw/board.kicad_sch",
+      "sha256": "ab38b486cfd98a893b9fde03ca5434ace1306b96cb3730f149073ede16d766df",
+      "version": "fixture-1"
+    },
+    {
+      "authority": "semantics",
+      "id": "usart_review",
+      "license": "MIT",
+      "origin": "https://ww1.microchip.com/downloads/en/devicedoc/atmel-7810-automotive-microcontrollers-atmega328p_datasheet.pdf",
+      "path": "reviewed/usart.md",
+      "sha256": "4c261df76f7766e236f91ce9cc9bb9e6c6038eae7cce0e646270fd3cd0c91132",
+      "version": "fixture-1"
+    },
+    {
+      "authority": "declarations",
+      "id": "vendor_0",
+      "license": "BSD-3-Clause",
+      "origin": "Upstream source and license included in raw/vendor",
+      "path": "raw/vendor/LICENSE",
+      "sha256": "023a098a014da4dadd19dfb96e8240b1c493676be5df6dfa0a8dde1a97cb71ab",
+      "version": "pinned source bytes"
+    },
+    {
+      "authority": "declarations",
+      "id": "vendor_10",
+      "license": "BSD-3-Clause",
+      "origin": "Upstream source and license included in raw/vendor",
+      "path": "raw/vendor/avr/version.h",
+      "sha256": "be10dc83b9b70b7e37b74f9cbcb0291f8decc8a1626c8a1c0d93b6ee2764eadf",
+      "version": "pinned source bytes"
+    },
+    {
+      "authority": "declarations",
+      "id": "vendor_12",
+      "license": "BSD-3-Clause",
+      "origin": "Upstream source and license included in raw/vendor",
+      "path": "raw/vendor/bits/devinfo.h",
+      "sha256": "123219f9630d10c02022acc5b744a03eed40cbd70cc07af0dd2b65bf78feb25c",
+      "version": "pinned source bytes"
+    },
+    {
+      "authority": "declarations",
+      "id": "vendor_2",
+      "license": "BSD-3-Clause",
+      "origin": "Upstream source and license included in raw/vendor",
+      "path": "raw/vendor/avr/common.h",
+      "sha256": "c139d2f0537a04c90f0c48bb46b9cb9a81e41ddc66e3f888904a6b2fb18ee4f3",
+      "version": "pinned source bytes"
+    },
+    {
+      "authority": "declarations",
+      "id": "vendor_3",
+      "license": "BSD-3-Clause",
+      "origin": "Upstream source and license included in raw/vendor",
+      "path": "raw/vendor/avr/fuse.h",
+      "sha256": "cd3e6d2b0869fafe2ec7c7245939f732e59f7c4a1ff5db5ff685dc643f6346ec",
+      "version": "pinned source bytes"
+    },
+    {
+      "authority": "declarations",
+      "id": "vendor_4",
+      "license": "BSD-3-Clause",
+      "origin": "Upstream source and license included in raw/vendor",
+      "path": "raw/vendor/avr/interrupt.h",
+      "sha256": "3312cb9c4ea88b3756770d4a7dba3fd2363eccf2d95bbe339809a4ad881b96d3",
+      "version": "pinned source bytes"
+    },
+    {
+      "authority": "declarations",
+      "id": "vendor_5",
+      "license": "BSD-3-Clause",
+      "origin": "Upstream source and license included in raw/vendor",
+      "path": "raw/vendor/avr/io.h",
+      "sha256": "d7b8af97116c16665d91ae8675ec6420f005254c16b4fd9e6f007bbc1608f2a9",
+      "version": "pinned source bytes"
+    },
+    {
+      "authority": "declarations",
+      "id": "vendor_6",
+      "license": "BSD-3-Clause",
+      "origin": "Upstream source and license included in raw/vendor",
+      "path": "raw/vendor/avr/iom328p.h",
+      "sha256": "c7227f0fb809ecd959087a79b3a8618bad60d1a6a92bc2050618e0c22f407024",
+      "version": "pinned source bytes"
+    },
+    {
+      "authority": "declarations",
+      "id": "vendor_7",
+      "license": "BSD-3-Clause",
+      "origin": "Upstream source and license included in raw/vendor",
+      "path": "raw/vendor/avr/lock.h",
+      "sha256": "07ca647f8cfecf38e4fafc1fbfd8ca5897a8a9dedf284d91ba3760877e92d687",
+      "version": "pinned source bytes"
+    },
+    {
+      "authority": "declarations",
+      "id": "vendor_8",
+      "license": "BSD-3-Clause",
+      "origin": "Upstream source and license included in raw/vendor",
+      "path": "raw/vendor/avr/portpins.h",
+      "sha256": "94d0e0e5ee7c0a6bec166e2c1e484a12b54ef27949a1ad95b50ac476c621ae3d",
+      "version": "pinned source bytes"
+    },
+    {
+      "authority": "declarations",
+      "id": "vendor_9",
+      "license": "BSD-3-Clause",
+      "origin": "Upstream source and license included in raw/vendor",
+      "path": "raw/vendor/avr/sfr_defs.h",
+      "sha256": "cc722e1abb189dd6d836d73af5e59527f315453e9d7a2d6422f3b19ea2b8539a",
+      "version": "pinned source bytes"
+    }
+  ],
+  "target": {
+    "board_revision": "praxis-example-1",
+    "clock_assumptions": [
+      "External 16 MHz clock supplied; CLKPR=/1; suitable supply assumed.",
+      "Partial connectivity fixture omits complete power/reset/oscillator circuitry."
+    ],
+    "clock_hz": 16000000,
+    "example_only": true,
+    "family": "avr",
+    "fuse_assumptions": [
+      "CKDIV8 unprogrammed; external clock selection configured before application startup.",
+      "Factory defaults are not assumed; no fuse write is performed."
+    ],
+    "id": "atmega328p_fixture",
+    "mcu": "ATmega328P-PU",
+    "package": "Package_DIP:DIP-28_W7.62mm",
+    "primary_mcu_ref": "U1",
+    "silicon_revision": "Unspecified; fixture based on ATmega328P datasheet"
+  },
+  "topology": []
+}

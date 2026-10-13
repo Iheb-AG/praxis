@@ -1,0 +1,114 @@
+name: Praxis checks
+on: [push, pull_request]
+jobs:
+  knowledge-container:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: '3.12'
+      - run: uv sync --locked
+      - run: docker build --tag project-praxis:0.1.0 .
+      - name: Exercise Docker MCP and bundle isolation
+        run: |
+          uv run python tools/check_container_mcp.py --image project-praxis:0.1.0 --bundle bundles/stm32f407g-disc1-e01-arm-core-v2 --bundle bundles/atmega328p --output /tmp/praxis-container-report.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: knowledge-container-evidence
+          path: /tmp/praxis-container-report.json
+  tests:
+    runs-on: ubuntu-24.04
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.12', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: sudo apt-get update && sudo apt-get install -y clang gcc-arm-none-eabi libnewlib-arm-none-eabi gcc-avr avr-libc device-tree-compiler libfdt1 openocd
+      - run: uv sync --locked --extra ingest --extra test --extra web
+      - run: uv run ruff check praxis tests tools server.py compiler.py
+      - run: uv run pytest -q
+      - run: uv run praxis lint --bundle bundles/stm32f401re && uv run praxis lint --bundle bundles/atmega328p
+      - run: uv run praxis evaluate --bundle bundles/stm32f401re && uv run praxis evaluate --bundle bundles/atmega328p
+      - run: uv run praxis lint --bundle bundles/stm32f407vgt6 && uv run praxis evaluate --bundle bundles/stm32f407vgt6
+      - run: uv run praxis lint --bundle bundles/stm32f407g-disc1-e01-m1
+      - run: uv run praxis lint --bundle bundles/stm32f407g-disc1-e01-discovery-v2 && uv run praxis lint --bundle bundles/stm32f407g-disc1-e01-uart-v1
+      - run: uv run praxis lint --bundle bundles/stm32f407g-disc1-e01-features-v1
+      - run: uv run praxis lint --bundle bundles/stm32f407g-disc1-e01-clock-v1
+      - run: uv run praxis lint --bundle bundles/stm32f407g-disc1-e01-adc-v1
+      - run: uv run praxis lint --bundle bundles/stm32f407g-disc1-e01-i2c-v1
+      - run: uv run praxis lint --bundle bundles/stm32f407g-disc1-e01-can-v1
+      - run: uv run praxis support --bundle bundles/stm32f407g-disc1-e01-can-v1 --catalog examples/capabilities/stm32f407g-disc1-can.json --workflow can1_silent_loopback_irq
+      - run: uv run python tools/check_workflow_mcp.py --bundle bundles/stm32f407g-disc1-e01-can-v1 --workflow can1_silent_loopback_irq --blocked-workflow feature_can --blocked-workflow can1_external_bus --mode can/silent_loopback --mode can/silent_loopback_fifo0_irq --mode rcc/can1_gate_reset --mode nvic/can1_rx0_prepare --output /tmp/praxis-can-retrieval
+      - run: uv run python tools/check_workflow_mcp.py --bundle bundles/stm32f407g-disc1-e01-i2c-v1 --workflow i2c1_controller_transmit --blocked-workflow feature_i2c --blocked-workflow i2c1_wired_transmit --mode i2c/controller_transmit_polling --mode rcc/i2c1_gate_reset --peripheral flash --peripheral pwr --forbid-register i2c/FLTR --output /tmp/praxis-i2c-retrieval
+      - run: uv run praxis support --bundle bundles/stm32f407g-disc1-e01-i2c-v1 --catalog examples/capabilities/stm32f407g-disc1-i2c.json --workflow i2c1_controller_transmit
+      - run: uv run python tools/check_adc_workflow_mcp.py --bundle bundles/stm32f407g-disc1-e01-adc-v1 --output /tmp/praxis-adc-retrieval
+      - run: uv run praxis support --bundle bundles/stm32f407g-disc1-e01-clock-v1 --catalog examples/capabilities/stm32f407g-disc1.json --workflow uart_timer_interrupts
+      - run: uv run python tools/check_feature_modes_mcp.py --bundle bundles/stm32f407g-disc1-e01-clock-v1 --expect-rng-clock-ready --output /tmp/praxis-clock-retrieval
+      - run: uv run python tools/check_feature_modes_mcp.py --bundle bundles/stm32f407g-disc1-e01-features-v1 --output /tmp/praxis-feature-retrieval
+      - name: Check public source packaging
+        run: |
+          uv build --out-dir /tmp/praxis-dist
+          uv run python tools/check_distribution.py /tmp/praxis-dist
+  kicad-ingestion:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: '3.12'
+      - run: sudo add-apt-repository --yes ppa:kicad/kicad-9.0-releases
+      - run: sudo apt-get update && sudo apt-get install -y --no-install-recommends kicad clang gcc-arm-none-eabi libnewlib-arm-none-eabi gcc-avr avr-libc device-tree-compiler libfdt1 openocd
+      - run: uv sync --locked --extra ingest --extra test --extra web
+      - run: uv run python tools/milestone1_check.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: milestone1-acceptance
+          path: .praxis-output/milestone1/report.json
+  isolated-build:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: '3.12'
+      - run: sudo apt-get update && sudo apt-get install -y podman uidmap gcc-arm-none-eabi
+      - run: uv sync --locked --extra build --extra test
+      - name: Provision actual rootless image
+        run: |
+          podman pull docker.io/library/debian@sha256:7c7b2c966bc9ee8cedfeef67e0e279108992c77681fa595db4a9d65c06ccc587
+          uv run python - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path('toolchain-f407.lock.json')
+          value = json.loads(p.read_text())
+          value['image'] = None
+          value['compiler_versions'] = {}
+          p.write_text(json.dumps(value))
+          PY
+          uv run praxis sandbox-build --base-image docker.io/library/debian@sha256:7c7b2c966bc9ee8cedfeef67e0e279108992c77681fa595db4a9d65c06ccc587 --recipe sandbox/Containerfile --lock toolchain-f407.lock.json
+          uv run python - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path('toolchain.lock.json')
+          value = json.loads(p.read_text())
+          built = json.loads(Path('toolchain-f407.lock.json').read_text())
+          value['image'] = built['image']
+          value['compiler_versions'] = built['compiler_versions']
+          p.write_text(json.dumps(value))
+          PY
+      - run: PRAXIS_REQUIRE_EXTERNAL_TOOLS=1 uv run pytest -q tests/test_firmware_build.py tests/test_verification.py tests/test_uart_loopback.py
+      - run: uv run python tools/check_feature_modes_mcp.py --bundle bundles/stm32f407g-disc1-e01-features-v1 --source-directory stm32f407g-disc1-crc-dma/application --output /tmp/praxis-feature-build
+      - run: uv run python tools/check_feature_modes_mcp.py --bundle bundles/stm32f407g-disc1-e01-clock-v1 --expect-rng-clock-ready --source-directory stm32f407g-disc1-clock/application --output /tmp/praxis-clock-build
+      - run: uv run python tools/check_adc_workflow_mcp.py --bundle bundles/stm32f407g-disc1-e01-adc-v1 --source-directory stm32f407g-disc1-adc/application --output /tmp/praxis-adc-build
+      - run: PRAXIS_REQUIRE_EXTERNAL_TOOLS=1 uv run pytest -q tests/test_i2c_modes.py
+      - run: PRAXIS_REQUIRE_EXTERNAL_TOOLS=1 uv run pytest -q tests/test_can_modes.py
+      - run: PRAXIS_REQUIRE_EXTERNAL_TOOLS=1 uv run pytest -q tests/test_can_telemetry.py
+      - run: uv run python tools/check_workflow_mcp.py --bundle bundles/stm32f407g-disc1-e01-can-v1 --workflow can1_silent_loopback_irq --blocked-workflow feature_can --blocked-workflow can1_external_bus --mode can/silent_loopback --mode can/silent_loopback_fifo0_irq --mode rcc/can1_gate_reset --mode nvic/can1_rx0_prepare --source-directory stm32f407g-disc1-can/telemetry_application --output /tmp/praxis-can-telemetry-build
+      - run: uv run python tools/check_workflow_mcp.py --bundle bundles/stm32f407g-disc1-e01-can-v1 --workflow can1_silent_loopback_irq --blocked-workflow feature_can --blocked-workflow can1_external_bus --mode can/silent_loopback --mode can/silent_loopback_fifo0_irq --mode rcc/can1_gate_reset --mode nvic/can1_rx0_prepare --source-directory stm32f407g-disc1-can/application --output /tmp/praxis-can-build
+      - run: uv run python tools/check_workflow_mcp.py --bundle bundles/stm32f407g-disc1-e01-i2c-v1 --workflow i2c1_controller_transmit --blocked-workflow feature_i2c --blocked-workflow i2c1_wired_transmit --mode i2c/controller_transmit_polling --mode rcc/i2c1_gate_reset --peripheral flash --peripheral pwr --forbid-register i2c/FLTR --source-directory stm32f407g-disc1-i2c/application --output /tmp/praxis-i2c-build

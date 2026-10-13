@@ -1,0 +1,260 @@
+{
+  "applicability": "Reference E-01 circuit only. User confirmed the board model but not the PCB revision. Verify MB997 revision and SB20 before flashing; no equivalence to other revisions is asserted.",
+  "board_revision": "MB997-E-01",
+  "coverage": "partial",
+  "facts": [
+    {
+      "id": "clock_recipe",
+      "sources": [
+        {
+          "locator": "reviewed clock recipe",
+          "source": "rcc_review"
+        }
+      ],
+      "state": "design-assumption",
+      "value": "Optional 8 MHz HSE to 168 MHz recipe: M=8,N=336,P=2,Q=7, AHB/1, APB1/4, APB2/2. This does not establish the current firmware clock; verify clock source/bridges/supply first."
+    },
+    {
+      "id": "oscillator",
+      "sources": [
+        {
+          "locator": "page:7/X2",
+          "source": "schematic_e01"
+        }
+      ],
+      "state": "documented",
+      "value": "E-01 MCU sheet shows X2=8 MHz. Clock options and board revisions affect fitted paths; verify the actual board before selecting HSE crystal or bypass mode."
+    },
+    {
+      "id": "button_bridge",
+      "sources": [
+        {
+          "locator": "page:4/USER+WAKE-UP",
+          "source": "schematic_e01"
+        }
+      ],
+      "state": "documented",
+      "value": "SB20 must be closed for B1 to reach PA0. R39 is an external 220 kohm pulldown; use no internal pull unless an explicitly reviewed change requires one. Pressing B1 drives the signal high through R38; R35 is series protection."
+    },
+    {
+      "id": "timing_source",
+      "sources": [
+        {
+          "locator": "SysTick_Config; SysTick_Type; SysTick_IRQn",
+          "source": "cmsis_core"
+        }
+      ],
+      "state": "design-assumption",
+      "value": "Proposed software design: 1 ms SysTick interrupt incrementing a volatile uint32_t counter. GPIO button polling needs no EXTI. Provide the SysTick vector/handler and check the helper return code before enabling the application."
+    },
+    {
+      "id": "systick_clock_source",
+      "sources": [
+        {
+          "locator": "core_cm4.h:SysTick_Config",
+          "source": "cmsis_core"
+        }
+      ],
+      "state": "documented",
+      "value": "The pinned CMSIS SysTick_Config sets CTRL.CLKSOURCE=1, TICKINT=1, ENABLE=1 and programs the system exception priority. It uses the processor clock, not HCLK/8."
+    },
+    {
+      "id": "systick_ms_formula",
+      "sources": [
+        {
+          "locator": "core_cm4.h:SysTick_Config",
+          "source": "cmsis_core"
+        }
+      ],
+      "state": "documented",
+      "value": "Synchronize SystemCoreClock to the actual core clock, then require SystemCoreClock % 1000 == 0 and SysTick_Config(SystemCoreClock / 1000U) == 0. CMSIS writes LOAD=ticks-1. Do not divide the argument by 8."
+    },
+    {
+      "id": "gpio_sequence",
+      "sources": [
+        {
+          "locator": "GPIO MODER/OTYPER/PUPDR/IDR/BSRR reviewed semantics",
+          "source": "gpio_review"
+        }
+      ],
+      "state": "documented",
+      "value": "After clock gating/readback, preload both LED outputs OFF using BSRR reset bits before selecting push-pull output mode. Configure only the selected GPIO fields; read PA0 through IDR. Preserve SWD pins."
+    },
+    {
+      "id": "startup_boundary",
+      "sources": [
+        {
+          "locator": "startup scope",
+          "source": "board"
+        }
+      ],
+      "state": "unresolved",
+      "value": "Startup/vector table, linker script, actual clock setup, system clock synchronization and safe SysTick interrupt enablement must come from the firmware project. Full linking and physical execution are not established by this bundle."
+    },
+    {
+      "id": "uart_loopback_connector",
+      "sources": [
+        {
+          "locator": "page:2/P1",
+          "source": "schematic_uart"
+        },
+        {
+          "locator": "page:7/U4",
+          "source": "schematic_mcu"
+        },
+        {
+          "locator": "page:18;page:26/Table7",
+          "source": "uart_connector"
+        }
+      ],
+      "state": "documented",
+      "value": "USART2_TX=PA2/U4:25/P1:14 and USART2_RX=PA3/U4:26/P1:13. Connect one external jumper only with board unpowered. ST-LINK VCP is not connected to the MCU UART by default."
+    }
+  ],
+  "ground_nets": [
+    "GND"
+  ],
+  "model": "STM32F407G-DISC1",
+  "omissions": [
+    "This is a reviewed GPIO circuit subset, not the entire MB997 netlist. Connector branches and other GND/VDD endpoints are omitted.",
+    "ST-LINK, power regulation, decoupling, audio, USB, MEMS, reset and oscillator wiring are not represented as connectivity.",
+    "C36 is not fitted in E-01 and is excluded from the button conduction path.",
+    "Other PCB revisions, reworked solder bridges, external attachments and physical behavior are unverified."
+  ],
+  "review": {
+    "basis": "Actual MCP source evidence: RM0090 Rev22 selected pages; MB997 E-01 rendered pages 2/7; UM1472 Rev9 pages 18/26. Reviewed operating subset only; independent engineering sign-off pending.",
+    "reviewer": "Codex source-backed editorial review via Praxis ingestion MCP",
+    "status": "reviewed"
+  },
+  "schema_version": 1,
+  "signals": [
+    {
+      "active_level": "high",
+      "aliases": [
+        "LED_A",
+        "LD4",
+        "GREEN_USER_LED"
+      ],
+      "anode": "LD4:1",
+      "cathode": "LD4:2",
+      "endpoint": "U4:59",
+      "id": "ld4",
+      "kind": "led",
+      "led": "LD4",
+      "pin": "PD12",
+      "series_path": [
+        "R40"
+      ],
+      "sources": [
+        {
+          "locator": "page:4/LEDs;page:7/MCU",
+          "source": "schematic_e01"
+        }
+      ]
+    },
+    {
+      "active_level": "high",
+      "aliases": [
+        "LED_B",
+        "LD3",
+        "ORANGE_USER_LED"
+      ],
+      "anode": "LD3:1",
+      "cathode": "LD3:2",
+      "endpoint": "U4:60",
+      "id": "ld3",
+      "kind": "led",
+      "led": "LD3",
+      "pin": "PD13",
+      "series_path": [
+        "R36"
+      ],
+      "sources": [
+        {
+          "locator": "page:4/LEDs;page:7/MCU",
+          "source": "schematic_e01"
+        }
+      ]
+    },
+    {
+      "active_level": "high",
+      "aliases": [
+        "RED_LED",
+        "LD5",
+        "RED_USER_LED"
+      ],
+      "anode": "LD5:1",
+      "cathode": "LD5:2",
+      "endpoint": "U4:61",
+      "id": "ld5",
+      "kind": "led",
+      "led": "LD5",
+      "pin": "PD14",
+      "series_path": [
+        "R41"
+      ],
+      "sources": [
+        {
+          "locator": "page:4/LEDs;page:7/MCU",
+          "source": "schematic_e01"
+        }
+      ]
+    },
+    {
+      "active_level": "high",
+      "aliases": [
+        "BLUE_LED",
+        "LD6",
+        "BLUE_USER_LED"
+      ],
+      "anode": "LD6:1",
+      "cathode": "LD6:2",
+      "endpoint": "U4:62",
+      "id": "ld6",
+      "kind": "led",
+      "led": "LD6",
+      "pin": "PD15",
+      "series_path": [
+        "R42"
+      ],
+      "sources": [
+        {
+          "locator": "page:4/LEDs;page:7/MCU",
+          "source": "schematic_e01"
+        }
+      ]
+    },
+    {
+      "active_level": "high",
+      "aliases": [
+        "USER_BUTTON",
+        "B1"
+      ],
+      "endpoint": "U4:23",
+      "id": "b1",
+      "kind": "button",
+      "pin": "PA0",
+      "pressed_path": [
+        "R38"
+      ],
+      "pressed_terminal": "B1:3",
+      "pull": "external-down",
+      "pull_resistor": "R39",
+      "signal_path": [
+        "SB20",
+        "R35"
+      ],
+      "signal_terminal": "B1:1",
+      "sources": [
+        {
+          "locator": "page:4/USER+WAKE-UP;page:7/MCU",
+          "source": "schematic_e01"
+        }
+      ],
+      "switch": "B1"
+    }
+  ],
+  "supply_nets": [
+    "VDD"
+  ]
+}

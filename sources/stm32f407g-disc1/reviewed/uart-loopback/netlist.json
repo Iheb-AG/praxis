@@ -1,0 +1,1027 @@
+{
+  "board_revision": "MB997-E-01",
+  "components": [
+    {
+      "fitted": true,
+      "kind": "switch",
+      "package": "Not asserted from source PDF",
+      "pins": {
+        "1": "1",
+        "2": "2",
+        "3": "3",
+        "4": "4"
+      },
+      "properties": {
+        "contact": "normally-open",
+        "internal_groups": "1,2 and 3,4"
+      },
+      "ref": "B1",
+      "sheet": "/Peripherals",
+      "sources": [
+        {
+          "locator": "page:4/B1",
+          "source": "schematic_e01"
+        }
+      ],
+      "value": "USER / WAKE-UP"
+    },
+    {
+      "fitted": true,
+      "kind": "led",
+      "package": "Not asserted from source PDF",
+      "pins": {
+        "1": "A",
+        "2": "K"
+      },
+      "properties": {},
+      "ref": "LD3",
+      "sheet": "/Peripherals",
+      "sources": [
+        {
+          "locator": "page:4/LD3",
+          "source": "schematic_e01"
+        }
+      ],
+      "value": "Orange"
+    },
+    {
+      "fitted": true,
+      "kind": "led",
+      "package": "Not asserted from source PDF",
+      "pins": {
+        "1": "A",
+        "2": "K"
+      },
+      "properties": {},
+      "ref": "LD4",
+      "sheet": "/Peripherals",
+      "sources": [
+        {
+          "locator": "page:4/LD4",
+          "source": "schematic_e01"
+        }
+      ],
+      "value": "Green"
+    },
+    {
+      "fitted": true,
+      "kind": "led",
+      "package": "Not asserted from source PDF",
+      "pins": {
+        "1": "A",
+        "2": "K"
+      },
+      "properties": {},
+      "ref": "LD5",
+      "sheet": "/Peripherals",
+      "sources": [
+        {
+          "locator": "page:4/LD5",
+          "source": "schematic_e01"
+        }
+      ],
+      "value": "Red"
+    },
+    {
+      "fitted": true,
+      "kind": "led",
+      "package": "Not asserted from source PDF",
+      "pins": {
+        "1": "A",
+        "2": "K"
+      },
+      "properties": {},
+      "ref": "LD6",
+      "sheet": "/Peripherals",
+      "sources": [
+        {
+          "locator": "page:4/LD6",
+          "source": "schematic_e01"
+        }
+      ],
+      "value": "Blue"
+    },
+    {
+      "fitted": true,
+      "kind": "resistor",
+      "package": "Not asserted from source PDF",
+      "pins": {
+        "1": "1",
+        "2": "2"
+      },
+      "properties": {
+        "terminal_numbering": "Transcription-local terminal IDs for passive parts; the PDF does not print their pin numbers."
+      },
+      "ref": "R35",
+      "sheet": "/Peripherals",
+      "sources": [
+        {
+          "locator": "page:4/R35",
+          "source": "schematic_e01"
+        }
+      ],
+      "value": "330 ohm"
+    },
+    {
+      "fitted": true,
+      "kind": "resistor",
+      "package": "Not asserted from source PDF",
+      "pins": {
+        "1": "1",
+        "2": "2"
+      },
+      "properties": {
+        "terminal_numbering": "Transcription-local terminal IDs for passive parts; the PDF does not print their pin numbers."
+      },
+      "ref": "R36",
+      "sheet": "/Peripherals",
+      "sources": [
+        {
+          "locator": "page:4/R36",
+          "source": "schematic_e01"
+        }
+      ],
+      "value": "680 ohm"
+    },
+    {
+      "fitted": true,
+      "kind": "resistor",
+      "package": "Not asserted from source PDF",
+      "pins": {
+        "1": "1",
+        "2": "2"
+      },
+      "properties": {
+        "terminal_numbering": "Transcription-local terminal IDs for passive parts; the PDF does not print their pin numbers."
+      },
+      "ref": "R38",
+      "sheet": "/Peripherals",
+      "sources": [
+        {
+          "locator": "page:4/R38",
+          "source": "schematic_e01"
+        }
+      ],
+      "value": "100 ohm"
+    },
+    {
+      "fitted": true,
+      "kind": "resistor",
+      "package": "Not asserted from source PDF",
+      "pins": {
+        "1": "1",
+        "2": "2"
+      },
+      "properties": {
+        "terminal_numbering": "Transcription-local terminal IDs for passive parts; the PDF does not print their pin numbers."
+      },
+      "ref": "R39",
+      "sheet": "/Peripherals",
+      "sources": [
+        {
+          "locator": "page:4/R39",
+          "source": "schematic_e01"
+        }
+      ],
+      "value": "220000 ohm"
+    },
+    {
+      "fitted": true,
+      "kind": "resistor",
+      "package": "Not asserted from source PDF",
+      "pins": {
+        "1": "1",
+        "2": "2"
+      },
+      "properties": {
+        "terminal_numbering": "Transcription-local terminal IDs for passive parts; the PDF does not print their pin numbers."
+      },
+      "ref": "R40",
+      "sheet": "/Peripherals",
+      "sources": [
+        {
+          "locator": "page:4/R40",
+          "source": "schematic_e01"
+        }
+      ],
+      "value": "510 ohm"
+    },
+    {
+      "fitted": true,
+      "kind": "resistor",
+      "package": "Not asserted from source PDF",
+      "pins": {
+        "1": "1",
+        "2": "2"
+      },
+      "properties": {
+        "terminal_numbering": "Transcription-local terminal IDs for passive parts; the PDF does not print their pin numbers."
+      },
+      "ref": "R41",
+      "sheet": "/Peripherals",
+      "sources": [
+        {
+          "locator": "page:4/R41",
+          "source": "schematic_e01"
+        }
+      ],
+      "value": "680 ohm"
+    },
+    {
+      "fitted": true,
+      "kind": "resistor",
+      "package": "Not asserted from source PDF",
+      "pins": {
+        "1": "1",
+        "2": "2"
+      },
+      "properties": {
+        "terminal_numbering": "Transcription-local terminal IDs for passive parts; the PDF does not print their pin numbers."
+      },
+      "ref": "R42",
+      "sheet": "/Peripherals",
+      "sources": [
+        {
+          "locator": "page:4/R42",
+          "source": "schematic_e01"
+        }
+      ],
+      "value": "680 ohm"
+    },
+    {
+      "fitted": true,
+      "kind": "bridge",
+      "package": "Not asserted from source PDF",
+      "pins": {
+        "1": "1",
+        "2": "2"
+      },
+      "properties": {
+        "terminal_numbering": "Transcription-local terminal IDs for passive parts; the PDF does not print their pin numbers."
+      },
+      "ref": "SB20",
+      "sheet": "/Peripherals",
+      "sources": [
+        {
+          "locator": "page:4/SB20",
+          "source": "schematic_e01"
+        }
+      ],
+      "value": "Closed by default"
+    },
+    {
+      "fitted": true,
+      "kind": "mcu",
+      "package": "Package_QFP:LQFP-100_14x14mm_P0.5mm",
+      "pins": {
+        "23": "PA0",
+        "25": "PA2",
+        "26": "PA3",
+        "59": "PD12",
+        "60": "PD13",
+        "61": "PD14",
+        "62": "PD15"
+      },
+      "properties": {
+        "pin_scope": "Only selected GPIO pins are transcribed; other MCU pins are omitted."
+      },
+      "ref": "U4",
+      "sheet": "/MCU",
+      "sources": [
+        {
+          "locator": "page:7/MCU",
+          "source": "schematic_e01"
+        }
+      ],
+      "value": "STM32F407VGT6"
+    },
+    {
+      "fitted": true,
+      "kind": "other",
+      "package": "Board header:2x25",
+      "pins": {
+        "13": "PA3",
+        "14": "PA2"
+      },
+      "properties": {
+        "coverage": "Only UART pins transcribed"
+      },
+      "ref": "P1",
+      "sheet": "/Top",
+      "sources": [
+        {
+          "locator": "page:2/P1",
+          "source": "schematic_uart"
+        }
+      ],
+      "value": "Header 25X2 (selected UART pins)"
+    }
+  ],
+  "coverage": "partial",
+  "mcu": "STM32F407VGT6",
+  "nets": [
+    {
+      "aliases": [],
+      "name": "B1_SERIES",
+      "pins": [
+        {
+          "name": "1",
+          "number": "1",
+          "package": "Not asserted from source PDF",
+          "ref": "R35",
+          "sheet": "/Peripherals",
+          "sources": [
+            {
+              "locator": "page:4/B1",
+              "source": "schematic_e01"
+            }
+          ]
+        },
+        {
+          "name": "2",
+          "number": "2",
+          "package": "Not asserted from source PDF",
+          "ref": "SB20",
+          "sheet": "/Peripherals",
+          "sources": [
+            {
+              "locator": "page:4/B1",
+              "source": "schematic_e01"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "locator": "page:4/B1",
+          "source": "schematic_e01"
+        }
+      ]
+    },
+    {
+      "aliases": [],
+      "name": "B1_SIGNAL",
+      "pins": [
+        {
+          "name": "1",
+          "number": "1",
+          "package": "Not asserted from source PDF",
+          "ref": "B1",
+          "sheet": "/Peripherals",
+          "sources": [
+            {
+              "locator": "page:4/B1",
+              "source": "schematic_e01"
+            }
+          ]
+        },
+        {
+          "name": "2",
+          "number": "2",
+          "package": "Not asserted from source PDF",
+          "ref": "B1",
+          "sheet": "/Peripherals",
+          "sources": [
+            {
+              "locator": "page:4/B1",
+              "source": "schematic_e01"
+            }
+          ]
+        },
+        {
+          "name": "2",
+          "number": "2",
+          "package": "Not asserted from source PDF",
+          "ref": "R35",
+          "sheet": "/Peripherals",
+          "sources": [
+            {
+              "locator": "page:4/B1",
+              "source": "schematic_e01"
+            }
+          ]
+        },
+        {
+          "name": "1",
+          "number": "1",
+          "package": "Not asserted from source PDF",
+          "ref": "R39",
+          "sheet": "/Peripherals",
+          "sources": [
+            {
+              "locator": "page:4/B1",
+              "source": "schematic_e01"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "locator": "page:4/B1",
+          "source": "schematic_e01"
+        }
+      ]
+    },
+    {
+      "aliases": [],
+      "name": "B1_SUPPLY",
+      "pins": [
+        {
+          "name": "3",
+          "number": "3",
+          "package": "Not asserted from source PDF",
+          "ref": "B1",
+          "sheet": "/Peripherals",
+          "sources": [
+            {
+              "locator": "page:4/B1",
+              "source": "schematic_e01"
+            }
+          ]
+        },
+        {
+          "name": "4",
+          "number": "4",
+          "package": "Not asserted from source PDF",
+          "ref": "B1",
+          "sheet": "/Peripherals",
+          "sources": [
+            {
+              "locator": "page:4/B1",
+              "source": "schematic_e01"
+            }
+          ]
+        },
+        {
+          "name": "2",
+          "number": "2",
+          "package": "Not asserted from source PDF",
+          "ref": "R38",
+          "sheet": "/Peripherals",
+          "sources": [
+            {
+              "locator": "page:4/B1",
+              "source": "schematic_e01"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "locator": "page:4/B1",
+          "source": "schematic_e01"
+        }
+      ]
+    },
+    {
+      "aliases": [],
+      "name": "GND",
+      "pins": [
+        {
+          "name": "K",
+          "number": "2",
+          "package": "Not asserted from source PDF",
+          "ref": "LD3",
+          "sheet": "/Peripherals",
+          "sources": [
+            {
+              "locator": "page:4/LEDs+B1",
+              "source": "schematic_e01"
+            }
+          ]
+        },
+        {
+          "name": "K",
+          "number": "2",
+          "package": "Not asserted from source PDF",
+          "ref": "LD4",
+          "sheet": "/Peripherals",
+          "sources": [
+            {
+              "locator": "page:4/LEDs+B1",
+              "source": "schematic_e01"
+            }
+          ]
+        },
+        {
+          "name": "K",
+          "number": "2",
+          "package": "Not asserted from source PDF",
+          "ref": "LD5",
+          "sheet": "/Peripherals",
+          "sources": [
+            {
+              "locator": "page:4/LEDs+B1",
+              "source": "schematic_e01"
+            }
+          ]
+        },
+        {
+          "name": "K",
+          "number": "2",
+          "package": "Not asserted from source PDF",
+          "ref": "LD6",
+          "sheet": "/Peripherals",
+          "sources": [
+            {
+              "locator": "page:4/LEDs+B1",
+              "source": "schematic_e01"
+            }
+          ]
+        },
+        {
+          "name": "2",
+          "number": "2",
+          "package": "Not asserted from source PDF",
+          "ref": "R39",
+          "sheet": "/Peripherals",
+          "sources": [
+            {
+              "locator": "page:4/LEDs+B1",
+              "source": "schematic_e01"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "locator": "page:4/LEDs+B1",
+          "source": "schematic_e01"
+        }
+      ]
+    },
+    {
+      "aliases": [],
+      "name": "LD3_ANODE",
+      "pins": [
+        {
+          "name": "A",
+          "number": "1",
+          "package": "Not asserted from source PDF",
+          "ref": "LD3",
+          "sheet": "/Peripherals",
+          "sources": [
+            {
+              "locator": "page:4/LEDs",
+              "source": "schematic_e01"
+            }
+          ]
+        },
+        {
+          "name": "2",
+          "number": "2",
+          "package": "Not asserted from source PDF",
+          "ref": "R36",
+          "sheet": "/Peripherals",
+          "sources": [
+            {
+              "locator": "page:4/LEDs",
+              "source": "schematic_e01"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "locator": "page:4/LEDs",
+          "source": "schematic_e01"
+        }
+      ]
+    },
+    {
+      "aliases": [],
+      "name": "LD4_ANODE",
+      "pins": [
+        {
+          "name": "A",
+          "number": "1",
+          "package": "Not asserted from source PDF",
+          "ref": "LD4",
+          "sheet": "/Peripherals",
+          "sources": [
+            {
+              "locator": "page:4/LEDs",
+              "source": "schematic_e01"
+            }
+          ]
+        },
+        {
+          "name": "2",
+          "number": "2",
+          "package": "Not asserted from source PDF",
+          "ref": "R40",
+          "sheet": "/Peripherals",
+          "sources": [
+            {
+              "locator": "page:4/LEDs",
+              "source": "schematic_e01"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "locator": "page:4/LEDs",
+          "source": "schematic_e01"
+        }
+      ]
+    },
+    {
+      "aliases": [],
+      "name": "LD5_ANODE",
+      "pins": [
+        {
+          "name": "A",
+          "number": "1",
+          "package": "Not asserted from source PDF",
+          "ref": "LD5",
+          "sheet": "/Peripherals",
+          "sources": [
+            {
+              "locator": "page:4/LEDs",
+              "source": "schematic_e01"
+            }
+          ]
+        },
+        {
+          "name": "2",
+          "number": "2",
+          "package": "Not asserted from source PDF",
+          "ref": "R41",
+          "sheet": "/Peripherals",
+          "sources": [
+            {
+              "locator": "page:4/LEDs",
+              "source": "schematic_e01"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "locator": "page:4/LEDs",
+          "source": "schematic_e01"
+        }
+      ]
+    },
+    {
+      "aliases": [],
+      "name": "LD6_ANODE",
+      "pins": [
+        {
+          "name": "A",
+          "number": "1",
+          "package": "Not asserted from source PDF",
+          "ref": "LD6",
+          "sheet": "/Peripherals",
+          "sources": [
+            {
+              "locator": "page:4/LEDs",
+              "source": "schematic_e01"
+            }
+          ]
+        },
+        {
+          "name": "2",
+          "number": "2",
+          "package": "Not asserted from source PDF",
+          "ref": "R42",
+          "sheet": "/Peripherals",
+          "sources": [
+            {
+              "locator": "page:4/LEDs",
+              "source": "schematic_e01"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "locator": "page:4/LEDs",
+          "source": "schematic_e01"
+        }
+      ]
+    },
+    {
+      "aliases": [],
+      "name": "PA0",
+      "pins": [
+        {
+          "name": "1",
+          "number": "1",
+          "package": "Not asserted from source PDF",
+          "ref": "SB20",
+          "sheet": "/Peripherals",
+          "sources": [
+            {
+              "locator": "page:4/B1;page:7/MCU",
+              "source": "schematic_e01"
+            }
+          ]
+        },
+        {
+          "name": "PA0",
+          "number": "23",
+          "package": "Package_QFP:LQFP-100_14x14mm_P0.5mm",
+          "ref": "U4",
+          "sheet": "/MCU",
+          "sources": [
+            {
+              "locator": "page:4/B1;page:7/MCU",
+              "source": "schematic_e01"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "locator": "page:4/B1;page:7/MCU",
+          "source": "schematic_e01"
+        }
+      ]
+    },
+    {
+      "aliases": [],
+      "name": "PD12",
+      "pins": [
+        {
+          "name": "1",
+          "number": "1",
+          "package": "Not asserted from source PDF",
+          "ref": "R40",
+          "sheet": "/Peripherals",
+          "sources": [
+            {
+              "locator": "page:4/LEDs;page:7/MCU",
+              "source": "schematic_e01"
+            }
+          ]
+        },
+        {
+          "name": "PD12",
+          "number": "59",
+          "package": "Package_QFP:LQFP-100_14x14mm_P0.5mm",
+          "ref": "U4",
+          "sheet": "/MCU",
+          "sources": [
+            {
+              "locator": "page:4/LEDs;page:7/MCU",
+              "source": "schematic_e01"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "locator": "page:4/LEDs;page:7/MCU",
+          "source": "schematic_e01"
+        }
+      ]
+    },
+    {
+      "aliases": [],
+      "name": "PD13",
+      "pins": [
+        {
+          "name": "1",
+          "number": "1",
+          "package": "Not asserted from source PDF",
+          "ref": "R36",
+          "sheet": "/Peripherals",
+          "sources": [
+            {
+              "locator": "page:4/LEDs;page:7/MCU",
+              "source": "schematic_e01"
+            }
+          ]
+        },
+        {
+          "name": "PD13",
+          "number": "60",
+          "package": "Package_QFP:LQFP-100_14x14mm_P0.5mm",
+          "ref": "U4",
+          "sheet": "/MCU",
+          "sources": [
+            {
+              "locator": "page:4/LEDs;page:7/MCU",
+              "source": "schematic_e01"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "locator": "page:4/LEDs;page:7/MCU",
+          "source": "schematic_e01"
+        }
+      ]
+    },
+    {
+      "aliases": [],
+      "name": "PD14",
+      "pins": [
+        {
+          "name": "1",
+          "number": "1",
+          "package": "Not asserted from source PDF",
+          "ref": "R41",
+          "sheet": "/Peripherals",
+          "sources": [
+            {
+              "locator": "page:4/LEDs;page:7/MCU",
+              "source": "schematic_e01"
+            }
+          ]
+        },
+        {
+          "name": "PD14",
+          "number": "61",
+          "package": "Package_QFP:LQFP-100_14x14mm_P0.5mm",
+          "ref": "U4",
+          "sheet": "/MCU",
+          "sources": [
+            {
+              "locator": "page:4/LEDs;page:7/MCU",
+              "source": "schematic_e01"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "locator": "page:4/LEDs;page:7/MCU",
+          "source": "schematic_e01"
+        }
+      ]
+    },
+    {
+      "aliases": [],
+      "name": "PD15",
+      "pins": [
+        {
+          "name": "1",
+          "number": "1",
+          "package": "Not asserted from source PDF",
+          "ref": "R42",
+          "sheet": "/Peripherals",
+          "sources": [
+            {
+              "locator": "page:4/LEDs;page:7/MCU",
+              "source": "schematic_e01"
+            }
+          ]
+        },
+        {
+          "name": "PD15",
+          "number": "62",
+          "package": "Package_QFP:LQFP-100_14x14mm_P0.5mm",
+          "ref": "U4",
+          "sheet": "/MCU",
+          "sources": [
+            {
+              "locator": "page:4/LEDs;page:7/MCU",
+              "source": "schematic_e01"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "locator": "page:4/LEDs;page:7/MCU",
+          "source": "schematic_e01"
+        }
+      ]
+    },
+    {
+      "aliases": [],
+      "name": "VDD",
+      "pins": [
+        {
+          "name": "1",
+          "number": "1",
+          "package": "Not asserted from source PDF",
+          "ref": "R38",
+          "sheet": "/Peripherals",
+          "sources": [
+            {
+              "locator": "page:4/B1",
+              "source": "schematic_e01"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "locator": "page:4/B1",
+          "source": "schematic_e01"
+        }
+      ]
+    },
+    {
+      "aliases": [],
+      "name": "PA2",
+      "pins": [
+        {
+          "name": "PA2",
+          "number": "25",
+          "package": "Package_QFP:LQFP-100_14x14mm_P0.5mm",
+          "ref": "U4",
+          "sheet": "/MCU",
+          "sources": [
+            {
+              "locator": "page:2/P1",
+              "source": "schematic_uart"
+            },
+            {
+              "locator": "page:7/U4",
+              "source": "schematic_mcu"
+            }
+          ]
+        },
+        {
+          "name": "PA2",
+          "number": "14",
+          "package": "Board header:2x25",
+          "ref": "P1",
+          "sheet": "/Top",
+          "sources": [
+            {
+              "locator": "page:2/P1",
+              "source": "schematic_uart"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "locator": "page:2/P1",
+          "source": "schematic_uart"
+        },
+        {
+          "locator": "page:7/U4",
+          "source": "schematic_mcu"
+        }
+      ]
+    },
+    {
+      "aliases": [],
+      "name": "PA3",
+      "pins": [
+        {
+          "name": "PA3",
+          "number": "26",
+          "package": "Package_QFP:LQFP-100_14x14mm_P0.5mm",
+          "ref": "U4",
+          "sheet": "/MCU",
+          "sources": [
+            {
+              "locator": "page:2/P1",
+              "source": "schematic_uart"
+            },
+            {
+              "locator": "page:7/U4",
+              "source": "schematic_mcu"
+            }
+          ]
+        },
+        {
+          "name": "PA3",
+          "number": "13",
+          "package": "Board header:2x25",
+          "ref": "P1",
+          "sheet": "/Top",
+          "sources": [
+            {
+              "locator": "page:2/P1",
+              "source": "schematic_uart"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "locator": "page:2/P1",
+          "source": "schematic_uart"
+        },
+        {
+          "locator": "page:7/U4",
+          "source": "schematic_mcu"
+        }
+      ]
+    }
+  ],
+  "omissions": [
+    "This is a reviewed GPIO circuit subset, not the entire MB997 netlist. Connector branches and other GND/VDD endpoints are omitted.",
+    "ST-LINK, power regulation, decoupling, audio, USB, MEMS, reset and oscillator wiring are not represented as connectivity.",
+    "C36 is not fitted in E-01 and is excluded from the button conduction path.",
+    "Other PCB revisions, reworked solder bridges, external attachments and physical behavior are unverified.",
+    "UART subset includes MCU PA2/PA3 and P1-14/13 only; the external loopback jumper is not a fixed net."
+  ],
+  "package": "Package_QFP:LQFP-100_14x14mm_P0.5mm",
+  "review": {
+    "basis": "Actual MCP source evidence: RM0090 Rev22 selected pages; MB997 E-01 rendered pages 2/7; UM1472 Rev9 pages 18/26. Reviewed operating subset only; independent engineering sign-off pending.",
+    "reviewer": "Codex source-backed editorial review via Praxis ingestion MCP",
+    "status": "reviewed"
+  },
+  "schema_version": 1
+}

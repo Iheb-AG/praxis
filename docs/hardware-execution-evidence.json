@@ -1,0 +1,106 @@
+{
+  "artifact_id": "0f3095c100e6311acb62ad085b9d6ec08e9c0a249741f6544a40280e94e39c44",
+  "asset_revision": "22310c7ad54daa553cf5cb11e4db08e4c8f9e93e191f3f12ec8410dd1fb40b59",
+  "audit_result_sha256": "8880fea21b7e3fe4806790af05493acc0cb400536b0cf1beb35121871716a05f",
+  "authorization_actions": [
+    "reset_run",
+    "halt",
+    "resume"
+  ],
+  "authorization_revision": "31ea3c2f7cb6127d3c86a5e7e8ac596243e57e298dae8a1b43a2ed776148c99f",
+  "bundle_revision": "53474b5de83dddffbdccfb86057c6ec9ad362f1949afd6a74e90effb2c27fc9b",
+  "checks": {
+    "audit_matches_actual_mcp_response": true,
+    "flash_or_erase_call": false,
+    "full_unique_identifiers_redacted": true,
+    "halt_or_resume_call": false,
+    "original_failed_flash_audit_preserved": true,
+    "shell_fallback": false
+  },
+  "control_result": {
+    "action": "reset_run",
+    "core_registers": {},
+    "erased_range": null,
+    "execution_state": "running",
+    "failure": null,
+    "finished_at": "2026-10-10T19:07:46.549251+00:00",
+    "observation_window_ms": 500,
+    "observed_at": "2026-10-10T19:07:45.493096+00:00",
+    "programmed_range": null,
+    "readback_verified": true,
+    "run_continues_after_return": true,
+    "run_id": "10f4f267847849dbaa57b6c14d1ac6db",
+    "success": true
+  },
+  "date": "2026-10-10",
+  "human_observation": {
+    "answer": "Green LD4 blinks ~500ms; Orange LD3 on when B1 held, off when released; Green continues blinking",
+    "answered_at": "2026-10-10T19:09:16.306000+00:00",
+    "basic_led_button_behavior": "passed by human observation",
+    "exact_timing": "not measured",
+    "repetition_count": "not explicitly recorded",
+    "source": "Completed OpenCode question tool, user-selected answer"
+  },
+  "max_flash_attempts": 0,
+  "plan_revision": "490cedb45dd533f1841b8af1fc2161244e8c200bbdf3654ae829a94a3fe1e10b",
+  "post_control_inspection": {
+    "clock": {
+      "ahb_divisor": 1,
+      "basis": "HSI nominal 16 MHz",
+      "nominal_hclk_hz": 16000000.0,
+      "stable_sample": true,
+      "systick_period_if_processor_clock_ms": 1.0,
+      "systick_reload": 15999,
+      "systick_source": "unverified: CTRL omitted because reading clears COUNTFLAG"
+    },
+    "core_registers": {},
+    "execution_state": "unknown",
+    "fault_address_valid": {
+      "bfar": false,
+      "mmfar": false
+    },
+    "fault_status": {
+      "bfar": "0x40020010",
+      "cfsr": "0x0",
+      "hfsr": "0x0",
+      "mmfar": "0x40020010"
+    },
+    "observed_at": "2026-10-10T19:08:32.769682+00:00",
+    "run_id": "17a96dd393a14521bc589619828d478d",
+    "signals": {
+      "button_input_sample": false,
+      "gpioa_clock_enabled": true,
+      "gpiod_clock_enabled": true,
+      "led_a_output_latch": false,
+      "led_b_output_latch": false,
+      "limits": "Disabled GPIO clocks suppress port reads; running firmware can change clock gates during sampling."
+    }
+  },
+  "release_ready": false,
+  "remaining": [
+    "Successful complete flash operation/reporting qualification",
+    "Real halted core-register read and halt/resume qualification",
+    "Calibrated timing/debounce and repeatability tests",
+    "Physical PCB revision and independent engineering review"
+  ],
+  "schema_version": 1,
+  "scope": "Actual execution-only MCP session and human LED/button observations",
+  "session_id": "ses_ed8ca5f42ffeDI2C5JdY8KdrY4",
+  "tool_trace": [
+    "read",
+    "project-praxis_read_wiki_index",
+    "project-praxis_query_schematic_netlist",
+    "project-praxis_query_schematic_netlist",
+    "project-praxis_query_schematic_netlist",
+    "project-praxis_read_peripheral_doc",
+    "project-praxis_read_peripheral_doc",
+    "project-praxis-build_get_build_profile",
+    "project-praxis-build_list_debug_probes",
+    "project-praxis-build_inspect_target",
+    "project-praxis-build_plan_firmware",
+    "project-praxis-build_control_execution",
+    "project-praxis-build_inspect_execution",
+    "question",
+    "write"
+  ]
+}
