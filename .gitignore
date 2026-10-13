@@ -21,4 +21,8 @@ temp/
 *.bin
 *.hex
 *.map
+website/dist/
+website/.build-staging/
+.vercel/
+node_modules/
 

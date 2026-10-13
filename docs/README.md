@@ -25,6 +25,7 @@ Execution-only reset/run and a human LED/button check subsequently passed; see
 | --- | --- | --- |
 | Understand the project | [System design and theory](system-design.md) | [Sequence diagrams](sequences.md) |
 | Prepare the experimental launch | [Alpha launch checklist and announcement](alpha-launch.md) | [Changelog](../CHANGELOG.md) |
+| Host the public documentation | [Vercel setup](vercel-hosting.md) | [Website source and build](../website/README.md) |
 | Read the original setup/reference guide | [Detailed README](../README_DETAILED.md) | [Experimental scope](experimental-release.md) |
 | Understand what the assistant receives | [Knowledge and firmware assets](asset-contract.md) | [Agent instructions](AGENT_INSTRUCTIONS.md) |
 | Run the server | [Repository README](../README.md) | [Board ingestion](board-ingestion.md) |

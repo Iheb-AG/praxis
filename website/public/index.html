@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Source-backed hardware knowledge, vectorless MCP retrieval and scoped firmware verification. Project Praxis documentation for STM32F407 and Cortex-M4.">
+  <meta name="theme-color" content="#07090c">
+  <title>Praxis — Embedded Development Documentation</title>
+  <link rel="icon" href="branding/praxis-logo.png" type="image/png">
+  <script>try { document.documentElement.dataset.theme = localStorage.getItem("praxis-docs-theme-v2") || "dark"; } catch {}</script>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="branding.css">
+  <script src="vendor/marked.js" defer></script>
+  <script src="vendor/purify.js" defer></script>
+  <script src="vendor/mermaid.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="topbar">
+    <button class="icon-button mobile-menu" id="menu-button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    <a class="brand" href="#/" aria-label="Praxis documentation home"><span class="brand-mark"><img src="branding/praxis-logo.png" alt="" width="669" height="373"></span><span>praxis<span class="brand-divider">/</span><span class="brand-label">docs</span></span></a>
+    <nav class="top-nav" aria-label="Main"><a href="https://github.com/Iheb-AG/praxis" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="#/" data-nav="home">Overview</a><a href="#/library?collection=guides" data-nav="guides">Guides</a><a href="#/library?collection=bundles" data-nav="bundles">Bundles</a><a href="#/library?collection=examples" data-nav="examples">Examples</a></nav>
+    <div class="top-actions"><span class="offline"><i></i> Experimental alpha</span><button class="icon-button" id="theme-button" aria-label="Switch to light theme" title="Switch theme">◐</button></div>
+  </header>
+  <div class="layout">
+    <aside id="sidebar" class="sidebar" aria-label="Documentation navigation">
+      <form class="search-box" id="search-form" role="search"><span aria-hidden="true">⌕</span><input id="search" aria-label="Search all documentation" placeholder="Search documentation…" autocomplete="off"><kbd>/</kbd></form>
+      <a class="overview-link" href="#/"><span>◈</span> Project overview <span>↗</span></a>
+      <nav id="document-nav" aria-label="Guides"></nav>
+      <div class="sidebar-bottom"><strong>YOUR DOCUMENTATION, CONNECTED.</strong><p>Sources → knowledge → code → evidence</p><a href="#/library">Browse the full library <span>→</span></a></div>
+    </aside>
+    <main id="main" tabindex="-1"><div class="loading">Opening your documentation…</div></main>
+  </div>
+  <button id="back-top" class="back-top icon-button" aria-label="Back to top" hidden>↑</button>
+  <div id="toast" class="toast" role="status" hidden></div>
+  <dialog id="diagram-dialog" aria-label="Expanded diagram"><div class="dialog-toolbar"><strong>Diagram viewer</strong><button id="close-diagram" class="button">Close ✕</button></div><div id="expanded-diagram"></div></dialog>
+</body>
+</html>

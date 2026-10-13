@@ -10,6 +10,11 @@ import zipfile
 from pathlib import Path, PurePosixPath
 
 REQUIRED = {
+    'vercel.json', '.vercelignore', '.gitattributes', 'website/build.mjs', 'website/package.json',
+    'website/README.md', 'website/tests/build.test.mjs', 'website/public/index.html',
+    'website/public/app.js', 'website/public/styles.css', 'website/public/branding.css',
+    'website/public/branding/praxis-logo.png', 'website/public/branding/praxis-background.jpg',
+    'docs/vercel-hosting.md',
     'README_DETAILED.md', 'CHANGELOG.md', 'docs/alpha-launch.md', 'docs/images/README.md',
     'docs/images/praxis-banner.jpg', 'docs/images/praxis-logo.png',
     '.github/ISSUE_TEMPLATE/bug-report.yml',
@@ -133,7 +138,8 @@ REQUIRED = {
     'examples/stm32f407g-disc1-uart-loopback/telemetry_application/main.c',
 }
 FORBIDDEN = {'.git', '.venv', '.praxis-output', 'temp', 'imports', '__pycache__',
-             '.pytest_cache', '.ruff_cache', '.aws', '.codex', '.agents'}
+             '.pytest_cache', '.ruff_cache', '.aws', '.codex', '.agents', '.vercel',
+             '.monitor', 'node_modules', '.build-staging', 'dist'}
 
 
 def checked_names(names):
@@ -200,7 +206,7 @@ def main():
     broken_links = []
     for name, body in documents.items():
         relative = str(PurePosixPath(*PurePosixPath(name).parts[1:]))
-        if relative not in ('README.md', 'README_DETAILED.md', 'CHANGELOG.md', 'CONTRIBUTING.md') and not relative.startswith(('docs/', 'examples/')):
+        if relative not in ('README.md', 'README_DETAILED.md', 'CHANGELOG.md', 'CONTRIBUTING.md', 'website/README.md') and not relative.startswith(('docs/', 'examples/')):
             continue
         for target in re.findall(r'\]\(([^)]+)\)', body):
             path = target.strip('<>').split('#')[0]
