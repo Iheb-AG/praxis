@@ -8,8 +8,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: node --test website/tests/*.test.mjs
-      - run: node website/build.mjs
+      - run: npm ci --prefix website
+      - run: npm test --prefix website
+      - run: npm run build --prefix website
       - uses: actions/upload-artifact@v4
         with:
           name: public-documentation

@@ -11,8 +11,11 @@ from pathlib import Path, PurePosixPath
 
 REQUIRED = {
     'vercel.json', '.vercelignore', '.gitattributes', 'website/build.mjs', 'website/package.json',
-    'website/README.md', 'website/tests/build.test.mjs', 'website/public/index.html',
-    'website/public/app.js', 'website/public/styles.css', 'website/public/branding.css',
+    'website/README.md', 'website/tests/build.test.mjs', 'website/tests/reader.test.mjs',
+    'website/index.html', 'website/vite.config.js', 'website/package-lock.json',
+    'website/src/main.jsx', 'website/src/App.jsx', 'website/src/docs.mjs',
+    'website/src/MarkdownView.jsx', 'website/src/MermaidDiagram.jsx',
+    'website/src/styles.css', 'website/src/branding.css', 'website/scripts/licenses.mjs',
     'website/public/branding/praxis-logo.png', 'website/public/branding/praxis-background.jpg',
     'docs/vercel-hosting.md',
     'README_DETAILED.md', 'CHANGELOG.md', 'docs/alpha-launch.md', 'docs/images/README.md',
@@ -139,7 +142,7 @@ REQUIRED = {
 }
 FORBIDDEN = {'.git', '.venv', '.praxis-output', 'temp', 'imports', '__pycache__',
              '.pytest_cache', '.ruff_cache', '.aws', '.codex', '.agents', '.vercel',
-             '.monitor', 'node_modules', '.build-staging', 'dist'}
+             '.monitor', 'node_modules', '.build-staging', '.generated', 'dist'}
 
 
 def checked_names(names):

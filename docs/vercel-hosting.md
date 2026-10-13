@@ -1,6 +1,6 @@
 # Public documentation on Vercel
 
-The public site is built from this repository, using `website/` and the root `vercel.json`.
+The public site uses **React + Vite**, built from `website/` and the root `vercel.json`.
 Its host is independent of the knowledge/build MCP processes and the connected development board.
 Publishing the site does not expose a probe, local API, command feed or MCP server to the internet.
 
@@ -9,9 +9,11 @@ Publishing the site does not expose a probe, local API, command feed or MCP serv
 1. Push the new `website/`, `vercel.json`, `.vercelignore` and associated documentation changes
    to [Iheb-AG/praxis](https://github.com/Iheb-AG/praxis).
 2. In Vercel, add a project and import that repository.
-3. Keep **Root Directory** at the repository root (`.`). Select Framework **Other** if asked.
-4. Use **Build Command** `node website/build.mjs`, **Output Directory** `website/dist`, and
-   skip dependency installation. The checked-in configuration supplies these values.
+3. Keep **Root Directory** at the repository root (`.`). Select Framework **Vite** if asked.
+4. Use **Install Command** `npm ci --prefix website --include=dev`, **Build Command**
+   `npm run build --prefix website`, and **Output Directory** `website/dist`.
+   The checked-in configuration supplies these values. Remove any previous dashboard overrides
+   that skip installation or run only the old catalog command. Use Node 22.12+ or Node 24+.
 5. Deploy, then verify the actual returned URL, search, source downloads and a sequence diagram.
    Add that URL to the GitHub repository's About/Website field after deployment succeeds.
 
@@ -21,24 +23,35 @@ no Vercel credential or linked project; a prepared build is not a deployed URL.
 
 Vercel supports repository imports and file-based build/output configuration; see its
 [Git deployment guide](https://vercel.com/docs/git) and
-[vercel.json reference](https://vercel.com/docs/project-configuration/vercel-json).
+[vercel.json reference](https://vercel.com/docs/project-configuration/vercel-json) and
+[Vite integration](https://vercel.com/docs/frameworks/frontend/vite).
 
 ## Build and verify locally
 
 ```bash
-node --test website/tests/*.test.mjs
-node website/build.mjs
-python3 -m http.server 4184 --bind 127.0.0.1 --directory website/dist
+npm ci --prefix website
+npm test --prefix website
+npm run build --prefix website
+npm run preview --prefix website -- --port 4184
 ```
 
-Open `http://127.0.0.1:4184/`. The public app needs only static hosting, and uses hash routes
+Open `http://127.0.0.1:4184/`. For development use `npm run dev --prefix website` and the
+printed Vite URL (normally port 5173). The production app needs static hosting and uses hash routes
 for guide/library navigation. It does not need an SPA fallback that could turn missing
 JSON or private API requests into successful HTML responses.
 
-The build copies complete Markdown and explicitly linked public attachments. It excludes
+The snapshot compiler copies complete Markdown and explicitly linked public attachments. It excludes
 raw/private paths, PDF originals, firmware binaries and symlinks; it validates local image
 signatures and computes a deterministic snapshot hash. Tests cover complete table preservation,
-hash changes, private/escaped/symlink rejection and image/evidence handling.
+hash changes, private/escaped/symlink rejection and image/evidence handling. Reader tests cover
+legacy routes, exact registered links, wiki resolution, duplicate heading anchors, complete React
+Markdown tables, inert HTML and deterministic search. React Markdown and GFM render the content;
+Mermaid is an on-demand dependency with sanitized SVG output and React zoom/fullscreen controls.
+
+Vite bundles the React application and CSS into hashed production assets. `package-lock.json`
+pins npm dependencies. Installed dependency notices are emitted as `THIRD_PARTY_NOTICES.txt`.
+Installation needs package registry access; runtime reading fetches only the deployed static assets.
+No Next.js server, native Python runtime, or filesystem-reading API is deployed.
 
 The public theme uses neutral off-white text on graphite backgrounds, cyan links, larger
 monospace code and reference tables, and matching diagram colors. Light mode is also neutral.

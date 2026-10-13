@@ -1,8 +1,8 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "framework": null,
-  "installCommand": "",
-  "buildCommand": "node website/build.mjs",
+  "framework": "vite",
+  "installCommand": "npm ci --prefix website --include=dev",
+  "buildCommand": "npm run build --prefix website",
   "outputDirectory": "website/dist",
   "headers": [
     { "source": "/(.*)", "headers": [

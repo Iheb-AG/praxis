@@ -1,4 +1,4 @@
-// Build the public reader from repository Markdown. Node built-ins only; no downloads.
+// Generate the public Markdown snapshot consumed by Vite. No ingestion/model calls.
 import { createHash } from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -8,7 +8,7 @@ const HERE = path.dirname(fileURLToPath(import.meta.url));
 const ROOT_GUIDES = ['README.md', 'README_DETAILED.md', 'CHANGELOG.md', 'CONTRIBUTING.md', 'website/README.md'];
 const PUBLIC_DIRS = ['docs', 'examples', 'bundles', 'assets', 'sources'];
 const EXCLUDED = new Set(['raw', 'imports', 'temp', '.git', '.venv', '.praxis-output', '.aws',
-  '.codex', '.agents', '.monitor', '.vercel', '__pycache__', 'node_modules', 'dist', 'build']);
+  '.codex', '.agents', '.monitor', '.vercel', '.generated', '.build-staging', '__pycache__', 'node_modules', 'dist', 'build']);
 const GROUPS = {
   'Start here': ['README.md', 'README_DETAILED.md', 'docs/README.md', 'docs/system-design.md',
     'docs/architecture.md', 'docs/sequences.md', 'docs/asset-contract.md'],
@@ -109,7 +109,7 @@ export function createSnapshot(source) {
 
 export function build(source = path.dirname(HERE)) {
   const { catalog, files } = createSnapshot(source);
-  const output = path.join(HERE, 'dist'), staging = path.join(HERE, '.build-staging');
+  const output = path.join(HERE, '.generated'), staging = path.join(HERE, '.build-staging');
   fs.rmSync(staging, { recursive: true, force: true });
   fs.cpSync(path.join(HERE, 'public'), staging, { recursive: true });
   for (const [name, bytes] of files) {

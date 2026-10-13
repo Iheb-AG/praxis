@@ -30,7 +30,7 @@ only-include = ["praxis", "sources", "bundles", "assets", "examples", "tests", "
                 "toolchain.lock.json", "toolchain-f407.lock.json", "release-review.json", "Dockerfile", ".dockerignore",
                 "website", "vercel.json", ".vercelignore", ".gitattributes"]
 exclude = ["**/imports/**", "**/__pycache__/**", "**/*.pyc", "**/.pytest_cache/**",
-           "**/.ruff_cache/**", "**/build/**", "**/dist/**", "**/.build-staging/**", "**/node_modules/**", "**/*.elf", "**/*.bin", "**/*.hex", "**/*.map"]
+           "**/.ruff_cache/**", "**/build/**", "**/dist/**", "**/.build-staging/**", "**/.generated/**", "**/node_modules/**", "**/*.elf", "**/*.bin", "**/*.hex", "**/*.map"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

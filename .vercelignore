@@ -19,3 +19,5 @@ temp/
 **/*.map
 website/dist/
 website/.build-staging/
+website/.generated/
+**/node_modules/**

@@ -1,7 +1,7 @@
 /* Praxis identity: original supplied artwork; interface remains readable offline. */
 :root[data-theme=dark]{color-scheme:dark;--bg:#07090c;--panel:#11151b;--sidebar:#0b0e13;--text:#d8dee7;--heading:#f4f6f8;--muted:#a7b1be;--border:#303944;--accent:#7cc7e6;--accent-bg:#162a33;--green:#99d5b5;--green-bg:#152b23;--orange:#e7c48c;--code:#090d13;--shadow:0 12px 35px #0005}
 body{isolation:isolate}
-body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(#07090cee,#07090cf5),url('branding/praxis-background.jpg') center 35% / cover no-repeat}
+body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(#07090cee,#07090cf5),url('/branding/praxis-background.jpg') center 35% / cover no-repeat}
 :root[data-theme=light] body::before{display:none}
 .topbar{background:var(--sidebar);gap:38px}
 .brand{letter-spacing:1px;font-size:23px;font-weight:600}
@@ -12,7 +12,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;ba
 :root[data-theme=dark] .sidebar{background:#0b0e13f5}
 :root[data-theme=dark] .hero{background:linear-gradient(130deg,#151a22f5,#10141cf2)}
 :root[data-theme=dark] .card,:root[data-theme=dark] .flow-panel,:root[data-theme=dark] .reading-list,:root[data-theme=dark] .monitor-current,:root[data-theme=dark] .monitor-milestone,:root[data-theme=dark] .activity-feed{background:#11151bf5}
-.brand-banner{position:relative;isolation:isolate;aspect-ratio:2.2/1;min-height:280px;max-height:560px;margin-bottom:24px;overflow:hidden;border:1px solid #2a3039;border-radius:var(--radius);background:#000 url('branding/praxis-background.jpg') center center / contain no-repeat;color:#d0d4dd;box-shadow:0 16px 44px #0004}
+.brand-banner{position:relative;isolation:isolate;aspect-ratio:2.2/1;min-height:280px;max-height:560px;margin-bottom:24px;overflow:hidden;border:1px solid #2a3039;border-radius:var(--radius);background:#000 url('/branding/praxis-background.jpg') center center / contain no-repeat;color:#d0d4dd;box-shadow:0 16px 44px #0004}
 .brand-banner::after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(#0008,transparent 22%,transparent 74%,#000d);z-index:-1}
 .banner-top,.banner-bottom{position:absolute;left:24px;right:24px;display:flex;align-items:center;justify-content:space-between;gap:15px;font-size:9px;letter-spacing:1.8px;font-weight:600}
 .banner-top{top:19px;color:#a1a9b6}
@@ -61,3 +61,11 @@ a:hover{text-decoration:underline;text-underline-offset:3px}
 .eyebrow,.banner-top,.banner-bottom{color:var(--muted)}
 .markdown a:focus-visible,.button:focus-visible,.nav-group a:focus-visible{outline:2px solid var(--accent)}
 @media(max-width:680px){.markdown{font-size:15px}.markdown table{font-size:12px}.markdown pre,.markdown pre code{font-size:12px}.top-nav a{font-size:11px}.hero p{font-size:14px}.brand{font-size:17px}.reader-top{flex-wrap:wrap}}
+
+/* React reader components retain the original layout and responsive boundaries. */
+#root{min-height:100vh}.nav-count{float:right;color:var(--muted)}
+.flow-step{display:flex;align-items:center;gap:6px;flex:1;min-width:0}
+.diagram-svg{margin:auto;max-width:none}.diagram-svg>svg{width:100%!important;height:auto!important;display:block}
+.expanded-diagram{overflow:auto;padding:25px;max-height:80vh}
+.code-wrap{position:relative}.markdown .diagram-source pre{margin-bottom:0}
+.markdown .table-wrap{max-width:100%}.reader,.markdown{min-width:0}

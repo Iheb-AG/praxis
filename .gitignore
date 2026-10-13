@@ -23,6 +23,7 @@ temp/
 *.map
 website/dist/
 website/.build-staging/
+website/.generated/
 .vercel/
 node_modules/
 
