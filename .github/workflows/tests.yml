@@ -33,7 +33,7 @@ jobs:
       - run: docker build --tag project-praxis:0.1.0 .
       - name: Exercise Docker MCP and bundle isolation
         run: |
-          uv run python tools/check_container_mcp.py --image project-praxis:0.1.0 --bundle bundles/stm32f407g-disc1-e01-arm-core-v2 --bundle bundles/atmega328p --output /tmp/praxis-container-report.json
+          uv run python tools/check_container_mcp.py --image project-praxis:0.1.0 --bundle bundles/stm32f407g-disc1-e01-timer-irq-v1 --bundle bundles/stm32f407g-disc1-e01-timer-routes-v1 --bundle bundles/atmega328p --output /tmp/praxis-container-report.json
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -41,7 +41,11 @@ jobs:
           path: /tmp/praxis-container-report.json
   tests:
     runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    env:
+      PRAXIS_REQUIRE_EXTERNAL_TOOLS: '1'
     strategy:
+      fail-fast: false
       matrix:
         python-version: ['3.11', '3.12', '3.13']
     steps:
@@ -49,10 +53,24 @@ jobs:
       - uses: astral-sh/setup-uv@v6
         with:
           python-version: ${{ matrix.python-version }}
-      - run: sudo apt-get update && sudo apt-get install -y clang gcc-arm-none-eabi libnewlib-arm-none-eabi gcc-avr avr-libc device-tree-compiler libfdt1 openocd
+      - run: sudo add-apt-repository --yes ppa:kicad/kicad-9.0-releases
+      - run: sudo apt-get update && sudo apt-get install -y --no-install-recommends kicad podman uidmap clang gcc-arm-none-eabi libnewlib-arm-none-eabi gcc-avr avr-libc device-tree-compiler libfdt1 openocd
       - run: uv sync --locked --extra ingest --extra test --extra web
       - run: uv run ruff check praxis tests tools server.py compiler.py
-      - run: uv run pytest -q
+      - name: Restore pinned manufacturer evidence
+        run: uv run python tools/restore_source_inputs.py --manifest sources/stm32f407g-disc1/source-replay.json --profile sources/stm32f407g-disc1/profile-timer-irq-v1.json --cache .praxis-output/source-downloads
+      - uses: ./.github/actions/provision-toolchain
+      - name: Full strict regression
+        run: |
+          set -o pipefail
+          uv run pytest -q --junitxml=.praxis-output/pytest-results.xml 2>&1 | tee .praxis-output/pytest.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: test-results-${{ matrix.python-version }}
+          path: |
+            .praxis-output/pytest-results.xml
+            .praxis-output/pytest.log
       - run: uv run praxis lint --bundle bundles/stm32f401re && uv run praxis lint --bundle bundles/atmega328p
       - run: uv run praxis evaluate --bundle bundles/stm32f401re && uv run praxis evaluate --bundle bundles/atmega328p
       - run: uv run praxis lint --bundle bundles/stm32f407vgt6 && uv run praxis evaluate --bundle bundles/stm32f407vgt6
@@ -100,29 +118,7 @@ jobs:
           python-version: '3.12'
       - run: sudo apt-get update && sudo apt-get install -y podman uidmap gcc-arm-none-eabi
       - run: uv sync --locked --extra build --extra test
-      - name: Provision actual rootless image
-        run: |
-          podman pull docker.io/library/debian@sha256:7c7b2c966bc9ee8cedfeef67e0e279108992c77681fa595db4a9d65c06ccc587
-          uv run python - <<'PY'
-          import json
-          from pathlib import Path
-          p = Path('toolchain-f407.lock.json')
-          value = json.loads(p.read_text())
-          value['image'] = None
-          value['compiler_versions'] = {}
-          p.write_text(json.dumps(value))
-          PY
-          uv run praxis sandbox-build --base-image docker.io/library/debian@sha256:7c7b2c966bc9ee8cedfeef67e0e279108992c77681fa595db4a9d65c06ccc587 --recipe sandbox/Containerfile --lock toolchain-f407.lock.json
-          uv run python - <<'PY'
-          import json
-          from pathlib import Path
-          p = Path('toolchain.lock.json')
-          value = json.loads(p.read_text())
-          built = json.loads(Path('toolchain-f407.lock.json').read_text())
-          value['image'] = built['image']
-          value['compiler_versions'] = built['compiler_versions']
-          p.write_text(json.dumps(value))
-          PY
+      - uses: ./.github/actions/provision-toolchain
       - run: PRAXIS_REQUIRE_EXTERNAL_TOOLS=1 uv run pytest -q tests/test_firmware_build.py tests/test_verification.py tests/test_uart_loopback.py
       - run: uv run python tools/check_feature_modes_mcp.py --bundle bundles/stm32f407g-disc1-e01-features-v1 --source-directory stm32f407g-disc1-crc-dma/application --output /tmp/praxis-feature-build
       - run: uv run python tools/check_feature_modes_mcp.py --bundle bundles/stm32f407g-disc1-e01-clock-v1 --expect-rng-clock-ready --source-directory stm32f407g-disc1-clock/application --output /tmp/praxis-clock-build
@@ -133,3 +129,13 @@ jobs:
       - run: uv run python tools/check_workflow_mcp.py --bundle bundles/stm32f407g-disc1-e01-can-v1 --workflow can1_silent_loopback_irq --blocked-workflow feature_can --blocked-workflow can1_external_bus --mode can/silent_loopback --mode can/silent_loopback_fifo0_irq --mode rcc/can1_gate_reset --mode nvic/can1_rx0_prepare --source-directory stm32f407g-disc1-can/telemetry_application --output /tmp/praxis-can-telemetry-build
       - run: uv run python tools/check_workflow_mcp.py --bundle bundles/stm32f407g-disc1-e01-can-v1 --workflow can1_silent_loopback_irq --blocked-workflow feature_can --blocked-workflow can1_external_bus --mode can/silent_loopback --mode can/silent_loopback_fifo0_irq --mode rcc/can1_gate_reset --mode nvic/can1_rx0_prepare --source-directory stm32f407g-disc1-can/application --output /tmp/praxis-can-build
       - run: uv run python tools/check_workflow_mcp.py --bundle bundles/stm32f407g-disc1-e01-i2c-v1 --workflow i2c1_controller_transmit --blocked-workflow feature_i2c --blocked-workflow i2c1_wired_transmit --mode i2c/controller_transmit_polling --mode rcc/i2c1_gate_reset --peripheral flash --peripheral pwr --forbid-register i2c/FLTR --source-directory stm32f407g-disc1-i2c/application --output /tmp/praxis-i2c-build
+      - name: Replay all current F407 application cases through MCP
+        run: |
+          PRAXIS_REQUIRE_EXTERNAL_TOOLS=1 uv run python tools/check_target_acceptance_mcp.py --bundle bundles/stm32f407g-disc1-e01-timer-irq-v1 --plan examples/acceptance/stm32f407g-disc1-timer-irq.json --catalog examples/capabilities/stm32f407g-disc1-timer-irq.json --workspace examples --assets assets/stm32f407vg --lock toolchain-f407.lock.json --inventory examples/inventory/stm32f407g-disc1/inventory-v2.json --output .praxis-output/ci-f407-acceptance
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: f407-application-acceptance
+          path: |
+            .praxis-output/ci-f407-acceptance/report.json
+            .praxis-output/ci-f407-acceptance/trace.json

@@ -1,0 +1,28 @@
+name: Provision pinned rootless compiler
+description: Build the local compiler image and bind both verification locks to it
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      run: |
+        podman pull docker.io/library/debian@sha256:7c7b2c966bc9ee8cedfeef67e0e279108992c77681fa595db4a9d65c06ccc587
+        uv run python - <<'PY'
+        import json
+        from pathlib import Path
+        p = Path('toolchain-f407.lock.json')
+        value = json.loads(p.read_text())
+        value['image'] = None
+        value['compiler_versions'] = {}
+        p.write_text(json.dumps(value))
+        PY
+        uv run praxis sandbox-build --base-image docker.io/library/debian@sha256:7c7b2c966bc9ee8cedfeef67e0e279108992c77681fa595db4a9d65c06ccc587 --recipe sandbox/Containerfile --lock toolchain-f407.lock.json
+        uv run python - <<'PY'
+        import json
+        from pathlib import Path
+        p = Path('toolchain.lock.json')
+        value = json.loads(p.read_text())
+        built = json.loads(Path('toolchain-f407.lock.json').read_text())
+        value['image'] = built['image']
+        value['compiler_versions'] = built['compiler_versions']
+        p.write_text(json.dumps(value))
+        PY
