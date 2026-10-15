@@ -10,7 +10,7 @@ from pathlib import Path, PurePosixPath
 from pydantic import ValidationError
 
 from praxis.errors import PraxisError
-from praxis.models import MAX_DOCUMENT_BYTES, Manifest
+from praxis.models import Manifest
 
 
 def digest(data: bytes) -> str:
@@ -30,14 +30,14 @@ def relative_path(value: str) -> PurePosixPath:
     return path
 
 
-def read_inside(root: Path, name: str, limit: int = MAX_DOCUMENT_BYTES) -> bytes:
+def read_inside(root: Path, name: str, limit: int | None = None) -> bytes:
     path = root / relative_path(name)
     try:
         if not path.resolve(strict=True).is_relative_to(root.resolve(strict=True)):
             raise PraxisError("INVALID_PATH", f"Path escapes bundle: {name}")
         with path.open("rb") as handle:
-            data = handle.read(limit + 1)
-        if len(data) > limit:
+            data = handle.read() if limit is None else handle.read(limit + 1)
+        if limit is not None and len(data) > limit:
             raise PraxisError("DOCUMENT_TOO_LARGE", f"{name} exceeds {limit} bytes; reduce it before publication")
         return data
     except FileNotFoundError as exc:
@@ -51,6 +51,11 @@ def decode(data: bytes, path: str) -> str:
         return data.decode("utf-8")
     except UnicodeDecodeError as exc:
         raise PraxisError("INVALID_ENCODING", f"{path} must be UTF-8") from exc
+
+
+def read_source_inside(root: Path, name: str) -> bytes:
+    """Keep raw engineering-input bounds separate from complete Markdown sources."""
+    return read_inside(root, name, None if Path(name).suffix.lower() == ".md" else 8 * 1024 * 1024)
 
 
 def check_graph(peripherals: set[str], dependencies: dict[str, list[str]]) -> None:
@@ -84,7 +89,7 @@ class Bundle:
     def __init__(self, root: Path):
         self.root = root.resolve()
         try:
-            data = read_inside(self.root, "manifest.json", 1024 * 1024)
+            data = read_inside(self.root, "manifest.json")
             self.manifest = Manifest.model_validate_json(data)
         except ValidationError as exc:
             raise PraxisError("INVALID_MANIFEST", str(exc)) from exc
@@ -97,8 +102,9 @@ class Bundle:
         if len(self.dependencies) != len(manifest.dependencies):
             raise PraxisError("INVALID_GRAPH", "Duplicate dependency records")
         check_graph(set(manifest.peripherals), self.dependencies)
-        expected_stages = (["rcc", "gpio", "usart", "nvic"] if manifest.target.family == "stm32"
-                           else ["clock", "gpio", "usart", "interrupts"])
+        from praxis.compatibility import qualified_target
+        legacy = qualified_target(manifest.target)
+        expected_stages = legacy["legacy_stages"] if legacy is not None else []
         if manifest.schema_version == 1 and set(manifest.peripherals) != set(expected_stages):
             raise PraxisError("INVALID_GRAPH", "v1 requires exactly the four target-specific HEDG stages")
         for i, stage in enumerate(expected_stages if manifest.schema_version == 1 else []):

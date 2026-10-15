@@ -96,7 +96,7 @@ sequenceDiagram
 
 ## Software verification and initial preflight
 
-The [candidate](../examples/stm32f407g-disc1-can/telemetry_rx_application/README.md)
+The [candidate](../examples/stm32f407g-disc1-can/README_RX.md)
 uses the existing92-byte CAN telemetry ABI. Old failed application sources and
 their immutable bundle remain intact. New portable effect models cover GPIO
 ownership, readback failures, lost gate writes, pull/AF/mode ordering, low RX,

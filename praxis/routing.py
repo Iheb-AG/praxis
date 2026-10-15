@@ -19,7 +19,8 @@ class Session:
             bundle.read(bundle.manifest.documents["schemas/board"])
                 if "schemas/board" in bundle.manifest.documents else None,
             bundle.read(bundle.manifest.documents["schemas/components"])
-                if "schemas/components" in bundle.manifest.documents else None)
+                if "schemas/components" in bundle.manifest.documents else None,
+            allow_empty=bundle.manifest.target.scope == "mcu")
 
     def read_wiki_index(self) -> str:
         with self.lock:

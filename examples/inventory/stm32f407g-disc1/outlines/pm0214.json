@@ -1,0 +1,4046 @@
+{
+  "contents_boundaries_observed": true,
+  "contents_pages": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "counts": {
+    "accounted_nonempty_lines": 333,
+    "entries": 228,
+    "incomplete_entries": 0,
+    "selected_pages": 9,
+    "unresolved": 3
+  },
+  "entries": [
+    {
+      "applicability": "unreviewed",
+      "destination_page": 12,
+      "locators": [
+        "page:2/line:11"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "1",
+      "title": "About this document"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 12,
+      "locators": [
+        "page:2/line:13"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "1.1",
+      "title": "Typographical conventions"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 12,
+      "locators": [
+        "page:2/line:14"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "1.2",
+      "title": "List of abbreviations for registers"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 13,
+      "locators": [
+        "page:2/line:16"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "1.3",
+      "title": "About the STM32 Cortex-M4 processor and core peripherals"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 14,
+      "locators": [
+        "page:2/line:17"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "1.3.1",
+      "title": "System level interface"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 14,
+      "locators": [
+        "page:2/line:19"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "1.3.2",
+      "title": "Integrated configurable debug"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 15,
+      "locators": [
+        "page:2/line:20"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "1.3.3",
+      "title": "Cortex-M4 processor features and benefits summary"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 16,
+      "locators": [
+        "page:2/line:21"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "1.3.4",
+      "title": "Cortex-M4 core peripherals"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 17,
+      "locators": [
+        "page:2/line:24"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2",
+      "title": "The Cortex-M4 processor"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 17,
+      "locators": [
+        "page:2/line:25"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.1",
+      "title": "Programmers model"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 17,
+      "locators": [
+        "page:2/line:26"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.1.1",
+      "title": "Processor mode and privilege levels for software execution"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 17,
+      "locators": [
+        "page:2/line:28"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.1.2",
+      "title": "Stacks"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 18,
+      "locators": [
+        "page:2/line:29"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.1.3",
+      "title": "Core registers"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 26,
+      "locators": [
+        "page:2/line:30"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.1.4",
+      "title": "Exceptions and interrupts"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 26,
+      "locators": [
+        "page:2/line:32"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.1.5",
+      "title": "Data types"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 26,
+      "locators": [
+        "page:2/line:33"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.1.6",
+      "title": "The Cortex microcontroller software interface standard (CMSIS)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 28,
+      "locators": [
+        "page:2/line:34"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.2",
+      "title": "Memory model"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 29,
+      "locators": [
+        "page:2/line:36"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.2.1",
+      "title": "Memory regions, types and attributes"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 29,
+      "locators": [
+        "page:2/line:37"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.2.2",
+      "title": "Memory system ordering of memory accesses"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 30,
+      "locators": [
+        "page:2/line:38"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.2.3",
+      "title": "Behavior of memory accesses"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 31,
+      "locators": [
+        "page:2/line:40"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.2.4",
+      "title": "Software ordering of memory accesses"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 32,
+      "locators": [
+        "page:2/line:41"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.2.5",
+      "title": "Bit-banding"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 34,
+      "locators": [
+        "page:2/line:42"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.2.6",
+      "title": "Memory endianness"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 34,
+      "locators": [
+        "page:2/line:44"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.2.7",
+      "title": "Synchronization primitives"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 36,
+      "locators": [
+        "page:2/line:45"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.2.8",
+      "title": "Programming hints for the synchronization primitives"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 37,
+      "locators": [
+        "page:2/line:46"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.3",
+      "title": "Exception model"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 37,
+      "locators": [
+        "page:2/line:48"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.3.1",
+      "title": "Exception states"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 37,
+      "locators": [
+        "page:2/line:49"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.3.2",
+      "title": "Exception types"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 39,
+      "locators": [
+        "page:2/line:50"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.3.3",
+      "title": "Exception handlers"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 40,
+      "locators": [
+        "page:2/line:52"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.3.4",
+      "title": "Vector table"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 41,
+      "locators": [
+        "page:2/line:53"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.3.5",
+      "title": "Exception priorities"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 41,
+      "locators": [
+        "page:2/line:54"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.3.6",
+      "title": "Interrupt priority grouping"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 42,
+      "locators": [
+        "page:2/line:56"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.3.7",
+      "title": "Exception entry and return"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 44,
+      "locators": [
+        "page:3/line:8"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.4",
+      "title": "Fault handling"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 45,
+      "locators": [
+        "page:3/line:9"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.4.1",
+      "title": "Fault types"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 46,
+      "locators": [
+        "page:3/line:11"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.4.2",
+      "title": "Fault escalation and hard faults"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 47,
+      "locators": [
+        "page:3/line:12"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.4.3",
+      "title": "Fault status registers and fault address registers"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 47,
+      "locators": [
+        "page:3/line:13"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.4.4",
+      "title": "Lockup"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 47,
+      "locators": [
+        "page:3/line:15"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.5",
+      "title": "Power management"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 48,
+      "locators": [
+        "page:3/line:16"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.5.1",
+      "title": "Entering sleep mode"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 48,
+      "locators": [
+        "page:3/line:17"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.5.2",
+      "title": "Wakeup from sleep mode"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 49,
+      "locators": [
+        "page:3/line:19"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.5.3",
+      "title": "External event input / extended interrupt and event input"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 49,
+      "locators": [
+        "page:3/line:20"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.5.4",
+      "title": "Power management programming hints"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 50,
+      "locators": [
+        "page:3/line:22"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3",
+      "title": "The STM32 Cortex-M4 instruction set"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 50,
+      "locators": [
+        "page:3/line:24"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.1",
+      "title": "Instruction set summary"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 58,
+      "locators": [
+        "page:3/line:25"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.2",
+      "title": "CMSIS intrinsic functions"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 60,
+      "locators": [
+        "page:3/line:27"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.3",
+      "title": "About the instruction descriptions"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 60,
+      "locators": [
+        "page:3/line:28"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.3.1",
+      "title": "Operands"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 60,
+      "locators": [
+        "page:3/line:29"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.3.2",
+      "title": "Restrictions when using PC or SP"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 60,
+      "locators": [
+        "page:3/line:31"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.3.3",
+      "title": "Flexible second operand"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 62,
+      "locators": [
+        "page:3/line:32"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.3.4",
+      "title": "Shift operations"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 65,
+      "locators": [
+        "page:3/line:33"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.3.5",
+      "title": "Address alignment"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 65,
+      "locators": [
+        "page:3/line:35"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.3.6",
+      "title": "PC-relative expressions"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 65,
+      "locators": [
+        "page:3/line:36"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.3.7",
+      "title": "Conditional execution"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 68,
+      "locators": [
+        "page:3/line:37"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.3.8",
+      "title": "Instruction width selection"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 69,
+      "locators": [
+        "page:3/line:39"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.4",
+      "title": "Memory access instructions"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 70,
+      "locators": [
+        "page:3/line:40"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.4.1",
+      "title": "ADR"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 71,
+      "locators": [
+        "page:3/line:41"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.4.2",
+      "title": "LDR and STR, immediate offset"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 73,
+      "locators": [
+        "page:3/line:43"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.4.3",
+      "title": "LDR and STR, register offset"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 74,
+      "locators": [
+        "page:3/line:44"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.4.4",
+      "title": "LDR and STR, unprivileged"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 75,
+      "locators": [
+        "page:3/line:45"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.4.5",
+      "title": "LDR, PC-relative"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 76,
+      "locators": [
+        "page:3/line:47"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.4.6",
+      "title": "LDM and STM"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 78,
+      "locators": [
+        "page:3/line:48"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.4.7",
+      "title": "PUSH and POP"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 79,
+      "locators": [
+        "page:3/line:49"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.4.8",
+      "title": "LDREX and STREX"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 80,
+      "locators": [
+        "page:3/line:51"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.4.9",
+      "title": "CLREX"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 81,
+      "locators": [
+        "page:3/line:52"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.5",
+      "title": "General data processing instructions"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 83,
+      "locators": [
+        "page:3/line:53"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.5.1",
+      "title": "ADD, ADC, SUB, SBC, and RSB"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 85,
+      "locators": [
+        "page:3/line:55"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.5.2",
+      "title": "AND, ORR, EOR, BIC, and ORN"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 86,
+      "locators": [
+        "page:4/line:8"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.5.3",
+      "title": "ASR, LSL, LSR, ROR, and RRX"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 87,
+      "locators": [
+        "page:4/line:9"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.5.4",
+      "title": "CLZ"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 88,
+      "locators": [
+        "page:4/line:11"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.5.5",
+      "title": "CMP and CMN"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 89,
+      "locators": [
+        "page:4/line:12"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.5.6",
+      "title": "MOV and MVN"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 91,
+      "locators": [
+        "page:4/line:13"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.5.7",
+      "title": "MOVT"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 92,
+      "locators": [
+        "page:4/line:15"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.5.8",
+      "title": "REV, REV16, REVSH, and RBIT"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 93,
+      "locators": [
+        "page:4/line:16"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.5.9",
+      "title": "SADD16 and SADD8"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 94,
+      "locators": [
+        "page:4/line:17"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.5.10",
+      "title": "SHADD16 and SHADD8"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 95,
+      "locators": [
+        "page:4/line:18"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.5.11",
+      "title": "SHASX and SHSAX"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 96,
+      "locators": [
+        "page:4/line:20"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.5.12",
+      "title": "SHSUB16 and SHSUB8"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 97,
+      "locators": [
+        "page:4/line:21"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.5.13",
+      "title": "SSUB16 and SSUB8"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 98,
+      "locators": [
+        "page:4/line:22"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.5.14",
+      "title": "SASX and SSAX"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 99,
+      "locators": [
+        "page:4/line:24"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.5.15",
+      "title": "TST and TEQ"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 100,
+      "locators": [
+        "page:4/line:25"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.5.16",
+      "title": "UADD16 and UADD8"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 101,
+      "locators": [
+        "page:4/line:26"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.5.17",
+      "title": "UASX and USAX"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 102,
+      "locators": [
+        "page:4/line:28"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.5.18",
+      "title": "UHADD16 and UHADD8"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 103,
+      "locators": [
+        "page:4/line:29"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.5.19",
+      "title": "UHASX and UHSAX"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 104,
+      "locators": [
+        "page:4/line:30"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.5.20",
+      "title": "UHSUB16 and UHSUB8"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 105,
+      "locators": [
+        "page:4/line:32"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.5.21",
+      "title": "SEL"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 106,
+      "locators": [
+        "page:4/line:33"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.5.22",
+      "title": "USAD8"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 107,
+      "locators": [
+        "page:4/line:34"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.5.23",
+      "title": "USADA8"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 108,
+      "locators": [
+        "page:4/line:35"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.5.24",
+      "title": "USUB16 and USUB8"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 109,
+      "locators": [
+        "page:4/line:37"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.6",
+      "title": "Multiply and divide instructions"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 110,
+      "locators": [
+        "page:4/line:38"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.6.1",
+      "title": "MUL, MLA, and MLS"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 111,
+      "locators": [
+        "page:4/line:40"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.6.2",
+      "title": "UMULL, UMAAL and UMLAL"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 112,
+      "locators": [
+        "page:4/line:41"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.6.3",
+      "title": "SMLA and SMLAW"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 114,
+      "locators": [
+        "page:4/line:42"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.6.4",
+      "title": "SMLAD"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 115,
+      "locators": [
+        "page:4/line:43"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.6.5",
+      "title": "SMLAL and SMLALD"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 117,
+      "locators": [
+        "page:4/line:45"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.6.6",
+      "title": "SMLSD and SMLSLD"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 119,
+      "locators": [
+        "page:4/line:46"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.6.7",
+      "title": "SMMLA and SMMLS"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 120,
+      "locators": [
+        "page:4/line:47"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.6.8",
+      "title": "SMMUL"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 121,
+      "locators": [
+        "page:4/line:49"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.6.9",
+      "title": "SMUAD and SMUSD"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 122,
+      "locators": [
+        "page:4/line:50"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.6.10",
+      "title": "SMUL and SMULW"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 123,
+      "locators": [
+        "page:4/line:51"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.6.11",
+      "title": "UMULL, UMLAL, SMULL, and SMLAL"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 124,
+      "locators": [
+        "page:4/line:53"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.6.12",
+      "title": "SDIV and UDIV"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 125,
+      "locators": [
+        "page:4/line:54"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.7",
+      "title": "Saturating instructions"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 126,
+      "locators": [
+        "page:4/line:55"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.7.1",
+      "title": "SSAT and USAT"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 127,
+      "locators": [
+        "page:5/line:8"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.7.2",
+      "title": "SSAT16 and USAT16"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 128,
+      "locators": [
+        "page:5/line:9"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.7.3",
+      "title": "QADD and QSUB"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 129,
+      "locators": [
+        "page:5/line:11"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.7.4",
+      "title": "QASX and QSAX"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 130,
+      "locators": [
+        "page:5/line:12"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.7.5",
+      "title": "QDADD and QDSUB"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 131,
+      "locators": [
+        "page:5/line:13"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.7.6",
+      "title": "UQASX and UQSAX"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 132,
+      "locators": [
+        "page:5/line:15"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.7.7",
+      "title": "UQADD and UQSUB"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 134,
+      "locators": [
+        "page:5/line:16"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.8",
+      "title": "Packing and unpacking instructions"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 135,
+      "locators": [
+        "page:5/line:17"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.8.1",
+      "title": "PKHBT and PKHTB"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 136,
+      "locators": [
+        "page:5/line:19"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.8.2",
+      "title": "SXT and UXT"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 137,
+      "locators": [
+        "page:5/line:20"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.8.3",
+      "title": "SXTA and UXTA"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 138,
+      "locators": [
+        "page:5/line:21"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.9",
+      "title": "Bitfield instructions"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 139,
+      "locators": [
+        "page:5/line:23"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.9.1",
+      "title": "BFC and BFI"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 140,
+      "locators": [
+        "page:5/line:24"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.9.2",
+      "title": "SBFX and UBFX"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 141,
+      "locators": [
+        "page:5/line:25"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.9.3",
+      "title": "SXT and UXT"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 142,
+      "locators": [
+        "page:5/line:27"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.9.4",
+      "title": "Branch and control instructions"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 142,
+      "locators": [
+        "page:5/line:28"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.9.5",
+      "title": "B, BL, BX, and BLX"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 144,
+      "locators": [
+        "page:5/line:29"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.9.6",
+      "title": "CBZ and CBNZ"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 145,
+      "locators": [
+        "page:5/line:31"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.9.7",
+      "title": "IT"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 147,
+      "locators": [
+        "page:5/line:32"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.9.8",
+      "title": "TBB and TBH"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 149,
+      "locators": [
+        "page:5/line:33"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.10",
+      "title": "Floating-point instructions"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 151,
+      "locators": [
+        "page:5/line:35"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.10.1",
+      "title": "VABS"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 152,
+      "locators": [
+        "page:5/line:36"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.10.2",
+      "title": "VADD"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 153,
+      "locators": [
+        "page:5/line:37"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.10.3",
+      "title": "VCMP, VCMPE"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 154,
+      "locators": [
+        "page:5/line:39"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.10.4",
+      "title": "VCVT, VCVTR between floating-point and integer"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 155,
+      "locators": [
+        "page:5/line:40"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.10.5",
+      "title": "VCVT between floating-point and fixed-point"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 156,
+      "locators": [
+        "page:5/line:41"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.10.6",
+      "title": "VCVTB, VCVTT"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 157,
+      "locators": [
+        "page:5/line:42"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.10.7",
+      "title": "VDIV"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 158,
+      "locators": [
+        "page:5/line:44"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.10.8",
+      "title": "VFMA, VFMS"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 159,
+      "locators": [
+        "page:5/line:45"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.10.9",
+      "title": "VFNMA, VFNMS"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 160,
+      "locators": [
+        "page:5/line:46"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.10.10",
+      "title": "VLDM"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 161,
+      "locators": [
+        "page:5/line:48"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.10.11",
+      "title": "VLDR"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 162,
+      "locators": [
+        "page:5/line:49"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.10.12",
+      "title": "VLMA, VLMS"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 163,
+      "locators": [
+        "page:5/line:50"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.10.13",
+      "title": "VMOV immediate"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 164,
+      "locators": [
+        "page:5/line:52"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.10.14",
+      "title": "VMOV register"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 165,
+      "locators": [
+        "page:5/line:53"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.10.15",
+      "title": "VMOV scalar to Arm core register"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 166,
+      "locators": [
+        "page:5/line:54"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.10.16",
+      "title": "VMOV Arm core register to single precision"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 167,
+      "locators": [
+        "page:5/line:56"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.10.17",
+      "title": "VMOV two Arm core registers to two single precision"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 168,
+      "locators": [
+        "page:6/line:8"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.10.18",
+      "title": "VMOV Arm Core register to scalar"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 169,
+      "locators": [
+        "page:6/line:9"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.10.19",
+      "title": "VMRS"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 170,
+      "locators": [
+        "page:6/line:11"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.10.20",
+      "title": "VMSR"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 171,
+      "locators": [
+        "page:6/line:12"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.10.21",
+      "title": "VMUL"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 172,
+      "locators": [
+        "page:6/line:13"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.10.22",
+      "title": "VNEG"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 173,
+      "locators": [
+        "page:6/line:15"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.10.23",
+      "title": "VNMLA, VNMLS, VNMUL"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 174,
+      "locators": [
+        "page:6/line:16"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.10.24",
+      "title": "VPOP"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 175,
+      "locators": [
+        "page:6/line:17"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.10.25",
+      "title": "VPUSH"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 176,
+      "locators": [
+        "page:6/line:18"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.10.26",
+      "title": "VSQRT"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 177,
+      "locators": [
+        "page:6/line:20"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.10.27",
+      "title": "VSTM"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 178,
+      "locators": [
+        "page:6/line:21"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.10.28",
+      "title": "VSTR"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 179,
+      "locators": [
+        "page:6/line:22"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.10.29",
+      "title": "VSUB"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 180,
+      "locators": [
+        "page:6/line:24"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.11",
+      "title": "Miscellaneous instructions"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 181,
+      "locators": [
+        "page:6/line:25"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.11.1",
+      "title": "BKPT"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 182,
+      "locators": [
+        "page:6/line:26"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.11.2",
+      "title": "CPS"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 183,
+      "locators": [
+        "page:6/line:28"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.11.3",
+      "title": "DMB"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 184,
+      "locators": [
+        "page:6/line:29"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.11.4",
+      "title": "DSB"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 185,
+      "locators": [
+        "page:6/line:30"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.11.5",
+      "title": "ISB"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 186,
+      "locators": [
+        "page:6/line:32"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.11.6",
+      "title": "MRS"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 187,
+      "locators": [
+        "page:6/line:33"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.11.7",
+      "title": "MSR"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 188,
+      "locators": [
+        "page:6/line:34"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.11.8",
+      "title": "NOP"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 189,
+      "locators": [
+        "page:6/line:36"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.11.9",
+      "title": "SEV"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 190,
+      "locators": [
+        "page:6/line:37"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.11.10",
+      "title": "SVC"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 191,
+      "locators": [
+        "page:6/line:38"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.11.11",
+      "title": "WFE"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 192,
+      "locators": [
+        "page:6/line:40"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.11.12",
+      "title": "WFI"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 193,
+      "locators": [
+        "page:6/line:42"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "4",
+      "title": "Core peripherals"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 193,
+      "locators": [
+        "page:6/line:43"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "4.1",
+      "title": "About the STM32 Cortex-M4 core peripherals"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 193,
+      "locators": [
+        "page:6/line:45"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "4.2",
+      "title": "Memory protection unit (MPU)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 195,
+      "locators": [
+        "page:6/line:46"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "4.2.1",
+      "title": "MPU access permission attributes"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 196,
+      "locators": [
+        "page:6/line:48"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "4.2.2",
+      "title": "MPU mismatch"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 196,
+      "locators": [
+        "page:6/line:49"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "4.2.3",
+      "title": "Updating an MPU region"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 199,
+      "locators": [
+        "page:6/line:50"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "4.2.4",
+      "title": "MPU design hints and tips"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 200,
+      "locators": [
+        "page:6/line:51"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "4.2.5",
+      "title": "MPU type register (MPU_TYPER)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 201,
+      "locators": [
+        "page:6/line:53"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "4.2.6",
+      "title": "MPU control register (MPU_CTRL)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 202,
+      "locators": [
+        "page:6/line:54"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "4.2.7",
+      "title": "MPU region number register (MPU_RNR)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 203,
+      "locators": [
+        "page:6/line:55"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "4.2.8",
+      "title": "MPU region base address register (MPU_RBAR)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 204,
+      "locators": [
+        "page:7/line:8"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "4.2.9",
+      "title": "MPU region attribute and size register (MPU_RASR)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 206,
+      "locators": [
+        "page:7/line:9"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "4.2.10",
+      "title": "MPU register map"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 208,
+      "locators": [
+        "page:7/line:11"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "4.3",
+      "title": "Nested vectored interrupt controller (NVIC)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 209,
+      "locators": [
+        "page:7/line:12"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "4.3.1",
+      "title": "Accessing the Cortex-M4 NVIC registers using CMSIS"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 210,
+      "locators": [
+        "page:7/line:13"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "4.3.2",
+      "title": "Interrupt set-enable register x (NVIC_ISERx)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 211,
+      "locators": [
+        "page:7/line:15"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "4.3.3",
+      "title": "Interrupt clear-enable register x (NVIC_ICERx)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 212,
+      "locators": [
+        "page:7/line:16"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "4.3.4",
+      "title": "Interrupt set-pending register x (NVIC_ISPRx)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 213,
+      "locators": [
+        "page:7/line:17"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "4.3.5",
+      "title": "Interrupt clear-pending register x (NVIC_ICPRx)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 214,
+      "locators": [
+        "page:7/line:19"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "4.3.6",
+      "title": "Interrupt active bit register x (NVIC_IABRx)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 215,
+      "locators": [
+        "page:7/line:20"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "4.3.7",
+      "title": "Interrupt priority register x (NVIC_IPRx)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 216,
+      "locators": [
+        "page:7/line:21"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "4.3.8",
+      "title": "Software trigger interrupt register (NVIC_STIR)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 217,
+      "locators": [
+        "page:7/line:23"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "4.3.9",
+      "title": "Level-sensitive and pulse interrupts"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 218,
+      "locators": [
+        "page:7/line:24"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "4.3.10",
+      "title": "NVIC design hints and tips"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 219,
+      "locators": [
+        "page:7/line:25"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "4.3.11",
+      "title": "NVIC register map"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 221,
+      "locators": [
+        "page:7/line:27"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "4.4",
+      "title": "System control block (SCB)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 222,
+      "locators": [
+        "page:7/line:28"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "4.4.1",
+      "title": "Auxiliary control register (ACTLR)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 224,
+      "locators": [
+        "page:7/line:29"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "4.4.2",
+      "title": "CPUID base register (CPUID)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 225,
+      "locators": [
+        "page:7/line:31"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "4.4.3",
+      "title": "Interrupt control and state register (ICSR)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 227,
+      "locators": [
+        "page:7/line:32"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "4.4.4",
+      "title": "Vector table offset register (VTOR)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 228,
+      "locators": [
+        "page:7/line:33"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "4.4.5",
+      "title": "Application interrupt and reset control register (AIRCR)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 230,
+      "locators": [
+        "page:7/line:34"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "4.4.6",
+      "title": "System control register (SCR)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 231,
+      "locators": [
+        "page:7/line:36"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "4.4.7",
+      "title": "Configuration and control register (CCR)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 233,
+      "locators": [
+        "page:7/line:37"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "4.4.8",
+      "title": "System handler priority registers (SHPRx)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 235,
+      "locators": [
+        "page:7/line:38"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "4.4.9",
+      "title": "System handler control and state register (SHCSR)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 237,
+      "locators": [
+        "page:7/line:40"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "4.4.10",
+      "title": "Configurable fault status register (CFSR; UFSR+BFSR+MMFSR)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 238,
+      "locators": [
+        "page:7/line:41"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "4.4.11",
+      "title": "Usage fault status register (UFSR)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 239,
+      "locators": [
+        "page:7/line:42"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "4.4.12",
+      "title": "Bus fault status register (BFSR)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 240,
+      "locators": [
+        "page:7/line:44"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "4.4.13",
+      "title": "Memory management fault address register (MMFSR)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 241,
+      "locators": [
+        "page:7/line:45"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "4.4.14",
+      "title": "Hard fault status register (HFSR)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 242,
+      "locators": [
+        "page:7/line:46"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "4.4.15",
+      "title": "Memory management fault address register (MMFAR)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 242,
+      "locators": [
+        "page:7/line:48"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "4.4.16",
+      "title": "Bus fault address register (BFAR)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 243,
+      "locators": [
+        "page:7/line:49"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "4.4.17",
+      "title": "Auxiliary fault status register (AFSR)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 243,
+      "locators": [
+        "page:7/line:50"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "4.4.18",
+      "title": "System control block design hints and tips"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 244,
+      "locators": [
+        "page:7/line:51"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "4.4.19",
+      "title": "SCB register map"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 246,
+      "locators": [
+        "page:7/line:53"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "4.5",
+      "title": "SysTick timer (STK)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 247,
+      "locators": [
+        "page:7/line:54"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "4.5.1",
+      "title": "SysTick control and status register (STK_CTRL)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 248,
+      "locators": [
+        "page:7/line:56"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "4.5.2",
+      "title": "SysTick reload value register (STK_LOAD)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 249,
+      "locators": [
+        "page:8/line:8"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "4.5.3",
+      "title": "SysTick current value register (STK_VAL)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 250,
+      "locators": [
+        "page:8/line:9"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "4.5.4",
+      "title": "SysTick calibration value register (STK_CALIB)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 250,
+      "locators": [
+        "page:8/line:11"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "4.5.5",
+      "title": "SysTick design hints and tips"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 251,
+      "locators": [
+        "page:8/line:12"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "4.5.6",
+      "title": "SysTick register map"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 252,
+      "locators": [
+        "page:8/line:13"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "4.6",
+      "title": "Floating point unit (FPU)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 253,
+      "locators": [
+        "page:8/line:15"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "4.6.1",
+      "title": "Coprocessor access control register (CPACR)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 253,
+      "locators": [
+        "page:8/line:16"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "4.6.2",
+      "title": "Floating-point context control register (FPCCR)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 255,
+      "locators": [
+        "page:8/line:17"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "4.6.3",
+      "title": "Floating-point context address register (FPCAR)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 255,
+      "locators": [
+        "page:8/line:19"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "4.6.4",
+      "title": "Floating-point status control register (FPSCR)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 257,
+      "locators": [
+        "page:8/line:20"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "4.6.5",
+      "title": "Floating-point default status control register (FPDSCR)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 257,
+      "locators": [
+        "page:8/line:21"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "4.6.6",
+      "title": "Enabling the FPU"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 258,
+      "locators": [
+        "page:8/line:23"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "4.6.7",
+      "title": "Enabling and clearing FPU exception interrupts"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 260,
+      "locators": [
+        "page:8/line:25"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "5",
+      "title": "Revision history"
+    }
+  ],
+  "evidence_parts": [
+    {
+      "artifact_sha256": "0d4cfc32e39233c232100d646764d53080f3f60de0ee2f6fcf04fded673f0d9b",
+      "locator": "page:1"
+    },
+    {
+      "artifact_sha256": "0e89cf895be8a806745a076faa71ea4b3f51e8d413765606031011d1b3c0e38d",
+      "locator": "page:2"
+    },
+    {
+      "artifact_sha256": "04e3a101ffd4327cbe417590d182b202e3a544a38a715e971c8ae0aecae3a80a",
+      "locator": "page:3"
+    },
+    {
+      "artifact_sha256": "618c7a7c18e5738d27cb8170a4688a8fc2347e9b6d9c0a922879c4a981479474",
+      "locator": "page:4"
+    },
+    {
+      "artifact_sha256": "e57591f6073d512e54404358b3023601a9a932181cb1d139b8d20a72fe67c738",
+      "locator": "page:5"
+    },
+    {
+      "artifact_sha256": "99b97fb9f71b415a437e8d6744ef66c57d47b07599ea0f29533d38341f2e4cbf",
+      "locator": "page:6"
+    },
+    {
+      "artifact_sha256": "ec8b8cd372403d8d890e4d3647d0d0bae7ea832a720a2dc1fc0ce5274b51b8e1",
+      "locator": "page:7"
+    },
+    {
+      "artifact_sha256": "2036186f517d6e94950b5220230279beaad8f2db17c463ccf831735be618a120",
+      "locator": "page:8"
+    },
+    {
+      "artifact_sha256": "fabfe06e4501398b7e49dad44813da58ebc689562928ab8455653d084086c269",
+      "locator": "page:9"
+    }
+  ],
+  "format": "praxis-source-outline-v1",
+  "gaps": [
+    "Contents headings do not enumerate all operating modes or establish target applicability",
+    "Body requirements, tables, errata and package constraints still require review",
+    "Unresolved contents lines require editorial repair with source provenance"
+  ],
+  "index_layout": "dotted_contents",
+  "line_accounting": [
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:7",
+      "sha256": "4dca0c5a34850402468b56376b1e8ecd3492750a3c6b0e4562d2e4b7cca54ccb"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:9",
+      "sha256": "a4496d30a705770d59279c8346dba6c67cb90cfae07cf4abfefac56c93b21af6"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:10",
+      "sha256": "987e9568b2cad16cf9a2ed2743444d95d0e347e872dce206aa2572cc62901538"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:11",
+      "sha256": "b15bd687a71d8704e504873fec9bf7c6a2b6722b8d875618dc8a8b9881d124de"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:16",
+      "sha256": "b605350bc00209520b7cd8f546322663356ba630708f71bbf30aead6b3dd608e"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:17",
+      "sha256": "d16ea542688aab01a8d0296e752d9f5fb51b10346d76c395c49e374e824a3a11"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:18",
+      "sha256": "3fc86a827671a530383e044c6e54ce69a2129a9a5f48cc0809fcba706c090ab6"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:19",
+      "sha256": "d31e0e224cbc5322c5461f17d48f8b406a131f44568b8cd749cf30cfd73b9361"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:20",
+      "sha256": "a46435f4df9898ded3dfea399c1f4ae9320a79265c962bafaa156e191c2f538e"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:22",
+      "sha256": "b676b1fe56e9966be4deee035e4b0f7c5b8c014800d99078d5bca430e68ed589"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:23",
+      "sha256": "7e917d2ae1b1e231aef848eced1cdc4e9f7e5918f6ef51edaa2c114e4bbfc3c7"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:24",
+      "sha256": "94ab4b024420e2eba1b038f39745ef67717a2cea8c0ef6e598ab37e3a049efa2"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:25",
+      "sha256": "c5819706bc0dd95be2dac0c405fd0fb201a3d99dae95f84bdfb191b5bae0e363"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:26",
+      "sha256": "5ff2e76cd02d92981cd5918fb323910ac10a774097a032647d4065355ed42d7e"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:27",
+      "sha256": "9cd1d76b717a4f3eb84b918f2ea581da76a2e41404d8f4f9f125a95622f73055"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:28",
+      "sha256": "cb5e502b517462d35a5d3d4d22b8eb368d8876555ced2f9d67b682381671b670"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:29",
+      "sha256": "966ce98a10f7bd57b3de17e528cc83db79553268fe2a2a30b52499ae99001052"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:30",
+      "sha256": "a9d690424e3b83bfcafa9726cb19a7efe17b366ef4febe03f6eafb1ec4e0963e"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:31",
+      "sha256": "f93ab4a026a466f09f3d075f7fec6a52da90b7bd0de6dbf327e4c1f811de36c6"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:33",
+      "sha256": "7dea904cf1b4e654fb40f7549aa91a1f9cab736fbe404ab43bde4ad63fab1cee"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:35",
+      "sha256": "b0fe6065b37a6f976e9b197cd96437a9d2d794da6d31bac0281d46458787cec0"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:36",
+      "sha256": "415e4b15458902d5212cbb4143b7f39b1abe55feabe2498be3446f99b8bb43b1"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:37",
+      "sha256": "29a1331f2a709e4f09caf13fdf03868e4585cf4d28fef83e1fdb4a728fbcc853"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:38",
+      "sha256": "2d31c9169fa9af8bb6892044ec3a2896aa907dcbfe8bd833501a6610fa0b2e26"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:39",
+      "sha256": "5d2086a0e92153e3d88cb49d01827a5a404f634fa416db21153e8dc8bce18767"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:42",
+      "sha256": "e33a3b8b3460cc2a45f8a3d5b55dc582000f65c5bfcac5cfa9beca68120b24b5"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:43",
+      "sha256": "c06186eef998e3d0900c65d3543be7a5e1eae9d8f71c6cc9c48f89cedf7d3f48"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:44",
+      "sha256": "9ebad3cd5578972f28c9594a23201ee79eccfc2921aefd7073256068a3963717"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:45",
+      "sha256": "5ef5dae8f8837a788b36eae12a92361f4903da7910aaa181a0f6d765b03fb4bb"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:46",
+      "sha256": "05f477a5edfad493079861eea316197728ccc4e394d55a7cc415bd8480d888b2"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:47",
+      "sha256": "f596830f796c53603ec0fee93572aac621610aeb6806d2e969dc2f64607b102a"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:48",
+      "sha256": "7e917d2ae1b1e231aef848eced1cdc4e9f7e5918f6ef51edaa2c114e4bbfc3c7"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:49",
+      "sha256": "68cdaabba192743c488c664eea471628e6466fd5df8c97e9d5fb012aafcdf17d"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:58",
+      "sha256": "22bec547e986fd907508124c4c95395e7ff23f20339f0761008adf8211c723a2"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:60",
+      "sha256": "c02f6d7a05aeee6fd1ea5e8621792c4a0eadeabae73e37bb16a9538a69f8c6ab"
+    },
+    {
+      "disposition": "page_metadata",
+      "locator": "page:2/line:6",
+      "sha256": "f6e237c4292cb9782d263eef0d2c3bb4b45bce1d6abba33c441d656b25f6c37c"
+    },
+    {
+      "disposition": "page_metadata",
+      "locator": "page:2/line:8",
+      "sha256": "437aea62a5bd6ad4762e494c81b88532809a231477c82bdecf6fd6636908b7ab"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:2/line:11",
+      "sha256": "1be33372e808a27cb6cf89e3d9b556b7fac5a233a2aa81d6749d12bcea3695f9"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:2/line:13",
+      "sha256": "bba2a6e3dc28710dc3be94f0828948f926b2ab1790b458547c1282b11dea472e"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:2/line:14",
+      "sha256": "1a95464549d45b2a054e045a4f3adb9821de33568c7ec11ca08ac9dbce337f98"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:2/line:16",
+      "sha256": "a6ac994fdc5d9d9ae5f943716a1a809690341a1ae76d2dbcb7dfa84c88f918ec"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:2/line:17",
+      "sha256": "3a79f3bceac83e5827978148488a39ec943037fe0432d7a4d85852c9d39e30e8"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:2/line:19",
+      "sha256": "06cbd9445188da9f2e901205a8efbb3e301b765b20dae0ec45736f8957d61313"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:2/line:20",
+      "sha256": "a336710e6f819fd383333dd1f964bc5847d366efa36289427ce78b410e3dc2e8"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:2/line:21",
+      "sha256": "b44c65967e3d3cf530ab986a06ace3b7b54dab4a254b11a7855bd505eda0ad49"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:2/line:24",
+      "sha256": "02c10a43711e10ac12f3687c40aded187b1e01b63c4a52d2d3d25be95e2c841b"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:2/line:25",
+      "sha256": "9f3c62f887f327704e9931ef25c59e3ce1199106a4572cb7e418c365201b1cf3"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:2/line:26",
+      "sha256": "738217e6d95e92ee0c848820eb838befbc66791a8b2fb8cf852c79d2cc511ed3"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:2/line:28",
+      "sha256": "6381f7d01071e0f2c276e3159ab1d31ee6bc64485cfa41a8f5f09d0bc2c7c5dd"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:2/line:29",
+      "sha256": "997d47f903b7006931e68328675d41351d075c37a1cf91511c79bf5f95aabb58"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:2/line:30",
+      "sha256": "b3aba08e67fa3b9deceecc8d3f19034d666805f452451ce6e12a84727f4e4cb5"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:2/line:32",
+      "sha256": "9308a51f24771849e9cdc31fed8c8b853a148d406564052de79807c3eca47f15"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:2/line:33",
+      "sha256": "5c51b531607694506a3c94b90b36863038f7443bace15ed863a3c58d901d67ab"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:2/line:34",
+      "sha256": "fc7d2e7527a0b98f9e4f9ecf6a73240dd8e5cf0f027ca4daf05655227f3a2d07"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:2/line:36",
+      "sha256": "99ae1a6de625ea2942dbda3c22e7a035d1327a1e5e90a07991f617e07c0780a0"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:2/line:37",
+      "sha256": "af759a5d578332a6c04c0e5512f99317353ba18a3bbc3896a2ea67e95b970723"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:2/line:38",
+      "sha256": "0b16e6d8e344c8cbd1a15ff0e0876083005d8cff1e7c630d3f4a95c0e696f073"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:2/line:40",
+      "sha256": "e04a72797c1f5a62b7fe66fddc2db958db8df63452f8ee010941d7b2981cd3fc"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:2/line:41",
+      "sha256": "73f35418753e4bb13b787f775a27f6b20862143ccf0354b951b269f1de695dee"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:2/line:42",
+      "sha256": "5f4674003c17b62ae2a37ddef348b080b6a210a82db8efd407736337fe9fe608"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:2/line:44",
+      "sha256": "2edecfa52dca9b8516e75672585df6c56102076b063ea1f3dff279654297bf91"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:2/line:45",
+      "sha256": "0df7defcc0d56c61750151c805e61893a75a0ae73d11ab32c53d422fa7ee9fde"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:2/line:46",
+      "sha256": "eec46ba0a9a89e2f50df5df5d5e5b4e5f95cb7e0164d928f3fc8e6048414ce51"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:2/line:48",
+      "sha256": "98cbf649bbe20d9134efa8b6adad5d7d8a5c907c199a634d2075ee47ebad9d5a"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:2/line:49",
+      "sha256": "5fa36d97e8da3748837f6cf277c348c8c5fde49e87e70c7c34c86799100ac91c"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:2/line:50",
+      "sha256": "1c4818b448d1924f2dafbf5fe59a70e66535f129af1a840759c888b2f655cba8"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:2/line:52",
+      "sha256": "905fc0f2ddc261595a1d3f1de26d3ad19670223891f3633e4013ee09046eef87"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:2/line:53",
+      "sha256": "4007001f9e1658dddaa0e853c1d00fb555a453d33b6a4a75e9fd571aa618d2ae"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:2/line:54",
+      "sha256": "10e7e901889f942257b5184692f1990f9ec5c2e254df6b346b2269575968b68b"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:2/line:56",
+      "sha256": "b3ba0b1c0a6a74983c3c6031096865be8959b08d7b07ed71b34c2c53ffd34759"
+    },
+    {
+      "disposition": "page_metadata",
+      "locator": "page:2/line:58",
+      "sha256": "01413bb92cab08223968a7cb2a9a83423178a0c1943103a25b3a7062aad5c2be"
+    },
+    {
+      "disposition": "page_metadata",
+      "locator": "page:3/line:6",
+      "sha256": "eb43fe754c074c30b10e11cd92a9d157e8652f7435b99a1bfe47f633a6ce0746"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/line:8",
+      "sha256": "58c39255dee6a4556c52378d643eaa206dee400c3bdc379a23156edc14469c6a"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/line:9",
+      "sha256": "f7903037602bd677e921d5157eb0bb01da8ee5066f396bf5d4d62801dad4fcc6"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/line:11",
+      "sha256": "892b08edeb1e64a836c033ddc0b6349fe64f370b4c83770113e79f1f1c214e04"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/line:12",
+      "sha256": "2325ce3eed9508be1909bc7137ac23ddbc3fdddd0af8c1c62652f2e472c43ba3"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/line:13",
+      "sha256": "98fdf0895b612a35d7065c470ee2022f4ba81dee7f90223addd2e55623d9f3d3"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/line:15",
+      "sha256": "fef76b9d66b67b1316cca98912d51f5ba994937a9ed1596ba4f4f86703f3c186"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/line:16",
+      "sha256": "81effe18561417588e3df4e9e5fa1214b0d5d26879e40b6c8dd8b291fe63d835"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/line:17",
+      "sha256": "d2da20c9bbf5b94f9b3013143c223d3c236e2439a3bbb21c1578b5664fc9a0c1"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/line:19",
+      "sha256": "81a634222e96c350afa4ec55bb1cdfcd4e465ddac61cd32784dbd62b092ecceb"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/line:20",
+      "sha256": "3a514d777e28122c14868a8196e5c538bbbd2c3f1dd05b10343fbba915328eb9"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/line:22",
+      "sha256": "ee23b567e8b3c8969af8fa2617e94e6a9542f624bb1e2841bbbc03f69bcd5ce5"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/line:24",
+      "sha256": "be0d9b9a294777f68a07617fe427400ee9c9f9dcaed2ac5260e6f547a4d9fcd7"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/line:25",
+      "sha256": "c23c9be89db0620df4d31f26371c72d537b985adea1867a447d8943580b51ecc"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/line:27",
+      "sha256": "5e1b68a80f6ab9a68a36976578a7bdbaf83e18d4ecec26f33f4a80ec7774575c"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/line:28",
+      "sha256": "29caa753e859f4d914c8f03a991ad79fe61463772c6c153089f036a969191759"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/line:29",
+      "sha256": "f9be81ff732ffc463ba0edab9efa0426258ac86028bda4fc2daa0b25883e9223"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/line:31",
+      "sha256": "9bb103eafe10f23de59c736139e0d51f72ccf352efdfe1df1f588d60c351caa7"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/line:32",
+      "sha256": "1aece7fe61b0422f86abdf0e71f9528e1cafb6f11b1936269a2ecbfd0e907c69"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/line:33",
+      "sha256": "4694a7f9f025d0378b599979859c62e33d6681d043287684a6a3c267f7a87ee1"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/line:35",
+      "sha256": "5cc1c98e3d511dbc4c891aafe469295ee66e6eaf3b96aeeaadd48f08e74110b8"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/line:36",
+      "sha256": "f3620b95a1d5dd23f96a888f9e46ce61dc38fe8d12df0a63a8f232a86369a3c0"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/line:37",
+      "sha256": "36b6b3c68c0030d1f7cec87b8fc2155e1f8facc93cf2230bd15c8bd2061360a6"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/line:39",
+      "sha256": "7fd40c784ebf9f974dff3608add9d08fd08160d998753738ecdcf47cb558df63"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/line:40",
+      "sha256": "d4fd66f354b20980daea7bc13a91cefcf5062d5a2636f476bb48793df5d94012"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/line:41",
+      "sha256": "b687cea0a2ecdac1d37f41579740ef813db69a7d6abece831189d65b901ad44c"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/line:43",
+      "sha256": "bc2629d0a6d355405d58ac0f77152b21db774e4a801cfc08ceef63595aa310ad"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/line:44",
+      "sha256": "a0dd76547540b076f3379ee2f2359fda3b055e4ba3de0123a7ea6c2a02571bda"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/line:45",
+      "sha256": "5c1d71867a7c0b796638edbfda2d91d6231b9bfe4f2bd4890ff49d4535d20187"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/line:47",
+      "sha256": "d0aba1843ed77438cbfebd40b7d3b2b96f295b66ea969973b04acafd6f12acea"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/line:48",
+      "sha256": "80e8225c30bb994f583cb9b08ca8ec6d6e012bae7a4d4e1623a85e20f0994a64"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/line:49",
+      "sha256": "7b6464b7487ed9c13026becf338336725cd98edeb264ae025fb65f757d705ae6"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/line:51",
+      "sha256": "4d192e5ba0c424763f408236b90a4e3e0e1fee80ca9a057ea80bc533ab83655c"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/line:52",
+      "sha256": "4028be6ff8d66935a108dbaf86d0e8a170246701c662d9e0792fd78837c9c6a1"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/line:53",
+      "sha256": "809a7d532334570a56bedd61eab4976f2745195a78397338a852c6526cb75800"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/line:55",
+      "sha256": "39eaa89760e611c50d86106c887937d6de7b1c40a20b73624aecbd1575940a27"
+    },
+    {
+      "disposition": "page_metadata",
+      "locator": "page:3/line:58",
+      "sha256": "3a7313560447d5410994be0f17b311113b2f13202646bbd70d35c062a4c55b28"
+    },
+    {
+      "disposition": "unresolved",
+      "locator": "page:3/line:60",
+      "sha256": "2c624232cdd221771294dfbb310aca000a0df6ac8b66b696d90ef06fdefb64a3"
+    },
+    {
+      "disposition": "page_metadata",
+      "locator": "page:4/line:6",
+      "sha256": "f6e237c4292cb9782d263eef0d2c3bb4b45bce1d6abba33c441d656b25f6c37c"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:8",
+      "sha256": "6d19b4387608d11c3c97527793fbb2bba80962d684daacaf6ad0f582d1d3ec41"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:9",
+      "sha256": "e28e33d11cf426947c6cb743a3364d12dab914a5a7dafc7750f59f2516e13e6a"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:11",
+      "sha256": "15e84f4a5482918a257aa6d39ca6be2c7265f38c67a9c3f1485ff6be15cb0ee3"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:12",
+      "sha256": "214c8a7ae92c0315305b1e862c221509a588f02a5e429b056f656b76498c574c"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:13",
+      "sha256": "75b7ecb74347de3f39da3990daa3076940d57986daf88ff83b18d2be271ada5e"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:15",
+      "sha256": "0ef115c7d4d13c6a43a9cc3e0268c3ce54337d4a41c2ce62ff727e298daafc53"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:16",
+      "sha256": "274763ded25b04832da5c9205b432181863bfed775e38d0dad8df6974f3d01ac"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:17",
+      "sha256": "10bc89bb8f98bea86ff332f1de25657594fdea8fa25c8355c8e154d85479f8c5"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:18",
+      "sha256": "a5c557ce69646fa417916ccae1ef00901f9e983531f4dbcaaeab6c993ad8d5da"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:20",
+      "sha256": "871b2030e025c7238229a4ff5395da046dbbf7356c191b40a84ef73a68f50db0"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:21",
+      "sha256": "8e58a078ae35764264e95643b7d503c9a29dd85e5ce77f4f1fa5d064082d3af7"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:22",
+      "sha256": "e783a7f17132f2888577c69f3f71233a09ac6e03e93b6726826b37ea94e3202a"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:24",
+      "sha256": "8a2bff7d3fbfee98b52eefe6124c02bd0b508a9f6a00d4d1ecf17ab39bd3b2d1"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:25",
+      "sha256": "8a69ce1891b28c72e845e9116b11eb920dddb3d1dd6aecfc63f900f386dd406b"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:26",
+      "sha256": "7467561fcfaee8272649d63a56e67d44cc884994b3c56394235856b11c1ea2ea"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:28",
+      "sha256": "6c6f6790973081314fdc45f3437cb513fff2039c6a4b479d311643e8e861eeb6"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:29",
+      "sha256": "10cabea2e4b04ddafe97a2fe18b43b760c5fe19cf9003d8fff186d8bd8a6fdd2"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:30",
+      "sha256": "9fabce0affe465be7a3dce4f677a204f2103e2aa7d21c7e8a9ba722f72774f1e"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:32",
+      "sha256": "5eedf0d6dbd7babcf912a3af850c6817a4272a6701a209f59a7c475a8accda4e"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:33",
+      "sha256": "ff980fd09d6331c74b97a67ab752270faf7ef3fabddf7b5f2d705070ddc99aab"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:34",
+      "sha256": "c47f6a150239e3ca8fbd7336f988662a6575870dbe0ed929da71d732d6d9a0cf"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:35",
+      "sha256": "ec952de28457baf27dc32ff2970e722b3405c141796e93d1177387da313b6510"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:37",
+      "sha256": "efda809a76d06b267d826a6585fb96ec8638b61addf440149d31663b34d0841c"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:38",
+      "sha256": "ae2274be72b302dfdf9114a1689fcbcb270fe51d6415cd4eb6ddbcc9cbfe4297"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:40",
+      "sha256": "a74c2581d4cf4115baccb255a1e73d78d180c38c7537b99ec27d0e99e40ac1f5"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:41",
+      "sha256": "be06901712e7f529f8aea4bc981b5a36c6391f24f7a8cd50be9e28349fc61357"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:42",
+      "sha256": "9a02f5a1192748703511629d52bae137453e52ebbf884767069ba6c267a54b43"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:43",
+      "sha256": "31e232089326a075dc9ae2aefb6c1957ed93db116b9c3c6cb15d581ee121ee71"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:45",
+      "sha256": "860904f28f78ec2e9515236b5e77e9f25344b7d33e7dc19990d7af299064a988"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:46",
+      "sha256": "0124d967554b58c60f4eb81bb12dde5b9ea99412e9369a20562888c534381393"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:47",
+      "sha256": "636dbccb0db465d933f1614accc690fc790c5cdb78f1331a9defac536e945bf2"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:49",
+      "sha256": "0f0db3c8c7e8881745f8bce6570ec69b21250d3ac367e9ed52e8e3eb7f78f456"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:50",
+      "sha256": "a2fbae62e89adc8f0ff1ac93a3c7e487788d142f4880014f373b631261ed9683"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:51",
+      "sha256": "7271c266ca26e1813d44a713446555e6930bafc048ffc50e826c4f6d7f6d2c28"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:53",
+      "sha256": "f6f59fddbacec0a0a481239602adbe1bcfcc4a6ec9ccaa6893bc5581a115ff31"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:54",
+      "sha256": "f358fb702a325b78964ae6107fa0253978fec0ec29e33a496aa58a21c0461105"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:55",
+      "sha256": "60c58655e813fe39a2249b071f24718472ddc1f18d4a354395dab39bdeed2cc9"
+    },
+    {
+      "disposition": "page_metadata",
+      "locator": "page:4/line:58",
+      "sha256": "6f9b0d0eb9452116c7f7345664f86687f4cfc547a05bc81223f0e5c1764e8917"
+    },
+    {
+      "disposition": "page_metadata",
+      "locator": "page:5/line:6",
+      "sha256": "eb43fe754c074c30b10e11cd92a9d157e8652f7435b99a1bfe47f633a6ce0746"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:8",
+      "sha256": "0ed09622fa8a193629653ebcf0352413e89997c17be6057b52ae5f9d1a0ebfc4"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:9",
+      "sha256": "9ba4df77ef4e95ff598b35946a815f226a675dcd1aa90e2bea14cb1560769622"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:11",
+      "sha256": "13e93223943b10bc78c292b69ff2b3eb62614e89dac979ecebe37231bedde8a6"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:12",
+      "sha256": "822bd0df2d35149717205824fcaecc6b92017f948eca47e157d02e3add9e71dc"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:13",
+      "sha256": "83667f71252c968b1bc0e53eb47135ea36efdf6d69357a2483b638873488337b"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:15",
+      "sha256": "26648e1ff90c3f88aef34efd21bc1143bd3384f225f6aec8c80691cfba914fc1"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:16",
+      "sha256": "290fbbcaf43088b90e6c788994a885f0f74f125654f4c3560cb64dde02fa195b"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:17",
+      "sha256": "2f63e3174abb6d95b9bb55adef7c4ca80b5b878a28bc6ca1c85e22d313280340"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:19",
+      "sha256": "e59188990ebfc051018a86d08c4d61d4b71789e5bab87649cc915a5f7ed7bc32"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:20",
+      "sha256": "a94c2841b10c9d614f2c83c0d2c7828c28478b289700820b3aa18e122e5a976b"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:21",
+      "sha256": "aa61ecd840b0aaadc50ab89aefc2b0492bd799cabf14e4db1cbd424cadf719a2"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:23",
+      "sha256": "e4db960126afa70a103cfbbd87e0ca06aadeb495303c3e80399c4ea0658714b6"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:24",
+      "sha256": "469cb4166fb0a6bfbd9e0b7b7e8bc05aef0df5963caa47b0a90fc0fdb1817bda"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:25",
+      "sha256": "a0880a3705091ded34cf3f5941dfb6e4233f84abcf8ae7d8e42aac0fb40688fc"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:27",
+      "sha256": "90edcbdb6f50baa2317abb4ba84c4e6e164534ffdb4ef1952cb635cfb42a65c5"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:28",
+      "sha256": "040b3e2071b347a24ab69076ae7e2a122ba7cd12d87958291d8d04934b126072"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:29",
+      "sha256": "33d1e80d9aea0807fda4f6c6024cb7e587e4159761bac90e67ce83c1c4d16b63"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:31",
+      "sha256": "cb8edd8ee46d6b92d872facae874dd938c0ca1c56e11b6368dd412657724a2a9"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:32",
+      "sha256": "63bb85ea1f7a4070b4f47cc9cf098890978051d23a0bc217503facfaf94827c3"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:33",
+      "sha256": "3ea04ac42f08c3529e9bf852433b9dc5fe532a65376b791c34332411cb6060ad"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:35",
+      "sha256": "b632cdb0b7b3fb1e9b3bfb55a6d8faab142f860d62e0ecc01fd0073649abc384"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:36",
+      "sha256": "0cd64da113e97712473fe3cd8fce7c471b4befd00aa02ba4dbd54795e3bca499"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:37",
+      "sha256": "b76156724e7833d1de70556f3f92e0b2e564933d6d03583636e76f5cecb83fd5"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:39",
+      "sha256": "c781eb6e8ce7ac2bae55c15fd20810a1ef16d63147f8f457499009f2941d8af8"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:40",
+      "sha256": "219d698c33f1da824bed607654d713559714fd35dba60039f4494cdfec91cd15"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:41",
+      "sha256": "d501688cc7bb6318be723354202d43b845ce86a6a03ce910bc9bd8da83c910b4"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:42",
+      "sha256": "a880fd4bfd48031339c534e6047321d2b8689e34814476b24733f5a9756dc58a"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:44",
+      "sha256": "0e48a7a1e9f79df6fc34e5488b92334ec41e2263175bfd778e7889a0badfaba2"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:45",
+      "sha256": "d70d736c1218419d861dbb3b7309a601c0cea9b83bcc687d38e161e1c7ec2f40"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:46",
+      "sha256": "a70fc51fea87841ff605658a37278bf2fa9d4eb5187e7995f9f3dba797d43aa6"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:48",
+      "sha256": "5e424af44a6d68738f1f1164309c1f323df4be32ba80343d10d46cb4dd7cc623"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:49",
+      "sha256": "5ac64b24bcce1e788fc4e55b834e7e8ea0ade5c70b207dbbaad73442d8053114"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:50",
+      "sha256": "e0fdf04b6f102772f561a00eeb7075a4999b11ef60593f5a2903b0a664cccaf4"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:52",
+      "sha256": "cf34ac64a32897d5d6cc050d4243ce0c39e8fdd3a0eef3e63770ac6e5edfb116"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:53",
+      "sha256": "0ce6f7007af9f5a08553eae6a88ad0b867c6575e046e1e0f3044801016a5bdcd"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:54",
+      "sha256": "1c71acf8482814ec7fc3a79394f6bb320e96e0e99df5f60371ddc342c81dcf55"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:56",
+      "sha256": "9d7d05da61227d010892a792b65af11f576b9c6cacc38205e54da72573ebc699"
+    },
+    {
+      "disposition": "page_metadata",
+      "locator": "page:5/line:58",
+      "sha256": "ec418c6314177d6c211d89364ed1187b89c49d5fe656e8d9c46978409aff0c64"
+    },
+    {
+      "disposition": "unresolved",
+      "locator": "page:5/line:60",
+      "sha256": "2c624232cdd221771294dfbb310aca000a0df6ac8b66b696d90ef06fdefb64a3"
+    },
+    {
+      "disposition": "page_metadata",
+      "locator": "page:6/line:6",
+      "sha256": "f6e237c4292cb9782d263eef0d2c3bb4b45bce1d6abba33c441d656b25f6c37c"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:6/line:8",
+      "sha256": "2fb90e5c2cd82a997234a09c48939d4aa5524ccbecb76d49eca6f8a873e08e5c"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:6/line:9",
+      "sha256": "223f33ba1fa13f2ab534ff8ebf4b8c0c0bfb64e4f5eea5a799595f98197a5ff5"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:6/line:11",
+      "sha256": "afd3d7fc9053890c7f7f3599655a0b97ae824501681fcc79404e241b07ac4d76"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:6/line:12",
+      "sha256": "0b3682cab60cba0854a62c385b304899d2e7f35111243cd347f0ca6dc31f1a96"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:6/line:13",
+      "sha256": "68e1331fc5a89d91008ef90963e30f838a945f44495acc190291f2fae214faa5"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:6/line:15",
+      "sha256": "acad92d9bb35e63cd0b6e1c357de194b2feae3cdda7de5098e85e04b4ebdc1cf"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:6/line:16",
+      "sha256": "14b49715fdbec737061a617bb0a7a4b13a07bf15a1f73caa8f26d7155c1eeb32"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:6/line:17",
+      "sha256": "11919ddb347801fba1953f94c0d14cd86385ce29799c27abec1324152033f57e"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:6/line:18",
+      "sha256": "49631b4711f032fabd2b554ba396f7a97e8a33288df63f4dc6ff33a10f2d993b"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:6/line:20",
+      "sha256": "06a97a0a192ee1c7831f4c88add0147c23fdcef9ac45b3f69a2ee934bbbd2934"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:6/line:21",
+      "sha256": "cf9dd91b35419a629e020c69edfd5260dd50bad593ff36a25429b9a3df3a99c7"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:6/line:22",
+      "sha256": "bde863100e1cb49a949ea7861bb4ed14f53fe072e74e5bf34be3ee2acce612f7"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:6/line:24",
+      "sha256": "8bb2402bf70db9b0ac1dbb8b7f9e11e494b134c4ab970415a75bdcf1fc8051a9"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:6/line:25",
+      "sha256": "0383c6c15d32c65f0887d1b45c7a27ba8047c9ec83dfc29a9029f64fee091ee3"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:6/line:26",
+      "sha256": "01c588ae70c42bd65c720207db9ce7d9cfd2bf7fd616c6a21cc6b0e44b4515a0"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:6/line:28",
+      "sha256": "9539d210cf88cf6abf0582e48b8363cbc55bf40179ed332342947c463c655634"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:6/line:29",
+      "sha256": "f44e93d2071e9452b0b54bdcd096c15cdc4f041875a4138105aa2ca7e765a8c9"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:6/line:30",
+      "sha256": "dec3762f056c00d69aaec8891de4a3d3555672bca9b101b246d5aebb7c37cc2a"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:6/line:32",
+      "sha256": "a10af9c88b87fa52126095d5bed935890e7cc55f19e82fd710f83c2ab3aadc93"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:6/line:33",
+      "sha256": "089a14b7d4ea1f840475e3d7af9f00838a471414d67c968700baf57eeebe35f3"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:6/line:34",
+      "sha256": "1cb91378ced9f4bb6046cd7c91f753eacf762d9b38104083a5269bc56799de0f"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:6/line:36",
+      "sha256": "74e5c72847f10ffdb411a7133f2374df3b9f43d165d1f9ca60d26a3c5c72bab9"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:6/line:37",
+      "sha256": "308542c4c7ac06f0957b5805154ac4f5a109d0a1e45a04c88b58cdde7979d329"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:6/line:38",
+      "sha256": "9b62ab383c089e7c983a8a2c24d8b15cb52d7bc8725554bbe4727a64bb6a3966"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:6/line:40",
+      "sha256": "c702b1c630d997e2891862be2bdb0ac578a8496109d7572912ebca4c09856a22"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:6/line:42",
+      "sha256": "c34f72fa2386a8718f0ff84933e2f8eac0c201e48f2245511b0f63490506a6c3"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:6/line:43",
+      "sha256": "eebcd3ad460d1c7d24e554ee75c90a9f3649b0cf904d78967d5e2168f9cc35f7"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:6/line:45",
+      "sha256": "d525942be5a6815c1e3353feeb039ff0cfe6dc976f8d501a26d2e9d495cf6e1e"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:6/line:46",
+      "sha256": "99faae54def1379fa6d594b329a0a6089d9595b1fbdbf6ee113e3593123ccde1"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:6/line:48",
+      "sha256": "2b81825844ef920476c80fd6e80f5a23a98fbc054d633e0d8de816f3413729f4"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:6/line:49",
+      "sha256": "ca991dc0171d0bf61281127ee72d365c9d84269c92181ba8824c0ab10cd99c58"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:6/line:50",
+      "sha256": "1900aaa929f4ec7c451e66c8d0a29424c5278ac5f28eddd690a26eb7e790080c"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:6/line:51",
+      "sha256": "5797557718f5337bfdc99b4cbf1aee13dcba30b80496afdf1a5fa7a88622d391"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:6/line:53",
+      "sha256": "4ff645047af2fcea86e466bdc8efc48219597980724ffc7edc1bb667a2e98b65"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:6/line:54",
+      "sha256": "7dcc106947e72cc7eed6e27b7579a8fabe22dd2dbbb55f48b2b6bd410c243999"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:6/line:55",
+      "sha256": "e8158c36c5918f852b66f28e14972b3765ed3c3b9eb3d6155d297d2045c0f93a"
+    },
+    {
+      "disposition": "page_metadata",
+      "locator": "page:6/line:58",
+      "sha256": "38f94847cf54819bb24af0ae8a89829d855bcbcc5bc0023f3ede9f6ecb00d13c"
+    },
+    {
+      "disposition": "page_metadata",
+      "locator": "page:7/line:6",
+      "sha256": "eb43fe754c074c30b10e11cd92a9d157e8652f7435b99a1bfe47f633a6ce0746"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:7/line:8",
+      "sha256": "1124d013e83421d884c1a262b055960632c355a9b9ed3db044141ec8f02e80a8"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:7/line:9",
+      "sha256": "439bc3c8df6da925c7fabf3c1a8553a3a73a21c77550f180b17f0247c0fff830"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:7/line:11",
+      "sha256": "e8c987440b25179d3b751b810f64a5ceadf5bc7c81470d13a8f10cf3393b89eb"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:7/line:12",
+      "sha256": "e798cafc117eb1d7e127363446973325a48fa4a5a80d0c8e8b7327f1c67aa190"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:7/line:13",
+      "sha256": "b80dcb39f343d7e4d78e351cd248a5f9cdbe32d6b78676647d04cb592ac9244d"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:7/line:15",
+      "sha256": "cca7a81461f1cf261b4f9722238e32366319cece2ae41f9d2f5cc305e52a7097"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:7/line:16",
+      "sha256": "59707a2bc2030177c5a7ad697f8bca67eaae00172a0d8f4fd529da545bde9d68"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:7/line:17",
+      "sha256": "1c217cca9936345835ff6412dec03959a8df370e1b243e09fade5a578fd64c9c"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:7/line:19",
+      "sha256": "91568d385d258226580c6df857df20e4cf48bd351f4e26117f43aab4ed8273a5"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:7/line:20",
+      "sha256": "3a56c1c936491085d2a17d84ced5916a4513b0b49148a4cf9a28fd7a294937d6"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:7/line:21",
+      "sha256": "581aa8581456e391a874dfaa2acc9b5d1ff2aa755b954fffde844b5cd74a9065"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:7/line:23",
+      "sha256": "80bf34619597f290a471862d78537ee42547b718a2af7973f60ce0a797d247af"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:7/line:24",
+      "sha256": "350610142b9ab95b42163d6f4155e59978215ae05f362fc2822488bcea9c893c"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:7/line:25",
+      "sha256": "dae61a7540bb33ad27c8d3d59c7f625bb29410f8089f39b186352f223e56e6fc"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:7/line:27",
+      "sha256": "0a5ff0b2986bcd839b77425415ec7fbf602c6975838270d9d5757b21564e0649"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:7/line:28",
+      "sha256": "930e41943a1b80e55ae7a26e81296953585d7f185435d00c5417a39c7509cee6"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:7/line:29",
+      "sha256": "0f1ae38139ba7d6ab4e6fe6bf51ce984f4963a50381875d308aeeeed0d377c17"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:7/line:31",
+      "sha256": "06937bd812d6f56c45ba5a2a29263d3a7160c61a4709b1f519c5bf0af56e396f"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:7/line:32",
+      "sha256": "0e43eb2a57e4000c2030f0ad613c7b272f1d66581d7f725cea16c5b3b687db7f"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:7/line:33",
+      "sha256": "8cfc8c07e7ea1c7985e28a3fe50494f62c52b7d44578a8d4f31a0c72636db801"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:7/line:34",
+      "sha256": "64b681e235e2710e7d4647aa5a39cac01f14e37dcc2fb1b175bd7d052b132831"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:7/line:36",
+      "sha256": "079667dca83e54a048352a2a492b2e4afdf234438da95e8bcd70b7d515880cd0"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:7/line:37",
+      "sha256": "0729afddd2c7f7f8b36c2793bce9ffdd79298c83f8d448fdce1eba5091a8834f"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:7/line:38",
+      "sha256": "d86f3d35b4f72ea9a3bea73cadbf313d198620667e8fd4f75189040eff025c22"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:7/line:40",
+      "sha256": "3d065aa9d4d5dfcd374d41454f8153552bae517d372d6ba3378616f228a7b5e4"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:7/line:41",
+      "sha256": "8685dbde1d659b81105aeac1353a662fb0b2fc5ae4796fff1d06a8f31737a9c2"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:7/line:42",
+      "sha256": "6da319d9bfad378a8cb2f704a2ee27572587929a1266d11c43a268cc9ff4b456"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:7/line:44",
+      "sha256": "4f0a3f80d751978e0a7d8a380d8323a3b1ad88dedcd6c39cbb140ee49ed88a1c"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:7/line:45",
+      "sha256": "f6df53a8c37e912911c77307e831cb70c2b9f177145d1c79744e514ce8a88941"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:7/line:46",
+      "sha256": "9c98b99fa90470faefb952ea05f1ff1549961e9ca7b333b9281dec42eb0bf44c"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:7/line:48",
+      "sha256": "3d6e7143a385e8af5e58068ec9758b00a046cf0f708ba1bca883bcf795a23a84"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:7/line:49",
+      "sha256": "9b6bfc1d793bac3002b3bcc54d9b09be62b857f30b86c8b947e25ffe34ae512c"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:7/line:50",
+      "sha256": "4ce50bb9059007f451aeb26a39359f98c46a99f5a5884fa3a1dfeec97192f6f4"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:7/line:51",
+      "sha256": "5cec701919c7cb5c08e8c25d9c7c9394c0089f1c0ea903d1b16919613150eb32"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:7/line:53",
+      "sha256": "fd8961a33e27cc02f83ca5a2beacc91fa67cedd581832d490877218a71a21a14"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:7/line:54",
+      "sha256": "233358ce4e8ff8690abd405473460016fc9a251d36c62ab15b8a3383bff9c564"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:7/line:56",
+      "sha256": "dc744a06726fc62b6d3c10d4a8b98c9f2bd7e960d2fc9247168a1f126cc01cd1"
+    },
+    {
+      "disposition": "page_metadata",
+      "locator": "page:7/line:58",
+      "sha256": "4c8c1b43d609e6595d85188b9c70a2ddf29fb2a6e910d8963dc5dc7dee9c1439"
+    },
+    {
+      "disposition": "unresolved",
+      "locator": "page:7/line:60",
+      "sha256": "2c624232cdd221771294dfbb310aca000a0df6ac8b66b696d90ef06fdefb64a3"
+    },
+    {
+      "disposition": "page_metadata",
+      "locator": "page:8/line:6",
+      "sha256": "f6e237c4292cb9782d263eef0d2c3bb4b45bce1d6abba33c441d656b25f6c37c"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:8/line:8",
+      "sha256": "167d68469a6114903d89338d0ea4a8d810107cc5d157b1d635f102e351025c84"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:8/line:9",
+      "sha256": "b435c168b1dfc2fe8017afe96330766184ca13b826f9a37145449244a3f36560"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:8/line:11",
+      "sha256": "4cc60d07ae36dcbc7b15f5dbab1bd8545e20e630002c6c3ef4be6ef70600a653"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:8/line:12",
+      "sha256": "718549893356dd87ace71e4d15737b80766538fffd1ace2f9c82112a0963d72e"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:8/line:13",
+      "sha256": "752321597ea5014dee870dcf624194ed861c025258cc93b180304cf02c38c07d"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:8/line:15",
+      "sha256": "1335b4e5a80517dd2f08b2b50a5411c3570546618d650a1d3c238d57bffc5ac4"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:8/line:16",
+      "sha256": "ba83a6057f73cdcbd98b01ec482899f4b5d7a06ffcb9018cf2f6d83d7a40f4e7"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:8/line:17",
+      "sha256": "596b6aef92ecae3a3ef9f74100b7f8eb5a4c204a6bddc8556b4a4ebfee360aa3"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:8/line:19",
+      "sha256": "c2783f7a8bf0665c3a8d36c02c845f5c2343eefb21e2147abebd920bedaa2804"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:8/line:20",
+      "sha256": "4778730605ff2fd0a8b2ffa854305087f42e1a9c823374ac411308a911821f80"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:8/line:21",
+      "sha256": "ce1c1af8240a7c7d538dcc261013c0e67c7e800203b63899c545dfdff9c1bae6"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:8/line:23",
+      "sha256": "53814fd4134ac771097a1ad80134bce13cebe6557a4a9a3fc69da2117a4a8238"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:8/line:25",
+      "sha256": "59bf3a60d20cabb874328e776e9503a54bd799a64f02afe60b20918f58de4d56"
+    },
+    {
+      "disposition": "page_metadata",
+      "locator": "page:8/line:58",
+      "sha256": "72749386eef40072504caeef4a1fa5588ba2e0d379b929544bdbad2b0ef5a65a"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:9/line:6",
+      "sha256": "af8ee40c8ba48cf1eea7cf5266e115f0a35a6b4e02175593a9ceafc9642fcf3e"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:9/line:8",
+      "sha256": "950d10e3034d7f7fa2ea7a064eb8fdd0ca4c3d65c679e4d7a7f623f9491cca00"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:9/line:11",
+      "sha256": "4caac9c7419190f10b74d78de64d60730a946bb026de444a882461a43c168a5a"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:9/line:12",
+      "sha256": "119e0c8a03f77e43ebadb2c1226cee33560407317e617a6fe421de65851abb30"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:9/line:13",
+      "sha256": "412cbd0f9fbf593b9032d871868e2dc8f3800fdda912ed6480aaf73c3cc77207"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:9/line:14",
+      "sha256": "4625b9141480ab76a64b181d83b0bc1ecf197bf980cf80bb2a9d6d7872df2c21"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:9/line:15",
+      "sha256": "7a5ff3b62ae307070b9ba38cb8d9fad12f1e0bb81d76d99e04bea43c1e04cced"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:9/line:16",
+      "sha256": "227f00aad0598e7e13bafbb128a493515b7be23ce1fa8cc0713eb6145c6b5726"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:9/line:17",
+      "sha256": "22bd88f03b5da4ccdd8d5789171d22753c7315fb2d93cc6d6eb7ff3f130f9bd4"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:9/line:18",
+      "sha256": "760bf5e16564d490fcda08b721a459f51bb072f675636d2650e619897ebe84b5"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:9/line:19",
+      "sha256": "c56ef99202041e67473a99881aaf3e1ef65c4abd104e2839981d03ecd6034947"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:9/line:20",
+      "sha256": "ab671ee860cf3527bdc63b07ac5b40d23f4318c7d3e7ad1af8924888bc564c6f"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:9/line:21",
+      "sha256": "5af58f66111f9e7fbc0b3456e44efba2f54b62ba7a0768eefdb2300e3135a004"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:9/line:22",
+      "sha256": "254ab02d7369132da48e5cc4930708166b0fe3903499ac846f652a83cbcd4736"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:9/line:23",
+      "sha256": "1ce90fce81f01fc6ff01a69d567522b88f4f3cb8d7c64d469766a67b5e0a2984"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:9/line:24",
+      "sha256": "6a1548ed865d6b45ff43e0a515ecd82c0a8c291728ecd603ca5abfab10861499"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:9/line:25",
+      "sha256": "2e5755ee9b94d19336b72a1b5c99099289697675f655f1f5f36261c20f4affc1"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:9/line:26",
+      "sha256": "572e4eed4a4c6f279566a355a3ae87cf3b5bbc7a9e45f29eb00c89015c90e6b1"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:9/line:27",
+      "sha256": "29d2ea1d0ce3692fa03bcc60e3d9c1e1dd2e236904a1930db88457df21729c61"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:9/line:28",
+      "sha256": "55d2ca31feb0da6e9435b3ba91b3d65a47d962f51588d1ba2301f1914623f457"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:9/line:29",
+      "sha256": "2a147fb4db889307d8fa3ca2d9940e1a2e7be71a800859f18e4829023332338b"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:9/line:30",
+      "sha256": "9689e8dd252f1515ca88b4840a587fdb52be34be9322dd69cb5bb124b568bb97"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:9/line:31",
+      "sha256": "4e1b85d536472aa2b71dfecf9eeffc804e7b9088bb8d8e43542b85772eb574c1"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:9/line:32",
+      "sha256": "5351050680b6ca25aebd3f1548285c03807ba6013fa2450ab13f57f3c59f5078"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:9/line:33",
+      "sha256": "7c2e0443b11820b5fab366e9b12315259eb891e4d0d71fbcaf8bf18d29315df5"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:9/line:34",
+      "sha256": "79b4e95ceed3eeafe6b8a75f3be39255a4ac304538b72d3332aec56975627514"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:9/line:35",
+      "sha256": "d37c279444d5d545dc060baac5d0c18a48e52062a5d55c3b12bd076dbb473947"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:9/line:36",
+      "sha256": "e2007a6b79ca4d0ed362e4673a594760e20f974d9529a55ed7b5f6506c819127"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:9/line:37",
+      "sha256": "2771e5d311b3c3ec8957cb9289ac5818f914e674a28a87be35cfb75eb0e4de0a"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:9/line:38",
+      "sha256": "5971e5de9cc05a3f4445befd173f35766e3d78a6ba9aee9f50f7efd142bf49df"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:9/line:39",
+      "sha256": "9e11546e347ef44d975ada402e63cc6be35b474080844c1c1bf579a5058ac392"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:9/line:40",
+      "sha256": "c22e35f8424eea35defc43e85a3cb5760d7621d06e62c454caf4aaadcc62e19e"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:9/line:41",
+      "sha256": "4494498c07268faf45327931df309cb7b8420a13addfd0687a097ba9fee819e8"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:9/line:42",
+      "sha256": "f7a262172655dd13ede3c09fac2d1c6169fe445b643f4e36f7ff3ce23502fbf3"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:9/line:43",
+      "sha256": "11559d99532aa111ab83178a80bc76a847b42bc4cf387c3543f6462a4d250a6b"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:9/line:44",
+      "sha256": "908df1aa4ded585a04fa335c2976d4bdbd38f3f36c298d694406897348fefe3c"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:9/line:45",
+      "sha256": "be736ef031a7eef692724c8991b07cbd2f298eb4331d42b82a5a9889485baa4a"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:9/line:46",
+      "sha256": "2c43ede2e44f7e9764b4ed8a1fc9097af01f153110094d0ee2486fe6f1ac6acd"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:9/line:47",
+      "sha256": "200d565327156d4eb242cb6cfe03d71dd7d1eb20d0367f6b6c8a5b962e6880e8"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:9/line:48",
+      "sha256": "677223343d243fde2b27d0b294b22191c4425b9bda11ab33baedc0644437d4e1"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:9/line:49",
+      "sha256": "467c958f3248c6c317f22ade9be989d605ff690430ba7b2b87f32c8b170229d2"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:9/line:50",
+      "sha256": "f2dccaeda1f2628ca3cfc32f5d7cee8eec7c8a388debc310fb7abd0787b200b0"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:9/line:51",
+      "sha256": "ddee1bd3460de8b56fa56b186b1f8577489b0632e5911ba4398b62c09e19882d"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:9/line:52",
+      "sha256": "885a1c1ed81cbb4c9d9eb682a0f6b10a076a2f0f0ab675666e6db5645e17bbc2"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:9/line:53",
+      "sha256": "bac29830605e023d5c97f5761c637513938d161b59be0539059fdc2f96061257"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:9/line:54",
+      "sha256": "5eded37a5e9975baa3f0d0473b9122d4ca2307df78822315233ac16970b82100"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:9/line:55",
+      "sha256": "7fbbebcf3bd91384201d9213caf017485c6747151bc91cbd1a4853b248bb6fdf"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:9/line:56",
+      "sha256": "0bcb700cdd26de986681b57c495b4d6ffe550e277c40ac713f8ed4c20d02da89"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:9/line:57",
+      "sha256": "5efe72092aa0c2a2eca797af1e9e1ddaa3096fd6d19fdba00687d0e1c42e2b32"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:9/line:58",
+      "sha256": "ecf6f75d2c6ce873fa65f8389a6ee4812d291ff778c6e30395a26210aed3c6ab"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:9/line:59",
+      "sha256": "c618efbe776190095f959f0c1ace3f98290d523fd6ac5a09c58b9f01fa16e69f"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:9/line:60",
+      "sha256": "4a44dc15364204a80fe80e9039455cc1608281820fe2b24f1e5233ade6af1dd5"
+    }
+  ],
+  "packet_sha256": "56d162d39e61124c078fcca0d574b35588d900661ce2f11e20e605948c395048",
+  "publication_ready": false,
+  "source": {
+    "id": "pm0214_core",
+    "import_revision": "ffdd80d8b5709d99ead46d52ccd24aa05c011be7bc4891711d9240a4b79e48e6",
+    "origin": "https://www.st.com/resource/en/programming_manual/pm0214-stm32-cortexm4-mcus-and-mpus-programming-manual-stmicroelectronics.pdf",
+    "sha256": "fb54012a46c674a26dee56bc8cdfa281315f78634f18998001144980b08d1b03",
+    "target": "STM32F407VGT6"
+  },
+  "status": "pending-review",
+  "unresolved": [
+    {
+      "locators": [
+        "page:3/line:60"
+      ],
+      "reason": "unlabelled_numeric_line",
+      "text": "8"
+    },
+    {
+      "locators": [
+        "page:5/line:60"
+      ],
+      "reason": "unlabelled_numeric_line",
+      "text": "8"
+    },
+    {
+      "locators": [
+        "page:7/line:60"
+      ],
+      "reason": "unlabelled_numeric_line",
+      "text": "8"
+    }
+  ]
+}

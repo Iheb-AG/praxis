@@ -96,12 +96,10 @@ def from_bundle(bundle):
             "FEATURE_REPORT_UNAVAILABLE",
             "Compile a current configurable profile to publish feature support",
         )
-    text = bundle.read(bundle.manifest.documents["features"])
-    from praxis.jsonio import load_json
-
+    from praxis.reports import read_report
     try:
-        return load_json(text.split("```json\n", 1)[1].split("\n```", 1)[0])
-    except IndexError as exc:
+        return read_report(bundle, "features")
+    except PraxisError as exc:
         raise PraxisError(
             "INVALID_FEATURE_REPORT", "Missing complete feature JSON in verified Markdown"
         ) from exc

@@ -86,7 +86,8 @@ def test_bundle_keeps_full_tables_and_limits_support_to_adc1_internal_mode():
     assert data['peripherals']['adc_common']['registers'] == 3
     assert data['peripherals']['adc']['reviewed_modes'] == {'single_conversion': ['ADC1']}
     assert len(bundle.manifest.sources) > 100
-    assert all(len(text.encode()) <= 65536 for text in bundle.documents.values())
+    assert all("## Register map" in bundle.read(path) and "## Bit fields" in bundle.read(path)
+               for path in bundle.manifest.peripherals.values())
     session = Session(bundle)
     session.read_wiki_index()
     with pytest.raises(PraxisError, match='rcc, flash, pwr, adc_common'):

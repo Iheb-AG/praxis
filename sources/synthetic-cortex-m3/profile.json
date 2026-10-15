@@ -1,136 +1,146 @@
 {
-  "schema_version": 1,
-  "target": {
-    "id": "synthetic_cortex_m3",
-    "family": "praxis_demo",
-    "mcu": "PRAXIS-DEMO-M3",
-    "package": "Fixture:QFP-16",
-    "silicon_revision": "fictional-v1",
-    "board_revision": "synthetic-1",
-    "primary_mcu_ref": "U1",
-    "example_only": true,
-    "clock_hz": 12000000,
-    "clock_assumptions": [
-      "Fictional fixed 12 MHz clock. No manufactured MCU or board is represented."
-    ],
-    "knowledge_adapter": {
-      "kind": "cmsis_cortex_m",
-      "cpu": "cortex-m3",
-      "header_identity": [
-        "PRAXIS_DEMO_M3_H",
-        "PRAXIS_DEMO_PART"
-      ],
-      "mask_suffix": "_MASK",
-      "position_suffix": "_SHIFT"
-    }
-  },
-  "review": {
-    "status": "reviewed",
-    "reviewer": "Praxis synthetic fixture authors",
-    "basis": "Reviewed as fictional parser test data only; no real device semantics or physical qualification."
-  },
-  "sources": [
-    {
-      "id": "header",
-      "path": "raw/demo_m3.h",
-      "authority": "declarations",
-      "version": "synthetic-v1",
-      "license": "MIT",
-      "origin": "Authored fictional register declarations"
-    },
-    {
-      "id": "vendor_blocks",
-      "path": "raw/vendor_blocks.h",
-      "authority": "declarations",
-      "version": "synthetic-v1",
-      "license": "MIT",
-      "origin": "Authored fictional vendor structures, not ARM core registers"
-    },
-    {
-      "id": "definitions",
-      "path": "reviewed/peripherals.json",
-      "authority": "semantics",
-      "version": "synthetic-v1",
-      "license": "MIT",
-      "origin": "Empty reviewed operating definitions; all discovered blocks are declarations only"
-    },
-    {
-      "id": "schematic",
-      "path": "raw/netlist.xml",
-      "authority": "connectivity",
-      "version": "synthetic-v1",
-      "license": "MIT",
-      "origin": "Hand-authored KiCad XML-shaped synthetic fixture; no CAD export or physical board claimed"
-    }
-  ],
+  "compilation_contract": "compilation_policy",
   "definitions": "definitions",
+  "discovery": {
+    "automatic": false,
+    "default_prerequisites": [],
+    "peripherals": {
+      "clock": {
+        "prefix": "CLK",
+        "prerequisites": [],
+        "structure": "CLOCK_Type"
+      },
+      "interrupts": {
+        "prefix": "IRQ",
+        "prerequisites": [
+          "uart"
+        ],
+        "structure": "IRQCTRL_Type"
+      },
+      "pins": {
+        "prefix": "PIN",
+        "prerequisites": [
+          "clock"
+        ],
+        "structure": "PINMUX_Type"
+      },
+      "uart": {
+        "prefix": "UART",
+        "prerequisites": [
+          "pins"
+        ],
+        "structure": "UART_Type"
+      }
+    }
+  },
   "header": {
-    "source": "header",
-    "kind": "cmsis",
+    "constant_macros": {
+      "PRAXIS_DEMO_PART": 3,
+      "__ARM_ARCH_7M__": 1
+    },
     "discover": true,
     "include_directories": [
       "raw"
     ],
-    "constant_macros": {
-      "PRAXIS_DEMO_PART": 3,
-      "__ARM_ARCH_7M__": 1
-    }
+    "kind": "cmsis",
+    "source": "header"
   },
   "netlist": "schematic",
   "pin_map": {
     "1": "P0_2",
     "2": "P0_3"
   },
+  "review": {
+    "basis": "Reviewed as fictional parser test data only; no real device semantics or physical qualification.",
+    "reviewer": "Praxis synthetic fixture authors",
+    "status": "reviewed"
+  },
+  "schema_version": 1,
   "signal_aliases": {
-    "TX": [
-      "UART0_TX"
-    ],
     "RX": [
       "UART0_RX"
+    ],
+    "TX": [
+      "UART0_TX"
     ]
   },
-  "discovery": {
-    "automatic": false,
-    "default_prerequisites": [],
-    "peripherals": {
-      "clock": {
-        "structure": "CLOCK_Type",
-        "prefix": "CLK",
-        "prerequisites": []
-      },
-      "pins": {
-        "structure": "PINMUX_Type",
-        "prefix": "PIN",
-        "prerequisites": [
-          "clock"
-        ]
-      },
-      "uart": {
-        "structure": "UART_Type",
-        "prefix": "UART",
-        "prerequisites": [
-          "pins"
-        ]
-      },
-      "interrupts": {
-        "structure": "IRQCTRL_Type",
-        "prefix": "IRQ",
-        "prerequisites": [
-          "uart"
-        ]
-      }
+  "sources": [
+    {
+      "authority": "declarations",
+      "id": "header",
+      "license": "MIT",
+      "origin": "Authored fictional register declarations",
+      "path": "raw/demo_m3.h",
+      "version": "synthetic-v1"
+    },
+    {
+      "authority": "declarations",
+      "id": "vendor_blocks",
+      "license": "MIT",
+      "origin": "Authored fictional vendor structures, not ARM core registers",
+      "path": "raw/vendor_blocks.h",
+      "version": "synthetic-v1"
+    },
+    {
+      "authority": "semantics",
+      "id": "definitions",
+      "license": "MIT",
+      "origin": "Empty reviewed operating definitions; all discovered blocks are declarations only",
+      "path": "reviewed/peripherals.json",
+      "version": "synthetic-v1"
+    },
+    {
+      "authority": "connectivity",
+      "id": "schematic",
+      "license": "MIT",
+      "origin": "Hand-authored KiCad XML-shaped synthetic fixture; no CAD export or physical board claimed",
+      "path": "raw/netlist.xml",
+      "version": "synthetic-v1"
+    },
+    {
+      "authority": "configuration",
+      "expected_sha256": "66ace6196cbac81570e4c0b9d28c88f34f07827dbb82b225fb8e0f8afe58c6b9",
+      "id": "compilation_policy",
+      "license": "MIT",
+      "origin": "Explicit publication scope migrated from existing reviewed target/profile policy; not independent hardware sign-off",
+      "path": "contracts/profile.json",
+      "version": "publication-policy-v1"
     }
+  ],
+  "target": {
+    "board_revision": "synthetic-1",
+    "clock_assumptions": [
+      "Fictional fixed 12 MHz clock. No manufactured MCU or board is represented."
+    ],
+    "clock_hz": 12000000,
+    "example_only": true,
+    "family": "praxis_demo",
+    "id": "synthetic_cortex_m3",
+    "knowledge_adapter": {
+      "cpu": "cortex-m3",
+      "header_identity": [
+        "PRAXIS_DEMO_M3_H",
+        "PRAXIS_DEMO_PART"
+      ],
+      "kind": "cmsis_cortex_m",
+      "mask_suffix": "_MASK",
+      "position_suffix": "_SHIFT"
+    },
+    "mcu": "PRAXIS-DEMO-M3",
+    "package": "Fixture:QFP-16",
+    "primary_mcu_ref": "U1",
+    "silicon_revision": "fictional-v1"
   },
   "workflows": {
     "uart_polling": {
-      "peripherals": [
-        "uart"
-      ],
       "instances": {
         "uart": [
           "UART0"
         ]
       },
+      "peripherals": [
+        "uart"
+      ],
       "registers": {
         "uart": [
           "CTRL",

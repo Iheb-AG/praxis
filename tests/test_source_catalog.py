@@ -3,7 +3,7 @@
 import html
 
 from praxis.models import Source
-from praxis.render import source_catalog
+from praxis.render import source_catalog, source_documents
 
 
 def source(identity, **changes):
@@ -56,3 +56,29 @@ def test_long_repeated_directories_leave_room_for_more_reviewed_sources():
     assert document.count(directory) == 1
     assert len(document.encode()) < 65536
     assert all(s.id in document and s.sha256 in document for s in sources)
+
+
+def test_large_registry_keeps_every_complete_table_and_metadata_value(bundle):
+    sources = [source(f"item_{i:03}").model_copy(update={
+        "origin": f"https://example.invalid/{i:03}/" + "long-exact-origin-" * 27})
+        for i in range(100)]
+    documents = source_documents(bundle.manifest.target, sources, bundle.manifest.review)
+    assert set(documents) == {"wiki/sources.md"}
+    assert len(documents["wiki/sources.md"].encode()) > 65536
+    assert source_documents(bundle.manifest.target, list(reversed(sources)), bundle.manifest.review) == documents
+    artifact_text = documents["wiki/sources.md"]
+    metadata_text = documents["wiki/sources.md"]
+    for item in sources:
+        assert artifact_text.count(f"| {item.id} |") == 1
+        assert item.sha256 in artifact_text
+        assert metadata_text.count(item.origin) == 1
+    assert "## Shared source metadata" in artifact_text
+    assert "## Shared path prefixes" in artifact_text
+    assert "| Metadata | Authority | Version | License | Origin |" in metadata_text
+
+
+def test_large_single_metadata_table_is_published_without_truncation(bundle):
+    item = source("oversized").model_copy(update={"origin": "X" * 65536})
+    docs = source_documents(bundle.manifest.target, [item], bundle.manifest.review)
+    assert item.origin in docs["wiki/sources.md"]
+    assert item.sha256 in docs["wiki/sources.md"]

@@ -1,0 +1,3768 @@
+{
+  "artifact": {
+    "artifact_id": "ba3ff2fcb1e2b2083af0849bdef3135f19d6bb04fca70184d13bb4e6106c246a",
+    "asset_revision": "22310c7ad54daa553cf5cb11e4db08e4c8f9e93e191f3f12ec8410dd1fb40b59",
+    "bundle_revision": "2dbfa901ec294c0f8edc5e37e87d41a3aa69f169dcce18b4acf088d48f5c0167",
+    "elf_sha256": "033557658fc6f24d6912e2b47b154ac0abab4c87b735974b2338ff5f7cc51797",
+    "flashed": false,
+    "image_bytes": 4424,
+    "image_sha256": "4c3ae24a5c68b25aa1a2b258d7e4ac7c935a6bda9adcec1375b5caff2d026ec2",
+    "image_validated": true,
+    "source_sha256": "ac36a5042404fd3b110598bb3ef4d91bc6e3c53542efead6aa707b200c65358f"
+  },
+  "bundle_revision": "2dbfa901ec294c0f8edc5e37e87d41a3aa69f169dcce18b4acf088d48f5c0167",
+  "date": "2026-10-15",
+  "development_findings": [
+    "Freestanding linker rejected compiler-emitted memset from aggregate initialization. Explicit named scalar stores remove that hosted runtime dependency.",
+    "SDK v1 ignores surplus tool keys. Actual fixture MCP/script checks verify surplus address/symbol/artifact keys cannot redirect the fixed reader.",
+    "Qualifier rejects a valid stored interval falsely reported as an unvalidated prefix, including terminal failure reports."
+  ],
+  "format": "praxis-timer-observations-evidence-v1",
+  "hardware_operations": 0,
+  "independent_review": "pending",
+  "limits": [
+    "All probe responses and Docker qualification observations in this increment are explicitly synthetic fixtures, not physical board/readback evidence.",
+    "Raw captured periods recomputed; firmware self-report still requires physical qualification and independent review.",
+    "Same HSI for both counters: no independent absolute frequency/duty measurement.",
+    "Stable publication heartbeat does not rerun the test; no-edge timeout does not identify the physical cause.",
+    "No flash, reset, halt, probe discovery or read from a physical target occurred. No boot-unique identity or repeatability qualification."
+  ],
+  "physical_qualification": "not tested",
+  "scope": "Fixed paired timer software ABI, coherent read-only MCP observation and raw-period offline qualification. No new MCU operating mode or physical qualification.",
+  "software_contract": {
+    "kind": "timer-routes-v1",
+    "path": "praxis/data/timer-route-telemetry-v1.json",
+    "record_bytes": 136,
+    "sha256": "36c8d593c9d3587d24fcf8dd070c755acb871d57252abf7ea1ecd7ef8f673b60",
+    "symbol": "praxis_timer_route_telemetry"
+  },
+  "target": {
+    "board_revision": "MB997-E-01",
+    "clock_assumptions": [
+      "Reference board: STM32F407G-DISC1, MB997 E-01 schematic. Actual card revision is unconfirmed.",
+      "8 MHz X2 crystal is documented for E-01; verify oscillator assembly and solder bridges against the actual card.",
+      "168 MHz is a validated software clock recipe, NOT a claim about the running firmware. Preserve a known working clock setup for GPIO tests.",
+      "Recipe only: PLLM=8, PLLN=336, PLLP=2, PLLQ=7; AHB /1; APB1 /4 (42 MHz); APB2 /2 (84 MHz); 5 FLASH wait states, supply within the reviewed range.",
+      "SysTick_Config uses the processor clock. For 1 ms use actual SystemCoreClock / 1000 after synchronizing SystemCoreClock; do not divide by 8.",
+      "UART loopback application explicitly selects HSI nominal 16 MHz, AHB/APB1/APB2 all /1; the 168 MHz recipe is not used for this scenario. See RCC/USART/TIM2 reviewed notes; timing remains unmeasured.",
+      "ADC example additionally assumes VDDA/VREF+ in the reviewed 2.7\u20133.6 V operating range; analog supply is not measured or physically qualified."
+    ],
+    "clock_hz": 168000000,
+    "example_only": false,
+    "family": "stm32",
+    "fuse_assumptions": [],
+    "id": "stm32f407g_disc1_mb997_e01",
+    "mcu": "STM32F407VGT6",
+    "package": "Package_QFP:LQFP-100_14x14mm_P0.5mm",
+    "primary_mcu_ref": "U4",
+    "silicon_revision": "Unspecified; errata review pending"
+  },
+  "verification": {
+    "dependency_lock": "passed offline",
+    "docker": {
+      "architecture": "amd64",
+      "image": "project-praxis:timer-observations",
+      "image_id": "sha256:51bdfc24fbcf3c705155f12347b95e2a0f7946831221ca7d663af31263ee8333",
+      "limits": "Local architecture only; no compiler, physical board, or remote registry publication tested.",
+      "negative_and_runtime_checks": [
+        "MISSING_FILE",
+        "INTEGRITY_ERROR",
+        "non_root",
+        "read_only_filesystem_and_bundle",
+        "no_optional_extras"
+      ],
+      "os": "linux",
+      "passed": true,
+      "sessions": [
+        {
+          "calls": 50,
+          "complete_documents": 42,
+          "revision": "2dbfa901ec294c0f8edc5e37e87d41a3aa69f169dcce18b4acf088d48f5c0167",
+          "target": "stm32f407g_disc1_mb997_e01",
+          "trace": [
+            {
+              "arguments": {
+                "peripheral_name": "usart"
+              },
+              "bytes": 109,
+              "expected_error": "PREREQUISITE_REQUIRED",
+              "response_sha256": "3ca77b575e2247321348bdea42ed2e09e77fd8324c366efe3260cb2b23ec1910",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "query_target": "PA2"
+              },
+              "bytes": 113,
+              "expected_error": "PREREQUISITE_REQUIRED",
+              "response_sha256": "7783e48ac11d4407db75aa9236db87cce6bf9c640794759a6740354abce3315f",
+              "tool": "query_schematic_netlist"
+            },
+            {
+              "arguments": {},
+              "bytes": 26363,
+              "expected_error": null,
+              "response_sha256": "ff8db21b9e95bb40e52701a674a104cae94037da4de0b88029e5aeeb85e8a355",
+              "tool": "read_wiki_index"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "rcc"
+              },
+              "bytes": 59073,
+              "expected_error": null,
+              "response_sha256": "8b1739ebe36cf44542a5e8389a85364386203f67014ac92d9da487594e50fae4",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "flash"
+              },
+              "bytes": 9153,
+              "expected_error": null,
+              "response_sha256": "a4b20efaa50cc6ac985ca7759468de14075b45b702be29520943834ec33dd69e",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "pwr"
+              },
+              "bytes": 6775,
+              "expected_error": null,
+              "response_sha256": "5636abf09bba2f6cfd0cc00e612ccf0615520941d2bbb227d2d3683d6a7da267",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "adc_common"
+              },
+              "bytes": 8176,
+              "expected_error": null,
+              "response_sha256": "c82cfa5179c9200ab762f7888e8b87a7a6e1c2a8313389b97dd3d9783127a372",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "adc"
+              },
+              "bytes": 20339,
+              "expected_error": null,
+              "response_sha256": "0f472c62b1a70bd7f68b966b29a0073441a6fbddfea01c30f3c4e65f3463a6f5",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "gpio"
+              },
+              "bytes": 31280,
+              "expected_error": null,
+              "response_sha256": "1709ed55503a6d4749e537b57268dc6f6b2876677f497e5c4d63ae713e7d452a",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "syscfg"
+              },
+              "bytes": 6383,
+              "expected_error": null,
+              "response_sha256": "3283252957d0de84ecdc1fd62642d2b0c6ac6bc18053de74773edc240ac8a3e2",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "exti"
+              },
+              "bytes": 20092,
+              "expected_error": null,
+              "response_sha256": "5358cc8f09f780e7d5d545c1b498b637d4ad3c2da56d9efcb71b5acc36bc8b46",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "tim"
+              },
+              "bytes": 64950,
+              "expected_error": null,
+              "response_sha256": "4d22bd05a1b88566bc600589279d8b9ab8d506bc748066673c3e2b8d54d82409",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "usart"
+              },
+              "bytes": 11612,
+              "expected_error": null,
+              "response_sha256": "725b6f34cf254cb89f3d949d3a6084a18a6216681ccb3b573e05df7a4b215e47",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "nvic"
+              },
+              "bytes": 7775,
+              "expected_error": null,
+              "response_sha256": "77ca10022a59169aa53c945f31eccb1c93cd3ab7c15a80642638fb2b60ec54b5",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "can"
+              },
+              "bytes": 54067,
+              "expected_error": null,
+              "response_sha256": "e646f65de69cc347d4940af3f1c3f1ca70738185cca3844e72ee6161e9cf992f",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "coredebug"
+              },
+              "bytes": 4884,
+              "expected_error": null,
+              "response_sha256": "3c8ee59452f6e46ac63bcb702d39a07afe0a406f5fdbb21734bd1d73f0b6d4c4",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "crc"
+              },
+              "bytes": 4044,
+              "expected_error": null,
+              "response_sha256": "47b893e55424a2167ebb1027aea1845be7f0129540b1f725fdd81bd850cdce6b",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "dac"
+              },
+              "bytes": 21043,
+              "expected_error": null,
+              "response_sha256": "6211ec84b66a428d4b47844a79e97d74a1a4b98e97774bdaa10e14e42cd4d7db",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "dbgmcu"
+              },
+              "bytes": 2878,
+              "expected_error": null,
+              "response_sha256": "0608f9c3225790a9fa5766697358f2e7cf3770d766f961b8e7137af8fb031f84",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "dcmi"
+              },
+              "bytes": 6965,
+              "expected_error": null,
+              "response_sha256": "34d3b70be264989d3e1764afdd61896d3637b72c44a5592d308815616e545992",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "dma"
+              },
+              "bytes": 17152,
+              "expected_error": null,
+              "response_sha256": "f7673cef74eff36a3002109cfb13e0391a205cdb8ca1a73563edcc88740f84c5",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "dma_stream"
+              },
+              "bytes": 14486,
+              "expected_error": null,
+              "response_sha256": "22126039fcc199915074f433742a7543e35e0ba08a50fb0b54065bb14ba27ab9",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "dwt"
+              },
+              "bytes": 7222,
+              "expected_error": null,
+              "response_sha256": "90c60c8776ecc48beea273e69102018f82578a587c5525b3cd29ec39898e7331",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "eth"
+              },
+              "bytes": 35145,
+              "expected_error": null,
+              "response_sha256": "610ef46679d2f2b5f734d13e0c12914903daeb297a59348c87658111b6cd2f75",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "fpu"
+              },
+              "bytes": 5829,
+              "expected_error": null,
+              "response_sha256": "457005c66dd8917a2733848cf6af602dd97323277d045edb8234debc01b8e024",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "fsmc_bank1"
+              },
+              "bytes": 1649,
+              "expected_error": null,
+              "response_sha256": "ecd22b4f90112db5fc77f16ff4db91d4e756764149446042363a94981a0e2ce9",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "fsmc_bank1e"
+              },
+              "bytes": 1654,
+              "expected_error": null,
+              "response_sha256": "1e53ad55381b5a21ca6586a7b3345c79d7c2ea275a6b77b80dc795236c11a490",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "fsmc_bank2_3"
+              },
+              "bytes": 2902,
+              "expected_error": null,
+              "response_sha256": "540c7596391c82981dd73d70e656831e52d65e3f3e58efd5a5b1983bfccd2a7b",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "fsmc_bank4"
+              },
+              "bytes": 2168,
+              "expected_error": null,
+              "response_sha256": "5a968d84e3865a756a1dd74a2c8052e36d1ce107392a2b6e3c0f5c2ce202d76c",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "i2c"
+              },
+              "bytes": 18448,
+              "expected_error": null,
+              "response_sha256": "0c0086bcc041a4042c681a535d4110a34f9de28c30fbc321340e8e1c4b54ffc3",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "itm"
+              },
+              "bytes": 6209,
+              "expected_error": null,
+              "response_sha256": "0b90c77a5aa2e714328c95d3ed96c39a5fbe0988b0894b9a00c1bdb9cae5d3b9",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "iwdg"
+              },
+              "bytes": 5243,
+              "expected_error": null,
+              "response_sha256": "ae2cee88a164f94cc5e9340709fb082dfbe280b16955aae0d521e905388fd99e",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "mpu"
+              },
+              "bytes": 4677,
+              "expected_error": null,
+              "response_sha256": "2067229f083c5e95ed10a36ca0908429fcf17bba70c52ee81f4813283b2c2042",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "rng"
+              },
+              "bytes": 6131,
+              "expected_error": null,
+              "response_sha256": "edc7060db4e5e596fcb28962ad80fdf70a590cb469f12ddf97757843982dd759",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "rtc"
+              },
+              "bytes": 23302,
+              "expected_error": null,
+              "response_sha256": "c6dc5272a959ccb74ddb3bb191bf1a9c73eb89c21257fe7c6c62e41a05f239b2",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "scb"
+              },
+              "bytes": 18699,
+              "expected_error": null,
+              "response_sha256": "7b107446ecc59d65d3c483fede8608c35bd3f5ef2251a4792092a7f5adf1f049",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "scnscb"
+              },
+              "bytes": 1725,
+              "expected_error": null,
+              "response_sha256": "330d9105cfdc07638d05afc874c223d39c77fa2df76ba65ad19b8c44bc22f8bb",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "sdio"
+              },
+              "bytes": 16121,
+              "expected_error": null,
+              "response_sha256": "5c1996e491b92b98cafc01435b3497f6d4dd6cb0f7c6537b14756cf14ac3ca52",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "spi"
+              },
+              "bytes": 17102,
+              "expected_error": null,
+              "response_sha256": "d305926354596e925996d71a12be6e227113ac03cefe761ec5f8d31c27fa55ac",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "systick"
+              },
+              "bytes": 11872,
+              "expected_error": null,
+              "response_sha256": "8e70b06df15d0d8cb9873918ed0381c26778fa5ced81d654c843d2fc8588a8c2",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "tpi"
+              },
+              "bytes": 8169,
+              "expected_error": null,
+              "response_sha256": "039498ba6bf97c92b58259e41aae14d45af2c3eb51fdbff59c55599c0fca74d2",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "usb_otg_device"
+              },
+              "bytes": 11162,
+              "expected_error": null,
+              "response_sha256": "09702cbe70ab38bd4ce05d647d5a720b58c5ab801a1867caa6fb3ae1b8ef86bd",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "usb_otg_global"
+              },
+              "bytes": 19721,
+              "expected_error": null,
+              "response_sha256": "9ccf2ee61729e5743a06a04fa3f5005b948ef0714f12f26f06180589606c7e6f",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "usb_otg_host"
+              },
+              "bytes": 3906,
+              "expected_error": null,
+              "response_sha256": "da0ad90e610b460727c5a3011263630585d6847e8afba7e94bf6ca5f22bcf01e",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "wwdg"
+              },
+              "bytes": 2493,
+              "expected_error": null,
+              "response_sha256": "b6d5e8efc824edfb902f2cad50986345cdd10fcdcc8818b9f4b720493f30b8ec",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "query_target": "LED_A"
+              },
+              "bytes": 12735,
+              "expected_error": null,
+              "response_sha256": "2857bd1b07e184a09dfe9c3b1727118c6f7d5838a3f2c2d9fcccf806ebd934c9",
+              "tool": "query_schematic_netlist"
+            },
+            {
+              "arguments": {
+                "query_target": "praxis_absent_net"
+              },
+              "bytes": 78,
+              "expected_error": null,
+              "response_sha256": "16ecb34476cd795bd536288752eed3dd4adfe734503f4d66bb3bf8873e43dc21",
+              "tool": "query_schematic_netlist"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "../gpio"
+              },
+              "bytes": 135,
+              "expected_error": "INVALID_INPUT",
+              "response_sha256": "e769d6a8adfd62a3caeef79db4d8235733bb485cfce9ebfc2838d190c2395542",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {},
+              "bytes": 26363,
+              "expected_error": null,
+              "response_sha256": "ff8db21b9e95bb40e52701a674a104cae94037da4de0b88029e5aeeb85e8a355",
+              "tool": "read_wiki_index"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "USART"
+              },
+              "bytes": 11612,
+              "expected_error": null,
+              "response_sha256": "725b6f34cf254cb89f3d949d3a6084a18a6216681ccb3b573e05df7a4b215e47",
+              "tool": "read_peripheral_doc"
+            }
+          ]
+        },
+        {
+          "calls": 50,
+          "complete_documents": 42,
+          "revision": "7eaf41a0731ce97aba38f64fc94b2cf3fd32361565d7e99e3f37d24f3eccfbe1",
+          "target": "stm32f407g_disc1_mb997_e01",
+          "trace": [
+            {
+              "arguments": {
+                "peripheral_name": "usart"
+              },
+              "bytes": 109,
+              "expected_error": "PREREQUISITE_REQUIRED",
+              "response_sha256": "3ca77b575e2247321348bdea42ed2e09e77fd8324c366efe3260cb2b23ec1910",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "query_target": "PA2"
+              },
+              "bytes": 113,
+              "expected_error": "PREREQUISITE_REQUIRED",
+              "response_sha256": "7783e48ac11d4407db75aa9236db87cce6bf9c640794759a6740354abce3315f",
+              "tool": "query_schematic_netlist"
+            },
+            {
+              "arguments": {},
+              "bytes": 25830,
+              "expected_error": null,
+              "response_sha256": "06954adde2f44f3aab8012495550d6d93fc6c7fa772bf45587c351b186a63848",
+              "tool": "read_wiki_index"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "rcc"
+              },
+              "bytes": 57362,
+              "expected_error": null,
+              "response_sha256": "060bf8c3576c57e9dff81c65c9516d0e3fbac84b678d9da32c48ee69c81bbcd2",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "flash"
+              },
+              "bytes": 9153,
+              "expected_error": null,
+              "response_sha256": "a4b20efaa50cc6ac985ca7759468de14075b45b702be29520943834ec33dd69e",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "pwr"
+              },
+              "bytes": 6775,
+              "expected_error": null,
+              "response_sha256": "5636abf09bba2f6cfd0cc00e612ccf0615520941d2bbb227d2d3683d6a7da267",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "adc_common"
+              },
+              "bytes": 8176,
+              "expected_error": null,
+              "response_sha256": "c82cfa5179c9200ab762f7888e8b87a7a6e1c2a8313389b97dd3d9783127a372",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "adc"
+              },
+              "bytes": 20339,
+              "expected_error": null,
+              "response_sha256": "0f472c62b1a70bd7f68b966b29a0073441a6fbddfea01c30f3c4e65f3463a6f5",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "gpio"
+              },
+              "bytes": 27238,
+              "expected_error": null,
+              "response_sha256": "d8a069a48283070f980f64c7861d29bec0f258c8f51f3a44f3204e7c21409495",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "syscfg"
+              },
+              "bytes": 6383,
+              "expected_error": null,
+              "response_sha256": "3283252957d0de84ecdc1fd62642d2b0c6ac6bc18053de74773edc240ac8a3e2",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "exti"
+              },
+              "bytes": 20092,
+              "expected_error": null,
+              "response_sha256": "5358cc8f09f780e7d5d545c1b498b637d4ad3c2da56d9efcb71b5acc36bc8b46",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "tim"
+              },
+              "bytes": 51427,
+              "expected_error": null,
+              "response_sha256": "61be09e02ad0b32fbb7223c7b6a8dbb61188c4c4d55ec93ce3062646867f458c",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "usart"
+              },
+              "bytes": 11612,
+              "expected_error": null,
+              "response_sha256": "725b6f34cf254cb89f3d949d3a6084a18a6216681ccb3b573e05df7a4b215e47",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "nvic"
+              },
+              "bytes": 7775,
+              "expected_error": null,
+              "response_sha256": "77ca10022a59169aa53c945f31eccb1c93cd3ab7c15a80642638fb2b60ec54b5",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "can"
+              },
+              "bytes": 54067,
+              "expected_error": null,
+              "response_sha256": "e646f65de69cc347d4940af3f1c3f1ca70738185cca3844e72ee6161e9cf992f",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "coredebug"
+              },
+              "bytes": 4884,
+              "expected_error": null,
+              "response_sha256": "3c8ee59452f6e46ac63bcb702d39a07afe0a406f5fdbb21734bd1d73f0b6d4c4",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "crc"
+              },
+              "bytes": 4044,
+              "expected_error": null,
+              "response_sha256": "47b893e55424a2167ebb1027aea1845be7f0129540b1f725fdd81bd850cdce6b",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "dac"
+              },
+              "bytes": 21043,
+              "expected_error": null,
+              "response_sha256": "6211ec84b66a428d4b47844a79e97d74a1a4b98e97774bdaa10e14e42cd4d7db",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "dbgmcu"
+              },
+              "bytes": 2878,
+              "expected_error": null,
+              "response_sha256": "0608f9c3225790a9fa5766697358f2e7cf3770d766f961b8e7137af8fb031f84",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "dcmi"
+              },
+              "bytes": 6965,
+              "expected_error": null,
+              "response_sha256": "34d3b70be264989d3e1764afdd61896d3637b72c44a5592d308815616e545992",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "dma"
+              },
+              "bytes": 17152,
+              "expected_error": null,
+              "response_sha256": "f7673cef74eff36a3002109cfb13e0391a205cdb8ca1a73563edcc88740f84c5",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "dma_stream"
+              },
+              "bytes": 14486,
+              "expected_error": null,
+              "response_sha256": "22126039fcc199915074f433742a7543e35e0ba08a50fb0b54065bb14ba27ab9",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "dwt"
+              },
+              "bytes": 7222,
+              "expected_error": null,
+              "response_sha256": "90c60c8776ecc48beea273e69102018f82578a587c5525b3cd29ec39898e7331",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "eth"
+              },
+              "bytes": 35145,
+              "expected_error": null,
+              "response_sha256": "610ef46679d2f2b5f734d13e0c12914903daeb297a59348c87658111b6cd2f75",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "fpu"
+              },
+              "bytes": 5829,
+              "expected_error": null,
+              "response_sha256": "457005c66dd8917a2733848cf6af602dd97323277d045edb8234debc01b8e024",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "fsmc_bank1"
+              },
+              "bytes": 1649,
+              "expected_error": null,
+              "response_sha256": "ecd22b4f90112db5fc77f16ff4db91d4e756764149446042363a94981a0e2ce9",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "fsmc_bank1e"
+              },
+              "bytes": 1654,
+              "expected_error": null,
+              "response_sha256": "1e53ad55381b5a21ca6586a7b3345c79d7c2ea275a6b77b80dc795236c11a490",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "fsmc_bank2_3"
+              },
+              "bytes": 2902,
+              "expected_error": null,
+              "response_sha256": "540c7596391c82981dd73d70e656831e52d65e3f3e58efd5a5b1983bfccd2a7b",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "fsmc_bank4"
+              },
+              "bytes": 2168,
+              "expected_error": null,
+              "response_sha256": "5a968d84e3865a756a1dd74a2c8052e36d1ce107392a2b6e3c0f5c2ce202d76c",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "i2c"
+              },
+              "bytes": 18448,
+              "expected_error": null,
+              "response_sha256": "0c0086bcc041a4042c681a535d4110a34f9de28c30fbc321340e8e1c4b54ffc3",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "itm"
+              },
+              "bytes": 6209,
+              "expected_error": null,
+              "response_sha256": "0b90c77a5aa2e714328c95d3ed96c39a5fbe0988b0894b9a00c1bdb9cae5d3b9",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "iwdg"
+              },
+              "bytes": 5243,
+              "expected_error": null,
+              "response_sha256": "ae2cee88a164f94cc5e9340709fb082dfbe280b16955aae0d521e905388fd99e",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "mpu"
+              },
+              "bytes": 4677,
+              "expected_error": null,
+              "response_sha256": "2067229f083c5e95ed10a36ca0908429fcf17bba70c52ee81f4813283b2c2042",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "rng"
+              },
+              "bytes": 6131,
+              "expected_error": null,
+              "response_sha256": "edc7060db4e5e596fcb28962ad80fdf70a590cb469f12ddf97757843982dd759",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "rtc"
+              },
+              "bytes": 23302,
+              "expected_error": null,
+              "response_sha256": "c6dc5272a959ccb74ddb3bb191bf1a9c73eb89c21257fe7c6c62e41a05f239b2",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "scb"
+              },
+              "bytes": 18699,
+              "expected_error": null,
+              "response_sha256": "7b107446ecc59d65d3c483fede8608c35bd3f5ef2251a4792092a7f5adf1f049",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "scnscb"
+              },
+              "bytes": 1725,
+              "expected_error": null,
+              "response_sha256": "330d9105cfdc07638d05afc874c223d39c77fa2df76ba65ad19b8c44bc22f8bb",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "sdio"
+              },
+              "bytes": 16121,
+              "expected_error": null,
+              "response_sha256": "5c1996e491b92b98cafc01435b3497f6d4dd6cb0f7c6537b14756cf14ac3ca52",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "spi"
+              },
+              "bytes": 17102,
+              "expected_error": null,
+              "response_sha256": "d305926354596e925996d71a12be6e227113ac03cefe761ec5f8d31c27fa55ac",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "systick"
+              },
+              "bytes": 11872,
+              "expected_error": null,
+              "response_sha256": "8e70b06df15d0d8cb9873918ed0381c26778fa5ced81d654c843d2fc8588a8c2",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "tpi"
+              },
+              "bytes": 8169,
+              "expected_error": null,
+              "response_sha256": "039498ba6bf97c92b58259e41aae14d45af2c3eb51fdbff59c55599c0fca74d2",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "usb_otg_device"
+              },
+              "bytes": 11162,
+              "expected_error": null,
+              "response_sha256": "09702cbe70ab38bd4ce05d647d5a720b58c5ab801a1867caa6fb3ae1b8ef86bd",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "usb_otg_global"
+              },
+              "bytes": 19721,
+              "expected_error": null,
+              "response_sha256": "9ccf2ee61729e5743a06a04fa3f5005b948ef0714f12f26f06180589606c7e6f",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "usb_otg_host"
+              },
+              "bytes": 3906,
+              "expected_error": null,
+              "response_sha256": "da0ad90e610b460727c5a3011263630585d6847e8afba7e94bf6ca5f22bcf01e",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "wwdg"
+              },
+              "bytes": 2493,
+              "expected_error": null,
+              "response_sha256": "b6d5e8efc824edfb902f2cad50986345cdd10fcdcc8818b9f4b720493f30b8ec",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "query_target": "LED_A"
+              },
+              "bytes": 11834,
+              "expected_error": null,
+              "response_sha256": "afdbe165c7678de830867a141ab63f89f7fc690f73556420abc9af9721608855",
+              "tool": "query_schematic_netlist"
+            },
+            {
+              "arguments": {
+                "query_target": "praxis_absent_net"
+              },
+              "bytes": 78,
+              "expected_error": null,
+              "response_sha256": "16ecb34476cd795bd536288752eed3dd4adfe734503f4d66bb3bf8873e43dc21",
+              "tool": "query_schematic_netlist"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "../gpio"
+              },
+              "bytes": 135,
+              "expected_error": "INVALID_INPUT",
+              "response_sha256": "e769d6a8adfd62a3caeef79db4d8235733bb485cfce9ebfc2838d190c2395542",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {},
+              "bytes": 25830,
+              "expected_error": null,
+              "response_sha256": "06954adde2f44f3aab8012495550d6d93fc6c7fa772bf45587c351b186a63848",
+              "tool": "read_wiki_index"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "USART"
+              },
+              "bytes": 11612,
+              "expected_error": null,
+              "response_sha256": "725b6f34cf254cb89f3d949d3a6084a18a6216681ccb3b573e05df7a4b215e47",
+              "tool": "read_peripheral_doc"
+            }
+          ]
+        },
+        {
+          "calls": 12,
+          "complete_documents": 4,
+          "revision": "9254f63b1d16f4296641e3bf5ab047593373d8a8fe42666b43b89362b1efc7e7",
+          "target": "atmega328p_fixture",
+          "trace": [
+            {
+              "arguments": {
+                "peripheral_name": "usart"
+              },
+              "bytes": 109,
+              "expected_error": "PREREQUISITE_REQUIRED",
+              "response_sha256": "3ca77b575e2247321348bdea42ed2e09e77fd8324c366efe3260cb2b23ec1910",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "query_target": "PA2"
+              },
+              "bytes": 113,
+              "expected_error": "PREREQUISITE_REQUIRED",
+              "response_sha256": "7783e48ac11d4407db75aa9236db87cce6bf9c640794759a6740354abce3315f",
+              "tool": "query_schematic_netlist"
+            },
+            {
+              "arguments": {},
+              "bytes": 1468,
+              "expected_error": null,
+              "response_sha256": "02d2e034b6c9961d420837fa7d1411bb74519846b5889b8134f9a2ae499cbeba",
+              "tool": "read_wiki_index"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "clock"
+              },
+              "bytes": 3266,
+              "expected_error": null,
+              "response_sha256": "418e7af3a6357ead16625da55bd712ae099e45248d3f219c804d3c3542c080c1",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "gpio"
+              },
+              "bytes": 4589,
+              "expected_error": null,
+              "response_sha256": "da1eb859e688a939017e2f675d2e24fe158028ea94d3f2913c89b9b78b69535c",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "usart"
+              },
+              "bytes": 5960,
+              "expected_error": null,
+              "response_sha256": "35777ca47cafd4b314d49ae4be5d467b84e9100004efec4b2555b675b1197038",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "interrupts"
+              },
+              "bytes": 3004,
+              "expected_error": null,
+              "response_sha256": "82438ef5bef3c362d7fd1cc41275c27b331320b50ea447fafc46318f50d3935b",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "query_target": "UART_RX"
+              },
+              "bytes": 867,
+              "expected_error": null,
+              "response_sha256": "2e5f4d04368db4dd33160149ecd6ff26a065e4184555319cdbe91bf93264fbaf",
+              "tool": "query_schematic_netlist"
+            },
+            {
+              "arguments": {
+                "query_target": "praxis_absent_net"
+              },
+              "bytes": 78,
+              "expected_error": null,
+              "response_sha256": "16ecb34476cd795bd536288752eed3dd4adfe734503f4d66bb3bf8873e43dc21",
+              "tool": "query_schematic_netlist"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "../gpio"
+              },
+              "bytes": 135,
+              "expected_error": "INVALID_INPUT",
+              "response_sha256": "e769d6a8adfd62a3caeef79db4d8235733bb485cfce9ebfc2838d190c2395542",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {},
+              "bytes": 1468,
+              "expected_error": null,
+              "response_sha256": "02d2e034b6c9961d420837fa7d1411bb74519846b5889b8134f9a2ae499cbeba",
+              "tool": "read_wiki_index"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "USART"
+              },
+              "bytes": 5960,
+              "expected_error": null,
+              "response_sha256": "35777ca47cafd4b314d49ae4be5d467b84e9100004efec4b2555b675b1197038",
+              "tool": "read_peripheral_doc"
+            }
+          ]
+        },
+        {
+          "calls": 50,
+          "complete_documents": 42,
+          "revision": "2dbfa901ec294c0f8edc5e37e87d41a3aa69f169dcce18b4acf088d48f5c0167",
+          "target": "stm32f407g_disc1_mb997_e01",
+          "trace": [
+            {
+              "arguments": {
+                "peripheral_name": "usart"
+              },
+              "bytes": 109,
+              "expected_error": "PREREQUISITE_REQUIRED",
+              "response_sha256": "3ca77b575e2247321348bdea42ed2e09e77fd8324c366efe3260cb2b23ec1910",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "query_target": "PA2"
+              },
+              "bytes": 113,
+              "expected_error": "PREREQUISITE_REQUIRED",
+              "response_sha256": "7783e48ac11d4407db75aa9236db87cce6bf9c640794759a6740354abce3315f",
+              "tool": "query_schematic_netlist"
+            },
+            {
+              "arguments": {},
+              "bytes": 26363,
+              "expected_error": null,
+              "response_sha256": "ff8db21b9e95bb40e52701a674a104cae94037da4de0b88029e5aeeb85e8a355",
+              "tool": "read_wiki_index"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "rcc"
+              },
+              "bytes": 59073,
+              "expected_error": null,
+              "response_sha256": "8b1739ebe36cf44542a5e8389a85364386203f67014ac92d9da487594e50fae4",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "flash"
+              },
+              "bytes": 9153,
+              "expected_error": null,
+              "response_sha256": "a4b20efaa50cc6ac985ca7759468de14075b45b702be29520943834ec33dd69e",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "pwr"
+              },
+              "bytes": 6775,
+              "expected_error": null,
+              "response_sha256": "5636abf09bba2f6cfd0cc00e612ccf0615520941d2bbb227d2d3683d6a7da267",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "adc_common"
+              },
+              "bytes": 8176,
+              "expected_error": null,
+              "response_sha256": "c82cfa5179c9200ab762f7888e8b87a7a6e1c2a8313389b97dd3d9783127a372",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "adc"
+              },
+              "bytes": 20339,
+              "expected_error": null,
+              "response_sha256": "0f472c62b1a70bd7f68b966b29a0073441a6fbddfea01c30f3c4e65f3463a6f5",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "gpio"
+              },
+              "bytes": 31280,
+              "expected_error": null,
+              "response_sha256": "1709ed55503a6d4749e537b57268dc6f6b2876677f497e5c4d63ae713e7d452a",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "syscfg"
+              },
+              "bytes": 6383,
+              "expected_error": null,
+              "response_sha256": "3283252957d0de84ecdc1fd62642d2b0c6ac6bc18053de74773edc240ac8a3e2",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "exti"
+              },
+              "bytes": 20092,
+              "expected_error": null,
+              "response_sha256": "5358cc8f09f780e7d5d545c1b498b637d4ad3c2da56d9efcb71b5acc36bc8b46",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "tim"
+              },
+              "bytes": 64950,
+              "expected_error": null,
+              "response_sha256": "4d22bd05a1b88566bc600589279d8b9ab8d506bc748066673c3e2b8d54d82409",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "usart"
+              },
+              "bytes": 11612,
+              "expected_error": null,
+              "response_sha256": "725b6f34cf254cb89f3d949d3a6084a18a6216681ccb3b573e05df7a4b215e47",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "nvic"
+              },
+              "bytes": 7775,
+              "expected_error": null,
+              "response_sha256": "77ca10022a59169aa53c945f31eccb1c93cd3ab7c15a80642638fb2b60ec54b5",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "can"
+              },
+              "bytes": 54067,
+              "expected_error": null,
+              "response_sha256": "e646f65de69cc347d4940af3f1c3f1ca70738185cca3844e72ee6161e9cf992f",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "coredebug"
+              },
+              "bytes": 4884,
+              "expected_error": null,
+              "response_sha256": "3c8ee59452f6e46ac63bcb702d39a07afe0a406f5fdbb21734bd1d73f0b6d4c4",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "crc"
+              },
+              "bytes": 4044,
+              "expected_error": null,
+              "response_sha256": "47b893e55424a2167ebb1027aea1845be7f0129540b1f725fdd81bd850cdce6b",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "dac"
+              },
+              "bytes": 21043,
+              "expected_error": null,
+              "response_sha256": "6211ec84b66a428d4b47844a79e97d74a1a4b98e97774bdaa10e14e42cd4d7db",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "dbgmcu"
+              },
+              "bytes": 2878,
+              "expected_error": null,
+              "response_sha256": "0608f9c3225790a9fa5766697358f2e7cf3770d766f961b8e7137af8fb031f84",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "dcmi"
+              },
+              "bytes": 6965,
+              "expected_error": null,
+              "response_sha256": "34d3b70be264989d3e1764afdd61896d3637b72c44a5592d308815616e545992",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "dma"
+              },
+              "bytes": 17152,
+              "expected_error": null,
+              "response_sha256": "f7673cef74eff36a3002109cfb13e0391a205cdb8ca1a73563edcc88740f84c5",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "dma_stream"
+              },
+              "bytes": 14486,
+              "expected_error": null,
+              "response_sha256": "22126039fcc199915074f433742a7543e35e0ba08a50fb0b54065bb14ba27ab9",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "dwt"
+              },
+              "bytes": 7222,
+              "expected_error": null,
+              "response_sha256": "90c60c8776ecc48beea273e69102018f82578a587c5525b3cd29ec39898e7331",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "eth"
+              },
+              "bytes": 35145,
+              "expected_error": null,
+              "response_sha256": "610ef46679d2f2b5f734d13e0c12914903daeb297a59348c87658111b6cd2f75",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "fpu"
+              },
+              "bytes": 5829,
+              "expected_error": null,
+              "response_sha256": "457005c66dd8917a2733848cf6af602dd97323277d045edb8234debc01b8e024",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "fsmc_bank1"
+              },
+              "bytes": 1649,
+              "expected_error": null,
+              "response_sha256": "ecd22b4f90112db5fc77f16ff4db91d4e756764149446042363a94981a0e2ce9",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "fsmc_bank1e"
+              },
+              "bytes": 1654,
+              "expected_error": null,
+              "response_sha256": "1e53ad55381b5a21ca6586a7b3345c79d7c2ea275a6b77b80dc795236c11a490",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "fsmc_bank2_3"
+              },
+              "bytes": 2902,
+              "expected_error": null,
+              "response_sha256": "540c7596391c82981dd73d70e656831e52d65e3f3e58efd5a5b1983bfccd2a7b",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "fsmc_bank4"
+              },
+              "bytes": 2168,
+              "expected_error": null,
+              "response_sha256": "5a968d84e3865a756a1dd74a2c8052e36d1ce107392a2b6e3c0f5c2ce202d76c",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "i2c"
+              },
+              "bytes": 18448,
+              "expected_error": null,
+              "response_sha256": "0c0086bcc041a4042c681a535d4110a34f9de28c30fbc321340e8e1c4b54ffc3",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "itm"
+              },
+              "bytes": 6209,
+              "expected_error": null,
+              "response_sha256": "0b90c77a5aa2e714328c95d3ed96c39a5fbe0988b0894b9a00c1bdb9cae5d3b9",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "iwdg"
+              },
+              "bytes": 5243,
+              "expected_error": null,
+              "response_sha256": "ae2cee88a164f94cc5e9340709fb082dfbe280b16955aae0d521e905388fd99e",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "mpu"
+              },
+              "bytes": 4677,
+              "expected_error": null,
+              "response_sha256": "2067229f083c5e95ed10a36ca0908429fcf17bba70c52ee81f4813283b2c2042",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "rng"
+              },
+              "bytes": 6131,
+              "expected_error": null,
+              "response_sha256": "edc7060db4e5e596fcb28962ad80fdf70a590cb469f12ddf97757843982dd759",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "rtc"
+              },
+              "bytes": 23302,
+              "expected_error": null,
+              "response_sha256": "c6dc5272a959ccb74ddb3bb191bf1a9c73eb89c21257fe7c6c62e41a05f239b2",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "scb"
+              },
+              "bytes": 18699,
+              "expected_error": null,
+              "response_sha256": "7b107446ecc59d65d3c483fede8608c35bd3f5ef2251a4792092a7f5adf1f049",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "scnscb"
+              },
+              "bytes": 1725,
+              "expected_error": null,
+              "response_sha256": "330d9105cfdc07638d05afc874c223d39c77fa2df76ba65ad19b8c44bc22f8bb",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "sdio"
+              },
+              "bytes": 16121,
+              "expected_error": null,
+              "response_sha256": "5c1996e491b92b98cafc01435b3497f6d4dd6cb0f7c6537b14756cf14ac3ca52",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "spi"
+              },
+              "bytes": 17102,
+              "expected_error": null,
+              "response_sha256": "d305926354596e925996d71a12be6e227113ac03cefe761ec5f8d31c27fa55ac",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "systick"
+              },
+              "bytes": 11872,
+              "expected_error": null,
+              "response_sha256": "8e70b06df15d0d8cb9873918ed0381c26778fa5ced81d654c843d2fc8588a8c2",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "tpi"
+              },
+              "bytes": 8169,
+              "expected_error": null,
+              "response_sha256": "039498ba6bf97c92b58259e41aae14d45af2c3eb51fdbff59c55599c0fca74d2",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "usb_otg_device"
+              },
+              "bytes": 11162,
+              "expected_error": null,
+              "response_sha256": "09702cbe70ab38bd4ce05d647d5a720b58c5ab801a1867caa6fb3ae1b8ef86bd",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "usb_otg_global"
+              },
+              "bytes": 19721,
+              "expected_error": null,
+              "response_sha256": "9ccf2ee61729e5743a06a04fa3f5005b948ef0714f12f26f06180589606c7e6f",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "usb_otg_host"
+              },
+              "bytes": 3906,
+              "expected_error": null,
+              "response_sha256": "da0ad90e610b460727c5a3011263630585d6847e8afba7e94bf6ca5f22bcf01e",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "wwdg"
+              },
+              "bytes": 2493,
+              "expected_error": null,
+              "response_sha256": "b6d5e8efc824edfb902f2cad50986345cdd10fcdcc8818b9f4b720493f30b8ec",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {
+                "query_target": "LED_A"
+              },
+              "bytes": 12735,
+              "expected_error": null,
+              "response_sha256": "2857bd1b07e184a09dfe9c3b1727118c6f7d5838a3f2c2d9fcccf806ebd934c9",
+              "tool": "query_schematic_netlist"
+            },
+            {
+              "arguments": {
+                "query_target": "praxis_absent_net"
+              },
+              "bytes": 78,
+              "expected_error": null,
+              "response_sha256": "16ecb34476cd795bd536288752eed3dd4adfe734503f4d66bb3bf8873e43dc21",
+              "tool": "query_schematic_netlist"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "../gpio"
+              },
+              "bytes": 135,
+              "expected_error": "INVALID_INPUT",
+              "response_sha256": "e769d6a8adfd62a3caeef79db4d8235733bb485cfce9ebfc2838d190c2395542",
+              "tool": "read_peripheral_doc"
+            },
+            {
+              "arguments": {},
+              "bytes": 26363,
+              "expected_error": null,
+              "response_sha256": "ff8db21b9e95bb40e52701a674a104cae94037da4de0b88029e5aeeb85e8a355",
+              "tool": "read_wiki_index"
+            },
+            {
+              "arguments": {
+                "peripheral_name": "USART"
+              },
+              "bytes": 11612,
+              "expected_error": null,
+              "response_sha256": "725b6f34cf254cb89f3d949d3a6084a18a6216681ccb3b573e05df7a4b215e47",
+              "tool": "read_peripheral_doc"
+            }
+          ]
+        }
+      ]
+    },
+    "docker_fixture_qualification": {
+      "cases": [
+        {
+          "exit_code": 0,
+          "expected": "passed",
+          "expected_result_matched": true,
+          "fault": 0,
+          "fixture_sha256": "2c347e9e87638ee334b40a4ab42bceaca6f3a91d934771b07cfb399cf7e21023",
+          "passed": true,
+          "report": {
+            "artifact_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "bundle_revision": "2dbfa901ec294c0f8edc5e37e87d41a3aa69f169dcce18b4acf088d48f5c0167",
+            "expected": "passed",
+            "format": "praxis-timer-route-qualification-v1",
+            "input_sha256": [
+              "2c347e9e87638ee334b40a4ab42bceaca6f3a91d934771b07cfb399cf7e21023"
+            ],
+            "limits": [
+              "Qualifies firmware self-reports and captured counter differences, not independent electrical measurements.",
+              "Both timers share HSI; relative ticks do not calibrate frequency, duty cycle or oscillator accuracy.",
+              "No-edge timeout does not identify a removed jumper or exclude other physical faults.",
+              "Publication progress is a software heartbeat, not repeated loopback execution.",
+              "Recorded exact-image checks are reported evidence, not re-executed offline.",
+              "No boot-unique identity; reset and rollover cannot always be distinguished.",
+              "No timer IRQ/DMA, repeatability or full MCU acceptance is established."
+            ],
+            "mutating_operations": 0,
+            "ordered_publication_progress": true,
+            "passed": true,
+            "repeatability_qualified": false,
+            "same_image": true,
+            "terminal_result_stable": true,
+            "windows": [
+              {
+                "assessment": {
+                  "firmware_failure_reported": false,
+                  "fresh_publication_progress": true,
+                  "limits": [
+                    "Qualifies firmware self-reports and captured counter differences, not independent electrical measurements.",
+                    "Both timers share HSI; relative ticks do not calibrate frequency, duty cycle or oscillator accuracy.",
+                    "No-edge timeout does not identify a removed jumper or exclude other physical faults.",
+                    "Publication progress is a software heartbeat, not repeated loopback execution.",
+                    "Recorded exact-image checks are reported evidence, not re-executed offline.",
+                    "No boot-unique identity; reset and rollover cannot always be distinguished.",
+                    "No timer IRQ/DMA, repeatability or full MCU acceptance is established."
+                  ],
+                  "loopback_success_reported": true,
+                  "safe_failure_reported": false,
+                  "sample_checks": {
+                    "all_periods_recomputed": true,
+                    "complete_capture_count": true,
+                    "fixed_recipe": true,
+                    "no_edge_timeout": false,
+                    "safe_failure_status": false,
+                    "shutdown_snapshots_present": true,
+                    "shutdown_snapshots_quiet": true,
+                    "success_status": true,
+                    "unused_capture_words_zero": true,
+                    "validated_prefix_matches": true
+                  },
+                  "terminal_result_stable": true
+                },
+                "checks": {
+                  "abi_matches": true,
+                  "all_periods_recomputed": true,
+                  "artifact_matches": true,
+                  "bundle_matches": true,
+                  "complete_capture_count": true,
+                  "cpu_running_reported": true,
+                  "fixed_recipe": true,
+                  "fresh_publication_progress": true,
+                  "image_checks_reported": true,
+                  "image_identity_present": true,
+                  "shutdown_snapshots_present": true,
+                  "shutdown_snapshots_quiet": true,
+                  "success_status": true,
+                  "terminal_result_stable": true,
+                  "unused_capture_words_zero": true,
+                  "validated_prefix_matches": true
+                },
+                "failures": [],
+                "passed": true,
+                "sample_count": 3
+              }
+            ]
+          }
+        },
+        {
+          "exit_code": 0,
+          "expected": "timeout",
+          "expected_result_matched": true,
+          "fault": 1,
+          "fixture_sha256": "d2b455396b252ce3127dcefa536470b2cab90342fbea91d01d4c143e264d4e78",
+          "passed": true,
+          "report": {
+            "artifact_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "bundle_revision": "2dbfa901ec294c0f8edc5e37e87d41a3aa69f169dcce18b4acf088d48f5c0167",
+            "expected": "timeout",
+            "format": "praxis-timer-route-qualification-v1",
+            "input_sha256": [
+              "d2b455396b252ce3127dcefa536470b2cab90342fbea91d01d4c143e264d4e78"
+            ],
+            "limits": [
+              "Qualifies firmware self-reports and captured counter differences, not independent electrical measurements.",
+              "Both timers share HSI; relative ticks do not calibrate frequency, duty cycle or oscillator accuracy.",
+              "No-edge timeout does not identify a removed jumper or exclude other physical faults.",
+              "Publication progress is a software heartbeat, not repeated loopback execution.",
+              "Recorded exact-image checks are reported evidence, not re-executed offline.",
+              "No boot-unique identity; reset and rollover cannot always be distinguished.",
+              "No timer IRQ/DMA, repeatability or full MCU acceptance is established."
+            ],
+            "mutating_operations": 0,
+            "ordered_publication_progress": true,
+            "passed": true,
+            "repeatability_qualified": false,
+            "same_image": true,
+            "terminal_result_stable": true,
+            "windows": [
+              {
+                "assessment": {
+                  "firmware_failure_reported": true,
+                  "fresh_publication_progress": true,
+                  "limits": [
+                    "Qualifies firmware self-reports and captured counter differences, not independent electrical measurements.",
+                    "Both timers share HSI; relative ticks do not calibrate frequency, duty cycle or oscillator accuracy.",
+                    "No-edge timeout does not identify a removed jumper or exclude other physical faults.",
+                    "Publication progress is a software heartbeat, not repeated loopback execution.",
+                    "Recorded exact-image checks are reported evidence, not re-executed offline.",
+                    "No boot-unique identity; reset and rollover cannot always be distinguished.",
+                    "No timer IRQ/DMA, repeatability or full MCU acceptance is established."
+                  ],
+                  "loopback_success_reported": false,
+                  "safe_failure_reported": true,
+                  "sample_checks": {
+                    "all_periods_recomputed": false,
+                    "complete_capture_count": false,
+                    "fixed_recipe": true,
+                    "no_edge_timeout": true,
+                    "safe_failure_status": true,
+                    "shutdown_snapshots_present": true,
+                    "shutdown_snapshots_quiet": true,
+                    "success_status": false,
+                    "unused_capture_words_zero": true,
+                    "validated_prefix_matches": true
+                  },
+                  "terminal_result_stable": true
+                },
+                "checks": {
+                  "abi_matches": true,
+                  "artifact_matches": true,
+                  "bundle_matches": true,
+                  "cpu_running_reported": true,
+                  "fixed_recipe": true,
+                  "fresh_publication_progress": true,
+                  "image_checks_reported": true,
+                  "image_identity_present": true,
+                  "no_edge_timeout": true,
+                  "safe_failure_status": true,
+                  "shutdown_snapshots_present": true,
+                  "shutdown_snapshots_quiet": true,
+                  "terminal_result_stable": true,
+                  "unused_capture_words_zero": true,
+                  "validated_prefix_matches": true
+                },
+                "failures": [],
+                "passed": true,
+                "sample_count": 3
+              }
+            ]
+          }
+        },
+        {
+          "exit_code": 1,
+          "expected": "passed",
+          "expected_result_matched": true,
+          "fault": 24,
+          "fixture_sha256": "67eda4f01aeb0f730c46e68015bf1cabfce6ef02bb21f82cf6b0273feee6fbfa",
+          "passed": false,
+          "report": {
+            "artifact_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "bundle_revision": "2dbfa901ec294c0f8edc5e37e87d41a3aa69f169dcce18b4acf088d48f5c0167",
+            "expected": "passed",
+            "format": "praxis-timer-route-qualification-v1",
+            "input_sha256": [
+              "67eda4f01aeb0f730c46e68015bf1cabfce6ef02bb21f82cf6b0273feee6fbfa"
+            ],
+            "limits": [
+              "Qualifies firmware self-reports and captured counter differences, not independent electrical measurements.",
+              "Both timers share HSI; relative ticks do not calibrate frequency, duty cycle or oscillator accuracy.",
+              "No-edge timeout does not identify a removed jumper or exclude other physical faults.",
+              "Publication progress is a software heartbeat, not repeated loopback execution.",
+              "Recorded exact-image checks are reported evidence, not re-executed offline.",
+              "No boot-unique identity; reset and rollover cannot always be distinguished.",
+              "No timer IRQ/DMA, repeatability or full MCU acceptance is established."
+            ],
+            "mutating_operations": 0,
+            "ordered_publication_progress": true,
+            "passed": false,
+            "repeatability_qualified": false,
+            "same_image": true,
+            "terminal_result_stable": true,
+            "windows": [
+              {
+                "assessment": {
+                  "firmware_failure_reported": true,
+                  "fresh_publication_progress": true,
+                  "limits": [
+                    "Qualifies firmware self-reports and captured counter differences, not independent electrical measurements.",
+                    "Both timers share HSI; relative ticks do not calibrate frequency, duty cycle or oscillator accuracy.",
+                    "No-edge timeout does not identify a removed jumper or exclude other physical faults.",
+                    "Publication progress is a software heartbeat, not repeated loopback execution.",
+                    "Recorded exact-image checks are reported evidence, not re-executed offline.",
+                    "No boot-unique identity; reset and rollover cannot always be distinguished.",
+                    "No timer IRQ/DMA, repeatability or full MCU acceptance is established."
+                  ],
+                  "loopback_success_reported": false,
+                  "safe_failure_reported": true,
+                  "sample_checks": {
+                    "all_periods_recomputed": false,
+                    "complete_capture_count": false,
+                    "fixed_recipe": true,
+                    "no_edge_timeout": false,
+                    "safe_failure_status": true,
+                    "shutdown_snapshots_present": true,
+                    "shutdown_snapshots_quiet": true,
+                    "success_status": false,
+                    "unused_capture_words_zero": true,
+                    "validated_prefix_matches": true
+                  },
+                  "terminal_result_stable": true
+                },
+                "checks": {
+                  "abi_matches": true,
+                  "all_periods_recomputed": false,
+                  "artifact_matches": true,
+                  "bundle_matches": true,
+                  "complete_capture_count": false,
+                  "cpu_running_reported": true,
+                  "fixed_recipe": true,
+                  "fresh_publication_progress": true,
+                  "image_checks_reported": true,
+                  "image_identity_present": true,
+                  "shutdown_snapshots_present": true,
+                  "shutdown_snapshots_quiet": true,
+                  "success_status": false,
+                  "terminal_result_stable": true,
+                  "unused_capture_words_zero": true,
+                  "validated_prefix_matches": true
+                },
+                "failures": [
+                  "all_periods_recomputed",
+                  "complete_capture_count",
+                  "success_status"
+                ],
+                "passed": false,
+                "sample_count": 3
+              }
+            ]
+          }
+        },
+        {
+          "exit_code": 1,
+          "expected": "failed",
+          "expected_result_matched": true,
+          "fault": 28,
+          "fixture_sha256": "8f0b2fb375699de5922b3386eafb2e629667cc2c998d85987a653e0bc0256efa",
+          "passed": false,
+          "report": {
+            "artifact_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "bundle_revision": "2dbfa901ec294c0f8edc5e37e87d41a3aa69f169dcce18b4acf088d48f5c0167",
+            "expected": "failed",
+            "format": "praxis-timer-route-qualification-v1",
+            "input_sha256": [
+              "8f0b2fb375699de5922b3386eafb2e629667cc2c998d85987a653e0bc0256efa"
+            ],
+            "limits": [
+              "Qualifies firmware self-reports and captured counter differences, not independent electrical measurements.",
+              "Both timers share HSI; relative ticks do not calibrate frequency, duty cycle or oscillator accuracy.",
+              "No-edge timeout does not identify a removed jumper or exclude other physical faults.",
+              "Publication progress is a software heartbeat, not repeated loopback execution.",
+              "Recorded exact-image checks are reported evidence, not re-executed offline.",
+              "No boot-unique identity; reset and rollover cannot always be distinguished.",
+              "No timer IRQ/DMA, repeatability or full MCU acceptance is established."
+            ],
+            "mutating_operations": 0,
+            "ordered_publication_progress": true,
+            "passed": false,
+            "repeatability_qualified": false,
+            "same_image": true,
+            "terminal_result_stable": true,
+            "windows": [
+              {
+                "assessment": {
+                  "firmware_failure_reported": true,
+                  "fresh_publication_progress": true,
+                  "limits": [
+                    "Qualifies firmware self-reports and captured counter differences, not independent electrical measurements.",
+                    "Both timers share HSI; relative ticks do not calibrate frequency, duty cycle or oscillator accuracy.",
+                    "No-edge timeout does not identify a removed jumper or exclude other physical faults.",
+                    "Publication progress is a software heartbeat, not repeated loopback execution.",
+                    "Recorded exact-image checks are reported evidence, not re-executed offline.",
+                    "No boot-unique identity; reset and rollover cannot always be distinguished.",
+                    "No timer IRQ/DMA, repeatability or full MCU acceptance is established."
+                  ],
+                  "loopback_success_reported": false,
+                  "safe_failure_reported": false,
+                  "sample_checks": {
+                    "all_periods_recomputed": true,
+                    "complete_capture_count": true,
+                    "fixed_recipe": true,
+                    "no_edge_timeout": false,
+                    "safe_failure_status": false,
+                    "shutdown_snapshots_present": true,
+                    "shutdown_snapshots_quiet": false,
+                    "success_status": false,
+                    "unused_capture_words_zero": true,
+                    "validated_prefix_matches": true
+                  },
+                  "terminal_result_stable": true
+                },
+                "checks": {
+                  "abi_matches": true,
+                  "artifact_matches": true,
+                  "bundle_matches": true,
+                  "cpu_running_reported": true,
+                  "fixed_recipe": true,
+                  "fresh_publication_progress": true,
+                  "image_checks_reported": true,
+                  "image_identity_present": true,
+                  "safe_failure_status": false,
+                  "shutdown_snapshots_present": true,
+                  "shutdown_snapshots_quiet": false,
+                  "terminal_result_stable": true,
+                  "unused_capture_words_zero": true,
+                  "validated_prefix_matches": true
+                },
+                "failures": [
+                  "safe_failure_status",
+                  "shutdown_snapshots_quiet"
+                ],
+                "passed": false,
+                "sample_count": 3
+              }
+            ]
+          }
+        },
+        {
+          "exit_code": 0,
+          "expected": "failed",
+          "expected_result_matched": true,
+          "fault": 21,
+          "fixture_sha256": "c9987faf884bc2b866536cee9d209cb20038635ed04f2f607d72df050b3119d0",
+          "passed": true,
+          "report": {
+            "artifact_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "bundle_revision": "2dbfa901ec294c0f8edc5e37e87d41a3aa69f169dcce18b4acf088d48f5c0167",
+            "expected": "failed",
+            "format": "praxis-timer-route-qualification-v1",
+            "input_sha256": [
+              "c9987faf884bc2b866536cee9d209cb20038635ed04f2f607d72df050b3119d0"
+            ],
+            "limits": [
+              "Qualifies firmware self-reports and captured counter differences, not independent electrical measurements.",
+              "Both timers share HSI; relative ticks do not calibrate frequency, duty cycle or oscillator accuracy.",
+              "No-edge timeout does not identify a removed jumper or exclude other physical faults.",
+              "Publication progress is a software heartbeat, not repeated loopback execution.",
+              "Recorded exact-image checks are reported evidence, not re-executed offline.",
+              "No boot-unique identity; reset and rollover cannot always be distinguished.",
+              "No timer IRQ/DMA, repeatability or full MCU acceptance is established."
+            ],
+            "mutating_operations": 0,
+            "ordered_publication_progress": true,
+            "passed": true,
+            "repeatability_qualified": false,
+            "same_image": true,
+            "terminal_result_stable": true,
+            "windows": [
+              {
+                "assessment": {
+                  "firmware_failure_reported": true,
+                  "fresh_publication_progress": true,
+                  "limits": [
+                    "Qualifies firmware self-reports and captured counter differences, not independent electrical measurements.",
+                    "Both timers share HSI; relative ticks do not calibrate frequency, duty cycle or oscillator accuracy.",
+                    "No-edge timeout does not identify a removed jumper or exclude other physical faults.",
+                    "Publication progress is a software heartbeat, not repeated loopback execution.",
+                    "Recorded exact-image checks are reported evidence, not re-executed offline.",
+                    "No boot-unique identity; reset and rollover cannot always be distinguished.",
+                    "No timer IRQ/DMA, repeatability or full MCU acceptance is established."
+                  ],
+                  "loopback_success_reported": false,
+                  "safe_failure_reported": true,
+                  "sample_checks": {
+                    "all_periods_recomputed": false,
+                    "complete_capture_count": false,
+                    "fixed_recipe": true,
+                    "no_edge_timeout": false,
+                    "safe_failure_status": true,
+                    "shutdown_snapshots_present": true,
+                    "shutdown_snapshots_quiet": true,
+                    "success_status": false,
+                    "unused_capture_words_zero": true,
+                    "validated_prefix_matches": true
+                  },
+                  "terminal_result_stable": true
+                },
+                "checks": {
+                  "abi_matches": true,
+                  "artifact_matches": true,
+                  "bundle_matches": true,
+                  "cpu_running_reported": true,
+                  "fixed_recipe": true,
+                  "fresh_publication_progress": true,
+                  "image_checks_reported": true,
+                  "image_identity_present": true,
+                  "safe_failure_status": true,
+                  "shutdown_snapshots_present": true,
+                  "shutdown_snapshots_quiet": true,
+                  "terminal_result_stable": true,
+                  "unused_capture_words_zero": true,
+                  "validated_prefix_matches": true
+                },
+                "failures": [],
+                "passed": true,
+                "sample_count": 3
+              }
+            ]
+          }
+        }
+      ],
+      "fixture_only": true,
+      "hardware_operations": 0,
+      "passed": true
+    },
+    "focused": {
+      "includes": "Shared scenario through31 independent model faults,32-bit wrap, ABI/object layout, forged metadata, prefix consistency, actual fake-probe MCP, actual Tcl guards and legacy UART checks.",
+      "passed": true,
+      "seconds": 5.49,
+      "skipped": 0,
+      "tests": 155
+    },
+    "full_regression": {
+      "external_tools_required": true,
+      "passed": true,
+      "scope": "Entire suite collected at run start. The later stricter prefix check and two additional regression cases passed in the155-test affected-suite rerun; overlapping counts are not added.",
+      "seconds": 363.51,
+      "skipped": 0,
+      "tests": 1270
+    },
+    "mcp_acceptance": {
+      "builds": {
+        "adc": {
+          "artifact_id": "ad727657fa039b3f0d8201057ac8284c8659623fc1fef8ede1920df743fff4e0",
+          "asset_revision": "22310c7ad54daa553cf5cb11e4db08e4c8f9e93e191f3f12ec8410dd1fb40b59",
+          "bundle_revision": "2dbfa901ec294c0f8edc5e37e87d41a3aa69f169dcce18b4acf088d48f5c0167",
+          "limitations": [
+            "Internal-reference conversion example only; external analog channels and electrical accuracy unqualified."
+          ],
+          "passed": true,
+          "source_sha256": "63b37123de6c24b26f497d54f402da3493cded7f6ce89887dfc3df5048841a4a",
+          "workflows": [
+            "adc1_internal_reference"
+          ]
+        },
+        "arm_core": {
+          "artifact_id": "af7f003cd96922eb49b012e281187350b357c05d25a4c08e18849b219396b76c",
+          "asset_revision": "22310c7ad54daa553cf5cb11e4db08e4c8f9e93e191f3f12ec8410dd1fb40b59",
+          "bundle_revision": "2dbfa901ec294c0f8edc5e37e87d41a3aa69f169dcce18b4acf088d48f5c0167",
+          "limitations": [
+            "Linked SysTick/SCB example only; not bootloader handoff, all exceptions, FPU or MPU qualification."
+          ],
+          "passed": true,
+          "source_sha256": "aa614a801753b13e8e7bf5b17becac3bfb7a0964ed646761cc416f87c1d42524",
+          "workflows": [
+            "arm_hsi16_core_checked",
+            "arm_flash_vector_table",
+            "systick_1khz_interrupt"
+          ]
+        },
+        "can": {
+          "artifact_id": "4bcef57b8ad2fe86482a1172d5f5b5f45eba9f30d8315dc4e54feda318fe51de",
+          "asset_revision": "22310c7ad54daa553cf5cb11e4db08e4c8f9e93e191f3f12ec8410dd1fb40b59",
+          "bundle_revision": "2dbfa901ec294c0f8edc5e37e87d41a3aa69f169dcce18b4acf088d48f5c0167",
+          "limitations": [
+            "Internal loopback example only; not a normal external CAN bus or every interrupt path."
+          ],
+          "passed": true,
+          "source_sha256": "2673b446c619ca9efd01c71de7fbd65bced50db2f463abccc4cd7cc73d456602",
+          "workflows": [
+            "can1_silent_loopback",
+            "can1_silent_loopback_irq"
+          ]
+        },
+        "can_rx_telemetry": {
+          "artifact_id": "0d71e16bed298dafe1934fefdae4cdae684e7bd4b3376ada23a0bdca61bf4770",
+          "asset_revision": "22310c7ad54daa553cf5cb11e4db08e4c8f9e93e191f3f12ec8410dd1fb40b59",
+          "bundle_revision": "2dbfa901ec294c0f8edc5e37e87d41a3aa69f169dcce18b4acf088d48f5c0167",
+          "limitations": [
+            "Guarded internal RX loopback only; external PD0 wiring and normal CAN bus are not qualified by linking."
+          ],
+          "passed": true,
+          "source_sha256": "dfebf4a0579de3d12558e2e952f603efe5e66c133f5d039a9350c428524bd521",
+          "workflows": [
+            "can1_rx_guarded_loopback_irq"
+          ]
+        },
+        "can_telemetry": {
+          "artifact_id": "f7a5c9b17aff90ab2c5a947ec4be9c810718d886b0b2f34c38a121a661652ef2",
+          "asset_revision": "22310c7ad54daa553cf5cb11e4db08e4c8f9e93e191f3f12ec8410dd1fb40b59",
+          "bundle_revision": "2dbfa901ec294c0f8edc5e37e87d41a3aa69f169dcce18b4acf088d48f5c0167",
+          "limitations": [
+            "No fresh telemetry sampling or hardware action; historical CAN observations remain artifact-bound."
+          ],
+          "passed": true,
+          "source_sha256": "5bb3cd7f6d0c357def4a0d4e5cdf25f3d636f09a2970f97240afd886b4616a7e",
+          "workflows": [
+            "can1_silent_loopback_irq"
+          ]
+        },
+        "clock": {
+          "artifact_id": "debb3dd2c6853d66e05ef37600e2e171bb41afe5188742f408d83b660e43d65a",
+          "asset_revision": "22310c7ad54daa553cf5cb11e4db08e4c8f9e93e191f3f12ec8410dd1fb40b59",
+          "bundle_revision": "2dbfa901ec294c0f8edc5e37e87d41a3aa69f169dcce18b4acf088d48f5c0167",
+          "limitations": [
+            "Clock transition code linked only; oscillator frequency and timing not measured. This case does not exercise RNG."
+          ],
+          "passed": true,
+          "source_sha256": "11fae2d162c61badc1e951d101d712aa1049d5a5abf745faf02bc38b5b95fd75",
+          "workflows": [
+            "pll_hse8_168mhz",
+            "flash_latency_168mhz"
+          ]
+        },
+        "crc_dma": {
+          "artifact_id": "c69eba65c750d1bad0f567f4472e8c2dcfd11c934e47f53745956c8b57321620",
+          "asset_revision": "22310c7ad54daa553cf5cb11e4db08e4c8f9e93e191f3f12ec8410dd1fb40b59",
+          "bundle_revision": "2dbfa901ec294c0f8edc5e37e87d41a3aa69f169dcce18b4acf088d48f5c0167",
+          "limitations": [
+            "Compile-only CRC/DMA example; no hardware result observation is performed."
+          ],
+          "passed": true,
+          "source_sha256": "d42630241ca4648262b589cf98d7f6c14fa45244cce8803db799ebeed912975d",
+          "workflows": [
+            "crc_word_feed",
+            "dma2_memory_copy"
+          ]
+        },
+        "dac": {
+          "artifact_id": "df833638b05a2f4eaeab1e616153eeeccc9e30ce7619c903ec43e4c604aa100d",
+          "asset_revision": "22310c7ad54daa553cf5cb11e4db08e4c8f9e93e191f3f12ec8410dd1fb40b59",
+          "bundle_revision": "2dbfa901ec294c0f8edc5e37e87d41a3aa69f169dcce18b4acf088d48f5c0167",
+          "limitations": [
+            "Output entry is retained for compilation, but EN1/EN2 remain disabled in main; no analog output behavior is claimed."
+          ],
+          "passed": true,
+          "source_sha256": "083a8ba4a24bc2105540947006a97b78abf12593473e7cb3996cfb439f4af382",
+          "workflows": [
+            "dac_channel1_software_trigger"
+          ]
+        },
+        "i2c": {
+          "artifact_id": "3d5f00dd663249c10d6cea9b85d2afcd9db7388b82afd0d52e98deec08cdd4d8",
+          "asset_revision": "22310c7ad54daa553cf5cb11e4db08e4c8f9e93e191f3f12ec8410dd1fb40b59",
+          "bundle_revision": "2dbfa901ec294c0f8edc5e37e87d41a3aa69f169dcce18b4acf088d48f5c0167",
+          "limitations": [
+            "Controller-only compile integration; no wired slave transaction or electrical validation."
+          ],
+          "passed": true,
+          "source_sha256": "538a91325ddeb01e8bf4e063a575c9ea83f302da7313ed2842d5cd5ca9e678bf",
+          "workflows": [
+            "i2c1_controller_transmit"
+          ]
+        },
+        "led_button": {
+          "artifact_id": "b6fe10a3c8c6830e35eac8dff30fc8b89c7397d81d8dc6077c4de9d9b84b7590",
+          "asset_revision": "22310c7ad54daa553cf5cb11e4db08e4c8f9e93e191f3f12ec8410dd1fb40b59",
+          "bundle_revision": "2dbfa901ec294c0f8edc5e37e87d41a3aa69f169dcce18b4acf088d48f5c0167",
+          "limitations": [
+            "Historical physical evidence belongs to its original artifact and bundle, not this rebuild."
+          ],
+          "passed": true,
+          "source_sha256": "99f4193040792eac0415bfb038296715987fe6f7cdc2366b522d044fc11d1164",
+          "workflows": [
+            "gpio_led_button"
+          ]
+        },
+        "timer_pwm_capture_routes": {
+          "artifact_id": "209d46ab473453fcb46e81b1f11367c61834a769056d31788b23f810fdc4a2e9",
+          "asset_revision": "22310c7ad54daa553cf5cb11e4db08e4c8f9e93e191f3f12ec8410dd1fb40b59",
+          "bundle_revision": "2dbfa901ec294c0f8edc5e37e87d41a3aa69f169dcce18b4acf088d48f5c0167",
+          "limitations": [
+            "No flash/execution or physical period/duty measurement. Model and compiler evidence only; reference PCB revision and passive jumper require fresh verification."
+          ],
+          "passed": true,
+          "source_sha256": "f5a24caebd897f233bcbc69ddd76c7b672fd2632174669cba38996d5d1834d27",
+          "workflows": [
+            "tim2_tim5_pwm_capture_loopback"
+          ]
+        },
+        "timer_pwm_reference": {
+          "artifact_id": "25832ae08abafa28439077d143b199da7226145931db696c8f8c2b5f49e8bddd",
+          "asset_revision": "22310c7ad54daa553cf5cb11e4db08e4c8f9e93e191f3f12ec8410dd1fb40b59",
+          "bundle_revision": "2dbfa901ec294c0f8edc5e37e87d41a3aa69f169dcce18b4acf088d48f5c0167",
+          "limitations": [
+            "No flashing, execution, pin waveform or input measurement. Internal reference/software event only; nominal timing and independent review remain unqualified."
+          ],
+          "passed": true,
+          "source_sha256": "9318f24622f32d2e7bcd33533c845c05068052c68298629763c0ecb49c6bc898",
+          "workflows": [
+            "tim2_pwm_ch1_reference"
+          ]
+        },
+        "timer_route_telemetry": {
+          "artifact_id": "ba3ff2fcb1e2b2083af0849bdef3135f19d6bb04fca70184d13bb4e6106c246a",
+          "asset_revision": "22310c7ad54daa553cf5cb11e4db08e4c8f9e93e191f3f12ec8410dd1fb40b59",
+          "bundle_revision": "2dbfa901ec294c0f8edc5e37e87d41a3aa69f169dcce18b4acf088d48f5c0167",
+          "limitations": [
+            "Fixed one-shot software ABI; no live image readback, wire stimulus or physical qualification. Heartbeat publication does not repeat the timer test."
+          ],
+          "passed": true,
+          "source_sha256": "ac36a5042404fd3b110598bb3ef4d91bc6e3c53542efead6aa707b200c65358f",
+          "workflows": [
+            "tim2_tim5_pwm_capture_loopback"
+          ]
+        },
+        "timer_software_capture": {
+          "artifact_id": "cd3fe8a05a645ca031ed3bebf047101000cd71299c6e646d018607c07a8bdffe",
+          "asset_revision": "22310c7ad54daa553cf5cb11e4db08e4c8f9e93e191f3f12ec8410dd1fb40b59",
+          "bundle_revision": "2dbfa901ec294c0f8edc5e37e87d41a3aa69f169dcce18b4acf088d48f5c0167",
+          "limitations": [
+            "No flashing, execution, pin waveform or input measurement. Internal reference/software event only; nominal timing and independent review remain unqualified."
+          ],
+          "passed": true,
+          "source_sha256": "1cea5e0d58a9eac961798428e8bebaa59c39bb5b3e34e4c07bc53a7d00fb9019",
+          "workflows": [
+            "tim2_software_capture_ch1"
+          ]
+        },
+        "uart_loopback": {
+          "artifact_id": "6b8201a87e212a2405c22133ffd40b10ddca824db0aead051e5984743379d1bb",
+          "asset_revision": "22310c7ad54daa553cf5cb11e4db08e4c8f9e93e191f3f12ec8410dd1fb40b59",
+          "bundle_revision": "2dbfa901ec294c0f8edc5e37e87d41a3aa69f169dcce18b4acf088d48f5c0167",
+          "limitations": [
+            "No wire capture, button stimulus or live execution in this audit."
+          ],
+          "passed": true,
+          "source_sha256": "5fc586ef72bba0058fde62fdc6e439856c34dd27c98e426defef6f99d017cfd4",
+          "workflows": [
+            "uart_timer_interrupts"
+          ]
+        },
+        "uart_telemetry": {
+          "artifact_id": "0cf4981cc2bce03ba55a05086e9336dcfdcbed6b334fe11f31b9a66daded39b9",
+          "asset_revision": "22310c7ad54daa553cf5cb11e4db08e4c8f9e93e191f3f12ec8410dd1fb40b59",
+          "bundle_revision": "2dbfa901ec294c0f8edc5e37e87d41a3aa69f169dcce18b4acf088d48f5c0167",
+          "limitations": [
+            "Existing failure/recovery anomalies remain unresolved; compilation does not establish repeatability."
+          ],
+          "passed": true,
+          "source_sha256": "b802c08269f39e11df256144eaf018b267d5a2e6ddd2ee908330cee6b5a15e1f",
+          "workflows": [
+            "uart_timer_interrupts"
+          ]
+        }
+      },
+      "cases": 16,
+      "checks": 101,
+      "full_mcu_accepted": false,
+      "hardware_operations": 0,
+      "software_checks_passed": true,
+      "tool_calls": 92,
+      "trace": [
+        {
+          "arguments": {
+            "peripheral_name": "wwdg"
+          },
+          "is_error": true,
+          "response_bytes": 111,
+          "response_sha256": "524c8d6b82eb163d3f8e3bc67d241a41cc027e2d83ba7873e21d0150e97cc2df",
+          "server": "knowledge",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "query_target": "absent"
+          },
+          "is_error": true,
+          "response_bytes": 115,
+          "response_sha256": "20433778a73bfc69122102d473dffa0b8fa46da7d719e0cee506ed364c8640a1",
+          "server": "knowledge",
+          "tool": "query_schematic_netlist"
+        },
+        {
+          "arguments": {},
+          "is_error": false,
+          "response_bytes": 26609,
+          "response_sha256": "6566f55af71f45e0c5f55d2572342f5baeabeb736731c647fc2e497d63331fc3",
+          "server": "knowledge",
+          "tool": "read_wiki_index"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "rcc"
+          },
+          "is_error": false,
+          "response_bytes": 59505,
+          "response_sha256": "c13a5a92859300ad79bde7659acdf2448825968173bc8532475d1938cac18cd5",
+          "server": "knowledge",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "flash"
+          },
+          "is_error": false,
+          "response_bytes": 9254,
+          "response_sha256": "90640cd0b572e64aae0ce141cd90671deaab0799d3c0c11971de44be14882b8c",
+          "server": "knowledge",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "pwr"
+          },
+          "is_error": false,
+          "response_bytes": 6863,
+          "response_sha256": "4da2a6408c6715e6df3380985e117336af12002d40981d40aa11a7c294cc82ba",
+          "server": "knowledge",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "adc_common"
+          },
+          "is_error": false,
+          "response_bytes": 8268,
+          "response_sha256": "2054daa702fdd6fca4e255aeab1c114193213ef9639373942cdddebc82e654cb",
+          "server": "knowledge",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "adc"
+          },
+          "is_error": false,
+          "response_bytes": 20519,
+          "response_sha256": "b608b3a82d42d8a4df05bd2185ee8242cae80f7e67ad110f46a2347528acfcb0",
+          "server": "knowledge",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "gpio"
+          },
+          "is_error": false,
+          "response_bytes": 31557,
+          "response_sha256": "70167df1ce1c53d6b3dd2423a8d6c5811ded3af6160cb7ecd7d212d110d7134e",
+          "server": "knowledge",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "syscfg"
+          },
+          "is_error": false,
+          "response_bytes": 6463,
+          "response_sha256": "0e5e16ae3a9b1f6cd35aaab9b2fc32d032949f48db956a17ee72eff20d5a57bf",
+          "server": "knowledge",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "exti"
+          },
+          "is_error": false,
+          "response_bytes": 20295,
+          "response_sha256": "a5e8b85b7bef3f50930a8c80c7a82c67d0040d81730cba5a5423f04427b0edf8",
+          "server": "knowledge",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "tim"
+          },
+          "is_error": false,
+          "response_bytes": 65438,
+          "response_sha256": "587b580892cb2d4eac7107cef0adef9f3eed5cfb514125de39b9e03b44f4ee9f",
+          "server": "knowledge",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "usart"
+          },
+          "is_error": false,
+          "response_bytes": 11744,
+          "response_sha256": "698039421ee193bbefb00de91c2bb728eaffd235934ba4925ec3f1286bcf4da1",
+          "server": "knowledge",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "nvic"
+          },
+          "is_error": false,
+          "response_bytes": 7866,
+          "response_sha256": "bc1301df989c881f0a106cc59e0eaea6e7495f90b77212a7b09365d7d575ff84",
+          "server": "knowledge",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "can"
+          },
+          "is_error": false,
+          "response_bytes": 54340,
+          "response_sha256": "cf05c08c958074807bab78b06f4df1e187c08d3bd9ea423ed5b930d58a137f67",
+          "server": "knowledge",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "coredebug"
+          },
+          "is_error": false,
+          "response_bytes": 4946,
+          "response_sha256": "5630e3e9d0b5e5a59d345c48792730c58de7b29d5afbb7cf6ad91efbb42ea3d5",
+          "server": "knowledge",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "crc"
+          },
+          "is_error": false,
+          "response_bytes": 4097,
+          "response_sha256": "63c3a04dd247310f6f1688ad175a7e3232535f13e7bf4bf94152704ddf7ccc96",
+          "server": "knowledge",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "dac"
+          },
+          "is_error": false,
+          "response_bytes": 21147,
+          "response_sha256": "f88375a1855fc806edcda49989eedb5a0867ff5981d86480f6eefa13c37a8750",
+          "server": "knowledge",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "dbgmcu"
+          },
+          "is_error": false,
+          "response_bytes": 2926,
+          "response_sha256": "a773516b59a201346f57d8c9983c23e0c0cdd7023c5e0de7bcf45b38b5945430",
+          "server": "knowledge",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "dcmi"
+          },
+          "is_error": false,
+          "response_bytes": 7048,
+          "response_sha256": "c1a3d7e23cf6b98663e79030e10a09062132a4e63ebf58b9c95369bc2123ac39",
+          "server": "knowledge",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "dma"
+          },
+          "is_error": false,
+          "response_bytes": 17282,
+          "response_sha256": "5f1699e6b20854f69ebf16b617ddc7ea854745ec00d803bccb31e5c1fbd65bce",
+          "server": "knowledge",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "dma_stream"
+          },
+          "is_error": false,
+          "response_bytes": 14583,
+          "response_sha256": "87d047a41522dc48a782984b15cb0008e5f87a3ccb38d36e97cdce396dd50b0e",
+          "server": "knowledge",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "dwt"
+          },
+          "is_error": false,
+          "response_bytes": 7302,
+          "response_sha256": "53440b1c1a1cc914bb140831083e708486e0fecefa19e8ca2cf824efa59f28ce",
+          "server": "knowledge",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "eth"
+          },
+          "is_error": false,
+          "response_bytes": 35450,
+          "response_sha256": "2fd231eefe0028315e918a952be0c995918e54f778dd8184d9c60258d64b4d1d",
+          "server": "knowledge",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "fpu"
+          },
+          "is_error": false,
+          "response_bytes": 5899,
+          "response_sha256": "2455baec773935699a5d6046509991b0df80361dfc5735e25eab067fc76ef434",
+          "server": "knowledge",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "fsmc_bank1"
+          },
+          "is_error": false,
+          "response_bytes": 1687,
+          "response_sha256": "0c4573a2d0a5f2a3bb2f1e88c3cc804bc6bd8959a5f148033db0241691d5b091",
+          "server": "knowledge",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "fsmc_bank1e"
+          },
+          "is_error": false,
+          "response_bytes": 1692,
+          "response_sha256": "94c8a84935f0ffd1350193d285fe1921fbb5c0aa76a9fe6c2fad1be5d775aaf3",
+          "server": "knowledge",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "fsmc_bank2_3"
+          },
+          "is_error": false,
+          "response_bytes": 2949,
+          "response_sha256": "ee0c8612fdc944ebdc366c29bcf32ccdd55fd098959268c38db8228d5071d407",
+          "server": "knowledge",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "fsmc_bank4"
+          },
+          "is_error": false,
+          "response_bytes": 2210,
+          "response_sha256": "2a49a3886c6004f040e7a85c4e122f47e1cda92e5ae1890fa4008f06a1613ff4",
+          "server": "knowledge",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "i2c"
+          },
+          "is_error": false,
+          "response_bytes": 18570,
+          "response_sha256": "b930815780a2f1139e593c76ed6397765ea8de3794d0e8b5a9e80819703b8a43",
+          "server": "knowledge",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "itm"
+          },
+          "is_error": false,
+          "response_bytes": 6287,
+          "response_sha256": "2454203e489d4864f2be5ccd9e8cf5be81be6d1d85bb4d961bd7238376321bb1",
+          "server": "knowledge",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "iwdg"
+          },
+          "is_error": false,
+          "response_bytes": 5299,
+          "response_sha256": "e1e64de5bc7c57d32500b1918501a7b583a9ca05f0af8a143f48650fbfdc16fc",
+          "server": "knowledge",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "mpu"
+          },
+          "is_error": false,
+          "response_bytes": 4739,
+          "response_sha256": "c27e331beb986ebc71dc1369eee417f2debd2b5f2e1d39013d822d0c30549f70",
+          "server": "knowledge",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "rng"
+          },
+          "is_error": false,
+          "response_bytes": 6187,
+          "response_sha256": "9bec0fec4322fb63f04cea98d7c201d8334ec11ea5953675b6de490fbd096df4",
+          "server": "knowledge",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "rtc"
+          },
+          "is_error": false,
+          "response_bytes": 23520,
+          "response_sha256": "3aa6d07c6af110db3ed424ff46c6dd2c6159ea79c1327d3ea52229cb25134a3f",
+          "server": "knowledge",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "scb"
+          },
+          "is_error": false,
+          "response_bytes": 18870,
+          "response_sha256": "0cdc9278273f4c87e0cf49371cc5edccfc51492bdaa584146754d9b899028552",
+          "server": "knowledge",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "scnscb"
+          },
+          "is_error": false,
+          "response_bytes": 1764,
+          "response_sha256": "0be50016a43ae30b61f956d81f2ace504b4158909cbc804711b01a0c9b83de91",
+          "server": "knowledge",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "sdio"
+          },
+          "is_error": false,
+          "response_bytes": 16274,
+          "response_sha256": "3a3c3b117741843d9f7919e68aae60fbb2d5a639ca7c1a94a86cc7078980bd3f",
+          "server": "knowledge",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "spi"
+          },
+          "is_error": false,
+          "response_bytes": 17209,
+          "response_sha256": "eaa214b886e089a3639d028d0ea2981ae659871dcbda40e219c9b00cab9a5a81",
+          "server": "knowledge",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "systick"
+          },
+          "is_error": false,
+          "response_bytes": 11982,
+          "response_sha256": "95d4ca9966b7ff9803db2889726d4de6970bb0fb6a1ab9f16d0a9ea84e54cdd6",
+          "server": "knowledge",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "tpi"
+          },
+          "is_error": false,
+          "response_bytes": 8259,
+          "response_sha256": "53b2657f34b9d467f5e4568322aee53c830a0ccc1652054957a24a63e9243d1e",
+          "server": "knowledge",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "usb_otg_device"
+          },
+          "is_error": false,
+          "response_bytes": 11271,
+          "response_sha256": "36f66b769cca85a699587cb0f08d6cdffa01aae01c52a48483b045ca51f71000",
+          "server": "knowledge",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "usb_otg_global"
+          },
+          "is_error": false,
+          "response_bytes": 19892,
+          "response_sha256": "637ad1127f6d4d6f2f860a2f81148bc43cd934bb87e21e0a908a61ebabc6a6ca",
+          "server": "knowledge",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "usb_otg_host"
+          },
+          "is_error": false,
+          "response_bytes": 3960,
+          "response_sha256": "89b6744ab4b1b0b2a1d71619b90bc723607e8fea54da3f310c80f0d9b2976ca6",
+          "server": "knowledge",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "wwdg"
+          },
+          "is_error": false,
+          "response_bytes": 2539,
+          "response_sha256": "01620da8f70e8f95c82f8ff1d74cf3669b07312ae1389359ff428d06eb981c15",
+          "server": "knowledge",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "query_target": "CAN1_RX"
+          },
+          "is_error": false,
+          "response_bytes": 1063,
+          "response_sha256": "dd0e0c3e0ce52bf788fdf5bc7ff01e0dfd682ef1df434c334dc93aa17521b5b2",
+          "server": "knowledge",
+          "tool": "query_schematic_netlist"
+        },
+        {
+          "arguments": {
+            "query_target": "CAN1_RX_SYNC"
+          },
+          "is_error": false,
+          "response_bytes": 1063,
+          "response_sha256": "dd0e0c3e0ce52bf788fdf5bc7ff01e0dfd682ef1df434c334dc93aa17521b5b2",
+          "server": "knowledge",
+          "tool": "query_schematic_netlist"
+        },
+        {
+          "arguments": {
+            "query_target": "CAN1_TX"
+          },
+          "is_error": false,
+          "response_bytes": 70,
+          "response_sha256": "bead08a76c3e3ce8cbcc367a76090b8a1a2e4f26fa08d83e18198e23bb1758dc",
+          "server": "knowledge",
+          "tool": "query_schematic_netlist"
+        },
+        {
+          "arguments": {
+            "query_target": "CAN_TRANSCEIVER"
+          },
+          "is_error": false,
+          "response_bytes": 78,
+          "response_sha256": "892fc83443175af28d07970cf2a2f8c972db3796648c7330e02879e50e10cf6c",
+          "server": "knowledge",
+          "tool": "query_schematic_netlist"
+        },
+        {
+          "arguments": {
+            "query_target": "DAC1_OUT"
+          },
+          "is_error": false,
+          "response_bytes": 71,
+          "response_sha256": "23c985a5aeb6798da0e5ade01c03b7a22e6e812ae66c30d87966df867c3897dc",
+          "server": "knowledge",
+          "tool": "query_schematic_netlist"
+        },
+        {
+          "arguments": {
+            "query_target": "DAC_REFERENCE"
+          },
+          "is_error": false,
+          "response_bytes": 76,
+          "response_sha256": "8947268884c1a9dd28c1a6b3d308f016ae1df0adcbc547376c5df3fd9adacb7e",
+          "server": "knowledge",
+          "tool": "query_schematic_netlist"
+        },
+        {
+          "arguments": {
+            "query_target": "I2C1_SCL"
+          },
+          "is_error": false,
+          "response_bytes": 71,
+          "response_sha256": "126b09e42c553c97de101da909acd19bb6ddbcb584adf67e97c255ef4ac3140a",
+          "server": "knowledge",
+          "tool": "query_schematic_netlist"
+        },
+        {
+          "arguments": {
+            "query_target": "I2C1_SDA"
+          },
+          "is_error": false,
+          "response_bytes": 71,
+          "response_sha256": "02b77364e9e26c5533cfbaa7284db7ee519ae4efc102570b4b20191bfee4fd7a",
+          "server": "knowledge",
+          "tool": "query_schematic_netlist"
+        },
+        {
+          "arguments": {
+            "query_target": "SPI1_MISO"
+          },
+          "is_error": false,
+          "response_bytes": 72,
+          "response_sha256": "09f76000d9d1c196379aaebaa8d681dc5e32034fc1cd5cbc93f5df94fe2ec753",
+          "server": "knowledge",
+          "tool": "query_schematic_netlist"
+        },
+        {
+          "arguments": {
+            "query_target": "SPI1_MOSI"
+          },
+          "is_error": false,
+          "response_bytes": 72,
+          "response_sha256": "ffea7d78a29afc9ec4e6a06f3f372147d277474a49f105282bae9492f9b148ad",
+          "server": "knowledge",
+          "tool": "query_schematic_netlist"
+        },
+        {
+          "arguments": {
+            "query_target": "SPI1_SCK"
+          },
+          "is_error": false,
+          "response_bytes": 71,
+          "response_sha256": "f4dad0cf442837a4f86bc734b218fbd43b588f443d1bdfa821b5044987cd821c",
+          "server": "knowledge",
+          "tool": "query_schematic_netlist"
+        },
+        {
+          "arguments": {
+            "query_target": "TIM2_CH1_EXTERNAL"
+          },
+          "is_error": false,
+          "response_bytes": 80,
+          "response_sha256": "805eb11dd0ca122029c833506dd9f09abb2e7fe1319626e2202028a2f1cd5dd3",
+          "server": "knowledge",
+          "tool": "query_schematic_netlist"
+        },
+        {
+          "arguments": {
+            "query_target": "TIM2_PWM_OUT"
+          },
+          "is_error": false,
+          "response_bytes": 1179,
+          "response_sha256": "011b47fbb5a04c1b1a24bc16139c8abeb6f915c945312e14a3ef8d4b14f449f8",
+          "server": "knowledge",
+          "tool": "query_schematic_netlist"
+        },
+        {
+          "arguments": {
+            "query_target": "TIM5_CAPTURE_IN"
+          },
+          "is_error": false,
+          "response_bytes": 1337,
+          "response_sha256": "abf1339cc769aed1f95e9d170a9d5d765a636b1ebba585b67bbc1fd90e6ae4ed",
+          "server": "knowledge",
+          "tool": "query_schematic_netlist"
+        },
+        {
+          "arguments": {},
+          "is_error": false,
+          "response_bytes": 7862,
+          "response_sha256": "5d47235e917a5f2b316acfded37ace8f2c69e57f70df5daced28bcd36702c80e",
+          "server": "build",
+          "tool": "get_build_profile"
+        },
+        {
+          "arguments": {
+            "source_directory": "stm32f407g-disc1-led-button/application"
+          },
+          "is_error": false,
+          "response_bytes": 4322,
+          "response_sha256": "5b235d310337c2a91370446097aba8995845adbf3df12a22dc55be9307108d45",
+          "server": "build",
+          "tool": "build_firmware"
+        },
+        {
+          "arguments": {
+            "artifact_id": "b6fe10a3c8c6830e35eac8dff30fc8b89c7397d81d8dc6077c4de9d9b84b7590"
+          },
+          "is_error": false,
+          "response_bytes": 580,
+          "response_sha256": "2a33b7912e2f35e843bda797ccc0b8fbf034dde2f051971bd83147348b3caaed",
+          "server": "build",
+          "tool": "validate_firmware"
+        },
+        {
+          "arguments": {
+            "source_directory": "stm32f407g-disc1-uart-loopback/application"
+          },
+          "is_error": false,
+          "response_bytes": 5436,
+          "response_sha256": "c8d756dcbf5be1d6cbf587336a35cc2aef0ee1f4ff0aab9ccd90befeb0d02a7a",
+          "server": "build",
+          "tool": "build_firmware"
+        },
+        {
+          "arguments": {
+            "artifact_id": "6b8201a87e212a2405c22133ffd40b10ddca824db0aead051e5984743379d1bb"
+          },
+          "is_error": false,
+          "response_bytes": 580,
+          "response_sha256": "9ec6cd1a3e5c78d53c508791b156922609b8b09180036c5e0fdac48cd447ab8b",
+          "server": "build",
+          "tool": "validate_firmware"
+        },
+        {
+          "arguments": {
+            "source_directory": "stm32f407g-disc1-uart-loopback/telemetry_application"
+          },
+          "is_error": false,
+          "response_bytes": 5436,
+          "response_sha256": "0279bdcd194ccd17f6252030b62653120a42d3aa9c851c0d41e50f36ac7187f0",
+          "server": "build",
+          "tool": "build_firmware"
+        },
+        {
+          "arguments": {
+            "artifact_id": "0cf4981cc2bce03ba55a05086e9336dcfdcbed6b334fe11f31b9a66daded39b9"
+          },
+          "is_error": false,
+          "response_bytes": 580,
+          "response_sha256": "118c61097368b33ccabfc4653c31cb1ccc52ec9c966b081cf978d0e036ba4d45",
+          "server": "build",
+          "tool": "validate_firmware"
+        },
+        {
+          "arguments": {
+            "source_directory": "stm32f407g-disc1-crc-dma/application"
+          },
+          "is_error": false,
+          "response_bytes": 4322,
+          "response_sha256": "a398648b82c7ede565cab34fc8dc4577769b41a07fe2e5fdba6e94a791d5ea9b",
+          "server": "build",
+          "tool": "build_firmware"
+        },
+        {
+          "arguments": {
+            "artifact_id": "c69eba65c750d1bad0f567f4472e8c2dcfd11c934e47f53745956c8b57321620"
+          },
+          "is_error": false,
+          "response_bytes": 580,
+          "response_sha256": "1ab278dc48b6ca60a95b00385a170915abc07aa0f044b466fa9a180a8d32f6b5",
+          "server": "build",
+          "tool": "validate_firmware"
+        },
+        {
+          "arguments": {
+            "source_directory": "stm32f407g-disc1-clock/application"
+          },
+          "is_error": false,
+          "response_bytes": 4322,
+          "response_sha256": "7a8ea4418ac5beaae045428f5084f59c2daee5250ee6ff26dff867247e4898c3",
+          "server": "build",
+          "tool": "build_firmware"
+        },
+        {
+          "arguments": {
+            "artifact_id": "debb3dd2c6853d66e05ef37600e2e171bb41afe5188742f408d83b660e43d65a"
+          },
+          "is_error": false,
+          "response_bytes": 580,
+          "response_sha256": "6ab26bb44f58a3f37365ebd724c61cf676617fb403a4908f1dc0674af98434d1",
+          "server": "build",
+          "tool": "validate_firmware"
+        },
+        {
+          "arguments": {
+            "source_directory": "stm32f407g-disc1-adc/application"
+          },
+          "is_error": false,
+          "response_bytes": 4322,
+          "response_sha256": "630cdaa7bd343c2fa1f09ddd3d406a0e00d7a3dc362c02483d0bac3c96dd9574",
+          "server": "build",
+          "tool": "build_firmware"
+        },
+        {
+          "arguments": {
+            "artifact_id": "ad727657fa039b3f0d8201057ac8284c8659623fc1fef8ede1920df743fff4e0"
+          },
+          "is_error": false,
+          "response_bytes": 580,
+          "response_sha256": "0c5f4455a5db3b14fb0b802228271f9f0cf029e720cd4934b9e552a97c6e9e6c",
+          "server": "build",
+          "tool": "validate_firmware"
+        },
+        {
+          "arguments": {
+            "source_directory": "stm32f407g-disc1-i2c/application"
+          },
+          "is_error": false,
+          "response_bytes": 4322,
+          "response_sha256": "c81822e2d153682857c1a369206d7aca9e572e9d2322488c7dae5884311e26ee",
+          "server": "build",
+          "tool": "build_firmware"
+        },
+        {
+          "arguments": {
+            "artifact_id": "3d5f00dd663249c10d6cea9b85d2afcd9db7388b82afd0d52e98deec08cdd4d8"
+          },
+          "is_error": false,
+          "response_bytes": 580,
+          "response_sha256": "09a6ff2457f129f435a0ed25386ce40e7d29b0daa09946c3add006dad1ad5431",
+          "server": "build",
+          "tool": "validate_firmware"
+        },
+        {
+          "arguments": {
+            "source_directory": "stm32f407g-disc1-dac/application"
+          },
+          "is_error": false,
+          "response_bytes": 4322,
+          "response_sha256": "5d91b8f624e086e5d19775624ad4b40da0517be88e34761e627b4e0c29c188bd",
+          "server": "build",
+          "tool": "build_firmware"
+        },
+        {
+          "arguments": {
+            "artifact_id": "df833638b05a2f4eaeab1e616153eeeccc9e30ce7619c903ec43e4c604aa100d"
+          },
+          "is_error": false,
+          "response_bytes": 580,
+          "response_sha256": "e07d124a7077b0ddafca7377009c2956edc3f0185139e7d795fc60dd5b658593",
+          "server": "build",
+          "tool": "validate_firmware"
+        },
+        {
+          "arguments": {
+            "source_directory": "stm32f407g-disc1-can/application"
+          },
+          "is_error": false,
+          "response_bytes": 4322,
+          "response_sha256": "2d46200e8c9b1c707db8d5602a7676b9b2e15ad4387d78b298b357fb12201da7",
+          "server": "build",
+          "tool": "build_firmware"
+        },
+        {
+          "arguments": {
+            "artifact_id": "4bcef57b8ad2fe86482a1172d5f5b5f45eba9f30d8315dc4e54feda318fe51de"
+          },
+          "is_error": false,
+          "response_bytes": 580,
+          "response_sha256": "dede5ccbf7f34206c3225bb2aa545f8ce6a439e894da4e5704188aa023017b60",
+          "server": "build",
+          "tool": "validate_firmware"
+        },
+        {
+          "arguments": {
+            "source_directory": "stm32f407g-disc1-can/telemetry_application"
+          },
+          "is_error": false,
+          "response_bytes": 4322,
+          "response_sha256": "a932e0f5690969fe680ef9791881bb4f97d4e5341a333b852d58d3b99d9c2986",
+          "server": "build",
+          "tool": "build_firmware"
+        },
+        {
+          "arguments": {
+            "artifact_id": "f7a5c9b17aff90ab2c5a947ec4be9c810718d886b0b2f34c38a121a661652ef2"
+          },
+          "is_error": false,
+          "response_bytes": 580,
+          "response_sha256": "50dff0437786149a1fba6fd77843255db8562a43039a4412e9c00ecae19f61a4",
+          "server": "build",
+          "tool": "validate_firmware"
+        },
+        {
+          "arguments": {
+            "source_directory": "stm32f407g-disc1-can/telemetry_rx_application"
+          },
+          "is_error": false,
+          "response_bytes": 4322,
+          "response_sha256": "462577ed3f119573e4ec2223750420826f1dfab32e0a41e0990410b915a6163a",
+          "server": "build",
+          "tool": "build_firmware"
+        },
+        {
+          "arguments": {
+            "artifact_id": "0d71e16bed298dafe1934fefdae4cdae684e7bd4b3376ada23a0bdca61bf4770"
+          },
+          "is_error": false,
+          "response_bytes": 580,
+          "response_sha256": "ffa02a4a82031b1c823877a2c9cab7ecfcf07da83cbf3fcab3b961e774fb9ecb",
+          "server": "build",
+          "tool": "validate_firmware"
+        },
+        {
+          "arguments": {
+            "source_directory": "stm32f407g-disc1-arm-core/application"
+          },
+          "is_error": false,
+          "response_bytes": 4322,
+          "response_sha256": "f9bb956224969f279d604c65ebad3e082ef7222d0a39bd9fa1114df7d3d5c285",
+          "server": "build",
+          "tool": "build_firmware"
+        },
+        {
+          "arguments": {
+            "artifact_id": "af7f003cd96922eb49b012e281187350b357c05d25a4c08e18849b219396b76c"
+          },
+          "is_error": false,
+          "response_bytes": 580,
+          "response_sha256": "d25f99fce25c70d4036afca974a2228a4b025f5df1097ae1390d2158fd0603eb",
+          "server": "build",
+          "tool": "validate_firmware"
+        },
+        {
+          "arguments": {
+            "source_directory": "stm32f407g-disc1-timer/pwm_application"
+          },
+          "is_error": false,
+          "response_bytes": 4322,
+          "response_sha256": "61b0aea1a1319bf95a28ac40a6e7cf5214dc1487ab50d7255013f47eec5e1cb2",
+          "server": "build",
+          "tool": "build_firmware"
+        },
+        {
+          "arguments": {
+            "artifact_id": "25832ae08abafa28439077d143b199da7226145931db696c8f8c2b5f49e8bddd"
+          },
+          "is_error": false,
+          "response_bytes": 580,
+          "response_sha256": "c3be780e0bc6d59171dca38e32c4faabbc04835b33a0332bba4f5427a8f9125b",
+          "server": "build",
+          "tool": "validate_firmware"
+        },
+        {
+          "arguments": {
+            "source_directory": "stm32f407g-disc1-timer/capture_application"
+          },
+          "is_error": false,
+          "response_bytes": 4322,
+          "response_sha256": "f4e5d1e3deb0ffcb7b31955d8c76e48cae5e5a7bb222702bcf6a7bef48b64b3a",
+          "server": "build",
+          "tool": "build_firmware"
+        },
+        {
+          "arguments": {
+            "artifact_id": "cd3fe8a05a645ca031ed3bebf047101000cd71299c6e646d018607c07a8bdffe"
+          },
+          "is_error": false,
+          "response_bytes": 580,
+          "response_sha256": "67e598043c31c1ec17acc149b7362b4919b3cb7bace00a74a16f54f8153e80ab",
+          "server": "build",
+          "tool": "validate_firmware"
+        },
+        {
+          "arguments": {
+            "source_directory": "stm32f407g-disc1-timer/routes_application"
+          },
+          "is_error": false,
+          "response_bytes": 4322,
+          "response_sha256": "71ffeec7aaafb3e465f0dbc80bf1137115b7c676f98e1e90f2d833f76cb10e56",
+          "server": "build",
+          "tool": "build_firmware"
+        },
+        {
+          "arguments": {
+            "artifact_id": "209d46ab473453fcb46e81b1f11367c61834a769056d31788b23f810fdc4a2e9"
+          },
+          "is_error": false,
+          "response_bytes": 580,
+          "response_sha256": "da94c838a5b15c651d1067027b0c18d298b843f3718845d21feaee2131f83074",
+          "server": "build",
+          "tool": "validate_firmware"
+        },
+        {
+          "arguments": {
+            "source_directory": "stm32f407g-disc1-timer/routes_telemetry_application"
+          },
+          "is_error": false,
+          "response_bytes": 4322,
+          "response_sha256": "52dbe0a7a7351bd56585df533dba41aa613d8f5ac998b7079931da143fa69509",
+          "server": "build",
+          "tool": "build_firmware"
+        },
+        {
+          "arguments": {
+            "artifact_id": "ba3ff2fcb1e2b2083af0849bdef3135f19d6bb04fca70184d13bb4e6106c246a"
+          },
+          "is_error": false,
+          "response_bytes": 580,
+          "response_sha256": "17673c9889b1762db6a73c97b1ae2543e1acb47a8a8084b2094ac64c0f386d21",
+          "server": "build",
+          "tool": "validate_firmware"
+        }
+      ]
+    },
+    "native_knowledge_mcp": {
+      "calls": 52,
+      "discovered_tools": [
+        "query_schematic_netlist",
+        "read_peripheral_doc",
+        "read_wiki_index"
+      ],
+      "limits": "Actual MCP retrieval and complete-byte checks only; no live LLM, operating-semantic, build or physical qualification.",
+      "passed": true,
+      "revision": "2dbfa901ec294c0f8edc5e37e87d41a3aa69f169dcce18b4acf088d48f5c0167",
+      "target": {
+        "board_revision": "MB997-E-01",
+        "clock_assumptions": [
+          "Reference board: STM32F407G-DISC1, MB997 E-01 schematic. Actual card revision is unconfirmed.",
+          "8 MHz X2 crystal is documented for E-01; verify oscillator assembly and solder bridges against the actual card.",
+          "168 MHz is a validated software clock recipe, NOT a claim about the running firmware. Preserve a known working clock setup for GPIO tests.",
+          "Recipe only: PLLM=8, PLLN=336, PLLP=2, PLLQ=7; AHB /1; APB1 /4 (42 MHz); APB2 /2 (84 MHz); 5 FLASH wait states, supply within the reviewed range.",
+          "SysTick_Config uses the processor clock. For 1 ms use actual SystemCoreClock / 1000 after synchronizing SystemCoreClock; do not divide by 8.",
+          "UART loopback application explicitly selects HSI nominal 16 MHz, AHB/APB1/APB2 all /1; the 168 MHz recipe is not used for this scenario. See RCC/USART/TIM2 reviewed notes; timing remains unmeasured.",
+          "ADC example additionally assumes VDDA/VREF+ in the reviewed 2.7\u20133.6 V operating range; analog supply is not measured or physically qualified."
+        ],
+        "clock_hz": 168000000,
+        "example_only": false,
+        "family": "stm32",
+        "fuse_assumptions": [],
+        "id": "stm32f407g_disc1_mb997_e01",
+        "mcu": "STM32F407VGT6",
+        "package": "Package_QFP:LQFP-100_14x14mm_P0.5mm",
+        "primary_mcu_ref": "U4",
+        "silicon_revision": "Unspecified; errata review pending"
+      },
+      "trace": [
+        {
+          "arguments": {
+            "peripheral_name": "tim"
+          },
+          "expected_error": "PREREQUISITE_REQUIRED",
+          "is_error": true,
+          "passed": true,
+          "response_bytes": 109,
+          "response_sha256": "3ca77b575e2247321348bdea42ed2e09e77fd8324c366efe3260cb2b23ec1910",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "query_target": "TIM5_CAPTURE_IN"
+          },
+          "expected_error": "PREREQUISITE_REQUIRED",
+          "is_error": true,
+          "passed": true,
+          "response_bytes": 113,
+          "response_sha256": "7783e48ac11d4407db75aa9236db87cce6bf9c640794759a6740354abce3315f",
+          "tool": "query_schematic_netlist"
+        },
+        {
+          "arguments": {},
+          "expected_error": null,
+          "is_error": false,
+          "passed": true,
+          "response_bytes": 26363,
+          "response_sha256": "ff8db21b9e95bb40e52701a674a104cae94037da4de0b88029e5aeeb85e8a355",
+          "tool": "read_wiki_index"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "tim"
+          },
+          "expected_error": "PREREQUISITE_REQUIRED",
+          "is_error": true,
+          "passed": true,
+          "response_bytes": 99,
+          "response_sha256": "2c410b99c61a4355e5106be9bdadc8710fedddb641c6c6349382711bb5d427ac",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "query_target": "TIM5_CAPTURE_IN"
+          },
+          "expected_error": null,
+          "is_error": false,
+          "passed": true,
+          "response_bytes": 1323,
+          "response_sha256": "ecba36299578f012137bef0c6788759b0f074d6c65201ac6eb91840a1e2c88e7",
+          "tool": "query_schematic_netlist"
+        },
+        {
+          "arguments": {
+            "query_target": "praxis_absent_net"
+          },
+          "expected_error": null,
+          "is_error": false,
+          "passed": true,
+          "response_bytes": 78,
+          "response_sha256": "16ecb34476cd795bd536288752eed3dd4adfe734503f4d66bb3bf8873e43dc21",
+          "tool": "query_schematic_netlist"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "praxis_absent_entity"
+          },
+          "expected_error": "UNKNOWN_PERIPHERAL",
+          "is_error": true,
+          "passed": true,
+          "response_bytes": 430,
+          "response_sha256": "cb6cab509571cc3ad0701f91c6c5f47be310f9623ed7cc62cdcefbb269682100",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "../outside"
+          },
+          "expected_error": "INVALID_INPUT",
+          "is_error": true,
+          "passed": true,
+          "response_bytes": 135,
+          "response_sha256": "e769d6a8adfd62a3caeef79db4d8235733bb485cfce9ebfc2838d190c2395542",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "rcc"
+          },
+          "expected_error": null,
+          "is_error": false,
+          "passed": true,
+          "response_bytes": 59073,
+          "response_sha256": "8b1739ebe36cf44542a5e8389a85364386203f67014ac92d9da487594e50fae4",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "flash"
+          },
+          "expected_error": null,
+          "is_error": false,
+          "passed": true,
+          "response_bytes": 9153,
+          "response_sha256": "a4b20efaa50cc6ac985ca7759468de14075b45b702be29520943834ec33dd69e",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "pwr"
+          },
+          "expected_error": null,
+          "is_error": false,
+          "passed": true,
+          "response_bytes": 6775,
+          "response_sha256": "5636abf09bba2f6cfd0cc00e612ccf0615520941d2bbb227d2d3683d6a7da267",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "adc_common"
+          },
+          "expected_error": null,
+          "is_error": false,
+          "passed": true,
+          "response_bytes": 8176,
+          "response_sha256": "c82cfa5179c9200ab762f7888e8b87a7a6e1c2a8313389b97dd3d9783127a372",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "adc"
+          },
+          "expected_error": null,
+          "is_error": false,
+          "passed": true,
+          "response_bytes": 20339,
+          "response_sha256": "0f472c62b1a70bd7f68b966b29a0073441a6fbddfea01c30f3c4e65f3463a6f5",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "gpio"
+          },
+          "expected_error": null,
+          "is_error": false,
+          "passed": true,
+          "response_bytes": 31280,
+          "response_sha256": "1709ed55503a6d4749e537b57268dc6f6b2876677f497e5c4d63ae713e7d452a",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "syscfg"
+          },
+          "expected_error": null,
+          "is_error": false,
+          "passed": true,
+          "response_bytes": 6383,
+          "response_sha256": "3283252957d0de84ecdc1fd62642d2b0c6ac6bc18053de74773edc240ac8a3e2",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "exti"
+          },
+          "expected_error": null,
+          "is_error": false,
+          "passed": true,
+          "response_bytes": 20092,
+          "response_sha256": "5358cc8f09f780e7d5d545c1b498b637d4ad3c2da56d9efcb71b5acc36bc8b46",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "tim"
+          },
+          "expected_error": null,
+          "is_error": false,
+          "passed": true,
+          "response_bytes": 64950,
+          "response_sha256": "4d22bd05a1b88566bc600589279d8b9ab8d506bc748066673c3e2b8d54d82409",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "usart"
+          },
+          "expected_error": null,
+          "is_error": false,
+          "passed": true,
+          "response_bytes": 11612,
+          "response_sha256": "725b6f34cf254cb89f3d949d3a6084a18a6216681ccb3b573e05df7a4b215e47",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "nvic"
+          },
+          "expected_error": null,
+          "is_error": false,
+          "passed": true,
+          "response_bytes": 7775,
+          "response_sha256": "77ca10022a59169aa53c945f31eccb1c93cd3ab7c15a80642638fb2b60ec54b5",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "can"
+          },
+          "expected_error": null,
+          "is_error": false,
+          "passed": true,
+          "response_bytes": 54067,
+          "response_sha256": "e646f65de69cc347d4940af3f1c3f1ca70738185cca3844e72ee6161e9cf992f",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "coredebug"
+          },
+          "expected_error": null,
+          "is_error": false,
+          "passed": true,
+          "response_bytes": 4884,
+          "response_sha256": "3c8ee59452f6e46ac63bcb702d39a07afe0a406f5fdbb21734bd1d73f0b6d4c4",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "crc"
+          },
+          "expected_error": null,
+          "is_error": false,
+          "passed": true,
+          "response_bytes": 4044,
+          "response_sha256": "47b893e55424a2167ebb1027aea1845be7f0129540b1f725fdd81bd850cdce6b",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "dac"
+          },
+          "expected_error": null,
+          "is_error": false,
+          "passed": true,
+          "response_bytes": 21043,
+          "response_sha256": "6211ec84b66a428d4b47844a79e97d74a1a4b98e97774bdaa10e14e42cd4d7db",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "dbgmcu"
+          },
+          "expected_error": null,
+          "is_error": false,
+          "passed": true,
+          "response_bytes": 2878,
+          "response_sha256": "0608f9c3225790a9fa5766697358f2e7cf3770d766f961b8e7137af8fb031f84",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "dcmi"
+          },
+          "expected_error": null,
+          "is_error": false,
+          "passed": true,
+          "response_bytes": 6965,
+          "response_sha256": "34d3b70be264989d3e1764afdd61896d3637b72c44a5592d308815616e545992",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "dma"
+          },
+          "expected_error": null,
+          "is_error": false,
+          "passed": true,
+          "response_bytes": 17152,
+          "response_sha256": "f7673cef74eff36a3002109cfb13e0391a205cdb8ca1a73563edcc88740f84c5",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "dma_stream"
+          },
+          "expected_error": null,
+          "is_error": false,
+          "passed": true,
+          "response_bytes": 14486,
+          "response_sha256": "22126039fcc199915074f433742a7543e35e0ba08a50fb0b54065bb14ba27ab9",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "dwt"
+          },
+          "expected_error": null,
+          "is_error": false,
+          "passed": true,
+          "response_bytes": 7222,
+          "response_sha256": "90c60c8776ecc48beea273e69102018f82578a587c5525b3cd29ec39898e7331",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "eth"
+          },
+          "expected_error": null,
+          "is_error": false,
+          "passed": true,
+          "response_bytes": 35145,
+          "response_sha256": "610ef46679d2f2b5f734d13e0c12914903daeb297a59348c87658111b6cd2f75",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "fpu"
+          },
+          "expected_error": null,
+          "is_error": false,
+          "passed": true,
+          "response_bytes": 5829,
+          "response_sha256": "457005c66dd8917a2733848cf6af602dd97323277d045edb8234debc01b8e024",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "fsmc_bank1"
+          },
+          "expected_error": null,
+          "is_error": false,
+          "passed": true,
+          "response_bytes": 1649,
+          "response_sha256": "ecd22b4f90112db5fc77f16ff4db91d4e756764149446042363a94981a0e2ce9",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "fsmc_bank1e"
+          },
+          "expected_error": null,
+          "is_error": false,
+          "passed": true,
+          "response_bytes": 1654,
+          "response_sha256": "1e53ad55381b5a21ca6586a7b3345c79d7c2ea275a6b77b80dc795236c11a490",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "fsmc_bank2_3"
+          },
+          "expected_error": null,
+          "is_error": false,
+          "passed": true,
+          "response_bytes": 2902,
+          "response_sha256": "540c7596391c82981dd73d70e656831e52d65e3f3e58efd5a5b1983bfccd2a7b",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "fsmc_bank4"
+          },
+          "expected_error": null,
+          "is_error": false,
+          "passed": true,
+          "response_bytes": 2168,
+          "response_sha256": "5a968d84e3865a756a1dd74a2c8052e36d1ce107392a2b6e3c0f5c2ce202d76c",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "i2c"
+          },
+          "expected_error": null,
+          "is_error": false,
+          "passed": true,
+          "response_bytes": 18448,
+          "response_sha256": "0c0086bcc041a4042c681a535d4110a34f9de28c30fbc321340e8e1c4b54ffc3",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "itm"
+          },
+          "expected_error": null,
+          "is_error": false,
+          "passed": true,
+          "response_bytes": 6209,
+          "response_sha256": "0b90c77a5aa2e714328c95d3ed96c39a5fbe0988b0894b9a00c1bdb9cae5d3b9",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "iwdg"
+          },
+          "expected_error": null,
+          "is_error": false,
+          "passed": true,
+          "response_bytes": 5243,
+          "response_sha256": "ae2cee88a164f94cc5e9340709fb082dfbe280b16955aae0d521e905388fd99e",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "mpu"
+          },
+          "expected_error": null,
+          "is_error": false,
+          "passed": true,
+          "response_bytes": 4677,
+          "response_sha256": "2067229f083c5e95ed10a36ca0908429fcf17bba70c52ee81f4813283b2c2042",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "rng"
+          },
+          "expected_error": null,
+          "is_error": false,
+          "passed": true,
+          "response_bytes": 6131,
+          "response_sha256": "edc7060db4e5e596fcb28962ad80fdf70a590cb469f12ddf97757843982dd759",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "rtc"
+          },
+          "expected_error": null,
+          "is_error": false,
+          "passed": true,
+          "response_bytes": 23302,
+          "response_sha256": "c6dc5272a959ccb74ddb3bb191bf1a9c73eb89c21257fe7c6c62e41a05f239b2",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "scb"
+          },
+          "expected_error": null,
+          "is_error": false,
+          "passed": true,
+          "response_bytes": 18699,
+          "response_sha256": "7b107446ecc59d65d3c483fede8608c35bd3f5ef2251a4792092a7f5adf1f049",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "scnscb"
+          },
+          "expected_error": null,
+          "is_error": false,
+          "passed": true,
+          "response_bytes": 1725,
+          "response_sha256": "330d9105cfdc07638d05afc874c223d39c77fa2df76ba65ad19b8c44bc22f8bb",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "sdio"
+          },
+          "expected_error": null,
+          "is_error": false,
+          "passed": true,
+          "response_bytes": 16121,
+          "response_sha256": "5c1996e491b92b98cafc01435b3497f6d4dd6cb0f7c6537b14756cf14ac3ca52",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "spi"
+          },
+          "expected_error": null,
+          "is_error": false,
+          "passed": true,
+          "response_bytes": 17102,
+          "response_sha256": "d305926354596e925996d71a12be6e227113ac03cefe761ec5f8d31c27fa55ac",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "systick"
+          },
+          "expected_error": null,
+          "is_error": false,
+          "passed": true,
+          "response_bytes": 11872,
+          "response_sha256": "8e70b06df15d0d8cb9873918ed0381c26778fa5ced81d654c843d2fc8588a8c2",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "tpi"
+          },
+          "expected_error": null,
+          "is_error": false,
+          "passed": true,
+          "response_bytes": 8169,
+          "response_sha256": "039498ba6bf97c92b58259e41aae14d45af2c3eb51fdbff59c55599c0fca74d2",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "usb_otg_device"
+          },
+          "expected_error": null,
+          "is_error": false,
+          "passed": true,
+          "response_bytes": 11162,
+          "response_sha256": "09702cbe70ab38bd4ce05d647d5a720b58c5ab801a1867caa6fb3ae1b8ef86bd",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "usb_otg_global"
+          },
+          "expected_error": null,
+          "is_error": false,
+          "passed": true,
+          "response_bytes": 19721,
+          "response_sha256": "9ccf2ee61729e5743a06a04fa3f5005b948ef0714f12f26f06180589606c7e6f",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "usb_otg_host"
+          },
+          "expected_error": null,
+          "is_error": false,
+          "passed": true,
+          "response_bytes": 3906,
+          "response_sha256": "da0ad90e610b460727c5a3011263630585d6847e8afba7e94bf6ca5f22bcf01e",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "wwdg"
+          },
+          "expected_error": null,
+          "is_error": false,
+          "passed": true,
+          "response_bytes": 2493,
+          "response_sha256": "b6d5e8efc824edfb902f2cad50986345cdd10fcdcc8818b9f4b720493f30b8ec",
+          "tool": "read_peripheral_doc"
+        },
+        {
+          "arguments": {},
+          "expected_error": null,
+          "is_error": false,
+          "passed": true,
+          "response_bytes": 26363,
+          "response_sha256": "ff8db21b9e95bb40e52701a674a104cae94037da4de0b88029e5aeeb85e8a355",
+          "tool": "read_wiki_index"
+        },
+        {
+          "arguments": {
+            "peripheral_name": "TIM"
+          },
+          "expected_error": null,
+          "is_error": false,
+          "passed": true,
+          "response_bytes": 64950,
+          "response_sha256": "4d22bd05a1b88566bc600589279d8b9ab8d506bc748066673c3e2b8d54d82409",
+          "tool": "read_peripheral_doc"
+        }
+      ]
+    },
+    "packaging": {
+      "branding_assets_passed": true,
+      "build_backend": "Installed Hatchling1.32.4 environment; offline wheel built from source distribution",
+      "distribution_contents_passed": true,
+      "experimental_target_inputs_verified": 37,
+      "inventory_inputs_verified": 52,
+      "private_and_raw_paths_excluded": true,
+      "public_documentation_file_links_passed": true,
+      "publication_contracts_verified": 22,
+      "source_members": 2658,
+      "status": "passed",
+      "wheel_members": 63
+    },
+    "release_gate": {
+      "blockers": [
+        "Independent review of the exact current bundle revisions is missing",
+        "Independent review of the exact firmware asset revision is missing"
+      ],
+      "exit_code": 2,
+      "release_ready": false
+    },
+    "ruff": "passed"
+  }
+}

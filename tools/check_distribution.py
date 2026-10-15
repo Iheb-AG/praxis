@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import posixpath
 import re
@@ -10,12 +11,92 @@ import zipfile
 from pathlib import Path, PurePosixPath
 
 REQUIRED = {
+    'praxis/timer_irq_telemetry.py', 'praxis/data/timer-irq-telemetry-v1.json',
+    'tests/test_timer_irq.py', 'tests/test_timer_irq_effects.py',
+    'tests/fixtures/f407_timer_irq_model.c',
+    'docs/timer-irq.md', 'docs/timer-irq-evidence.json',
+    'examples/acceptance/stm32f407g-disc1-timer-irq.json',
+    'examples/capabilities/stm32f407g-disc1-timer-irq.json',
+    'sources/stm32f407g-disc1/profile-timer-irq-v1.json',
+    *{f'sources/stm32f407g-disc1/reviewed/timer-irq-v1/{name}'
+      for name in ('extension.json', 'evidence.json', 'scb.md', 'nvic.md', 'tim.md')},
+    *{f'examples/stm32f407g-disc1-timer/irq_application/{name}'
+      for name in ('timer_controller.h', 'routed_timer.h', 'route_scenario.h',
+                   'telemetry.h', 'irq_controller.h', 'main.c')},
+    'bundles/stm32f407g-disc1-e01-timer-irq-v1/manifest.json',
+    'docs/reports/timer-route-results.md', 'docs/timer-route-physical-evidence.json',
+    'praxis/timer_route_telemetry.py', 'praxis/data/timer-route-telemetry-v1.json',
+    'tests/test_timer_route_telemetry.py', 'tests/fixtures/f407_timer_route_telemetry_model.c',
+    'docs/timer-observations.md', 'docs/timer-observations-evidence.json',
+    'examples/acceptance/stm32f407g-disc1-timer-observations.json',
+    *{f'examples/stm32f407g-disc1-timer/routes_telemetry_application/{name}'
+      for name in ('timer_controller.h', 'routed_timer.h', 'route_scenario.h', 'telemetry.h', 'main.c')},
+    'tests/test_mode_instance_scopes.py', 'tests/test_timer_routes.py',
+    'tests/fixtures/f407_timer_route_model.c',
+    'docs/timer-routes.md', 'docs/timer-routes-evidence.json',
+    'examples/acceptance/stm32f407g-disc1-timer-routes.json',
+    'examples/capabilities/stm32f407g-disc1-timer-routes.json',
+    'sources/stm32f407g-disc1/profile-timer-routes-v1.json',
+    *{f'sources/stm32f407g-disc1/reviewed/timer-routes-v1/{name}'
+      for name in ('extension.json', 'evidence.json', 'pin-evidence.json',
+                   'connectivity-evidence.json', 'netlist.json', 'board.json',
+                   'tim.md', 'rcc.md', 'gpio.md')},
+    *{f'examples/stm32f407g-disc1-timer/routes_application/{name}'
+      for name in ('timer_controller.h', 'routed_timer.h', 'main.c')},
+    'bundles/stm32f407g-disc1-e01-timer-routes-v1/manifest.json',
+    'tests/test_timer_modes.py', 'tests/fixtures/f407_timer_model.c',
+    'docs/timer-modes.md', 'docs/timer-modes-evidence.json',
+    'examples/stm32f407g-disc1-timer/README.md',
+    'examples/acceptance/stm32f407g-disc1-timer.json',
+    'examples/capabilities/stm32f407g-disc1-timer.json',
+    'sources/stm32f407g-disc1/profile-timer-modes-v1.json',
+    *{f'sources/stm32f407g-disc1/reviewed/timer-modes-v1/{name}'
+      for name in ('extension.json', 'evidence.json', 'tim.md', 'rcc.md')},
+    *{f'examples/stm32f407g-disc1-timer/{application}/{name}'
+      for application in ('pwm_application', 'capture_application')
+      for name in ('timer_controller.h', 'timer_mmio.h', 'main.c')},
+    'bundles/stm32f407g-disc1-e01-timer-modes-v1/manifest.json',
+    'tests/test_field_views.py', 'docs/register-field-views.md', 'docs/register-field-views-evidence.json',
+    'sources/stm32f407g-disc1/profile-timer-views-v1.json',
+    'sources/stm32f407g-disc1/reviewed/timer-views-v1/extension.json',
+    'sources/stm32f407g-disc1/reviewed/timer-views-v1/tim.md',
+    'examples/inventory/stm32f407g-disc1/timer-views-review.json',
+    'bundles/stm32f407g-disc1-e01-timer-views-v1/manifest.json',
+    'praxis/inventory_review.py', 'tests/test_inventory_review.py',
+    'examples/inventory/stm32f407g-disc1/inventory-v2.json',
+    'docs/inventory-reconciliation.md', 'docs/inventory-reconciliation-evidence.json',
+    'praxis/adapters/outline.py', 'praxis/capability_inventory.py',
+    'tests/test_source_outline.py', 'tests/test_capability_inventory.py',
+    'examples/inventory/stm32f407g-disc1/inventory.json',
+    *{f'examples/inventory/stm32f407g-disc1/outlines/{name}.json'
+      for name in ('rm0090', 'ds8626', 'pm0214', 'es0182')},
+    'docs/manufacturer-inventory.md', 'docs/manufacturer-inventory-evidence.json',
+    'praxis/acceptance.py', 'tools/check_target_acceptance_mcp.py',
+    'examples/acceptance/stm32f407g-disc1.json', 'tests/test_target_acceptance.py',
+    'tests/test_union_storage.py', 'docs/f407-full-acceptance.md',
+    'docs/f407-full-acceptance-evidence.json',
+    'AGENTS.md', 'docs/document-scale.md', 'docs/document-scale-evidence.json',
+    'tests/test_large_documents.py', 'tests/test_kicad_pin_names.py', 'tests/test_dependency_policy.py',
+    'praxis/contracts.py', 'praxis/compatibility.py', 'praxis/data/legacy-targets.json',
+    'praxis/adapters/constraints.py',
+    'tests/test_publication_contracts.py', 'docs/compiler-contracts.md',
+    'docs/compiler-contracts-evidence.json',
     'vercel.json', '.vercelignore', '.gitattributes', 'website/build.mjs', 'website/package.json',
     'website/README.md', 'website/tests/build.test.mjs', 'website/tests/reader.test.mjs',
     'website/index.html', 'website/vite.config.js', 'website/package-lock.json',
     'website/src/main.jsx', 'website/src/App.jsx', 'website/src/docs.mjs',
     'website/src/MarkdownView.jsx', 'website/src/MermaidDiagram.jsx',
     'website/src/styles.css', 'website/src/branding.css', 'website/scripts/licenses.mjs',
+    'website/vercel.json', 'website/documentation-source/docs/README.md',
+    'praxis/target_matrix.py', 'praxis/reports.py', 'tests/test_mcu_inventory.py',
+    'tests/test_target_matrix.py', 'tests/test_report_companions.py',
+    'tests/test_compound_masks.py',
+    'docs/stm32-family-expansion.md', 'docs/stm32-family-expansion-evidence.json',
+    'examples/opencode.stm32-inventory.example.json', 'sources/stm32-experimental/catalog.json',
+    *{f'sources/stm32-experimental/{part}/{name}'
+      for part in ('stm32f103c8t6', 'stm32g071rbt6', 'stm32h743zit6')
+      for name in ('profile.json', 'acquisition-lock.json', 'definitions.json',
+                   'raw/LICENSE-ST.md', 'raw/LICENSE-CMSIS.txt')},
     'website/public/branding/praxis-logo.png', 'website/public/branding/praxis-background.jpg',
     'docs/vercel-hosting.md',
     'README_DETAILED.md', 'CHANGELOG.md', 'docs/alpha-launch.md', 'docs/images/README.md',
@@ -47,7 +128,7 @@ REQUIRED = {
     'sources/stm32f407g-disc1/reviewed/can-rx-v1/gpio.md',
     'sources/stm32f407g-disc1/reviewed/can-rx-v1/can.md',
     'sources/stm32f407g-disc1/reviewed/can-rx-v1/netlist.json',
-    'examples/stm32f407g-disc1-can/telemetry_rx_application/README.md',
+    'examples/stm32f407g-disc1-can/README_RX.md',
     'examples/stm32f407g-disc1-can/telemetry_rx_application/main.c',
     'examples/stm32f407g-disc1-can/telemetry_rx_application/can_rx_route.h',
     'examples/stm32f407g-disc1-can/telemetry_rx_application/can_controller.h',
@@ -167,7 +248,12 @@ def main():
     if not {'praxis/telemetry.py', 'praxis/server.py', 'praxis/cli.py',
             'praxis/adapters/manual.py', 'praxis/review.py', 'praxis/support.py',
             'praxis/definitions.py', 'praxis/workflow_review.py',
-            'praxis/can_telemetry.py', 'praxis/can_diagnostics.py', 'praxis/targets.py'} <= wheel:
+            'praxis/can_telemetry.py', 'praxis/can_diagnostics.py', 'praxis/targets.py',
+            'praxis/contracts.py', 'praxis/compatibility.py', 'praxis/data/legacy-targets.json',
+            'praxis/adapters/constraints.py', 'praxis/acceptance.py',
+            'praxis/adapters/outline.py', 'praxis/capability_inventory.py', 'praxis/inventory_review.py',
+            'praxis/timer_route_telemetry.py', 'praxis/data/timer-route-telemetry-v1.json',
+            'praxis/timer_irq_telemetry.py', 'praxis/data/timer-irq-telemetry-v1.json'} <= wheel:
         raise ValueError('Runtime modules missing from wheel')
     with tarfile.open(sdists[0], 'r:gz') as archive:
         members = archive.getmembers()
@@ -178,6 +264,63 @@ def main():
                     archive.extractfile(member).read(16) for member in members
                     if member.isfile() and member.name.endswith(
                         ('/docs/images/praxis-banner.jpg', '/docs/images/praxis-logo.png'))}
+        archive_members = {member.name: member for member in members if member.isfile()}
+        publication_contracts = 0
+        for name, member in archive_members.items():
+            path = PurePosixPath(name)
+            relative = PurePosixPath(*path.parts[1:])
+            if (relative.parts[0] != 'sources' or 'contracts' in relative.parts or path.suffix != '.json'
+                    or not path.stem.startswith('profile')):
+                continue
+            profile = json.loads(archive.extractfile(member).read())
+            selected = profile.get('compilation_contract')
+            policy = next((s for s in profile.get('sources', []) if s['id'] == selected), None)
+            if policy is None or policy['authority'] != 'configuration':
+                raise ValueError(f'Missing explicit publication policy: {name}')
+            target = posixpath.normpath(posixpath.join(str(path.parent), policy['path']))
+            artifact = archive_members.get(target)
+            if artifact is None or artifact.size > 1024 * 1024:
+                raise ValueError(f'Missing or oversized publication policy: {target}')
+            if hashlib.sha256(archive.extractfile(artifact).read()).hexdigest() != policy.get('expected_sha256'):
+                raise ValueError(f'Publication policy pin mismatch: {target}')
+            publication_contracts += 1
+        experimental_inputs = 0
+        inventory_inputs = 0
+        for name, member in archive_members.items():
+            path = PurePosixPath(name)
+            relative = PurePosixPath(*path.parts[1:]).as_posix()
+            if not (relative.startswith('examples/inventory/') and path.name.startswith('inventory')
+                    and path.suffix == '.json'):
+                continue
+            spec = json.loads(archive.extractfile(member).read())
+            if spec.get('format') != 'praxis-capability-inventory-v1':
+                raise ValueError(f'Unexpected inventory format: {name}')
+            for source in [*spec['documents'], *spec.get('supporting_evidence', [])]:
+                selected = PurePosixPath(source['path'])
+                if selected.is_absolute() or '..' in selected.parts or str(selected) != source['path']:
+                    raise ValueError(f'Escaped inventory input: {name}')
+                target = str(path.parent / selected)
+                artifact = archive_members.get(target)
+                if artifact is None:
+                    raise ValueError(f'Missing inventory input: {target}')
+                if hashlib.sha256(archive.extractfile(artifact).read()).hexdigest() != source['sha256']:
+                    raise ValueError(f'Inventory input pin mismatch: {target}')
+                inventory_inputs += 1
+        for name, member in archive_members.items():
+            relative = PurePosixPath(*PurePosixPath(name).parts[1:]).as_posix()
+            if (not relative.startswith('sources/stm32-experimental/') or not name.endswith('/profile.json')
+                    or '/contracts/' in name):
+                continue
+            profile = json.loads(archive.extractfile(member).read())
+            for source in profile['sources']:
+                target = posixpath.normpath(posixpath.join(str(PurePosixPath(name).parent), source['path']))
+                artifact = archive_members.get(target)
+                if artifact is None or artifact.size > 8 * 1024 * 1024:
+                    raise ValueError(f'Missing or oversized experimental input: {target}')
+                actual = hashlib.sha256(archive.extractfile(artifact).read()).hexdigest()
+                if actual != source.get('expected_sha256'):
+                    raise ValueError(f'Experimental source pin mismatch: {target}')
+                experimental_inputs += 1
     names = set()
     roots = set()
     for member in members:
@@ -198,7 +341,9 @@ def main():
                    'stm32f407g-disc1-e01-adc-v1', 'stm32f407g-disc1-e01-i2c-v1',
                    'stm32f407g-disc1-e01-dac-v1', 'stm32f407g-disc1-e01-can-v1',
                    'stm32f407g-disc1-e01-can-rx-v1', 'synthetic-cortex-m3-v1',
-                   'stm32f407g-disc1-e01-arm-core-v1', 'stm32f407g-disc1-e01-arm-core-v2'):
+                   'stm32f407g-disc1-e01-arm-core-v1', 'stm32f407g-disc1-e01-arm-core-v2',
+                   'stm32f103c8t6-inventory-v1', 'stm32g071rbt6-inventory-v1', 'stm32h743zit6-inventory-v1',
+                   'stm32f103c8t6-inventory-v2', 'stm32g071rbt6-inventory-v2', 'stm32h743zit6-inventory-v2'):
         if f'bundles/{bundle}/manifest.json' not in names:
             missing.add(f'bundles/{bundle}/manifest.json')
     if missing:
@@ -223,6 +368,9 @@ def main():
     print(json.dumps({'distribution_contents_passed': True, 'wheel_members': len(wheel),
                       'source_members': len(names), 'private_and_raw_paths_excluded': True,
                       'public_documentation_file_links_passed': True,
+                      'experimental_target_inputs_verified': experimental_inputs,
+                      'publication_contracts_verified': publication_contracts,
+                      'inventory_inputs_verified': inventory_inputs,
                       'branding_assets_passed': True}, indent=2))
     return 0
 

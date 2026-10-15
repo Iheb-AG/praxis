@@ -1,0 +1,3630 @@
+{
+  "additions": [
+    {
+      "id": "adc",
+      "instances": [
+        {
+          "base_address": 1073815552,
+          "bus": "APB2",
+          "clock": "PCLK2/4 = 21 MHz under the declared PLL operating point",
+          "name": "ADC1",
+          "sources": [
+            {
+              "locator": "ADC1_BASE",
+              "source": "header"
+            },
+            {
+              "locator": "page:392",
+              "source": "rm_adc_392"
+            }
+          ]
+        }
+      ],
+      "operating_modes": {
+        "single_conversion": {
+          "fields": {
+            "CR1": [
+              "RES",
+              "SCAN",
+              "EOCIE",
+              "OVRIE"
+            ],
+            "CR2": [
+              "ADON",
+              "SWSTART",
+              "CONT",
+              "EOCS",
+              "ALIGN",
+              "DMA",
+              "EXTEN"
+            ],
+            "DR": [
+              "DATA"
+            ],
+            "SMPR1": [
+              "SMP17"
+            ],
+            "SQR1": [
+              "L"
+            ],
+            "SQR3": [
+              "SQ1"
+            ],
+            "SR": [
+              "EOC",
+              "OVR",
+              "STRT"
+            ]
+          },
+          "instances": [
+            "ADC1"
+          ],
+          "registers": [
+            "SR",
+            "CR1",
+            "CR2",
+            "SMPR1",
+            "SQR1",
+            "SQR3",
+            "DR"
+          ],
+          "requirements": [
+            "ADC1 only: internal VREFINT is not available through ADC2/ADC3; no GPIO pin or external connection is selected.",
+            "Fresh owned startup: ADC1/ADC2/ADC3 initially disabled and no other ADC, timer, DMA or interrupt owner. VDDA/VREF+ supply must satisfy the declared datasheet operating range.",
+            "Set CR1=0, CR2=0, SQR1=0 and SQR3.SQ1=17 while disabled; SMP17=7 means 480 ADC clocks. Keep reserved bits zero.",
+            "Enable reference/common configuration and ADON|EOCS, then provide at least 10 us reference startup and 3 us ADC power-up settling before SWSTART; the example uses the separate 1 ms TIM2 contract.",
+            "Clear stale SR flags with SR=0, issue SWSTART only after settling, bound EOC polling, reject OVR and out-of-range raw values, read DR once, then disable ADC/reference and stop the owned timer.",
+            "No scan, external analog input, injected conversion, ADC2/ADC3, DMA, interrupts, calibration, temperature or precision voltage measurement is supported by this contract."
+          ],
+          "requires_modes": [
+            {
+              "instances": [
+                "ADC123_COMMON"
+              ],
+              "mode": "internal_reference_prescale4",
+              "peripheral": "adc_common"
+            }
+          ],
+          "sources": [
+            {
+              "locator": "page:392",
+              "source": "rm_adc_392"
+            },
+            {
+              "locator": "page:393",
+              "source": "rm_adc_393"
+            },
+            {
+              "locator": "page:417",
+              "source": "rm_adc_417"
+            },
+            {
+              "locator": "page:418",
+              "source": "rm_adc_418"
+            },
+            {
+              "locator": "page:420",
+              "source": "rm_adc_420"
+            },
+            {
+              "locator": "page:421",
+              "source": "rm_adc_421"
+            },
+            {
+              "locator": "page:422",
+              "source": "rm_adc_422"
+            },
+            {
+              "locator": "page:424",
+              "source": "rm_adc_424"
+            },
+            {
+              "locator": "page:426",
+              "source": "rm_adc_426"
+            },
+            {
+              "locator": "page:427",
+              "source": "rm_adc_427"
+            },
+            {
+              "locator": "page:141",
+              "source": "ds_adc_reference"
+            },
+            {
+              "locator": "page:136",
+              "source": "ds_adc_136"
+            }
+          ],
+          "title": "ADC1 VREFINT channel 17, 12-bit single software-triggered polling"
+        }
+      },
+      "prerequisites": [
+        "adc_common"
+      ],
+      "registers": [
+        {
+          "access": "mixed",
+          "access_widths": [
+            32
+          ],
+          "count": 1,
+          "fields": [
+            {
+              "lsb": 1,
+              "mask": 2,
+              "meaning": "End of conversion; read DR clears this flag.",
+              "name": "EOC",
+              "sources": [
+                {
+                  "locator": "ADC_SR_EOC_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:417",
+                  "source": "rm_adc_417"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 5,
+              "mask": 32,
+              "meaning": "Lost conversion data; abort this operation if set.",
+              "name": "OVR",
+              "sources": [
+                {
+                  "locator": "ADC_SR_OVR_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:417",
+                  "source": "rm_adc_417"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 4,
+              "mask": 16,
+              "meaning": "Regular conversion start flag; clear by writing zero.",
+              "name": "STRT",
+              "sources": [
+                {
+                  "locator": "ADC_SR_STRT_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:417",
+                  "source": "rm_adc_417"
+                }
+              ],
+              "width": 1
+            }
+          ],
+          "io_address": null,
+          "name": "SR",
+          "offset": 0,
+          "reset": 0,
+          "side_effects": "Status flags clear by writing zero. Reading DR clears EOC. OVR detection requires EOCS=1 or DMA=1; this mode uses EOCS=1. Clear owned stale flags with SR=0, never W1C.",
+          "sources": [
+            {
+              "locator": "ADC_TypeDef.SR",
+              "source": "header"
+            },
+            {
+              "locator": "page:417",
+              "source": "rm_adc_417"
+            }
+          ],
+          "width": 32
+        },
+        {
+          "access": "RW",
+          "access_widths": [
+            32
+          ],
+          "count": 1,
+          "fields": [
+            {
+              "lsb": 24,
+              "mask": 50331648,
+              "meaning": "00 selects 12-bit conversion.",
+              "name": "RES",
+              "sources": [
+                {
+                  "locator": "ADC_CR1_RES_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:418",
+                  "source": "rm_adc_418"
+                },
+                {
+                  "locator": "page:419",
+                  "source": "rm_adc_419"
+                }
+              ],
+              "width": 2
+            },
+            {
+              "lsb": 8,
+              "mask": 256,
+              "meaning": "0 disables scan.",
+              "name": "SCAN",
+              "sources": [
+                {
+                  "locator": "ADC_CR1_SCAN_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:418",
+                  "source": "rm_adc_418"
+                },
+                {
+                  "locator": "page:419",
+                  "source": "rm_adc_419"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 5,
+              "mask": 32,
+              "meaning": "0 disables EOC interrupt.",
+              "name": "EOCIE",
+              "sources": [
+                {
+                  "locator": "ADC_CR1_EOCIE_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:418",
+                  "source": "rm_adc_418"
+                },
+                {
+                  "locator": "page:419",
+                  "source": "rm_adc_419"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 26,
+              "mask": 67108864,
+              "meaning": "0 disables overrun interrupt.",
+              "name": "OVRIE",
+              "sources": [
+                {
+                  "locator": "ADC_CR1_OVRIE_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:418",
+                  "source": "rm_adc_418"
+                },
+                {
+                  "locator": "page:419",
+                  "source": "rm_adc_419"
+                }
+              ],
+              "width": 1
+            }
+          ],
+          "io_address": null,
+          "name": "CR1",
+          "offset": 4,
+          "reset": 0,
+          "side_effects": "Configure only while ADC1 disabled. This mode writes zero: 12-bit resolution, no scan/injected/watchdog/interrupt operation. Reserved bits remain zero.",
+          "sources": [
+            {
+              "locator": "ADC_TypeDef.CR1",
+              "source": "header"
+            },
+            {
+              "locator": "page:418",
+              "source": "rm_adc_418"
+            },
+            {
+              "locator": "page:419",
+              "source": "rm_adc_419"
+            }
+          ],
+          "width": 32
+        },
+        {
+          "access": "RW",
+          "access_widths": [
+            32
+          ],
+          "count": 1,
+          "fields": [
+            {
+              "lsb": 0,
+              "mask": 1,
+              "meaning": "1 enables ADC; 0 powers down.",
+              "name": "ADON",
+              "sources": [
+                {
+                  "locator": "ADC_CR2_ADON_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:420",
+                  "source": "rm_adc_420"
+                },
+                {
+                  "locator": "page:421",
+                  "source": "rm_adc_421"
+                },
+                {
+                  "locator": "page:422",
+                  "source": "rm_adc_422"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 30,
+              "mask": 1073741824,
+              "meaning": "Software regular-conversion command; hardware clears when conversion starts.",
+              "name": "SWSTART",
+              "sources": [
+                {
+                  "locator": "ADC_CR2_SWSTART_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:420",
+                  "source": "rm_adc_420"
+                },
+                {
+                  "locator": "page:421",
+                  "source": "rm_adc_421"
+                },
+                {
+                  "locator": "page:422",
+                  "source": "rm_adc_422"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 1,
+              "mask": 2,
+              "meaning": "0 selects single conversion.",
+              "name": "CONT",
+              "sources": [
+                {
+                  "locator": "ADC_CR2_CONT_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:420",
+                  "source": "rm_adc_420"
+                },
+                {
+                  "locator": "page:421",
+                  "source": "rm_adc_421"
+                },
+                {
+                  "locator": "page:422",
+                  "source": "rm_adc_422"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 10,
+              "mask": 1024,
+              "meaning": "1 sets EOC per conversion and enables overrun detection.",
+              "name": "EOCS",
+              "sources": [
+                {
+                  "locator": "ADC_CR2_EOCS_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:420",
+                  "source": "rm_adc_420"
+                },
+                {
+                  "locator": "page:421",
+                  "source": "rm_adc_421"
+                },
+                {
+                  "locator": "page:422",
+                  "source": "rm_adc_422"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 11,
+              "mask": 2048,
+              "meaning": "0 selects right alignment.",
+              "name": "ALIGN",
+              "sources": [
+                {
+                  "locator": "ADC_CR2_ALIGN_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:420",
+                  "source": "rm_adc_420"
+                },
+                {
+                  "locator": "page:421",
+                  "source": "rm_adc_421"
+                },
+                {
+                  "locator": "page:422",
+                  "source": "rm_adc_422"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 8,
+              "mask": 256,
+              "meaning": "0 disables DMA.",
+              "name": "DMA",
+              "sources": [
+                {
+                  "locator": "ADC_CR2_DMA_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:420",
+                  "source": "rm_adc_420"
+                },
+                {
+                  "locator": "page:421",
+                  "source": "rm_adc_421"
+                },
+                {
+                  "locator": "page:422",
+                  "source": "rm_adc_422"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 28,
+              "mask": 805306368,
+              "meaning": "00 disables external triggering.",
+              "name": "EXTEN",
+              "sources": [
+                {
+                  "locator": "ADC_CR2_EXTEN_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:420",
+                  "source": "rm_adc_420"
+                },
+                {
+                  "locator": "page:421",
+                  "source": "rm_adc_421"
+                },
+                {
+                  "locator": "page:422",
+                  "source": "rm_adc_422"
+                }
+              ],
+              "width": 2
+            }
+          ],
+          "io_address": null,
+          "name": "CR2",
+          "offset": 8,
+          "reset": 0,
+          "side_effects": "ADON powers the ADC. SWSTART is a self-clearing command and requires ADON=1. Disable ADC on completion or failure; no trigger/DMA/continuous requests.",
+          "sources": [
+            {
+              "locator": "ADC_TypeDef.CR2",
+              "source": "header"
+            },
+            {
+              "locator": "page:420",
+              "source": "rm_adc_420"
+            },
+            {
+              "locator": "page:421",
+              "source": "rm_adc_421"
+            },
+            {
+              "locator": "page:422",
+              "source": "rm_adc_422"
+            }
+          ],
+          "width": 32
+        },
+        {
+          "access": "RW",
+          "access_widths": [
+            32
+          ],
+          "count": 1,
+          "fields": [
+            {
+              "lsb": 21,
+              "mask": 14680064,
+              "meaning": "111 selects 480 cycles for channel 17.",
+              "name": "SMP17",
+              "sources": [
+                {
+                  "locator": "ADC_SMPR1_SMP17_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:422",
+                  "source": "rm_adc_422"
+                }
+              ],
+              "width": 3
+            }
+          ],
+          "io_address": null,
+          "name": "SMPR1",
+          "offset": 12,
+          "reset": 0,
+          "side_effects": "Sampling selection cannot change during conversion. SMP17=111 chooses 480 ADC cycles; at 21 MHz this is about 22.86 us, above the declared 10 us VREFINT minimum.",
+          "sources": [
+            {
+              "locator": "ADC_TypeDef.SMPR1",
+              "source": "header"
+            },
+            {
+              "locator": "page:422",
+              "source": "rm_adc_422"
+            }
+          ],
+          "width": 32
+        },
+        {
+          "access": "RW",
+          "access_widths": [
+            32
+          ],
+          "count": 1,
+          "fields": [],
+          "io_address": null,
+          "name": "SMPR2",
+          "offset": 16,
+          "reset": 0,
+          "side_effects": "Channel 0\u20139 sampling configuration; leave zero in this internal-channel mode. Do not change during conversion.",
+          "sources": [
+            {
+              "locator": "ADC_TypeDef.SMPR2",
+              "source": "header"
+            },
+            {
+              "locator": "page:422",
+              "source": "rm_adc_422"
+            },
+            {
+              "locator": "page:423",
+              "source": "rm_adc_423"
+            }
+          ],
+          "width": 32
+        },
+        {
+          "access": "RW",
+          "access_widths": [
+            32
+          ],
+          "count": 1,
+          "fields": [
+            {
+              "lsb": 20,
+              "mask": 15728640,
+              "meaning": "0000 selects one regular conversion.",
+              "name": "L",
+              "sources": [
+                {
+                  "locator": "ADC_SQR1_L_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:424",
+                  "source": "rm_adc_424"
+                }
+              ],
+              "width": 4
+            }
+          ],
+          "io_address": null,
+          "name": "SQR1",
+          "offset": 44,
+          "reset": 0,
+          "side_effects": "Do not modify sequence while conversion is active; changing it can restart conversion.",
+          "sources": [
+            {
+              "locator": "ADC_TypeDef.SQR1",
+              "source": "header"
+            },
+            {
+              "locator": "page:424",
+              "source": "rm_adc_424"
+            }
+          ],
+          "width": 32
+        },
+        {
+          "access": "RW",
+          "access_widths": [
+            32
+          ],
+          "count": 1,
+          "fields": [
+            {
+              "lsb": 0,
+              "mask": 31,
+              "meaning": "10001 selects ADC1 internal reference channel 17 for the first conversion.",
+              "name": "SQ1",
+              "sources": [
+                {
+                  "locator": "ADC_SQR3_SQ1_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:425",
+                  "source": "rm_adc_425"
+                },
+                {
+                  "locator": "page:426",
+                  "source": "rm_adc_426"
+                }
+              ],
+              "width": 5
+            }
+          ],
+          "io_address": null,
+          "name": "SQR3",
+          "offset": 52,
+          "reset": 0,
+          "side_effects": "Do not modify sequence while conversion is active.",
+          "sources": [
+            {
+              "locator": "ADC_TypeDef.SQR3",
+              "source": "header"
+            },
+            {
+              "locator": "page:425",
+              "source": "rm_adc_425"
+            },
+            {
+              "locator": "page:426",
+              "source": "rm_adc_426"
+            }
+          ],
+          "width": 32
+        },
+        {
+          "access": "RO",
+          "access_widths": [
+            32
+          ],
+          "count": 1,
+          "fields": [
+            {
+              "lsb": 0,
+              "mask": 65535,
+              "meaning": "Regular conversion data; interpreted as right-aligned 12-bit in this mode.",
+              "name": "DATA",
+              "sources": [
+                {
+                  "locator": "ADC_DR_DATA_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:417",
+                  "source": "rm_adc_417"
+                },
+                {
+                  "locator": "page:427",
+                  "source": "rm_adc_427"
+                }
+              ],
+              "width": 16
+            }
+          ],
+          "io_address": null,
+          "name": "DR",
+          "offset": 76,
+          "reset": 0,
+          "side_effects": "Read once after EOC; reading clears EOC. RO: never write. DATA is a 16-bit container; the reviewed right-aligned 12-bit mode returns 0\u20134095.",
+          "sources": [
+            {
+              "locator": "ADC_TypeDef.DR",
+              "source": "header"
+            },
+            {
+              "locator": "page:417",
+              "source": "rm_adc_417"
+            },
+            {
+              "locator": "page:427",
+              "source": "rm_adc_427"
+            }
+          ],
+          "width": 32
+        }
+      ],
+      "review": {
+        "basis": "Header declarations checked against complete RM0090/DS8626 parts; ST RCC implementation resolves the ADC1 enable-table typo. No independent sign-off or physical qualification.",
+        "reviewer": "Codex scoped source-backed editorial review via ingestion MCP",
+        "status": "reviewed"
+      },
+      "reviewed_markdown": "reviewed/adc-v1/adc.md",
+      "title": "ADC \u2014 ADC1 internal-reference single-conversion subset"
+    },
+    {
+      "id": "adc_common",
+      "instances": [
+        {
+          "base_address": 1073816320,
+          "bus": "APB2 shared",
+          "clock": "ADCCLK common to all ADCs",
+          "name": "ADC123_COMMON",
+          "sources": [
+            {
+              "locator": "ADC123_COMMON_BASE",
+              "source": "header"
+            },
+            {
+              "locator": "page:392",
+              "source": "rm_adc_392"
+            },
+            {
+              "locator": "page:429",
+              "source": "rm_adc_429"
+            }
+          ]
+        }
+      ],
+      "operating_modes": {
+        "internal_reference_prescale4": {
+          "fields": {
+            "CCR": [
+              "MULTI",
+              "ADCPRE",
+              "DMA",
+              "VBATE",
+              "TSVREFE"
+            ]
+          },
+          "instances": [
+            "ADC123_COMMON"
+          ],
+          "registers": [
+            "CCR"
+          ],
+          "requirements": [
+            "Requires the declared HSE8/168 MHz system profile, PCLK2=84 MHz and assumed VDDA/VREF+ in 2.7\u20133.6 V; ADCCLK=21 MHz remains below the 36 MHz datasheet ceiling in this range.",
+            "All ADCs must be disabled and unshared before CCR changes. Select MULTI=0, ADCPRE=1, DMA=0, VBATE=0 and TSVREFE=1; keep reserved bits zero.",
+            "Allow at least 10 us reference startup and select at least 10 us ADC acquisition; this workflow uses 480 cycles at 21 MHz and a separately implemented 1 ms settling delay.",
+            "No multi-ADC, external analog, battery, temperature or precision/entropy qualification."
+          ],
+          "requires_modes": [
+            {
+              "instances": [
+                "RCC"
+              ],
+              "mode": "pll_hse8_168mhz",
+              "peripheral": "rcc"
+            },
+            {
+              "instances": [
+                "RCC"
+              ],
+              "mode": "adc_timer_gates",
+              "peripheral": "rcc"
+            }
+          ],
+          "sources": [
+            {
+              "locator": "page:392",
+              "source": "rm_adc_392"
+            },
+            {
+              "locator": "page:429",
+              "source": "rm_adc_429"
+            },
+            {
+              "locator": "page:430",
+              "source": "rm_adc_430"
+            },
+            {
+              "locator": "page:431",
+              "source": "rm_adc_431"
+            },
+            {
+              "locator": "page:135",
+              "source": "ds_adc_135"
+            },
+            {
+              "locator": "page:141",
+              "source": "ds_adc_reference"
+            }
+          ],
+          "title": "Independent ADCs with VREFINT and PCLK2/4"
+        }
+      },
+      "prerequisites": [
+        "rcc",
+        "flash",
+        "pwr"
+      ],
+      "registers": [
+        {
+          "access": "RW",
+          "access_widths": [
+            32
+          ],
+          "count": 1,
+          "fields": [
+            {
+              "lsb": 0,
+              "mask": 31,
+              "meaning": "00000 selects independent ADCs.",
+              "name": "MULTI",
+              "sources": [
+                {
+                  "locator": "ADC_CCR_MULTI_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:429",
+                  "source": "rm_adc_429"
+                },
+                {
+                  "locator": "page:430",
+                  "source": "rm_adc_430"
+                },
+                {
+                  "locator": "page:431",
+                  "source": "rm_adc_431"
+                }
+              ],
+              "width": 5
+            },
+            {
+              "lsb": 16,
+              "mask": 196608,
+              "meaning": "01 selects PCLK2/4.",
+              "name": "ADCPRE",
+              "sources": [
+                {
+                  "locator": "ADC_CCR_ADCPRE_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:429",
+                  "source": "rm_adc_429"
+                },
+                {
+                  "locator": "page:430",
+                  "source": "rm_adc_430"
+                },
+                {
+                  "locator": "page:431",
+                  "source": "rm_adc_431"
+                }
+              ],
+              "width": 2
+            },
+            {
+              "lsb": 14,
+              "mask": 49152,
+              "meaning": "00 disables multi-ADC DMA.",
+              "name": "DMA",
+              "sources": [
+                {
+                  "locator": "ADC_CCR_DMA_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:429",
+                  "source": "rm_adc_429"
+                },
+                {
+                  "locator": "page:430",
+                  "source": "rm_adc_430"
+                },
+                {
+                  "locator": "page:431",
+                  "source": "rm_adc_431"
+                }
+              ],
+              "width": 2
+            },
+            {
+              "lsb": 22,
+              "mask": 4194304,
+              "meaning": "0 disables VBAT path.",
+              "name": "VBATE",
+              "sources": [
+                {
+                  "locator": "ADC_CCR_VBATE_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:429",
+                  "source": "rm_adc_429"
+                },
+                {
+                  "locator": "page:430",
+                  "source": "rm_adc_430"
+                },
+                {
+                  "locator": "page:431",
+                  "source": "rm_adc_431"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 23,
+              "mask": 8388608,
+              "meaning": "1 enables temperature-sensor/VREFINT circuit; this mode samples only VREFINT.",
+              "name": "TSVREFE",
+              "sources": [
+                {
+                  "locator": "ADC_CCR_TSVREFE_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:429",
+                  "source": "rm_adc_429"
+                },
+                {
+                  "locator": "page:430",
+                  "source": "rm_adc_430"
+                },
+                {
+                  "locator": "page:431",
+                  "source": "rm_adc_431"
+                }
+              ],
+              "width": 1
+            }
+          ],
+          "io_address": null,
+          "name": "CCR",
+          "offset": 4,
+          "reset": 0,
+          "side_effects": "Shared across all ADCs. Configure only with all ADCs disabled and exclusive ownership. Independent mode, no multi-ADC DMA, VBAT disabled; TSVREFE starts the reference and requires settling.",
+          "sources": [
+            {
+              "locator": "ADC_Common_TypeDef.CCR",
+              "source": "header"
+            },
+            {
+              "locator": "page:429",
+              "source": "rm_adc_429"
+            },
+            {
+              "locator": "page:430",
+              "source": "rm_adc_430"
+            },
+            {
+              "locator": "page:431",
+              "source": "rm_adc_431"
+            }
+          ],
+          "width": 32
+        }
+      ],
+      "review": {
+        "basis": "Header declarations checked against complete RM0090/DS8626 parts; ST RCC implementation resolves the ADC1 enable-table typo. No independent sign-off or physical qualification.",
+        "reviewer": "Codex scoped source-backed editorial review via ingestion MCP",
+        "status": "reviewed"
+      },
+      "reviewed_markdown": "reviewed/adc-v1/adc_common.md",
+      "title": "ADC common \u2014 independent internal-reference subset"
+    }
+  ],
+  "applicable_mcus": [
+    "STM32F407VGT6"
+  ],
+  "base_sha256": "a59f7eed1ce3bc2e0746db6e1950c46bf9b9aecee0e052526cc3d5b88b28108d",
+  "replacements": [
+    {
+      "id": "rcc",
+      "instances": [
+        {
+          "base_address": 1073887232,
+          "bus": "AHB1",
+          "clock": "HSE8/PLL; see reviewed clock plan",
+          "name": "RCC",
+          "sources": [
+            {
+              "locator": "RCC_BASE",
+              "source": "header"
+            },
+            {
+              "locator": "instance:RCC",
+              "source": "rcc_review"
+            }
+          ]
+        }
+      ],
+      "operating_modes": {
+        "adc_timer_gates": {
+          "fields": {
+            "APB1ENR": [
+              "TIM2EN"
+            ],
+            "APB2ENR": [
+              "ADC1EN",
+              "ADC2EN",
+              "ADC3EN"
+            ]
+          },
+          "instances": [
+            "RCC"
+          ],
+          "registers": [
+            "APB1ENR",
+            "APB2ENR"
+          ],
+          "requirements": [
+            "Fresh exclusive startup: require all three ADC gate bits and TIM2 gate initially zero; reject an existing owner instead of resetting it.",
+            "Enable ADC1EN and TIM2EN preserving unrelated gates; read back each gate before peripheral accesses. Keep ADC2/ADC3 gates zero.",
+            "RM0090 Rev22 p250 repeats disabled for ADC1EN=0 and =1. Resolve the typo using the acquired exact-hash ST HAL enable macro SET_BIT and disable macro bit-clear; retain both sources as an explicit reviewed resolution."
+          ],
+          "sources": [
+            {
+              "locator": "page:250",
+              "source": "rm_apb2_gate"
+            },
+            {
+              "locator": "__HAL_RCC_ADC1_CLK_ENABLE/__HAL_RCC_ADC1_CLK_DISABLE",
+              "source": "st_adc_gate"
+            },
+            {
+              "locator": "APB1ENR.TIM2EN",
+              "source": "rcc_review"
+            }
+          ],
+          "title": "ADC1 and TIM2 owned startup gates"
+        },
+        "peripheral_clock_gates": {
+          "fields": {
+            "AHB1ENR": [
+              "CRCEN",
+              "DMA1EN",
+              "DMA2EN"
+            ],
+            "AHB2ENR": [
+              "RNGEN"
+            ],
+            "APB1ENR": [
+              "SPI2EN",
+              "SPI3EN"
+            ],
+            "APB2ENR": [
+              "SPI1EN"
+            ]
+          },
+          "instances": [
+            "RCC"
+          ],
+          "registers": [
+            "AHB1ENR",
+            "AHB2ENR",
+            "APB1ENR",
+            "APB2ENR"
+          ],
+          "requirements": [
+            "Enable the target peripheral clock before accessing its registers.",
+            "Preserve unrelated and reserved bits.",
+            "A bus gate is distinct from a valid source clock; the reference PLL plan is not proof of a running clock configuration."
+          ],
+          "sources": [
+            {
+              "locator": "page:243",
+              "source": "rm_features_243"
+            },
+            {
+              "locator": "page:244",
+              "source": "rm_features_244"
+            },
+            {
+              "locator": "page:245",
+              "source": "rm_features_245"
+            },
+            {
+              "locator": "page:248",
+              "source": "rm_features_248"
+            },
+            {
+              "locator": "page:250",
+              "source": "rm_features_250"
+            }
+          ],
+          "title": "CRC/DMA/SPI/RNG peripheral clock gates"
+        },
+        "pll_hse8_168mhz": {
+          "fields": {
+            "APB1ENR": [
+              "PWREN"
+            ],
+            "CFGR": [
+              "SW",
+              "SWS",
+              "HPRE",
+              "PPRE1",
+              "PPRE2"
+            ],
+            "CR": [
+              "HSION",
+              "HSIRDY",
+              "HSEON",
+              "HSERDY",
+              "HSEBYP",
+              "PLLON",
+              "PLLRDY",
+              "PLLI2SON",
+              "CSSON"
+            ],
+            "PLLCFGR": [
+              "PLLM",
+              "PLLN",
+              "PLLP",
+              "PLLSRC",
+              "PLLQ"
+            ]
+          },
+          "instances": [
+            "RCC"
+          ],
+          "registers": [
+            "CR",
+            "PLLCFGR",
+            "CFGR",
+            "APB1ENR"
+          ],
+          "requirements": [
+            "Assume HSE8 crystal, internal regulator,2.7-3.6V and exclusive startup ownership; no measured clock or errata certification.",
+            "Do not reconfigure an active PLLI2S/CSS or live peripheral owner. Enable/wait HSI, select it and confirm SWS before disabling main PLL.",
+            "Install safe APB1/4 and APB2/2 divisors; disable PLL and wait unlocked; disable HSE and confirm not ready before clearing HSEBYP.",
+            "Enable/read back PWR gate, establish Scale1/VOSRDY and set/read back FLASH LATENCY5 before increasing HCLK.",
+            "Enable/wait HSE; with both PLLs disabled program M8/N336/P2/Q7,HSE source while preserving reserved fields; enable PLL and wait lock.",
+            "Select PLL, confirm SWS and divisors, then synchronize SystemCoreClock. Every wait finite; failure stops dependent initialization without claiming a successful clock switch."
+          ],
+          "requires_modes": [
+            {
+              "instances": [
+                "FLASH"
+              ],
+              "mode": "latency_168mhz",
+              "peripheral": "flash"
+            },
+            {
+              "instances": [
+                "PWR"
+              ],
+              "mode": "voltage_scale",
+              "peripheral": "pwr"
+            }
+          ],
+          "sources": [
+            {
+              "locator": "page:80",
+              "source": "rm_clock_v1_80"
+            },
+            {
+              "locator": "page:81",
+              "source": "rm_clock_v1_81"
+            },
+            {
+              "locator": "page:82",
+              "source": "rm_clock_v1_82"
+            },
+            {
+              "locator": "page:218",
+              "source": "rm_clock_v1_218"
+            },
+            {
+              "locator": "page:219",
+              "source": "rm_clock_v1_219"
+            },
+            {
+              "locator": "page:220",
+              "source": "rm_clock_v1_220"
+            },
+            {
+              "locator": "page:221",
+              "source": "rm_clock_v1_221"
+            },
+            {
+              "locator": "page:225",
+              "source": "rm_clock_v1_225"
+            },
+            {
+              "locator": "page:226",
+              "source": "rm_clock_v1_226"
+            },
+            {
+              "locator": "page:227",
+              "source": "rm_clock_v1_227"
+            },
+            {
+              "locator": "page:228",
+              "source": "rm_clock_v1_228"
+            },
+            {
+              "locator": "page:229",
+              "source": "rm_clock_v1_229"
+            },
+            {
+              "locator": "page:230",
+              "source": "rm_clock_v1_230"
+            },
+            {
+              "locator": "page:231",
+              "source": "rm_clock_v1_231"
+            },
+            {
+              "locator": "page:247",
+              "source": "rm_clock_v1_247"
+            }
+          ],
+          "title": "Owned startup: HSE8 crystal to SYSCLK168/PCLK1=42/PCLK2=84/PLL48=48MHz"
+        },
+        "power_interface_gate": {
+          "fields": {
+            "APB1ENR": [
+              "PWREN"
+            ]
+          },
+          "instances": [
+            "RCC"
+          ],
+          "registers": [
+            "APB1ENR"
+          ],
+          "requirements": [
+            "Set PWREN, preserving other gate configuration, then read the enable register before PWR access."
+          ],
+          "requires_modes": [],
+          "sources": [
+            {
+              "locator": "page:247",
+              "source": "rm_clock_v1_247"
+            }
+          ],
+          "title": "Enable and read back the PWR APB1 gate"
+        }
+      },
+      "prerequisites": [],
+      "registers": [
+        {
+          "access": "mixed",
+          "access_widths": [
+            8,
+            16,
+            32
+          ],
+          "count": 1,
+          "fields": [
+            {
+              "lsb": 0,
+              "mask": 1,
+              "meaning": "Enable HSI before selecting it.",
+              "name": "HSION",
+              "sources": [
+                {
+                  "locator": "RCC_CR_HSION_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:226",
+                  "source": "rm_clock_v1_226"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 1,
+              "mask": 2,
+              "meaning": "Read-only HSI readiness.",
+              "name": "HSIRDY",
+              "sources": [
+                {
+                  "locator": "RCC_CR_HSIRDY_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:226",
+                  "source": "rm_clock_v1_226"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 3,
+              "mask": 248,
+              "meaning": "Factory default trim 16",
+              "name": "HSITRIM",
+              "sources": [
+                {
+                  "locator": "CR.HSITRIM",
+                  "source": "rcc_review"
+                }
+              ],
+              "width": 5
+            },
+            {
+              "lsb": 8,
+              "mask": 65280,
+              "meaning": "Read-only factory calibration",
+              "name": "HSICAL",
+              "sources": [
+                {
+                  "locator": "CR.HSICAL",
+                  "source": "rcc_review"
+                }
+              ],
+              "width": 8
+            },
+            {
+              "lsb": 16,
+              "mask": 65536,
+              "meaning": "Enable HSE; do not disable while it clocks SYSCLK directly or indirectly.",
+              "name": "HSEON",
+              "sources": [
+                {
+                  "locator": "RCC_CR_HSEON_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:226",
+                  "source": "rm_clock_v1_226"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 17,
+              "mask": 131072,
+              "meaning": "Read-only HSE readiness; confirm deasserted before changing bypass.",
+              "name": "HSERDY",
+              "sources": [
+                {
+                  "locator": "RCC_CR_HSERDY_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:226",
+                  "source": "rm_clock_v1_226"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 18,
+              "mask": 262144,
+              "meaning": "Crystal/bypass selection writable only while HSE disabled; crystal recipe clears it.",
+              "name": "HSEBYP",
+              "sources": [
+                {
+                  "locator": "RCC_CR_HSEBYP_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:226",
+                  "source": "rm_clock_v1_226"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 19,
+              "mask": 524288,
+              "meaning": "Clock security setup and NMI recovery are outside this startup mode.",
+              "name": "CSSON",
+              "sources": [
+                {
+                  "locator": "RCC_CR_CSSON_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:225",
+                  "source": "rm_clock_v1_225"
+                },
+                {
+                  "locator": "page:221",
+                  "source": "rm_clock_v1_221"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 24,
+              "mask": 16777216,
+              "meaning": "Enable PLL only after configuration; cannot disable while PLL is SYSCLK.",
+              "name": "PLLON",
+              "sources": [
+                {
+                  "locator": "RCC_CR_PLLON_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:225",
+                  "source": "rm_clock_v1_225"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 25,
+              "mask": 33554432,
+              "meaning": "Read-only main PLL lock status.",
+              "name": "PLLRDY",
+              "sources": [
+                {
+                  "locator": "RCC_CR_PLLRDY_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:225",
+                  "source": "rm_clock_v1_225"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 26,
+              "mask": 67108864,
+              "meaning": "Shared PLLM/PLLSRC require PLLI2S disabled before reconfiguration.",
+              "name": "PLLI2SON",
+              "sources": [
+                {
+                  "locator": "RCC_CR_PLLI2SON_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:225",
+                  "source": "rm_clock_v1_225"
+                },
+                {
+                  "locator": "page:227",
+                  "source": "rm_clock_v1_227"
+                },
+                {
+                  "locator": "page:228",
+                  "source": "rm_clock_v1_228"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 27,
+              "mask": 134217728,
+              "meaning": "PLLI2S ready",
+              "name": "PLLI2SRDY",
+              "sources": [
+                {
+                  "locator": "CR.PLLI2SRDY",
+                  "source": "rcc_review"
+                }
+              ],
+              "width": 1
+            }
+          ],
+          "io_address": null,
+          "name": "CR",
+          "offset": 0,
+          "reset": null,
+          "side_effects": "Mixed RW controls and read-only readiness/calibration. Reset 0x0000XX83 has undefined calibration bits; preserve unrelated fields and reserved values.",
+          "sources": [
+            {
+              "locator": "CR",
+              "source": "rcc_review"
+            },
+            {
+              "locator": "page:221",
+              "source": "rm_clock_v1_221"
+            },
+            {
+              "locator": "page:225",
+              "source": "rm_clock_v1_225"
+            },
+            {
+              "locator": "page:226",
+              "source": "rm_clock_v1_226"
+            },
+            {
+              "locator": "page:227",
+              "source": "rm_clock_v1_227"
+            },
+            {
+              "locator": "page:228",
+              "source": "rm_clock_v1_228"
+            }
+          ],
+          "width": 32
+        },
+        {
+          "access": "RW",
+          "access_widths": [
+            32
+          ],
+          "count": 1,
+          "fields": [
+            {
+              "lsb": 0,
+              "mask": 63,
+              "meaning": "Shared input divisor, written only with PLL and PLLI2S disabled; declared divisor8.",
+              "name": "PLLM",
+              "sources": [
+                {
+                  "locator": "RCC_PLLCFGR_PLLM_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:228",
+                  "source": "rm_clock_v1_228"
+                }
+              ],
+              "width": 6
+            },
+            {
+              "lsb": 6,
+              "mask": 32704,
+              "meaning": "Main VCO multiplier, PLL disabled for writes; declared multiplier336; halfword/word writes.",
+              "name": "PLLN",
+              "sources": [
+                {
+                  "locator": "RCC_PLLCFGR_PLLN_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:228",
+                  "source": "rm_clock_v1_228"
+                }
+              ],
+              "width": 9
+            },
+            {
+              "lsb": 16,
+              "mask": 196608,
+              "meaning": "Main output divisor; encoded0 means /2 for declared operating point.",
+              "name": "PLLP",
+              "sources": [
+                {
+                  "locator": "RCC_PLLCFGR_PLLP_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:228",
+                  "source": "rm_clock_v1_228"
+                }
+              ],
+              "width": 2
+            },
+            {
+              "lsb": 22,
+              "mask": 4194304,
+              "meaning": "Shared source select;1=HSE; both PLLs must be disabled to write.",
+              "name": "PLLSRC",
+              "sources": [
+                {
+                  "locator": "RCC_PLLCFGR_PLLSRC_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:227",
+                  "source": "rm_clock_v1_227"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 24,
+              "mask": 251658240,
+              "meaning": "PLL48 divisor; declared7 yields48MHz from336MHz VCO; PLL must be disabled to write.",
+              "name": "PLLQ",
+              "sources": [
+                {
+                  "locator": "RCC_PLLCFGR_PLLQ_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:227",
+                  "source": "rm_clock_v1_227"
+                }
+              ],
+              "width": 4
+            }
+          ],
+          "io_address": null,
+          "name": "PLLCFGR",
+          "offset": 4,
+          "reset": null,
+          "side_effects": "Change PLL parameters only with PLL disabled and PLLRDY=0.",
+          "sources": [
+            {
+              "locator": "PLLCFGR",
+              "source": "rcc_review"
+            },
+            {
+              "locator": "page:227",
+              "source": "rm_clock_v1_227"
+            },
+            {
+              "locator": "page:228",
+              "source": "rm_clock_v1_228"
+            }
+          ],
+          "width": 32
+        },
+        {
+          "access": "mixed",
+          "access_widths": [
+            8,
+            16,
+            32
+          ],
+          "count": 1,
+          "fields": [
+            {
+              "lsb": 0,
+              "mask": 3,
+              "meaning": "Software source select:0=HSI,2=PLL; selection is not proof of switch completion.",
+              "name": "SW",
+              "sources": [
+                {
+                  "locator": "RCC_CFGR_SW_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:231",
+                  "source": "rm_clock_v1_231"
+                }
+              ],
+              "width": 2
+            },
+            {
+              "lsb": 2,
+              "mask": 12,
+              "meaning": "Read-only current source:0=HSI,2=PLL; confirm each transition with finite polling.",
+              "name": "SWS",
+              "sources": [
+                {
+                  "locator": "RCC_CFGR_SWS_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:231",
+                  "source": "rm_clock_v1_231"
+                }
+              ],
+              "width": 2
+            },
+            {
+              "lsb": 4,
+              "mask": 240,
+              "meaning": "AHB prescaler; encoded0=/1 in this profile.",
+              "name": "HPRE",
+              "sources": [
+                {
+                  "locator": "RCC_CFGR_HPRE_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:231",
+                  "source": "rm_clock_v1_231"
+                }
+              ],
+              "width": 4
+            },
+            {
+              "lsb": 10,
+              "mask": 7168,
+              "meaning": "APB1 prescaler;encoded5=/4,42MHz at168MHz HCLK.",
+              "name": "PPRE1",
+              "sources": [
+                {
+                  "locator": "RCC_CFGR_PPRE1_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:230",
+                  "source": "rm_clock_v1_230"
+                }
+              ],
+              "width": 3
+            },
+            {
+              "lsb": 13,
+              "mask": 57344,
+              "meaning": "APB2 prescaler;encoded4=/2,84MHz at168MHz HCLK.",
+              "name": "PPRE2",
+              "sources": [
+                {
+                  "locator": "RCC_CFGR_PPRE2_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:230",
+                  "source": "rm_clock_v1_230"
+                }
+              ],
+              "width": 3
+            },
+            {
+              "lsb": 16,
+              "mask": 2031616,
+              "meaning": "RTC HSE division",
+              "name": "RTCPRE",
+              "sources": [
+                {
+                  "locator": "CFGR.RTCPRE",
+                  "source": "rcc_review"
+                }
+              ],
+              "width": 5
+            },
+            {
+              "lsb": 21,
+              "mask": 6291456,
+              "meaning": "Clock output source",
+              "name": "MCO1",
+              "sources": [
+                {
+                  "locator": "CFGR.MCO1",
+                  "source": "rcc_review"
+                }
+              ],
+              "width": 2
+            },
+            {
+              "lsb": 23,
+              "mask": 8388608,
+              "meaning": "I2S source",
+              "name": "I2SSRC",
+              "sources": [
+                {
+                  "locator": "CFGR.I2SSRC",
+                  "source": "rcc_review"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 24,
+              "mask": 117440512,
+              "meaning": "MCO1 division",
+              "name": "MCO1PRE",
+              "sources": [
+                {
+                  "locator": "CFGR.MCO1PRE",
+                  "source": "rcc_review"
+                }
+              ],
+              "width": 3
+            },
+            {
+              "lsb": 27,
+              "mask": 939524096,
+              "meaning": "MCO2 division",
+              "name": "MCO2PRE",
+              "sources": [
+                {
+                  "locator": "CFGR.MCO2PRE",
+                  "source": "rcc_review"
+                }
+              ],
+              "width": 3
+            },
+            {
+              "lsb": 30,
+              "mask": 3221225472,
+              "meaning": "MCO2 source",
+              "name": "MCO2",
+              "sources": [
+                {
+                  "locator": "CFGR.MCO2",
+                  "source": "rcc_review"
+                }
+              ],
+              "width": 2
+            }
+          ],
+          "io_address": null,
+          "name": "CFGR",
+          "offset": 8,
+          "reset": 0,
+          "side_effects": "SWS reflects selected source; wait after changing SW.",
+          "sources": [
+            {
+              "locator": "CFGR",
+              "source": "rcc_review"
+            },
+            {
+              "locator": "page:230",
+              "source": "rm_clock_v1_230"
+            },
+            {
+              "locator": "page:231",
+              "source": "rm_clock_v1_231"
+            }
+          ],
+          "width": 32
+        },
+        {
+          "access": "RW",
+          "count": 1,
+          "fields": [
+            {
+              "lsb": 0,
+              "mask": 1,
+              "meaning": "Declared mask; operating encoding outside this reviewed workflow.",
+              "name": "TIM2RST",
+              "sources": [
+                {
+                  "locator": "RCC_APB1RSTR_TIM2RST_Msk",
+                  "source": "header"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 1,
+              "mask": 2,
+              "meaning": "Declared mask; operating encoding outside this reviewed workflow.",
+              "name": "TIM3RST",
+              "sources": [
+                {
+                  "locator": "RCC_APB1RSTR_TIM3RST_Msk",
+                  "source": "header"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 2,
+              "mask": 4,
+              "meaning": "Declared mask; operating encoding outside this reviewed workflow.",
+              "name": "TIM4RST",
+              "sources": [
+                {
+                  "locator": "RCC_APB1RSTR_TIM4RST_Msk",
+                  "source": "header"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 3,
+              "mask": 8,
+              "meaning": "Declared mask; operating encoding outside this reviewed workflow.",
+              "name": "TIM5RST",
+              "sources": [
+                {
+                  "locator": "RCC_APB1RSTR_TIM5RST_Msk",
+                  "source": "header"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 4,
+              "mask": 16,
+              "meaning": "Declared mask; operating encoding outside this reviewed workflow.",
+              "name": "TIM6RST",
+              "sources": [
+                {
+                  "locator": "RCC_APB1RSTR_TIM6RST_Msk",
+                  "source": "header"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 5,
+              "mask": 32,
+              "meaning": "Declared mask; operating encoding outside this reviewed workflow.",
+              "name": "TIM7RST",
+              "sources": [
+                {
+                  "locator": "RCC_APB1RSTR_TIM7RST_Msk",
+                  "source": "header"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 6,
+              "mask": 64,
+              "meaning": "Declared mask; operating encoding outside this reviewed workflow.",
+              "name": "TIM12RST",
+              "sources": [
+                {
+                  "locator": "RCC_APB1RSTR_TIM12RST_Msk",
+                  "source": "header"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 7,
+              "mask": 128,
+              "meaning": "Declared mask; operating encoding outside this reviewed workflow.",
+              "name": "TIM13RST",
+              "sources": [
+                {
+                  "locator": "RCC_APB1RSTR_TIM13RST_Msk",
+                  "source": "header"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 8,
+              "mask": 256,
+              "meaning": "Declared mask; operating encoding outside this reviewed workflow.",
+              "name": "TIM14RST",
+              "sources": [
+                {
+                  "locator": "RCC_APB1RSTR_TIM14RST_Msk",
+                  "source": "header"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 11,
+              "mask": 2048,
+              "meaning": "Declared mask; operating encoding outside this reviewed workflow.",
+              "name": "WWDGRST",
+              "sources": [
+                {
+                  "locator": "RCC_APB1RSTR_WWDGRST_Msk",
+                  "source": "header"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 14,
+              "mask": 16384,
+              "meaning": "Declared mask; operating encoding outside this reviewed workflow.",
+              "name": "SPI2RST",
+              "sources": [
+                {
+                  "locator": "RCC_APB1RSTR_SPI2RST_Msk",
+                  "source": "header"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 15,
+              "mask": 32768,
+              "meaning": "Declared mask; operating encoding outside this reviewed workflow.",
+              "name": "SPI3RST",
+              "sources": [
+                {
+                  "locator": "RCC_APB1RSTR_SPI3RST_Msk",
+                  "source": "header"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 17,
+              "mask": 131072,
+              "meaning": "1 holds USART2 in reset",
+              "name": "USART2RST",
+              "sources": [
+                {
+                  "locator": "APB1RSTR.USART2RST",
+                  "source": "rcc_review"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 18,
+              "mask": 262144,
+              "meaning": "Declared mask; operating encoding outside this reviewed workflow.",
+              "name": "USART3RST",
+              "sources": [
+                {
+                  "locator": "RCC_APB1RSTR_USART3RST_Msk",
+                  "source": "header"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 19,
+              "mask": 524288,
+              "meaning": "Declared mask; operating encoding outside this reviewed workflow.",
+              "name": "UART4RST",
+              "sources": [
+                {
+                  "locator": "RCC_APB1RSTR_UART4RST_Msk",
+                  "source": "header"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 20,
+              "mask": 1048576,
+              "meaning": "Declared mask; operating encoding outside this reviewed workflow.",
+              "name": "UART5RST",
+              "sources": [
+                {
+                  "locator": "RCC_APB1RSTR_UART5RST_Msk",
+                  "source": "header"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 21,
+              "mask": 2097152,
+              "meaning": "Declared mask; operating encoding outside this reviewed workflow.",
+              "name": "I2C1RST",
+              "sources": [
+                {
+                  "locator": "RCC_APB1RSTR_I2C1RST_Msk",
+                  "source": "header"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 22,
+              "mask": 4194304,
+              "meaning": "Declared mask; operating encoding outside this reviewed workflow.",
+              "name": "I2C2RST",
+              "sources": [
+                {
+                  "locator": "RCC_APB1RSTR_I2C2RST_Msk",
+                  "source": "header"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 23,
+              "mask": 8388608,
+              "meaning": "Declared mask; operating encoding outside this reviewed workflow.",
+              "name": "I2C3RST",
+              "sources": [
+                {
+                  "locator": "RCC_APB1RSTR_I2C3RST_Msk",
+                  "source": "header"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 25,
+              "mask": 33554432,
+              "meaning": "Declared mask; operating encoding outside this reviewed workflow.",
+              "name": "CAN1RST",
+              "sources": [
+                {
+                  "locator": "RCC_APB1RSTR_CAN1RST_Msk",
+                  "source": "header"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 26,
+              "mask": 67108864,
+              "meaning": "Declared mask; operating encoding outside this reviewed workflow.",
+              "name": "CAN2RST",
+              "sources": [
+                {
+                  "locator": "RCC_APB1RSTR_CAN2RST_Msk",
+                  "source": "header"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 28,
+              "mask": 268435456,
+              "meaning": "Declared mask; operating encoding outside this reviewed workflow.",
+              "name": "PWRRST",
+              "sources": [
+                {
+                  "locator": "RCC_APB1RSTR_PWRRST_Msk",
+                  "source": "header"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 29,
+              "mask": 536870912,
+              "meaning": "Declared mask; operating encoding outside this reviewed workflow.",
+              "name": "DACRST",
+              "sources": [
+                {
+                  "locator": "RCC_APB1RSTR_DACRST_Msk",
+                  "source": "header"
+                }
+              ],
+              "width": 1
+            }
+          ],
+          "io_address": null,
+          "name": "APB1RSTR",
+          "offset": 32,
+          "reset": 0,
+          "side_effects": "Pulse only the required reset bit; clear it before use.",
+          "sources": [
+            {
+              "locator": "APB1RSTR",
+              "source": "rcc_review"
+            }
+          ],
+          "width": 32
+        },
+        {
+          "access": "RW",
+          "access_widths": [
+            8,
+            16,
+            32
+          ],
+          "count": 1,
+          "fields": [
+            {
+              "lsb": 0,
+              "mask": 1,
+              "meaning": "1 enables port clock",
+              "name": "GPIOAEN",
+              "sources": [
+                {
+                  "locator": "AHB1ENR.GPIOAEN",
+                  "source": "rcc_review"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 1,
+              "mask": 2,
+              "meaning": "1 enables port clock",
+              "name": "GPIOBEN",
+              "sources": [
+                {
+                  "locator": "AHB1ENR.GPIOBEN",
+                  "source": "rcc_review"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 2,
+              "mask": 4,
+              "meaning": "1 enables port clock",
+              "name": "GPIOCEN",
+              "sources": [
+                {
+                  "locator": "AHB1ENR.GPIOCEN",
+                  "source": "rcc_review"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 3,
+              "mask": 8,
+              "meaning": "1 enables port clock",
+              "name": "GPIODEN",
+              "sources": [
+                {
+                  "locator": "AHB1ENR.GPIODEN",
+                  "source": "rcc_review"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 4,
+              "mask": 16,
+              "meaning": "1 enables port clock",
+              "name": "GPIOEEN",
+              "sources": [
+                {
+                  "locator": "AHB1ENR.GPIOEEN",
+                  "source": "rcc_review"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 5,
+              "mask": 32,
+              "meaning": "Declared mask; operating encoding outside this reviewed workflow.",
+              "name": "GPIOFEN",
+              "sources": [
+                {
+                  "locator": "RCC_AHB1ENR_GPIOFEN_Msk",
+                  "source": "header"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 6,
+              "mask": 64,
+              "meaning": "Declared mask; operating encoding outside this reviewed workflow.",
+              "name": "GPIOGEN",
+              "sources": [
+                {
+                  "locator": "RCC_AHB1ENR_GPIOGEN_Msk",
+                  "source": "header"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 7,
+              "mask": 128,
+              "meaning": "GPIOH gate",
+              "name": "GPIOHEN",
+              "sources": [
+                {
+                  "locator": "AHB1ENR.GPIOHEN",
+                  "source": "rcc_review"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 8,
+              "mask": 256,
+              "meaning": "Declared mask; operating encoding outside this reviewed workflow.",
+              "name": "GPIOIEN",
+              "sources": [
+                {
+                  "locator": "RCC_AHB1ENR_GPIOIEN_Msk",
+                  "source": "header"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 12,
+              "mask": 4096,
+              "meaning": "1 enables CRC clock; 0 disables it.",
+              "name": "CRCEN",
+              "sources": [
+                {
+                  "locator": "AHB1ENR.CRCEN",
+                  "source": "rcc_review"
+                },
+                {
+                  "locator": "page:243",
+                  "source": "rm_features_243"
+                },
+                {
+                  "locator": "page:244",
+                  "source": "rm_features_244"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 18,
+              "mask": 262144,
+              "meaning": "Declared mask; operating encoding outside this reviewed workflow.",
+              "name": "BKPSRAMEN",
+              "sources": [
+                {
+                  "locator": "RCC_AHB1ENR_BKPSRAMEN_Msk",
+                  "source": "header"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 20,
+              "mask": 1048576,
+              "meaning": "Declared mask; operating encoding outside this reviewed workflow.",
+              "name": "CCMDATARAMEN",
+              "sources": [
+                {
+                  "locator": "RCC_AHB1ENR_CCMDATARAMEN_Msk",
+                  "source": "header"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 21,
+              "mask": 2097152,
+              "meaning": "1 enables DMA1 clock; 0 disables it.",
+              "name": "DMA1EN",
+              "sources": [
+                {
+                  "locator": "AHB1ENR.DMA1EN",
+                  "source": "rcc_review"
+                },
+                {
+                  "locator": "page:243",
+                  "source": "rm_features_243"
+                },
+                {
+                  "locator": "page:244",
+                  "source": "rm_features_244"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 22,
+              "mask": 4194304,
+              "meaning": "1 enables DMA2 clock; 0 disables it.",
+              "name": "DMA2EN",
+              "sources": [
+                {
+                  "locator": "AHB1ENR.DMA2EN",
+                  "source": "rcc_review"
+                },
+                {
+                  "locator": "page:243",
+                  "source": "rm_features_243"
+                },
+                {
+                  "locator": "page:244",
+                  "source": "rm_features_244"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 25,
+              "mask": 33554432,
+              "meaning": "Declared mask; operating encoding outside this reviewed workflow.",
+              "name": "ETHMACEN",
+              "sources": [
+                {
+                  "locator": "RCC_AHB1ENR_ETHMACEN_Msk",
+                  "source": "header"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 26,
+              "mask": 67108864,
+              "meaning": "Declared mask; operating encoding outside this reviewed workflow.",
+              "name": "ETHMACTXEN",
+              "sources": [
+                {
+                  "locator": "RCC_AHB1ENR_ETHMACTXEN_Msk",
+                  "source": "header"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 27,
+              "mask": 134217728,
+              "meaning": "Declared mask; operating encoding outside this reviewed workflow.",
+              "name": "ETHMACRXEN",
+              "sources": [
+                {
+                  "locator": "RCC_AHB1ENR_ETHMACRXEN_Msk",
+                  "source": "header"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 28,
+              "mask": 268435456,
+              "meaning": "Declared mask; operating encoding outside this reviewed workflow.",
+              "name": "ETHMACPTPEN",
+              "sources": [
+                {
+                  "locator": "RCC_AHB1ENR_ETHMACPTPEN_Msk",
+                  "source": "header"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 29,
+              "mask": 536870912,
+              "meaning": "Declared mask; operating encoding outside this reviewed workflow.",
+              "name": "OTGHSEN",
+              "sources": [
+                {
+                  "locator": "RCC_AHB1ENR_OTGHSEN_Msk",
+                  "source": "header"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 30,
+              "mask": 1073741824,
+              "meaning": "Declared mask; operating encoding outside this reviewed workflow.",
+              "name": "OTGHSULPIEN",
+              "sources": [
+                {
+                  "locator": "RCC_AHB1ENR_OTGHSULPIEN_Msk",
+                  "source": "header"
+                }
+              ],
+              "width": 1
+            }
+          ],
+          "io_address": null,
+          "name": "AHB1ENR",
+          "offset": 48,
+          "reset": 1048576,
+          "side_effects": "Read back after enabling a clock before peripheral access. Preserve reserved bits at their reset values. Gate enable does not establish source clock frequency or readiness.",
+          "sources": [
+            {
+              "locator": "AHB1ENR",
+              "source": "rcc_review"
+            },
+            {
+              "locator": "page:243",
+              "source": "rm_features_243"
+            },
+            {
+              "locator": "page:244",
+              "source": "rm_features_244"
+            }
+          ],
+          "width": 32
+        },
+        {
+          "access": "RW",
+          "access_widths": [
+            8,
+            16,
+            32
+          ],
+          "count": 1,
+          "fields": [
+            {
+              "lsb": 0,
+              "mask": 1,
+              "meaning": "Timer gate",
+              "name": "TIM2EN",
+              "sources": [
+                {
+                  "locator": "APB1ENR.TIM2EN",
+                  "source": "rcc_review"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 1,
+              "mask": 2,
+              "meaning": "Timer gate",
+              "name": "TIM3EN",
+              "sources": [
+                {
+                  "locator": "APB1ENR.TIM3EN",
+                  "source": "rcc_review"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 2,
+              "mask": 4,
+              "meaning": "Timer gate",
+              "name": "TIM4EN",
+              "sources": [
+                {
+                  "locator": "APB1ENR.TIM4EN",
+                  "source": "rcc_review"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 3,
+              "mask": 8,
+              "meaning": "Timer gate",
+              "name": "TIM5EN",
+              "sources": [
+                {
+                  "locator": "APB1ENR.TIM5EN",
+                  "source": "rcc_review"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 4,
+              "mask": 16,
+              "meaning": "Declared mask; operating encoding outside this reviewed workflow.",
+              "name": "TIM6EN",
+              "sources": [
+                {
+                  "locator": "RCC_APB1ENR_TIM6EN_Msk",
+                  "source": "header"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 5,
+              "mask": 32,
+              "meaning": "Declared mask; operating encoding outside this reviewed workflow.",
+              "name": "TIM7EN",
+              "sources": [
+                {
+                  "locator": "RCC_APB1ENR_TIM7EN_Msk",
+                  "source": "header"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 6,
+              "mask": 64,
+              "meaning": "Declared mask; operating encoding outside this reviewed workflow.",
+              "name": "TIM12EN",
+              "sources": [
+                {
+                  "locator": "RCC_APB1ENR_TIM12EN_Msk",
+                  "source": "header"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 7,
+              "mask": 128,
+              "meaning": "Declared mask; operating encoding outside this reviewed workflow.",
+              "name": "TIM13EN",
+              "sources": [
+                {
+                  "locator": "RCC_APB1ENR_TIM13EN_Msk",
+                  "source": "header"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 8,
+              "mask": 256,
+              "meaning": "Declared mask; operating encoding outside this reviewed workflow.",
+              "name": "TIM14EN",
+              "sources": [
+                {
+                  "locator": "RCC_APB1ENR_TIM14EN_Msk",
+                  "source": "header"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 11,
+              "mask": 2048,
+              "meaning": "Window watchdog gate",
+              "name": "WWDGEN",
+              "sources": [
+                {
+                  "locator": "APB1ENR.WWDGEN",
+                  "source": "rcc_review"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 14,
+              "mask": 16384,
+              "meaning": "1 enables SPI2 clock.",
+              "name": "SPI2EN",
+              "sources": [
+                {
+                  "locator": "APB1ENR.SPI2EN",
+                  "source": "rcc_review"
+                },
+                {
+                  "locator": "page:248",
+                  "source": "rm_features_248"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 15,
+              "mask": 32768,
+              "meaning": "1 enables SPI3 clock.",
+              "name": "SPI3EN",
+              "sources": [
+                {
+                  "locator": "APB1ENR.SPI3EN",
+                  "source": "rcc_review"
+                },
+                {
+                  "locator": "page:248",
+                  "source": "rm_features_248"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 17,
+              "mask": 131072,
+              "meaning": "USART2 PCLK1 gate",
+              "name": "USART2EN",
+              "sources": [
+                {
+                  "locator": "APB1ENR.USART2EN",
+                  "source": "rcc_review"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 18,
+              "mask": 262144,
+              "meaning": "Declared mask; operating encoding outside this reviewed workflow.",
+              "name": "USART3EN",
+              "sources": [
+                {
+                  "locator": "RCC_APB1ENR_USART3EN_Msk",
+                  "source": "header"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 19,
+              "mask": 524288,
+              "meaning": "Declared mask; operating encoding outside this reviewed workflow.",
+              "name": "UART4EN",
+              "sources": [
+                {
+                  "locator": "RCC_APB1ENR_UART4EN_Msk",
+                  "source": "header"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 20,
+              "mask": 1048576,
+              "meaning": "Declared mask; operating encoding outside this reviewed workflow.",
+              "name": "UART5EN",
+              "sources": [
+                {
+                  "locator": "RCC_APB1ENR_UART5EN_Msk",
+                  "source": "header"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 21,
+              "mask": 2097152,
+              "meaning": "I2C1 gate",
+              "name": "I2C1EN",
+              "sources": [
+                {
+                  "locator": "APB1ENR.I2C1EN",
+                  "source": "rcc_review"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 22,
+              "mask": 4194304,
+              "meaning": "I2C2 gate",
+              "name": "I2C2EN",
+              "sources": [
+                {
+                  "locator": "APB1ENR.I2C2EN",
+                  "source": "rcc_review"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 23,
+              "mask": 8388608,
+              "meaning": "I2C3 gate",
+              "name": "I2C3EN",
+              "sources": [
+                {
+                  "locator": "APB1ENR.I2C3EN",
+                  "source": "rcc_review"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 25,
+              "mask": 33554432,
+              "meaning": "Declared mask; operating encoding outside this reviewed workflow.",
+              "name": "CAN1EN",
+              "sources": [
+                {
+                  "locator": "RCC_APB1ENR_CAN1EN_Msk",
+                  "source": "header"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 26,
+              "mask": 67108864,
+              "meaning": "Declared mask; operating encoding outside this reviewed workflow.",
+              "name": "CAN2EN",
+              "sources": [
+                {
+                  "locator": "RCC_APB1ENR_CAN2EN_Msk",
+                  "source": "header"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 28,
+              "mask": 268435456,
+              "meaning": "Power interface clock enable; set and read back before PWR access.",
+              "name": "PWREN",
+              "sources": [
+                {
+                  "locator": "RCC_APB1ENR_PWREN_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:247",
+                  "source": "rm_clock_v1_247"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 29,
+              "mask": 536870912,
+              "meaning": "Declared mask; operating encoding outside this reviewed workflow.",
+              "name": "DACEN",
+              "sources": [
+                {
+                  "locator": "RCC_APB1ENR_DACEN_Msk",
+                  "source": "header"
+                }
+              ],
+              "width": 1
+            }
+          ],
+          "io_address": null,
+          "name": "APB1ENR",
+          "offset": 64,
+          "reset": 0,
+          "side_effects": "Read back before accessing the newly enabled peripheral. Preserve reserved bits at their reset values. Gate enable does not establish source clock frequency or readiness.",
+          "sources": [
+            {
+              "locator": "APB1ENR",
+              "source": "rcc_review"
+            },
+            {
+              "locator": "page:248",
+              "source": "rm_features_248"
+            },
+            {
+              "locator": "page:247",
+              "source": "rm_clock_v1_247"
+            }
+          ],
+          "width": 32
+        },
+        {
+          "access": "RW",
+          "access_widths": [
+            8,
+            16,
+            32
+          ],
+          "count": 1,
+          "fields": [
+            {
+              "lsb": 12,
+              "mask": 4096,
+              "meaning": "1 enables SPI1 clock.",
+              "name": "SPI1EN",
+              "sources": [
+                {
+                  "locator": "RCC_APB2ENR_SPI1EN_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:250",
+                  "source": "rm_features_250"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 8,
+              "mask": 256,
+              "meaning": "0 disables, 1 enables ADC1 clock; the duplicated disabled entry in RM0090 p250 is resolved by ST HAL SET_BIT enable / clear-bit disable macros.",
+              "name": "ADC1EN",
+              "sources": [
+                {
+                  "locator": "RCC_APB2ENR_ADC1EN_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:250",
+                  "source": "rm_apb2_gate"
+                },
+                {
+                  "locator": "__HAL_RCC_ADC1_CLK_ENABLE/__HAL_RCC_ADC1_CLK_DISABLE",
+                  "source": "st_adc_gate"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 9,
+              "mask": 512,
+              "meaning": "Require zero (documented disabled state) for exclusive ADC common configuration; this mode does not enable this ADC.",
+              "name": "ADC2EN",
+              "sources": [
+                {
+                  "locator": "RCC_APB2ENR_ADC2EN_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:250",
+                  "source": "rm_apb2_gate"
+                },
+                {
+                  "locator": "__HAL_RCC_ADC1_CLK_ENABLE/__HAL_RCC_ADC1_CLK_DISABLE",
+                  "source": "st_adc_gate"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 10,
+              "mask": 1024,
+              "meaning": "Require zero (documented disabled state) for exclusive ADC common configuration; this mode does not enable this ADC.",
+              "name": "ADC3EN",
+              "sources": [
+                {
+                  "locator": "RCC_APB2ENR_ADC3EN_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:250",
+                  "source": "rm_apb2_gate"
+                },
+                {
+                  "locator": "__HAL_RCC_ADC1_CLK_ENABLE/__HAL_RCC_ADC1_CLK_DISABLE",
+                  "source": "st_adc_gate"
+                }
+              ],
+              "width": 1
+            }
+          ],
+          "io_address": null,
+          "name": "APB2ENR",
+          "offset": 68,
+          "reset": 0,
+          "side_effects": "SYSCFGEN gate only reviewed here; preserve unrelated/reserved bits and read back before access. Preserve reserved bits at their reset values. Gate enable does not establish source clock frequency or readiness.",
+          "sources": [
+            {
+              "locator": "page:250",
+              "source": "rm_apb2_gate"
+            },
+            {
+              "locator": "page:250",
+              "source": "rm_features_250"
+            }
+          ],
+          "width": 32
+        },
+        {
+          "access": "RW",
+          "access_widths": [
+            8,
+            16,
+            32
+          ],
+          "count": 1,
+          "fields": [
+            {
+              "lsb": 0,
+              "mask": 1,
+              "meaning": "Declaration only; encoding requires reviewed semantics.",
+              "name": "DCMIEN",
+              "sources": [
+                {
+                  "locator": "RCC_AHB2ENR_DCMIEN_Msk",
+                  "source": "header"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 6,
+              "mask": 64,
+              "meaning": "1 enables RNG clock; the separate RNG clock source must also be valid.",
+              "name": "RNGEN",
+              "sources": [
+                {
+                  "locator": "RCC_AHB2ENR_RNGEN_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:245",
+                  "source": "rm_features_245"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 7,
+              "mask": 128,
+              "meaning": "Declaration only; encoding requires reviewed semantics.",
+              "name": "OTGFSEN",
+              "sources": [
+                {
+                  "locator": "RCC_AHB2ENR_OTGFSEN_Msk",
+                  "source": "header"
+                }
+              ],
+              "width": 1
+            }
+          ],
+          "io_address": null,
+          "name": "AHB2ENR",
+          "offset": 52,
+          "reset": 0,
+          "side_effects": "Not asserted; consult reviewed operating semantics. Preserve reserved bits at their reset values. Gate enable does not establish source clock frequency or readiness.",
+          "sources": [
+            {
+              "locator": "RCC_TypeDef.AHB2ENR",
+              "source": "header"
+            },
+            {
+              "locator": "page:245",
+              "source": "rm_features_245"
+            }
+          ],
+          "width": 32
+        }
+      ],
+      "review": {
+        "basis": "Header declarations checked against complete RM0090/DS8626 parts; ST RCC implementation resolves the ADC1 enable-table typo. No independent sign-off or physical qualification.",
+        "reviewer": "Codex scoped source-backed editorial review via ingestion MCP",
+        "status": "reviewed"
+      },
+      "reviewed_markdown": "reviewed/adc-v1/rcc.md",
+      "title": "RCC: STM32F407 declaration map and UART workflow"
+    },
+    {
+      "id": "tim",
+      "instances": [
+        {
+          "base_address": 1073741824,
+          "bus": "APB1",
+          "clock": "Explicitly selected HSI scenario; see RCC and reviewed notes",
+          "name": "TIM2",
+          "sources": [
+            {
+              "locator": "TIM2_BASE",
+              "source": "header"
+            }
+          ]
+        }
+      ],
+      "operating_modes": {
+        "polling_update_delay": {
+          "fields": {
+            "ARR": [
+              "ARR"
+            ],
+            "CR1": [
+              "CEN",
+              "UDIS",
+              "URS",
+              "OPM",
+              "DIR",
+              "CMS",
+              "ARPE"
+            ],
+            "DIER": [
+              "UIE",
+              "UDE"
+            ],
+            "EGR": [
+              "UG"
+            ],
+            "PSC": [
+              "PSC"
+            ],
+            "SR": [
+              "UIF"
+            ]
+          },
+          "instances": [
+            "TIM2"
+          ],
+          "registers": [
+            "CR1",
+            "DIER",
+            "SR",
+            "EGR",
+            "PSC",
+            "ARR"
+          ],
+          "requirements": [
+            "Exclusive fresh TIM2, no channel/slave/interrupt/DMA owners, declared HSE8 PLL mode and APB1/4; TIM2CLK=2*PCLK1=84 MHz.",
+            "Keep CEN=0 and DIER=0 while setting PSC=8399, ARR=9. Write EGR=UG to load PSC/reinitialize counter; write SR=0 afterward to discard the UG-created UIF.",
+            "Set CR1=OPM|CEN with UDIS/URS/DIR/CMS/ARPE zero. Poll UIF with a finite budget and verify CEN cleared. This is 1 ms nominal under the declared clock assumptions, not measured timing.",
+            "Do not accept the stale UG flag as elapsed time. Stop the owned timer on failure. This operation uses no timer output pin or NVIC interrupt."
+          ],
+          "requires_modes": [
+            {
+              "instances": [
+                "RCC"
+              ],
+              "mode": "pll_hse8_168mhz",
+              "peripheral": "rcc"
+            },
+            {
+              "instances": [
+                "RCC"
+              ],
+              "mode": "adc_timer_gates",
+              "peripheral": "rcc"
+            }
+          ],
+          "sources": [
+            {
+              "locator": "page:624",
+              "source": "rm_tim_cr1"
+            },
+            {
+              "locator": "page:625",
+              "source": "rm_tim_control"
+            },
+            {
+              "locator": "page:631",
+              "source": "rm_tim_status"
+            },
+            {
+              "locator": "page:632",
+              "source": "rm_tim_egr"
+            },
+            {
+              "locator": "page:638",
+              "source": "rm_tim_values"
+            },
+            {
+              "locator": "page:639",
+              "source": "rm_tim_arr"
+            },
+            {
+              "locator": "page:218",
+              "source": "rm_clock"
+            }
+          ],
+          "title": "Owned TIM2 one-pulse polling delay at TIM2CLK=84 MHz"
+        }
+      },
+      "prerequisites": [
+        "rcc"
+      ],
+      "registers": [
+        {
+          "access": "RW",
+          "access_widths": [
+            32
+          ],
+          "count": 1,
+          "fields": [
+            {
+              "lsb": 0,
+              "mask": 1,
+              "meaning": "Counter enable; OPM clears it at update.",
+              "name": "CEN",
+              "sources": [
+                {
+                  "locator": "TIM_CR1_CEN_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:624",
+                  "source": "rm_tim_cr1"
+                },
+                {
+                  "locator": "page:625",
+                  "source": "rm_tim_control"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 1,
+              "mask": 2,
+              "meaning": "0 permits update events.",
+              "name": "UDIS",
+              "sources": [
+                {
+                  "locator": "TIM_CR1_UDIS_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:624",
+                  "source": "rm_tim_cr1"
+                },
+                {
+                  "locator": "page:625",
+                  "source": "rm_tim_control"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 2,
+              "mask": 4,
+              "meaning": "0 permits UG to set UIF; clear stale UIF after UG.",
+              "name": "URS",
+              "sources": [
+                {
+                  "locator": "TIM_CR1_URS_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:624",
+                  "source": "rm_tim_cr1"
+                },
+                {
+                  "locator": "page:625",
+                  "source": "rm_tim_control"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 3,
+              "mask": 8,
+              "meaning": "1 stops the counter at the next update.",
+              "name": "OPM",
+              "sources": [
+                {
+                  "locator": "TIM_CR1_OPM_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:624",
+                  "source": "rm_tim_cr1"
+                },
+                {
+                  "locator": "page:625",
+                  "source": "rm_tim_control"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 4,
+              "mask": 16,
+              "meaning": "0 selects upcounting.",
+              "name": "DIR",
+              "sources": [
+                {
+                  "locator": "TIM_CR1_DIR_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:624",
+                  "source": "rm_tim_cr1"
+                },
+                {
+                  "locator": "page:625",
+                  "source": "rm_tim_control"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 5,
+              "mask": 96,
+              "meaning": "00 selects edge-aligned.",
+              "name": "CMS",
+              "sources": [
+                {
+                  "locator": "TIM_CR1_CMS_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:624",
+                  "source": "rm_tim_cr1"
+                },
+                {
+                  "locator": "page:625",
+                  "source": "rm_tim_control"
+                }
+              ],
+              "width": 2
+            },
+            {
+              "lsb": 7,
+              "mask": 128,
+              "meaning": "0 selects unbuffered ARR.",
+              "name": "ARPE",
+              "sources": [
+                {
+                  "locator": "TIM_CR1_ARPE_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:624",
+                  "source": "rm_tim_cr1"
+                },
+                {
+                  "locator": "page:625",
+                  "source": "rm_tim_control"
+                }
+              ],
+              "width": 1
+            }
+          ],
+          "io_address": null,
+          "name": "CR1",
+          "offset": 0,
+          "reset": 0,
+          "side_effects": "CEN/URS/UDIS/ARPE; supported TIM2 upcounter controls.",
+          "sources": [
+            {
+              "locator": "TIM_TypeDef.CR1",
+              "source": "header"
+            },
+            {
+              "locator": "page:624",
+              "source": "rm_tim_cr1"
+            },
+            {
+              "locator": "page:624",
+              "source": "rm_tim_cr1"
+            },
+            {
+              "locator": "page:625",
+              "source": "rm_tim_control"
+            }
+          ],
+          "width": 32
+        },
+        {
+          "access": "RW",
+          "access_widths": [
+            32
+          ],
+          "count": 1,
+          "fields": [
+            {
+              "lsb": 0,
+              "mask": 1,
+              "meaning": "0 disables update interrupt.",
+              "name": "UIE",
+              "sources": [
+                {
+                  "locator": "TIM_DIER_UIE_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:629",
+                  "source": "rm_tim_dier"
+                },
+                {
+                  "locator": "page:630",
+                  "source": "rm_tim_sr"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 8,
+              "mask": 256,
+              "meaning": "0 disables update DMA request.",
+              "name": "UDE",
+              "sources": [
+                {
+                  "locator": "TIM_DIER_UDE_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:629",
+                  "source": "rm_tim_dier"
+                },
+                {
+                  "locator": "page:630",
+                  "source": "rm_tim_sr"
+                }
+              ],
+              "width": 1
+            }
+          ],
+          "io_address": null,
+          "name": "DIER",
+          "offset": 12,
+          "reset": 0,
+          "side_effects": "UIE only; leave DMA/channel requests disabled.",
+          "sources": [
+            {
+              "locator": "TIM_TypeDef.DIER",
+              "source": "header"
+            },
+            {
+              "locator": "page:629",
+              "source": "rm_tim_dier"
+            },
+            {
+              "locator": "page:629",
+              "source": "rm_tim_dier"
+            },
+            {
+              "locator": "page:630",
+              "source": "rm_tim_sr"
+            }
+          ],
+          "width": 32
+        },
+        {
+          "access": "mixed",
+          "access_widths": [
+            32
+          ],
+          "count": 1,
+          "fields": [
+            {
+              "lsb": 0,
+              "mask": 1,
+              "meaning": "Update flag; clear by writing zero, not W1C.",
+              "name": "UIF",
+              "sources": [
+                {
+                  "locator": "TIM_SR_UIF_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:630",
+                  "source": "rm_tim_sr"
+                },
+                {
+                  "locator": "page:631",
+                  "source": "rm_tim_status"
+                }
+              ],
+              "width": 1
+            }
+          ],
+          "io_address": null,
+          "name": "SR",
+          "offset": 16,
+          "reset": 0,
+          "side_effects": "rc_w0 flags: write zero to clear; SR=0 clears all flags in the update-only workflow.",
+          "sources": [
+            {
+              "locator": "TIM_TypeDef.SR",
+              "source": "header"
+            },
+            {
+              "locator": "page:630",
+              "source": "rm_tim_sr"
+            },
+            {
+              "locator": "page:630",
+              "source": "rm_tim_sr"
+            },
+            {
+              "locator": "page:631",
+              "source": "rm_tim_status"
+            }
+          ],
+          "width": 32
+        },
+        {
+          "access": "WO",
+          "access_widths": [
+            32
+          ],
+          "count": 1,
+          "fields": [
+            {
+              "lsb": 0,
+              "mask": 1,
+              "meaning": "Self-clearing write-only command loads PSC and reinitializes counter; can set UIF.",
+              "name": "UG",
+              "sources": [
+                {
+                  "locator": "TIM_EGR_UG_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:631",
+                  "source": "rm_tim_status"
+                },
+                {
+                  "locator": "page:632",
+                  "source": "rm_tim_egr"
+                }
+              ],
+              "width": 1
+            }
+          ],
+          "io_address": null,
+          "name": "EGR",
+          "offset": 20,
+          "reset": 0,
+          "side_effects": "Write UG to reload prescaler/counter; self-clearing action, may set UIF.",
+          "sources": [
+            {
+              "locator": "TIM_TypeDef.EGR",
+              "source": "header"
+            },
+            {
+              "locator": "page:632",
+              "source": "rm_tim_egr"
+            },
+            {
+              "locator": "page:631",
+              "source": "rm_tim_status"
+            },
+            {
+              "locator": "page:632",
+              "source": "rm_tim_egr"
+            }
+          ],
+          "width": 32
+        },
+        {
+          "access": "RW",
+          "count": 1,
+          "fields": [],
+          "io_address": null,
+          "name": "CNT",
+          "offset": 36,
+          "reset": 0,
+          "side_effects": "TIM2 32-bit counter; writes only while stopped in this workflow.",
+          "sources": [
+            {
+              "locator": "TIM_TypeDef.CNT",
+              "source": "header"
+            },
+            {
+              "locator": "page:638",
+              "source": "rm_tim_values"
+            }
+          ],
+          "width": 32
+        },
+        {
+          "access": "RW",
+          "access_widths": [
+            32
+          ],
+          "count": 1,
+          "fields": [
+            {
+              "lsb": 0,
+              "mask": 65535,
+              "meaning": "16-bit prescaler: division is PSC+1.",
+              "name": "PSC",
+              "sources": [
+                {
+                  "locator": "TIM_PSC_PSC_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:638",
+                  "source": "rm_tim_values"
+                }
+              ],
+              "width": 16
+            }
+          ],
+          "io_address": null,
+          "name": "PSC",
+          "offset": 40,
+          "reset": 0,
+          "side_effects": "16-bit prescaler; update event transfers buffered value.",
+          "sources": [
+            {
+              "locator": "TIM_TypeDef.PSC",
+              "source": "header"
+            },
+            {
+              "locator": "page:638",
+              "source": "rm_tim_values"
+            },
+            {
+              "locator": "page:638",
+              "source": "rm_tim_values"
+            }
+          ],
+          "width": 32
+        },
+        {
+          "access": "RW",
+          "access_widths": [
+            32
+          ],
+          "count": 1,
+          "fields": [
+            {
+              "lsb": 0,
+              "mask": 4294967295,
+              "meaning": "TIM2 has a 32-bit ARR; period uses ARR+1, zero blocks counter.",
+              "name": "ARR",
+              "sources": [
+                {
+                  "locator": "TIM_ARR_ARR_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:638",
+                  "source": "rm_tim_values"
+                },
+                {
+                  "locator": "page:639",
+                  "source": "rm_tim_arr"
+                }
+              ],
+              "width": 32
+            }
+          ],
+          "io_address": null,
+          "name": "ARR",
+          "offset": 44,
+          "reset": 4294967295,
+          "side_effects": "TIM2 32-bit auto-reload; nonzero period required.",
+          "sources": [
+            {
+              "locator": "TIM_TypeDef.ARR",
+              "source": "header"
+            },
+            {
+              "locator": "page:639",
+              "source": "rm_tim_arr"
+            },
+            {
+              "locator": "page:638",
+              "source": "rm_tim_values"
+            },
+            {
+              "locator": "page:639",
+              "source": "rm_tim_arr"
+            }
+          ],
+          "width": 32
+        }
+      ],
+      "review": {
+        "basis": "Header declarations checked against complete RM0090/DS8626 parts; ST RCC implementation resolves the ADC1 enable-table typo. No independent sign-off or physical qualification.",
+        "reviewer": "Codex scoped source-backed editorial review via ingestion MCP",
+        "status": "reviewed"
+      },
+      "reviewed_markdown": "reviewed/adc-v1/tim.md",
+      "title": "TIM2: reviewed update interrupt subset"
+    }
+  ],
+  "schema_version": 1
+}

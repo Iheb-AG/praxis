@@ -1,0 +1,5 @@
+The polling_health_checks subset retains its prior register procedure, conditional on a valid RNG clock. The new pll_polling contract additionally requires RCC pll_hse8_168mhz, whose machine-checked closure includes FLASH latency and PWR Scale1. The 48MHz derived clock is arithmetic under declared HSE/supply assumptions, not a physical measurement or entropy certification.
+
+DRDY polling is bounded; clock/seed errors and equal consecutive outputs fail the operation. DR reads clear DRDY; discard the initial output while retaining it for comparison. CEIS/SEIS are clear-on-write-zero flags. Seed-error handling and consecutive checks remain scoped to the reviewed register procedure. No arbitrary system-clock ownership, cache, USB clock certification or entropy-health qualification is claimed.
+
+See [[peripherals/rcc]], [[peripherals/flash]], [[peripherals/pwr]], [[features]] and [[coverage]]. Evidence: rm_features_763:page:763 through rm_features_766:page:766; the clock prerequisites have their own exact-source contracts. Editorial review only; independent sign-off pending.

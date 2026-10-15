@@ -26,7 +26,7 @@ packages = ["praxis"]
 
 [tool.hatch.build.targets.sdist]
 only-include = ["praxis", "sources", "bundles", "assets", "examples", "tests", "tools", "docs", "sandbox", ".github", ".gitignore",
-                "README.md", "README_DETAILED.md", "CHANGELOG.md", "CONTRIBUTING.md", "LICENSE", "server.py", "compiler.py", "pyproject.toml", "uv.lock",
+                "README.md", "README_DETAILED.md", "CHANGELOG.md", "CONTRIBUTING.md", "AGENTS.md", "LICENSE", "server.py", "compiler.py", "pyproject.toml", "uv.lock",
                 "toolchain.lock.json", "toolchain-f407.lock.json", "release-review.json", "Dockerfile", ".dockerignore",
                 "website", "vercel.json", ".vercelignore", ".gitattributes"]
 exclude = ["**/imports/**", "**/__pycache__/**", "**/*.pyc", "**/.pytest_cache/**",

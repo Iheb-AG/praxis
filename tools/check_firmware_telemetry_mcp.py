@@ -37,7 +37,7 @@ async def run(args):
                    '--bundle', str(args.bundle.resolve()),
                    '--assets', str(ROOT / 'assets/stm32f407vg'),
                    '--workspace', str(ROOT / 'examples'),
-                   '--artifacts', str(ROOT / '.praxis-output/firmware-artifacts'),
+                   '--artifacts', str(args.artifacts.resolve()),
                    '--lock', str(ROOT / 'toolchain-f407.lock.json'),
                    '--hardware-profile', str(args.hardware_profile.resolve()),
                    '--telemetry-artifact', args.artifact,
@@ -112,6 +112,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--artifact', required=True)
     parser.add_argument('--output', required=True, type=Path)
+    parser.add_argument('--artifacts', type=Path, default=ROOT / '.praxis-output/firmware-artifacts',
+                        help='Exact local artifact store used for the selected build')
     probes = parser.add_mutually_exclusive_group(required=True)
     probes.add_argument('--probe-serial')
     probes.add_argument('--probe-from-plan', type=Path)
@@ -121,7 +123,7 @@ def main():
     parser.add_argument('--expect-mismatch', action='store_true')
     parser.add_argument('--can-diagnostics', action='store_true',
                         help='Use named read-only CAN acknowledgement diagnostics instead of sample windows')
-    parser.add_argument('--telemetry-kind', choices=('uart-loopback-v1', 'can-loopback-v1'),
+    parser.add_argument('--telemetry-kind', choices=('uart-loopback-v1', 'can-loopback-v1', 'timer-routes-v1', 'timer-irq-v1'),
                         default='uart-loopback-v1')
     parser.add_argument('--windows', type=int, choices=range(1, 11), default=1)
     parser.add_argument('--samples', type=int, choices=range(1, 6), default=2)

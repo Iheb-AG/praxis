@@ -1,0 +1,714 @@
+{
+  "artifact": {
+    "artifact_id": "70aab2ee7184e666527f94ccc6bbf6d63bbaa7d74260baf7376d52c45d2be2bf",
+    "asset_revision": "22310c7ad54daa553cf5cb11e4db08e4c8f9e93e191f3f12ec8410dd1fb40b59",
+    "bundle_revision": "9d2494ef9dcc4056ad83ef96f163801b5b57f89130528d5491b49d6482aa7404",
+    "elf_sha256": "af4983585e87ef15cd5311c7d2900406baa0ac3b297e9f172bb31a2d0c26d823",
+    "flashed": false,
+    "image_bytes": 5984,
+    "image_sha256": "0995463eb5fbab7f13168824b2107f93c69f0aa6f7030179b21254b2222cb6c3",
+    "image_validated": true,
+    "source_sha256": "32d6349ec3728635e058f104f2821993adbb4f0bba6ad8821bb5156420012664"
+  },
+  "bundle_revision": "9d2494ef9dcc4056ad83ef96f163801b5b57f89130528d5491b49d6482aa7404",
+  "counts": {
+    "authored_workflows": 39,
+    "distinct_primitive_field_declarations": 2152,
+    "mode_contracts": 43,
+    "ready_authored_workflows": 24,
+    "register_blocks": 42,
+    "registers": 541,
+    "reviewed_subsets": 22
+  },
+  "date": "2026-10-15",
+  "deterministic_publication": {
+    "actual_ingestion_mcp_publications": 2,
+    "cli_publications": 1,
+    "hashed_files": 50,
+    "manifest_files": 1,
+    "passed": true
+  },
+  "format": "praxis-timer-irq-evidence-v1",
+  "independent_review": "pending",
+  "limits": [
+    "Fresh exclusively owned privileged Thread/MSP startup only; no RTOS or live handoff. No AIRCR/system-exception writes, nested IRQ, DMA or other timer mode claim.",
+    "All probe/model/qualification fixtures are explicitly synthetic; historical polling observations do not qualify the new artifact.",
+    "Read-only physical preflight could not select the previously connected probe; no physical SRAM observation, reset or flash of the new artifact occurred.",
+    "Same HSI basis for both timers; no independent absolute frequency/duty calibration.",
+    "IRQ receipts and cleanup snapshots remain firmware self-reports, not arbitrary code/order proof or physical authentication.",
+    "No full MCU acceptance, formal repeatability, independent signoff or confirmed physical PCB revision."
+  ],
+  "mutating_hardware_operations": 0,
+  "physical_preflight": {
+    "actual_mcp_calls": 2,
+    "mutating_operations": 0,
+    "physical_qualification": "not assessed",
+    "read_only": true,
+    "status": "Selected ST-LINK not visible; reconnect/wiring request pending"
+  },
+  "physical_qualification": "not tested for the new IRQ artifact",
+  "profile": "sources/stm32f407g-disc1/profile-timer-irq-v1.json",
+  "scope": "Exact TIM2_CH2 PA1 PWM paired with TIM5_CH3 PA2 IRQ50 capture: software/source/model/ELF/MCP checks; physical IRQ qualification pending",
+  "software_contract": {
+    "kind": "timer-irq-v1",
+    "path": "praxis/data/timer-irq-telemetry-v1.json",
+    "record_bytes": 180,
+    "sha256": "88682d711224cdb63df4475b002617d0ac7a48f1c983526d25c27c98428cae2d",
+    "symbol": "praxis_timer_irq_telemetry"
+  },
+  "source_review": {
+    "actual_mcp_calls": 57,
+    "recovered_tool_errors": 2,
+    "review_status": "Source-backed implementing-author editorial review; independent signoff pending",
+    "trace": [
+      {
+        "arguments": {},
+        "is_error": false,
+        "response_sha256": "fab44ad0157a3abbc9cb6c20ac023cdea9a366ace6afc29da1a549f8bc347476",
+        "tool": "get_ingestion_profile"
+      },
+      {
+        "arguments": {
+          "peripheral_name": "tim"
+        },
+        "is_error": false,
+        "response_sha256": "40c709d80316fa299c29f0956acb4abd4be4ab9c02fe99083e1405b10146ab07",
+        "tool": "discover_source_declarations"
+      },
+      {
+        "arguments": {
+          "peripheral_name": "nvic"
+        },
+        "is_error": false,
+        "response_sha256": "fe889ecd2ad4b0606f4315bc9bc2243443b9d4727a1227d873a56fdd5ae8a3a1",
+        "tool": "discover_source_declarations"
+      },
+      {
+        "arguments": {
+          "peripheral_name": "scb"
+        },
+        "is_error": false,
+        "response_sha256": "32cf43854a1a4dbc515ea452433f4e6a6a182d914992c651224bf5dc82b7e822",
+        "tool": "discover_source_declarations"
+      },
+      {
+        "arguments": {
+          "locator": "complete",
+          "source_id": "nvic_review"
+        },
+        "is_error": false,
+        "response_sha256": "da3cae4498dd1e077f1e2f4e49c52ade17368829904e446d36326a2789697a29",
+        "tool": "read_source_evidence"
+      },
+      {
+        "arguments": {
+          "locator": "complete",
+          "source_id": "can_nvic_review"
+        },
+        "is_error": false,
+        "response_sha256": "a1fba0518e240ea01840dfbf8d43a98c6996743a161e98e08a161cb906130f0d",
+        "tool": "read_source_evidence"
+      },
+      {
+        "arguments": {
+          "locator": "page:624",
+          "source_id": "rm_timer_modes"
+        },
+        "is_error": false,
+        "response_sha256": "65c5ed21150cdad6a26ad2c6a7d83d43e19ad34753a6521b14a736defb41615b",
+        "tool": "read_source_evidence"
+      },
+      {
+        "arguments": {
+          "locator": "page:628",
+          "source_id": "rm_timer_modes"
+        },
+        "is_error": false,
+        "response_sha256": "9f3b27e60ec36ef618e215fbfa6dbe40292f48089c858c6c3e62e2c9ec9b3428",
+        "tool": "read_source_evidence"
+      },
+      {
+        "arguments": {
+          "locator": "page:629",
+          "source_id": "rm_timer_modes"
+        },
+        "is_error": false,
+        "response_sha256": "43c0466e063a887582a0160e781b38f0f7349e683877a98fa29950cc2dd5de6c",
+        "tool": "read_source_evidence"
+      },
+      {
+        "arguments": {
+          "locator": "page:630",
+          "source_id": "rm_timer_modes"
+        },
+        "is_error": false,
+        "response_sha256": "91a015252a5f79822b9d8a59c921b224ee0c20c04e96c0c88858d2362639c521",
+        "tool": "read_source_evidence"
+      },
+      {
+        "arguments": {
+          "locator": "page:634",
+          "source_id": "rm_timer_modes"
+        },
+        "is_error": false,
+        "response_sha256": "340cdad0757ce34739656bdfd9f85c13cc40c3b530be42d37fe42e3dea787fb3",
+        "tool": "read_source_evidence"
+      },
+      {
+        "arguments": {
+          "locator": "page:635",
+          "source_id": "rm_timer_modes"
+        },
+        "is_error": false,
+        "response_sha256": "12da8157575ca3375a09e9a34d6ab88b9e995b8ff145e50c8f55761fb0d15c9b",
+        "tool": "read_source_evidence"
+      },
+      {
+        "arguments": {
+          "locator": "page:636",
+          "source_id": "rm_timer_modes"
+        },
+        "is_error": false,
+        "response_sha256": "4fbcc9d3c5b2e78b6e2a5c20c8d3f1e55f6c005c5c8c42d175684ed1e1990853",
+        "tool": "read_source_evidence"
+      },
+      {
+        "arguments": {
+          "locator": "page:638",
+          "source_id": "rm_timer_modes"
+        },
+        "is_error": false,
+        "response_sha256": "98f893ef921437b02eac4fe9dfc7af731806b31fda70e532bc0c7041f47f9293",
+        "tool": "read_source_evidence"
+      },
+      {
+        "arguments": {
+          "locator": "page:639",
+          "source_id": "rm_timer_modes"
+        },
+        "is_error": false,
+        "response_sha256": "758a5b0263578ffd1c7ad6935e6b20de43b0a96e0773dc4f61d49fe4100629a1",
+        "tool": "read_source_evidence"
+      },
+      {
+        "arguments": {
+          "locator": "page:640",
+          "source_id": "rm_timer_modes"
+        },
+        "is_error": false,
+        "response_sha256": "e59ff39f3bbf72496a584300a4deefd100ac83beb53f345db23ff665af8bc5ca",
+        "tool": "read_source_evidence"
+      },
+      {
+        "arguments": {
+          "locator": "page:631",
+          "source_id": "rm_timer_modes"
+        },
+        "is_error": false,
+        "response_sha256": "7705922a692b3fd5d0ebfbc492e268a63da458b25a3055d0e88e30c15d1908ed",
+        "tool": "read_source_evidence"
+      },
+      {
+        "arguments": {
+          "locator": "complete",
+          "source_id": "header"
+        },
+        "is_error": true,
+        "response_sha256": "53acd3fd36099599d586ea4e9fbf49b4608f75e874da175c9b6f0bd906a6660b",
+        "tool": "read_source_evidence"
+      },
+      {
+        "arguments": {
+          "limit": 8,
+          "query": "TIM5_IRQn",
+          "source_id": "header"
+        },
+        "is_error": false,
+        "response_sha256": "d60aa1d36f99b0c6b9f7c2986c3479fb01d7f37eb60d78e206c1b923b43f71ae",
+        "tool": "search_source_evidence"
+      },
+      {
+        "arguments": {
+          "limit": 8,
+          "query": "__NVIC_PRIO_BITS",
+          "source_id": "header"
+        },
+        "is_error": false,
+        "response_sha256": "d8e678f6fe36b1f7b87bb8acce21e9a353a3b32e75b182e5469bf1ae9d4c46bb",
+        "tool": "search_source_evidence"
+      },
+      {
+        "arguments": {
+          "limit": 8,
+          "query": "__NVIC_EnableIRQ",
+          "source_id": "cmsis_core"
+        },
+        "is_error": false,
+        "response_sha256": "bf7a7dd7fb04d55ef12fdd76668f84060888cbe2f0935a189fa3a8f6602ce51c",
+        "tool": "search_source_evidence"
+      },
+      {
+        "arguments": {
+          "limit": 8,
+          "query": "__NVIC_SetPriority",
+          "source_id": "cmsis_core"
+        },
+        "is_error": false,
+        "response_sha256": "965550393d2eabcafdaea2e09ca3b364b7b0dfbd59ca8bbb86a31f6f0c9f9397",
+        "tool": "search_source_evidence"
+      },
+      {
+        "arguments": {
+          "limit": 8,
+          "query": "__NVIC_ClearPendingIRQ",
+          "source_id": "cmsis_core"
+        },
+        "is_error": false,
+        "response_sha256": "bf8ad59469a9022fa34e775061d221f159e9e991a480ed613b83ea1c8d6ac7d7",
+        "tool": "search_source_evidence"
+      },
+      {
+        "arguments": {
+          "locator": "page:22",
+          "source_id": "pm_core_22"
+        },
+        "is_error": true,
+        "response_sha256": "7dfe3a9bd551d13d9a6f50c16784b74936b6c6bcbc93e89bf7723ec76ba18c7e",
+        "tool": "read_source_evidence"
+      },
+      {
+        "arguments": {
+          "locator": "lines:40-140",
+          "source_id": "header"
+        },
+        "is_error": false,
+        "response_sha256": "6586f7e2378fbc71cbf3082fd5a7af84b75e02264a8ba02896513e779c6c0fd3",
+        "tool": "read_source_evidence"
+      },
+      {
+        "arguments": {
+          "locator": "lines:1675-1830",
+          "source_id": "cmsis_core"
+        },
+        "is_error": false,
+        "response_sha256": "44401ed8a35083063aa4077621dc531e4bda93926771ea00dd71db74590ed92e",
+        "tool": "read_source_evidence"
+      },
+      {
+        "arguments": {
+          "locator": "complete",
+          "source_id": "pm_core_22"
+        },
+        "is_error": false,
+        "response_sha256": "b36ea5bc31a4cd8c5e85c73ebb10252af6da35aca049ac09b18fb4e5a72f2228",
+        "tool": "read_source_evidence"
+      },
+      {
+        "arguments": {
+          "locator": "complete",
+          "source_id": "pm_core_24"
+        },
+        "is_error": false,
+        "response_sha256": "585c75df00ef7aafb3950737a270e3ff5a62156188013a8f917fa5a89f7476f7",
+        "tool": "read_source_evidence"
+      },
+      {
+        "arguments": {
+          "locator": "complete",
+          "source_id": "pm_core_39"
+        },
+        "is_error": false,
+        "response_sha256": "e4309c8e719ecc04ef8530b083d120943ba26537c36f3d21e01943366c8d497f",
+        "tool": "read_source_evidence"
+      },
+      {
+        "arguments": {
+          "locator": "complete",
+          "source_id": "pm_core_40"
+        },
+        "is_error": false,
+        "response_sha256": "9dcdf9e436906df93578faa7e7f28245b1ae77d16afd47d347d2e2d62f52f9b2",
+        "tool": "read_source_evidence"
+      },
+      {
+        "arguments": {
+          "locator": "complete",
+          "source_id": "pm_core_41"
+        },
+        "is_error": false,
+        "response_sha256": "5d52360d0f1a6beb6bdb55e6d5a5276ef8a33ccadc0daa3dc01afdc070c4c383",
+        "tool": "read_source_evidence"
+      },
+      {
+        "arguments": {
+          "locator": "complete",
+          "source_id": "pm_core_225"
+        },
+        "is_error": false,
+        "response_sha256": "47d9d020c2ab68b2b23b78d61f23cc0278202d1111778346fae016245e1eb834",
+        "tool": "read_source_evidence"
+      },
+      {
+        "arguments": {
+          "locator": "complete",
+          "source_id": "pm_core_226"
+        },
+        "is_error": false,
+        "response_sha256": "3b3a5beaede04f993f86c55b0143557b94296dea34098877a72ba283c9ac75ad",
+        "tool": "read_source_evidence"
+      },
+      {
+        "arguments": {
+          "locator": "complete",
+          "source_id": "pm_core_227"
+        },
+        "is_error": false,
+        "response_sha256": "09e31c39aab3e18c9fb9109457ff0f4477bbc1ceeba08bcb5d6aab2a26a4e198",
+        "tool": "read_source_evidence"
+      },
+      {
+        "arguments": {
+          "locator": "complete",
+          "source_id": "pm_core_233"
+        },
+        "is_error": false,
+        "response_sha256": "5b7a36474645a6b742aaa42d1fb8f55e213d8100b712196a5882521b74cb0b3b",
+        "tool": "read_source_evidence"
+      },
+      {
+        "arguments": {
+          "locator": "complete",
+          "source_id": "pm_core_234"
+        },
+        "is_error": false,
+        "response_sha256": "43c557c5601ccabb8a66ba8e9852897e9158d1dd60f43f6f41935f87b5add357",
+        "tool": "read_source_evidence"
+      },
+      {
+        "arguments": {
+          "output_id": "pm_timer_irq",
+          "pages": "23-26,208-216,228-229",
+          "source_id": "pm0214_arm_v1"
+        },
+        "is_error": false,
+        "response_sha256": "3ce678b7692a4680449b84d7780ec81d850fb46203cfbbb18fd43c2bc919e689",
+        "tool": "stage_cached_source"
+      },
+      {
+        "arguments": {
+          "locator": "page:23",
+          "source_id": "pm_timer_irq"
+        },
+        "is_error": false,
+        "response_sha256": "57645c7997578e5bdd8545ebe73bf791ae39bdd9fab60c5a1f634150ea29d50e",
+        "tool": "read_source_evidence"
+      },
+      {
+        "arguments": {
+          "locator": "page:24",
+          "source_id": "pm_timer_irq"
+        },
+        "is_error": false,
+        "response_sha256": "e7136bc295df86d82c0b45b8e1eda413d55ea9aabecc53ed1c2d197c661614f1",
+        "tool": "read_source_evidence"
+      },
+      {
+        "arguments": {
+          "locator": "page:25",
+          "source_id": "pm_timer_irq"
+        },
+        "is_error": false,
+        "response_sha256": "e5508b22c2601a64643b087adf4a35526ed70e7fd09d6f181d74c412d61dd5aa",
+        "tool": "read_source_evidence"
+      },
+      {
+        "arguments": {
+          "locator": "page:26",
+          "source_id": "pm_timer_irq"
+        },
+        "is_error": false,
+        "response_sha256": "447061eb5a2dfe0bf54fbb1be5b391a53227e9eea59b53a00e554d319058033b",
+        "tool": "read_source_evidence"
+      },
+      {
+        "arguments": {
+          "locator": "page:208",
+          "source_id": "pm_timer_irq"
+        },
+        "is_error": false,
+        "response_sha256": "ce76bf07f99544b7fd3f78c1dc26ed49b3cc85ec6e47b2fe082ca3c424991ffb",
+        "tool": "read_source_evidence"
+      },
+      {
+        "arguments": {
+          "locator": "page:209",
+          "source_id": "pm_timer_irq"
+        },
+        "is_error": false,
+        "response_sha256": "93c36e52359bb5b8ef7d43e1f1524f876e32aba33d6eb0539b9e51bf02223e39",
+        "tool": "read_source_evidence"
+      },
+      {
+        "arguments": {
+          "locator": "page:210",
+          "source_id": "pm_timer_irq"
+        },
+        "is_error": false,
+        "response_sha256": "4a252907cd6683fa8a66a54efc61519c39a742707faa022dd35af2941d7fc0ab",
+        "tool": "read_source_evidence"
+      },
+      {
+        "arguments": {
+          "locator": "page:211",
+          "source_id": "pm_timer_irq"
+        },
+        "is_error": false,
+        "response_sha256": "5ee2f33a2bcf5483d4f3864abd287169f37e038139f24dadc8a87484302263a8",
+        "tool": "read_source_evidence"
+      },
+      {
+        "arguments": {
+          "locator": "page:212",
+          "source_id": "pm_timer_irq"
+        },
+        "is_error": false,
+        "response_sha256": "ee969f86b5927e1a8bbad52c5dac9a1cffec28fecfe10d75c2521f4a0e2343a2",
+        "tool": "read_source_evidence"
+      },
+      {
+        "arguments": {
+          "locator": "page:213",
+          "source_id": "pm_timer_irq"
+        },
+        "is_error": false,
+        "response_sha256": "5e6882eb26365b822bc80942596ffda548c593d803445781d72be7863af79f69",
+        "tool": "read_source_evidence"
+      },
+      {
+        "arguments": {
+          "locator": "page:214",
+          "source_id": "pm_timer_irq"
+        },
+        "is_error": false,
+        "response_sha256": "06ecf5c87797913b884976700e3780d44dc292126946440cbb06274c4b2314d4",
+        "tool": "read_source_evidence"
+      },
+      {
+        "arguments": {
+          "locator": "page:215",
+          "source_id": "pm_timer_irq"
+        },
+        "is_error": false,
+        "response_sha256": "f9de655e454224ee23917d1d4375620892cfb9cb430692e54c274f8a22f7225e",
+        "tool": "read_source_evidence"
+      },
+      {
+        "arguments": {
+          "locator": "page:216",
+          "source_id": "pm_timer_irq"
+        },
+        "is_error": false,
+        "response_sha256": "f71d964404eb1bc9b5236ecc2b97ca6447997ec473fea0017f2049c5719eac95",
+        "tool": "read_source_evidence"
+      },
+      {
+        "arguments": {
+          "locator": "page:228",
+          "source_id": "pm_timer_irq"
+        },
+        "is_error": false,
+        "response_sha256": "8e6bd6d24e8b4f91865e239d7ca28073176492622ee603944e3994f98939283b",
+        "tool": "read_source_evidence"
+      },
+      {
+        "arguments": {
+          "locator": "page:229",
+          "source_id": "pm_timer_irq"
+        },
+        "is_error": false,
+        "response_sha256": "6eece81b9b4222c2b4ad3efb30bfaa66e2b7e0dbb5e00f8eba49cde1d97ffe01",
+        "tool": "read_source_evidence"
+      },
+      {
+        "arguments": {
+          "locator": "complete",
+          "source_id": "pm_core_247"
+        },
+        "is_error": false,
+        "response_sha256": "fed86e89403c57b3d090699bafab5c24afd75f148f2b15ec2d2143cef58e48b5",
+        "tool": "read_source_evidence"
+      },
+      {
+        "arguments": {
+          "locator": "complete",
+          "source_id": "pm_core_225"
+        },
+        "is_error": false,
+        "response_sha256": "47d9d020c2ab68b2b23b78d61f23cc0278202d1111778346fae016245e1eb834",
+        "tool": "read_source_evidence"
+      },
+      {
+        "arguments": {
+          "locator": "complete",
+          "source_id": "arm_asset_contract"
+        },
+        "is_error": false,
+        "response_sha256": "3d258bf4465f6966317d7315d7ada41a81688bf3ab9b5add648510b5f1d05430",
+        "tool": "read_source_evidence"
+      },
+      {
+        "arguments": {
+          "locator": "lines:40-170",
+          "source_id": "header"
+        },
+        "is_error": false,
+        "response_sha256": "e15231eed48cadf88adad04ae6ad114a884b0586383454f7299217e7009f760b",
+        "tool": "read_source_evidence"
+      },
+      {
+        "arguments": {
+          "locator": "page:632",
+          "source_id": "rm_timer_modes"
+        },
+        "is_error": false,
+        "response_sha256": "2b2f19d7163a22b39ea950fc5676151e2272afccbd4affe5a3ef61674fdab360",
+        "tool": "read_source_evidence"
+      }
+    ]
+  },
+  "verification": {
+    "acceptance": {
+      "actual_mcp_calls": 94,
+      "cases": 17,
+      "full_mcu_accepted": false,
+      "passed": true,
+      "plan_sha256": "4eec49083a8b2e844f35c52a03ae3d77f72208c01ebed696b1627e74490ffc8c"
+    },
+    "dependency_lock": "passed offline",
+    "distribution": {
+      "branding_assets_passed": true,
+      "distribution_contents_passed": true,
+      "experimental_target_inputs_verified": 37,
+      "inventory_inputs_verified": 52,
+      "private_and_raw_paths_excluded": true,
+      "public_documentation_file_links_passed": true,
+      "publication_contracts_verified": 23,
+      "source_members": 2732,
+      "wheel_members": 65
+    },
+    "docker": {
+      "architecture": "amd64",
+      "calls": 162,
+      "image": "project-praxis:timer-irq",
+      "image_id": "sha256:1c980518f63b2287f10d5b3144b971da48dba7785484edf69d8ebd151b1ce8e5",
+      "limits": "Local architecture only; no compiler, physical board, or remote registry publication tested.",
+      "negative_and_runtime_checks": [
+        "MISSING_FILE",
+        "INTEGRITY_ERROR",
+        "non_root",
+        "read_only_filesystem_and_bundle",
+        "no_optional_extras"
+      ],
+      "os": "linux",
+      "passed": true,
+      "sessions": 4
+    },
+    "exact_mcp_artifact_elf": {
+      "artifact_id": "70aab2ee7184e666527f94ccc6bbf6d63bbaa7d74260baf7376d52c45d2be2bf",
+      "checks": [
+        "Strong linked TIM5 handler at vector slot66",
+        "Initial SP0x20020000;98-entry Flash vector",
+        "Allocated global software ABI object size180",
+        "Read-only telemetry address bound to exact ELF object",
+        "Reject wrong UART ABI and mutated ELF object address/size"
+      ],
+      "passed": true,
+      "scope": "Exact MCP-built ELF, separate from native fixture"
+    },
+    "focused_prepublication": {
+      "deselected": 2,
+      "passed": 178,
+      "scope": "All54 model faults,source contracts,own ABI and ELF checks; two actual public-bundle CLI/MCP tests run in subsequent complete regression. Counts overlap."
+    },
+    "full_regression": {
+      "passed": 1462,
+      "required_external_tools": true,
+      "seconds": 398.07,
+      "skipped": 0
+    },
+    "native_knowledge_mcp": {
+      "calls": 52,
+      "passed": true
+    },
+    "release_gate": {
+      "blockers": [
+        "Independent review of the exact current bundle revisions is missing",
+        "Independent review of the exact firmware asset revision is missing"
+      ],
+      "release_ready": false
+    },
+    "ruff": "passed",
+    "synthetic_docker_qualification": {
+      "cases": [
+        {
+          "case": "success",
+          "check_passed": true,
+          "exit_code": 0,
+          "expected": "passed",
+          "fault": 0,
+          "passed_qualification": true
+        },
+        {
+          "case": "no_edges",
+          "check_passed": true,
+          "exit_code": 0,
+          "expected": "timeout",
+          "fault": 1,
+          "passed_qualification": true
+        },
+        {
+          "case": "missed_irq",
+          "check_passed": true,
+          "exit_code": 1,
+          "expected": "timeout",
+          "fault": 48,
+          "passed_qualification": false
+        },
+        {
+          "case": "missed_irq_safe",
+          "check_passed": true,
+          "exit_code": 0,
+          "expected": "failed",
+          "fault": 48,
+          "passed_qualification": true
+        },
+        {
+          "case": "overcapture",
+          "check_passed": true,
+          "exit_code": 0,
+          "expected": "failed",
+          "fault": 21,
+          "passed_qualification": true
+        },
+        {
+          "case": "pending_stuck",
+          "check_passed": true,
+          "exit_code": 1,
+          "expected": "failed",
+          "fault": 45,
+          "passed_qualification": false
+        },
+        {
+          "case": "wrong_period",
+          "check_passed": true,
+          "exit_code": 1,
+          "expected": "passed",
+          "fault": 24,
+          "passed_qualification": false
+        }
+      ],
+      "passed": true,
+      "scope": "synthetic effect model and fabricated probe metadata; no physical board"
+    }
+  }
+}

@@ -9,6 +9,11 @@ CMSIS register-type inventory, explicit peripheral selection/instance mappings, 
 coverage reports and dependency-closure publication requirements. Schema-2 bundles support
 branching HEDG graphs; legacy schema-1 bundles retain their original four-stage validation.
 
+[Per-mode instance scopes](timer-routes.md) let a workflow select separate exact
+instances for modes in the same canonical document. Generic validation checks
+complete mappings, aggregate unions and each mode's reviewed applicability; all
+target pin, clock and register facts remain in versioned source data.
+
 Praxis has an offline compiler and a read-only runtime. No runtime retrieval operation invokes
 a compiler, XML parser, network request, model, or vector database. A published bundle is sufficient
 to serve knowledge, even after its input source directory is removed.
@@ -126,7 +131,7 @@ A bundle contains a versioned manifest and registered Markdown documents. The ma
 the target, source registry, extractor versions, file hashes, aliases, and dependency graph into
 its revision. This detects internal inconsistency; it is not a digital signature or trust policy.
 
-At startup the server checks document hashes, UTF-8, the 64 KiB per-document limit, registered
+At startup the server checks document hashes, UTF-8, registered
 paths, cross-links, canonical identities, aliases, and the four-stage target HEDG. It then snapshots
 the documents. Only registered wiki paths may be read, and resolved symlinks cannot escape the
 bundle. Exact topology lookup indexes the published Markdown; it does not use hidden compiler IR.
@@ -140,7 +145,9 @@ New processes start empty; there is no shared multi-client state store.
 
 Tool errors use stable code prefixes: `INVALID_INPUT`, `UNKNOWN_PERIPHERAL`,
 `PREREQUISITE_REQUIRED`, `AMBIGUOUS_IDENTITY`, `MISSING_FILE`, `INVALID_ENCODING`,
-`DOCUMENT_TOO_LARGE`, `INVALID_PATH`, and `INTEGRITY_ERROR`. Compiler errors additionally identify
+`INVALID_PATH`, and `INTEGRITY_ERROR`. There is no fixed knowledge-document byte ceiling;
+`DOCUMENT_TOO_LARGE` remains available for explicitly bounded nonknowledge inputs.
+Compiler errors additionally identify
 bad profiles, conflicting declarations, unsupported bindings/expressions, missing tools, and
 immutable-output collisions. A valid topology query with no result returns an explicit no-match
 string. No success response contains truncated Markdown.

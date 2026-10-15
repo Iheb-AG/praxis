@@ -13,9 +13,9 @@ from praxis.adapters.discovery import parse_cmsis_headers
 from praxis.adapters.headers import cmsis, macros
 from praxis.bundle import check_graph
 from praxis.errors import PraxisError
-from praxis.models import PeripheralDiscovery
+from praxis.models import PeripheralDiscovery, SourceRef
 from praxis.render import table
-from praxis.targets import check_header_identity, cmsis_cpu
+from praxis.contracts import load_contract
 
 
 def order(graph: dict[str, list[str]]) -> list[str]:
@@ -36,15 +36,18 @@ def order(graph: dict[str, list[str]]) -> list[str]:
 
 
 def inventory(profile, paths, reviewed, root):
+    contract = load_contract(profile, root)
     policy = profile.discovery
     include_dirs = [(root / name).resolve(strict=True) for name in profile.header.include_directories]
     if any(not path.is_relative_to(root) or not path.is_dir() for path in include_dirs):
         raise PraxisError("INVALID_PATH", "Header include directory escapes the source tree")
     flags = [*profile.header.defines, *[f"-I{path}" for path in include_dirs]]
     header = paths[profile.header.source]
-    cpu = cmsis_cpu(profile.target)
+    cpu = contract.cpu
     definitions = macros(header, "arm-none-eabi-gcc", [f"-mcpu={cpu}", "-mthumb", *flags])
-    check_header_identity(profile.target, definitions)
+    missing = sorted(set(contract.header_identity) - definitions.keys())
+    if missing:
+        raise PraxisError("TARGET_MISMATCH", f"Header identity does not match contract; missing {missing}")
     failures, origins, macro_origins = {}, {}, {}
     explicit_structures = [spec.structure for spec in policy.peripherals.values()]
     layouts = cmsis(header, None, flags, registered_sources=list(paths.values()), failures=failures,
@@ -93,6 +96,15 @@ def inventory(profile, paths, reviewed, root):
                 raise PraxisError("MISSING_DECLARATION", f"{entity}: no supported typed instance macros")
             continue
         try:
+            views = dict(contract.member_views.get(entity, {}))
+            if any(member in views and views[member] != names for member, names in spec.member_views.items()):
+                raise PraxisError("INVALID_PROFILE", f"{entity}: named view differs from pinned publication policy")
+            views.update(spec.member_views)
+            view_sources = {member: (
+                SourceRef(source=profile.compilation_contract, locator=f"member_views.{entity}.{member}")
+                if member in contract.member_views.get(entity, {}) else
+                SourceRef(source="profile", locator=f"discovery.peripherals.{entity}.member_views.{member}"))
+                for member in views}
             if spec.structure not in all_types:
                 raise PraxisError("MISSING_DECLARATION", f"Structure not declared: {spec.structure}")
             if spec.structure in failures:
@@ -102,7 +114,9 @@ def inventory(profile, paths, reviewed, root):
                 core_source_id=source, registered_sources=list(paths.values()),
                 cpu=cpu, structure_sources=structure_sources,
                 macro_sources=macro_sources,
-                stm32_views=profile.target.family == "stm32",
+                stm32_views=False,
+                member_views={entity: views},
+                view_sources={entity: view_sources},
                 mask_suffix=(profile.target.knowledge_adapter.mask_suffix
                              if profile.target.knowledge_adapter else "_Msk"),
                 position_suffix=(profile.target.knowledge_adapter.position_suffix
@@ -112,18 +126,26 @@ def inventory(profile, paths, reviewed, root):
                 instance_expressions={entity: spec.instances},
                 register_prefixes={entity: spec.register_prefixes},
                 expand_arrays={entity: spec.expand_arrays},
-                register_fields={entity: spec.register_fields})[entity]
+                register_fields={entity: spec.register_fields},
+                field_views={entity: spec.field_views})[entity]
             # Validate generic names/layout overlap before it can be selected for publication.
             if len({r.name for r in found.registers}) != len(found.registers):
                 raise PraxisError("DUPLICATE_ENTITY", f"{entity}: flattened register name collision")
             catalog[entity] = found
             entry.update(instances=sorted(found.instances), registers=len(found.registers),
-                         fields=sum(len(r.fields) for r in found.registers),
+                         fields=sum(len({(f.name, f.mask) for f in r.fields} |
+                                        {(f.name, f.mask) for v in r.field_views.values() for f in v.fields})
+                                    for r in found.registers),
                          status="declarations_only" if selected else "not_selected")
             entry["issues"] = [*found.notes, *found.unresolved_masks]
             if spec.register_fields:
                 entry["issues"].append("Configured field views: " + ", ".join(sorted(spec.register_fields)) +
                                        "; other overlapping mode encodings are not published")
+            if spec.field_views:
+                entry["field_views"] = {name: sorted(views) for name, views in sorted(spec.field_views.items())}
+                entry["field_view_rows"] = sum(len(v.fields) for r in found.registers for v in r.field_views.values())
+                entry["issues"].append("Alternative field views preserve separate declared interpretations; "
+                                       "they do not establish instance applicability or reviewed operating modes")
             entry["unresolved_masks"] = found.unresolved_masks
         except (PraxisError, ValidationError) as exc:
             entry.update(status="blocked", issues=[str(exc)])
@@ -159,6 +181,9 @@ def workflow_coverage(profile, items, entries, topology=None):
     result = {}
     for workflow_name, requirement in sorted(profile.workflows.items()):
         issues, closure = [], set()
+        resolved_instances = dict(requirement.instances)
+        for entity, scopes in requirement.mode_instances.items():
+            resolved_instances[entity] = sorted({name for names in scopes.values() for name in names})
         if not requirement.registers.keys() <= set(requirement.peripherals):
             raise PraxisError("INVALID_PROFILE", f"{workflow_name}: registers name an undeclared workflow peripheral")
 
@@ -201,7 +226,8 @@ def workflow_coverage(profile, items, entries, topology=None):
 
         for entity, modes in sorted(requirement.modes.items()):
             for name in modes:
-                visit_mode(entity, name, requirement.instances.get(entity, []))
+                visit_mode(entity, name, requirement.mode_instances.get(entity, {}).get(
+                    name, requirement.instances.get(entity, [])))
         for entity in sorted(closure):
             names = set(requirement.registers.get(entity, profile.header.required_registers.get(entity, [])))
             names.update(mode_registers.get(entity, set()))
@@ -213,7 +239,7 @@ def workflow_coverage(profile, items, entries, topology=None):
                     issues.append(f"{entity}.{register}: register not published")
                 elif requirement.operating_semantics and registers[register].access == "unknown":
                     issues.append(f"{entity}.{register}: access/operating semantics unreviewed")
-        for entity, names in requirement.instances.items():
+        for entity, names in resolved_instances.items():
             available = {i.name for i in by_id[entity].instances} if entity in by_id else set()
             for name in names:
                 if name not in available:
@@ -228,9 +254,11 @@ def workflow_coverage(profile, items, entries, topology=None):
             except PraxisError as exc:
                 issues.append(f"{signal}: {exc.code}")
         result[workflow_name] = dict(ready=not issues, closure=sorted(closure), issues=sorted(set(issues)),
-                            mode_scope=requirement.modes, instance_scope=requirement.instances,
+                            mode_scope=requirement.modes, instance_scope=resolved_instances,
                             required_signals=requirement.signals,
                             required_for_publication=workflow_name in profile.publication_requires)
+        if requirement.mode_instances:
+            result[workflow_name]['mode_instance_scope'] = requirement.mode_instances
         if any(by_id[key.split('/')[0]].operating_modes[key.split('/')[1]].requires_modes for key in selected_modes):
             result[workflow_name]['mode_order'] = [key for key in ordered_modes if key in selected_modes]
     return result
@@ -245,7 +273,7 @@ def report(profile, entries, items, topology=None):
             prerequisites=item.prerequisites,
             reviewed_registers=sum(r.access != "unknown" for r in item.registers),
                             reviewed_modes={name: mode.instances for name, mode in sorted(item.operating_modes.items())},
-            bytes_limit=65536)
+            bytes_limit=None)
     workflows = workflow_coverage(profile, items, rows, topology)
     blocks = [r for r in rows.values() if r["status"] != "unmapped_type"]
     return dict(format="praxis-coverage-v1", target=profile.target.id,
@@ -283,6 +311,12 @@ def markdown(data):
         headers.append('Required mode order')
         for row, workflow in zip(rows, data['workflows'].values(), strict=True):
             row.append(' → '.join(workflow.get('mode_order', [])))
+    if any('mode_instance_scope' in w for w in data['workflows'].values()):
+        headers.append('Exact instances per mode')
+        for row, workflow in zip(rows, data['workflows'].values(), strict=True):
+            row.append('; '.join(f"{entity}/{mode}: {', '.join(instances)}"
+                for entity, scopes in sorted(workflow.get('mode_instance_scope', {}).items())
+                for mode, instances in sorted(scopes.items())))
     text += "\n## Workflow readiness\n\n" + table(headers, rows)
     return (text + "\n" + "\n".join("- " + limit for limit in data["limits"])
             + "\n\nComplete source hashes, versions and origins: [[sources]].\n")

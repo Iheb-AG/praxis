@@ -1,0 +1,57 @@
+Applicability: STM32F407VGT6, **LQFP100**, with the following reviewed AF subset.
+
+| MCU pin | Physical LQFP100 pin | Signal | AF | AFRL bits | MODER bits | Evidence |
+| --- | --- | --- | --- | --- | --- | --- |
+| PA2 | 25 | USART2_TX | 7 | 11:8 | 5:4 | gpio_review:DS8626 tables 7/9 |
+| PA3 | 26 | USART2_RX | 7 | 15:12 | 7:6 | gpio_review:DS8626 tables 7/9 |
+
+After [[peripherals/rcc]], replace only the PA2/PA3 fields: MODER=10, AFRL=7,
+OTYPER=0 (push-pull), PUPDR=00, and OSPEEDR=01 as an example medium-speed choice.
+Preserve all other pins, especially SWD PA13/PA14. The external interface must
+provide an appropriate idle level. Validate routing in [[schemas/custom_pcb_netlist]]
+before [[peripherals/usart]]. A schematic signal label does not configure AF7.
+
+The complete GPIO register map is shared by GPIO instances; reset values for
+MODER, OSPEEDR, and PUPDR depend on the port and remain unasserted in this common
+table. BSRR is a write-one set/reset action. LCKR has a prescribed lock sequence;
+do not use generic read-modify-write to lock configuration.
+
+Header-declared GPIOF/G/I bases do not establish that those ports are bonded in
+LQFP100. Only the package-specific reviewed pin map establishes physical pins.
+This AF subset does not establish another pin's capabilities.
+
+Evidence: `gpio_review` (DS8626 Rev 12 package pin table 7 and AF table 9),
+`header` (GPIO layout/masks), and `profile:pin_map` (reviewed package map).
+See [[sources]] and [[index]].
+
+
+## Loopback and status pins
+
+The loopback wire is an external test connection between PA2/P1-14 and PA3/P1-13; it is not a fixed board net. Both pins use AF7, push-pull, medium speed, no internal pull for the fitted-wire test. With the wire absent RX may float; a negative test can fail with a UART error rather than precisely at the timeout. PD12/13/14/15 drive the four active-high board LEDs; preload all off with BSRR before output mode. PA0 is input with the existing external pull-down and no internal pull. Preserve SWD PA13/14. Sources: schematic_uart:page:2; schematic_mcu:page:7; uart_connector:page:18; rm_gpio_speed:page:284; board signal definitions. See [[peripherals/syscfg]] and [[peripherals/exti]].
+
+## CAN1 RX candidate route
+
+PD0 (U4:81, P2:34), AF9, weak pull-up; see the can1_rx_pd0 operating contract. This is a scoped candidate, not a physical qualification. No CAN_TX output or transceiver is configured.
+
+## Routed timer pins — reference MB997-E-01
+
+| Role | MCU/package pin | Fixed connector endpoint | AF | Evidence |
+| --- | --- | --- | --- | --- |
+| TIM2_CH2 PWM output | PA1 / U4:24 | P1:11 | AF1 | timer_routes_pin_evidence ds8626/pages51,64; timer_routes_connectivity_evidence mb997/pages2,7 |
+| TIM5_CH3 direct input | PA2 / U4:25 | P1:14 | AF2 | timer_routes_pin_evidence ds8626/pages51,64; timer_routes_connectivity_evidence mb997/pages2,7 |
+
+The PA1 and PA2 nets remain separate. A passive external jumper between these
+header endpoints is required only for the paired example, never inferred fitted.
+Verify actual PCB revision and connector orientation. Disconnect every power source
+before wiring; remove any prior PA2-to-PA3 jumper and other attachments first.
+PA2 cannot simultaneously be USART2_TX; the UART and timer examples are mutually
+exclusive owners. No active ADC/Ethernet/GPIO owner or external driver may share pins.
+ST-LINK U2 PA1/PA2 labels denote local NC pins, not target VCP wiring.
+
+Reject locked/already configured owned pins. Preserve SWD PA13/PA14, USER PA0
+and all other pin fields with masks; never reset GPIOA. Before MODER=10, configure
+PA1 low-speed push-pull/no pull and PA2 pull-down; set AFRL1=1 and AFRL2=2.
+Keep channels/output disabled until route readback and capture setup pass. On
+shutdown release only PA1/PA2 to input. This is an authored scoped subset, not a
+complete board netlist or physical qualification. GPIO semantics: RM0090 pages282–288.
+See [[peripherals/rcc]], [[peripherals/tim]], [[schemas/custom_pcb_netlist]].

@@ -1,0 +1,73 @@
+{
+  "facts": {
+    "PA1": [
+      "U4:24",
+      "P1:11"
+    ],
+    "PA2": [
+      "U4:25",
+      "P1:14"
+    ]
+  },
+  "format": "praxis-reviewed-board-route-facts-v1",
+  "limits": [
+    "Separate fixed nets. A passive PA1-to-PA2 jumper is a test precondition, not a fitted board connection.",
+    "PA1/PA2 names on ST-LINK U2 are local unconnected port labels; target U4 pins are not VCP wiring.",
+    "Partial reference MB997-E-01 transcription, not an original KiCad export; physical revision unconfirmed."
+  ],
+  "pages": {
+    "mb997/page:2": {
+      "artifact": "extracted/part-0001.json",
+      "artifact_sha256": "f3fa9ba26d87ae8e68c8ed3467b56bc4f3b7539886e4d9bdbda93a3333014293",
+      "import_revision": "7cb7349fba89b3acdfcd77225fc663a2f44c32f1746cbaf60bb489678ba92cb3",
+      "locator": "page:2",
+      "origin": "https://www.st.com/resource/en/schematic_pack/mb997-f407vgt6-e01_schematic.pdf",
+      "source_sha256": "7e22bb651b93c90f7fa3ea0b976254fc23e0e09b3123b89c4655ae1cb700f8d4"
+    },
+    "mb997/page:3": {
+      "artifact": "extracted/part-0002.json",
+      "artifact_sha256": "8fdbe5d809c71f588fa0c06c3faa62711de7ae41ac5c1c673dfeaf8a95449705",
+      "import_revision": "7cb7349fba89b3acdfcd77225fc663a2f44c32f1746cbaf60bb489678ba92cb3",
+      "locator": "page:3",
+      "origin": "https://www.st.com/resource/en/schematic_pack/mb997-f407vgt6-e01_schematic.pdf",
+      "source_sha256": "7e22bb651b93c90f7fa3ea0b976254fc23e0e09b3123b89c4655ae1cb700f8d4"
+    },
+    "mb997/page:4": {
+      "artifact": "extracted/part-0003.json",
+      "artifact_sha256": "7bede74ea6ec86140b6695e7bd9c8395ed3a7d0187f41e964fd34d974758b453",
+      "import_revision": "7cb7349fba89b3acdfcd77225fc663a2f44c32f1746cbaf60bb489678ba92cb3",
+      "locator": "page:4",
+      "origin": "https://www.st.com/resource/en/schematic_pack/mb997-f407vgt6-e01_schematic.pdf",
+      "source_sha256": "7e22bb651b93c90f7fa3ea0b976254fc23e0e09b3123b89c4655ae1cb700f8d4"
+    },
+    "mb997/page:7": {
+      "artifact": "extracted/part-0006.json",
+      "artifact_sha256": "f2d38d551d7c48a039e1175d945efcb9d112639fdefe699ee1473fa1b1191641",
+      "import_revision": "7cb7349fba89b3acdfcd77225fc663a2f44c32f1746cbaf60bb489678ba92cb3",
+      "locator": "page:7",
+      "origin": "https://www.st.com/resource/en/schematic_pack/mb997-f407vgt6-e01_schematic.pdf",
+      "source_sha256": "7e22bb651b93c90f7fa3ea0b976254fc23e0e09b3123b89c4655ae1cb700f8d4"
+    },
+    "um1472/page:18": {
+      "artifact": "extracted/part-0001.json",
+      "artifact_sha256": "ccec888b7ed470a363c7d41a10d15d5d421064278dcbd5dcf0b3296d091a3424",
+      "import_revision": "873e24af960a9fd00c5b5c8eabf937618a2e5eb4410e57ccc989a98b0392dd39",
+      "locator": "page:18",
+      "origin": "https://www.st.com/resource/en/user_manual/dm00039084-discovery-kit-with-stm32f407vg-mcu-stmicroelectronics.pdf",
+      "source_sha256": "1d4ad5f36fb9b6bed159be57461cdce5dbbb6ab602099c34da11943206abb8fd"
+    },
+    "um1472/page:19": {
+      "artifact": "extracted/part-0002.json",
+      "artifact_sha256": "95c0b93f8d7484a586ea8bdbcc3518a468f5c0d1443ffda0aa03e78bb57eff08",
+      "import_revision": "873e24af960a9fd00c5b5c8eabf937618a2e5eb4410e57ccc989a98b0392dd39",
+      "locator": "page:19",
+      "origin": "https://www.st.com/resource/en/user_manual/dm00039084-discovery-kit-with-stm32f407vg-mcu-stmicroelectronics.pdf",
+      "source_sha256": "1d4ad5f36fb9b6bed159be57461cdce5dbbb6ab602099c34da11943206abb8fd"
+    }
+  },
+  "review": {
+    "basis": "Exact MCP source parts and schematic images reviewed; implementing-author review only. Independent signoff and new physical qualification pending.",
+    "reviewer": "Codex source-backed editorial review through Praxis ingestion MCP",
+    "status": "reviewed"
+  }
+}

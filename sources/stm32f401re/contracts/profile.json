@@ -1,0 +1,37 @@
+{
+  "avr_mcu": null,
+  "board_prerequisites": [
+    "rcc",
+    "gpio"
+  ],
+  "clock_plan": null,
+  "core_source": "vendor_5",
+  "cpu": "cortex-m4",
+  "family": "stm32",
+  "header_identity": [
+    "__STM32F401xE_H"
+  ],
+  "header_kind": "cmsis",
+  "id": "publication_policy",
+  "legacy_discovery": {},
+  "mcu": "STM32F401RE",
+  "package": "Package_QFP:LQFP-64_10x10mm_P0.5mm",
+  "pin_document": "gpio",
+  "required_registers": {},
+  "review": {
+    "basis": "Checked against the linked vendor manuals and pinned declarations; independent hardware sign-off remains pending.",
+    "reviewer": "Codex source-backed fixture editorial review",
+    "status": "reviewed"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "locator": "reviewed peripheral publication scope",
+      "source": "definitions"
+    },
+    {
+      "locator": "target, header and clock assumptions",
+      "source": "profile"
+    }
+  ]
+}

@@ -13,7 +13,7 @@ from praxis.compiler import compile_bundle, parse_cmsis_headers, parse_device_tr
 from praxis.errors import PraxisError
 from praxis.evaluation import evaluate
 from praxis.jsonio import load_json
-from praxis.models import MAX_DOCUMENT_BYTES, Profile
+from praxis.models import Profile
 from praxis.routing import Session
 from praxis.verify import command
 from conftest import ROOT, require_tool
@@ -103,7 +103,7 @@ def test_generated_bundle_target_limits_sources_and_hedg(compiled):
     index = compiled.read("wiki/index.md")
     assert "STM32F407VGT6" in index and "LQFP-100" in index
     assert "PCLK1=42 MHz" in index and "SYSCLK=HCLK=168 MHz" in index
-    assert all(len(text.encode()) <= MAX_DOCUMENT_BYTES for text in compiled.documents.values())
+    assert compiled.read("wiki/peripherals/usart.md").endswith("\n")
     assert all(text.count("## Register map") == 1 and text.count("## Bit fields") == 1
                for path, text in compiled.documents.items() if path.startswith("wiki/peripherals/"))
     assert "cmsis_core:NVIC_Type.IP" in compiled.read("wiki/peripherals/nvic.md")
@@ -152,7 +152,7 @@ def test_byte_identical_across_different_input_locations(inputs, compiled, tmp_p
     ("required", "UNREVIEWED_REQUIRED_FACT"), ("offset", "DECLARATION_CONFLICT"),
     ("field", "DECLARATION_CONFLICT"), ("duplicate", "DUPLICATE_ENTITY"),
     ("package", "PACKAGE_MISMATCH"), ("pin", "PIN_MISMATCH"),
-    ("link", "BROKEN_LINK"), ("oversized", "DOCUMENT_TOO_LARGE"),
+    ("link", "BROKEN_LINK"), ("oversized", None),
     ("encoding", "INVALID_ENCODING"), ("include", "UNREGISTERED_INCLUDE"),
     ("macro", "UNSUPPORTED_EXPRESSION"), ("clock", "INVALID_PROFILE"),
 ])
@@ -175,7 +175,7 @@ def test_invalid_inputs_never_publish(inputs, tmp_path, kind, code):
         path.write_text(text)
     elif kind in ("link", "oversized"):
         with (inputs / "reviewed/usart.md").open("a") as handle:
-            handle.write("\n[[peripherals/absent]]\n" if kind == "link" else "x" * 60_000)
+            handle.write("\n[[peripherals/absent]]\n" if kind == "link" else "x" * 200_000)
     elif kind == "encoding":
         (inputs / "reviewed/usart.md").write_bytes(b"\xff\xfe")
     elif kind == "include":
@@ -188,6 +188,10 @@ def test_invalid_inputs_never_publish(inputs, tmp_path, kind, code):
     elif kind == "clock":
         change_json(inputs / "profile.json", lambda data: data["clock_plan"].update(apb1_div=2))
     out = tmp_path / "bad-bundle"
+    if kind == "oversized":
+        published = Bundle(compile_bundle(inputs / "profile.json", out))
+        assert "x" * 200_000 in published.read("wiki/peripherals/usart.md")
+        return
     with pytest.raises(PraxisError, match=code):
         compile_bundle(inputs / "profile.json", out)
     assert not out.exists()

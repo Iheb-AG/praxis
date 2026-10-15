@@ -123,11 +123,16 @@ async def test_actual_stdio_tools_and_errors(service, tmp_path):
             assert names == {'get_ingestion_profile', 'search_source_evidence', 'read_source_evidence',
                              'acquire_source_evidence', 'publish_reviewed_bundle',
                              'stage_cached_source', 'record_source_review', 'discover_source_declarations',
-                             'read_source_page_image', 'prepare_peripheral_review', 'prepare_workflow_review'}
+                             'read_source_page_image', 'prepare_peripheral_review', 'prepare_workflow_review',
+                             'prepare_source_outline', 'read_source_page_layout'}
             result = await client.call_tool('search_source_evidence', {'source_id': 'manual', 'query': 'TIM2'})
             assert not result.isError
             result = await client.call_tool('read_source_evidence', {'source_id': 'manual', 'locator': '../source.txt'})
             assert result.isError and 'UNKNOWN_LOCATOR' in result.content[0].text
+            result = await client.call_tool('prepare_source_outline', {'source_id': 'manual'})
+            assert result.isError and 'UNSUPPORTED_OUTLINE' in result.content[0].text
+            result = await client.call_tool('prepare_source_outline', {'source_id': 'header'})
+            assert result.isError and 'UNKNOWN_SOURCE' in result.content[0].text
             result = await client.call_tool('prepare_peripheral_review', {'source_id': 'manual',
                 'peripheral_name': 'tim', 'register_names': ['CR1']})
             assert not result.isError
@@ -167,6 +172,15 @@ def test_pdf_full_tables_image_and_changed_bytes(service, tmp_path):
     evidence = service.read('drawing', 'page:1')
     assert evidence['evidence']['tables'][0]['rows'] == [['Register', 'Offset'], ['CR1', '0x0C']]
     assert service.read('drawing', 'page:2')['artifact'] == 'extracted/part-0002.json'
+    layout = service.page_layout('drawing', 1)
+    assert layout['source_sha256'] == evidence['source_sha256']
+    assert any(word['text'] == 'Register' and word['fontname'] for word in layout['words'])
+    assert layout['tables'][0]['rows'][0][0] is not None
+    from praxis.adapters.outline import canonical
+    from praxis.bundle import digest
+    assert layout['packet_sha256'] == digest(canonical({k: v for k, v in layout.items() if k != 'packet_sha256'}))
+    with pytest.raises(PraxisError, match='UNKNOWN_LOCATOR'):
+        service.page_layout('drawing', 3)
     result = service.page_image('drawing', 1)
     assert evidence['source_sha256'] in result[0].text
     with Image.open(io.BytesIO(base64.b64decode(result[1].data))) as image:
@@ -176,6 +190,8 @@ def test_pdf_full_tables_image_and_changed_bytes(service, tmp_path):
     (archive / 'source.pdf').write_bytes(b'changed')
     with pytest.raises(PraxisError, match='IMPORT_INTEGRITY'):
         service.page_image('drawing', 1)
+    with pytest.raises(PraxisError, match='IMPORT_INTEGRITY'):
+        service.page_layout('drawing', 1)
 
 
 def test_symlink_authoring_and_publication_paths_rejected(service, tmp_path):

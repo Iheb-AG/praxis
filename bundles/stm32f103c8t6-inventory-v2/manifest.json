@@ -1,0 +1,414 @@
+{
+  "aliases": {
+    "adc1": "adc",
+    "adc12_common": "adc_common",
+    "adc2": "adc",
+    "can1": "can",
+    "dma1": "dma",
+    "dma1_channel1": "dma_channel",
+    "dma1_channel2": "dma_channel",
+    "dma1_channel3": "dma_channel",
+    "dma1_channel4": "dma_channel",
+    "dma1_channel5": "dma_channel",
+    "dma1_channel6": "dma_channel",
+    "dma1_channel7": "dma_channel",
+    "gpioa": "gpio",
+    "gpiob": "gpio",
+    "gpioc": "gpio",
+    "gpiod": "gpio",
+    "gpioe": "gpio",
+    "i2c1": "i2c",
+    "i2c2": "i2c",
+    "spi1": "spi",
+    "spi2": "spi",
+    "tim1": "tim",
+    "tim2": "tim",
+    "tim3": "tim",
+    "tim4": "tim",
+    "usart1": "usart",
+    "usart2": "usart",
+    "usart3": "usart"
+  },
+  "bundle_revision": "801b0126a094c4f5b211f2db999aa466a3014f99b2ed695c6493afd6e0cd448e",
+  "compiler_version": "0.1.0",
+  "dependencies": [
+    {
+      "entity": "adc",
+      "requires": []
+    },
+    {
+      "entity": "adc_common",
+      "requires": []
+    },
+    {
+      "entity": "afio",
+      "requires": []
+    },
+    {
+      "entity": "bkp",
+      "requires": []
+    },
+    {
+      "entity": "can",
+      "requires": []
+    },
+    {
+      "entity": "coredebug",
+      "requires": []
+    },
+    {
+      "entity": "crc",
+      "requires": []
+    },
+    {
+      "entity": "dbgmcu",
+      "requires": []
+    },
+    {
+      "entity": "dma",
+      "requires": []
+    },
+    {
+      "entity": "dma_channel",
+      "requires": []
+    },
+    {
+      "entity": "dwt",
+      "requires": []
+    },
+    {
+      "entity": "exti",
+      "requires": []
+    },
+    {
+      "entity": "flash",
+      "requires": []
+    },
+    {
+      "entity": "gpio",
+      "requires": []
+    },
+    {
+      "entity": "i2c",
+      "requires": []
+    },
+    {
+      "entity": "iwdg",
+      "requires": []
+    },
+    {
+      "entity": "nvic",
+      "requires": []
+    },
+    {
+      "entity": "ob",
+      "requires": []
+    },
+    {
+      "entity": "pwr",
+      "requires": []
+    },
+    {
+      "entity": "rcc",
+      "requires": []
+    },
+    {
+      "entity": "rtc",
+      "requires": []
+    },
+    {
+      "entity": "scb",
+      "requires": []
+    },
+    {
+      "entity": "scnscb",
+      "requires": []
+    },
+    {
+      "entity": "spi",
+      "requires": []
+    },
+    {
+      "entity": "systick",
+      "requires": []
+    },
+    {
+      "entity": "tim",
+      "requires": []
+    },
+    {
+      "entity": "tpi",
+      "requires": []
+    },
+    {
+      "entity": "usart",
+      "requires": []
+    },
+    {
+      "entity": "usb",
+      "requires": []
+    },
+    {
+      "entity": "wwdg",
+      "requires": []
+    }
+  ],
+  "documents": {
+    "coverage": "wiki/coverage.md",
+    "features": "wiki/features.md",
+    "index": "wiki/index.md",
+    "peripherals/adc": "wiki/peripherals/adc.md",
+    "peripherals/adc_common": "wiki/peripherals/adc_common.md",
+    "peripherals/afio": "wiki/peripherals/afio.md",
+    "peripherals/bkp": "wiki/peripherals/bkp.md",
+    "peripherals/can": "wiki/peripherals/can.md",
+    "peripherals/coredebug": "wiki/peripherals/coredebug.md",
+    "peripherals/crc": "wiki/peripherals/crc.md",
+    "peripherals/dbgmcu": "wiki/peripherals/dbgmcu.md",
+    "peripherals/dma": "wiki/peripherals/dma.md",
+    "peripherals/dma_channel": "wiki/peripherals/dma_channel.md",
+    "peripherals/dwt": "wiki/peripherals/dwt.md",
+    "peripherals/exti": "wiki/peripherals/exti.md",
+    "peripherals/flash": "wiki/peripherals/flash.md",
+    "peripherals/gpio": "wiki/peripherals/gpio.md",
+    "peripherals/i2c": "wiki/peripherals/i2c.md",
+    "peripherals/iwdg": "wiki/peripherals/iwdg.md",
+    "peripherals/nvic": "wiki/peripherals/nvic.md",
+    "peripherals/ob": "wiki/peripherals/ob.md",
+    "peripherals/pwr": "wiki/peripherals/pwr.md",
+    "peripherals/rcc": "wiki/peripherals/rcc.md",
+    "peripherals/rtc": "wiki/peripherals/rtc.md",
+    "peripherals/scb": "wiki/peripherals/scb.md",
+    "peripherals/scnscb": "wiki/peripherals/scnscb.md",
+    "peripherals/spi": "wiki/peripherals/spi.md",
+    "peripherals/systick": "wiki/peripherals/systick.md",
+    "peripherals/tim": "wiki/peripherals/tim.md",
+    "peripherals/tpi": "wiki/peripherals/tpi.md",
+    "peripherals/usart": "wiki/peripherals/usart.md",
+    "peripherals/usb": "wiki/peripherals/usb.md",
+    "peripherals/wwdg": "wiki/peripherals/wwdg.md",
+    "schemas/custom_pcb_netlist": "wiki/schemas/custom_pcb_netlist.md",
+    "sources": "wiki/sources.md"
+  },
+  "extractor_versions": {
+    "arm-none-eabi-gcc": "arm-none-eabi-gcc (Arch Repository) 16.2.0",
+    "clang": "clang version 23.1.1",
+    "cmsis-discovery": "v1; Clang layouts and restricted object-macro evaluation",
+    "libclang": "18.1.1",
+    "netlist": "Unavailable: MCU-only scope; no schematic ingested",
+    "praxis": "0.1.0"
+  },
+  "file_hashes": {
+    "wiki/coverage.md": "8465034ee884fecaf7cf8b5537d089b1f1b1343c006420a643cc2fe810246b6f",
+    "wiki/features.md": "edaf49f86edd69c5ac17ef9975e8505484558a6ab61224ca54e8e0f0075577ed",
+    "wiki/index.md": "73c3ce9541352451ab8206962f78db5efcfb0fd34b8b9630246db29771bf8b3f",
+    "wiki/peripherals/adc.md": "d989fab9e9f412a7d02b9dd0e87411dfd7d63ff32e39f538b75a9224db1962f5",
+    "wiki/peripherals/adc_common.md": "39e6dcaecc5be9945fc9d992e49f720caad88df953d222c870ce9255711fbd7e",
+    "wiki/peripherals/afio.md": "587b0e91b8464b412da2d5fce7a22ac7103d6e197b5de3e688b3589d06b94d21",
+    "wiki/peripherals/bkp.md": "87e73ae2db2a983fe87d1270ecb395034c0340375a036879cb7601a457e7a750",
+    "wiki/peripherals/can.md": "9032e42a75668c561e13fc068ebcea670fc8fd05be21f83fe5099f834271a53d",
+    "wiki/peripherals/coredebug.md": "533abfee76d64dd87de75e2becab188c5c471b26b4d5ebb14fb1d57996926c79",
+    "wiki/peripherals/crc.md": "7a3253376ff52099c83941d760a66397ff26b4358da57777539def73b092ba2b",
+    "wiki/peripherals/dbgmcu.md": "c985290bcce7e2dd4183a662bf26e0399e0ae37c2776e4b09bed9fceadec2c65",
+    "wiki/peripherals/dma.md": "4ad65dc8fe7428784118b4087c254096966b3d1f87e49e271d079f60fd2a2e40",
+    "wiki/peripherals/dma_channel.md": "8eaf0f8e1d6df4a525e1b05977414c5beab009f9dbba126b4f05c2a06eaf6b39",
+    "wiki/peripherals/dwt.md": "c0b64306c0ddd34f18bdefd8dc130e7bd8a07d4a6facf2da56dfa8dcbfe2a996",
+    "wiki/peripherals/exti.md": "4f6efdd9fe72dc54a78c00ee130dfebca5087c320f19f3d7bbaaac188458fbf2",
+    "wiki/peripherals/flash.md": "07dde82c83b21139111cda8cc64e6ffb1aac5934a0dd315f7d58ad0a816e7da4",
+    "wiki/peripherals/gpio.md": "4e74765c75d451c6f1fb25030084af093be96f512ea5b10cd83f7bc97a3727be",
+    "wiki/peripherals/i2c.md": "3647bdac62703f74b48467eb0049a749f6fe8798e2a65a4a5ca9273dd9d22698",
+    "wiki/peripherals/iwdg.md": "fb794dcb77bb1f49f55e8f1456e6e01b8917c872176a8bd6f69ef920f89b4a96",
+    "wiki/peripherals/nvic.md": "3a5ef2c5e9376eac2e7be349431c572506c7a3b1fedf0c8fbe4918897e744e87",
+    "wiki/peripherals/ob.md": "6505ef3efe6040b911e1747d6d02ece1561310393e99c24181776a08baead4da",
+    "wiki/peripherals/pwr.md": "0f207dba315cb155ebab403a5e0ea9888014a5e9ea79a5cf839463987d228a22",
+    "wiki/peripherals/rcc.md": "4976091df57821ab6a0e0de73138345276eb3df095cce7b2e34ef368c16c3e5d",
+    "wiki/peripherals/rtc.md": "5729629ed9da6e079056cd0f068bf9b8871f0d9417bd2026c31215665a4f14af",
+    "wiki/peripherals/scb.md": "a5d9f2e7e2de3d948a9269d8930be145f05ddb23045a03d5f592af6714cec003",
+    "wiki/peripherals/scnscb.md": "a9da14d7ea3f8f31bf54c74459673b88b10bab3af8c4c3dd2c25eeecf38b4b1a",
+    "wiki/peripherals/spi.md": "6da12a73950364c03b68c56ab92ee881aeb8351ef673bd26702b2f617c78d1c8",
+    "wiki/peripherals/systick.md": "fcd7402ef86f736b306d90f1764ad965a9bcf8c5d44a141f20df8f177ef32200",
+    "wiki/peripherals/tim.md": "f7b9d16cb7c373755d9948f202404dbfb85ae0a9253d8d0a1a638eb4ce6c1b6b",
+    "wiki/peripherals/tpi.md": "9c95679a21aeb8254a4decc049fdc7b12a8deb21f5e201fba362c086a6944312",
+    "wiki/peripherals/usart.md": "8357627220cca324efab2f0ffdc37105f9d8a4a5dd1b215ed15eea39bf8dcdb5",
+    "wiki/peripherals/usb.md": "f3fd3fc729ff8999b61a114167e74308319a1670aee60ba519735afcf770d4ab",
+    "wiki/peripherals/wwdg.md": "7cefbe7b6d5ce7170014640ec73bf6dd920f74b30a9653ff95ce3ccac067e676",
+    "wiki/schemas/custom_pcb_netlist.md": "556ba5b543a72cf5894b562f1fbf023803fb76ec346de8cb71b8af57b0b94966",
+    "wiki/sources.md": "73a8e2f37d511ecf6cb842d41f32df349012f9ed5220ba737c7be4acdc668bdb"
+  },
+  "netlist": "wiki/schemas/custom_pcb_netlist.md",
+  "peripherals": {
+    "adc": "wiki/peripherals/adc.md",
+    "adc_common": "wiki/peripherals/adc_common.md",
+    "afio": "wiki/peripherals/afio.md",
+    "bkp": "wiki/peripherals/bkp.md",
+    "can": "wiki/peripherals/can.md",
+    "coredebug": "wiki/peripherals/coredebug.md",
+    "crc": "wiki/peripherals/crc.md",
+    "dbgmcu": "wiki/peripherals/dbgmcu.md",
+    "dma": "wiki/peripherals/dma.md",
+    "dma_channel": "wiki/peripherals/dma_channel.md",
+    "dwt": "wiki/peripherals/dwt.md",
+    "exti": "wiki/peripherals/exti.md",
+    "flash": "wiki/peripherals/flash.md",
+    "gpio": "wiki/peripherals/gpio.md",
+    "i2c": "wiki/peripherals/i2c.md",
+    "iwdg": "wiki/peripherals/iwdg.md",
+    "nvic": "wiki/peripherals/nvic.md",
+    "ob": "wiki/peripherals/ob.md",
+    "pwr": "wiki/peripherals/pwr.md",
+    "rcc": "wiki/peripherals/rcc.md",
+    "rtc": "wiki/peripherals/rtc.md",
+    "scb": "wiki/peripherals/scb.md",
+    "scnscb": "wiki/peripherals/scnscb.md",
+    "spi": "wiki/peripherals/spi.md",
+    "systick": "wiki/peripherals/systick.md",
+    "tim": "wiki/peripherals/tim.md",
+    "tpi": "wiki/peripherals/tpi.md",
+    "usart": "wiki/peripherals/usart.md",
+    "usb": "wiki/peripherals/usb.md",
+    "wwdg": "wiki/peripherals/wwdg.md"
+  },
+  "review": {
+    "basis": "Review covers source identity, licensed structural extraction and honest absence of board/operating evidence only. It does not certify package availability, electrical facts or initialization semantics.",
+    "reviewer": "Praxis experimental compiler scope review",
+    "status": "reviewed"
+  },
+  "schema_version": 2,
+  "sources": [
+    {
+      "authority": "configuration",
+      "id": "acquisition_lock",
+      "license": "MIT (metadata); upstream file licenses retained",
+      "origin": "Exact source URLs, commits and downloaded SHA-256 values",
+      "path": "acquisition-lock.json",
+      "sha256": "7eb5b8cfe8fc1ffa5f68c9c559bce7680580cbbf0f7bda24ccd60e6969e46128",
+      "version": "1"
+    },
+    {
+      "authority": "declarations",
+      "id": "cmsis_compiler_h",
+      "license": "Apache-2.0; see retained upstream license",
+      "origin": "https://raw.githubusercontent.com/ARM-software/CMSIS_5/5.9.0/CMSIS/Core/Include/cmsis_compiler.h",
+      "path": "raw/cmsis_compiler.h",
+      "sha256": "b51963d271c1571ca3463654c76aa7ea50c4eac5d0a2710df10414ac64d9e0f8",
+      "version": "CMSIS_5/5.9.0"
+    },
+    {
+      "authority": "declarations",
+      "id": "cmsis_gcc_h",
+      "license": "Apache-2.0; see retained upstream license",
+      "origin": "https://raw.githubusercontent.com/ARM-software/CMSIS_5/5.9.0/CMSIS/Core/Include/cmsis_gcc.h",
+      "path": "raw/cmsis_gcc.h",
+      "sha256": "43bfd1fe69fbbc2ca70aaf7d43cc3e20f16e0c7f66e1bdef9b51af6dc14b2617",
+      "version": "CMSIS_5/5.9.0"
+    },
+    {
+      "authority": "declarations",
+      "id": "cmsis_version_h",
+      "license": "Apache-2.0; see retained upstream license",
+      "origin": "https://raw.githubusercontent.com/ARM-software/CMSIS_5/5.9.0/CMSIS/Core/Include/cmsis_version.h",
+      "path": "raw/cmsis_version.h",
+      "sha256": "184c19fd3ee73632edf35a0b4d49cd48be75fbf49e6ccb19d9db05fa83bea4b3",
+      "version": "CMSIS_5/5.9.0"
+    },
+    {
+      "authority": "declarations",
+      "id": "core_cm3_h",
+      "license": "Apache-2.0; see retained upstream license",
+      "origin": "https://raw.githubusercontent.com/ARM-software/CMSIS_5/5.9.0/CMSIS/Core/Include/core_cm3.h",
+      "path": "raw/core_cm3.h",
+      "sha256": "c9937781259a8897adf514445441c68570087d6a72a558d8a4afe75cdb62dbd2",
+      "version": "CMSIS_5/5.9.0"
+    },
+    {
+      "authority": "semantics",
+      "id": "definitions",
+      "license": "MIT",
+      "origin": "Empty operating definitions; no peripheral operating review claimed",
+      "path": "definitions.json",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "version": "1"
+    },
+    {
+      "authority": "declarations",
+      "id": "header",
+      "license": "Apache-2.0; see retained upstream license",
+      "origin": "https://raw.githubusercontent.com/STMicroelectronics/cmsis-device-f1/c8e9a4a4f16b6d2cb2a2083cbe5161025280fb22/Include/stm32f103xb.h",
+      "path": "raw/stm32f103xb.h",
+      "sha256": "d9c7c613d9fea74220892b4fbc3e80617493acad82a04bafadab2b4a7198399c",
+      "version": "c8e9a4a4f16b6d2cb2a2083cbe5161025280fb22"
+    },
+    {
+      "authority": "configuration",
+      "id": "license_cmsis_txt",
+      "license": "Apache-2.0; see retained upstream license",
+      "origin": "https://raw.githubusercontent.com/ARM-software/CMSIS_5/5.9.0/LICENSE.txt",
+      "path": "raw/LICENSE-CMSIS.txt",
+      "sha256": "b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1",
+      "version": "CMSIS_5/5.9.0"
+    },
+    {
+      "authority": "configuration",
+      "id": "license_st_md",
+      "license": "Apache-2.0; see retained upstream license",
+      "origin": "https://raw.githubusercontent.com/STMicroelectronics/cmsis-device-f1/c8e9a4a4f16b6d2cb2a2083cbe5161025280fb22/License.md",
+      "path": "raw/LICENSE-ST.md",
+      "sha256": "b645e89bbfb6accf914cf7adca011712bf90055391fdd55f2af6439d98aa36d4",
+      "version": "c8e9a4a4f16b6d2cb2a2083cbe5161025280fb22"
+    },
+    {
+      "authority": "declarations",
+      "id": "mpu_armv7_h",
+      "license": "Apache-2.0; see retained upstream license",
+      "origin": "https://raw.githubusercontent.com/ARM-software/CMSIS_5/5.9.0/CMSIS/Core/Include/mpu_armv7.h",
+      "path": "raw/mpu_armv7.h",
+      "sha256": "29206b52ee02290ed6f5a5415ebd4187de802cf176d9b3cb844390d8e5571372",
+      "version": "CMSIS_5/5.9.0"
+    },
+    {
+      "authority": "configuration",
+      "id": "profile",
+      "license": "MIT",
+      "origin": "Local target profile",
+      "path": "profile.json",
+      "sha256": "c5069e385a714da38f2b751523a6adac40005d58586667a937cb5436cb57138b",
+      "version": "1"
+    },
+    {
+      "authority": "declarations",
+      "id": "system_stm32f1xx_h",
+      "license": "Apache-2.0; see retained upstream license",
+      "origin": "https://raw.githubusercontent.com/STMicroelectronics/cmsis-device-f1/c8e9a4a4f16b6d2cb2a2083cbe5161025280fb22/Include/system_stm32f1xx.h",
+      "path": "raw/system_stm32f1xx.h",
+      "sha256": "a54dfbb3480c672f532d472a6e84bcf34df6551771d2e9966c5a3503c676b6ab",
+      "version": "c8e9a4a4f16b6d2cb2a2083cbe5161025280fb22"
+    }
+  ],
+  "target": {
+    "board_revision": "not-applicable",
+    "clock_assumptions": [
+      "Active SYSCLK, peripheral clocks, oscillators and prescalers are unknown; no board or startup configuration is represented."
+    ],
+    "clock_hz": null,
+    "example_only": true,
+    "family": "stm32",
+    "fuse_assumptions": [],
+    "id": "stm32f103c8t6_inventory",
+    "knowledge_adapter": {
+      "cpu": "cortex-m3",
+      "header_identity": [
+        "__STM32F103xB_H",
+        "STM32F103xB"
+      ],
+      "kind": "cmsis_cortex_m",
+      "mask_suffix": "_Msk",
+      "position_suffix": "_Pos"
+    },
+    "mcu": "STM32F103C8T6",
+    "package": "LQFP48 (pin map unreviewed)",
+    "primary_mcu_ref": "not-applicable",
+    "scope": "mcu",
+    "silicon_revision": "unqualified"
+  },
+  "topology": []
+}

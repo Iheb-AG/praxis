@@ -3,6 +3,7 @@
     "portd": "gpio",
     "usart0": "usart"
   },
+  "compilation_contract": "compilation_policy",
   "definitions": "definitions",
   "devicetree": null,
   "header": {
@@ -260,6 +261,15 @@
       "origin": "Original partial KiCad schematic; live export validation required",
       "path": "raw/board.kicad_sch",
       "version": "fixture-1"
+    },
+    {
+      "authority": "configuration",
+      "expected_sha256": "d2dee254c2b1b6dce65d178f7bfb0389738af283a5b6dcbb20d3567b67ccfcd8",
+      "id": "compilation_policy",
+      "license": "MIT",
+      "origin": "Explicit publication scope migrated from existing reviewed target/profile policy; not independent hardware sign-off",
+      "path": "contracts/profile.json",
+      "version": "publication-policy-v1"
     }
   ],
   "target": {

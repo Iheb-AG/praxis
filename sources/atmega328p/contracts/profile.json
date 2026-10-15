@@ -1,0 +1,35 @@
+{
+  "avr_mcu": "atmega328p",
+  "board_prerequisites": [
+    "clock",
+    "gpio"
+  ],
+  "clock_plan": null,
+  "core_source": null,
+  "cpu": null,
+  "family": "avr",
+  "header_identity": [],
+  "header_kind": "avr",
+  "id": "publication_policy",
+  "legacy_discovery": {},
+  "mcu": "ATmega328P-PU",
+  "package": "Package_DIP:DIP-28_W7.62mm",
+  "pin_document": "gpio",
+  "required_registers": {},
+  "review": {
+    "basis": "Checked against the linked vendor manuals and pinned declarations; independent hardware sign-off remains pending.",
+    "reviewer": "Codex source-backed fixture editorial review",
+    "status": "reviewed"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "locator": "reviewed peripheral publication scope",
+      "source": "definitions"
+    },
+    {
+      "locator": "target, header and clock assumptions",
+      "source": "profile"
+    }
+  ]
+}

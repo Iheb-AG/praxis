@@ -1,0 +1,102 @@
+{
+  "checks": {
+    "audit_failures_and_nonblocking_scope_lock": "passed",
+    "bash_launcher_syntax": "passed",
+    "cli_mcp_read_only_plan_equality": "passed",
+    "default_launcher_from_unrelated_working_directory": "passed",
+    "default_programming_tools_absent": "passed",
+    "fake_probe_mcp_program_readback_control": "passed",
+    "local_documentation_links_validated": 153,
+    "mermaid_diagrams_validated": 12,
+    "persistent_single_flash_and_control_budget": "passed",
+    "real_openocd_programming_config_without_adapter_init": "passed",
+    "real_tcl_identity_and_image_guards_with_mocked_reads_and_writes": "passed",
+    "ruff": "passed",
+    "timeout_disconnect_output_limit_corrupt_readback": "passed",
+    "wheel_and_sdist": "passed"
+  },
+  "date": "2026-10-10",
+  "discovery": {
+    "actual_default_tools": [
+      "build_firmware",
+      "get_build_profile",
+      "inspect_execution",
+      "inspect_target",
+      "list_debug_probes",
+      "plan_firmware",
+      "validate_firmware"
+    ],
+    "explicit_operator_authorization": 9,
+    "inspection_profile": 7,
+    "no_hardware_profile": 3
+  },
+  "implementation_hashes": {
+    "launch-build-mcp.sh": "56fc881f334ae658e11a1e69b0afc1cbd4b47d299fa3d13b5d4bbbbe16ed205b",
+    "praxis/build_server.py": "d36c33ad2c7d21e8206f40341dcfc4aba5673cc1b5c6438eda8928721da46ab7",
+    "praxis/cli.py": "f9b27b8a5e985cd6a0605b055e7f06f87c751a2a78e7686dfefe097593488c89",
+    "praxis/hardware.py": "6aabb2305e4ddc9084e345c00af70a46d0429e997587c0109f88758fae727c91",
+    "praxis/programming.py": "efeefb527737e53bb100480b2f675b2026ad7f88dd648584fee325908bee58ce",
+    "tests/test_programming.py": "9f0b0e02bd50ffdf4c16df086543e314a3d076dfdc5891980fe764149731fa6f"
+  },
+  "physical_operations": {
+    "operator_authorization_created": false,
+    "physical_led_button_behavior": "not tested",
+    "programming_attempted": false,
+    "readback_of_programmed_candidate": "not performed",
+    "reset_halt_run_requested": false
+  },
+  "prepared_plan": {
+    "artifact_id": "0f3095c100e6311acb62ad085b9d6ec08e9c0a249741f6544a40280e94e39c44",
+    "asset_revision": "22310c7ad54daa553cf5cb11e4db08e4c8f9e93e191f3f12ec8410dd1fb40b59",
+    "bundle_revision": "53474b5de83dddffbdccfb86057c6ec9ad362f1949afd6a74e90effb2c27fc9b",
+    "elf_sha256": "1e16a8a32774e74b74feb19ab6dbf0fa2f05b28c986fdbec40e2fb4332b6a0bc",
+    "erase_length": 16384,
+    "erase_start": 134217728,
+    "hardware_profile_revision": "0747e736560fc24165486f4a3c27a99992b9136134660b4f0c905f96b076522d",
+    "image_length": 1164,
+    "image_sha256": "b3f5623474ae8194a8cbf1c513b4d6de0020581a0db70f79aa2a1db34a94cb67",
+    "image_start": 134217728,
+    "last_sector": 0,
+    "limits": [
+      "Programming erases complete listed sectors, including bytes outside the image; no preservation/rollback.",
+      "Flash resets and halts the MCU; approved backend writes flash/debug controller state.",
+      "Timeout/disconnect may leave partially programmed flash and an unknown or halted target; no automatic retry.",
+      "Reset/run and resume can continue executing firmware after the observation window and authorization expiry.",
+      "Readback verifies image bytes, not startup, pin wiring, optical output, timing or application correctness.",
+      "Family/UID checks cannot identify the exact MCU package, physical PCB revision or solder bridge state."
+    ],
+    "physical_board_revision": null,
+    "plan_revision": "490cedb45dd533f1841b8af1fc2161244e8c200bbdf3654ae829a94a3fe1e10b",
+    "schema_version": 1
+  },
+  "private_evidence": {
+    ".praxis-output/hardware-plans/led-button-first-flash.json": "0f0bb0ac14eea5de267c9903481a84501902b9862a74053ce1d65c9a5b4dae0a",
+    ".praxis-output/hardware-plans/mcp-plan-evidence.json": "3a658215ee08a08261bf8f52a4d8edfde487ba568da1c3ac381da7dcdd290581"
+  },
+  "regression": {
+    "command": "PRAXIS_REQUIRE_EXTERNAL_TOOLS=1 .venv/bin/pytest -q",
+    "duration_seconds": 63.05,
+    "failed": 0,
+    "new_programming_cases": 54,
+    "passed": 275,
+    "skipped": 0
+  },
+  "release_ready": false,
+  "remaining": [
+    "Explicit authorization for the selected candidate and connected board",
+    "Real programming/readback and reset/control integration",
+    "Confirmed PCB revision and circuit assumptions",
+    "Registered physical observations and boot proof",
+    "Independent review of exact knowledge bundle and asset revisions",
+    "Bounded hardware repair orchestration"
+  ],
+  "schema_version": 1,
+  "scope": "Implemented F407 programming/control wrappers with fake-probe/Tcl/protocol tests; physical board used only for read-only planning",
+  "target_binding": {
+    "actual_physical_board_revision": null,
+    "compatibility": "family/core/flash compatible; exact MCU package and PCB revision not detected",
+    "mcu_uid_sha256": "50326b75eb0e1ba318bce1e681e98389a1c590e3cefb64c7dbbe4e9fda9902a3",
+    "observed_at": "2026-10-10T18:19:42.045114+00:00",
+    "probe_serial_sha256": "620846cdd58490bc15ff3e7b92cbbd1e45c450994e5b82798905089fcb8e458e"
+  }
+}

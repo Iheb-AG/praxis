@@ -1,0 +1,615 @@
+{
+  "bindings": [
+    {
+      "applicability": "mixed",
+      "document": "rm0090",
+      "rationale": "Conventions include the target-dependent peripheral-availability section; read its body before excluding silicon features.",
+      "section": "1"
+    },
+    {
+      "applicability": "mixed",
+      "document": "rm0090",
+      "rationale": "Memory, buses and boot scope includes several parts; target-specific details remain to reconcile.",
+      "section": "2"
+    },
+    {
+      "applicability": "mixed",
+      "document": "rm0090",
+      "peripherals": [
+        "flash"
+      ],
+      "rationale": "Flash chapter includes part-specific registers and update operations beyond latency setup.",
+      "section": "3",
+      "workflows": [
+        "flash_latency_168mhz",
+        "feature_flash"
+      ]
+    },
+    {
+      "applicability": "applicable",
+      "document": "rm0090",
+      "peripherals": [
+        "crc"
+      ],
+      "rationale": "CRC source scope is related to the selected word-feed workflow, not all configurations.",
+      "section": "4",
+      "workflows": [
+        "crc_word_feed"
+      ]
+    },
+    {
+      "applicability": "mixed",
+      "document": "rm0090",
+      "peripherals": [
+        "pwr"
+      ],
+      "rationale": "Power chapter contains part-specific register branches and low-power modes beyond the reviewed subset.",
+      "section": "5",
+      "workflows": [
+        "feature_pwr"
+      ]
+    },
+    {
+      "applicability": "excluded",
+      "document": "rm0090",
+      "rationale": "Chapter title explicitly restricts this RCC branch to STM32F42xxx and STM32F43xxx; target is STM32F407VGT6. Its title locators remain in the pinned outline.",
+      "section": "6"
+    },
+    {
+      "applicability": "applicable",
+      "document": "rm0090",
+      "peripherals": [
+        "rcc"
+      ],
+      "rationale": "Chapter title explicitly includes STM32F405xx/07xx. Only selected clock recipes are currently reviewed.",
+      "section": "7",
+      "workflows": [
+        "pll_hse8_168mhz",
+        "arm_hsi16_core_checked"
+      ]
+    },
+    {
+      "applicability": "applicable",
+      "document": "rm0090",
+      "peripherals": [
+        "gpio"
+      ],
+      "rationale": "GPIO chapter applies; package pin/AF and mode completeness remain separate requirements.",
+      "section": "8",
+      "workflows": [
+        "gpio_led_button"
+      ]
+    },
+    {
+      "applicability": "mixed",
+      "document": "rm0090",
+      "peripherals": [
+        "syscfg"
+      ],
+      "rationale": "SYSCFG chapter has explicit part-specific branches.",
+      "section": "9"
+    },
+    {
+      "applicability": "applicable",
+      "document": "rm0090",
+      "peripherals": [
+        "syscfg"
+      ],
+      "rationale": "Section title names STM32F405xx/07xx and STM32F415xx/17xx.",
+      "section": "9.2"
+    },
+    {
+      "applicability": "excluded",
+      "document": "rm0090",
+      "rationale": "Section title names STM32F42xxx and STM32F43xxx, outside this target.",
+      "section": "9.3"
+    },
+    {
+      "applicability": "applicable",
+      "document": "rm0090",
+      "peripherals": [
+        "dma",
+        "dma_stream"
+      ],
+      "rationale": "DMA source scope; the memory-copy example does not cover every request, channel or operating mode.",
+      "section": "10",
+      "workflows": [
+        "dma2_memory_copy"
+      ]
+    },
+    {
+      "applicability": "pending",
+      "document": "rm0090",
+      "rationale": "DMA2D availability must be reconciled against the target-specific availability table; shared manual coverage is not proof of presence.",
+      "section": "11"
+    },
+    {
+      "applicability": "applicable",
+      "document": "rm0090",
+      "peripherals": [
+        "exti",
+        "nvic"
+      ],
+      "rationale": "Interrupt/event scope extends beyond the existing UART/button example.",
+      "section": "12",
+      "workflows": [
+        "uart_timer_interrupts"
+      ]
+    },
+    {
+      "applicability": "applicable",
+      "document": "rm0090",
+      "peripherals": [
+        "adc",
+        "adc_common"
+      ],
+      "rationale": "ADC scope; internal-reference conversion is only one supported subset.",
+      "section": "13",
+      "workflows": [
+        "adc1_internal_reference"
+      ]
+    },
+    {
+      "applicability": "applicable",
+      "document": "rm0090",
+      "peripherals": [
+        "dac"
+      ],
+      "rationale": "DAC scope; software trigger does not establish wired analog-output qualification.",
+      "section": "14",
+      "workflows": [
+        "dac_channel1_software_trigger",
+        "dac_channel1_wired_output"
+      ]
+    },
+    {
+      "applicability": "pending",
+      "document": "rm0090",
+      "peripherals": [
+        "dcmi"
+      ],
+      "rationale": "DCMI operating modes, package routing and hardware fixture requirements need reconciliation.",
+      "section": "15"
+    },
+    {
+      "applicability": "pending",
+      "document": "rm0090",
+      "rationale": "LTDC target applicability must be proven from availability evidence rather than inferred from this shared manual.",
+      "section": "16"
+    },
+    {
+      "applicability": "applicable",
+      "document": "rm0090",
+      "peripherals": [
+        "tim"
+      ],
+      "rationale": "Advanced timer scope requires explicit PWM, capture, trigger and advanced-mode contracts.",
+      "section": "17"
+    },
+    {
+      "applicability": "applicable",
+      "document": "rm0090",
+      "peripherals": [
+        "tim"
+      ],
+      "rationale": "General timer scope extends beyond the selected TIM2 update/interrupt scenario.",
+      "section": "18",
+      "workflows": [
+        "uart_timer_interrupts"
+      ]
+    },
+    {
+      "applicability": "applicable",
+      "document": "rm0090",
+      "peripherals": [
+        "tim"
+      ],
+      "rationale": "Additional timer instances require their own instance/mode requirements.",
+      "section": "19"
+    },
+    {
+      "applicability": "applicable",
+      "document": "rm0090",
+      "peripherals": [
+        "tim"
+      ],
+      "rationale": "Basic timer scope; no all-mode qualification inferred from register discovery.",
+      "section": "20"
+    },
+    {
+      "applicability": "applicable",
+      "document": "rm0090",
+      "peripherals": [
+        "iwdg"
+      ],
+      "rationale": "Watchdog configure/refresh is related knowledge only.",
+      "section": "21",
+      "workflows": [
+        "iwdg_configure_refresh"
+      ]
+    },
+    {
+      "applicability": "applicable",
+      "document": "rm0090",
+      "peripherals": [
+        "wwdg"
+      ],
+      "rationale": "Window-watchdog operating requirements remain to author.",
+      "section": "22"
+    },
+    {
+      "applicability": "pending",
+      "document": "rm0090",
+      "rationale": "CRYP applicability requires part-specific evidence; absence of a selected workflow is not an exclusion proof.",
+      "section": "23"
+    },
+    {
+      "applicability": "applicable",
+      "document": "rm0090",
+      "peripherals": [
+        "rng"
+      ],
+      "rationale": "RNG scope includes more than the reviewed PLL/polling mode.",
+      "section": "24",
+      "workflows": [
+        "rng_pll_polling"
+      ]
+    },
+    {
+      "applicability": "pending",
+      "document": "rm0090",
+      "rationale": "HASH applicability requires part-specific availability evidence.",
+      "section": "25"
+    },
+    {
+      "applicability": "applicable",
+      "document": "rm0090",
+      "peripherals": [
+        "rtc"
+      ],
+      "rationale": "RTC operating requirements remain blocked.",
+      "section": "26",
+      "workflows": [
+        "feature_rtc"
+      ]
+    },
+    {
+      "applicability": "applicable",
+      "document": "rm0090",
+      "peripherals": [
+        "i2c"
+      ],
+      "rationale": "I2C controller-only knowledge does not cover every mode or a wired slave.",
+      "section": "27",
+      "workflows": [
+        "i2c1_controller_transmit",
+        "i2c1_wired_transmit"
+      ]
+    },
+    {
+      "applicability": "applicable",
+      "document": "rm0090",
+      "peripherals": [
+        "spi"
+      ],
+      "rationale": "SPI/I2S scope includes mode and pin-route work beyond current polling knowledge.",
+      "section": "28",
+      "workflows": [
+        "spi1_wired_polling"
+      ]
+    },
+    {
+      "applicability": "pending",
+      "document": "rm0090",
+      "rationale": "SAI target applicability requires availability evidence; do not confuse it with SPI/I2S.",
+      "section": "29"
+    },
+    {
+      "applicability": "applicable",
+      "document": "rm0090",
+      "peripherals": [
+        "usart"
+      ],
+      "rationale": "USART source scope includes configurations beyond the UART2 scenario.",
+      "section": "30",
+      "workflows": [
+        "uart_timer_interrupts"
+      ]
+    },
+    {
+      "applicability": "applicable",
+      "document": "rm0090",
+      "peripherals": [
+        "sdio"
+      ],
+      "rationale": "SDIO card-transfer requirements and hardware setup remain open.",
+      "section": "31",
+      "workflows": [
+        "feature_sdio"
+      ]
+    },
+    {
+      "applicability": "applicable",
+      "document": "rm0090",
+      "peripherals": [
+        "can"
+      ],
+      "rationale": "CAN internal loopback is a scoped subset; external bus remains blocked.",
+      "section": "32",
+      "workflows": [
+        "can1_rx_guarded_loopback_irq",
+        "can1_external_bus"
+      ]
+    },
+    {
+      "applicability": "applicable",
+      "document": "rm0090",
+      "peripherals": [
+        "eth"
+      ],
+      "rationale": "Ethernet operating modes, board interface and fixture remain unqualified.",
+      "section": "33",
+      "workflows": [
+        "feature_eth"
+      ]
+    },
+    {
+      "applicability": "applicable",
+      "document": "rm0090",
+      "peripherals": [
+        "usb_otg_global",
+        "usb_otg_device",
+        "usb_otg_host"
+      ],
+      "rationale": "USB FS source scope; endpoint maps, device/host modes and protocol qualification remain open.",
+      "section": "34",
+      "workflows": [
+        "feature_usb_otg_global"
+      ]
+    },
+    {
+      "applicability": "applicable",
+      "document": "rm0090",
+      "peripherals": [
+        "usb_otg_global",
+        "usb_otg_device",
+        "usb_otg_host"
+      ],
+      "rationale": "USB HS controller scope requires precise PHY/interface and board applicability review.",
+      "section": "35"
+    },
+    {
+      "applicability": "applicable",
+      "document": "rm0090",
+      "peripherals": [
+        "fsmc_bank1",
+        "fsmc_bank1e",
+        "fsmc_bank2_3",
+        "fsmc_bank4"
+      ],
+      "rationale": "FSMC memory modes and package interfaces remain open.",
+      "section": "36",
+      "workflows": [
+        "feature_fsmc_bank1"
+      ]
+    },
+    {
+      "applicability": "pending",
+      "document": "rm0090",
+      "rationale": "FMC target applicability must be reconciled separately from FSMC.",
+      "section": "37"
+    },
+    {
+      "applicability": "applicable",
+      "document": "rm0090",
+      "peripherals": [
+        "dbgmcu",
+        "coredebug",
+        "dwt",
+        "itm",
+        "tpi"
+      ],
+      "rationale": "Debug/trace source scope; current probe operations are not all-mode qualification.",
+      "section": "38"
+    },
+    {
+      "applicability": "pending",
+      "document": "rm0090",
+      "rationale": "Electronic signature requirements and field provenance need explicit normalized records.",
+      "section": "39"
+    },
+    {
+      "applicability": "pending",
+      "document": "rm0090",
+      "rationale": "Security notice requires review alongside boot/update requirements.",
+      "section": "40"
+    },
+    {
+      "applicability": "document_metadata",
+      "document": "rm0090",
+      "rationale": "Revision history; retain source identity and change review.",
+      "section": "41"
+    },
+    {
+      "applicability": "document_metadata",
+      "document": "ds8626",
+      "rationale": "Datasheet introduction.",
+      "section": "1"
+    },
+    {
+      "applicability": "mixed",
+      "document": "ds8626",
+      "rationale": "Part description and family compatibility require exact-part reconciliation.",
+      "section": "2"
+    },
+    {
+      "applicability": "mixed",
+      "document": "ds8626",
+      "rationale": "Functional overview is a capability cross-check; instance/package constraints need body/table review.",
+      "section": "3"
+    },
+    {
+      "applicability": "mixed",
+      "document": "ds8626",
+      "rationale": "Pinouts and alternate functions are package-specific; not every shared-manual pin exists on LQFP100.",
+      "section": "4"
+    },
+    {
+      "applicability": "mixed",
+      "document": "ds8626",
+      "rationale": "Memory map requires exact density and bank constraints.",
+      "section": "5"
+    },
+    {
+      "applicability": "mixed",
+      "document": "ds8626",
+      "rationale": "Electrical conditions and limits require exact voltage, temperature, clock and interface context.",
+      "section": "6"
+    },
+    {
+      "applicability": "mixed",
+      "document": "ds8626",
+      "rationale": "Several package branches occur in this document.",
+      "section": "7"
+    },
+    {
+      "applicability": "applicable",
+      "document": "ds8626",
+      "rationale": "Section title explicitly names the selected LQFP100 package; mechanical and pin constraints remain to review.",
+      "section": "7.4"
+    },
+    {
+      "applicability": "mixed",
+      "document": "ds8626",
+      "rationale": "Ordering information must be matched to STM32F407VGT6.",
+      "section": "8"
+    },
+    {
+      "applicability": "pending",
+      "document": "ds8626",
+      "rationale": "Security notice remains part of requirements review.",
+      "section": "9"
+    },
+    {
+      "applicability": "document_metadata",
+      "document": "ds8626",
+      "rationale": "Revision history.",
+      "section": "10"
+    },
+    {
+      "applicability": "pending",
+      "document": "ds8626",
+      "rationale": "Application diagrams need visual review; headings do not reconstruct their connections.",
+      "section": "A"
+    },
+    {
+      "applicability": "mixed",
+      "document": "pm0214",
+      "rationale": "Core overview covers several ST parts; exact target options need reconciliation.",
+      "section": "1"
+    },
+    {
+      "applicability": "mixed",
+      "document": "pm0214",
+      "peripherals": [
+        "scb",
+        "nvic"
+      ],
+      "rationale": "Processor, memory and exception requirements exceed current reviewed subsets.",
+      "section": "2"
+    },
+    {
+      "applicability": "mixed",
+      "document": "pm0214",
+      "rationale": "Instruction set, floating-point and privileged behavior require exact core/build assumptions.",
+      "section": "3"
+    },
+    {
+      "applicability": "mixed",
+      "document": "pm0214",
+      "peripherals": [
+        "scb",
+        "nvic",
+        "mpu",
+        "fpu",
+        "systick"
+      ],
+      "rationale": "Core peripheral mode completeness is not inferred from declarations.",
+      "section": "4"
+    },
+    {
+      "applicability": "applicable",
+      "document": "pm0214",
+      "peripherals": [
+        "systick"
+      ],
+      "rationale": "SysTick section relates to selected core timing examples, not every mode.",
+      "section": "4.5",
+      "workflows": [
+        "systick_1khz_interrupt",
+        "systick_core_polling"
+      ]
+    },
+    {
+      "applicability": "document_metadata",
+      "document": "pm0214",
+      "rationale": "Revision history.",
+      "section": "5"
+    },
+    {
+      "applicability": "mixed",
+      "document": "es0182",
+      "rationale": "Errata summary applicability depends on exact silicon revision and operating conditions. Preserve revision cells literally until body/legend review; physical revision remains unspecified.",
+      "section": "2"
+    }
+  ],
+  "documents": [
+    {
+      "id": "rm0090",
+      "path": "outlines/rm0090.json",
+      "revision_label": "RM0090 Rev 22",
+      "sha256": "adb78cf7c75d2268cafc794eb06da8d0234ea8c1b0073db7e0b265815a5d6fce"
+    },
+    {
+      "id": "ds8626",
+      "path": "outlines/ds8626.json",
+      "revision_label": "DS8626 Rev 12",
+      "sha256": "506f2574be9d83c025c6c07218eb7975a5f4c7577b643df6b517464b7344efbd"
+    },
+    {
+      "id": "pm0214",
+      "path": "outlines/pm0214.json",
+      "revision_label": "PM0214 Rev 10",
+      "sha256": "cebf174090f1ca343253011ae156178ff730ea04da8524330c1852c798cdd12a"
+    },
+    {
+      "id": "es0182",
+      "path": "outlines/es0182.json",
+      "revision_label": "ES0182 Rev 19",
+      "sha256": "6354929d74cd806842f6ff13ff4935df3a6bdeee9007d7cb70726163a0a7fc0a"
+    }
+  ],
+  "exhaustiveness_review": "pending",
+  "format": "praxis-capability-inventory-v1",
+  "missing_sources": [
+    {
+      "id": "boot_protocol_references",
+      "reason": "Part-specific ROM bootloader protocols, routing and update/recovery requirements need their referenced manufacturer application notes."
+    },
+    {
+      "id": "complete_board_netlist",
+      "reason": "Board connectivity is a partial reviewed transcription; complete CAD connectivity/assembly and physical revision evidence remain unavailable."
+    },
+    {
+      "id": "mode_requirement_inventory",
+      "reason": "Section outlines do not enumerate all body/table operating modes, instances, constraints and errata workarounds; their normalized requirement inventory is not yet authored."
+    }
+  ],
+  "scope": "Manufacturer source-scope reconciliation for STM32F407VGT6/LQFP100. Section bindings are implementing-author editorial routing from source contents, not independent review, exhaustive modes or hardware qualification. Mixed-family chapters and extraction gaps remain open.",
+  "target": {
+    "board_revision": "MB997-E-01",
+    "id": "stm32f407g_disc1_mb997_e01",
+    "mcu": "STM32F407VGT6",
+    "package": "Package_QFP:LQFP-100_14x14mm_P0.5mm"
+  }
+}

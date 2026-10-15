@@ -74,7 +74,14 @@ def parse_schematic(path: Path, source_id: str, target: Target, pin_map: dict[st
             if ref not in components or not number or (ref, number) in endpoints:
                 raise PraxisError("INVALID_NETLIST", f"Unknown or duplicated endpoint {ref}:{number}")
             endpoints.add((ref, number))
-            pin_name = node.get("pinfunction") or components[ref]["pins"].get(number, number)
+            library_name = components[ref]["pins"].get(number)
+            pin_name = node.get("pinfunction") or library_name or number
+            # KiCad 10 exports shown-name + '_' + pad-number. Only decode an
+            # exact match backed by the library record for this same endpoint;
+            # never strip arbitrary suffixes or infer MCU pins from a profile.
+            # https://docs.kicad.org/doxygen/netlist__exporter__xml_8cpp_source.html
+            if library_name and pin_name == f"{library_name}_{number}":
+                pin_name = library_name
             if ref == target.primary_mcu_ref:
                 expected = pin_map.get(number)
                 if not expected or pin_name != expected:

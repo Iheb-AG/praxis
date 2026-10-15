@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "targets": [
+    {
+      "id": "stm32f103c8t6_inventory",
+      "profile": "stm32f103c8t6/profile.json"
+    },
+    {
+      "id": "stm32g071rbt6_inventory",
+      "profile": "stm32g071rbt6/profile.json"
+    },
+    {
+      "id": "stm32h743zit6_inventory",
+      "profile": "stm32h743zit6/profile.json"
+    }
+  ]
+}

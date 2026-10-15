@@ -1,5 +1,11 @@
 # Contributing to Project Praxis
 
+Full F407 coverage currently takes priority before further family expansion. The
+[manufacturer inventory](docs/manufacturer-inventory.md) supplies source-pinned scope,
+explicit applicability bindings and unresolved extraction requirements. Contributions can
+repair source layouts, reconcile applicability or author instance/mode requirements. Keep
+target facts in registered data; related ready examples do not establish whole-section support.
+
 Praxis is an experimental development alpha. Contributions should expand **explicitly scoped
 knowledge or verification**, with evidence that another contributor can reproduce. Register
 discovery, reviewed operation, compilation and physical qualification are separate outcomes.
@@ -8,7 +14,15 @@ No contribution needs to claim complete support for a peripheral, a board or an 
 The first experimental release prioritizes STM32F407 and Cortex-M4 breadth. See the
 [current release scope](docs/experimental-release.md) and [ARM core example](docs/arm-core-support.md).
 Additional STM32 parts can use explicit knowledge adapters, while compilation and hardware
-support remain separately qualified per target. Non-ST expansion is deferred in the current roadmap.
+support remain separately qualified per target. The [experimental F1/G0/H7 matrix](docs/stm32-family-expansion.md)
+demonstrates profile-driven MCU-only extraction without a schematic. Add a registered profile
+to expand declarations, then reviewed contracts to expand operating support. Non-ST expansion
+is deferred in the current roadmap.
+
+New compilation profiles require a registered, hash-pinned publication contract. Put target
+register requirements, clock constraints, array views and routing names in data; do not add
+manufacturer branches to the core compiler. See [compiler contracts and migration](docs/compiler-contracts.md)
+for the schema, validation sequence and examples. Existing immutable bundles remain unchanged.
 
 ## Choose a contribution
 
@@ -31,7 +45,7 @@ firmware assets, a flash backend or physical support. Start with the fictional p
 ```bash
 uv sync --locked --extra ingest --extra build --extra test --extra web
 uv run ruff check praxis tests tools server.py compiler.py
-uv run pytest -q
+PRAXIS_REQUIRE_EXTERNAL_TOOLS=1 uv run pytest -q
 uv run praxis schema --kind profile
 uv run praxis schema --kind capability-catalog
 ```
@@ -69,9 +83,19 @@ qualified by the existing local evidence.
    `get_ingestion_profile().composed_definitions_sha256`; see the
    [I²C composition example](docs/i2c-expansion.md). Preserve existing reviewed
    modes and review the complete replacement record.
+   When a register reuses its bits in different modes, configure explicit
+   `discovery.peripherals.<entity>.field_views` and select one in
+   `OperatingMode.field_views`. Do not combine overlapping interpretations or
+   add a manufacturer-specific exception to Python. Keep selection conditions
+   source-backed; see [register interpretation contracts](docs/register-field-views.md).
+   If selected modes of one canonical peripheral use different exact instances,
+   declare `WorkflowRequirement.mode_instances` for every selected mode of that
+   entity. The optional aggregate instance scope must equal their union. Preserve
+   existing uniform scopes when this distinction is unnecessary; see the
+   [paired timer route example](docs/timer-routes.md).
 5. Test the contribution's failure modes: wrong target/package/instance, unsupported encodings,
    missing dependencies, conflicting sources and invalid topology as applicable. Preserve
-   complete tables and the 64 KiB document limit. Test target compilation separately from
+   complete tables without imposing a per-document byte ceiling. Test target compilation separately from
    modeled initialization order and physical behavior.
 6. Publish to a **new** bundle directory. Never edit published Markdown/manifest files to make
    checks pass or overwrite an earlier revision. Repeat compilation to establish deterministic

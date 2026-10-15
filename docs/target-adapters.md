@@ -24,6 +24,13 @@ It is **not an NXP part, evaluation board, real schematic export or physically q
 Its header uses `_Type` structures and `_MASK`/`_SHIFT` macros deliberately to test conventions
 different from the STM32 fixtures. There is no claim that every vendor header follows these conventions.
 
+## Publication policy
+
+Every source profile now requires a registered, hash-pinned `compilation_contract` in addition
+to its extraction adapter. Target-specific requirements and operating clock constraints live
+in this declarative input, rather than manufacturer branches in the compiler. See
+[compiler contracts](compiler-contracts.md) for the complete schema and migration procedure.
+
 ## Profile contract
 
 Add the following object inside `target` in a source profile:
@@ -72,7 +79,7 @@ Discovery selects explicit structures and dependency edges, for example:
 
 These are **fictional policy names and relationships**, not universal hardware facts. On a real
 device, establish each bus/clock/pin/interrupt prerequisite from applicable references. Preserve
-the complete register tables and the 64 KiB limit. Optional unsupported mask sets are withheld
+the complete register tables, without a fixed document byte ceiling. Optional unsupported mask sets are withheld
 and reported as partial declarations; explicitly required field views fail extraction instead.
 Making an unreviewed workflow mandatory through `publication_requires` blocks publication.
 

@@ -1,0 +1,2582 @@
+{
+  "contents_boundaries_observed": true,
+  "contents_pages": [
+    3,
+    4,
+    5,
+    6
+  ],
+  "counts": {
+    "accounted_nonempty_lines": 279,
+    "entries": 109,
+    "incomplete_entries": 0,
+    "selected_pages": 7,
+    "unresolved": 4
+  },
+  "entries": [
+    {
+      "applicability": "unreviewed",
+      "destination_page": 13,
+      "locators": [
+        "page:3/line:11"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "1",
+      "title": "Introduction"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 14,
+      "locators": [
+        "page:3/line:14"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2",
+      "title": "Description"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 17,
+      "locators": [
+        "page:3/line:15"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.1",
+      "title": "Full compatibility throughout the family"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 20,
+      "locators": [
+        "page:3/line:18"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3",
+      "title": "Functional overview"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 21,
+      "locators": [
+        "page:3/line:19"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.1",
+      "title": "Arm® Cortex®-M4 core with FPU and embedded flash and SRAM"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 21,
+      "locators": [
+        "page:3/line:21"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.2",
+      "title": "Adaptive real-time memory accelerator (ART Accelerator)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 21,
+      "locators": [
+        "page:3/line:22"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.3",
+      "title": "Memory protection unit"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 22,
+      "locators": [
+        "page:3/line:24"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.4",
+      "title": "Embedded flash memory"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 22,
+      "locators": [
+        "page:3/line:25"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.5",
+      "title": "CRC (cyclic redundancy check) calculation unit"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 22,
+      "locators": [
+        "page:3/line:27"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.6",
+      "title": "Embedded SRAM"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 22,
+      "locators": [
+        "page:3/line:28"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.7",
+      "title": "Multi-AHB bus matrix"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 23,
+      "locators": [
+        "page:3/line:30"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.8",
+      "title": "DMA controller (DMA)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 24,
+      "locators": [
+        "page:3/line:31"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.9",
+      "title": "Flexible static memory controller (FSMC)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 24,
+      "locators": [
+        "page:3/line:32"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.9.1",
+      "title": "LCD parallel interface"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 24,
+      "locators": [
+        "page:3/line:34"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.10",
+      "title": "Nested vectored interrupt controller (NVIC)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 25,
+      "locators": [
+        "page:3/line:35"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.11",
+      "title": "External interrupt/event controller (EXTI)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 25,
+      "locators": [
+        "page:3/line:37"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.12",
+      "title": "Clocks and startup"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 25,
+      "locators": [
+        "page:3/line:38"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.13",
+      "title": "Boot modes"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 25,
+      "locators": [
+        "page:3/line:40"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.14",
+      "title": "Power supply schemes"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 26,
+      "locators": [
+        "page:3/line:41"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.15",
+      "title": "Power supply supervisor"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 26,
+      "locators": [
+        "page:3/line:43"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.15.1",
+      "title": "Internal reset ON"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 26,
+      "locators": [
+        "page:3/line:44"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.15.2",
+      "title": "Internal reset OFF"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 28,
+      "locators": [
+        "page:3/line:45"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.16",
+      "title": "Voltage regulator"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 28,
+      "locators": [
+        "page:3/line:47"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.16.1",
+      "title": "Regulator ON"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 29,
+      "locators": [
+        "page:3/line:48"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.16.2",
+      "title": "Regulator OFF"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 31,
+      "locators": [
+        "page:3/line:49"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.17",
+      "title": "Regulator ON/OFF and internal reset ON/OFF availability"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 31,
+      "locators": [
+        "page:3/line:51"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.18",
+      "title": "Real-time clock (RTC), backup SRAM and backup registers"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 32,
+      "locators": [
+        "page:3/line:52"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.19",
+      "title": "Low-power modes"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 33,
+      "locators": [
+        "page:3/line:54"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.20",
+      "title": "V operation"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 33,
+      "locators": [
+        "page:3/line:56"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.21",
+      "title": "Timers and watchdogs"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 34,
+      "locators": [
+        "page:4/line:8"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.21.1",
+      "title": "Advanced-control timers (TIM1, TIM8)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 35,
+      "locators": [
+        "page:4/line:9"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.21.2",
+      "title": "General-purpose timers (TIMx)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 35,
+      "locators": [
+        "page:4/line:11"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.21.3",
+      "title": "Basic timers TIM6 and TIM7"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 36,
+      "locators": [
+        "page:4/line:12"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.22",
+      "title": "Inter-integrated circuit interface (I²C)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 36,
+      "locators": [
+        "page:4/line:13"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.23",
+      "title": "Universal synchronous/asynchronous receiver transmitters (USART)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 37,
+      "locators": [
+        "page:4/line:15"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.24",
+      "title": "Serial peripheral interface (SPI)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 37,
+      "locators": [
+        "page:4/line:16"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.25",
+      "title": "Inter-integrated sound (I2S)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 38,
+      "locators": [
+        "page:4/line:18"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.26",
+      "title": "Audio PLL (PLLI2S)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 38,
+      "locators": [
+        "page:4/line:19"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.27",
+      "title": "Secure digital input/output interface (SDIO)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 38,
+      "locators": [
+        "page:4/line:21"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.28",
+      "title": "Ethernet MAC interface with dedicated DMA and IEEE 1588 support"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 39,
+      "locators": [
+        "page:4/line:22"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.29",
+      "title": "Controller area network (bxCAN)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 39,
+      "locators": [
+        "page:4/line:24"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.30",
+      "title": "Universal serial bus on-the-go full-speed (OTG_FS)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 40,
+      "locators": [
+        "page:4/line:25"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.31",
+      "title": "Universal serial bus on-the-go high-speed (OTG_HS)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 40,
+      "locators": [
+        "page:4/line:27"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.32",
+      "title": "Digital camera interface (DCMI)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 40,
+      "locators": [
+        "page:4/line:28"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.33",
+      "title": "True random number generator (RNG)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 41,
+      "locators": [
+        "page:4/line:30"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.34",
+      "title": "General-purpose input/outputs (GPIOs)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 41,
+      "locators": [
+        "page:4/line:31"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.35",
+      "title": "Analog-to-digital converters (ADCs)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 41,
+      "locators": [
+        "page:4/line:32"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.36",
+      "title": "Temperature sensor"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 41,
+      "locators": [
+        "page:4/line:34"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.37",
+      "title": "Digital-to-analog converter (DAC)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 42,
+      "locators": [
+        "page:4/line:35"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.38",
+      "title": "Serial wire JTAG debug port (SWJ-DP)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 42,
+      "locators": [
+        "page:4/line:37"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "3.39",
+      "title": "Embedded Trace Macrocell™"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 43,
+      "locators": [
+        "page:4/line:39"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "4",
+      "title": "Pinouts and pin description"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 73,
+      "locators": [
+        "page:4/line:42"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "5",
+      "title": "Memory mapping"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 78,
+      "locators": [
+        "page:4/line:44"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "6",
+      "title": "Electrical characteristics"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 78,
+      "locators": [
+        "page:4/line:46"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "6.1",
+      "title": "Parameter conditions"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 78,
+      "locators": [
+        "page:4/line:47"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "6.1.1",
+      "title": "Minimum and maximum values"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 78,
+      "locators": [
+        "page:4/line:48"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "6.1.2",
+      "title": "Typical values"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 78,
+      "locators": [
+        "page:4/line:50"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "6.1.3",
+      "title": "Typical curves"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 78,
+      "locators": [
+        "page:4/line:51"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "6.1.4",
+      "title": "Loading capacitor"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 78,
+      "locators": [
+        "page:4/line:52"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "6.1.5",
+      "title": "Pin input voltage"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 79,
+      "locators": [
+        "page:4/line:54"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "6.1.6",
+      "title": "Power supply scheme"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 80,
+      "locators": [
+        "page:4/line:55"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "6.1.7",
+      "title": "Current consumption measurement"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 80,
+      "locators": [
+        "page:5/line:8"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "6.2",
+      "title": "Absolute maximum ratings"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 81,
+      "locators": [
+        "page:5/line:9"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "6.3",
+      "title": "Operating conditions"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 81,
+      "locators": [
+        "page:5/line:11"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "6.3.1",
+      "title": "General operating conditions"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 84,
+      "locators": [
+        "page:5/line:12"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "6.3.2",
+      "title": "VCAP_1/VCAP_2 external capacitor"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 84,
+      "locators": [
+        "page:5/line:13"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "6.3.3",
+      "title": "Operating conditions at power-up / power-down (regulator ON)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 84,
+      "locators": [
+        "page:5/line:15"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "6.3.4",
+      "title": "Operating conditions at power-up / power-down (regulator OFF)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 85,
+      "locators": [
+        "page:5/line:16"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "6.3.5",
+      "title": "Embedded reset and power control block characteristics"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 86,
+      "locators": [
+        "page:5/line:17"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "6.3.6",
+      "title": "Supply current characteristics"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 100,
+      "locators": [
+        "page:5/line:19"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "6.3.7",
+      "title": "Wakeup time from low-power mode"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 101,
+      "locators": [
+        "page:5/line:20"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "6.3.8",
+      "title": "External clock source characteristics"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 105,
+      "locators": [
+        "page:5/line:21"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "6.3.9",
+      "title": "Internal clock source characteristics"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 106,
+      "locators": [
+        "page:5/line:23"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "6.3.10",
+      "title": "PLL characteristics"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 108,
+      "locators": [
+        "page:5/line:24"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "6.3.11",
+      "title": "PLL spread spectrum clock generation (SSCG) characteristics"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 110,
+      "locators": [
+        "page:5/line:25"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "6.3.12",
+      "title": "Memory characteristics"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 112,
+      "locators": [
+        "page:5/line:27"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "6.3.13",
+      "title": "EMC characteristics"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 114,
+      "locators": [
+        "page:5/line:28"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "6.3.14",
+      "title": "Absolute maximum ratings (electrical sensitivity)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 115,
+      "locators": [
+        "page:5/line:29"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "6.3.15",
+      "title": "I/O current injection characteristics"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 116,
+      "locators": [
+        "page:5/line:30"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "6.3.16",
+      "title": "I/O port characteristics"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 121,
+      "locators": [
+        "page:5/line:32"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "6.3.17",
+      "title": "NRST pin characteristics"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 121,
+      "locators": [
+        "page:5/line:33"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "6.3.18",
+      "title": "TIM timer characteristics"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 123,
+      "locators": [
+        "page:5/line:34"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "6.3.19",
+      "title": "Communications interfaces"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 135,
+      "locators": [
+        "page:5/line:36"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "6.3.20",
+      "title": "CAN (controller area network) interface"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 135,
+      "locators": [
+        "page:5/line:37"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "6.3.21",
+      "title": "12-bit ADC characteristics"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 140,
+      "locators": [
+        "page:5/line:38"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "6.3.22",
+      "title": "Temperature sensor characteristics"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 141,
+      "locators": [
+        "page:5/line:40"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "6.3.23",
+      "title": "V monitoring characteristics"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 141,
+      "locators": [
+        "page:5/line:42"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "6.3.24",
+      "title": "Embedded reference voltage"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 141,
+      "locators": [
+        "page:5/line:43"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "6.3.25",
+      "title": "DAC electrical characteristics"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 144,
+      "locators": [
+        "page:5/line:44"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "6.3.26",
+      "title": "FSMC characteristics"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 162,
+      "locators": [
+        "page:5/line:45"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "6.3.27",
+      "title": "Camera interface (DCMI) timing specifications"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 163,
+      "locators": [
+        "page:5/line:46"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "6.3.28",
+      "title": "SD/SDIO MMC card host interface (SDIO) characteristics"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 164,
+      "locators": [
+        "page:5/line:47"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "6.3.29",
+      "title": "RTC characteristics"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 165,
+      "locators": [
+        "page:5/line:50"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "7",
+      "title": "Package information"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 165,
+      "locators": [
+        "page:5/line:51"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "7.1",
+      "title": "Device marking"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 166,
+      "locators": [
+        "page:5/line:53"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "7.2",
+      "title": "WLCSP90 package information"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 169,
+      "locators": [
+        "page:5/line:54"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "7.3",
+      "title": "LQFP64 package information (5W)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 172,
+      "locators": [
+        "page:6/line:8"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "7.4",
+      "title": "LQFP100 package information (1L)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 175,
+      "locators": [
+        "page:6/line:9"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "7.5",
+      "title": "LQFP144 package information (1A)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 179,
+      "locators": [
+        "page:6/line:11"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "7.6",
+      "title": "UFBGA(176+25) package information (A0E7)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 181,
+      "locators": [
+        "page:6/line:12"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "7.7",
+      "title": "LQFP176 package information (1T)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 185,
+      "locators": [
+        "page:6/line:14"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "7.8",
+      "title": "Thermal characteristics"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 186,
+      "locators": [
+        "page:6/line:16"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "8",
+      "title": "Ordering information"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 187,
+      "locators": [
+        "page:6/line:19"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "A",
+      "title": "Application block diagrams"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 187,
+      "locators": [
+        "page:6/line:20"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "A.1",
+      "title": "USB OTG full speed (FS) interface solutions"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 189,
+      "locators": [
+        "page:6/line:22"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "A.2",
+      "title": "USB OTG high speed (HS) interface solutions."
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 190,
+      "locators": [
+        "page:6/line:23"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "A.3",
+      "title": "Ethernet interface solutions."
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 192,
+      "locators": [
+        "page:6/line:26"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "9",
+      "title": "Important security notice"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": 193,
+      "locators": [
+        "page:6/line:28"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "10",
+      "title": "Revision history"
+    }
+  ],
+  "evidence_parts": [
+    {
+      "artifact_sha256": "87894b7cc11d5d8358c6a41a7f527ca26e8240b950c74efcda55a0ccf545f5c7",
+      "locator": "page:1"
+    },
+    {
+      "artifact_sha256": "259a54a3eb1bde2cdaaba292ee6af7646bdfa445629bd2f78669bc29c057465a",
+      "locator": "page:2"
+    },
+    {
+      "artifact_sha256": "e575f76bec5cf73a36ac1c0ba890bf6297e8466bb1b9b87db77d54c4b1dfe587",
+      "locator": "page:3"
+    },
+    {
+      "artifact_sha256": "7317b64f88a8a347ed5d3901c49fc1d79401f9ecd3375df87335caecd291c611",
+      "locator": "page:4"
+    },
+    {
+      "artifact_sha256": "e6c28ea59d28ed1b120daa3f13dd148df2c764da737178e9fce82ecd262bb8b5",
+      "locator": "page:5"
+    },
+    {
+      "artifact_sha256": "a1eb9cc0d2debe8b85e133f40ce8e966ea5b499ac98dbf347b36e774f8352053",
+      "locator": "page:6"
+    },
+    {
+      "artifact_sha256": "1ed1b77ecb0a9017f677a24c40618f9c3d3d615f25d6399d72857b20a27451c7",
+      "locator": "page:7"
+    }
+  ],
+  "format": "praxis-source-outline-v1",
+  "gaps": [
+    "Contents headings do not enumerate all operating modes or establish target applicability",
+    "Body requirements, tables, errata and package constraints still require review",
+    "Unresolved contents lines require editorial repair with source provenance"
+  ],
+  "index_layout": "dotted_contents",
+  "line_accounting": [
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:7",
+      "sha256": "4865a63cba5138e4b4f67998bd25fae12b66f24cd07273a31283c3ee2e9fb894"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:10",
+      "sha256": "de6d6ebe538027691b9c1cd8e8c546f2485f601c18ee84094a257263ff20fed8"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:11",
+      "sha256": "bc524feeee98e4334544890e30e0452e150841f634202c71d9583fce033de1fb"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:12",
+      "sha256": "fb4dcb3e46702982340c06ea2f6b67a5c1cfe4cbd26ce360b282a46774c3a561"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:14",
+      "sha256": "a0161f3bee27b325fa6dc882a799e2c795d88cac82424cd5bb0a177066b75b01"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:16",
+      "sha256": "5697d03daef4de9cf8db7cb11755f71358a32b4acca94909a9d449f71040d2dd"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:17",
+      "sha256": "dce0efa03b3dac3f7f7f7f62bfe455845d02eea22865b830796fa1dfcbb7f13a"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:18",
+      "sha256": "e91fadf24f78c081972a2015146e9b7ad4636bb5a208f5733b54ee4407682078"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:19",
+      "sha256": "5458a649fb0752725c1a46223185ad475f232d04a43ad62505b9b2fd421a8d8f"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:20",
+      "sha256": "d155c7987baa8c8284c61c987452773b61fa0b22a3ba1e929f4cbba66952fdd3"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:21",
+      "sha256": "6fb6ef2b74df00cc2bd7d32c5eb9f86c553c0aba9f1c5865c93fd8aa0e9d616b"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:22",
+      "sha256": "20f0c0901f20a9a020a891526fb4d8586b84626ed9747e68da1c89b6d01d5bf7"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:23",
+      "sha256": "0f8e713872490ea0ff98344b4593f7fae090d07276193888fb81c535d9110149"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:24",
+      "sha256": "88959b91b83cd0abd722645ffc8c83b1f207eaddea20ee9950baf72d83d1c744"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:25",
+      "sha256": "72dfcfb0c470ac255cde83fb8fe38de8a128188e03ea5ba5b2a93adbea1062fa"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:26",
+      "sha256": "4ae81572f06e1b88fd5ced7a1a000945432e83e1551e6f721ee9c00b8cc33260"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:27",
+      "sha256": "4ae81572f06e1b88fd5ced7a1a000945432e83e1551e6f721ee9c00b8cc33260"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:28",
+      "sha256": "f67ab10ad4e4c53121b6a5fe4da9c10ddee905b978d3788d2723d7bfacbe28a9"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:29",
+      "sha256": "f67ab10ad4e4c53121b6a5fe4da9c10ddee905b978d3788d2723d7bfacbe28a9"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:30",
+      "sha256": "5c62e091b8c0565f1bafad0dad5934276143ae2ccef7a5381e8ada5b1a8d26d2"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:31",
+      "sha256": "5c62e091b8c0565f1bafad0dad5934276143ae2ccef7a5381e8ada5b1a8d26d2"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:32",
+      "sha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:33",
+      "sha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:34",
+      "sha256": "7902699be42c8a8e46fbbb4501726517e86b22c56a189f7625a6da49081b2451"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:35",
+      "sha256": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:36",
+      "sha256": "e7f6c011776e8db7cd330b54174fd76f7d0216b612387a5ffcfb81e6f0919683"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:37",
+      "sha256": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:38",
+      "sha256": "32ebb1abcc1c601ceb9c4e3c4faba0caa5b85bb98c4f1e6612c40faa528a91c9"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:39",
+      "sha256": "32ebb1abcc1c601ceb9c4e3c4faba0caa5b85bb98c4f1e6612c40faa528a91c9"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:40",
+      "sha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:41",
+      "sha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:42",
+      "sha256": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:43",
+      "sha256": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:44",
+      "sha256": "8db71ed28b0f2f1432561e8d8a0dc3878f2da540c53a2ab82335b6f716da2ef3"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:45",
+      "sha256": "8db71ed28b0f2f1432561e8d8a0dc3878f2da540c53a2ab82335b6f716da2ef3"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:46",
+      "sha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:47",
+      "sha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:48",
+      "sha256": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:49",
+      "sha256": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:50",
+      "sha256": "62c66a7a5dd70c3146618063c344e531e6d4b59e379808443ce962b3abd63c5a"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:51",
+      "sha256": "62c66a7a5dd70c3146618063c344e531e6d4b59e379808443ce962b3abd63c5a"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:52",
+      "sha256": "62c66a7a5dd70c3146618063c344e531e6d4b59e379808443ce962b3abd63c5a"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:53",
+      "sha256": "62c66a7a5dd70c3146618063c344e531e6d4b59e379808443ce962b3abd63c5a"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:54",
+      "sha256": "ba5ec51d07a4ac0e951608704431d59a02b21a4e951acc10505a8dc407c501ee"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:55",
+      "sha256": "ba5ec51d07a4ac0e951608704431d59a02b21a4e951acc10505a8dc407c501ee"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:56",
+      "sha256": "94f525e72bb9e1ba00b1244312957543824465144a2112a5ea56f585322fdfa1"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:57",
+      "sha256": "238fa28a94976c7da14563bc873c2729bd5cd325389085bb4c6dd0de28923590"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:58",
+      "sha256": "bf44596cb1d4da569e52a6d1fac51ad1d04f1d4bd324a400505b15c820c28a04"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:59",
+      "sha256": "8d5d0f1b62d2b325f1a29d34f8d1b53a0f37f85c32649fcfe9e08f1bfee19df6"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:60",
+      "sha256": "a1bc5c2bf0a715a1d46aa20251cdfea8bef4cf71d7319b267b106ee1c8f82c4f"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:61",
+      "sha256": "e17aae968284953fe3f4d6f13a226de820145aa543e110476034d895749036b8"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:62",
+      "sha256": "9dc1388e5f1849e918a9d19e380845cbb83756be1ae609271d8faec4b3231bff"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:63",
+      "sha256": "bf4b0c03c646add9b518fc4f658deba189e5bc4918607186e4570472bf6cb19f"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:64",
+      "sha256": "6ec1f3f46ef75c63907e7f5c1d1853b96235cbd7bc769fa73ddb27a6e6321705"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:65",
+      "sha256": "5a034af63d38a415476e1f4d995ce78364c27709843f6dfd9983089c42158d6a"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:66",
+      "sha256": "fc083fd099054f7914814a0ea0fcb9ac85cb4fe31aad3cbb37b0679449185ea5"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:67",
+      "sha256": "a9393f6892d2e0cdb35ec389be750c440aa70a60f10a5da71b5002ed43424fd2"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:68",
+      "sha256": "40f103ca712d9354a689112b8f4ccdb44a2d3a28fa90be12f1424e45a25e5c89"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:69",
+      "sha256": "86b461b4ede5aa31111c55c892c8fa260b6434da9712515ce6a5b9ef51792bdd"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:70",
+      "sha256": "3d0bf708e5ceb3a4c1f1b1ec694231c262fe635cc254d7a9d53e8a364f8f7ac3"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:71",
+      "sha256": "dd61e4e0c5669dd27eb085b6187e0b7cfa59c8f34a5fdc05396d7c997e1564ad"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:72",
+      "sha256": "fb6d1565499548e8cb9fb1d96bb8c964e1cd07c371c74e8d30a839b9e9973240"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:73",
+      "sha256": "76a3fbe113ca088cbaa977a5bc421378493880e77a7646fcef97965783f89e7f"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:74",
+      "sha256": "0cb46fec7d74384c00ed99ba0c63f4a643d20dbff2d249d84737245b90ca0c65"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:75",
+      "sha256": "79868dc1e632e40a964bcbb20924a87147f6a2f3ecfd7f487d40f7ebb102b011"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:76",
+      "sha256": "d96c79d297698f396ef82b88956893d1f4be13aba9a8bd8db0aad634583ea744"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:77",
+      "sha256": "2284514609b788c161aa2d89381bf01bdea710d5a2f449a243ae66141416a071"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:78",
+      "sha256": "5c7c65989cbde74a6ead6a4b6cdf328f825360917b62c49ab97eb43fe228a9db"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:79",
+      "sha256": "41f7bcdacd938122cd3041dfeb4f14dc27057dbae238ee486a157ecade38f8ce"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:80",
+      "sha256": "a667356d047e059dc0feb4ee70a998782cf022d393e61159069b10ba5c897268"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:81",
+      "sha256": "28aa6755ec24bd93778e821574587eee77f6ab665c105fbc05eb2f66715a037a"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:82",
+      "sha256": "3227ba741811d3e4cab1f85e243915a6c351ae94dec8592f24eed901e36d8a0a"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:83",
+      "sha256": "864c761ebdf017a9241549c917c41a737deba91d232cf14f0c32d97a08f94eb5"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:84",
+      "sha256": "9c944d5e7e6b10efe60bd31b46c70fa8a3caf2200c6bd00faa84e59199511be2"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:85",
+      "sha256": "af1f1b2832fc7a8b73d5be39ae70cf4a880ac173ffca3d38ab4cc30bb7aa4340"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:86",
+      "sha256": "6ca080b2a7e7fbe6d95b4e3c607756ee075a3bdf8179c1fe733528103b76dacf"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:87",
+      "sha256": "d4b6a0c5eb2740cd50d574b56f6df2974eb94ece4f1dbcf6a90431ca35d9cc6f"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:88",
+      "sha256": "d823a0d9cfe768196a38e97e6a9bd122f3720fdcbe2654efc22185fceb89b74d"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:89",
+      "sha256": "26d545922c53b468fab4bfae5b992a0da16e881fd85cf741dd1e4af0ae80d199"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:90",
+      "sha256": "092330e14b511aab06baab18c579b0c1808eaa089cd616864f13244ac2470c24"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:91",
+      "sha256": "39d27893fe2aee542317bddbd448535f0d619516100770b4401b9f8a5bc6b30d"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:92",
+      "sha256": "f93eec03f1efcdb0431f85201e0def8a5a753a394fa0be2193d7886e9cf40543"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:93",
+      "sha256": "e4eeac2e2e68567adcec7147968ef2aa9f9daaf6ec5fe0111a7e6637a76f3b50"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:94",
+      "sha256": "6271abeb98496a9984fe0cf59d87e8d9a3572b945cec0951e668762a7e037b6b"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:95",
+      "sha256": "59853cec20f16aca2dcceeb0f44a433a9c8934d99f8d2efbdd84526884b55cde"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:96",
+      "sha256": "23aaffe640e2ae658c8b224d0dcd5b89caed7790d0f355761bc823602ca102b2"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:97",
+      "sha256": "2d24dffc000304b0bb67f82c862e116cd71324e7dcb945280995e4b6b784e6b8"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:98",
+      "sha256": "417009fb49114f9bb01c99af72d98c14fd472eb0160b42a191c9f19862b04992"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:99",
+      "sha256": "3a1a681e86d136884f39202c4dc6e481cbcfc72b74d55d8ce8548a90b363fe67"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:1/line:100",
+      "sha256": "4fdc3180cdb5ac6a76dcccfff4412cb38e6646ee3d25289203b120caf796edc7"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:2/line:6",
+      "sha256": "3f7c8146b381f811ea68403b9a039079aa5356bea8f46971411cd613faddb96a"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:2/line:8",
+      "sha256": "f1466fa75086887463edb9ea4a7b9e04688c57f3a7c45ae47b2f899b079119ca"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:2/line:9",
+      "sha256": "6113e5251eacd77142af2cfe80002976ee0980f99047aaed723c54a49e229f76"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:2/line:10",
+      "sha256": "b2b55ce515f7c404544ae05d29733b4185ca45b7ebfd11985699e708c241437c"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:2/line:11",
+      "sha256": "9b101df13ad47b7bf4a4bba780c866767681d69495bfca110c00c057d35907c4"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:2/line:12",
+      "sha256": "6a95a1285dac05632ae3dff0a1e3c0f4b287496f1490f6a25811699f7288b7c2"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:2/line:14",
+      "sha256": "a9ce8e7947bad9e29241192772503c574efc9449b880fbd1539bc99f112d5df0"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:2/line:15",
+      "sha256": "f2357ff4812e16e517ef6774bb0af3ca32c18961da2546702ab2b6dac02fadb5"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:2/line:16",
+      "sha256": "e276a9efff67f764bee6aacc171bcc1aaaf4b6e1df52da2fb46795c8b42c609b"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:2/line:17",
+      "sha256": "2ac081d8c0bec80e196a916102850d1de2a10c2e2418f4c2d2bd2f0cce69f210"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:2/line:18",
+      "sha256": "0c2af2a864b88f801be5329cfc5ac51e211656a2c390db0d43d609f4771a1e33"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:2/line:58",
+      "sha256": "d0981a5c8016cfa9c988d6c4433c410d859ab9b4a3a3be22ad0835c9fc90e2ba"
+    },
+    {
+      "disposition": "page_metadata",
+      "locator": "page:3/line:6",
+      "sha256": "bd6990f7e29ce3eefa60a0dca4d9a9c12120ea97bacc5988f3bcb112a435883c"
+    },
+    {
+      "disposition": "page_metadata",
+      "locator": "page:3/line:8",
+      "sha256": "437aea62a5bd6ad4762e494c81b88532809a231477c82bdecf6fd6636908b7ab"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/line:11",
+      "sha256": "f0d98825da37a466b9a914886239134ef837241ec0b75470f0faadfd23107913"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/line:14",
+      "sha256": "a12e7889da3ebacc7808f152e2aae0bfd6e1dfc5cabe6844b15f17502838901a"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/line:15",
+      "sha256": "f91bb11353e4b978b97a458f03c9cdf7c83c35302c61a8fb8c427f94411f9272"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/line:18",
+      "sha256": "f1a02f65ebdc8ea8168f98ab5cfce362063fb662b63e833a263070a636cb69c4"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/line:19",
+      "sha256": "9e16359f53d72d3b6ff31b958533753330bf1d7f0f5d70438b0dc3ef1d789277"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/line:21",
+      "sha256": "4b658305f8c27a79a52709bac53e257064d445fdd1961d953f64d56601663a22"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/line:22",
+      "sha256": "faeb25db969243b6bdde3538f1e164105637efde94bbe545d8926c9b45bf6857"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/line:24",
+      "sha256": "9fdafac884d79c44ec2e68b5698f0965cb51721bc2da715f3f05aa76a72c6c77"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/line:25",
+      "sha256": "25c8deca3109928f6cbe919d6e37ea88d60ff899993243074c85ad92de0ff3a3"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/line:27",
+      "sha256": "e4e22680dfb26cbd7f0262506b1356eacb6e8c5462f1c2f7b881e56abda70d0f"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/line:28",
+      "sha256": "b5ca7bd8f33c443daf7a204341522c8b62edc69f0e91126f9796190f13684ad9"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/line:30",
+      "sha256": "286be629a457429ac18eba8a8ff3586760b1a00d681ee4daa2232e667a6feb10"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/line:31",
+      "sha256": "7d6e8d425d5818aafd238c4b23a6195422ab63ebf5ac4f0ad991d449a0206a0a"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/line:32",
+      "sha256": "21ea928faa1e66eae50a9b7cc92d639618e1b702f9ee72ef109ffa338a426f1a"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/line:34",
+      "sha256": "6ee165bfea1acfbcc87b8d646a971a93d5fcdbd1741e261d98d5da5d39fd39e0"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/line:35",
+      "sha256": "35a48f7b1f704a0ba155f82a3ba830f75b0d844f05e77e9ded159779c6d0e447"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/line:37",
+      "sha256": "f0ee1cbfa7fe42fd8568dfaf5d0dcea548ee26ef8b7756cb782db3bb6b647b1c"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/line:38",
+      "sha256": "a30c103ca1cb7138e93664d985298fe994284854c0595ddf1e4b3d73bf930cf9"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/line:40",
+      "sha256": "779b80e6f8e383c77d9bfecbbf6130806249fe218c5bf099d37f0bb08d9d6e43"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/line:41",
+      "sha256": "74d7f84b18138878de0d4d3c35d0ece3b855a1e0b5f022f21f9131b0a90ba4bd"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/line:43",
+      "sha256": "cee39dde41e156f09b33b6e2922a629638122c7eb6da2907fc21e2a3d13b0040"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/line:44",
+      "sha256": "f87f8ba7e1cf07a40135b60e2daf4a9cee3d8e6e30ba51bd991bb62d89122d85"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/line:45",
+      "sha256": "0e71d42ddf862a4b38a0e50b0ffa393eccf4132dd3f916d30b8ce9870068c991"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/line:47",
+      "sha256": "ef06a44b66c63fdd2bb965c262b84d1a613fd0192d46618b4a454c769aa26cf1"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/line:48",
+      "sha256": "eb56cb998faced8e99c77cadddf0bec3b54d2c7077ae4cf9241ec401130b070c"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/line:49",
+      "sha256": "9bfcc858cbcac68cd8083d0c27bb76fbc58852b6ef4f2f3c7708602bae29fc7a"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/line:51",
+      "sha256": "fa70d0c0a6edad63d9fe60a273068d6bd0da505905ece7dd3e7079d5b012f856"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/line:52",
+      "sha256": "a1e28ff3e7a322f6116ac2af83c28b6fa1b72945262e7e2c4b833aaedb58ac79"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/line:54",
+      "sha256": "452cc4d35726940bf88861c62b727c5bf5f2e8e08782932e566f34de01cffec3"
+    },
+    {
+      "disposition": "unresolved",
+      "locator": "page:3/line:55",
+      "sha256": "26d545922c53b468fab4bfae5b992a0da16e881fd85cf741dd1e4af0ae80d199"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/line:56",
+      "sha256": "5b540731b7ccf8b42a16859f8ed2002578500acb0a37dd2ea7dae7221325f466"
+    },
+    {
+      "disposition": "page_metadata",
+      "locator": "page:3/line:58",
+      "sha256": "d529e902756574febb620c187f9b66b2f45c630d3943366d38b6ba74e2d97cc2"
+    },
+    {
+      "disposition": "unresolved",
+      "locator": "page:3/line:60",
+      "sha256": "e7f6c011776e8db7cd330b54174fd76f7d0216b612387a5ffcfb81e6f0919683"
+    },
+    {
+      "disposition": "page_metadata",
+      "locator": "page:4/line:6",
+      "sha256": "510225d705e01af92dba538f15a43e4333ea83ce2bf237f5f70d070709e036f1"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:8",
+      "sha256": "fe33908344a72e8af4e7fbe9d73f1fdd8979c5bfc15b0cf6f603fa1f7af2fd53"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:9",
+      "sha256": "791d6ece4cb0b0c80e7a6336832a3ce09c77d36be7880471ec08cf70158fd33f"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:11",
+      "sha256": "aa8178a43bc294ea80c9f4c8e04cc792c8e74508af53a81d9d2d3f881b0abc20"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:12",
+      "sha256": "caad7fd8c928743b4219041f3973da21bd00c44fde348b23cbd0061d89d62f24"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:13",
+      "sha256": "9584f0039be3ceefdfdc9f905a288b7623e2351704dcf48a82d8c3b6e948bee3"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:15",
+      "sha256": "cc38e46155432eb4b58d8c6cb484637cb2c153d9929b9ceef6eb6ff129fc0019"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:16",
+      "sha256": "b2657fc53a1a6d886e287b3097a01c0fdf2fb416de444b5a0cebc982856815d4"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:18",
+      "sha256": "50e08f98863af5553a8ba3cf8a6cf19d0e6a4a5b887551347daab9c675eebb40"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:19",
+      "sha256": "d5612f49fe3435b118fb5359de8bcf5a2c2ff990c4ecaad85ce02398f56d2704"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:21",
+      "sha256": "fbc262bff59344eb8e0f4976fa8df59c153caee19540e51828a293c1d40f9469"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:22",
+      "sha256": "1e7a34bcafd1625bca3dfd5c0b9e2b713b361e6a5c3ff08b62fff90e05d3a616"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:24",
+      "sha256": "0f32a4053445aa5aa3ec3b800b2130b6e8b7eb9c70563b46bce10b7c3da16aed"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:25",
+      "sha256": "d6b5d16c3e1785b6a2d78d0628fae6e6ef062e4c667c43dd0e14a54c24634176"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:27",
+      "sha256": "79c8970962bac16cbb56460dd5162cf5f86bbe5e99ff6f75e3674684088ecfe3"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:28",
+      "sha256": "0189e35dfe24df2d284dbb554cc518879eceabe02fb67c9855a9324879767773"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:30",
+      "sha256": "9d6c74cd386a8d3fbc05e853e46611ddab889d04c650ed2265c78a6ad8889157"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:31",
+      "sha256": "c586867d812bdbc8599688e15c1f2fa33e7c186b75bd23052e01b69c3993bf0a"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:32",
+      "sha256": "30345531adbf1021388cf247665d6e1010e12b93a7208f78261e5d288d059868"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:34",
+      "sha256": "235b087da894afd55cdeac15fec57261d50355d8110d3aca07ed79e50a90329d"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:35",
+      "sha256": "28b17380883fc87d283dd7b277401f08176db5081b513ab35b3c9e1770275cce"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:37",
+      "sha256": "4b41244689857a9fc69f2caaabf8efe7b8793289b1149ae0aa4cb73aae056013"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:39",
+      "sha256": "a30fda828fd468a4cafb94d9f6ee3b7a18fd86faf8f8431a1602a843fa210329"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:42",
+      "sha256": "06a9d8fbc08c1e58cb4921217d767b9d82a76ab8806aaaae49d28a1a1b6532e2"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:44",
+      "sha256": "351836b76db49539282e6ec4421f269e2fe5ef397eba8c78f27df338292687d1"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:46",
+      "sha256": "e4b9383bdc3aec6bb44782d9d00186b6473d6fc81d3dd81cf7fde951ac2a3793"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:47",
+      "sha256": "2c019711b27588acaaa2614fdd7585aeae81df2674f12b729127ef54f967f549"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:48",
+      "sha256": "a4542df94cb2122cb96ffae56cca7ecba46e94df16cc71bb1db93e6652bd2716"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:50",
+      "sha256": "6ac7ab487f790568deddc609a6247ac2c2dad59ff5b7cb73bc226a1bdedd0a9b"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:51",
+      "sha256": "896cb1c7c47ec0756750496e1244fdd4b7fbf430ef7c2bd65d4adec91c35cc99"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:52",
+      "sha256": "bfd8e3f983bf24f133fa8780881eef0ea07bc2c2a57eec0a0a690cc526a73518"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:54",
+      "sha256": "bf9dd8d43e37d2b6c6ddec5a3b204095cb30d8f46e30dadb2a95ca5d1a2b7365"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/line:55",
+      "sha256": "6a55c2a66dc881e43a08d8bb78dbd72896c4522b36983efd8ef22b471db9fa33"
+    },
+    {
+      "disposition": "page_metadata",
+      "locator": "page:4/line:58",
+      "sha256": "f35a59fc0aeaab8ac7a195e23c5c597f09d719e88f8141722bb41c1614984050"
+    },
+    {
+      "disposition": "page_metadata",
+      "locator": "page:5/line:6",
+      "sha256": "bd6990f7e29ce3eefa60a0dca4d9a9c12120ea97bacc5988f3bcb112a435883c"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:8",
+      "sha256": "7307fa7e9d66dc918a4aa32fffaa3d4126d6a0da486b9bbbba239413e081bff1"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:9",
+      "sha256": "29f5ca93d8f5cf73d186fac5f992141c0d9780ac083ccb5fc0e696e1d8f321fa"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:11",
+      "sha256": "a1c9faad3ab3c5f9a0dd5fd92459fc4e62d1e4f78f7efc5cd8d77291d642833b"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:12",
+      "sha256": "e0dc0b8018d7158d49e5a1a5e56adf759504fe1685ae738f67155c64bbbd9651"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:13",
+      "sha256": "ea7f9599005a5be3d6354de488d722f5382986d8ddf021d37e0d57efe0a1c753"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:15",
+      "sha256": "ef410abcb8459f3e5de5ada006db273dd224e13384fc5d254609f82da4d19798"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:16",
+      "sha256": "4f539c8e0428773966d79f71eba9c25672943969411558fb11826189e69e18df"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:17",
+      "sha256": "0954f40bb6ed4e4aa6971b81bb5fddd4acee920847374263b41ec7276a96fadc"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:19",
+      "sha256": "98bc58510e90f6237b37608ccd1020ab0c16b8312798e2a7344d64fc2e1bade5"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:20",
+      "sha256": "05cf2e4007ef1d6d27c4bff33a7e4440c62e53fa8ca80ced3bde45b94be908ca"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:21",
+      "sha256": "818a929e604b583b72ad2a9c4bdadce48df162c92002712d53f40b2e521ad0c5"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:23",
+      "sha256": "3a020076f0ce332d7ea7f1e65dcb75fb1289f604958a777a39891e9abcd862b4"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:24",
+      "sha256": "ee90fd62f673bdfac0a4e6a28546522cc6ec2935bb50ba07f51d6312c75c868c"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:25",
+      "sha256": "d0131368632c653991e90a11bca4ba3620683fb88e6b2a7c00f89e45a8c32a11"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:27",
+      "sha256": "8f6eda3820586a0b38e97124099021fd72e334317c4a37641252298b60963fe7"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:28",
+      "sha256": "3bc7c46fe3f40b488156ca2d96898cf4271e231910bfd5ff9749172134a9292c"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:29",
+      "sha256": "23f75339d515dcea65540b9e204ab1906a57424f22ad1ea802fe824988c9404c"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:30",
+      "sha256": "9e17733dde69554ec78345b9d6aa023c769039292ed98bf69d96e7180a13ec6f"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:32",
+      "sha256": "0ef1a4779404b8b1b4e3f1c99fcc2efcd7afa895d9856037e3aeae701d2938a0"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:33",
+      "sha256": "8ae1f56669948b1fdc9627d8f9ac76033345e1246013415219e7111b1d7232de"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:34",
+      "sha256": "67d81d2f447f9d4717cb0a05ccf60423d71f782c71a6752ad2002c986c85f4ac"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:36",
+      "sha256": "213c0de9aaaf6783ed0e55fe3dc7595b9181e7c614194be9eeb03c989afbe884"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:37",
+      "sha256": "0d1fe0a1144c5deea1f31e60c8b3473e4a838286017326c3acc3c2d2e4529d0d"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:38",
+      "sha256": "eaa1af6dbe41e1cef94c034880aecb017cd53f812492efcc5f05a4e9be80fbfb"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:40",
+      "sha256": "e0e092a0bec3e6dba0b05df5294c2aaeaa352802dbaed04201588cb717dc1090"
+    },
+    {
+      "disposition": "unresolved",
+      "locator": "page:5/line:41",
+      "sha256": "26d545922c53b468fab4bfae5b992a0da16e881fd85cf741dd1e4af0ae80d199"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:42",
+      "sha256": "d322e5aa8744ed6286fe6142286dc87d6eb9d2823ac4b1baa91ea5ba20a3ddca"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:43",
+      "sha256": "5adbeba269092404cba950ff249fb7ddb76c71bacfb4a5212ef8ed9229de0286"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:44",
+      "sha256": "00890175a640b861ead50389af067ee58b5f51f274f6f278c8f8dbb1c68b400a"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:45",
+      "sha256": "c91dbe70368ae6d49bcd947eb67f8f33c02c29c73e2c086c6149bde63a0d7f19"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:46",
+      "sha256": "1ba1cafee9d619ff2701013bfd7878f5a789ad40e52ad8856554c62d3110990a"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:47",
+      "sha256": "0a7df89c9741149139bcf5e1dd938b6658fc2070b33110e5071ceaf16354077c"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:50",
+      "sha256": "49a23b91ed0497d5116f32251e721e022f326f8710533dc167339d21d3f293e8"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:51",
+      "sha256": "20b7ad531c9fa07344c8af39efe945970137f55b384c30797a938c46cebfaea2"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:53",
+      "sha256": "6036e1af7e895f67fc9dc55a75c62ef9f2b64127bbaad07b6ff7edcd8c72cf99"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/line:54",
+      "sha256": "754a2a6afd652c65b0f65876477c504080467a352a91a5b4eb4fdc488bd0ea9c"
+    },
+    {
+      "disposition": "page_metadata",
+      "locator": "page:5/line:58",
+      "sha256": "2e581fa608dc8745a24ccad4ac27b96396c44a3cf57ed1571f13d25656a44f81"
+    },
+    {
+      "disposition": "unresolved",
+      "locator": "page:5/line:60",
+      "sha256": "e7f6c011776e8db7cd330b54174fd76f7d0216b612387a5ffcfb81e6f0919683"
+    },
+    {
+      "disposition": "page_metadata",
+      "locator": "page:6/line:6",
+      "sha256": "510225d705e01af92dba538f15a43e4333ea83ce2bf237f5f70d070709e036f1"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:6/line:8",
+      "sha256": "a63eef434e23e4395e5743c2fb118c2347db6b3a34b76606edfebff120a89f98"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:6/line:9",
+      "sha256": "6187747a3e5f8f95c8190816349fc006f757d6f57c07be16443b24999344f336"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:6/line:11",
+      "sha256": "485fea4678ca30d9b8c54295faceb3d4b702de372740b0933b28478c8fc22dd7"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:6/line:12",
+      "sha256": "70dd89eff69558fa809de05f4d5fc2e8ed8d42891bee2faec9cec9f723e10b01"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:6/line:14",
+      "sha256": "403881fdb4699114fd84d1c73bd47daa02e2e76f77f3d5600f8c6dfd4f8269e5"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:6/line:16",
+      "sha256": "8d7b93a8b2813524d408ebf2a96247e2e303e1809dd9a0bd473fcbdaef82b888"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:6/line:19",
+      "sha256": "b06fb4e7c0d81ea7fb848e06046a3615e44d77740c8dc8e59ecac9e138b1b2b9"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:6/line:20",
+      "sha256": "8a0f9a2213e17a97fb3fc76ecee9dcd6fc7efc21abc82163e82a415dd546979a"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:6/line:22",
+      "sha256": "203e0e4cb98ad9a6c1188ed8faa368d0f0a5972c7709af834f8b2a8a86a4434a"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:6/line:23",
+      "sha256": "0aec0e392c269a0a0d4fd950d24e362ce039c11bcdadf46914dd9a29cdb9f1ec"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:6/line:26",
+      "sha256": "55239dbf17339f2dea0ef3e9000a4b0a8a3c2571d3f6d93599d2348d03b94edc"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:6/line:28",
+      "sha256": "e3c2164ee0f462c31cfca3138e727f8e6f4e2774ab67e534ca07892a60550c51"
+    },
+    {
+      "disposition": "page_metadata",
+      "locator": "page:6/line:58",
+      "sha256": "3e38e280d931e0762868c7a1b46c9b5207ca888e4d3f4e1ad908b73933c6f6b0"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:7/line:6",
+      "sha256": "908164b78f5d293e8b737f05afe84e6d328175af1c0d4599368adeeb0d851f7e"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:7/line:8",
+      "sha256": "950d10e3034d7f7fa2ea7a064eb8fdd0ca4c3d65c679e4d7a7f623f9491cca00"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:7/line:11",
+      "sha256": "0295b5a9a6b63425748594b40fe4901e35709a1aa64961466f1e00070c8f3254"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:7/line:12",
+      "sha256": "a9344e6514e37dbdeb268b4301f1fbf4ba9c4c6fc85abc3a41593e3af800f9e6"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:7/line:13",
+      "sha256": "0f4f39c8f88e3d3b472d949828db6a4ba92168ca9f086d5774f4618da6860a81"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:7/line:14",
+      "sha256": "ed6c2386d85e1237813ab32f2a6165632084922c06c35db5dac90dc329366dbb"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:7/line:15",
+      "sha256": "139a7ee7a005d2320cd842a1790751958f06b26ce6f57bbf681df8a64d9a6946"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:7/line:16",
+      "sha256": "425c72614d7cdb91550df181772fd386bc7de6b4f4612b65d328c3ecf5aba84f"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:7/line:17",
+      "sha256": "0837e7be1c0515975bfbec49ae29041e47709cf228760805ed7a3b6a319700f7"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:7/line:18",
+      "sha256": "cf0c7a3120ec99b2fec30e3b284d20f601d65cf43f26d6e454c465ab87d8d73d"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:7/line:19",
+      "sha256": "94e00e55927c90848a7e76ed9bbe97b19e1bda8c1d21109189c52f53d8405b78"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:7/line:20",
+      "sha256": "74098ad0c6d4fe651bc623238294fb4189867b299b11684616dfb8bf61cba6a5"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:7/line:21",
+      "sha256": "178780625e71483030485e81240134833b0cf2d8990d0103b3e94af566cbfc8d"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:7/line:22",
+      "sha256": "14c71b473c6c0620c0042d2282ab53d0f58e1a089829d8ae6896b40b98894163"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:7/line:23",
+      "sha256": "fd68eda9fcb53d6ed91ad2618722ce2ba346da3e1781713b9b0ce3e4cdb0cf89"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:7/line:24",
+      "sha256": "3401906e134f2ef4d9d68a1e74de2d47eb7b83278a283d62e0546c5889aaf113"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:7/line:25",
+      "sha256": "dac82413491011d22b1aec443c7040083a71da050862e57eab8d134699e091ec"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:7/line:26",
+      "sha256": "b0085ce1a97ef6f0d43ed6f3c22c49abda3934234e80d842ac1c4542dcd28927"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:7/line:27",
+      "sha256": "e18c84fa4fb3f8befc80e0b7e7ca1a9a9da462d931cb933a7eaa7b80aef51a3e"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:7/line:28",
+      "sha256": "934ce50a1882e1b3bff75dde7e76a706083d382693eba6ca903d5e1d050b6da6"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:7/line:29",
+      "sha256": "fff6978386b9b4ef04998bb98b6cd0d532b7f4b7be01ea33a90d9ab72caca7d0"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:7/line:30",
+      "sha256": "391214f5be90b230ab92873bbd8fbdbfc2962133060d165063c92bd472410b5f"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:7/line:31",
+      "sha256": "f08478f284228486957d8997a1df6f267640e8cd4bc393aaa1a0b0e2e7f0e393"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:7/line:32",
+      "sha256": "54ad647d65a36e279ef02867ccb28aee919275feb9858ea755e4a7e38d00a29d"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:7/line:33",
+      "sha256": "035757844af27809db237ca4735c52273ea27accc7340dd6c237e633a583c0d2"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:7/line:34",
+      "sha256": "f89eac38627197d8cb2910c9b528c2c1d03e81d0d9b6e5f04b4e2080c0cdfa12"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:7/line:35",
+      "sha256": "aa90dd96f3477d7ea0ad37e874768cc9872c763c15535cb014c2b3a1533f69eb"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:7/line:36",
+      "sha256": "145b8bd1ee8311d78b96fabaeea5475a454f0dba81aecba9924f1c5c0dfac15b"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:7/line:37",
+      "sha256": "853a282ee78f10befe2586684f3db76c4b169131301ca54d5bbfb13b0c94d2ed"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:7/line:38",
+      "sha256": "26d545922c53b468fab4bfae5b992a0da16e881fd85cf741dd1e4af0ae80d199"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:7/line:39",
+      "sha256": "870b504c770bbdfd7043e45818edafe9107ac4edf8dde4b7c51a23199c1578f7"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:7/line:40",
+      "sha256": "29b19d7e78ad971ece6fa6ef75f3e1e31cf8673730111567ec22e61650244644"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:7/line:41",
+      "sha256": "008ca079fd51de927cc7dd2646647ba5ff4e1360397edc61ba46da4ccb2eab1d"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:7/line:42",
+      "sha256": "92f089f2a70df5d960aac7c83dac8bc454c2cb1fa9a8e3061a8f6a84f338f2d1"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:7/line:43",
+      "sha256": "156790edd99a401580bd7e029ee561e206a7ecbe09499bd6e38dd3b6fdf2dc9f"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:7/line:44",
+      "sha256": "39c298a9ca6e9556f9af79265f6850bb330d495b3ae6cd2a19b3fc64b91f6feb"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:7/line:45",
+      "sha256": "2c20cfc88a59e3523d47e120bc1e73318c4025fa2917d9803ce57c93bc535e2b"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:7/line:46",
+      "sha256": "38cba33cb9dc602f40bbc07766155cae2e7797ebda920e59366d5e842c2a6bd4"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:7/line:47",
+      "sha256": "e6a175d5980eb68fd866d33de125789090eca62745f2e0ca7bf335a0a5677dd7"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:7/line:48",
+      "sha256": "359127d9dc7838ac6e96adbc5a99409fa9940f95d2140f6552d7c1f2ed5e4f31"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:7/line:49",
+      "sha256": "a2b648c9d9328d5d38e236f12c012d748c6fe001dd3b3ab18dae395b3337b45f"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:7/line:50",
+      "sha256": "b8ec997fafd31d2dfbac31c149e7760117d147fe3369b866a248176a9db17fc3"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:7/line:51",
+      "sha256": "b355f5aab75b2202fc412f1c4781ef0f9c48f8aceb4e5d9c25c8ce82eee726f7"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:7/line:52",
+      "sha256": "42b2fb7b1690909bf8b2643bd927cd6bffe07675fe283a090e3fd46320738b0b"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:7/line:53",
+      "sha256": "b9e7f9bd2ca62f71db52471632826a45306e6cf1848d7a57a718e070e69b85b3"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:7/line:54",
+      "sha256": "9527caacef079d0e55dfd3175da9b606946712593a4f46bce49dc770631c1567"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:7/line:55",
+      "sha256": "a66da8807a291a0054455539c324ea1ef947325b923e253ced9581a6e2ddbbe7"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:7/line:56",
+      "sha256": "879b56e2619680c5adfad62716243249cb8ea9ec0d807aa63f637c9eab998ebe"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:7/line:57",
+      "sha256": "61dc264774c34a61c892486ec2bb9c666b645e07b0b7a4a26e8034bbc1c60af9"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:7/line:58",
+      "sha256": "b3efe262bacea18d4adaec391d9e1b333324c1e824debd812525a58f8ed8794c"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:7/line:59",
+      "sha256": "7d8008a7c299a239617c0b69be3d6cebdf85ae5340c1accd71a8a38815712027"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:7/line:60",
+      "sha256": "05547307b1b9a16b946952944df86343eeac32b3503d83a447e1e4115e84e34f"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:7/line:61",
+      "sha256": "142e451ffc5c985fc8f7620a6f8b9ab359837cb064375e1cc8496d0059389281"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:7/line:62",
+      "sha256": "475dcbc670fd0b90a0fafa4be65a7e461932fe702f5b25ba5999aa704302cc63"
+    },
+    {
+      "disposition": "outside_contents",
+      "locator": "page:7/line:63",
+      "sha256": "19581e27de7ced00ff1ce50b2047e7a567c76b1cbaebabe5ef03f7c3017bb5b7"
+    }
+  ],
+  "packet_sha256": "02dea16f8377469447678ca85a8b64bc2250a19af940ed1d0fb5020f52720709",
+  "publication_ready": false,
+  "source": {
+    "id": "ds_dac_contents",
+    "import_revision": "5169396226a8d7d02fe6c09ade036c648ad159d924dfd66ce50081e8d43de4d8",
+    "origin": "https://www.st.com/resource/en/datasheet/stm32f407vg.pdf",
+    "sha256": "1f41b4fa49a9960215ebb76cd0a75f20241db82eed60d308345a80463caeed22",
+    "target": "STM32F407VGT6"
+  },
+  "status": "pending-review",
+  "unresolved": [
+    {
+      "locators": [
+        "page:3/line:55"
+      ],
+      "reason": "unrecognized_contents_line",
+      "text": "BAT"
+    },
+    {
+      "locators": [
+        "page:3/line:60"
+      ],
+      "reason": "unlabelled_numeric_line",
+      "text": "6"
+    },
+    {
+      "locators": [
+        "page:5/line:41"
+      ],
+      "reason": "unrecognized_contents_line",
+      "text": "BAT"
+    },
+    {
+      "locators": [
+        "page:5/line:60"
+      ],
+      "reason": "unlabelled_numeric_line",
+      "text": "6"
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "checks": {
+    "configured_launcher_unrelated_working_directory": "passed",
+    "connected_probe_preflight_and_diagnostics_over_stdio": "passed",
+    "corrected_application_rootless_full_link": "passed",
+    "corrected_artifact_revalidation_over_stdio": "passed",
+    "hardware_test_cases": 33,
+    "local_documentation_links_validated": 138,
+    "mermaid_diagrams_validated": 11,
+    "mock_probe_fault_identity_timeout_output_cases": "passed",
+    "real_openocd_configuration_parse": "passed without adapter initialization",
+    "real_openocd_tcl_guard_tests": "passed with mocked memory and no adapter initialization",
+    "real_stdio_optional_tools": "passed",
+    "reviewed_clock_model_test_cases": 8,
+    "ruff": "passed",
+    "wheel_and_sdist": "passed"
+  },
+  "corrected_application": {
+    "artifact_id": "0f3095c100e6311acb62ad085b9d6ec08e9c0a249741f6544a40280e94e39c44",
+    "compile_passed": true,
+    "elf_sha256": "1e16a8a32774e74b74feb19ab6dbf0fa2f05b28c986fdbec40e2fb4332b6a0bc",
+    "flashed": false,
+    "image_validated": true,
+    "initial_sp": "0x20020000",
+    "negative_original_fixture": "tests/fixtures/f407_led_button_before_clock_fix",
+    "physical_behavior": "not tested",
+    "reviewed_test_copy": "examples/stm32f407g-disc1-led-button/validated_opencode_application",
+    "source": "temp/led_button_praxis_test/application",
+    "source_sha256": "daaac3eb1289537001931488bfb63618662db2468966f2844e2ba3c437109d02",
+    "vectors": 98
+  },
+  "date": "2026-10-10",
+  "live_observation": {
+    "clock": {
+      "ahb_divisor": 1,
+      "basis": "PLL derived from assumed HSE 8 MHz",
+      "nominal_hclk_hz": 168000000.0,
+      "stable_sample": true,
+      "systick_period_if_processor_clock_ms": 1.0,
+      "systick_reload": 167999,
+      "systick_source": "unverified: CTRL omitted because reading clears COUNTFLAG"
+    },
+    "compatibility": "family/core/flash compatible; exact MCU package and PCB revision not detected",
+    "cpuid": "0x410fc241",
+    "device_id": "0x413",
+    "execution_state": "unknown",
+    "fault_address_valid": {
+      "bfar": false,
+      "mmfar": false
+    },
+    "fault_status": {
+      "cfsr": "0x0",
+      "hfsr": "0x0"
+    },
+    "flash_kib": 1024,
+    "observed_at": "2026-10-10T17:42:00.424362+00:00",
+    "physical_behavior": "not tested",
+    "probe_product": "STM32 STLink",
+    "programming_reset_halt_requested": false,
+    "running_artifact": "unknown",
+    "signals": {
+      "button_input_sample": false,
+      "gpioa_clock_enabled": true,
+      "gpiod_clock_enabled": true,
+      "led_a_output_latch": false,
+      "led_b_output_latch": false,
+      "limits": "Disabled GPIO clocks suppress port reads; running firmware can change clock gates during sampling."
+    },
+    "silicon_revision": "0x100f",
+    "unique_identifiers": "Omitted from public record; retained in private reports"
+  },
+  "private_evidence": {
+    ".praxis-output/hardware-inspection/mcp-session.json": "ac70dbeedb6afa4ba9085b5bf6b836731bbcd3c2d26bd02d7fc51c92d85c971a",
+    ".praxis-output/opencode-clock-fixed-build.json": "576e81dd43f9bf68a750470c9985be23f6d52d595d6bd1c930cf040a9acba722"
+  },
+  "profile": {
+    "asset_revision": "22310c7ad54daa553cf5cb11e4db08e4c8f9e93e191f3f12ec8410dd1fb40b59",
+    "backend": "Open On-Chip Debugger 0.12.0-01004-g9ea7f3d64-dirty (2026-08-27-23:05)",
+    "bundle_revision": "53474b5de83dddffbdccfb86057c6ec9ad362f1949afd6a74e90effb2c27fc9b",
+    "physical_board_revision": null,
+    "revision": "0747e736560fc24165486f4a3c27a99992b9136134660b4f0c905f96b076522d"
+  },
+  "regression": {
+    "command": "PRAXIS_REQUIRE_EXTERNAL_TOOLS=1 .venv/bin/pytest -q",
+    "duration_seconds": 55.82,
+    "environment": "Project-local rootless Podman and KiCad 9.0.4 enabled; OpenOCD 0.12.x installed",
+    "failed": 0,
+    "passed": 221,
+    "skipped": 0
+  },
+  "release_gate": {
+    "blockers": [
+      "Independent review of the exact current bundle revisions is missing",
+      "Independent review of the exact firmware asset revision is missing"
+    ],
+    "release_ready": false
+  },
+  "release_ready": false,
+  "remaining": [
+    "Independent engineering review of exact bundle and asset revisions",
+    "Physical PCB revision and SB20 confirmation",
+    "Target-bound programming/readback and authorized execution control",
+    "Registered physical stimulus and observation tests",
+    "Bounded hardware repair loop"
+  ],
+  "schema_version": 1,
+  "scope": "F407 read-only ST-LINK inspection and corrected application verification; no firmware programming or physical scenario test",
+  "tools": [
+    "build_firmware",
+    "get_build_profile",
+    "inspect_execution",
+    "inspect_target",
+    "list_debug_probes",
+    "validate_firmware"
+  ]
+}

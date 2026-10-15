@@ -3,7 +3,7 @@
 from pathlib import Path
 
 from praxis.adapters.manual import prepare
-from praxis.bundle import digest, read_inside
+from praxis.bundle import digest, read_inside, read_source_inside
 from praxis.coverage import inventory
 from praxis.errors import PraxisError
 from praxis.jsonio import load_json
@@ -22,7 +22,7 @@ def prepare_review(profile_path: Path, archive_path: Path, entity: str, register
     for source in profile.sources:
         if source.id in paths:
             raise PraxisError('DUPLICATE_SOURCE', 'Source identities must be unique')
-        hashes[source.id] = digest(read_inside(root, source.path, 8 * 1024 * 1024))
+        hashes[source.id] = digest(read_source_inside(root, source.path))
         paths[source.id] = root / source.path
     if profile.definitions not in paths:
         raise PraxisError('UNKNOWN_SOURCE', 'Profile definitions must name a registered source')
@@ -43,7 +43,7 @@ def prepare_review(profile_path: Path, archive_path: Path, entity: str, register
             raise PraxisError('IMPORT_INTEGRITY', 'Manual evidence changed during preparation')
         parts.append(dict(**load_json(data), artifact=name, artifact_sha256=expected))
     for source in profile.sources:
-        if digest(read_inside(root, source.path, 8 * 1024 * 1024)) != hashes[source.id]:
+        if digest(read_source_inside(root, source.path)) != hashes[source.id]:
             raise PraxisError('SOURCE_CHANGED', 'Source changed during header discovery; retry against a fixed snapshot')
     if digest(read_inside(root, profile_path.name, 1024 * 1024)) != digest(raw):
         raise PraxisError('SOURCE_CHANGED', 'Profile changed during preparation')

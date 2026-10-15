@@ -129,7 +129,8 @@ def test_bundle_preserves_complete_tables_source_qualifiers_and_prior_modes():
     assert '| DOR1 | 0x02C | 32 | — | RO |' in text
     assert '10-bit' in text and 'not' in text and 'settling' in text
     assert 'ds_dac_143' in text and 'rm_dac_450' in text
-    assert all(len(text.encode()) <= 65536 for text in bundle.documents.values())
+    assert all("## Register map" in bundle.read(path) and "## Bit fields" in bundle.read(path)
+               for path in bundle.manifest.peripherals.values())
 
 
 def test_retrieval_requires_index_and_every_dac_prerequisite():

@@ -16,6 +16,7 @@
     "pll_q": 7,
     "vdd_mv": 3300
   },
+  "compilation_contract": "compilation_policy",
   "definitions": "definitions",
   "devicetree": null,
   "header": {
@@ -351,6 +352,15 @@
       "origin": "https://www.st.com/resource/en/user_manual/dm00039084-discovery-kit-with-stm32f407vg-mcu-stmicroelectronics.pdf",
       "path": "reviewed/um1472.provenance.json",
       "version": "UM1472 Rev 9"
+    },
+    {
+      "authority": "configuration",
+      "expected_sha256": "03ba7e40d86506e1df732e1a14f87f60f47acfbc7c54088d09ea733936f93a03",
+      "id": "compilation_policy",
+      "license": "MIT",
+      "origin": "Explicit publication scope migrated from existing reviewed target/profile policy; not independent hardware sign-off",
+      "path": "contracts/profile.json",
+      "version": "publication-policy-v1"
     }
   ],
   "target": {

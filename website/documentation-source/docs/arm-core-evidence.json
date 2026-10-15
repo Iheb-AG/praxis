@@ -1,0 +1,480 @@
+{
+  "advisory": {
+    "affected_document": "systick",
+    "id": "PRAXIS-2026-002",
+    "old_files_unchanged": true,
+    "old_image_flashed": false,
+    "superseded_revision": "e60c26a7ba6580c5ec8fcf98fbbeb1ba470b86d252242d19c3a62507db06e5d7"
+  },
+  "bundle_revision": "edb8249ce849c59e6642f2edab2b58e036bc0105925897d8a61c04449b00f7e5",
+  "coverage": {
+    "authored_workflows": 33,
+    "counts": {
+      "blocked": 1,
+      "fields": 2131,
+      "published": 41,
+      "register_blocks": 42,
+      "registers": 523,
+      "reviewed_subsets": 22,
+      "unmapped_types": 11
+    },
+    "mode_contracts": 32,
+    "overall_mcu_completion_percent": null,
+    "ready_workflows": 20
+  },
+  "date": "2026-10-13",
+  "determinism": {
+    "actual_mcp_publications_byte_identical": true,
+    "files": 49,
+    "maximum_document_bytes": 65460
+  },
+  "firmware": {
+    "artifact_id": "c56b2a54d7c120f0c5207e9837ca69c457a1a2b474b0bdfb4a4528161331f6b0",
+    "compile_passed": true,
+    "flashed": false,
+    "image_bytes": 1736,
+    "image_sha256": "664160639a9780c8a8736a2b039d7308678fc18068897d17ce6a39fa9be7d065",
+    "image_validated": true,
+    "main_sram_stack": "0x20020000",
+    "physical_execution": "untested",
+    "source_sha256": "aa614a801753b13e8e7bf5b17becac3bfb7a0964ed646761cc416f87c1d42524",
+    "strong_systick_handler": true,
+    "systick_vector_matches_handler": true,
+    "systick_vector_slot": 15
+  },
+  "format": "praxis-arm-core-evidence-v1",
+  "limits": [
+    "Synthetic effects do not establish physical core timing or exception delivery.",
+    "Each supported mode is scoped; USB/Ethernet/SDIO/RTC/bootloader workflows remain incomplete.",
+    "New STM32 knowledge profiles do not inherit F407 firmware/hardware support.",
+    "Qualified v1 still requires native KiCad and independent exact-revision reviews."
+  ],
+  "mcp_scenario": {
+    "bundle_revision": "edb8249ce849c59e6642f2edab2b58e036bc0105925897d8a61c04449b00f7e5",
+    "checks": {
+      "artifact_revalidated": true,
+      "complete_documents_within_limit": true,
+      "index_gate": true,
+      "matching_bundle_pair": true,
+      "mode:rcc/hsi16_core_checked": true,
+      "mode:scb/flash_vector_table": true,
+      "mode:scb/systick_exception_setup": true,
+      "mode:systick/core_clock_interrupt": true,
+      "no_hardware_tools": true,
+      "signal:LED_A": true,
+      "target_compilation": true,
+      "three_readonly_tools": true,
+      "workflow:feature_flash:False": true,
+      "workflow:feature_usb_otg_global:False": true,
+      "workflow:systick_1khz_interrupt:True": true
+    },
+    "format": "praxis-workflow-mcp-replay-v1",
+    "hardware_operations": 0,
+    "limits": [
+      "Source/retrieval/compile checks do not establish physical behavior.",
+      "Workflow readiness is limited to the exact published operating contracts."
+    ],
+    "passed": true,
+    "tool_calls": 10,
+    "workflow": "systick_1khz_interrupt"
+  },
+  "qualified_v1": {
+    "blockers": [
+      "Missing native kicad-cli",
+      "Independent review of exact bundle revisions pending",
+      "Independent review of exact firmware asset revision pending"
+    ],
+    "ready": false
+  },
+  "source_review": {
+    "complete_rendered_pages_reviewed": [
+      227,
+      234,
+      248,
+      251
+    ],
+    "independent_review": false,
+    "ingestion_calls": 58,
+    "manual": "ST PM0214 Rev10",
+    "pdf_sha256": "fb54012a46c674a26dee56bc8cdfa281315f78634f18998001144980b08d1b03",
+    "trace": [
+      {
+        "is_error": false,
+        "phase": "ingest-01",
+        "record_sha256": "2cc6e830c53feecbe84c1f4ce84274eca172c0984b72e215ffed482d2615cc53",
+        "tool": "get_ingestion_profile"
+      },
+      {
+        "is_error": false,
+        "phase": "ingest-01",
+        "record_sha256": "6ea23bd52c20af2eee61e26475e15ac70a33c8d5ecd562951f7992e5399a042d",
+        "tool": "acquire_source_evidence"
+      },
+      {
+        "is_error": false,
+        "phase": "ingest-01",
+        "record_sha256": "065666b940d2ad8ff0dae2ee11ee907a8fc18f72f8ef387034db1e879f331f34",
+        "tool": "discover_source_declarations"
+      },
+      {
+        "is_error": false,
+        "phase": "ingest-01",
+        "record_sha256": "58a0a711d3d0e7fa022bb6e0820a71d730958b0f78764691051ab7f1ec93ddb5",
+        "tool": "discover_source_declarations"
+      },
+      {
+        "is_error": false,
+        "phase": "ingest-01",
+        "record_sha256": "1598823483a76a8abd470d6e1ab3dfc3ccc9537917bf8d7fd5505f2ffa91b55b",
+        "tool": "read_source_evidence"
+      },
+      {
+        "is_error": false,
+        "phase": "ingest-02",
+        "record_sha256": "87f3c9da82496421bb24669c74d4ab3c649e7a53068122dcb45a4868dc4a1e43",
+        "tool": "read_source_evidence"
+      },
+      {
+        "is_error": false,
+        "phase": "ingest-02",
+        "record_sha256": "5ca13ce0fb0a512c379bcc6c672239fff043cb0d922da672e3ea0a14cc6c9f11",
+        "tool": "read_source_evidence"
+      },
+      {
+        "is_error": false,
+        "phase": "ingest-02",
+        "record_sha256": "79f063c5a96b6bb4b7f8206cbe2f6680cbc8618469bf9d524fc798a76117d557",
+        "tool": "read_source_evidence"
+      },
+      {
+        "is_error": false,
+        "phase": "ingest-02",
+        "record_sha256": "c1bf1daa2a18e1925da5a5a29104475b02a7b5fe003080d3d5bcf8ae74f63690",
+        "tool": "read_source_evidence"
+      },
+      {
+        "is_error": false,
+        "phase": "ingest-02",
+        "record_sha256": "83770e898b237ac2c79e46961408c095c83749b18491a4a657937ff25c30276b",
+        "tool": "read_source_evidence"
+      },
+      {
+        "is_error": false,
+        "phase": "ingest-02",
+        "record_sha256": "7fcdc4b0d6b234006277cf3f685e0ca62d22793bb9f3a44b2b69526cb3232251",
+        "tool": "search_source_evidence"
+      },
+      {
+        "is_error": false,
+        "phase": "ingest-02",
+        "record_sha256": "f2534dab54956fad0ef4e7f426fabb65e4ff9bf201e33733d7fab214a1f0cb06",
+        "tool": "search_source_evidence"
+      },
+      {
+        "is_error": false,
+        "phase": "ingest-03",
+        "record_sha256": "f87e1a539607776a04524fedb69cf70f4a0f382b0f30c146caa5b529d63e1585",
+        "tool": "read_source_evidence"
+      },
+      {
+        "is_error": false,
+        "phase": "ingest-03",
+        "record_sha256": "ae307513ce27482637f7792a4693f8d7bd04fc1e834bbc84ec3ca4551df1427c",
+        "tool": "search_source_evidence"
+      },
+      {
+        "is_error": false,
+        "phase": "ingest-03",
+        "record_sha256": "e093793f191736ced08fecc9d6a1e7f77ca3d4027c425ab6d90fe07e53bcd1d2",
+        "tool": "stage_cached_source"
+      },
+      {
+        "is_error": false,
+        "phase": "ingest-04",
+        "record_sha256": "4bc24b3503a3b72527fba95e0172c42b2b75fe879f7b9d29528a2ca29d59e41d",
+        "tool": "stage_cached_source"
+      },
+      {
+        "is_error": false,
+        "phase": "ingest-05",
+        "record_sha256": "ab521a98538d91ad525c26a80e3277c71a5422347ff5296d64bf52ce8e00d6a3",
+        "tool": "read_source_evidence"
+      },
+      {
+        "is_error": false,
+        "phase": "ingest-05",
+        "record_sha256": "0b9fd4f21132dcddd11e36b719f9f2a4d9cb33e786c0ea27bf608b3f865ce094",
+        "tool": "read_source_evidence"
+      },
+      {
+        "is_error": false,
+        "phase": "ingest-05",
+        "record_sha256": "7750a4b8e8dbe6d79167b659f1b4b73687e00d04528150d0a4aeb950e10daa1a",
+        "tool": "read_source_evidence"
+      },
+      {
+        "is_error": false,
+        "phase": "ingest-05",
+        "record_sha256": "e5ca61fc41fa3a42da01a1eaec5c6e422af20db94cd0ecf9257745edf28b1329",
+        "tool": "read_source_evidence"
+      },
+      {
+        "is_error": false,
+        "phase": "ingest-05",
+        "record_sha256": "8d937ce24c198e59d8c94f61fea189cf174597741a2de43998744aee667f7cc7",
+        "tool": "read_source_evidence"
+      },
+      {
+        "is_error": false,
+        "phase": "ingest-05",
+        "record_sha256": "9ff9e1cc9e88b2454bf5395d1e3a4aedf689b0cf2793b23f6bfbf14da4171e6a",
+        "tool": "read_source_evidence"
+      },
+      {
+        "is_error": false,
+        "phase": "ingest-05",
+        "record_sha256": "ec9939dd37c37c5c77451d3679f4ece2584d672d0a43518d6f51cb5511ed8000",
+        "tool": "read_source_evidence"
+      },
+      {
+        "is_error": false,
+        "phase": "ingest-05",
+        "record_sha256": "91272a918ddae50e790c797da52e74462d440307f5c9ff12baf41ea136f5f15f",
+        "tool": "read_source_evidence"
+      },
+      {
+        "is_error": false,
+        "phase": "ingest-05",
+        "record_sha256": "883557649f28fce9489a9549583dd4a810cbae34809ec955807f7e71fd04da9d",
+        "tool": "read_source_evidence"
+      },
+      {
+        "is_error": false,
+        "phase": "ingest-05",
+        "record_sha256": "8acf22bd82e1cc02ba516ab3194edfe381b329ca17df37492513ac51a3bb18d3",
+        "tool": "read_source_evidence"
+      },
+      {
+        "is_error": false,
+        "phase": "ingest-05",
+        "record_sha256": "25e087be2f76f5f24d5e4ffe088f74b5b22126200218f8a74be3a019a0b90129",
+        "tool": "read_source_evidence"
+      },
+      {
+        "is_error": false,
+        "phase": "ingest-05",
+        "record_sha256": "f233f4f495b776b4dcba6a2efaa627c83548c5ed49935eb8812ba32ac0951c33",
+        "tool": "read_source_evidence"
+      },
+      {
+        "is_error": false,
+        "phase": "ingest-05",
+        "record_sha256": "0d63c1c7e7f8949d77ecab943b02720f5f7700881709f69328126096506509d0",
+        "tool": "read_source_evidence"
+      },
+      {
+        "is_error": false,
+        "phase": "ingest-05",
+        "record_sha256": "853eb93bcff1dae5e3e4aa02ed53b98c8d9c781ca30ebafe691af7d86a49a4cf",
+        "tool": "read_source_evidence"
+      },
+      {
+        "is_error": false,
+        "phase": "ingest-05",
+        "record_sha256": "b3d6bb8207dede149431cc5ebec23d6054ebb508ae14b93b7b78041bfaf484dd",
+        "tool": "read_source_evidence"
+      },
+      {
+        "is_error": false,
+        "phase": "ingest-05",
+        "record_sha256": "25bd2e2669efed680b7e02ac5ef119a464b8f985eb1ff901167da7689607922d",
+        "tool": "read_source_evidence"
+      },
+      {
+        "is_error": false,
+        "phase": "ingest-05",
+        "record_sha256": "84fea323019c4ae8108f5c1b23659e5eeba6195ff13d52d8405c014eafb94729",
+        "tool": "read_source_evidence"
+      },
+      {
+        "is_error": false,
+        "phase": "ingest-05",
+        "record_sha256": "483bedc84df92dcfdbcbd6a14cec80c38a47f336f1f776496991b747e0473581",
+        "tool": "read_source_evidence"
+      },
+      {
+        "is_error": false,
+        "phase": "ingest-05",
+        "record_sha256": "af718b461a5fabd0c9179346e458fce2c578bc337f197abe1f0424d116a58aeb",
+        "tool": "read_source_evidence"
+      },
+      {
+        "is_error": false,
+        "phase": "ingest-05",
+        "record_sha256": "52bad6bf6e3bd115b3b5ca97f153420adaaa857e4ef0c0bea005e614863c0475",
+        "tool": "read_source_evidence"
+      },
+      {
+        "is_error": false,
+        "phase": "ingest-05",
+        "record_sha256": "edb0e74a0afee439c7098837bda517ad0c41e3baed1e80fae757edfc68be8c44",
+        "tool": "read_source_evidence"
+      },
+      {
+        "is_error": false,
+        "phase": "ingest-05",
+        "record_sha256": "91a70bd0d87dd9199c43d9940ea5093ee97aaa4f0183edc9ade7ec02243c7d64",
+        "tool": "read_source_evidence"
+      },
+      {
+        "is_error": false,
+        "phase": "ingest-05",
+        "record_sha256": "ad608fb71ab479d2923a244b04d8ab0ca5d2b8e9f6492be8ab95733836479418",
+        "tool": "read_source_evidence"
+      },
+      {
+        "is_error": false,
+        "phase": "ingest-05",
+        "record_sha256": "badde6f88422f862686e86748d659c5090d1be4cde698e081a3acc76c746aeb9",
+        "tool": "read_source_evidence"
+      },
+      {
+        "is_error": false,
+        "phase": "ingest-05",
+        "record_sha256": "6b0b6a1069fb2b01397a0981bf0601f25ff44c3ff24ee0ea4484de689a1688a9",
+        "tool": "read_source_evidence"
+      },
+      {
+        "is_error": false,
+        "phase": "ingest-05",
+        "record_sha256": "ba4d4a9585482e9de8b98b8a1af77ad0c4bcafb51fd08818787735ded3e34d03",
+        "tool": "read_source_evidence"
+      },
+      {
+        "is_error": false,
+        "phase": "ingest-05",
+        "record_sha256": "b375663761407281c2ccfb2e0465f061658ef50dcbbabf4d0f3ce9a06292e906",
+        "tool": "read_source_evidence"
+      },
+      {
+        "is_error": false,
+        "phase": "ingest-05",
+        "record_sha256": "8336f48f333a6c226ee8062c063f56c162e89ce3734d0d4daafc306934353498",
+        "tool": "read_source_evidence"
+      },
+      {
+        "is_error": false,
+        "phase": "ingest-06",
+        "record_sha256": "420c40152190360f363b0ff6e9ad68f56e88c025f8aecf7f6c0959490e65cdef",
+        "tool": "prepare_peripheral_review"
+      },
+      {
+        "is_error": false,
+        "phase": "ingest-06",
+        "record_sha256": "51ffdc86a44ec8e27adf8e4772f9fb5ba7ac40cec5cdb494761af6c3eb01b66a",
+        "tool": "prepare_peripheral_review"
+      },
+      {
+        "is_error": false,
+        "phase": "ingest-06",
+        "record_sha256": "4d8510a0951682acbb2a79422b42da9723705bfd84d10c90fba412defcc12d84",
+        "tool": "read_source_evidence"
+      },
+      {
+        "is_error": false,
+        "phase": "ingest-06",
+        "record_sha256": "83f0faca1b8eb35a25c20593ce57084198808ff1656347355355ecb7d48fba39",
+        "tool": "read_source_evidence"
+      },
+      {
+        "is_error": false,
+        "phase": "ingest-06",
+        "record_sha256": "08a0ac723a016a2dab4c9f0397d19706c7aa4ec51fe96ea010ad1d3a925ce338",
+        "tool": "get_ingestion_profile"
+      },
+      {
+        "is_error": false,
+        "phase": "images",
+        "record_sha256": "7f2c60dd33d5105530e986880a450e7e50a094165dec0d0d89525ce31fb277ea",
+        "tool": "read_source_page_image"
+      },
+      {
+        "is_error": false,
+        "phase": "images",
+        "record_sha256": "a60fc35eb6fd612aaf318f89fb22c3d9edb37296e6df20dc29d65668ffae54a3",
+        "tool": "read_source_page_image"
+      },
+      {
+        "is_error": false,
+        "phase": "images",
+        "record_sha256": "a13c9b2c4574c70e9aea4cfb9d70ab24b9e8594ebecbec49017c8eba24dc0e74",
+        "tool": "read_source_page_image"
+      },
+      {
+        "is_error": false,
+        "phase": "images",
+        "record_sha256": "e83d67b4dbb2357bb1c0f3f16c76297ebbdc76b59cbccd42e7d4242964d2d173",
+        "tool": "read_source_page_image"
+      },
+      {
+        "is_error": false,
+        "phase": "publish-01",
+        "record_sha256": "7f624a018c91b9b4095bd7fcec9ece124729648143ab59186bd106d6200c0575",
+        "tool": "record_source_review"
+      },
+      {
+        "is_error": true,
+        "phase": "publish-01",
+        "record_sha256": "79908a76fac2771073c4ed9a8f804527fb549e379c1c7d3125e96cbd747e2cde",
+        "tool": "publish_reviewed_bundle"
+      },
+      {
+        "is_error": false,
+        "phase": "publish-02",
+        "record_sha256": "c4c7bfa86583aee30c5f660fb774c46743291ab6ba42b78cf1605e0fa0685077",
+        "tool": "publish_reviewed_bundle"
+      },
+      {
+        "is_error": false,
+        "phase": "publish-v2",
+        "record_sha256": "75c38f63ac8adc18044f20d83c866f411495637f3f1905c0320d1d871f7f1710",
+        "tool": "publish_reviewed_bundle"
+      },
+      {
+        "is_error": false,
+        "phase": "reproduce-mcp",
+        "record_sha256": "1b3c7c63c5efa687504defcd7c12d093cef476a869e197b88b7d30ec2aec8eb7",
+        "tool": "publish_reviewed_bundle"
+      }
+    ]
+  },
+  "target": {
+    "board_revision": "MB997-E-01",
+    "clock_assumptions": [
+      "Reference board: STM32F407G-DISC1, MB997 E-01 schematic. Actual card revision is unconfirmed.",
+      "8 MHz X2 crystal is documented for E-01; verify oscillator assembly and solder bridges against the actual card.",
+      "168 MHz is a validated software clock recipe, NOT a claim about the running firmware. Preserve a known working clock setup for GPIO tests.",
+      "Recipe only: PLLM=8, PLLN=336, PLLP=2, PLLQ=7; AHB /1; APB1 /4 (42 MHz); APB2 /2 (84 MHz); 5 FLASH wait states, supply within the reviewed range.",
+      "SysTick_Config uses the processor clock. For 1 ms use actual SystemCoreClock / 1000 after synchronizing SystemCoreClock; do not divide by 8.",
+      "UART loopback application explicitly selects HSI nominal 16 MHz, AHB/APB1/APB2 all /1; the 168 MHz recipe is not used for this scenario. See RCC/USART/TIM2 reviewed notes; timing remains unmeasured.",
+      "ADC example additionally assumes VDDA/VREF+ in the reviewed 2.7\u20133.6 V operating range; analog supply is not measured or physically qualified."
+    ],
+    "clock_hz": 168000000,
+    "example_only": false,
+    "family": "stm32",
+    "fuse_assumptions": [],
+    "id": "stm32f407g_disc1_mb997_e01",
+    "mcu": "STM32F407VGT6",
+    "package": "Package_QFP:LQFP-100_14x14mm_P0.5mm",
+    "primary_mcu_ref": "U4",
+    "silicon_revision": "Unspecified; errata review pending"
+  },
+  "validation": {
+    "dependency_lock_consistent": true,
+    "focused_checks_passed": 107,
+    "full_suite_passed": 861,
+    "full_suite_skipped": 4,
+    "ruff_passed": true,
+    "skip_reason": "Native KiCad CLI unavailable"
+  }
+}

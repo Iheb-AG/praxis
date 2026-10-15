@@ -1,0 +1,4452 @@
+{
+  "contents_boundaries_observed": true,
+  "contents_pages": [
+    2,
+    3,
+    4,
+    5
+  ],
+  "counts": {
+    "accounted_nonempty_lines": 330,
+    "accounted_table_rows": 128,
+    "entries": 91,
+    "selected_pages": 6,
+    "unresolved": 0
+  },
+  "entries": [
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:2/table:1/row:3"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.1.1",
+      "table_values": {
+        "Function": "Core",
+        "Limitation": "Interrupted loads to SP can cause erroneous behavior",
+        "Rev. 1": "A",
+        "Rev. 2": "A",
+        "Rev. 4": "A",
+        "Rev. 5": "A",
+        "Rev. 6": "A",
+        "Rev. A": "A",
+        "Rev. Y": "A",
+        "Rev. Z": "A",
+        "Section": "2.1.1"
+      },
+      "title": "Interrupted loads to SP can cause erroneous behavior"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:2/table:1/row:4"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.1.2",
+      "table_values": {
+        "Function": "",
+        "Limitation": "VDIV or VSQRT instructions might not complete correctly when very short ISRs are used",
+        "Rev. 1": "A",
+        "Rev. 2": "A",
+        "Rev. 4": "A",
+        "Rev. 5": "A",
+        "Rev. 6": "A",
+        "Rev. A": "A",
+        "Rev. Y": "A",
+        "Rev. Z": "A",
+        "Section": "2.1.2"
+      },
+      "title": "VDIV or VSQRT instructions might not complete correctly when very short ISRs are used"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:2/table:1/row:5"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.1.3",
+      "table_values": {
+        "Function": "",
+        "Limitation": "Store immediate overlapping exception return operation might vector to incorrect interrupt",
+        "Rev. 1": "A",
+        "Rev. 2": "A",
+        "Rev. 4": "A",
+        "Rev. 5": "A",
+        "Rev. 6": "A",
+        "Rev. A": "A",
+        "Rev. Y": "A",
+        "Rev. Z": "A",
+        "Section": "2.1.3"
+      },
+      "title": "Store immediate overlapping exception return operation might vector to incorrect interrupt"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:2/table:1/row:6"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.2.1",
+      "table_values": {
+        "Function": "System",
+        "Limitation": "ART Accelerator prefetch queue instruction is not supported",
+        "Rev. 1": "-",
+        "Rev. 2": "-",
+        "Rev. 4": "-",
+        "Rev. 5": "-",
+        "Rev. 6": "-",
+        "Rev. A": "N",
+        "Rev. Y": "-",
+        "Rev. Z": "-",
+        "Section": "2.2.1"
+      },
+      "title": "ART Accelerator prefetch queue instruction is not supported"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:2/table:1/row:7"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.2.2",
+      "table_values": {
+        "Function": "",
+        "Limitation": "MCU device ID is incorrect",
+        "Rev. 1": "-",
+        "Rev. 2": "-",
+        "Rev. 4": "-",
+        "Rev. 5": "-",
+        "Rev. 6": "-",
+        "Rev. A": "A",
+        "Rev. Y": "-",
+        "Rev. Z": "-",
+        "Section": "2.2.2"
+      },
+      "title": "MCU device ID is incorrect"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:2/table:1/row:8"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.2.3",
+      "table_values": {
+        "Function": "",
+        "Limitation": "Debugging Stop mode and SysTick timer",
+        "Rev. 1": "A",
+        "Rev. 2": "A",
+        "Rev. 4": "A",
+        "Rev. 5": "A",
+        "Rev. 6": "A",
+        "Rev. A": "A",
+        "Rev. Y": "A",
+        "Rev. Z": "A",
+        "Section": "2.2.3"
+      },
+      "title": "Debugging Stop mode and SysTick timer"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:2/table:1/row:9"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.2.4",
+      "table_values": {
+        "Function": "",
+        "Limitation": "Debugging Stop mode with WFE entry",
+        "Rev. 1": "A",
+        "Rev. 2": "A",
+        "Rev. 4": "A",
+        "Rev. 5": "A",
+        "Rev. 6": "A",
+        "Rev. A": "A",
+        "Rev. Y": "A",
+        "Rev. Z": "A",
+        "Section": "2.2.4"
+      },
+      "title": "Debugging Stop mode with WFE entry"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:2/table:1/row:10"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.2.5",
+      "table_values": {
+        "Function": "",
+        "Limitation": "Debugging Sleep/Stop mode with WFE/WFI entry",
+        "Rev. 1": "A",
+        "Rev. 2": "A",
+        "Rev. 4": "A",
+        "Rev. 5": "A",
+        "Rev. 6": "A",
+        "Rev. A": "A",
+        "Rev. Y": "A",
+        "Rev. Z": "A",
+        "Section": "2.2.5"
+      },
+      "title": "Debugging Sleep/Stop mode with WFE/WFI entry"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:2/table:1/row:11"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.2.6",
+      "table_values": {
+        "Function": "",
+        "Limitation": "Wake-up sequence from Standby mode when using more than one wake-up source",
+        "Rev. 1": "A",
+        "Rev. 2": "A",
+        "Rev. 4": "A",
+        "Rev. 5": "A",
+        "Rev. 6": "A",
+        "Rev. A": "A",
+        "Rev. Y": "A",
+        "Rev. Z": "A",
+        "Section": "2.2.6"
+      },
+      "title": "Wake-up sequence from Standby mode when using more than one wake-up source"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:2/table:1/row:12"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.2.7",
+      "table_values": {
+        "Function": "",
+        "Limitation": "Full JTAG configuration without NJTRST pin cannot be used",
+        "Rev. 1": "A",
+        "Rev. 2": "A",
+        "Rev. 4": "A",
+        "Rev. 5": "A",
+        "Rev. 6": "A",
+        "Rev. A": "A",
+        "Rev. Y": "A",
+        "Rev. Z": "A",
+        "Section": "2.2.7"
+      },
+      "title": "Full JTAG configuration without NJTRST pin cannot be used"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:2/table:1/row:13"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.2.8",
+      "table_values": {
+        "Function": "",
+        "Limitation": "PDR_ON pin not available on LQFP100 package except for revision A devices",
+        "Rev. 1": "N",
+        "Rev. 2": "N",
+        "Rev. 4": "N",
+        "Rev. 5": "N",
+        "Rev. 6": "N",
+        "Rev. A": "-",
+        "Rev. Y": "N",
+        "Rev. Z": "N",
+        "Section": "2.2.8"
+      },
+      "title": "PDR_ON pin not available on LQFP100 package except for revision A devices"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:2/table:1/row:14"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.2.9",
+      "table_values": {
+        "Function": "",
+        "Limitation": "Incorrect BOR option byte when consecutively programming BOR option byte",
+        "Rev. 1": "A",
+        "Rev. 2": "A",
+        "Rev. 4": "A",
+        "Rev. 5": "A",
+        "Rev. 6": "A",
+        "Rev. A": "A",
+        "Rev. Y": "A",
+        "Rev. Z": "A",
+        "Section": "2.2.9"
+      },
+      "title": "Incorrect BOR option byte when consecutively programming BOR option byte"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:2/table:1/row:15"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.2.10",
+      "table_values": {
+        "Function": "",
+        "Limitation": "Configuration of PH10 and PI10 as external interrupts is erroneous",
+        "Rev. 1": "N",
+        "Rev. 2": "N",
+        "Rev. 4": "N",
+        "Rev. 5": "N",
+        "Rev. 6": "N",
+        "Rev. A": "N",
+        "Rev. Y": "N",
+        "Rev. Z": "N",
+        "Section": "2.2.10"
+      },
+      "title": "Configuration of PH10 and PI10 as external interrupts is erroneous"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:2/table:1/row:16"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.2.11",
+      "table_values": {
+        "Function": "",
+        "Limitation": "Slowing down APB clock during a DMA transfer",
+        "Rev. 1": "A",
+        "Rev. 2": "A",
+        "Rev. 4": "A",
+        "Rev. 5": "A",
+        "Rev. 6": "A",
+        "Rev. A": "A",
+        "Rev. Y": "A",
+        "Rev. Z": "A",
+        "Section": "2.2.11"
+      },
+      "title": "Slowing down APB clock during a DMA transfer"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:2/table:1/row:17"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.2.12",
+      "table_values": {
+        "Function": "",
+        "Limitation": "MPU attribute to RTC and IWDG registers incorrectly managed",
+        "Rev. 1": "A",
+        "Rev. 2": "A",
+        "Rev. 4": "A",
+        "Rev. 5": "A",
+        "Rev. 6": "A",
+        "Rev. A": "A",
+        "Rev. Y": "A",
+        "Rev. Z": "A",
+        "Section": "2.2.12"
+      },
+      "title": "MPU attribute to RTC and IWDG registers incorrectly managed"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:2/table:1/row:18"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.2.13",
+      "table_values": {
+        "Function": "",
+        "Limitation": "Delay after an RCC peripheral clock enabling",
+        "Rev. 1": "A",
+        "Rev. 2": "A",
+        "Rev. 4": "A",
+        "Rev. 5": "A",
+        "Rev. 6": "A",
+        "Rev. A": "A",
+        "Rev. Y": "A",
+        "Rev. Z": "A",
+        "Section": "2.2.13"
+      },
+      "title": "Delay after an RCC peripheral clock enabling"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:2/table:1/row:19"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.2.14",
+      "table_values": {
+        "Function": "",
+        "Limitation": "Battery charge monitoring lower than 2.4 V",
+        "Rev. 1": "P",
+        "Rev. 2": "P",
+        "Rev. 4": "P",
+        "Rev. 5": "P",
+        "Rev. 6": "P",
+        "Rev. A": "P",
+        "Rev. Y": "P",
+        "Rev. Z": "P",
+        "Section": "2.2.14"
+      },
+      "title": "Battery charge monitoring lower than 2.4 V"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:2/table:1/row:20"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.2.15",
+      "table_values": {
+        "Function": "",
+        "Limitation": "Internal noise impacting the ADC accuracy",
+        "Rev. 1": "A",
+        "Rev. 2": "A",
+        "Rev. 4": "A",
+        "Rev. 5": "A",
+        "Rev. 6": "A",
+        "Rev. A": "A",
+        "Rev. Y": "A",
+        "Rev. Z": "A",
+        "Section": "2.2.15"
+      },
+      "title": "Internal noise impacting the ADC accuracy"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:2/table:1/row:21"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.2.16",
+      "table_values": {
+        "Function": "",
+        "Limitation": "RDP level 2 and sector write protection configuration",
+        "Rev. 1": "A",
+        "Rev. 2": "A",
+        "Rev. 4": "A",
+        "Rev. 5": "A",
+        "Rev. 6": "A",
+        "Rev. A": "A",
+        "Rev. Y": "A",
+        "Rev. Z": "A",
+        "Section": "2.2.16"
+      },
+      "title": "RDP level 2 and sector write protection configuration"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:2/table:1/row:22"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.2.17",
+      "table_values": {
+        "Function": "",
+        "Limitation": "Possible delay in backup domain protection disabling/ enabling after programming the DBP bit",
+        "Rev. 1": "A",
+        "Rev. 2": "A",
+        "Rev. 4": "A",
+        "Rev. 5": "A",
+        "Rev. 6": "A",
+        "Rev. A": "A",
+        "Rev. Y": "A",
+        "Rev. Z": "A",
+        "Section": "2.2.17"
+      },
+      "title": "Possible delay in backup domain protection disabling/ enabling after programming the DBP bit"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:2/table:1/row:23"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.2.18",
+      "table_values": {
+        "Function": "",
+        "Limitation": "PC13 signal transitions disturb LSE",
+        "Rev. 1": "N",
+        "Rev. 2": "N",
+        "Rev. 4": "N",
+        "Rev. 5": "N",
+        "Rev. 6": "N",
+        "Rev. A": "N",
+        "Rev. Y": "N",
+        "Rev. Z": "N",
+        "Section": "2.2.18"
+      },
+      "title": "PC13 signal transitions disturb LSE"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:3/table:1/row:3"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.2.19",
+      "table_values": {
+        "Function": "System",
+        "Limitation": "In some specific cases, DMA2 data corruption occurs when managing AHB and APB2 peripherals in a concurrent way",
+        "Rev. 1": "A",
+        "Rev. 2": "A",
+        "Rev. 4": "A",
+        "Rev. 5": "A",
+        "Rev. 6": "A",
+        "Rev. A": "A",
+        "Rev. Y": "A",
+        "Rev. Z": "A",
+        "Section": "2.2.19"
+      },
+      "title": "In some specific cases, DMA2 data corruption occurs when managing AHB and APB2 peripherals in a concurrent way"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:3/table:1/row:4"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.2.20",
+      "table_values": {
+        "Function": "",
+        "Limitation": "Corrupted content of the backup domain due to a missed power-on reset after this domain supply voltage drop",
+        "Rev. 1": "A",
+        "Rev. 2": "A",
+        "Rev. 4": "A",
+        "Rev. 5": "A",
+        "Rev. 6": "A",
+        "Rev. A": "A",
+        "Rev. Y": "A",
+        "Rev. Z": "A",
+        "Section": "2.2.20"
+      },
+      "title": "Corrupted content of the backup domain due to a missed power-on reset after this domain supply voltage drop"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:3/table:1/row:5"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.3.1",
+      "table_values": {
+        "Function": "FSMC",
+        "Limitation": "Dummy read cycles inserted when reading synchronous memories",
+        "Rev. 1": "N",
+        "Rev. 2": "N",
+        "Rev. 4": "N",
+        "Rev. 5": "N",
+        "Rev. 6": "N",
+        "Rev. A": "N",
+        "Rev. Y": "N",
+        "Rev. Z": "N",
+        "Section": "2.3.1"
+      },
+      "title": "Dummy read cycles inserted when reading synchronous memories"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:3/table:1/row:6"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.3.2",
+      "table_values": {
+        "Function": "",
+        "Limitation": "FSMC synchronous mode and NWAIT signal disabled",
+        "Rev. 1": "A",
+        "Rev. 2": "A",
+        "Rev. 4": "A",
+        "Rev. 5": "A",
+        "Rev. 6": "A",
+        "Rev. A": "A",
+        "Rev. Y": "A",
+        "Rev. Z": "A",
+        "Section": "2.3.2"
+      },
+      "title": "FSMC synchronous mode and NWAIT signal disabled"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:3/table:1/row:7"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.3.3",
+      "table_values": {
+        "Function": "",
+        "Limitation": "FSMC NOR/PSRAM controller: asynchronous read access on bank 2 to 4 returns wrong data when bank 1 is in synchronous mode (BURSTEN bit is set)",
+        "Rev. 1": "A",
+        "Rev. 2": "A",
+        "Rev. 4": "A",
+        "Rev. 5": "A",
+        "Rev. 6": "A",
+        "Rev. A": "A",
+        "Rev. Y": "A",
+        "Rev. Z": "A",
+        "Section": "2.3.3"
+      },
+      "title": "FSMC NOR/PSRAM controller: asynchronous read access on bank 2 to 4 returns wrong data when bank 1 is in synchronous mode (BURSTEN bit is set)"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:3/table:1/row:8"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.4.1",
+      "table_values": {
+        "Function": "SDIO",
+        "Limitation": "Wrong data written during SDIO hardware flow control",
+        "Rev. 1": "N",
+        "Rev. 2": "N",
+        "Rev. 4": "N",
+        "Rev. 5": "N",
+        "Rev. 6": "N",
+        "Rev. A": "N",
+        "Rev. Y": "N",
+        "Rev. Z": "N",
+        "Section": "2.4.1"
+      },
+      "title": "Wrong data written during SDIO hardware flow control"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:3/table:1/row:9"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.4.2",
+      "table_values": {
+        "Function": "",
+        "Limitation": "Wrong CCRCFAIL status after a response without CRC is received",
+        "Rev. 1": "A",
+        "Rev. 2": "A",
+        "Rev. 4": "A",
+        "Rev. 5": "A",
+        "Rev. 6": "A",
+        "Rev. A": "A",
+        "Rev. Y": "A",
+        "Rev. Z": "A",
+        "Section": "2.4.2"
+      },
+      "title": "Wrong CCRCFAIL status after a response without CRC is received"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:3/table:1/row:10"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.4.3",
+      "table_values": {
+        "Function": "",
+        "Limitation": "SDIO clock divider Bypass mode may not work properly",
+        "Rev. 1": "A",
+        "Rev. 2": "A",
+        "Rev. 4": "A",
+        "Rev. 5": "A",
+        "Rev. 6": "A",
+        "Rev. A": "A",
+        "Rev. Y": "A",
+        "Rev. Z": "A",
+        "Section": "2.4.3"
+      },
+      "title": "SDIO clock divider Bypass mode may not work properly"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:3/table:1/row:11"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.4.4",
+      "table_values": {
+        "Function": "",
+        "Limitation": "Data corruption in SDIO clock dephasing (NEGEDGE) mode",
+        "Rev. 1": "N",
+        "Rev. 2": "N",
+        "Rev. 4": "N",
+        "Rev. 5": "N",
+        "Rev. 6": "N",
+        "Rev. A": "N",
+        "Rev. Y": "N",
+        "Rev. Z": "N",
+        "Section": "2.4.4"
+      },
+      "title": "Data corruption in SDIO clock dephasing (NEGEDGE) mode"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:3/table:1/row:12"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.4.5",
+      "table_values": {
+        "Function": "",
+        "Limitation": "CE-ATA multiple write command and card busy signal management",
+        "Rev. 1": "A",
+        "Rev. 2": "A",
+        "Rev. 4": "A",
+        "Rev. 5": "A",
+        "Rev. 6": "A",
+        "Rev. A": "A",
+        "Rev. Y": "A",
+        "Rev. Z": "A",
+        "Section": "2.4.5"
+      },
+      "title": "CE-ATA multiple write command and card busy signal management"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:3/table:1/row:13"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.4.6",
+      "table_values": {
+        "Function": "",
+        "Limitation": "No underrun detection with wrong data transmission",
+        "Rev. 1": "A",
+        "Rev. 2": "A",
+        "Rev. 4": "A",
+        "Rev. 5": "A",
+        "Rev. 6": "A",
+        "Rev. A": "A",
+        "Rev. Y": "A",
+        "Rev. Z": "A",
+        "Section": "2.4.6"
+      },
+      "title": "No underrun detection with wrong data transmission"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:3/table:1/row:14"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.5.1",
+      "table_values": {
+        "Function": "ADC",
+        "Limitation": "ADC sequencer modification during conversion",
+        "Rev. 1": "A",
+        "Rev. 2": "A",
+        "Rev. 4": "A",
+        "Rev. 5": "A",
+        "Rev. 6": "A",
+        "Rev. A": "A",
+        "Rev. Y": "A",
+        "Rev. Z": "A",
+        "Section": "2.5.1"
+      },
+      "title": "ADC sequencer modification during conversion"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:3/table:1/row:15"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.6.1",
+      "table_values": {
+        "Function": "DAC",
+        "Limitation": "DMA request not automatically cleared by clearing DMAEN",
+        "Rev. 1": "A",
+        "Rev. 2": "A",
+        "Rev. 4": "A",
+        "Rev. 5": "A",
+        "Rev. 6": "A",
+        "Rev. A": "A",
+        "Rev. Y": "A",
+        "Rev. Z": "A",
+        "Section": "2.6.1"
+      },
+      "title": "DMA request not automatically cleared by clearing DMAEN"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:3/table:1/row:16"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.6.2",
+      "table_values": {
+        "Function": "",
+        "Limitation": "DMA underrun flag not set when an internal trigger is detected on the clock cycle of the DMA request acknowledge",
+        "Rev. 1": "N",
+        "Rev. 2": "N",
+        "Rev. 4": "N",
+        "Rev. 5": "N",
+        "Rev. 6": "N",
+        "Rev. A": "N",
+        "Rev. Y": "N",
+        "Rev. Z": "N",
+        "Section": "2.6.2"
+      },
+      "title": "DMA underrun flag not set when an internal trigger is detected on the clock cycle of the DMA request acknowledge"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:3/table:1/row:17"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.7.1",
+      "table_values": {
+        "Function": "TIM",
+        "Limitation": "PWM re-enabled in automatic output enable mode despite of system break",
+        "Rev. 1": "P",
+        "Rev. 2": "P",
+        "Rev. 4": "P",
+        "Rev. 5": "P",
+        "Rev. 6": "P",
+        "Rev. A": "P",
+        "Rev. Y": "P",
+        "Rev. Z": "P",
+        "Section": "2.7.1"
+      },
+      "title": "PWM re-enabled in automatic output enable mode despite of system break"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:3/table:1/row:18"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.7.3",
+      "table_values": {
+        "Function": "",
+        "Limitation": "Consecutive compare event missed in specific conditions",
+        "Rev. 1": "N",
+        "Rev. 2": "N",
+        "Rev. 4": "N",
+        "Rev. 5": "N",
+        "Rev. 6": "N",
+        "Rev. A": "N",
+        "Rev. Y": "N",
+        "Rev. Z": "N",
+        "Section": "2.7.3"
+      },
+      "title": "Consecutive compare event missed in specific conditions"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:3/table:1/row:19"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.7.4",
+      "table_values": {
+        "Function": "",
+        "Limitation": "Output compare clear not working with external counter reset",
+        "Rev. 1": "P",
+        "Rev. 2": "P",
+        "Rev. 4": "P",
+        "Rev. 5": "P",
+        "Rev. 6": "P",
+        "Rev. A": "P",
+        "Rev. Y": "P",
+        "Rev. Z": "P",
+        "Section": "2.7.4"
+      },
+      "title": "Output compare clear not working with external counter reset"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:3/table:1/row:20"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.8.1",
+      "table_values": {
+        "Function": "IWDG",
+        "Limitation": "RVU flag not reset in Stop",
+        "Rev. 1": "A",
+        "Rev. 2": "A",
+        "Rev. 4": "A",
+        "Rev. 5": "A",
+        "Rev. 6": "A",
+        "Rev. A": "A",
+        "Rev. Y": "A",
+        "Rev. Z": "A",
+        "Section": "2.8.1"
+      },
+      "title": "RVU flag not reset in Stop"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:3/table:1/row:21"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.8.2",
+      "table_values": {
+        "Function": "",
+        "Limitation": "PVU flag not reset in Stop",
+        "Rev. 1": "A",
+        "Rev. 2": "A",
+        "Rev. 4": "A",
+        "Rev. 5": "A",
+        "Rev. 6": "A",
+        "Rev. A": "A",
+        "Rev. Y": "A",
+        "Rev. Z": "A",
+        "Section": "2.8.2"
+      },
+      "title": "PVU flag not reset in Stop"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:3/table:1/row:22"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.8.3",
+      "table_values": {
+        "Function": "",
+        "Limitation": "RVU flag not cleared at low APB clock frequency",
+        "Rev. 1": "A",
+        "Rev. 2": "A",
+        "Rev. 4": "A",
+        "Rev. 5": "A",
+        "Rev. 6": "A",
+        "Rev. A": "A",
+        "Rev. Y": "A",
+        "Rev. Z": "A",
+        "Section": "2.8.3"
+      },
+      "title": "RVU flag not cleared at low APB clock frequency"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:3/table:1/row:23"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.8.4",
+      "table_values": {
+        "Function": "",
+        "Limitation": "PVU flag not cleared at low APB clock frequency",
+        "Rev. 1": "A",
+        "Rev. 2": "A",
+        "Rev. 4": "A",
+        "Rev. 5": "A",
+        "Rev. 6": "A",
+        "Rev. A": "A",
+        "Rev. Y": "A",
+        "Rev. Z": "A",
+        "Section": "2.8.4"
+      },
+      "title": "PVU flag not cleared at low APB clock frequency"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:3/table:1/row:24"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.9.1",
+      "table_values": {
+        "Function": "RTC",
+        "Limitation": "Spurious tamper detection when disabling the tamper channel",
+        "Rev. 1": "N",
+        "Rev. 2": "N",
+        "Rev. 4": "N",
+        "Rev. 5": "N",
+        "Rev. 6": "N",
+        "Rev. A": "N",
+        "Rev. Y": "N",
+        "Rev. Z": "N",
+        "Section": "2.9.1"
+      },
+      "title": "Spurious tamper detection when disabling the tamper channel"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:3/table:1/row:25"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.9.2",
+      "table_values": {
+        "Function": "",
+        "Limitation": "RTC calendar registers are not locked properly",
+        "Rev. 1": "A",
+        "Rev. 2": "A",
+        "Rev. 4": "A",
+        "Rev. 5": "A",
+        "Rev. 6": "A",
+        "Rev. A": "A",
+        "Rev. Y": "A",
+        "Rev. Z": "A",
+        "Section": "2.9.2"
+      },
+      "title": "RTC calendar registers are not locked properly"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:3/table:1/row:26"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.9.3",
+      "table_values": {
+        "Function": "",
+        "Limitation": "RTC interrupt can be masked by another RTC interrupt",
+        "Rev. 1": "A",
+        "Rev. 2": "A",
+        "Rev. 4": "A",
+        "Rev. 5": "A",
+        "Rev. 6": "A",
+        "Rev. A": "A",
+        "Rev. Y": "A",
+        "Rev. Z": "A",
+        "Section": "2.9.3"
+      },
+      "title": "RTC interrupt can be masked by another RTC interrupt"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:3/table:1/row:27"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.9.4",
+      "table_values": {
+        "Function": "",
+        "Limitation": "Calendar initialization may fail in case of consecutive INIT mode entry",
+        "Rev. 1": "A",
+        "Rev. 2": "A",
+        "Rev. 4": "A",
+        "Rev. 5": "A",
+        "Rev. 6": "A",
+        "Rev. A": "A",
+        "Rev. Y": "A",
+        "Rev. Z": "A",
+        "Section": "2.9.4"
+      },
+      "title": "Calendar initialization may fail in case of consecutive INIT mode entry"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:3/table:1/row:28"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.9.5",
+      "table_values": {
+        "Function": "",
+        "Limitation": "Alarm flag may be repeatedly set when the core is stopped in debug",
+        "Rev. 1": "N",
+        "Rev. 2": "N",
+        "Rev. 4": "N",
+        "Rev. 5": "N",
+        "Rev. 6": "N",
+        "Rev. A": "N",
+        "Rev. Y": "N",
+        "Rev. Z": "N",
+        "Section": "2.9.5"
+      },
+      "title": "Alarm flag may be repeatedly set when the core is stopped in debug"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:3/table:1/row:29"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.9.6",
+      "table_values": {
+        "Function": "",
+        "Limitation": "Detection of a tamper event occurring before enabling the tamper detection is not supported in edge detection mode",
+        "Rev. 1": "A",
+        "Rev. 2": "A",
+        "Rev. 4": "A",
+        "Rev. 5": "A",
+        "Rev. 6": "A",
+        "Rev. A": "A",
+        "Rev. Y": "A",
+        "Rev. Z": "A",
+        "Section": "2.9.6"
+      },
+      "title": "Detection of a tamper event occurring before enabling the tamper detection is not supported in edge detection mode"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:3/table:1/row:30"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.10.1",
+      "table_values": {
+        "Function": "I2C",
+        "Limitation": "Spurious bus error detection in controller mode",
+        "Rev. 1": "A",
+        "Rev. 2": "A",
+        "Rev. 4": "A",
+        "Rev. 5": "A",
+        "Rev. 6": "A",
+        "Rev. A": "A",
+        "Rev. Y": "A",
+        "Rev. Z": "A",
+        "Section": "2.10.1"
+      },
+      "title": "Spurious bus error detection in controller mode"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:3/table:1/row:31"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.10.2",
+      "table_values": {
+        "Function": "",
+        "Limitation": "SMBus standard not fully supported",
+        "Rev. 1": "A",
+        "Rev. 2": "A",
+        "Rev. 4": "A",
+        "Rev. 5": "A",
+        "Rev. 6": "A",
+        "Rev. A": "A",
+        "Rev. Y": "A",
+        "Rev. Z": "A",
+        "Section": "2.10.2"
+      },
+      "title": "SMBus standard not fully supported"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:3/table:1/row:32"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.10.3",
+      "table_values": {
+        "Function": "",
+        "Limitation": "Start cannot be generated after a misplaced Stop",
+        "Rev. 1": "A",
+        "Rev. 2": "A",
+        "Rev. 4": "A",
+        "Rev. 5": "A",
+        "Rev. 6": "A",
+        "Rev. A": "A",
+        "Rev. Y": "A",
+        "Rev. Z": "A",
+        "Section": "2.10.3"
+      },
+      "title": "Start cannot be generated after a misplaced Stop"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:4/table:1/row:3"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.10.4",
+      "table_values": {
+        "Function": "I2C",
+        "Limitation": "Mismatch on the “Setup time for a repeated Start condition” timing parameter",
+        "Rev. 1": "A",
+        "Rev. 2": "A",
+        "Rev. 4": "A",
+        "Rev. 5": "A",
+        "Rev. 6": "A",
+        "Rev. A": "A",
+        "Rev. Y": "A",
+        "Rev. Z": "A",
+        "Section": "2.10.4"
+      },
+      "title": "Mismatch on the “Setup time for a repeated Start condition” timing parameter"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:4/table:1/row:4"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.10.5",
+      "table_values": {
+        "Function": "",
+        "Limitation": "Data valid time (tVD;DAT) violated without the OVR flag being set",
+        "Rev. 1": "A",
+        "Rev. 2": "A",
+        "Rev. 4": "A",
+        "Rev. 5": "A",
+        "Rev. 6": "A",
+        "Rev. A": "A",
+        "Rev. Y": "A",
+        "Rev. Z": "A",
+        "Section": "2.10.5"
+      },
+      "title": "Data valid time (tVD;DAT) violated without the OVR flag being set"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:4/table:1/row:5"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.10.6",
+      "table_values": {
+        "Function": "",
+        "Limitation": "Both SDA and SCL maximum rise times (tr) violated when the VDD_I2C bus voltage is higher than ((VDD + 0.3) / 0.7) V",
+        "Rev. 1": "A",
+        "Rev. 2": "A",
+        "Rev. 4": "A",
+        "Rev. 5": "A",
+        "Rev. 6": "A",
+        "Rev. A": "A",
+        "Rev. Y": "A",
+        "Rev. Z": "A",
+        "Section": "2.10.6"
+      },
+      "title": "Both SDA and SCL maximum rise times (tr) violated when the VDD_I2C bus voltage is higher than ((VDD + 0.3) / 0.7) V"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:4/table:1/row:6"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.11.1",
+      "table_values": {
+        "Function": "USART",
+        "Limitation": "Idle frame is not detected if the receiver clock speed is deviated",
+        "Rev. 1": "N",
+        "Rev. 2": "N",
+        "Rev. 4": "N",
+        "Rev. 5": "N",
+        "Rev. 6": "N",
+        "Rev. A": "N",
+        "Rev. Y": "N",
+        "Rev. Z": "N",
+        "Section": "2.11.1"
+      },
+      "title": "Idle frame is not detected if the receiver clock speed is deviated"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:4/table:1/row:7"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.11.2",
+      "table_values": {
+        "Function": "",
+        "Limitation": "In full-duplex mode, the Parity Error (PE) flag can be cleared by writing to the data register",
+        "Rev. 1": "A",
+        "Rev. 2": "A",
+        "Rev. 4": "A",
+        "Rev. 5": "A",
+        "Rev. 6": "A",
+        "Rev. A": "A",
+        "Rev. Y": "A",
+        "Rev. Z": "A",
+        "Section": "2.11.2"
+      },
+      "title": "In full-duplex mode, the Parity Error (PE) flag can be cleared by writing to the data register"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:4/table:1/row:8"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.11.3",
+      "table_values": {
+        "Function": "",
+        "Limitation": "Parity Error (PE) flag is not set when receiving in Mute mode using address mark detection",
+        "Rev. 1": "N",
+        "Rev. 2": "N",
+        "Rev. 4": "N",
+        "Rev. 5": "N",
+        "Rev. 6": "N",
+        "Rev. A": "N",
+        "Rev. Y": "N",
+        "Rev. Z": "N",
+        "Section": "2.11.3"
+      },
+      "title": "Parity Error (PE) flag is not set when receiving in Mute mode using address mark detection"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:4/table:1/row:9"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.11.4",
+      "table_values": {
+        "Function": "",
+        "Limitation": "Break frame is transmitted regardless of CTS input line status",
+        "Rev. 1": "N",
+        "Rev. 2": "N",
+        "Rev. 4": "N",
+        "Rev. 5": "N",
+        "Rev. 6": "N",
+        "Rev. A": "N",
+        "Rev. Y": "N",
+        "Rev. Z": "N",
+        "Section": "2.11.4"
+      },
+      "title": "Break frame is transmitted regardless of CTS input line status"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:4/table:1/row:10"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.11.5",
+      "table_values": {
+        "Function": "",
+        "Limitation": "RTS signal abnormally driven low after a protocol violation",
+        "Rev. 1": "A",
+        "Rev. 2": "A",
+        "Rev. 4": "A",
+        "Rev. 5": "A",
+        "Rev. 6": "A",
+        "Rev. A": "A",
+        "Rev. Y": "A",
+        "Rev. Z": "A",
+        "Section": "2.11.5"
+      },
+      "title": "RTS signal abnormally driven low after a protocol violation"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:4/table:1/row:11"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.11.6",
+      "table_values": {
+        "Function": "",
+        "Limitation": "Start bit detected too soon when sampling for NACK signal from the smartcard",
+        "Rev. 1": "N",
+        "Rev. 2": "N",
+        "Rev. 4": "N",
+        "Rev. 5": "N",
+        "Rev. 6": "N",
+        "Rev. A": "N",
+        "Rev. Y": "N",
+        "Rev. Z": "N",
+        "Section": "2.11.6"
+      },
+      "title": "Start bit detected too soon when sampling for NACK signal from the smartcard"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:4/table:1/row:12"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.11.7",
+      "table_values": {
+        "Function": "",
+        "Limitation": "Break request can prevent the transmission complete flag (TC) from being set",
+        "Rev. 1": "A",
+        "Rev. 2": "A",
+        "Rev. 4": "A",
+        "Rev. 5": "A",
+        "Rev. 6": "A",
+        "Rev. A": "A",
+        "Rev. Y": "A",
+        "Rev. Z": "A",
+        "Section": "2.11.7"
+      },
+      "title": "Break request can prevent the transmission complete flag (TC) from being set"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:4/table:1/row:13"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.11.8",
+      "table_values": {
+        "Function": "",
+        "Limitation": "Guard time not respected when data are sent on TXE events",
+        "Rev. 1": "A",
+        "Rev. 2": "A",
+        "Rev. 4": "A",
+        "Rev. 5": "A",
+        "Rev. 6": "A",
+        "Rev. A": "A",
+        "Rev. Y": "A",
+        "Rev. Z": "A",
+        "Section": "2.11.8"
+      },
+      "title": "Guard time not respected when data are sent on TXE events"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:4/table:1/row:14"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.11.9",
+      "table_values": {
+        "Function": "",
+        "Limitation": "RTS is active while RE or UE = 0",
+        "Rev. 1": "A",
+        "Rev. 2": "A",
+        "Rev. 4": "A",
+        "Rev. 5": "A",
+        "Rev. 6": "A",
+        "Rev. A": "A",
+        "Rev. Y": "A",
+        "Rev. Z": "A",
+        "Section": "2.11.9"
+      },
+      "title": "RTS is active while RE or UE = 0"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:4/table:1/row:15"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.12.1",
+      "table_values": {
+        "Function": "SPI/I2S",
+        "Limitation": "BSY bit may stay high when SPI is disabled",
+        "Rev. 1": "A",
+        "Rev. 2": "A",
+        "Rev. 4": "A",
+        "Rev. 5": "A",
+        "Rev. 6": "A",
+        "Rev. A": "A",
+        "Rev. Y": "A",
+        "Rev. Z": "A",
+        "Section": "2.12.1"
+      },
+      "title": "BSY bit may stay high when SPI is disabled"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:4/table:1/row:16"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.12.2",
+      "table_values": {
+        "Function": "",
+        "Limitation": "Anticipated communication upon SPI transit from slave receiver to master",
+        "Rev. 1": "A",
+        "Rev. 2": "A",
+        "Rev. 4": "A",
+        "Rev. 5": "A",
+        "Rev. 6": "A",
+        "Rev. A": "A",
+        "Rev. Y": "A",
+        "Rev. Z": "A",
+        "Section": "2.12.2"
+      },
+      "title": "Anticipated communication upon SPI transit from slave receiver to master"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:4/table:1/row:17"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.12.3",
+      "table_values": {
+        "Function": "",
+        "Limitation": "Wrong CRC calculation when the polynomial is even",
+        "Rev. 1": "A",
+        "Rev. 2": "A",
+        "Rev. 4": "A",
+        "Rev. 5": "A",
+        "Rev. 6": "A",
+        "Rev. A": "A",
+        "Rev. Y": "A",
+        "Rev. Z": "A",
+        "Section": "2.12.3"
+      },
+      "title": "Wrong CRC calculation when the polynomial is even"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:4/table:1/row:18"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.12.4",
+      "table_values": {
+        "Function": "",
+        "Limitation": "Corrupted last bit of data and/or CRC received in Master mode with delayed SCK feedback",
+        "Rev. 1": "A",
+        "Rev. 2": "A",
+        "Rev. 4": "A",
+        "Rev. 5": "A",
+        "Rev. 6": "A",
+        "Rev. A": "A",
+        "Rev. Y": "A",
+        "Rev. Z": "A",
+        "Section": "2.12.4"
+      },
+      "title": "Corrupted last bit of data and/or CRC received in Master mode with delayed SCK feedback"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:4/table:1/row:19"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.12.5",
+      "table_values": {
+        "Function": "",
+        "Limitation": "BSY flag may stay high at the end of a data transfer in Slave mode",
+        "Rev. 1": "A",
+        "Rev. 2": "A",
+        "Rev. 4": "A",
+        "Rev. 5": "A",
+        "Rev. 6": "A",
+        "Rev. A": "A",
+        "Rev. Y": "A",
+        "Rev. Z": "A",
+        "Section": "2.12.5"
+      },
+      "title": "BSY flag may stay high at the end of a data transfer in Slave mode"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:4/table:1/row:20"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.12.6",
+      "table_values": {
+        "Function": "",
+        "Limitation": "In I2S Slave mode, the WS level must be set by the external master when enabling the I2S",
+        "Rev. 1": "A",
+        "Rev. 2": "A",
+        "Rev. 4": "A",
+        "Rev. 5": "A",
+        "Rev. 6": "A",
+        "Rev. A": "A",
+        "Rev. Y": "A",
+        "Rev. Z": "A",
+        "Section": "2.12.6"
+      },
+      "title": "In I2S Slave mode, the WS level must be set by the external master when enabling the I2S"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:4/table:1/row:21"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.12.7",
+      "table_values": {
+        "Function": "",
+        "Limitation": "I2S2 in full-duplex mode may not work properly when SCK and WS signals are mapped on PI1 and PI0, respectively",
+        "Rev. 1": "A",
+        "Rev. 2": "A",
+        "Rev. 4": "A",
+        "Rev. 5": "A",
+        "Rev. 6": "A",
+        "Rev. A": "A",
+        "Rev. Y": "A",
+        "Rev. Z": "A",
+        "Section": "2.12.7"
+      },
+      "title": "I2S2 in full-duplex mode may not work properly when SCK and WS signals are mapped on PI1 and PI0, respectively"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:4/table:1/row:22"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.13.1",
+      "table_values": {
+        "Function": "bxCAN",
+        "Limitation": "bxCAN time-triggered communication mode not supported",
+        "Rev. 1": "N",
+        "Rev. 2": "N",
+        "Rev. 4": "N",
+        "Rev. 5": "N",
+        "Rev. 6": "N",
+        "Rev. A": "N",
+        "Rev. Y": "N",
+        "Rev. Z": "N",
+        "Section": "2.13.1"
+      },
+      "title": "bxCAN time-triggered communication mode not supported"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:4/table:1/row:23"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.14.1",
+      "table_values": {
+        "Function": "OTG_FS",
+        "Limitation": "Transmit data FIFO is corrupted when a write sequence to the FIFO is interrupted with accesses to certain OTG_FS registers",
+        "Rev. 1": "A",
+        "Rev. 2": "A",
+        "Rev. 4": "A",
+        "Rev. 5": "A",
+        "Rev. 6": "A",
+        "Rev. A": "A",
+        "Rev. Y": "A",
+        "Rev. Z": "A",
+        "Section": "2.14.1"
+      },
+      "title": "Transmit data FIFO is corrupted when a write sequence to the FIFO is interrupted with accesses to certain OTG_FS registers"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:4/table:1/row:24"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.14.2",
+      "table_values": {
+        "Function": "",
+        "Limitation": "Host packet transmission may hang when connecting through a hub to a low-speed device",
+        "Rev. 1": "N",
+        "Rev. 2": "N",
+        "Rev. 4": "N",
+        "Rev. 5": "N",
+        "Rev. 6": "N",
+        "Rev. A": "N",
+        "Rev. Y": "N",
+        "Rev. Z": "N",
+        "Section": "2.14.2"
+      },
+      "title": "Host packet transmission may hang when connecting through a hub to a low-speed device"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:4/table:1/row:25"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.14.3",
+      "table_values": {
+        "Function": "",
+        "Limitation": "Data in RxFIFO is overwritten when all channels are disabled simultaneously",
+        "Rev. 1": "A",
+        "Rev. 2": "A",
+        "Rev. 4": "A",
+        "Rev. 5": "A",
+        "Rev. 6": "A",
+        "Rev. A": "A",
+        "Rev. Y": "A",
+        "Rev. Z": "A",
+        "Section": "2.14.3"
+      },
+      "title": "Data in RxFIFO is overwritten when all channels are disabled simultaneously"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:4/table:1/row:26"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.14.4",
+      "table_values": {
+        "Function": "",
+        "Limitation": "OTG host blocks the receive channel when receiving IN packets and no TxFIFO is configured",
+        "Rev. 1": "A",
+        "Rev. 2": "A",
+        "Rev. 4": "A",
+        "Rev. 5": "A",
+        "Rev. 6": "A",
+        "Rev. A": "A",
+        "Rev. Y": "A",
+        "Rev. Z": "A",
+        "Section": "2.14.4"
+      },
+      "title": "OTG host blocks the receive channel when receiving IN packets and no TxFIFO is configured"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:4/table:1/row:27"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.14.5",
+      "table_values": {
+        "Function": "",
+        "Limitation": "Host channel-halted interrupt not generated when the channel is disabled",
+        "Rev. 1": "A",
+        "Rev. 2": "A",
+        "Rev. 4": "A",
+        "Rev. 5": "A",
+        "Rev. 6": "A",
+        "Rev. A": "A",
+        "Rev. Y": "A",
+        "Rev. Z": "A",
+        "Section": "2.14.5"
+      },
+      "title": "Host channel-halted interrupt not generated when the channel is disabled"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:4/table:1/row:28"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.14.6",
+      "table_values": {
+        "Function": "",
+        "Limitation": "Wrong software-read OTG_FS_DCFG register values",
+        "Rev. 1": "A",
+        "Rev. 2": "A",
+        "Rev. 4": "A",
+        "Rev. 5": "A",
+        "Rev. 6": "A",
+        "Rev. A": "A",
+        "Rev. Y": "A",
+        "Rev. Z": "A",
+        "Section": "2.14.6"
+      },
+      "title": "Wrong software-read OTG_FS_DCFG register values"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:5/table:1/row:3"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.15.1",
+      "table_values": {
+        "Function": "OTG_HS",
+        "Limitation": "Transmit data FIFO is corrupted when a write sequence to the FIFO is interrupted with accesses to certain OTG_HS registers",
+        "Rev. 1": "A",
+        "Rev. 2": "A",
+        "Rev. 4": "A",
+        "Rev. 5": "A",
+        "Rev. 6": "A",
+        "Rev. A": "A",
+        "Rev. Y": "A",
+        "Rev. Z": "A",
+        "Section": "2.15.1"
+      },
+      "title": "Transmit data FIFO is corrupted when a write sequence to the FIFO is interrupted with accesses to certain OTG_HS registers"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:5/table:1/row:4"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.15.2",
+      "table_values": {
+        "Function": "",
+        "Limitation": "Host packet transmission may hang when connecting the full speed interface through a hub to a low-speed device",
+        "Rev. 1": "N",
+        "Rev. 2": "N",
+        "Rev. 4": "N",
+        "Rev. 5": "N",
+        "Rev. 6": "N",
+        "Rev. A": "N",
+        "Rev. Y": "N",
+        "Rev. Z": "N",
+        "Section": "2.15.2"
+      },
+      "title": "Host packet transmission may hang when connecting the full speed interface through a hub to a low-speed device"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:5/table:1/row:5"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.16.1",
+      "table_values": {
+        "Function": "ETH",
+        "Limitation": "Incorrect L3 checksum is inserted in transmitted IPv6 packets without TCP, UDP or ICMP payloads",
+        "Rev. 1": "A",
+        "Rev. 2": "A",
+        "Rev. 4": "A",
+        "Rev. 5": "A",
+        "Rev. 6": "A",
+        "Rev. A": "A",
+        "Rev. Y": "A",
+        "Rev. Z": "A",
+        "Section": "2.16.1"
+      },
+      "title": "Incorrect L3 checksum is inserted in transmitted IPv6 packets without TCP, UDP or ICMP payloads"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:5/table:1/row:6"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.16.2",
+      "table_values": {
+        "Function": "",
+        "Limitation": "The Ethernet MAC processes invalid extension headers in the received IPv6 frames",
+        "Rev. 1": "N",
+        "Rev. 2": "N",
+        "Rev. 4": "N",
+        "Rev. 5": "N",
+        "Rev. 6": "N",
+        "Rev. A": "N",
+        "Rev. Y": "N",
+        "Rev. Z": "N",
+        "Section": "2.16.2"
+      },
+      "title": "The Ethernet MAC processes invalid extension headers in the received IPv6 frames"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:5/table:1/row:7"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.16.3",
+      "table_values": {
+        "Function": "",
+        "Limitation": "MAC stuck in the idle state on receiving the TxFIFO flush command exactly one clock cycle after a transmission completes",
+        "Rev. 1": "P",
+        "Rev. 2": "P",
+        "Rev. 4": "P",
+        "Rev. 5": "P",
+        "Rev. 6": "P",
+        "Rev. A": "P",
+        "Rev. Y": "P",
+        "Rev. Z": "P",
+        "Section": "2.16.3"
+      },
+      "title": "MAC stuck in the idle state on receiving the TxFIFO flush command exactly one clock cycle after a transmission completes"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:5/table:1/row:8"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.16.4",
+      "table_values": {
+        "Function": "",
+        "Limitation": "Transmit frame data corruption",
+        "Rev. 1": "A",
+        "Rev. 2": "A",
+        "Rev. 4": "A",
+        "Rev. 5": "A",
+        "Rev. 6": "A",
+        "Rev. A": "A",
+        "Rev. Y": "A",
+        "Rev. Z": "A",
+        "Section": "2.16.4"
+      },
+      "title": "Transmit frame data corruption"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:5/table:1/row:9"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.16.5",
+      "table_values": {
+        "Function": "",
+        "Limitation": "Incorrect status and corrupted frames when RxFIFO overflow occurs on the penultimate word of Rx frames",
+        "Rev. 1": "A",
+        "Rev. 2": "A",
+        "Rev. 4": "A",
+        "Rev. 5": "A",
+        "Rev. 6": "A",
+        "Rev. A": "A",
+        "Rev. Y": "A",
+        "Rev. Z": "A",
+        "Section": "2.16.5"
+      },
+      "title": "Incorrect status and corrupted frames when RxFIFO overflow occurs on the penultimate word of Rx frames"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:5/table:1/row:10"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.16.6",
+      "table_values": {
+        "Function": "",
+        "Limitation": "Successive write operations to the same register might not be fully taken into account",
+        "Rev. 1": "A",
+        "Rev. 2": "A",
+        "Rev. 4": "A",
+        "Rev. 5": "A",
+        "Rev. 6": "A",
+        "Rev. A": "A",
+        "Rev. Y": "A",
+        "Rev. Z": "A",
+        "Section": "2.16.6"
+      },
+      "title": "Successive write operations to the same register might not be fully taken into account"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:5/table:1/row:11"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.16.7",
+      "table_values": {
+        "Function": "",
+        "Limitation": "Incorrect remote wakeup on global unicast packet",
+        "Rev. 1": "P",
+        "Rev. 2": "P",
+        "Rev. 4": "P",
+        "Rev. 5": "P",
+        "Rev. 6": "P",
+        "Rev. A": "P",
+        "Rev. Y": "P",
+        "Rev. Z": "P",
+        "Section": "2.16.7"
+      },
+      "title": "Incorrect remote wakeup on global unicast packet"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:5/table:1/row:12"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.16.8",
+      "table_values": {
+        "Function": "",
+        "Limitation": "Overflow status bits of missed frame and buffer overflow counters are cleared without a read operation",
+        "Rev. 1": "A",
+        "Rev. 2": "A",
+        "Rev. 4": "A",
+        "Rev. 5": "A",
+        "Rev. 6": "A",
+        "Rev. A": "A",
+        "Rev. Y": "A",
+        "Rev. Z": "A",
+        "Section": "2.16.8"
+      },
+      "title": "Overflow status bits of missed frame and buffer overflow counters are cleared without a read operation"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:5/table:1/row:13"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.16.9",
+      "table_values": {
+        "Function": "",
+        "Limitation": "MAC may provide incorrect Rx status for the MAC control frames when receive checksum offload is enabled",
+        "Rev. 1": "A",
+        "Rev. 2": "A",
+        "Rev. 4": "A",
+        "Rev. 5": "A",
+        "Rev. 6": "A",
+        "Rev. A": "A",
+        "Rev. Y": "A",
+        "Rev. Z": "A",
+        "Section": "2.16.9"
+      },
+      "title": "MAC may provide incorrect Rx status for the MAC control frames when receive checksum offload is enabled"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:5/table:1/row:14"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.16.10",
+      "table_values": {
+        "Function": "",
+        "Limitation": "MAC may provide an inaccurate Rx status when receive checksum offload is enabled in cut-through mode",
+        "Rev. 1": "P",
+        "Rev. 2": "P",
+        "Rev. 4": "P",
+        "Rev. 5": "P",
+        "Rev. 6": "P",
+        "Rev. A": "P",
+        "Rev. Y": "P",
+        "Rev. Z": "P",
+        "Section": "2.16.10"
+      },
+      "title": "MAC may provide an inaccurate Rx status when receive checksum offload is enabled in cut-through mode"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:5/table:1/row:15"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.16.11",
+      "table_values": {
+        "Function": "",
+        "Limitation": "MAC may not drop received giant error frames",
+        "Rev. 1": "A",
+        "Rev. 2": "A",
+        "Rev. 4": "A",
+        "Rev. 5": "A",
+        "Rev. 6": "A",
+        "Rev. A": "A",
+        "Rev. Y": "A",
+        "Rev. Z": "A",
+        "Section": "2.16.11"
+      },
+      "title": "MAC may not drop received giant error frames"
+    },
+    {
+      "applicability": "unreviewed",
+      "destination_page": null,
+      "locators": [
+        "page:5/table:1/row:16"
+      ],
+      "operating_knowledge": "not_established",
+      "section": "2.16.12",
+      "table_values": {
+        "Function": "",
+        "Limitation": "Ethernet automatic pause frame functionality is not supported",
+        "Rev. 1": "A",
+        "Rev. 2": "A",
+        "Rev. 4": "A",
+        "Rev. 5": "A",
+        "Rev. 6": "A",
+        "Rev. A": "A",
+        "Rev. Y": "A",
+        "Rev. Z": "A",
+        "Section": "2.16.12"
+      },
+      "title": "Ethernet automatic pause frame functionality is not supported"
+    }
+  ],
+  "evidence_parts": [
+    {
+      "artifact_sha256": "d0483c99b558301e8501ded973445ed2245ca051d85eb9876c8168cd4f90faee",
+      "locator": "page:1"
+    },
+    {
+      "artifact_sha256": "26163b6a585ab6ad274cfc08cf5e1a3212be62d87d5fa45c2b8fc0d05880d38f",
+      "locator": "page:2"
+    },
+    {
+      "artifact_sha256": "03894f83fd4f968a1041df399abbe971f7bd3bc1f0419ea7bef71c9ab356b51d",
+      "locator": "page:3"
+    },
+    {
+      "artifact_sha256": "1daae362d53dd51180833c023ba7106705ad8e6af51da943ce42502f988c0813",
+      "locator": "page:4"
+    },
+    {
+      "artifact_sha256": "60b73ddd90e397e921de7ef6bd32acac922987f2108dd03175380322802f4a59",
+      "locator": "page:5"
+    },
+    {
+      "artifact_sha256": "53a39dd4ed6eb4ded0fd6a31302ff13bd0870c033e1e6372d90eb04e07c9d98e",
+      "locator": "page:6"
+    }
+  ],
+  "format": "praxis-source-outline-v1",
+  "gaps": [
+    "Table indices are candidates, not reviewed limitations, applicability or operating semantics",
+    "Read full section bodies and status legends; raw table values are not interpreted"
+  ],
+  "index_layout": "table_index",
+  "line_accounting": [
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:1/line:5",
+      "sha256": "8ddb4062dd45a00a23830d51b7a5022d0027a90a3c7dc51304649704df18f92b"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:1/line:8",
+      "sha256": "8d7a26c346bda63841275c9207214eb7937beb1cab5b72789a4f1ee6e147ff13"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:1/line:11",
+      "sha256": "8891a061c1b56276815dfc9ed23dc9d2060dfa4601a6104946686b070f9cbedb"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:1/line:14",
+      "sha256": "7f10b84023b358040511d155ff8ee71d15d4239a94a24877c87e2022ea6c1ca3"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:1/line:16",
+      "sha256": "91afe71f9655dad5de15c15c20bba18410b957a5fde601c4c1229054d00b3044"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:1/line:17",
+      "sha256": "e769ba0e7a048cf399ba148e9b638e2d0415761b23642967cb90769eb3ae5e58"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:1/line:18",
+      "sha256": "3e616c8bbf04a194ae64b14e4914eecec9f617b6333a323b5bc84e557ed309a5"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:1/line:19",
+      "sha256": "e77c6016854ddd11aa728965fa92b0d52f78cc2248204c027acfd634a883cf28"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:1/line:20",
+      "sha256": "f190521869954e9e662654bc58eb909aa221c619275ff093d909bac975ce0091"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:1/line:21",
+      "sha256": "cf677e311f38e12d68fad914b907f287c7bb282ba51040d3eda9bdf4a1fc876d"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:1/line:24",
+      "sha256": "d6c739e2d76afadaf5d91d76be8d40d03c2d933cdacbb3aca0603121c50a5497"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:1/line:25",
+      "sha256": "2854b6a0968b14519c4910053ff63651589ffd291e5d2e1b477ad7e4ae6bd978"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:1/line:26",
+      "sha256": "deaa51eecc42e2ef249430f815cfdbde49f9a8b049149a8617fdad2175f0093c"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:1/line:28",
+      "sha256": "b7a169cd7b73bd2417920c5aa6712cec80585fa9dea550148a7937f516de0a17"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:1/line:29",
+      "sha256": "74bd45f933310556fa74f87f7840f935dd7faf737779a762aaa089746487d04b"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:1/line:30",
+      "sha256": "e713d9d536849b8c8755ebfd69c610ec01d0847d43066a99bfc4263417ae750e"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:1/line:34",
+      "sha256": "94f645f402d04a44aae126c57bc6ac3e630185679dffe0d519b4b705d079edb2"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:1/line:36",
+      "sha256": "435a2d4b81753a7ba5e14708a5e0787b76585e862157cab3794ba4934f6a8161"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:1/line:37",
+      "sha256": "71bf90935fc231d20126e2087eeb583c6aa419fc3dd1b6847bfe376b9200eaa0"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:1/line:38",
+      "sha256": "0a310213046c057264d4191c01320c865a8d1c49bba8f44f553ea647dd92eaf1"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:1/line:39",
+      "sha256": "0cae6299d83476db99140bba9467f946763cc9624564fc6584e1a9616b1c4f1f"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:1/line:40",
+      "sha256": "8803baa3b841b41701b4c9057116727efe903e8905dcecfe8a37c3b1d2da6c87"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:1/line:41",
+      "sha256": "da28cb749aefa438258bc26fde49aecf4d6f68af752f19cff464462f6ccb4701"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:1/line:42",
+      "sha256": "c400efe841f4377bad8c8a2db5a98f89bec736ccf0e4551b989863f067df9207"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:1/line:43",
+      "sha256": "c6565deb6e1cf8ccff694625500712c011fe6f5aef4efaa1ff7d2e031b1070e0"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:1/line:44",
+      "sha256": "b074703f588529c79af6014e3a88e7f9591a26474973abc8738b552ca5343be1"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:1/line:45",
+      "sha256": "18f5384d58bcb1bba0bcd9e6a6781d1a6ac2cc280c330ecbab6cb7931b721552"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:1/line:46",
+      "sha256": "07ec341caac377938e369f52deea69a2da399474435f06f9301cb86bb43f41d7"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:1/line:47",
+      "sha256": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:1/line:48",
+      "sha256": "ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:1/line:49",
+      "sha256": "4c31c6dc21c68bb5dc655be6609898312a074bbdbdf1032d78f20e115b2fe212"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:1/line:50",
+      "sha256": "e7f6c011776e8db7cd330b54174fd76f7d0216b612387a5ffcfb81e6f0919683"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:1/line:51",
+      "sha256": "d7b62726d23ceeeeced9a8846e49d966c0561adb3ae2f31bbfbbc46432e3345e"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:1/line:52",
+      "sha256": "6f690887c0c9762aff78b8ac8b44880cae862d2617a4592757cfa70ce98262fa"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:1/line:64",
+      "sha256": "7da09a66a6fc43ba21da0b71ee48b479153f721238fdc2488cea16c97e128b4a"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:1/line:65",
+      "sha256": "83b6c8f0ee7ca33602bddc42d65580987a4db51bc2a1034b7957afed1b044488"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:2/line:5",
+      "sha256": "8ddb4062dd45a00a23830d51b7a5022d0027a90a3c7dc51304649704df18f92b"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:2/line:7",
+      "sha256": "04d46c940950c63b94ed7255ac65eb0d028af4d08b5ab5b32bb61fa5df3b0801"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:2/line:9",
+      "sha256": "5e4d774234eecfe933f5dc7146baeff0296dcdc26004e911d1fa2b0c11f349cf"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:2/line:11",
+      "sha256": "a9fdbbae213d302fad933906e9aaa7e20bb65697089932156568b4853d90a1bb"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:2/line:12",
+      "sha256": "4f0e4eaabf286095df639a22e5e9a96e3ef8fb8dc978095d15d0000409ebe620"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:2/line:14",
+      "sha256": "7527ab96ceb85a94868cd78f40e2048d98d59c5bd63ee8572614c5aaf9322fb7"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:2/line:15",
+      "sha256": "703cae5519955ba6735380440af76f4a7e5b9fe17babcd1b889960d7a9cfc771"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:2/line:16",
+      "sha256": "28c1ee8d8ef923f6bc93e4919fa23fd8f0ce622f5c0b700e5bb182cc4f8a61a4"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:2/line:18",
+      "sha256": "3f87b1afb7d1a98e617940b222cfd4ef358abce5be40ea1cdb549c00c705c0a3"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:2/line:20",
+      "sha256": "6e1369db64c0a97b9ec2307928364dd247e772e80072a6c784fe8e0aa395c108"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:2/line:21",
+      "sha256": "680545b199e7162d718acb2f8d2b58eb066ed19ccc15245023c2343851d24945"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:2/line:22",
+      "sha256": "2126d44d836b89af016d3343e3ff98fc373766df350e2500572d4ae410df0e36"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:2/line:23",
+      "sha256": "c848591dc045a1753b8540d6111528ea13147c2be26ff58cb41a925fbf1d2bd7"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:2/line:24",
+      "sha256": "d48556714c3dcd98bbc6020a7dc8226c078cc02f168b3a220d40eac04d97dcce"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:2/line:26",
+      "sha256": "920e413c7d411b61ef3e8c63b1cb6ad058d5f95f8b481dbafe60248387d8c355"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:2/line:27",
+      "sha256": "599e95801b2c4d12397a72c4dc096a7c0e05ee4537e32bbb4bf5a948a9047c32"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:2/line:28",
+      "sha256": "9c898c8ee2b942ed4cabffbf0e97968670bf34eacbc5125edf04d13bc78d879a"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:2/line:29",
+      "sha256": "614489b307e16e44554035c8e52a13389e826f605ad9c69934db965e94bcbdd6"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:2/line:30",
+      "sha256": "22890ebf24b72b7bbc7abeb610df631a9cf3eb7a588d6c39434b33d57046493b"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:2/line:31",
+      "sha256": "7dfc71da2d1efc4825dc2fc576b6fed06caef0e7896cd1dcb86ccbcd996eab84"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:2/line:32",
+      "sha256": "483aa08e917c65bb25fbcce1c11768dc9390e0c7bddc5b68b92357ac8804e74c"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:2/line:33",
+      "sha256": "d05055a6b18e5f87fddef23c8c7a8dd505952155ebc2d1ab409b9db25f6e2839"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:2/line:34",
+      "sha256": "a99ebe55a76824173ca178e53744e1cbfd9817d90b117994ef247b7b83c69b5d"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:2/line:35",
+      "sha256": "30c5fb9fdac0f789f3f044161b334c38de930b26f2429444ecfaf1f5e7da4c06"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:2/line:36",
+      "sha256": "5daea0f5013d5959bad565e7a96d5a18973f9620de201947957b2c8217da2ead"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:2/line:37",
+      "sha256": "95f7d3f3c84e6ed1c7cbd2742934ed16bdf285148ed292a90334daf36fbd3b6f"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:2/line:38",
+      "sha256": "65d33de60f9a7d0e400052f85112f1fe383a6ca24fe79f6b67d304e4d1fe1232"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:2/line:39",
+      "sha256": "ac71aa482196fde3ceaaf0a1b7497f15e9b890659b924c121e9e97a4172371fe"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:2/line:40",
+      "sha256": "4b8cd7221f309262af18b8f5732755f99012e0c92401f984b0e1d80dc2b6df9d"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:2/line:41",
+      "sha256": "c5050f8000c4aa93e824ca96b6505bda0934e506255cd9575dd1b20596989e12"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:2/line:42",
+      "sha256": "25c22e491eade0eed9482b5a7256faa5e332f819444955b1a8eaf53f7f92426d"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:2/line:43",
+      "sha256": "0fa5d041f3a3ff6ff63fb0ca20143822be396565bd07904136f4edf1ab5e5eb1"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:2/line:44",
+      "sha256": "4dc8f751805d32dd4583b5987c65071663776842ea2b3547de0643991f151692"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:2/line:45",
+      "sha256": "4ad15856d8790d49d493b7782e1cb2dad2aa340987fecc2091a28a4c696bd5a0"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:2/line:46",
+      "sha256": "4bb9e21f17774e878b5ed5c3317cbea2ad5d39a88f1870c511741baa2a673dc6"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:2/line:47",
+      "sha256": "924220812533d0c5b629dc5baafee3b027c159241fe4c98caa61467ce91c59ce"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:2/line:48",
+      "sha256": "71d780b53e9bc27fe8e1351ffefd01d9c2c671d43641d12c2a351fb34c7b60ac"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:2/line:49",
+      "sha256": "54e2d1e1ec940a2c7fbf365b9b6d4f76c2740c65c48a19a14be5c39aa8b468b4"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:2/line:50",
+      "sha256": "99b9048fba9d4607e817d3651325a6ed454c209ee22bfc80fbb46096735bc814"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:2/line:51",
+      "sha256": "dc06ea55c7b5589540c560b69ec8af6673bced094a6605ba1029284cfe30d384"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:2/line:52",
+      "sha256": "6725e7bbcd28f3a8a586fa34bf191fd72dde8b61756932cd3237c17a6f196f1a"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:2/line:53",
+      "sha256": "9736115806a8dc673e8370a1af0bc194eb4decc7372d52b6572b9dd70a45f7ad"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:2/line:54",
+      "sha256": "359c610a115a118825b8da5a8d1b3a57b01eedcf1b1672c81fb77a6b0ab43f02"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:2/line:55",
+      "sha256": "9d245c3cace5892ecbc631358fb9059df75f1fb03bd0e1f7607544aba2cf5fd2"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:2/line:56",
+      "sha256": "580167a9369710988389dcfa867f98cf785632146431c705fa3fb3f606c49b25"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:2/line:57",
+      "sha256": "95a8f55c77d9109c31a1877d6f7f87467f81f0419cff8aa94a5f0f2b4e464e01"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:2/line:58",
+      "sha256": "b2954615196ba60a7cccb561bec99a621b26d0a9c6e908e9476f5270cb349568"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:2/line:59",
+      "sha256": "7fdfda5f50a433ae127a784fc143105fb6d93fedec7601ddeb3d1d584f83de05"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:2/line:60",
+      "sha256": "c29a72ecbea7bf54d62ff1ae71cd168652935fa979bc63ccfcefdf2178b402d5"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:2/line:61",
+      "sha256": "7d8838a738b4a698aa36f1edfe98f7307c75ef9fc2eea8c6829348e3e262bea9"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:2/line:62",
+      "sha256": "e20ec81038c0c3d38a87cbfaf416d14b3cb6609ed39ffc0a42ad8cfc81a96dc6"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:2/line:63",
+      "sha256": "4bddefea4e3afc7b5a62cce046682deb6ed55ab93c588983b9ff76aa613ab019"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:2/line:64",
+      "sha256": "f0f6ccae5453482db932b714a480eee9bad4d0538091aa2e1376cc6f953cf66e"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:2/line:65",
+      "sha256": "a79b26b182a85122c65e5d88af2e6910226143f6cc7b389400c8f876f0c2d5d4"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:2/line:66",
+      "sha256": "2bf353c545d60ce3079ead68be938cf025b0c1d5a7764ebfb24fc24a87501162"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:2/line:67",
+      "sha256": "cff364c3a8f4c790ed75c07004937d59f944d4bc3e24f2431c957a940e35bee8"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:2/line:68",
+      "sha256": "1c1fa8bb17d202f310d7a61557bcd04a298767cdd258dd4454c4361116484373"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:5",
+      "sha256": "8ddb4062dd45a00a23830d51b7a5022d0027a90a3c7dc51304649704df18f92b"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:7",
+      "sha256": "04d46c940950c63b94ed7255ac65eb0d028af4d08b5ab5b32bb61fa5df3b0801"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:9",
+      "sha256": "920e413c7d411b61ef3e8c63b1cb6ad058d5f95f8b481dbafe60248387d8c355"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:10",
+      "sha256": "599e95801b2c4d12397a72c4dc096a7c0e05ee4537e32bbb4bf5a948a9047c32"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:11",
+      "sha256": "9c898c8ee2b942ed4cabffbf0e97968670bf34eacbc5125edf04d13bc78d879a"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:12",
+      "sha256": "614489b307e16e44554035c8e52a13389e826f605ad9c69934db965e94bcbdd6"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:13",
+      "sha256": "d43119becd4abe6e9d7d3323edeb237d4dbb9e0d14d12fb4cce8f2ae82792ae8"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:14",
+      "sha256": "a07df7b3d513c736e45a7a55e00d9a7056d5f6964c4abbf98503fccac008c505"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:15",
+      "sha256": "1da3d7b3c6f20237481966fe9d0c5d8422dac58ec24a0e0d37bc1dec4e0fe5e3"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:16",
+      "sha256": "6725e7bbcd28f3a8a586fa34bf191fd72dde8b61756932cd3237c17a6f196f1a"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:17",
+      "sha256": "ed08a6d425c4cc752bf615beadf8085589ea5b8c4b1b873e60fe44802cf7be67"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:18",
+      "sha256": "650bc473a20a8d878095f8f42c3b54baa2c279241118cfffe9a8b57117de61d5"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:19",
+      "sha256": "c3ade8d636c71268b5ac9f43a65411405170487171fbd90ffe149195f6b28184"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:20",
+      "sha256": "99577e4515edfcb23d7cbd356cea48a8dfece0927cec13728a67fa1a3248a09c"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:21",
+      "sha256": "40ba57ac04e5fdd0746a943c3ae6c617f49339ca3b5bb3dd59bb6afa4fea800e"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:22",
+      "sha256": "75c374cb4cf3cb2dd5f9db26beccf098e7c170f02d11b429c10366d3ad383bb6"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:23",
+      "sha256": "ccd447a7345dcc4ad34ac869a15fb2c31ec2af3a5e145dd98c3bb96d2445ef94"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:24",
+      "sha256": "dbb2aacf3b972b8c0d0a0dd4888de447d852b66b95ca695858d583c310a65283"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:25",
+      "sha256": "ade07c0fb4400f819cba70e1146b274d51218f25f4495c3088d0b81a5896f06c"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:26",
+      "sha256": "f62709325fa531298d6e98ad63ae737a4334f8c2561eb762b02acc6467bd97e3"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:27",
+      "sha256": "1a06fc54e5d6cb3157847a0303852653548bb114ab75bb81b264249de657a0ce"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:28",
+      "sha256": "ad1769cddf79f9acf8542fc0ed27c44e359f3ff907250816c783de1d316dd46e"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:29",
+      "sha256": "eca8e1d792110f8207afef2a633f43c50a2284d3073413f323676413ddffc86a"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:30",
+      "sha256": "70f2010c6a4b3161593e3eb0a45cb4cbd42f85915ab82e613151d1bf235c684e"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:31",
+      "sha256": "318c5ad51e9b36ff5924ae323dd59031245413a3e0f2aa3e03cc42902e9e7acc"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:32",
+      "sha256": "a700ac476a46a008779b933be5d28b24d3cc0564e03b2cd0fc707630c42fc4cb"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:33",
+      "sha256": "7da5c56a0358919e3bf6e17f6825dd9ed60b343343bfefd096fec7b88a5f3bae"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:34",
+      "sha256": "7c67ffe11aa0275ad4cdb73e6b2f4827d983a09adbc6ed7d9f2f93d97be4fd91"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:35",
+      "sha256": "448587ec91e806458089b925eacbe52a5f9d7e1fdeb0295a0974eb4294763e0e"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:36",
+      "sha256": "e642b12901a6ee51456f654c48cd0aa6e90afd64e035afbc97cfc542209c70f9"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:37",
+      "sha256": "af5fac351fc7f513d9aa619d51fa5317b9900b8a5655bca3aa38cb98e38766ae"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:38",
+      "sha256": "ad4a5a1fdea61a85bd8361834755428ba964aff385923501e7e005b8c793b22d"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:39",
+      "sha256": "288965a1f2c883c71bff8a4b3a1b76cc77d11e65f70910d5feff411a4e5fe1b3"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:40",
+      "sha256": "1ea99dcdaa3734481f020c2c172a0dadae6d6d55abb620b67f88356e594b21aa"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:41",
+      "sha256": "5c42889e398100c9ed8f4099df62646514f178ff2cbb7c37f2ceddfb2584a0e6"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:42",
+      "sha256": "2e0a5dbef09e241d2f9ead9a4db681cda305bb917972a17d019d53181f1ffdd8"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:43",
+      "sha256": "0831129bf50efbe0ff29d0eb41a82ccff75dc0a3e10d53495965b77abd8928b4"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:44",
+      "sha256": "35cf545484cef1d9599f6fc641a2994747ac3411b3d5bd90bb9013c8a5317587"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:45",
+      "sha256": "085afa73a88616efa8226d102c96ad5a549a3c046ddc83acb2342bbfabcd7f4b"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:46",
+      "sha256": "6a3486a35bdbfc801418d0e707ac5c12a7bb3bc80450006db750e0baf8627e61"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:47",
+      "sha256": "81cb1247fdb297fa8d38e9726e97d211c6c360d10bc0dd52ae41628a0c278867"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:48",
+      "sha256": "04ce219fc2cbabfcfd00347b1e3a027db38a713f58e7e0886540c123f9437000"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:49",
+      "sha256": "2a925e362f492714b8475638c0044015acf36a468fcfe9f0d8bde51c848903fe"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:50",
+      "sha256": "0db80e54456a99c3677cae74b6324e5e0ed489ff4111b9971258f60a73a9a215"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:51",
+      "sha256": "1b75306632868eb1a016773bd504412dacb6cf54593d3c0d1455df2c09282ae6"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:52",
+      "sha256": "01be30bb4a27765c37462e6bf2a0bf8b6c109f9be9d81e6fd56455db1a736a43"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:53",
+      "sha256": "c39598416cac46a1be247d77e81839283495d571f804867a07f3503c44347393"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:54",
+      "sha256": "beb565414d015954443d255b07da8082ca549a85b4b4253677681f9f99bf8525"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:55",
+      "sha256": "eb7f04b8f9615bf42e91527ee9ab628a645e61ddfabc8b4b5c563a8d2cdc7e3f"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:56",
+      "sha256": "9cd613e705807fb1ddfd17e77313d8cd9020cb617a03cafe26e9542fae58521e"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:57",
+      "sha256": "637f4c996d66ccd542bf363608718a8ef2671878614b4ae584457da4b53a58f9"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:58",
+      "sha256": "9178b6db044b4f594e93572e1ac6938b76e9a0bc10a3eb30f46aaf03f087083e"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:59",
+      "sha256": "a40782bfca2b102f527dd6e934a18754b8ab2aa6afc10b09b44bae87d9d24883"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:60",
+      "sha256": "69e36568cd8b4659389b9fcfbe1167547f6421e78168bfb439dada2ffddb0146"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:61",
+      "sha256": "1329809972ea8579996a6d0b8d78206ca0ff2a57f7903cffe3f40a5619f08394"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:62",
+      "sha256": "ec6a99781a3e4385f6d130fd163bd4e808f2ed9c4290c6ebe9ecba5ac9f1e708"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:63",
+      "sha256": "b9f4ea31a245a30e66332d5a5f605062ddf3c08bbdefe40fcd37a9e88544571a"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:64",
+      "sha256": "e1be8bff7f982bc653cf8a551c5e8ec674e41bda6118469c3c0f975824672859"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:65",
+      "sha256": "9d83e91356aef90172d6bab48d95c0f53a8b0d2b96e9afee252fd8b755cbf101"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:66",
+      "sha256": "41f0bc77b05aaf81e0982a3849b45845334506a72d13f4a7347eb2901b8c22df"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:67",
+      "sha256": "d47ee6a6477e8c21848f8058da10ca3ab6990646498889b491dbf589d1ed3d12"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:68",
+      "sha256": "1d7510b65909dd4cb61fa09527073b956bc0f872ba71a965e58d2c39e9d9d1e1"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:69",
+      "sha256": "c2fed572bdaef883868d612561a3a488720a34f17cae2b32163f9fff0207610e"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:70",
+      "sha256": "63f73362d413d5922204bd4d4511daf6f3332aa67eb23014b4c31b0de9e723f0"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:71",
+      "sha256": "655a0a46d18c290584f1beca5626c5d70f44ac6af4a7eba983e605827114b05b"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:72",
+      "sha256": "45b5938794a2c75d9c0791db02ac08cc47ef0a1b8a5e8dcf279c77df76072c1f"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:73",
+      "sha256": "945112f67c67278f368d6340825721754e391aa42e560e0f5f32d2dc7378a376"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:74",
+      "sha256": "33c8c753c956e61f7ac68edb095df3dba015e0a631980609c953f1409fc51165"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:3/line:75",
+      "sha256": "fa82f4909be50e7062242fb872853b9fa219167ca79f6d843397cbbc17945765"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:5",
+      "sha256": "8ddb4062dd45a00a23830d51b7a5022d0027a90a3c7dc51304649704df18f92b"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:7",
+      "sha256": "04d46c940950c63b94ed7255ac65eb0d028af4d08b5ab5b32bb61fa5df3b0801"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:9",
+      "sha256": "920e413c7d411b61ef3e8c63b1cb6ad058d5f95f8b481dbafe60248387d8c355"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:10",
+      "sha256": "599e95801b2c4d12397a72c4dc096a7c0e05ee4537e32bbb4bf5a948a9047c32"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:11",
+      "sha256": "9c898c8ee2b942ed4cabffbf0e97968670bf34eacbc5125edf04d13bc78d879a"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:12",
+      "sha256": "614489b307e16e44554035c8e52a13389e826f605ad9c69934db965e94bcbdd6"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:13",
+      "sha256": "36d0e9232a8755d298c8d530d60338496e1e84a74f54fd5fa341e1b616b30ad0"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:14",
+      "sha256": "06ed3c66b15688a1969ac202e916adc6a20a0059d26ac6cadcacc011ca3eb7ea"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:15",
+      "sha256": "ef536f22ad83e5503637f6b909dcf2a51cdb1268c5beffad93a5ad43850bd631"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:16",
+      "sha256": "07a9b5d8c1c53c5d28d820cc58e0938fc0bf29bb098a40772e6fe7b82487feb1"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:17",
+      "sha256": "39af10b1792439f0a769aa6f2b554a54d27dfa9fefce976d42e7af6addc3524a"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:18",
+      "sha256": "fd0e06d0a908476e69558c59b3136c14001cbf69735deae9e5018b4639a86b13"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:19",
+      "sha256": "69f578771b2ab46eb3024a9f0f8bcf87e3be3772bc1e921137ce949ceb2be786"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:20",
+      "sha256": "24f0d9e553a35cb5b10654c9a0a4aae19d166052d0f80461fb91fc2505ca2455"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:21",
+      "sha256": "38aa3cbefc1731ce747d4f0dd8196bf33d37c23f6618f5ca6354d48dc95cf2c2"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:22",
+      "sha256": "3d2ca354129449769154e39b4f2cf17e0428242657198e2fe4bf5dd222bce24b"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:23",
+      "sha256": "038471893a91db310bb5e9e289a5d7be44c9bd44cd221fb2bed3ce317efc364f"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:24",
+      "sha256": "320c8b4495b0baa86294eb22950c7a0b6d5336a331cc085ee84bae94e10cbd8f"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:25",
+      "sha256": "fc7db68a4d4e48d531e82aa83d684c86270cb8a20f209931ee2030e3c9bd0f65"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:26",
+      "sha256": "0accdaae33de4c734f56c75a938bfc3fc77569414c7e497e8cec65d3b31b4f43"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:27",
+      "sha256": "9ef704d3f59719a945554bec74f34ab6c73cbac540e18952dd498578b8e3ce8f"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:28",
+      "sha256": "90264fc61adf5eae8996a86e005681856992c8e0748170e85838844760423679"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:29",
+      "sha256": "d349dd05485c1cafaa4c93f1d01f34d4657906f461db5afd7bf04d34c0654a42"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:30",
+      "sha256": "6c4de9d08d08015d47ebd345466679fe1c228b48c96faa91ed5dec8617dc7f1a"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:31",
+      "sha256": "51bf2b781f9f33ffa1cc545781b49eafdd0f1ca0c7fe4da00b3727768c88fe73"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:32",
+      "sha256": "760ce0b02aa4a74b073afbf2e9047bf8fa4f8317c43db823effd4fc40da92b6b"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:33",
+      "sha256": "aed4a2eeb8d5cc78affc70eea0f0f4a457a048f2fda665f9f83e0b5177a7bb4b"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:34",
+      "sha256": "073c1634c496cdb649d1afe0a312bbb4b7e1741b271542e4a436c3b8824b1761"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:35",
+      "sha256": "dbdd86ac6bda2223a658a03de6944db70680d5b4adca6f39976f8c36ce5a84fe"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:36",
+      "sha256": "aa408536c4cca93f8abef5f8a0ec981894d43b9b99ac0a06c60dfad717e5cdc7"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:37",
+      "sha256": "e6bca2141fcafe0b6f3c72337e7b07f94328910e9e2b6c9e7b287a65986ee6d3"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:38",
+      "sha256": "84f60613e819f7f603427183dcf0635da0cec144b1e661e27fbaf39b9b63a925"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:39",
+      "sha256": "789048b61864c634a2cc998ad349cbeeb7c5e5b1fc042bf33b6f399525b080e8"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:40",
+      "sha256": "78e88a281098f378f713e6b536c156bf884a3860a39625a4a8095d798efc8993"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:41",
+      "sha256": "44c9fb643189aa028df9253f3b1d13f98b8e2ae21572f6a417e11ad24927ed0a"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:42",
+      "sha256": "4777ed42de084be02ecec3c6e8b88fbb2e75d1093ab3903cba8e29ffbd597380"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:43",
+      "sha256": "20dc7219777a8f9b8d2099dc51f553dcb0023b5c5c75e4d3256b5cbe2ac80c59"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:44",
+      "sha256": "0cf8916815ed4fd2a4317308b59c461a9aea94bfe00e1f66f7bb191192d99076"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:45",
+      "sha256": "862417b9e7c3720bcb3263cd873b09892d787823b6f9a0f453e42824c5a4d4b6"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:46",
+      "sha256": "d974de13b5b7a278e48594fcb7f94a1318697d162d4082b405e745b3dc03df1e"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:47",
+      "sha256": "8ea4bb162ad991cdafe0c6dd56c043ab6a32cd35980f775b98673ba866bd4ceb"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:48",
+      "sha256": "35ae8c7a944908c0a44f809262a7e2ca1e3e2a7f37a40d3d929e71e54255df91"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:49",
+      "sha256": "2e60d3a7b2b704da63c7eb4a52845275acbdbb77db5dda55d423dd17c2d57602"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:50",
+      "sha256": "0dee3e7dba8e58a46d2773ad4bb882bb36e037dc50da73937b3d7e32d18761fd"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:51",
+      "sha256": "7a919f845d5297bbd331786e9488e0e0fd0300b555deeb122d63becf4d80268b"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:52",
+      "sha256": "551a433568237be200096aa0a162322e3461b6d88a4daba0706495c6943fb488"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:53",
+      "sha256": "c824c8bb72975e9ec85f51bcc9670d456b89112464b70a2c7cf11c815dfe4be1"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:54",
+      "sha256": "575507d2fe2008a1a830eb12da9d50b713a04f54b91f76c0e3a50acbddf23892"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:55",
+      "sha256": "795ae4b8ea82fd46a03f9cf11e024a7d8f336bb573199b8d926508fb0e53f975"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:56",
+      "sha256": "b5b8ec5a418193d98631ea713fd47186d7853394e59f68ddba666e36d1425c76"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:57",
+      "sha256": "d014f55381f95e461b111f14784346b7e7f6ecf1d076bb1a1e5fc6799c93bd9e"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:58",
+      "sha256": "6ab13d90b1e62e559df952482f23c5ec25ab1383b460f8796970c7a8c5149e3d"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:59",
+      "sha256": "76e68b31e456d4e92c83df548eb2889f8724a833578c965b416d02056000c264"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:60",
+      "sha256": "5ffb42fbb3838e12b9953ab96f16faad41b95b32df6609dd1d799552762f6886"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:61",
+      "sha256": "336851376847fb22aeeddfc63436c05b6d665e7f612e25bfd3480db3cc91b43e"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:62",
+      "sha256": "ec18dc94b0fd73bc68867875d083aa28efc802f1740de212dec3ab60faee3a9a"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:63",
+      "sha256": "d9bd95c46cbd93c3ed229d120a7de224137ba1a61dd9c0bd280563d911375f99"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:64",
+      "sha256": "9d25a2a467e5085e9938e10bcd44af3a651e1fc80e65452a4e74a795d5ba339f"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:65",
+      "sha256": "af34a44eceb5637eea79958dbdded5461661fd7d57e24c0eba41ebf34923bbf9"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:66",
+      "sha256": "af695afb2eefbaffbc4d48de46fcb47dc605d3dfa41e42248c2ce913cb6b45b6"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:67",
+      "sha256": "8b9156ed9413608f624728f28da33fe37a2bfdadc71afdd92375b8cc69a010c7"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:68",
+      "sha256": "58e59b575b30cac7e15c243ddddda6b912cee4cd1b814234988acc112778e458"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:69",
+      "sha256": "2f1cc884f9c2d9ba6918d0c1b677bc7f6e5a48e97f7b5dc50b47ac123abc045c"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:70",
+      "sha256": "a2795e752fa5b62917dc9b766660749d6e55c423dbfbaec8667b4dcaf3d01871"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:71",
+      "sha256": "7f2aacf986d4ba61057fe330d3016d46268b3975942c89d0fab85dab6fb294e2"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:72",
+      "sha256": "391c749dd511c7fb175cf74da8e64320db93cf932ab3c1cc53cdf2c4d4438385"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:73",
+      "sha256": "80c2865a2ec82b01f3d3e34f922a99b4ead16e81051519c4c5d30579e43498f4"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:74",
+      "sha256": "3f218f4c2404499e1b019abd510d44468ab38ceedd585067c8b9754701793a4a"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:75",
+      "sha256": "09bc4aee5e56a7ff12fb63bb99dae68a20aa8e6306b3d56725433e2a47258602"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:76",
+      "sha256": "a1d868a54f12dc2035fcc9a6bb00366a37753298f1ffc6a8625bb3b42a142a0b"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:77",
+      "sha256": "69a76cc73d24884067ecaa36c2e23e48daeae891a4e439a9832d126eb5689397"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:78",
+      "sha256": "61f0c166abc37dd6fc0c8e37b50a3ba5414b3afa7a20464dd80d0ddf4bd029f5"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:79",
+      "sha256": "4bbd15b88d889f06a8b1ab88dd140374ac019ca8180090d428e924c1b942c84f"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:80",
+      "sha256": "06f6da6913782c49ea0514aedecb0f168915bd792e454841a72c0f404df60d86"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:81",
+      "sha256": "f5caaa0ec2ac2113b894b62227c2f53e3814408cf47c81ebdcc62836c4819aed"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:4/line:82",
+      "sha256": "b029f995f9c21087a3f476bbb59ee04809916d9dad13e4309bee13bfb3c6ac05"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:5/line:5",
+      "sha256": "8ddb4062dd45a00a23830d51b7a5022d0027a90a3c7dc51304649704df18f92b"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:5/line:7",
+      "sha256": "04d46c940950c63b94ed7255ac65eb0d028af4d08b5ab5b32bb61fa5df3b0801"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:5/line:9",
+      "sha256": "920e413c7d411b61ef3e8c63b1cb6ad058d5f95f8b481dbafe60248387d8c355"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:5/line:10",
+      "sha256": "599e95801b2c4d12397a72c4dc096a7c0e05ee4537e32bbb4bf5a948a9047c32"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:5/line:11",
+      "sha256": "9c898c8ee2b942ed4cabffbf0e97968670bf34eacbc5125edf04d13bc78d879a"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:5/line:12",
+      "sha256": "614489b307e16e44554035c8e52a13389e826f605ad9c69934db965e94bcbdd6"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:5/line:13",
+      "sha256": "af695afb2eefbaffbc4d48de46fcb47dc605d3dfa41e42248c2ce913cb6b45b6"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:5/line:14",
+      "sha256": "82cf503cf8cf399a09c1f28c3318fbe76bc11ac0c6463fe6fae5fe2ecf59fdfd"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:5/line:15",
+      "sha256": "58e59b575b30cac7e15c243ddddda6b912cee4cd1b814234988acc112778e458"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:5/line:16",
+      "sha256": "d1d6f018c9689780e5001201c99ff65416e74870ec54c499a529c6141bec16b7"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:5/line:17",
+      "sha256": "4e68d1e9674c70bb6ab9a29a1c90bfdb1b1516c3458691ed53597da4905b7f1e"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:5/line:18",
+      "sha256": "c5ab1be5f294e69b5baa06f6eae565218e6473909256029cf9c5ea82cc8dd55e"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:5/line:19",
+      "sha256": "ca257bd45237c4b7d262bf6d07d341c197fb276a9933b95075b30cd8497e9f57"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:5/line:20",
+      "sha256": "8e39dd2a2335a613748474011b55219d37e5da4b96fddcd023a34bca9ff9988f"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:5/line:21",
+      "sha256": "ef3ddca299f44f23d276aa7c56d3327972a8526c394371b064a715065fe27b52"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:5/line:22",
+      "sha256": "913aee632ad33876603cd7aad9e879ca2c7bf29366db194873ba21c92b178e6a"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:5/line:23",
+      "sha256": "09e2d6f84aa530e371755d607164d2a6b7d00d824ab0f9ab06a50244a1f1ea2e"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:5/line:24",
+      "sha256": "bccd878d41746e6c3debb6a3e6800faca0de9c26ed4888b28bf1b8f8be55bd76"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:5/line:25",
+      "sha256": "48bf0924319560a8db17273bd503425560e7b4b753c0fd69cdd65842521fae4c"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:5/line:26",
+      "sha256": "cbdb9c4d892433f799e510b3dc9acbdae90e52df8f38ce8670b2c619c0b2b8f9"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:5/line:27",
+      "sha256": "636adf542faff8331f4709e4f0f3bbe28838e53d2c35c0d7fde68052ed47b696"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:5/line:28",
+      "sha256": "68c4c71cc1d8de69af11d8cb9072e1714ba3c2067cc852f101691b4a92854200"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:5/line:29",
+      "sha256": "8cc4084009971d81d07c10427bd46fc639b4fdc5c226fe57dc3bd73f23ddc6a0"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:5/line:30",
+      "sha256": "42be0ac73a56f16d4239ad298a21dbeed26a0ced77fda7afb65098e168a18690"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:5/line:31",
+      "sha256": "7e9ac1b3e89ff48f8cd8c7ba2b2c3e81690204b5a528da1c9aa037604187369a"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:5/line:32",
+      "sha256": "1acc9e4066f2c6db03fcac394d2710604e8e9d105b81e173fc1c9dc699d8066a"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:5/line:33",
+      "sha256": "efd3da7d5cbb815c21563acffcdd7a712f094553211c7d939f4e532124e03536"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:5/line:34",
+      "sha256": "285a82de64fea9c2f1b4e924b3eb0d769c1cca64a59aa5ceb39ad73eb3124fe6"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:5/line:35",
+      "sha256": "960d4c6302e8b7a4bd1c8ede29233c6808268b5961756396f344fb93ae538ff0"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:5/line:36",
+      "sha256": "57432cb93190e725b18601335db40f9a3d934a1f5be1680e57c5c932fe03c7e9"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:5/line:37",
+      "sha256": "29ab3b27877975e803f2bea78401862c0b2313166c8fd0da4e91e050aee06ea0"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:5/line:38",
+      "sha256": "468cf9b2cdeae89135dc8ccc4f9d7cf044e9a2a5c46d178bb986d009f27fa7d4"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:5/line:39",
+      "sha256": "a480458d059d393f119562588357b8e0da2be526e5e49ed0eb532ef2d23df418"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:5/line:40",
+      "sha256": "d5fb5ab44eadb3fcbbbfad005f982042fafb41f5b48cceff628c09909d296be0"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:5/line:41",
+      "sha256": "3456c835ee1cd03efc00df8bc87e14c64b64c83dd7e01185edf82ab07064f7cf"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:5/line:42",
+      "sha256": "23f09a5e00a6399c9035c2a08275933e67510b7503a9044564c4f237d4ed0545"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:5/line:43",
+      "sha256": "4f61b81e44fa58a7f946ccc415f88fa51101a2a36da07dd7076e4721a3a33e90"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:5/line:44",
+      "sha256": "9326185c41cc20394377380afe9479b0740ced3f27169c1e5cf2e4e5706dd2bd"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:5/line:45",
+      "sha256": "9b0c4f6f783aebc90b740cab9a076a8dbe83beb5f1e9168d1e52893c9581860c"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:5/line:46",
+      "sha256": "7a84fa0d3799405f10e02ac94defed3130d0d4d5ab1829868b50e91763c281d9"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:5/line:47",
+      "sha256": "dcb9ea1bd47b0d2fcaeb65b5b4c517ec05a791ed877e5edc90931d171fd96385"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:5/line:48",
+      "sha256": "164f5a3e0a2695ad59b83c1333ece1ff410f25a1b998c14b5555536abc4d74c4"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:5/line:49",
+      "sha256": "37b322c559d476e555e4768afc8d922da4490cadcc6d90fa82ff6b335c8e220b"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:5/line:50",
+      "sha256": "0a111fda662c17ff8a9ff01b2a7a69246803bb37a2211ac90c52d345495676a2"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:5/line:51",
+      "sha256": "43ba4e6238b4e9e4e4573e303cf0f1896d19a3a62bcd7c53d93798b90c7b7cb9"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:5/line:52",
+      "sha256": "4a0e17396665d77dd8d7d6fec909632c8b8c9f947397c42c9787dff00e6ce6c6"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:5/line:53",
+      "sha256": "129fae8c59a48904f292ef2f030e2cee0907ff42b94212b7ef666ab555b24053"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:5/line:64",
+      "sha256": "1548c8d47d6301931ecd6a3feea68a672eca3959829f912f5ef4c69e38b805a4"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:6/line:5",
+      "sha256": "8ddb4062dd45a00a23830d51b7a5022d0027a90a3c7dc51304649704df18f92b"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:6/line:7",
+      "sha256": "4d387e41ac8809c2db1ae1ec1ae39ef8e6b88a6464e6ac36ef5df6065456d657"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:6/line:9",
+      "sha256": "8b164c80f876d839606ae46d05738e464e1e14394a75e4706b3341e09a6ab83f"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:6/line:11",
+      "sha256": "72e5c6645263b417e152d4dbd254fc606527ff18db8670130590cd312f963ca1"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:6/line:12",
+      "sha256": "1b86d7bb1845931e0810945eacc7a781ec1f2f99b56bfad1bd046515a5f6a546"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:6/line:13",
+      "sha256": "63cb3c0f7f24f343cb3f3c272141e013640d4059b1078865da4cf1855e45deef"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:6/line:16",
+      "sha256": "04123ada0a8f8635be0470723f2a559e3dab75ce23d212694ead4bb95fe6230c"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:6/line:17",
+      "sha256": "38fea7dc881023b7063eaffb1dcf72fcd986a2284c85564d9bca920a85c7649b"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:6/line:18",
+      "sha256": "d298e88289f2a1a9baa9f5baec04c2e3ccf82a1427e1166453013e68247959ef"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:6/line:19",
+      "sha256": "057b3ed0b774f8de99f01db32fdfc1361afae5926eb28c8c2bb9a4ebf0b0383d"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:6/line:21",
+      "sha256": "6863b2bd81aae9aadc01c10b1d6191dbdd25f1a357a012b08ffe5f5cb631626f"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:6/line:22",
+      "sha256": "840e60f8601ea07605b93213c0a3b6483de478c9b0689707ef4964e99fdabe8f"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:6/line:23",
+      "sha256": "71e1f70ca3bc0f1d23691e4a19b4e34e913d874012dc4ba1b0b31338dd349f43"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:6/line:25",
+      "sha256": "17800d53f730c36293e40aeac056860a2c1e184bd83e0bee3da8974617f4d68d"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:6/line:26",
+      "sha256": "62ba2f9abe9bfac2161b441370ef23cc56c509d2b5d37e0e6109561b09e82c72"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:6/line:27",
+      "sha256": "89548e33f2a37d4bf6c40cd417c9ce840d495d3c2eac9873c3cb443148e983f6"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:6/line:29",
+      "sha256": "526e0087cc3f254d9f86f6c7d8e23d954c4dfda2b312efc29194ae8a860106ba"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:6/line:30",
+      "sha256": "497131c0b56120beedbb1402401a56419173b304df461ef8bc9f53c0e74e4084"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:6/line:31",
+      "sha256": "020f0adaceb947b53060c633d046f69da58e940e58986d92112072791e5f5386"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:6/line:32",
+      "sha256": "f413e3597970a774b4e1923ab82c844c3f0efc986a80509734376d78f20de682"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:6/line:33",
+      "sha256": "eccc10e79ddb1d5b1ddc2cc79da10eea17b582eefb6eb7a5e14628d24bfbdb9e"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:6/line:34",
+      "sha256": "97fb7ac2b6d1207e5b741667156ceda443fb81bd0efd81f32b2e6ed40f8104ea"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:6/line:35",
+      "sha256": "52b114fd8b5fb229615c3820b337a5dce514d578584ea0b085ef963fe8ed92aa"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:6/line:36",
+      "sha256": "587b43ca92104b92939819e8c99d4744f4a32edaf01968f642d361b68b146579"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:6/line:37",
+      "sha256": "c09f81cd7ff36d9315af1c711d2d46d3d4dd2a7adc27b30257518974e6a44493"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:6/line:38",
+      "sha256": "53c0890383c729458839685d74eed42cc7363175f7d62e9db86bc2acbf480a47"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:6/line:39",
+      "sha256": "53c34acb2d2ce12d0e42642b9d3670020b72b9da2d2f0ff69632caab43e5608e"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:6/line:40",
+      "sha256": "e907743fb7164814147a10e42d70701426fb15ce88f24f647516b31aacd7b838"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:6/line:41",
+      "sha256": "79aa50b7d249da4a87ccac191b35eda750d2fe55c16619e75b748a7b8eb0ddfb"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:6/line:42",
+      "sha256": "4fd47929485d2fcb06e0d24c518e11f2da6a0157076413f45f4224cdac0d468f"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:6/line:43",
+      "sha256": "4dd764445dc780ed968457cb850b4f52f2e8478ce3bfd654e9ed5a6b3ed6b597"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:6/line:44",
+      "sha256": "fb9c9974840af08bcff8df44d62d6204ba410f1c8e41b093d06556f1aa596630"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:6/line:46",
+      "sha256": "da267c54e5af1f9ba3377a42f8c066fdff38f0317108655ace7e172a792ff127"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:6/line:47",
+      "sha256": "62a60da8853df6a667c3930431aad4ba0b262b59a825bab6f80250bee9708a33"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:6/line:48",
+      "sha256": "9eda0f27f072e15ebca0449ea73534f33a359648eeafbcb4e539dfab39a56200"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:6/line:50",
+      "sha256": "a6cbd8c156f5d4b8219e1f297828f6e4d47b92a88f270afc24906e419415f097"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:6/line:51",
+      "sha256": "89fa9bd6f393966ec8685a93b86c22003903b57ea3cfdfe2081cdf17f4b6713d"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:6/line:52",
+      "sha256": "909e810ce62ba193788c1e9b699d4ae9ad208bd1c72290942a462357c4b4ff55"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:6/line:54",
+      "sha256": "526e0087cc3f254d9f86f6c7d8e23d954c4dfda2b312efc29194ae8a860106ba"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:6/line:55",
+      "sha256": "ecf7ac452119a4d0fffe3be6a5548d0beae32fd2283743eaf4a6549cc36b2588"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:6/line:56",
+      "sha256": "3666608e30549e8fb009be4dd6663567573eb333749c2ce70f5f71427d47800c"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:6/line:57",
+      "sha256": "4e28ea44fa6489651ba3296a426f745d5a95bda6a56e878de533a41d16d7801f"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:6/line:58",
+      "sha256": "2c4012cb3cf093be74dec5dd956298b6f2f43c9c7fc1c6dd61be5064f78c8cbc"
+    },
+    {
+      "disposition": "table_extraction_view",
+      "locator": "page:6/line:64",
+      "sha256": "6fcc953116cdf5dab923e23629cca0844a79837e20cf8ac811addfd8bdec836f"
+    }
+  ],
+  "packet_sha256": "c7e43b1bf3b60de22aaffe1b283438bce837e066d2e4a63107c53e8ad263cdac",
+  "publication_ready": false,
+  "source": {
+    "id": "es0182",
+    "import_revision": "3fea116c9ea5d742ca9ef4602e52e7ace15c21cb9124739219ebf48da82607b1",
+    "origin": "https://www.st.com/resource/en/errata_sheet/es0182-stm32f405407xx-and-stm32f415417xx-device-errata-stmicroelectronics.pdf",
+    "sha256": "1d3da0f99b85013548d17df07919516bf862f8f38cbd1a61f08e75abb8e4c54f",
+    "target": "STM32F407VGT6"
+  },
+  "status": "pending-review",
+  "table_accounting": [
+    {
+      "disposition": "outside_index",
+      "locator": "page:1/table:1/row:1",
+      "sha256": "68ff6f2eb1cc5eac65a9d99cb9f5d9252a781a5b5b42ab6bebc581a52b89dcf0"
+    },
+    {
+      "disposition": "outside_index",
+      "locator": "page:1/table:1/row:2",
+      "sha256": "9b9df3bee182db81ffc9aee4729c180485e262100bd985385e5d755f332e1379"
+    },
+    {
+      "disposition": "outside_index",
+      "locator": "page:1/table:1/row:3",
+      "sha256": "7f2e974d182d14d10a700f51915e4b901b66dc13a2a0fd9155cedefcbe081629"
+    },
+    {
+      "disposition": "outside_index",
+      "locator": "page:1/table:1/row:4",
+      "sha256": "2124c4a319e8210d473418e13b51b76e46e624ba5529936f3197ba2206eacdaf"
+    },
+    {
+      "disposition": "outside_index",
+      "locator": "page:1/table:1/row:5",
+      "sha256": "4108e0a4ee778ade6ced42b0c0989a7bc0bbc98ce3c516eba732acefacd9ebf3"
+    },
+    {
+      "disposition": "outside_index",
+      "locator": "page:1/table:2/row:1",
+      "sha256": "db7fc3e5c47d4551635421b4014817f2b66668482a61828debae5e26fa864f92"
+    },
+    {
+      "disposition": "outside_index",
+      "locator": "page:1/table:2/row:2",
+      "sha256": "214988a0a3bc4705bf6599c3037f3a3f37812ea98f5c7570f83c3b286fad4291"
+    },
+    {
+      "disposition": "outside_index",
+      "locator": "page:1/table:2/row:3",
+      "sha256": "e3ed24198b4c79063175a31ba35c68a28b6c926ebc74fed52f5b09fde86c1cfa"
+    },
+    {
+      "disposition": "outside_index",
+      "locator": "page:1/table:2/row:4",
+      "sha256": "36cfdfa0113db0cc850bc750f0197692f615ec32a1fa1f9ffd272fa6cc74bb2e"
+    },
+    {
+      "disposition": "outside_index",
+      "locator": "page:1/table:2/row:5",
+      "sha256": "f7eb3c6a87905698b27a8a1519cff533d8cb153da4c09bb1d6b9500583049049"
+    },
+    {
+      "disposition": "outside_index",
+      "locator": "page:1/table:2/row:6",
+      "sha256": "44726dd53eadffea35456a5ca6abb8f370563d3a5a7986d03b3727470a048bd5"
+    },
+    {
+      "disposition": "outside_index",
+      "locator": "page:1/table:2/row:7",
+      "sha256": "3c28a2f36b9fc216ddb80076f605972a1b6dc0c89d677886361d56ba8049b495"
+    },
+    {
+      "disposition": "outside_index",
+      "locator": "page:1/table:2/row:8",
+      "sha256": "bfbf8c9522b68d6a43231768d010070d38ef616e018df8e4339590554c938adb"
+    },
+    {
+      "disposition": "outside_index",
+      "locator": "page:1/table:2/row:9",
+      "sha256": "238158b59ca1a7f0c05fa0a6bcdc0d38a871babe545ec56519a4b2160114c0f8"
+    },
+    {
+      "disposition": "outside_index",
+      "locator": "page:1/table:2/row:10",
+      "sha256": "8aeea11a6055e767ad48e8456e3532851c656db975654f59b89e1eb0e4b63d7c"
+    },
+    {
+      "disposition": "outside_index",
+      "locator": "page:1/table:3/row:1",
+      "sha256": "24e39a87890eee21cef0f0cada98f8ff1457a391f681ce72fc8a400beb34b1a1"
+    },
+    {
+      "disposition": "outside_index",
+      "locator": "page:1/table:3/row:2",
+      "sha256": "595247229e9dbf8dff24fc0529542c6d8f63a1dbc91aff5b2da0f19d6cc5864d"
+    },
+    {
+      "disposition": "outside_index",
+      "locator": "page:2/table:1/row:1",
+      "sha256": "2d4eac9ac24feb791fede3a7f4f65cdbcfe8abbe1f7e5a52316af0487c386941"
+    },
+    {
+      "disposition": "index_header",
+      "locator": "page:2/table:1/row:2",
+      "sha256": "3b21339f77b15a33aa360d097fd8daacc2010384c7f20b84164dee1060984750"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:2/table:1/row:3",
+      "sha256": "d7662d6647c4614fe83d288c18628a8a6946f8fffd6c8fcbf9cc5d94b141cc66"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:2/table:1/row:4",
+      "sha256": "ab604e847fe055b1e26bdc4f5d6b361d5e1b081d2bed7c56269057f3bed24757"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:2/table:1/row:5",
+      "sha256": "a053693018d09dcee5afcbb38f613f9d8aa2b5970a1427f6cc06883522539669"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:2/table:1/row:6",
+      "sha256": "df2ef8ecea1101bbad87befdd72cec120bdc1c1d7ded850e4496d69001d67b90"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:2/table:1/row:7",
+      "sha256": "eb2d810cdcc3c33a44346a723734990d22a3d3daf2c950b28c663323113438d2"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:2/table:1/row:8",
+      "sha256": "94f8a1730a1569beceacfce029c68d522b98f960e7b832a585498f650b2e1543"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:2/table:1/row:9",
+      "sha256": "01ddf6f7da10633c4e9faa541dfc97ee4f0dd74a54715f081d26b1243bef330f"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:2/table:1/row:10",
+      "sha256": "80465c33c4fa4c98b03a45d21efa1607f0f3bac7b55c8aeed8c04b3ead5a5660"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:2/table:1/row:11",
+      "sha256": "7b876add4118a12ef48fd02f00ae861445103f173a36a011718fc02596c30be9"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:2/table:1/row:12",
+      "sha256": "09e90c756b09b3d12f2001a0c6a218b6515df23457dcc696f8d308e944943921"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:2/table:1/row:13",
+      "sha256": "19de3af902f9e60e347304d14d1ca5170345c4b993ca9dac1f9cddda951de41b"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:2/table:1/row:14",
+      "sha256": "ac8350fe12bc9c8f7f68060b2a01a2a647b9a1b56f397017c80832c9e4f46c6a"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:2/table:1/row:15",
+      "sha256": "38e173acf35e88efd7f61daa47dded00909319c24035d44ce10b5de2b1ed3039"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:2/table:1/row:16",
+      "sha256": "d4dd7bfbe324d4cdd2d115fad5bbd461783528bca81e26b544deed16a4bf5213"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:2/table:1/row:17",
+      "sha256": "007b65325aedc7e8e3d5e2f66fb6699678425bc6ae5c17ed33347a35165e5d4b"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:2/table:1/row:18",
+      "sha256": "f117ef575727ec81347045d67aa511830ead5dcd6673e48c39a5486c804850d0"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:2/table:1/row:19",
+      "sha256": "2b1ed98a629064c02daf75e68bf0198a313b139b22a7c24576c989510da968f8"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:2/table:1/row:20",
+      "sha256": "59ed3309a34ff0842d7565bc9e213c1c119eff7ddbd1b2b0fba27e7e6be9e3f0"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:2/table:1/row:21",
+      "sha256": "f8433aacf4af08d2e6c2e71e8e94f5e08fb86f4b0fc67cde9722fa6610a4fe41"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:2/table:1/row:22",
+      "sha256": "b88cb8239e640169c6b649a1b8e0319718a1f706bbb74c0dbf2d7d5b26d17618"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:2/table:1/row:23",
+      "sha256": "4df1c7396740e06c3889346ebd0115bc7e0e7ff1f17161250ba5eb7dccbcccc1"
+    },
+    {
+      "disposition": "outside_index",
+      "locator": "page:2/table:2/row:1",
+      "sha256": "1cf591c94968f11719c04784bb2362f8f7982c213153abd7c97379835789a978"
+    },
+    {
+      "disposition": "outside_index",
+      "locator": "page:2/table:2/row:2",
+      "sha256": "595247229e9dbf8dff24fc0529542c6d8f63a1dbc91aff5b2da0f19d6cc5864d"
+    },
+    {
+      "disposition": "outside_index",
+      "locator": "page:3/table:1/row:1",
+      "sha256": "2d4eac9ac24feb791fede3a7f4f65cdbcfe8abbe1f7e5a52316af0487c386941"
+    },
+    {
+      "disposition": "index_header",
+      "locator": "page:3/table:1/row:2",
+      "sha256": "3b21339f77b15a33aa360d097fd8daacc2010384c7f20b84164dee1060984750"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/table:1/row:3",
+      "sha256": "4b3543c2b1c91ce4dcccf2e7ffb170435dd8a4604ecdea14ad7f38514a343b34"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/table:1/row:4",
+      "sha256": "5cfb17c2e5bd0e5ff60de015e7264d6fb8f02a4d8abf8fb4aa249c3a88b49cb4"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/table:1/row:5",
+      "sha256": "9240e384f7a56c8abfab172ca87dd0c950348c9c42812bcb100a48f8a7c39079"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/table:1/row:6",
+      "sha256": "c9a38f33fc787cd6e86bf20a8aecbd7562737ae5c16876720c086d4aae9fd999"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/table:1/row:7",
+      "sha256": "0936d87a8da7efb39c11185d1a3cdd6f581e3351c4db5358d853a13f00c47fa3"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/table:1/row:8",
+      "sha256": "d56dd9191c2a7f4da0d99a2f70b436e1b9b746edf855d3ae1d2c6e208ea3d499"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/table:1/row:9",
+      "sha256": "aba6a1e5c56fa8c48b083c4ad801f1395b1355ec8a3da55f2eaec4a179f63249"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/table:1/row:10",
+      "sha256": "4f73e16d027df13b23e70aa16daf52b97df3d347f69bc3ccb6da6dec40f38111"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/table:1/row:11",
+      "sha256": "d683a65d60f12ebf3eb2e8fef01f7f3d9a900c29fd117c3a6c78eab4b3d4f3cd"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/table:1/row:12",
+      "sha256": "eab5e373e85a3b13fa1e83799855470fcb256d57a2b945dc19f1d3847e618cd6"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/table:1/row:13",
+      "sha256": "e384a07a477c105a94ccb9891dd5709e6b53571cc1b6fb97d80d06832c04406e"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/table:1/row:14",
+      "sha256": "0ecb0795b67da9a43c471c0c5cf362a755d4fcde36494190cce32b7d6a6e928a"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/table:1/row:15",
+      "sha256": "ffe5f496d8402488702829291b76a88642a2414fc72cfd6de0398daa324d66b4"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/table:1/row:16",
+      "sha256": "9610a36abde649ab17abf26bcc9c41627c3ef59df4f9cc0628121a350dd3e9d2"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/table:1/row:17",
+      "sha256": "eb0cd8ec86feae0b90bb5a85f4989a2a72c726d8411eea04e80d619a378be0b1"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/table:1/row:18",
+      "sha256": "4b58bb2dbb6482286576c3fa1c61fcd93df70f77ffe55fde1f48eee55a3eee13"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/table:1/row:19",
+      "sha256": "1678cb5ba4466f0861ccf0bc7a74dce532e75dca88f6eacaa94386caa4c4705c"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/table:1/row:20",
+      "sha256": "82f969062e63d1ecff7084dffdcfeacd1dbbeb1190c4edb97caada9be8afe9c8"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/table:1/row:21",
+      "sha256": "488f0cd966939e5785e35543002e4789f241c68a8ba77d6370fbb9029b55bb09"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/table:1/row:22",
+      "sha256": "1226aa6f687549883f0336fdc0257ccada524cef89616e44ee77d92f85c31417"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/table:1/row:23",
+      "sha256": "089e6650473ba6e8a31c9f748e9833ae60df3e582aa2b0c4763001d800890677"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/table:1/row:24",
+      "sha256": "04c758e3b528379d7665383902dcaaf7588598e23b2b39693ab817a68dbf1b65"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/table:1/row:25",
+      "sha256": "fcf065908c61a01706ad227faf98199c986022cb12a8938d8c187baa5996259b"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/table:1/row:26",
+      "sha256": "99a76b176fcc6bbef3b919a44f4a4401b155f82fcdf80688b4da1f6f2a49e6d1"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/table:1/row:27",
+      "sha256": "300fc6b3b928674ff18e6db512a47bc619a3491e48b404ac6a64a1449c5d0e38"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/table:1/row:28",
+      "sha256": "a3a9296cd295ccdfd3db811d56c703c6b11de7ef2154ea5b09e4092034de638b"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/table:1/row:29",
+      "sha256": "89f3c6d86747cfe4e91a3d6cb07b837f9695b26d925394e43ba4c229b9c37ef0"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/table:1/row:30",
+      "sha256": "e5b955349d963a5534596bea8b3503f59640e355f2adb49caf8a692f34b26026"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/table:1/row:31",
+      "sha256": "3eddd6b010c8855d29102b9500e761fb8f5d1b420aef407ef3109d8f88c3fe6b"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:3/table:1/row:32",
+      "sha256": "7ec59ab4dc55fc8791cf0c6ffffd879ec50505ee3ffefe12160a6b5ed32ff2b0"
+    },
+    {
+      "disposition": "outside_index",
+      "locator": "page:3/table:2/row:1",
+      "sha256": "fe4271c4ea70bb323b512d0ebf4eeaa321d8f652de0156464ba91bebd9f9b352"
+    },
+    {
+      "disposition": "outside_index",
+      "locator": "page:3/table:2/row:2",
+      "sha256": "595247229e9dbf8dff24fc0529542c6d8f63a1dbc91aff5b2da0f19d6cc5864d"
+    },
+    {
+      "disposition": "outside_index",
+      "locator": "page:4/table:1/row:1",
+      "sha256": "2d4eac9ac24feb791fede3a7f4f65cdbcfe8abbe1f7e5a52316af0487c386941"
+    },
+    {
+      "disposition": "index_header",
+      "locator": "page:4/table:1/row:2",
+      "sha256": "3b21339f77b15a33aa360d097fd8daacc2010384c7f20b84164dee1060984750"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/table:1/row:3",
+      "sha256": "8ddd128bb4b3054d9a37a3de25eb9cfad963f84aae7b6dfee4b134fb7ee890ef"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/table:1/row:4",
+      "sha256": "24570e70659d57f374a2cd1db48ef87c1fdfbd6eab187019c4ebe481ae8d4f92"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/table:1/row:5",
+      "sha256": "c627a5f4641421c2f10338af1c0f2c6e9b322737d59f2374656fa365d294254d"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/table:1/row:6",
+      "sha256": "679128bee148b7b78436ae4a000c60db8054a54c181e6aedaf456eccfe8deb03"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/table:1/row:7",
+      "sha256": "d71684c4e835fd7d14e64f832ee4ea7d767995aba075b4c9687dfd5812dc29e4"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/table:1/row:8",
+      "sha256": "09136c03963693f4ced2df0f9bc43948b987402307fa62b3d5a1159c5ad56ff9"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/table:1/row:9",
+      "sha256": "ae297acc8fd3649c386b3577839fb4527cabe638b36d58dfe127402fd2f8d111"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/table:1/row:10",
+      "sha256": "61d1855670bd9ad7a25920bbbe89fc3fbfcdcb54e2942e8b10f520c515deda09"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/table:1/row:11",
+      "sha256": "bea954dfe030a9af6955b5c3587819b1551fde92c49dad56337a0982289f20a5"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/table:1/row:12",
+      "sha256": "c6ada69e282b9bc8f8cd05cbeb548a68c000eb90b1673e188880d32a36d29dfb"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/table:1/row:13",
+      "sha256": "58c99eee0533c5a84b9be826a0581f2c9329329ce5fba4b9fe63139bb0e618d5"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/table:1/row:14",
+      "sha256": "b7a976f30bcc30fa454f8f70e98140e1935b29e6beae5cbed73dd7c16c6222a9"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/table:1/row:15",
+      "sha256": "488695f26fb81998ccecf2c058c9fb5f3cf39c6ab71be89200f4f6ad0f13100d"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/table:1/row:16",
+      "sha256": "e4469e2cacf904d587f8956c7dc25b48dd7d8b339df63a4358fa7e28fc3cfbb3"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/table:1/row:17",
+      "sha256": "b09fa9ee45155025658790c5d91ede8e25b7f5b91e25399d668b7ad3c8744154"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/table:1/row:18",
+      "sha256": "864ccf54207ff393f00784530e56be4dc34745117615a8f1e5a3a2b7029bc398"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/table:1/row:19",
+      "sha256": "9fd34173741d344b0f8645117a091402644e4d68423f2ce3095a0ae1c197cd83"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/table:1/row:20",
+      "sha256": "1209ec679d5b4e9bed469a798985dd8d4f6ed87963f032b653f0662eefd560a6"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/table:1/row:21",
+      "sha256": "8d61c783e598bd2df546fb18ac9fa47a32a21bd186b0b59379b11cc9c8edbaa4"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/table:1/row:22",
+      "sha256": "2c0bdd5b8cddf8b1aadb01958da729352f9c36302f6edde7dda1d281abfde46d"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/table:1/row:23",
+      "sha256": "4963909c318f71ffa1e5ee2c9ef2782d563aeb3584dff625eb41476c3acb7747"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/table:1/row:24",
+      "sha256": "bf82d18b2ef5448a113a1c4a9574701447242ea1226b87f4bf4c9233fd065a2a"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/table:1/row:25",
+      "sha256": "19daf7488ba244cdf864e4a0f78460fad91c6aabd7a08869aa7516f17d504d22"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/table:1/row:26",
+      "sha256": "72bce156d25822c9250c8a2130d3e308039ebed26f31c123bd9abc0987a937f9"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/table:1/row:27",
+      "sha256": "d57eda8da11b8408962c48df5732696156f3400128466345f8682c62a43cdaef"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:4/table:1/row:28",
+      "sha256": "a550c1a07b5c17c6cf95dcf9699c8aa600848badbf57843770b53acd79ca710f"
+    },
+    {
+      "disposition": "outside_index",
+      "locator": "page:4/table:2/row:1",
+      "sha256": "a484c39c3809ae938a888fb8bf2fb00c99adc995bca21e76f40668721b451aae"
+    },
+    {
+      "disposition": "outside_index",
+      "locator": "page:4/table:2/row:2",
+      "sha256": "595247229e9dbf8dff24fc0529542c6d8f63a1dbc91aff5b2da0f19d6cc5864d"
+    },
+    {
+      "disposition": "outside_index",
+      "locator": "page:5/table:1/row:1",
+      "sha256": "2d4eac9ac24feb791fede3a7f4f65cdbcfe8abbe1f7e5a52316af0487c386941"
+    },
+    {
+      "disposition": "index_header",
+      "locator": "page:5/table:1/row:2",
+      "sha256": "3b21339f77b15a33aa360d097fd8daacc2010384c7f20b84164dee1060984750"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/table:1/row:3",
+      "sha256": "1eff21cd4d7455fa9c7f015188c9ae788a3a90d2b72da2e79899de5271f9c4da"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/table:1/row:4",
+      "sha256": "8c15ef27cc199c87c71115cd24595bdba5801202cb669d438cda78d4a3255a93"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/table:1/row:5",
+      "sha256": "c2845b932b8dda597e2d620e65af72951d6df79c504bd5e3dff353a2e395bd52"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/table:1/row:6",
+      "sha256": "4a7c26ba2c4d45db179ebfc07c18b7391e067ff7c1aab01d5fb4217fb63ef79e"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/table:1/row:7",
+      "sha256": "8575cb102315e042967fa75a6f803df5b601988a2bf746398cf3f2b743f610cf"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/table:1/row:8",
+      "sha256": "e33c689bc7fb0b940a0f436785fae3e255cd20fc874781b0a051fdb87aba5b5d"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/table:1/row:9",
+      "sha256": "e354458b13fb568879a11f9963993c6109759ae3756a4031d53b700bebaa9cbd"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/table:1/row:10",
+      "sha256": "d3fb3032ac3a3c75ed5b0d0356626b24bba9b07e74296427d10965f839a94277"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/table:1/row:11",
+      "sha256": "130e643e7650d0a254887eba9a456a1c89db43dc6785ffc56410c915000ec53d"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/table:1/row:12",
+      "sha256": "839ef118829fa9a0a8816c568a36e135257471eb8a9ceb5e137afeaa172061c8"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/table:1/row:13",
+      "sha256": "b9ba5554c71ada0e435bc214dcfe57c764865a55ff2099cc1b782642dd8ce4d8"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/table:1/row:14",
+      "sha256": "fc7aebb9495256cf015c8d04b23cd525438732bfe04f9ccc3f0556fab11f9603"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/table:1/row:15",
+      "sha256": "2b006c60ed37903715035e2046a1485a983005a4b0025acc5073241b308eb7bd"
+    },
+    {
+      "disposition": "entry",
+      "locator": "page:5/table:1/row:16",
+      "sha256": "98b6abaa54aacb78d2c47783ec85299be0d281d4c8a1c6738bbb176e44a9eb48"
+    },
+    {
+      "disposition": "outside_index",
+      "locator": "page:5/table:2/row:1",
+      "sha256": "0c67469b97cc8e3a4dfd8e48c65777396197d02e6b405a166245e00605238da1"
+    },
+    {
+      "disposition": "outside_index",
+      "locator": "page:5/table:2/row:2",
+      "sha256": "3101865865f34dbd796ae52c3ebe47d87b8b47cb6694f2237e87ba8eb757fee4"
+    },
+    {
+      "disposition": "outside_index",
+      "locator": "page:5/table:3/row:1",
+      "sha256": "0da3b419bdf8491b213543abbe8b63a6338aabd782d4e3eeec2e5f3a29638292"
+    },
+    {
+      "disposition": "outside_index",
+      "locator": "page:5/table:3/row:2",
+      "sha256": "595247229e9dbf8dff24fc0529542c6d8f63a1dbc91aff5b2da0f19d6cc5864d"
+    },
+    {
+      "disposition": "outside_index",
+      "locator": "page:6/table:1/row:1",
+      "sha256": "a4fecfbf8e246793da501811d30104a23f37a8089124d2aaef4a1fa1450dbb45"
+    },
+    {
+      "disposition": "outside_index",
+      "locator": "page:6/table:1/row:2",
+      "sha256": "595247229e9dbf8dff24fc0529542c6d8f63a1dbc91aff5b2da0f19d6cc5864d"
+    }
+  ],
+  "table_columns": {
+    "section": "Section",
+    "title": "Limitation"
+  },
+  "unresolved": []
+}

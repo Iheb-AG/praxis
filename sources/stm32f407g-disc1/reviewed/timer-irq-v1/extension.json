@@ -1,0 +1,5275 @@
+{
+  "applicable_mcus": [
+    "STM32F407VGT6"
+  ],
+  "base_sha256": "a59f7eed1ce3bc2e0746db6e1950c46bf9b9aecee0e052526cc3d5b88b28108d",
+  "parent_definitions_sha256": "5ec6bf2198b567f51a415855b68fd732bb979dfb383d765ac33504a0346d10ed",
+  "replacements": [
+    {
+      "id": "scb",
+      "instances": [
+        {
+          "base_address": 3758157056,
+          "bus": "Core system registers",
+          "clock": "Core interface; no peripheral bus gate for this subset",
+          "name": "SCB",
+          "sources": [
+            {
+              "locator": "SCB_BASE",
+              "source": "cmsis_core"
+            },
+            {
+              "locator": "page:225",
+              "source": "pm_core_225"
+            }
+          ]
+        }
+      ],
+      "operating_modes": {
+        "flash_vector_table": {
+          "fields": {
+            "VTOR": [
+              "TBLOFF"
+            ]
+          },
+          "instances": [
+            "SCB"
+          ],
+          "registers": [
+            "VTOR"
+          ],
+          "requirements": [
+            "Privileged owned startup, Thread mode and PRIMASK=1; no RTOS/image handoff.",
+            "Only the pinned98-entry table at0x08000000; verify initial SP0x20020000 and a matching odd Flash SysTick handler.",
+            "Use device write-value mask0x3FFFFE00 and512-byte alignment; the wider CMSIS field is not write permission.",
+            "Write VTOR, execute DSB then ISB and check readback; retain masking on failure."
+          ],
+          "requires_modes": [
+            {
+              "instances": [
+                "SysTick"
+              ],
+              "mode": "quiescent_owned",
+              "peripheral": "systick"
+            }
+          ],
+          "sources": [
+            {
+              "locator": "page:39",
+              "source": "pm_core_39"
+            },
+            {
+              "locator": "page:40",
+              "source": "pm_core_40"
+            },
+            {
+              "locator": "page:184",
+              "source": "pm_core_184"
+            },
+            {
+              "locator": "page:185",
+              "source": "pm_core_185"
+            },
+            {
+              "locator": "page:227",
+              "source": "pm_core_227"
+            },
+            {
+              "locator": "memory_and_vectors",
+              "source": "arm_asset_contract"
+            }
+          ],
+          "title": "Fixed approved F407 Flash vector table"
+        },
+        "systick_exception_setup": {
+          "fields": {
+            "ICSR": [
+              "PENDSTCLR",
+              "PENDSTSET",
+              "VECTACTIVE"
+            ]
+          },
+          "instances": [
+            "SCB"
+          ],
+          "registers": [
+            "ICSR",
+            "SHP"
+          ],
+          "requirements": [
+            "SysTick exception15/IRQn-1 has no external NVIC ISER bit; keep PRIMASK=1 and source disabled.",
+            "Initialize handler/software state before source enable. Only write SHP[11] as a byte with priority0..15 encoded in high four bits.",
+            "Preserve PendSV and priority grouping. Clear pending with exact ICSR=PENDSTCLR; never RMW ICSR.",
+            "Check pending through PENDSTSET, not the write-only clear bit. Restore global interrupt state last."
+          ],
+          "requires_modes": [
+            {
+              "instances": [
+                "SCB"
+              ],
+              "mode": "flash_vector_table",
+              "peripheral": "scb"
+            }
+          ],
+          "sources": [
+            {
+              "locator": "page:22",
+              "source": "pm_core_22"
+            },
+            {
+              "locator": "page:24",
+              "source": "pm_core_24"
+            },
+            {
+              "locator": "page:39",
+              "source": "pm_core_39"
+            },
+            {
+              "locator": "page:41",
+              "source": "pm_core_41"
+            },
+            {
+              "locator": "page:225",
+              "source": "pm_core_225"
+            },
+            {
+              "locator": "page:226",
+              "source": "pm_core_226"
+            },
+            {
+              "locator": "page:233",
+              "source": "pm_core_233"
+            },
+            {
+              "locator": "page:234",
+              "source": "pm_core_234"
+            }
+          ],
+          "title": "SysTick priority byte and exact pending clear"
+        },
+        "tim5_fixed_irq_context": {
+          "fields": {
+            "AIRCR": [
+              "PRIGROUP"
+            ],
+            "ICSR": [
+              "PENDSTSET",
+              "PENDSVSET",
+              "NMIPENDSET"
+            ],
+            "VTOR": [
+              "TBLOFF"
+            ]
+          },
+          "instances": [
+            "SCB"
+          ],
+          "registers": [
+            "VTOR",
+            "AIRCR",
+            "ICSR"
+          ],
+          "requirements": [
+            "Fresh privileged Thread/MSP startup: PRIMASK1, BASEPRI0, FAULTMASK0, CONTROL.nPRIV=CONTROL.SPSEL=0.",
+            "VTOR must equal pinned Flash0x08000000, aligned512 bytes; initial SP must equal pinned main-SRAM top0x20020000 and slot16+TIM5_IRQn66 must equal the linked Thumb TIM5_IRQHandler.",
+            "Require exclusively owned SysTick disabled (ENABLE/TICKINT0); CTRL inspection consumes COUNTFLAG. Require no pending SysTick, PendSV or NMI from read-only ICSR. No system-exception configuration writes.",
+            "Read AIRCR.PRIGROUP and require0; logical priority2 is software policy using four high implemented priority bits. No AIRCR/reset/vector-table write or live priority-group changes."
+          ],
+          "requires_modes": [
+            {
+              "instances": [
+                "SysTick"
+              ],
+              "mode": "quiescent_owned",
+              "peripheral": "systick"
+            }
+          ],
+          "sources": [
+            {
+              "locator": "pm0214/page:22",
+              "source": "timer_irq_evidence"
+            },
+            {
+              "locator": "pm0214/page:24",
+              "source": "timer_irq_evidence"
+            },
+            {
+              "locator": "pm0214/page:25",
+              "source": "timer_irq_evidence"
+            },
+            {
+              "locator": "pm0214/page:26",
+              "source": "timer_irq_evidence"
+            },
+            {
+              "locator": "pm0214/page:40",
+              "source": "timer_irq_evidence"
+            },
+            {
+              "locator": "pm0214/page:225",
+              "source": "timer_irq_evidence"
+            },
+            {
+              "locator": "pm0214/page:226",
+              "source": "timer_irq_evidence"
+            },
+            {
+              "locator": "pm0214/page:227",
+              "source": "timer_irq_evidence"
+            },
+            {
+              "locator": "pm0214/page:228",
+              "source": "timer_irq_evidence"
+            },
+            {
+              "locator": "pm0214/page:229",
+              "source": "timer_irq_evidence"
+            },
+            {
+              "locator": "pm0214/page:247",
+              "source": "timer_irq_evidence"
+            },
+            {
+              "locator": "memory_and_vectors",
+              "source": "arm_asset_contract"
+            }
+          ],
+          "title": "Fixed Flash vector and read-only reset priority grouping for TIM5"
+        }
+      },
+      "prerequisites": [],
+      "registers": [
+        {
+          "access": "mixed",
+          "access_widths": [
+            32
+          ],
+          "count": 1,
+          "fields": [
+            {
+              "lsb": 0,
+              "mask": 511,
+              "meaning": "Read current exception number; zero means Thread mode.",
+              "name": "VECTACTIVE",
+              "sources": [
+                {
+                  "locator": "SCB_ICSR_VECTACTIVE_Msk",
+                  "source": "cmsis_core"
+                },
+                {
+                  "locator": "page:226",
+                  "source": "pm_core_226"
+                }
+              ],
+              "width": 9
+            },
+            {
+              "lsb": 11,
+              "mask": 2048,
+              "meaning": "Declaration only; encoding requires reviewed semantics.",
+              "name": "RETTOBASE",
+              "sources": [
+                {
+                  "locator": "SCB_ICSR_RETTOBASE_Msk",
+                  "source": "cmsis_core"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 12,
+              "mask": 2093056,
+              "meaning": "Declaration only; encoding requires reviewed semantics.",
+              "name": "VECTPENDING",
+              "sources": [
+                {
+                  "locator": "SCB_ICSR_VECTPENDING_Msk",
+                  "source": "cmsis_core"
+                }
+              ],
+              "width": 9
+            },
+            {
+              "lsb": 22,
+              "mask": 4194304,
+              "meaning": "Declaration only; encoding requires reviewed semantics.",
+              "name": "ISRPENDING",
+              "sources": [
+                {
+                  "locator": "SCB_ICSR_ISRPENDING_Msk",
+                  "source": "cmsis_core"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 23,
+              "mask": 8388608,
+              "meaning": "Declaration only; encoding requires reviewed semantics.",
+              "name": "ISRPREEMPT",
+              "sources": [
+                {
+                  "locator": "SCB_ICSR_ISRPREEMPT_Msk",
+                  "source": "cmsis_core"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 25,
+              "mask": 33554432,
+              "meaning": "Write one clears pending SysTick. Read is unknown; only exact action writes are supported.",
+              "name": "PENDSTCLR",
+              "sources": [
+                {
+                  "locator": "SCB_ICSR_PENDSTCLR_Msk",
+                  "source": "cmsis_core"
+                },
+                {
+                  "locator": "page:226",
+                  "source": "pm_core_226"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 26,
+              "mask": 67108864,
+              "meaning": "Read0 requires this system exception not pending before global unmask. No ICSR write is supported by the TIM5 fresh-startup contract.",
+              "name": "PENDSTSET",
+              "sources": [
+                {
+                  "locator": "SCB_ICSR_PENDSTSET_Msk",
+                  "source": "cmsis_core"
+                },
+                {
+                  "locator": "page:226",
+                  "source": "pm_core_226"
+                },
+                {
+                  "locator": "pm0214/page:226",
+                  "source": "timer_irq_evidence"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 27,
+              "mask": 134217728,
+              "meaning": "Declaration only; encoding requires reviewed semantics.",
+              "name": "PENDSVCLR",
+              "sources": [
+                {
+                  "locator": "SCB_ICSR_PENDSVCLR_Msk",
+                  "source": "cmsis_core"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 28,
+              "mask": 268435456,
+              "meaning": "Read0 requires this system exception not pending before global unmask. No ICSR write is supported by the TIM5 fresh-startup contract.",
+              "name": "PENDSVSET",
+              "sources": [
+                {
+                  "locator": "SCB_ICSR_PENDSVSET_Msk",
+                  "source": "cmsis_core"
+                },
+                {
+                  "locator": "pm0214/page:226",
+                  "source": "timer_irq_evidence"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 31,
+              "mask": 2147483648,
+              "meaning": "Read0 requires this system exception not pending before global unmask. No ICSR write is supported by the TIM5 fresh-startup contract.",
+              "name": "NMIPENDSET",
+              "sources": [
+                {
+                  "locator": "SCB_ICSR_NMIPENDSET_Msk",
+                  "source": "cmsis_core"
+                },
+                {
+                  "locator": "pm0214/page:225",
+                  "source": "timer_irq_evidence"
+                }
+              ],
+              "width": 1
+            }
+          ],
+          "io_address": null,
+          "name": "ICSR",
+          "offset": 4,
+          "reset": null,
+          "side_effects": "Mixed status and write-one actions. Reviewed writes only PENDSTCLR; its read value is unknown. No RMW, no SET+CLR, no NMI/PendSV action writes.",
+          "sources": [
+            {
+              "locator": "SCB_Type.ICSR",
+              "source": "cmsis_core"
+            },
+            {
+              "locator": "page:225",
+              "source": "pm_core_225"
+            },
+            {
+              "locator": "page:226",
+              "source": "pm_core_226"
+            },
+            {
+              "locator": "pm0214/page:225",
+              "source": "timer_irq_evidence"
+            },
+            {
+              "locator": "pm0214/page:226",
+              "source": "timer_irq_evidence"
+            }
+          ],
+          "width": 32,
+          "write_mask": 33554432
+        },
+        {
+          "access": "RW",
+          "access_widths": [
+            32
+          ],
+          "count": 1,
+          "fields": [
+            {
+              "lsb": 7,
+              "mask": 4294967168,
+              "meaning": "Shared CMSIS declaration envelope only. F407 supported writes also require0x3FFFFE00 and512-byte alignment; only the pinned Flash table is supported.",
+              "name": "TBLOFF",
+              "sources": [
+                {
+                  "locator": "SCB_VTOR_TBLOFF_Msk",
+                  "source": "cmsis_core"
+                },
+                {
+                  "locator": "page:227",
+                  "source": "pm_core_227"
+                },
+                {
+                  "locator": "VTOR_device_rule",
+                  "source": "arm_core_resolution"
+                }
+              ],
+              "width": 25
+            }
+          ],
+          "io_address": null,
+          "name": "VTOR",
+          "offset": 8,
+          "reset": null,
+          "side_effects": "F407 reviewed table-base writes keep bits31:30 and8:0 zero. Fixed table0x08000000,512-byte alignment, DSB/ISB and readback; no handoff.",
+          "sources": [
+            {
+              "locator": "SCB_Type.VTOR",
+              "source": "cmsis_core"
+            },
+            {
+              "locator": "page:227",
+              "source": "pm_core_227"
+            }
+          ],
+          "width": 32,
+          "write_mask": 1073741312
+        },
+        {
+          "access": "mixed",
+          "access_widths": [
+            32
+          ],
+          "count": 1,
+          "fields": [
+            {
+              "lsb": 8,
+              "mask": 1792,
+              "meaning": "Read field must equal0 for this fresh-startup IRQ example; all four implemented priority bits are preemption priority. Never write AIRCR in this scope.",
+              "name": "PRIGROUP",
+              "sources": [
+                {
+                  "locator": "SCB_AIRCR_PRIGROUP_Msk",
+                  "source": "cmsis_core"
+                },
+                {
+                  "locator": "pm0214/page:228",
+                  "source": "timer_irq_evidence"
+                },
+                {
+                  "locator": "pm0214/page:229",
+                  "source": "timer_irq_evidence"
+                }
+              ],
+              "width": 3
+            }
+          ],
+          "io_address": null,
+          "name": "AIRCR",
+          "offset": 12,
+          "reset": 4194631680,
+          "side_effects": "Reviewed subset reads PRIGROUP only. Writes need VECTKEY and may request reset; no AIRCR write is supported by this mode.",
+          "sources": [
+            {
+              "locator": "SCB_Type.AIRCR",
+              "source": "cmsis_core"
+            },
+            {
+              "locator": "pm0214/page:228",
+              "source": "timer_irq_evidence"
+            },
+            {
+              "locator": "pm0214/page:229",
+              "source": "timer_irq_evidence"
+            }
+          ],
+          "width": 32
+        },
+        {
+          "access": "mixed",
+          "access_widths": [
+            8
+          ],
+          "count": 12,
+          "fields": [],
+          "io_address": null,
+          "name": "SHP",
+          "offset": 24,
+          "reset": null,
+          "side_effects": "Byte-accessible priority array with reserved slots. This subset writes only SHP[11], high four priority bits; preserve PendSV and other bytes.",
+          "sources": [
+            {
+              "locator": "SCB_Type.SHP",
+              "source": "cmsis_core"
+            },
+            {
+              "locator": "page:233",
+              "source": "pm_core_233"
+            },
+            {
+              "locator": "page:234",
+              "source": "pm_core_234"
+            }
+          ],
+          "width": 8,
+          "write_mask": 240
+        }
+      ],
+      "review": {
+        "basis": "Complete RM0090 Rev22 and PM0214 Rev10 source parts plus exact pinned IRQ/priority declarations. Implementing-author review only; independent signoff and new physical IRQ qualification pending.",
+        "reviewer": "Codex source-backed editorial review through Praxis ingestion MCP",
+        "status": "reviewed"
+      },
+      "reviewed_markdown": "reviewed/timer-irq-v1/scb.md",
+      "title": "SCB \u2014 F407 fixed vectors and SysTick exception preparation"
+    },
+    {
+      "id": "nvic",
+      "instances": [
+        {
+          "base_address": 3758153984,
+          "bus": "Core PPB",
+          "clock": "Processor clock; device IRQ slots only",
+          "name": "NVIC",
+          "sources": [
+            {
+              "locator": "NVIC_BASE",
+              "source": "cmsis_core"
+            },
+            {
+              "locator": "instance:NVIC",
+              "source": "nvic_review"
+            }
+          ]
+        }
+      ],
+      "operating_modes": {
+        "can1_rx0_prepare": {
+          "fields": {
+            "IABR": [
+              "IRQ_BITS"
+            ],
+            "ICER": [
+              "IRQ_BITS"
+            ],
+            "ICPR": [
+              "IRQ_BITS"
+            ],
+            "IP": [
+              "PRIORITY"
+            ],
+            "ISER": [
+              "IRQ_BITS"
+            ]
+          },
+          "instances": [
+            "NVIC"
+          ],
+          "registers": [
+            "ISER",
+            "ICER",
+            "ICPR",
+            "IP",
+            "IABR"
+          ],
+          "requirements": [
+            "Exact device IRQ20/vector36/CAN1_RX0_IRQHandler; reject already enabled or active line ownership. Four implemented priority bits; priority5 policy gives IP[20]=0x50.",
+            "Keep global interrupts masked and the source/line disabled while installing handler/state. Literal bank0 bit20 actions only, not RMW.",
+            "Clear peripheral cause before ICPR[0] bit20. Enable source and line only through the dependent CAN IRQ workflow after initialization; restore intended global state last."
+          ],
+          "requires_modes": [],
+          "sources": [
+            {
+              "locator": "CAN1_RX0_IRQn binding to exact header:20",
+              "source": "can_nvic_review"
+            },
+            {
+              "locator": "ISER/ICER/ICPR/IP/IABR",
+              "source": "nvic_review"
+            }
+          ],
+          "title": "Disabled CAN1 FIFO0 line20 preparation"
+        },
+        "tim5_capture_prepare": {
+          "instances": [
+            "NVIC"
+          ],
+          "registers": [
+            "ISER",
+            "ICER",
+            "ISPR",
+            "ICPR",
+            "IABR",
+            "IP"
+          ],
+          "requirements": [
+            "Exact device TIM5_IRQn50, vector slot66; NVIC bank1 bit18 and IP[50]. Four implemented priority bits; write encoded0x20 for logical priority2.",
+            "Fresh exclusive startup with global mask1; inspect implemented external NVIC banks0..2 and reject any enabled/pending/active line, including TIM5. Highest device IRQ FPU_IRQn81 gives three banks. Preserve every unrelated line/priority byte.",
+            "Use literal write-one ISER/ICER/ICPR actions, never read-modify-write. ICPR does not clear active state.",
+            "Handler/vector and state ready first. Prepare/read back priority and clear pending only after source is disabled; enable/read back line while capture request remains disabled.",
+            "Enable/read back capture request before PWM output, enable PWM counter last, then unmask global interrupts with fences. No unrelated interrupt source is active.",
+            "On terminal outcome disable capture request before disabling/clearing line, mask globally in Thread, require no pending/active/enabled state; inaccessible/failed cleanup cannot claim quiet."
+          ],
+          "requires_modes": [
+            {
+              "instances": [
+                "SCB"
+              ],
+              "mode": "tim5_fixed_irq_context",
+              "peripheral": "scb"
+            }
+          ],
+          "sources": [
+            {
+              "locator": "header/lines:40-170",
+              "source": "timer_irq_evidence"
+            },
+            {
+              "locator": "cmsis_core/lines:1675-1830",
+              "source": "timer_irq_evidence"
+            },
+            {
+              "locator": "pm0214/page:208",
+              "source": "timer_irq_evidence"
+            },
+            {
+              "locator": "pm0214/page:210",
+              "source": "timer_irq_evidence"
+            },
+            {
+              "locator": "pm0214/page:211",
+              "source": "timer_irq_evidence"
+            },
+            {
+              "locator": "pm0214/page:212",
+              "source": "timer_irq_evidence"
+            },
+            {
+              "locator": "pm0214/page:213",
+              "source": "timer_irq_evidence"
+            },
+            {
+              "locator": "pm0214/page:214",
+              "source": "timer_irq_evidence"
+            },
+            {
+              "locator": "pm0214/page:215",
+              "source": "timer_irq_evidence"
+            }
+          ],
+          "title": "Owned TIM5 IRQ50 line/priority and source-enable contract"
+        }
+      },
+      "prerequisites": [
+        "usart"
+      ],
+      "registers": [
+        {
+          "access": "RW",
+          "access_widths": [
+            32
+          ],
+          "count": 8,
+          "fields": [
+            {
+              "lsb": 0,
+              "mask": 4294967295,
+              "meaning": "Write-one sets enable; zero has no effect.",
+              "name": "IRQ_BITS",
+              "sources": [
+                {
+                  "locator": "ISER",
+                  "source": "nvic_review"
+                },
+                {
+                  "locator": "NVIC_Type.ISER",
+                  "source": "cmsis_core"
+                }
+              ],
+              "width": 32
+            }
+          ],
+          "io_address": null,
+          "name": "ISER",
+          "offset": 0,
+          "reset": null,
+          "side_effects": "Write-one sets enable; zero has no effect.",
+          "sources": [
+            {
+              "locator": "ISER",
+              "source": "nvic_review"
+            },
+            {
+              "locator": "pm0214/page:210",
+              "source": "timer_irq_evidence"
+            }
+          ],
+          "width": 32
+        },
+        {
+          "access": "RW",
+          "access_widths": [
+            32
+          ],
+          "count": 8,
+          "fields": [
+            {
+              "lsb": 0,
+              "mask": 4294967295,
+              "meaning": "Write-one clears enable; zero has no effect.",
+              "name": "IRQ_BITS",
+              "sources": [
+                {
+                  "locator": "ICER",
+                  "source": "nvic_review"
+                },
+                {
+                  "locator": "NVIC_Type.ICER",
+                  "source": "cmsis_core"
+                }
+              ],
+              "width": 32
+            }
+          ],
+          "io_address": null,
+          "name": "ICER",
+          "offset": 128,
+          "reset": null,
+          "side_effects": "Write-one clears enable; zero has no effect.",
+          "sources": [
+            {
+              "locator": "ICER",
+              "source": "nvic_review"
+            },
+            {
+              "locator": "pm0214/page:211",
+              "source": "timer_irq_evidence"
+            }
+          ],
+          "width": 32
+        },
+        {
+          "access": "RW",
+          "access_widths": [
+            32
+          ],
+          "count": 8,
+          "fields": [
+            {
+              "lsb": 0,
+              "mask": 4294967295,
+              "meaning": "Write-one sets pending; zero has no effect.",
+              "name": "IRQ_BITS",
+              "sources": [
+                {
+                  "locator": "ISPR",
+                  "source": "nvic_review"
+                },
+                {
+                  "locator": "NVIC_Type.ISPR",
+                  "source": "cmsis_core"
+                }
+              ],
+              "width": 32
+            }
+          ],
+          "io_address": null,
+          "name": "ISPR",
+          "offset": 256,
+          "reset": null,
+          "side_effects": "Write-one sets pending; zero has no effect.",
+          "sources": [
+            {
+              "locator": "ISPR",
+              "source": "nvic_review"
+            },
+            {
+              "locator": "pm0214/page:212",
+              "source": "timer_irq_evidence"
+            }
+          ],
+          "width": 32
+        },
+        {
+          "access": "RW",
+          "access_widths": [
+            32
+          ],
+          "count": 8,
+          "fields": [
+            {
+              "lsb": 0,
+              "mask": 4294967295,
+              "meaning": "Write-one clears pending; zero has no effect.",
+              "name": "IRQ_BITS",
+              "sources": [
+                {
+                  "locator": "ICPR",
+                  "source": "nvic_review"
+                },
+                {
+                  "locator": "NVIC_Type.ICPR",
+                  "source": "cmsis_core"
+                }
+              ],
+              "width": 32
+            }
+          ],
+          "io_address": null,
+          "name": "ICPR",
+          "offset": 384,
+          "reset": null,
+          "side_effects": "Write-one clears pending; zero has no effect.",
+          "sources": [
+            {
+              "locator": "ICPR",
+              "source": "nvic_review"
+            },
+            {
+              "locator": "pm0214/page:213",
+              "source": "timer_irq_evidence"
+            }
+          ],
+          "width": 32
+        },
+        {
+          "access": "RO",
+          "access_widths": [
+            32
+          ],
+          "count": 8,
+          "fields": [
+            {
+              "lsb": 0,
+              "mask": 4294967295,
+              "meaning": "Read-only active state.",
+              "name": "IRQ_BITS",
+              "sources": [
+                {
+                  "locator": "IABR",
+                  "source": "nvic_review"
+                },
+                {
+                  "locator": "NVIC_Type.IABR",
+                  "source": "cmsis_core"
+                }
+              ],
+              "width": 32
+            }
+          ],
+          "io_address": null,
+          "name": "IABR",
+          "offset": 512,
+          "reset": null,
+          "side_effects": "Read-only active state.",
+          "sources": [
+            {
+              "locator": "IABR",
+              "source": "nvic_review"
+            },
+            {
+              "locator": "pm0214/page:214",
+              "source": "timer_irq_evidence"
+            }
+          ],
+          "width": 32
+        },
+        {
+          "access": "RW",
+          "access_widths": [
+            8
+          ],
+          "count": 240,
+          "fields": [
+            {
+              "lsb": 4,
+              "mask": 240,
+              "meaning": "Implemented high four bits per priority byte.",
+              "name": "PRIORITY",
+              "sources": [
+                {
+                  "locator": "IP",
+                  "source": "nvic_review"
+                },
+                {
+                  "locator": "__NVIC_PRIO_BITS",
+                  "source": "header"
+                },
+                {
+                  "locator": "NVIC_Type.IP",
+                  "source": "cmsis_core"
+                }
+              ],
+              "width": 4
+            }
+          ],
+          "io_address": null,
+          "name": "IP",
+          "offset": 768,
+          "reset": null,
+          "side_effects": "Implemented high four bits per priority byte.",
+          "sources": [
+            {
+              "locator": "IP",
+              "source": "nvic_review"
+            },
+            {
+              "locator": "pm0214/page:215",
+              "source": "timer_irq_evidence"
+            }
+          ],
+          "width": 8
+        },
+        {
+          "access": "WO",
+          "access_widths": [],
+          "count": 1,
+          "fields": [
+            {
+              "lsb": 0,
+              "mask": 511,
+              "meaning": "Write IRQ number to pend a supported device interrupt; privilege rules apply.",
+              "name": "INTID",
+              "sources": [
+                {
+                  "locator": "STIR",
+                  "source": "nvic_review"
+                },
+                {
+                  "locator": "NVIC_STIR_INTID_Msk",
+                  "source": "cmsis_core"
+                }
+              ],
+              "width": 9
+            }
+          ],
+          "io_address": null,
+          "name": "STIR",
+          "offset": 3584,
+          "reset": null,
+          "side_effects": "Write IRQ number to pend a supported device interrupt; privilege rules apply.",
+          "sources": [
+            {
+              "locator": "STIR",
+              "source": "nvic_review"
+            }
+          ],
+          "width": 32
+        }
+      ],
+      "review": {
+        "basis": "Complete RM0090 Rev22 and PM0214 Rev10 source parts plus exact pinned IRQ/priority declarations. Implementing-author review only; independent signoff and new physical IRQ qualification pending.",
+        "reviewer": "Codex source-backed editorial review through Praxis ingestion MCP",
+        "status": "reviewed"
+      },
+      "reviewed_markdown": "reviewed/timer-irq-v1/nvic.md",
+      "title": "NVIC: STM32F407 declaration map and UART workflow"
+    },
+    {
+      "id": "tim",
+      "instances": [
+        {
+          "base_address": 1073741824,
+          "bus": "APB1",
+          "clock": "Explicitly selected HSI scenario; see RCC and reviewed notes",
+          "name": "TIM2",
+          "sources": [
+            {
+              "locator": "TIM2_BASE",
+              "source": "header"
+            }
+          ]
+        },
+        {
+          "base_address": 1073744896,
+          "bus": "APB1",
+          "clock": "Nominal HSI16 with PPRE1=/1 for this reviewed route",
+          "name": "TIM5",
+          "sources": [
+            {
+              "locator": "TIM5_BASE",
+              "source": "header"
+            },
+            {
+              "locator": "rm0090/page:604",
+              "source": "timer_routes_evidence"
+            },
+            {
+              "locator": "rm0090/page:638",
+              "source": "timer_routes_evidence"
+            }
+          ]
+        }
+      ],
+      "operating_modes": {
+        "capture_ch3_pa2": {
+          "field_views": {
+            "CCMR2": "input_output"
+          },
+          "fields": {
+            "ARR": [
+              "ARR"
+            ],
+            "CCER": [
+              "CC3E",
+              "CC3P",
+              "CC3NP"
+            ],
+            "CCMR2": [
+              "CC3S",
+              "IC3PSC",
+              "IC3F",
+              "CC4S",
+              "OC4FE",
+              "OC4PE",
+              "OC4M",
+              "OC4CE"
+            ],
+            "CCR3": [
+              "CCR3"
+            ],
+            "CNT": [
+              "CNT"
+            ],
+            "CR1": [
+              "CEN",
+              "ARPE",
+              "DIR",
+              "CMS",
+              "UDIS",
+              "URS",
+              "OPM",
+              "CKD"
+            ],
+            "CR2": [
+              "MMS",
+              "TI1S",
+              "CCDS"
+            ],
+            "DIER": [
+              "UIE",
+              "CC3IE",
+              "CC3DE",
+              "UDE"
+            ],
+            "EGR": [
+              "UG"
+            ],
+            "PSC": [
+              "PSC"
+            ],
+            "SMCR": [
+              "SMS",
+              "TS",
+              "ECE"
+            ],
+            "SR": [
+              "UIF",
+              "CC3IF",
+              "CC3OF"
+            ]
+          },
+          "instances": [
+            "TIM5"
+          ],
+          "registers": [
+            "ARR",
+            "CNT",
+            "CR1",
+            "CR2",
+            "PSC",
+            "SMCR",
+            "CCMR2",
+            "CCER",
+            "DIER",
+            "SR",
+            "EGR",
+            "CCR3"
+          ],
+          "requirements": [
+            "Fresh privileged Thread startup, PRIMASK=1, exclusive ownership of TIM2/TIM5 and GPIOA pins1/2; no downstream TRGO consumers during UG and no live clock/configuration changes.",
+            "Actual ready HSI selected, nominal16MHz, AHB/APB1/APB2 all divisor1 and SystemCoreClock synchronized; PSC=15 produces nominal1MHz ticks.",
+            "Configure/read back with channels and CEN disabled; UG transfers preloads and can emit TRGO even when MMS=0; clear stale status only during owned disabled setup.",
+            "No IRQ/DMA, slave/encoder/external-reset, center-aligned, advanced-timer or other instance support implied. All accesses are full32-bit words; failure latches and never automatically retries.",
+            "CC3S=01 direct TI3; IC3PSC=IC3F=0, CC3P=CC3NP=0, ARR=0xFFFFFFFF, ARPE=0, SMS=ECE=0, DIER=0; enable/read back capture before PWM output.",
+            "The counter free-runs independently of TIM2 ARR; read the entire32-bit CCR3 word, never write it. CCR3 input read clears CC3IF.",
+            "Bound polling; reject CC3OF both before and after data read, or a new CC3IF after read; never publish ambiguous data.",
+            "Discard enable edge and prime a natural PWM edge, then accept8 successive unsigned32-bit periods1000+/-2 local ticks; this is not independent oscillator calibration.",
+            "Missing jumper, wrong period, ownership/configuration/clock changes, overflow races or failed shutdown latch failure; restart requires explicit reset."
+          ],
+          "requires_modes": [
+            {
+              "instances": [
+                "GPIOA"
+              ],
+              "mode": "pa1_tim2_ch2_pa2_tim5_ch3",
+              "peripheral": "gpio"
+            }
+          ],
+          "sources": [
+            {
+              "locator": "rm0090/page:604",
+              "source": "timer_routes_evidence"
+            },
+            {
+              "locator": "rm0090/page:624",
+              "source": "timer_routes_evidence"
+            },
+            {
+              "locator": "rm0090/page:629",
+              "source": "timer_routes_evidence"
+            },
+            {
+              "locator": "rm0090/page:634",
+              "source": "timer_routes_evidence"
+            },
+            {
+              "locator": "rm0090/page:635",
+              "source": "timer_routes_evidence"
+            },
+            {
+              "locator": "rm0090/page:638",
+              "source": "timer_routes_evidence"
+            },
+            {
+              "locator": "rm0090/page:639",
+              "source": "timer_routes_evidence"
+            },
+            {
+              "locator": "rm0090/page:640",
+              "source": "timer_routes_evidence"
+            }
+          ],
+          "title": "TIM5 CH3 rising direct input on PA2 AF2"
+        },
+        "capture_ch3_pa2_irq": {
+          "field_views": {
+            "CCMR2": "input_output"
+          },
+          "fields": {
+            "ARR": [
+              "ARR"
+            ],
+            "CCER": [
+              "CC3E",
+              "CC3P",
+              "CC3NP"
+            ],
+            "CCMR2": [
+              "CC3S",
+              "IC3PSC",
+              "IC3F",
+              "CC4S",
+              "OC4FE",
+              "OC4PE",
+              "OC4M",
+              "OC4CE"
+            ],
+            "CCR3": [
+              "CCR3"
+            ],
+            "CNT": [
+              "CNT"
+            ],
+            "CR1": [
+              "CEN",
+              "ARPE",
+              "DIR",
+              "CMS",
+              "UDIS",
+              "URS",
+              "OPM",
+              "CKD"
+            ],
+            "CR2": [
+              "MMS",
+              "TI1S",
+              "CCDS"
+            ],
+            "DIER": [
+              "UIE",
+              "CC3IE",
+              "CC3DE",
+              "UDE"
+            ],
+            "EGR": [
+              "UG"
+            ],
+            "PSC": [
+              "PSC"
+            ],
+            "SMCR": [
+              "SMS",
+              "TS",
+              "ECE"
+            ],
+            "SR": [
+              "UIF",
+              "CC3IF",
+              "CC3OF"
+            ]
+          },
+          "instances": [
+            "TIM5"
+          ],
+          "registers": [
+            "ARR",
+            "CNT",
+            "CR1",
+            "CR2",
+            "PSC",
+            "SMCR",
+            "CCMR2",
+            "CCER",
+            "DIER",
+            "SR",
+            "EGR",
+            "CCR3"
+          ],
+          "requirements": [
+            "Fresh privileged Thread/MSP startup with PRIMASK1, BASEPRI=FAULTMASK0; only exact paired TIM2/TIM5 route, no downstream UG/TRGO consumers or live owner/clock changes.",
+            "Prepare/read back complete counters/fields with CEN, channels and DIER disabled; full32-bit capture words, read-only CCR3. Never poll/drain CCR3 in Thread after arming IRQ.",
+            "Start capture channel/counter first, prepare/read back NVIC line/priority, set DIER=CC3IE only, enable PWM output/counter last, unmask globally after state/vector are ready.",
+            "ISR must see IPSR66 and expected live clock/pin/register state. Read SR then CCR3 once then SR; reject absent cause, overcapture or a new capture flag after the data read.",
+            "Discard initial output-enable edge, store9 natural timestamps and validate8 unsigned32-bit intervals1000+/-2 ticks. Success needs10 exception receipts and10 data reads.",
+            "Terminal ISR disables request before line/pending clear; Thread masks globally and verifies pending/active/enabled zero, then stops owned timers/releases pins. Failure latches, no retry.",
+            "Bound Thread waiting by iterations. Distinguish a no-stored-edge timeout from pending captures without ISR delivery. No DMA, nesting, other timer modes or physical IRQ acceptance."
+          ],
+          "requires_modes": [
+            {
+              "instances": [
+                "GPIOA"
+              ],
+              "mode": "pa1_tim2_ch2_pa2_tim5_ch3",
+              "peripheral": "gpio"
+            },
+            {
+              "instances": [
+                "NVIC"
+              ],
+              "mode": "tim5_capture_prepare",
+              "peripheral": "nvic"
+            }
+          ],
+          "sources": [
+            {
+              "locator": "rm0090/page:624",
+              "source": "timer_irq_evidence"
+            },
+            {
+              "locator": "rm0090/page:629",
+              "source": "timer_irq_evidence"
+            },
+            {
+              "locator": "rm0090/page:630",
+              "source": "timer_irq_evidence"
+            },
+            {
+              "locator": "rm0090/page:631",
+              "source": "timer_irq_evidence"
+            },
+            {
+              "locator": "rm0090/page:634",
+              "source": "timer_irq_evidence"
+            },
+            {
+              "locator": "rm0090/page:635",
+              "source": "timer_irq_evidence"
+            },
+            {
+              "locator": "rm0090/page:636",
+              "source": "timer_irq_evidence"
+            },
+            {
+              "locator": "rm0090/page:638",
+              "source": "timer_irq_evidence"
+            },
+            {
+              "locator": "rm0090/page:639",
+              "source": "timer_irq_evidence"
+            },
+            {
+              "locator": "rm0090/page:640",
+              "source": "timer_irq_evidence"
+            }
+          ],
+          "title": "TIM5 CH3 direct rising capture through IRQ50"
+        },
+        "polling_update_delay": {
+          "fields": {
+            "ARR": [
+              "ARR"
+            ],
+            "CR1": [
+              "CEN",
+              "UDIS",
+              "URS",
+              "OPM",
+              "DIR",
+              "CMS",
+              "ARPE"
+            ],
+            "DIER": [
+              "UIE",
+              "UDE"
+            ],
+            "EGR": [
+              "UG"
+            ],
+            "PSC": [
+              "PSC"
+            ],
+            "SR": [
+              "UIF"
+            ]
+          },
+          "instances": [
+            "TIM2"
+          ],
+          "registers": [
+            "CR1",
+            "DIER",
+            "SR",
+            "EGR",
+            "PSC",
+            "ARR"
+          ],
+          "requirements": [
+            "Exclusive fresh TIM2, no channel/slave/interrupt/DMA owners, declared HSE8 PLL mode and APB1/4; TIM2CLK=2*PCLK1=84 MHz.",
+            "Keep CEN=0 and DIER=0 while setting PSC=8399, ARR=9. Write EGR=UG to load PSC/reinitialize counter; write SR=0 afterward to discard the UG-created UIF.",
+            "Set CR1=OPM|CEN with UDIS/URS/DIR/CMS/ARPE zero. Poll UIF with a finite budget and verify CEN cleared. This is 1 ms nominal under the declared clock assumptions, not measured timing.",
+            "Do not accept the stale UG flag as elapsed time. Stop the owned timer on failure. This operation uses no timer output pin or NVIC interrupt."
+          ],
+          "requires_modes": [
+            {
+              "instances": [
+                "RCC"
+              ],
+              "mode": "pll_hse8_168mhz",
+              "peripheral": "rcc"
+            },
+            {
+              "instances": [
+                "RCC"
+              ],
+              "mode": "adc_timer_gates",
+              "peripheral": "rcc"
+            }
+          ],
+          "sources": [
+            {
+              "locator": "page:624",
+              "source": "rm_tim_cr1"
+            },
+            {
+              "locator": "page:625",
+              "source": "rm_tim_control"
+            },
+            {
+              "locator": "page:631",
+              "source": "rm_tim_status"
+            },
+            {
+              "locator": "page:632",
+              "source": "rm_tim_egr"
+            },
+            {
+              "locator": "page:638",
+              "source": "rm_tim_values"
+            },
+            {
+              "locator": "page:639",
+              "source": "rm_tim_arr"
+            },
+            {
+              "locator": "page:218",
+              "source": "rm_clock"
+            }
+          ],
+          "title": "Owned TIM2 one-pulse polling delay at TIM2CLK=84 MHz"
+        },
+        "pwm_ch1_reference": {
+          "field_views": {
+            "CCMR1": "output_output"
+          },
+          "fields": {
+            "ARR": [
+              "ARR"
+            ],
+            "CCER": [
+              "CC1E",
+              "CC1P",
+              "CC1NP"
+            ],
+            "CCMR1": [
+              "CC1S",
+              "OC1FE",
+              "OC1PE",
+              "OC1M",
+              "OC1CE",
+              "CC2S",
+              "OC2FE",
+              "OC2PE",
+              "OC2M",
+              "OC2CE"
+            ],
+            "CCR1": [
+              "CCR1"
+            ],
+            "CNT": [
+              "CNT"
+            ],
+            "CR1": [
+              "CEN",
+              "ARPE",
+              "DIR",
+              "CMS",
+              "UDIS",
+              "URS",
+              "OPM",
+              "CKD"
+            ],
+            "CR2": [
+              "MMS",
+              "TI1S",
+              "CCDS"
+            ],
+            "DIER": [
+              "UIE",
+              "CC1IE",
+              "CC1DE",
+              "UDE"
+            ],
+            "EGR": [
+              "UG",
+              "CC1G"
+            ],
+            "PSC": [
+              "PSC"
+            ],
+            "SMCR": [
+              "SMS",
+              "TS",
+              "ECE"
+            ],
+            "SR": [
+              "UIF",
+              "CC1IF",
+              "CC1OF"
+            ]
+          },
+          "instances": [
+            "TIM2"
+          ],
+          "registers": [
+            "CR1",
+            "CR2",
+            "SMCR",
+            "DIER",
+            "SR",
+            "EGR",
+            "CCMR1",
+            "CCER",
+            "CNT",
+            "PSC",
+            "ARR",
+            "CCR1"
+          ],
+          "requirements": [
+            "Fresh privileged owned startup, PRIMASK=1, no downstream TRGO consumers; TIM1 stays gated.",
+            "Checked nominal HSI16/APB1 divisor1; PSC<=65535, period2..UINT32_MAX counts, high0..period.",
+            "CC1S=CC2S=0, OC1M=110, OC1PE=1, ARPE=1; all CCER enables and DIER requests remain0.",
+            "Configure while CEN=0; verify CCMR1 direction before CCR1 write; UG transfers preloads, clear stale SR, verify, enable CEN last.",
+            "CCR1 readback is preload only; wait for a fresh bounded UIF event for update evidence; no compare-event guarantee.",
+            "No GPIO/pin waveform, advanced/center/toggle modes, DMA or IRQ support is implied; failure/cleanup never permits automatic retry."
+          ],
+          "requires_modes": [
+            {
+              "instances": [
+                "RCC"
+              ],
+              "mode": "tim2_owned_gate_reset",
+              "peripheral": "rcc"
+            }
+          ],
+          "sources": [
+            {
+              "locator": "rm0090/page:604",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "rm0090/page:607",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "rm0090/page:632",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "es0182/page:17",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "es0182/page:18",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "es0182/page:19",
+              "source": "timer_modes_evidence"
+            }
+          ],
+          "title": "TIM2 internal PWM1 channel1 reference; physical output disabled"
+        },
+        "pwm_ch2_irq_pair": {
+          "field_views": {
+            "CCMR1": "output_output"
+          },
+          "fields": {
+            "ARR": [
+              "ARR"
+            ],
+            "CCER": [
+              "CC2E",
+              "CC2P",
+              "CC2NP"
+            ],
+            "CCMR1": [
+              "CC1S",
+              "OC1FE",
+              "OC1PE",
+              "OC1M",
+              "OC1CE",
+              "CC2S",
+              "OC2FE",
+              "OC2PE",
+              "OC2M",
+              "OC2CE"
+            ],
+            "CCR2": [
+              "CCR2"
+            ],
+            "CNT": [
+              "CNT"
+            ],
+            "CR1": [
+              "CEN",
+              "ARPE",
+              "DIR",
+              "CMS",
+              "UDIS",
+              "URS",
+              "OPM",
+              "CKD"
+            ],
+            "CR2": [
+              "MMS",
+              "TI1S",
+              "CCDS"
+            ],
+            "DIER": [
+              "UIE",
+              "CC2IE",
+              "CC2DE",
+              "UDE"
+            ],
+            "EGR": [
+              "UG"
+            ],
+            "PSC": [
+              "PSC"
+            ],
+            "SMCR": [
+              "SMS",
+              "TS",
+              "ECE"
+            ],
+            "SR": [
+              "UIF",
+              "CC2IF",
+              "CC2OF"
+            ]
+          },
+          "instances": [
+            "TIM2"
+          ],
+          "registers": [
+            "ARR",
+            "CNT",
+            "CR1",
+            "CR2",
+            "PSC",
+            "SMCR",
+            "CCMR1",
+            "CCER",
+            "DIER",
+            "SR",
+            "EGR",
+            "CCR2"
+          ],
+          "requirements": [
+            "Fresh checked HSI16/divisors1, exclusive TIM2/TIM5/pin ownership, no downstream UG/TRGO consumers. Configure under global mask; only the final interrupt-ready paired step may unmask.",
+            "TIM2 PSC15/ARR999/CCR2=250, PWM1/OC2PE/ARPE, direction up/edge-aligned. TIM2 DIER remains0, all other channels disabled; TIM5 alone requests IRQ50.",
+            "Use complete GPIO AF1 PA1/AF2 PA2 route and verify output direction before CCR2 write. Prepare counters/preloads/stale flags before IRQ arming; capture/line/request ready before final output and CEN.",
+            "Only the paired capture_irq contract supplies exception receipts and cleanup. On failure mask requests/line, quiesce owned timers/pins and report incomplete shutdown explicitly. No DMA or other timer instance support."
+          ],
+          "requires_modes": [
+            {
+              "instances": [
+                "GPIOA"
+              ],
+              "mode": "pa1_tim2_ch2_pa2_tim5_ch3",
+              "peripheral": "gpio"
+            },
+            {
+              "instances": [
+                "NVIC"
+              ],
+              "mode": "tim5_capture_prepare",
+              "peripheral": "nvic"
+            }
+          ],
+          "sources": [
+            {
+              "locator": "rm0090/page:624",
+              "source": "timer_irq_evidence"
+            },
+            {
+              "locator": "rm0090/page:629",
+              "source": "timer_irq_evidence"
+            },
+            {
+              "locator": "rm0090/page:632",
+              "source": "timer_irq_evidence"
+            },
+            {
+              "locator": "rm0090/page:638",
+              "source": "timer_irq_evidence"
+            },
+            {
+              "locator": "rm0090/page:639",
+              "source": "timer_irq_evidence"
+            },
+            {
+              "locator": "rm0090/page:640",
+              "source": "timer_irq_evidence"
+            }
+          ],
+          "title": "TIM2 CH2 PWM paired with TIM5 capture interrupt"
+        },
+        "pwm_ch2_pa1": {
+          "field_views": {
+            "CCMR1": "output_output"
+          },
+          "fields": {
+            "ARR": [
+              "ARR"
+            ],
+            "CCER": [
+              "CC2E",
+              "CC2P",
+              "CC2NP"
+            ],
+            "CCMR1": [
+              "CC1S",
+              "OC1FE",
+              "OC1PE",
+              "OC1M",
+              "OC1CE",
+              "CC2S",
+              "OC2FE",
+              "OC2PE",
+              "OC2M",
+              "OC2CE"
+            ],
+            "CCR2": [
+              "CCR2"
+            ],
+            "CNT": [
+              "CNT"
+            ],
+            "CR1": [
+              "CEN",
+              "ARPE",
+              "DIR",
+              "CMS",
+              "UDIS",
+              "URS",
+              "OPM",
+              "CKD"
+            ],
+            "CR2": [
+              "MMS",
+              "TI1S",
+              "CCDS"
+            ],
+            "DIER": [
+              "UIE",
+              "CC2IE",
+              "CC2DE",
+              "UDE"
+            ],
+            "EGR": [
+              "UG"
+            ],
+            "PSC": [
+              "PSC"
+            ],
+            "SMCR": [
+              "SMS",
+              "TS",
+              "ECE"
+            ],
+            "SR": [
+              "UIF",
+              "CC2IF",
+              "CC2OF"
+            ]
+          },
+          "instances": [
+            "TIM2"
+          ],
+          "registers": [
+            "ARR",
+            "CNT",
+            "CR1",
+            "CR2",
+            "PSC",
+            "SMCR",
+            "CCMR1",
+            "CCER",
+            "DIER",
+            "SR",
+            "EGR",
+            "CCR2"
+          ],
+          "requirements": [
+            "Fresh privileged Thread startup, PRIMASK=1, exclusive ownership of TIM2/TIM5 and GPIOA pins1/2; no downstream TRGO consumers during UG and no live clock/configuration changes.",
+            "Actual ready HSI selected, nominal16MHz, AHB/APB1/APB2 all divisor1 and SystemCoreClock synchronized; PSC=15 produces nominal1MHz ticks.",
+            "Configure/read back with channels and CEN disabled; UG transfers preloads and can emit TRGO even when MMS=0; clear stale status only during owned disabled setup.",
+            "No IRQ/DMA, slave/encoder/external-reset, center-aligned, advanced-timer or other instance support implied. All accesses are full32-bit words; failure latches and never automatically retries.",
+            "CC2S=CC1S=0, OC2M=110 PWM1, OC2PE=1, ARPE=1, DIR=CMS=0; PSC15/ARR999/CCR2=250 gives nominal1kHz/25% output.",
+            "Verify CCMR1 output direction before CCR2 write; keep all other channels disabled and DIER=0.",
+            "Start TIM5 capture timer/channel and verify first, then enable/read back CC2E and enable/read back TIM2 CEN last. Discard the initial output-enable edge.",
+            "On failure stop owned output/counters and release only the two GPIO pins; inaccessible clocks or failed readback cannot claim quiet shutdown."
+          ],
+          "requires_modes": [
+            {
+              "instances": [
+                "GPIOA"
+              ],
+              "mode": "pa1_tim2_ch2_pa2_tim5_ch3",
+              "peripheral": "gpio"
+            }
+          ],
+          "sources": [
+            {
+              "locator": "rm0090/page:604",
+              "source": "timer_routes_evidence"
+            },
+            {
+              "locator": "rm0090/page:624",
+              "source": "timer_routes_evidence"
+            },
+            {
+              "locator": "rm0090/page:632",
+              "source": "timer_routes_evidence"
+            },
+            {
+              "locator": "rm0090/page:635",
+              "source": "timer_routes_evidence"
+            },
+            {
+              "locator": "rm0090/page:638",
+              "source": "timer_routes_evidence"
+            },
+            {
+              "locator": "rm0090/page:639",
+              "source": "timer_routes_evidence"
+            },
+            {
+              "locator": "rm0090/page:640",
+              "source": "timer_routes_evidence"
+            }
+          ],
+          "title": "TIM2 CH2 PWM1 on PA1 AF1"
+        },
+        "software_capture_ch1": {
+          "field_views": {
+            "CCMR1": "input_output"
+          },
+          "fields": {
+            "ARR": [
+              "ARR"
+            ],
+            "CCER": [
+              "CC1E",
+              "CC1P",
+              "CC1NP"
+            ],
+            "CCMR1": [
+              "CC1S",
+              "IC1PSC",
+              "IC1F",
+              "CC2S",
+              "OC2FE",
+              "OC2PE",
+              "OC2M",
+              "OC2CE"
+            ],
+            "CCR1": [
+              "CCR1"
+            ],
+            "CNT": [
+              "CNT"
+            ],
+            "CR1": [
+              "CEN",
+              "ARPE",
+              "DIR",
+              "CMS",
+              "UDIS",
+              "URS",
+              "OPM",
+              "CKD"
+            ],
+            "CR2": [
+              "MMS",
+              "TI1S",
+              "CCDS"
+            ],
+            "DIER": [
+              "UIE",
+              "CC1IE",
+              "CC1DE",
+              "UDE"
+            ],
+            "EGR": [
+              "UG",
+              "CC1G"
+            ],
+            "PSC": [
+              "PSC"
+            ],
+            "SMCR": [
+              "SMS",
+              "TS",
+              "ECE"
+            ],
+            "SR": [
+              "UIF",
+              "CC1IF",
+              "CC1OF"
+            ]
+          },
+          "instances": [
+            "TIM2"
+          ],
+          "registers": [
+            "CR1",
+            "CR2",
+            "SMCR",
+            "DIER",
+            "SR",
+            "EGR",
+            "CCMR1",
+            "CCER",
+            "CNT",
+            "PSC",
+            "ARR",
+            "CCR1"
+          ],
+          "requirements": [
+            "Fresh privileged owned startup, PRIMASK=1, no downstream TRGO consumers; TIM1 gate remains0.",
+            "CC1S=11, TS=000 selects TIM1_TRGO/ITR0; SMS=0/ECE=0; IC1PSC=0, IC1F=0, CC1P=CC1NP=0.",
+            "Keep CEN=0, ARR=0xFFFFFFFF, DIER=0; enable CC1E only after UG, stale clearing and validated setup.",
+            "Refuse pending CC1IF/CC1OF before issuing an event; write/read back stopped CNT, then action-write EGR.CC1G.",
+            "Bound polling; read CCR1 before final SR overcapture/new-event check; reject stale, missing, overcaptured or mismatching data.",
+            "Never write CCR1 in input mode. No external pin, elapsed-time, filter or edge measurement is qualified."
+          ],
+          "requires_modes": [
+            {
+              "instances": [
+                "RCC"
+              ],
+              "mode": "tim2_owned_gate_reset",
+              "peripheral": "rcc"
+            }
+          ],
+          "sources": [
+            {
+              "locator": "rm0090/page:604",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "rm0090/page:607",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "rm0090/page:632",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "es0182/page:17",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "es0182/page:18",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "es0182/page:19",
+              "source": "timer_modes_evidence"
+            }
+          ],
+          "title": "TIM2 stopped-counter software capture1 through internal TRC"
+        }
+      },
+      "prerequisites": [
+        "rcc"
+      ],
+      "registers": [
+        {
+          "access": "RW",
+          "access_widths": [
+            32
+          ],
+          "count": 1,
+          "fields": [
+            {
+              "lsb": 0,
+              "mask": 1,
+              "meaning": "Enable counter last; keep zero for stopped software capture.",
+              "name": "CEN",
+              "sources": [
+                {
+                  "locator": "TIM_CR1_CEN_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:624",
+                  "source": "rm_tim_cr1"
+                },
+                {
+                  "locator": "page:625",
+                  "source": "rm_tim_control"
+                },
+                {
+                  "locator": "rm0090/page:624",
+                  "source": "timer_modes_evidence"
+                },
+                {
+                  "locator": "rm0090/page:624",
+                  "source": "timer_routes_evidence"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 1,
+              "mask": 2,
+              "meaning": "0 permits update events/preload transfer.",
+              "name": "UDIS",
+              "sources": [
+                {
+                  "locator": "TIM_CR1_UDIS_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:624",
+                  "source": "rm_tim_cr1"
+                },
+                {
+                  "locator": "page:625",
+                  "source": "rm_tim_control"
+                },
+                {
+                  "locator": "rm0090/page:624",
+                  "source": "timer_modes_evidence"
+                },
+                {
+                  "locator": "rm0090/page:624",
+                  "source": "timer_routes_evidence"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 2,
+              "mask": 4,
+              "meaning": "0 allows UG to set UIF; discard that stale flag.",
+              "name": "URS",
+              "sources": [
+                {
+                  "locator": "TIM_CR1_URS_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:624",
+                  "source": "rm_tim_cr1"
+                },
+                {
+                  "locator": "page:625",
+                  "source": "rm_tim_control"
+                },
+                {
+                  "locator": "rm0090/page:624",
+                  "source": "timer_modes_evidence"
+                },
+                {
+                  "locator": "rm0090/page:624",
+                  "source": "timer_routes_evidence"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 3,
+              "mask": 8,
+              "meaning": "0 leaves PWM continuous.",
+              "name": "OPM",
+              "sources": [
+                {
+                  "locator": "TIM_CR1_OPM_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:624",
+                  "source": "rm_tim_cr1"
+                },
+                {
+                  "locator": "page:625",
+                  "source": "rm_tim_control"
+                },
+                {
+                  "locator": "rm0090/page:624",
+                  "source": "timer_modes_evidence"
+                },
+                {
+                  "locator": "rm0090/page:624",
+                  "source": "timer_routes_evidence"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 4,
+              "mask": 16,
+              "meaning": "0 selects upcounting.",
+              "name": "DIR",
+              "sources": [
+                {
+                  "locator": "TIM_CR1_DIR_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:624",
+                  "source": "rm_tim_cr1"
+                },
+                {
+                  "locator": "page:625",
+                  "source": "rm_tim_control"
+                },
+                {
+                  "locator": "rm0090/page:624",
+                  "source": "timer_modes_evidence"
+                },
+                {
+                  "locator": "rm0090/page:624",
+                  "source": "timer_routes_evidence"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 5,
+              "mask": 96,
+              "meaning": "00 selects edge-aligned mode.",
+              "name": "CMS",
+              "sources": [
+                {
+                  "locator": "TIM_CR1_CMS_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:624",
+                  "source": "rm_tim_cr1"
+                },
+                {
+                  "locator": "page:625",
+                  "source": "rm_tim_control"
+                },
+                {
+                  "locator": "rm0090/page:624",
+                  "source": "timer_modes_evidence"
+                },
+                {
+                  "locator": "rm0090/page:624",
+                  "source": "timer_routes_evidence"
+                }
+              ],
+              "width": 2
+            },
+            {
+              "lsb": 7,
+              "mask": 128,
+              "meaning": "1 buffers ARR; UG and later update events transfer its preload.",
+              "name": "ARPE",
+              "sources": [
+                {
+                  "locator": "TIM_CR1_ARPE_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:624",
+                  "source": "rm_tim_cr1"
+                },
+                {
+                  "locator": "page:625",
+                  "source": "rm_tim_control"
+                },
+                {
+                  "locator": "rm0090/page:624",
+                  "source": "timer_modes_evidence"
+                },
+                {
+                  "locator": "rm0090/page:624",
+                  "source": "timer_routes_evidence"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 8,
+              "mask": 768,
+              "meaning": "00 selects undivided digital-filter sampling basis.",
+              "name": "CKD",
+              "sources": [
+                {
+                  "locator": "TIM_CR1_CKD_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "rm0090/page:624",
+                  "source": "timer_modes_evidence"
+                },
+                {
+                  "locator": "rm0090/page:624",
+                  "source": "timer_routes_evidence"
+                }
+              ],
+              "width": 2
+            }
+          ],
+          "io_address": null,
+          "name": "CR1",
+          "offset": 0,
+          "reset": 0,
+          "side_effects": "TIM2 reviewed subset only; preserve reserved bits and obey mode requirements. Writes/readback use words. Additional TIM5 application is limited to capture_ch3_pa2; other timer applicability is not inferred.",
+          "sources": [
+            {
+              "locator": "TIM_TypeDef.CR1",
+              "source": "header"
+            },
+            {
+              "locator": "page:624",
+              "source": "rm_tim_cr1"
+            },
+            {
+              "locator": "page:624",
+              "source": "rm_tim_cr1"
+            },
+            {
+              "locator": "page:625",
+              "source": "rm_tim_control"
+            },
+            {
+              "locator": "rm0090/page:624",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "rm0090/page:624",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "rm0090/page:624",
+              "source": "timer_routes_evidence"
+            }
+          ],
+          "width": 32
+        },
+        {
+          "access": "RW",
+          "access_widths": [
+            32
+          ],
+          "count": 1,
+          "fields": [
+            {
+              "lsb": 0,
+              "mask": 1,
+              "meaning": "Declaration only; encoding requires reviewed semantics.",
+              "name": "CCPC",
+              "sources": [
+                {
+                  "locator": "TIM_CR2_CCPC_Msk",
+                  "source": "header"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 2,
+              "mask": 4,
+              "meaning": "Declaration only; encoding requires reviewed semantics.",
+              "name": "CCUS",
+              "sources": [
+                {
+                  "locator": "TIM_CR2_CCUS_Msk",
+                  "source": "header"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 3,
+              "mask": 8,
+              "meaning": "0; DMA requests remain disabled.",
+              "name": "CCDS",
+              "sources": [
+                {
+                  "locator": "TIM_CR2_CCDS_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "rm0090/page:626",
+                  "source": "timer_modes_evidence"
+                },
+                {
+                  "locator": "rm0090/page:624",
+                  "source": "timer_routes_evidence"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 4,
+              "mask": 112,
+              "meaning": "000 exposes UG on TRGO; require no downstream consumers.",
+              "name": "MMS",
+              "sources": [
+                {
+                  "locator": "TIM_CR2_MMS_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "rm0090/page:626",
+                  "source": "timer_modes_evidence"
+                },
+                {
+                  "locator": "rm0090/page:624",
+                  "source": "timer_routes_evidence"
+                }
+              ],
+              "width": 3
+            },
+            {
+              "lsb": 7,
+              "mask": 128,
+              "meaning": "0 excludes the XOR input combination.",
+              "name": "TI1S",
+              "sources": [
+                {
+                  "locator": "TIM_CR2_TI1S_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "rm0090/page:625",
+                  "source": "timer_modes_evidence"
+                },
+                {
+                  "locator": "rm0090/page:624",
+                  "source": "timer_routes_evidence"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 8,
+              "mask": 256,
+              "meaning": "Declaration only; encoding requires reviewed semantics.",
+              "name": "OIS1",
+              "sources": [
+                {
+                  "locator": "TIM_CR2_OIS1_Msk",
+                  "source": "header"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 9,
+              "mask": 512,
+              "meaning": "Declaration only; encoding requires reviewed semantics.",
+              "name": "OIS1N",
+              "sources": [
+                {
+                  "locator": "TIM_CR2_OIS1N_Msk",
+                  "source": "header"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 10,
+              "mask": 1024,
+              "meaning": "Declaration only; encoding requires reviewed semantics.",
+              "name": "OIS2",
+              "sources": [
+                {
+                  "locator": "TIM_CR2_OIS2_Msk",
+                  "source": "header"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 11,
+              "mask": 2048,
+              "meaning": "Declaration only; encoding requires reviewed semantics.",
+              "name": "OIS2N",
+              "sources": [
+                {
+                  "locator": "TIM_CR2_OIS2N_Msk",
+                  "source": "header"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 12,
+              "mask": 4096,
+              "meaning": "Declaration only; encoding requires reviewed semantics.",
+              "name": "OIS3",
+              "sources": [
+                {
+                  "locator": "TIM_CR2_OIS3_Msk",
+                  "source": "header"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 13,
+              "mask": 8192,
+              "meaning": "Declaration only; encoding requires reviewed semantics.",
+              "name": "OIS3N",
+              "sources": [
+                {
+                  "locator": "TIM_CR2_OIS3N_Msk",
+                  "source": "header"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 14,
+              "mask": 16384,
+              "meaning": "Declaration only; encoding requires reviewed semantics.",
+              "name": "OIS4",
+              "sources": [
+                {
+                  "locator": "TIM_CR2_OIS4_Msk",
+                  "source": "header"
+                }
+              ],
+              "width": 1
+            }
+          ],
+          "io_address": null,
+          "name": "CR2",
+          "offset": 4,
+          "reset": 0,
+          "side_effects": "TIM2 reviewed subset only; preserve reserved bits and obey mode requirements. Writes/readback use words. Additional TIM5 application is limited to capture_ch3_pa2; other timer applicability is not inferred.",
+          "sources": [
+            {
+              "locator": "TIM_TypeDef.CR2",
+              "source": "header"
+            },
+            {
+              "locator": "rm0090/page:624",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "rm0090/page:625",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "rm0090/page:624",
+              "source": "timer_routes_evidence"
+            }
+          ],
+          "width": 32
+        },
+        {
+          "access": "RW",
+          "access_widths": [
+            32
+          ],
+          "count": 1,
+          "fields": [
+            {
+              "lsb": 0,
+              "mask": 7,
+              "meaning": "000 disables slave mode.",
+              "name": "SMS",
+              "sources": [
+                {
+                  "locator": "TIM_SMCR_SMS_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "rm0090/page:628",
+                  "source": "timer_modes_evidence"
+                },
+                {
+                  "locator": "rm0090/page:624",
+                  "source": "timer_routes_evidence"
+                }
+              ],
+              "width": 3
+            },
+            {
+              "lsb": 4,
+              "mask": 112,
+              "meaning": "000 selects TIM2 ITR0 from TIM1_TRGO; keep TIM1 gated.",
+              "name": "TS",
+              "sources": [
+                {
+                  "locator": "TIM_SMCR_TS_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "rm0090/page:628",
+                  "source": "timer_modes_evidence"
+                },
+                {
+                  "locator": "rm0090/page:624",
+                  "source": "timer_routes_evidence"
+                }
+              ],
+              "width": 3
+            },
+            {
+              "lsb": 7,
+              "mask": 128,
+              "meaning": "Declaration only; encoding requires reviewed semantics.",
+              "name": "MSM",
+              "sources": [
+                {
+                  "locator": "TIM_SMCR_MSM_Msk",
+                  "source": "header"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 8,
+              "mask": 3840,
+              "meaning": "Declaration only; encoding requires reviewed semantics.",
+              "name": "ETF",
+              "sources": [
+                {
+                  "locator": "TIM_SMCR_ETF_Msk",
+                  "source": "header"
+                }
+              ],
+              "width": 4
+            },
+            {
+              "lsb": 12,
+              "mask": 12288,
+              "meaning": "Declaration only; encoding requires reviewed semantics.",
+              "name": "ETPS",
+              "sources": [
+                {
+                  "locator": "TIM_SMCR_ETPS_Msk",
+                  "source": "header"
+                }
+              ],
+              "width": 2
+            },
+            {
+              "lsb": 14,
+              "mask": 16384,
+              "meaning": "0 disables external clock mode2.",
+              "name": "ECE",
+              "sources": [
+                {
+                  "locator": "TIM_SMCR_ECE_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "rm0090/page:627",
+                  "source": "timer_modes_evidence"
+                },
+                {
+                  "locator": "rm0090/page:624",
+                  "source": "timer_routes_evidence"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 15,
+              "mask": 32768,
+              "meaning": "Declaration only; encoding requires reviewed semantics.",
+              "name": "ETP",
+              "sources": [
+                {
+                  "locator": "TIM_SMCR_ETP_Msk",
+                  "source": "header"
+                }
+              ],
+              "width": 1
+            }
+          ],
+          "io_address": null,
+          "name": "SMCR",
+          "offset": 8,
+          "reset": 0,
+          "side_effects": "TIM2 reviewed subset only; preserve reserved bits and obey mode requirements. Writes/readback use words. Additional TIM5 application is limited to capture_ch3_pa2; other timer applicability is not inferred.",
+          "sources": [
+            {
+              "locator": "TIM_TypeDef.SMCR",
+              "source": "header"
+            },
+            {
+              "locator": "rm0090/page:624",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "rm0090/page:626",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "rm0090/page:624",
+              "source": "timer_routes_evidence"
+            }
+          ],
+          "width": 32
+        },
+        {
+          "access": "RW",
+          "access_widths": [
+            32
+          ],
+          "count": 1,
+          "fields": [
+            {
+              "lsb": 0,
+              "mask": 1,
+              "meaning": "0 keeps update interrupts disabled.",
+              "name": "UIE",
+              "sources": [
+                {
+                  "locator": "TIM_DIER_UIE_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:629",
+                  "source": "rm_tim_dier"
+                },
+                {
+                  "locator": "page:630",
+                  "source": "rm_tim_sr"
+                },
+                {
+                  "locator": "rm0090/page:630",
+                  "source": "timer_modes_evidence"
+                },
+                {
+                  "locator": "rm0090/page:628",
+                  "source": "timer_routes_evidence"
+                },
+                {
+                  "locator": "rm0090/page:624",
+                  "source": "timer_routes_evidence"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 8,
+              "mask": 256,
+              "meaning": "0 keeps update DMA disabled.",
+              "name": "UDE",
+              "sources": [
+                {
+                  "locator": "TIM_DIER_UDE_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:629",
+                  "source": "rm_tim_dier"
+                },
+                {
+                  "locator": "page:630",
+                  "source": "rm_tim_sr"
+                },
+                {
+                  "locator": "rm0090/page:629",
+                  "source": "timer_modes_evidence"
+                },
+                {
+                  "locator": "rm0090/page:628",
+                  "source": "timer_routes_evidence"
+                },
+                {
+                  "locator": "rm0090/page:624",
+                  "source": "timer_routes_evidence"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 1,
+              "mask": 2,
+              "meaning": "0 keeps capture/compare interrupts disabled.",
+              "name": "CC1IE",
+              "sources": [
+                {
+                  "locator": "TIM_DIER_CC1IE_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "rm0090/page:629",
+                  "source": "timer_modes_evidence"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 9,
+              "mask": 512,
+              "meaning": "0 keeps capture/compare DMA disabled.",
+              "name": "CC1DE",
+              "sources": [
+                {
+                  "locator": "TIM_DIER_CC1DE_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "rm0090/page:629",
+                  "source": "timer_modes_evidence"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 3,
+              "mask": 8,
+              "meaning": "0 disables and1 enables capture3 interrupt requests; enable only after handler/vector/line setup and source-cause clearing.",
+              "name": "CC3IE",
+              "sources": [
+                {
+                  "locator": "TIM_DIER_CC3IE_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "rm0090/page:629",
+                  "source": "timer_irq_evidence"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 11,
+              "mask": 2048,
+              "meaning": "0 keeps capture3 DMA disabled in these polling/IRQ scopes; DMA routing is not supported here.",
+              "name": "CC3DE",
+              "sources": [
+                {
+                  "locator": "TIM_DIER_CC3DE_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "rm0090/page:629",
+                  "source": "timer_irq_evidence"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 2,
+              "mask": 4,
+              "meaning": "Inactive channel2 request/flag except CC2E output enable; obey pwm_ch2_pa1 explicit sequence.",
+              "name": "CC2IE",
+              "sources": [
+                {
+                  "locator": "TIM_DIER_CC2IE_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "rm0090/page:628",
+                  "source": "timer_routes_evidence"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 10,
+              "mask": 1024,
+              "meaning": "Inactive channel2 request/flag except CC2E output enable; obey pwm_ch2_pa1 explicit sequence.",
+              "name": "CC2DE",
+              "sources": [
+                {
+                  "locator": "TIM_DIER_CC2DE_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "rm0090/page:628",
+                  "source": "timer_routes_evidence"
+                }
+              ],
+              "width": 1
+            }
+          ],
+          "io_address": null,
+          "name": "DIER",
+          "offset": 12,
+          "reset": 0,
+          "side_effects": "TIM2 reviewed subset only; preserve reserved bits and obey mode requirements. Writes/readback use words. Additional TIM5 application is limited to capture_ch3_pa2; other timer applicability is not inferred.",
+          "sources": [
+            {
+              "locator": "TIM_TypeDef.DIER",
+              "source": "header"
+            },
+            {
+              "locator": "page:629",
+              "source": "rm_tim_dier"
+            },
+            {
+              "locator": "page:629",
+              "source": "rm_tim_dier"
+            },
+            {
+              "locator": "page:630",
+              "source": "rm_tim_sr"
+            },
+            {
+              "locator": "rm0090/page:624",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "rm0090/page:629",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "rm0090/page:624",
+              "source": "timer_routes_evidence"
+            },
+            {
+              "locator": "rm0090/page:628",
+              "source": "timer_routes_evidence"
+            },
+            {
+              "locator": "rm0090/page:629",
+              "source": "timer_irq_evidence"
+            }
+          ],
+          "width": 32
+        },
+        {
+          "access": "RW",
+          "access_widths": [
+            32
+          ],
+          "count": 1,
+          "fields": [
+            {
+              "lsb": 0,
+              "mask": 1,
+              "meaning": "rc_w0; UG and natural updates set UIF; discard stale UIF before waiting.",
+              "name": "UIF",
+              "sources": [
+                {
+                  "locator": "TIM_SR_UIF_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:630",
+                  "source": "rm_tim_sr"
+                },
+                {
+                  "locator": "page:631",
+                  "source": "rm_tim_status"
+                },
+                {
+                  "locator": "rm0090/page:631",
+                  "source": "timer_modes_evidence"
+                },
+                {
+                  "locator": "rm0090/page:629",
+                  "source": "timer_routes_evidence"
+                },
+                {
+                  "locator": "rm0090/page:624",
+                  "source": "timer_routes_evidence"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 1,
+              "mask": 2,
+              "meaning": "rc_w0; input capture sets this flag and reading CCR1 clears it.",
+              "name": "CC1IF",
+              "sources": [
+                {
+                  "locator": "TIM_SR_CC1IF_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "rm0090/page:631",
+                  "source": "timer_modes_evidence"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 9,
+              "mask": 512,
+              "meaning": "rc_w0; another capture while CC1IF is set indicates lost/ambiguous data.",
+              "name": "CC1OF",
+              "sources": [
+                {
+                  "locator": "TIM_SR_CC1OF_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "rm0090/page:630",
+                  "source": "timer_modes_evidence"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 3,
+              "mask": 8,
+              "meaning": "Input capture sets flag; full CCR3 read clears it. Reject a new flag after the data read.",
+              "name": "CC3IF",
+              "sources": [
+                {
+                  "locator": "TIM_SR_CC3IF_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "rm0090/page:630",
+                  "source": "timer_irq_evidence"
+                },
+                {
+                  "locator": "rm0090/page:631",
+                  "source": "timer_irq_evidence"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 11,
+              "mask": 2048,
+              "meaning": "Set when capture occurs with CC3IF already pending; rc_w0, not cleared by CCR3 read. Reject before/after data read.",
+              "name": "CC3OF",
+              "sources": [
+                {
+                  "locator": "TIM_SR_CC3OF_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "rm0090/page:630",
+                  "source": "timer_irq_evidence"
+                },
+                {
+                  "locator": "rm0090/page:631",
+                  "source": "timer_irq_evidence"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 2,
+              "mask": 4,
+              "meaning": "Inactive channel2 request/flag except CC2E output enable; obey pwm_ch2_pa1 explicit sequence.",
+              "name": "CC2IF",
+              "sources": [
+                {
+                  "locator": "TIM_SR_CC2IF_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "rm0090/page:629",
+                  "source": "timer_routes_evidence"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 10,
+              "mask": 1024,
+              "meaning": "Inactive channel2 request/flag except CC2E output enable; obey pwm_ch2_pa1 explicit sequence.",
+              "name": "CC2OF",
+              "sources": [
+                {
+                  "locator": "TIM_SR_CC2OF_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "rm0090/page:629",
+                  "source": "timer_routes_evidence"
+                }
+              ],
+              "width": 1
+            }
+          ],
+          "io_address": null,
+          "name": "SR",
+          "offset": 16,
+          "reset": 0,
+          "side_effects": "Flags rc_w0. SR=0 discards all flags only under exclusive timer ownership. Input CCR1 read also clears CC1IF. Additional TIM5 application is limited to capture_ch3_pa2; other timer applicability is not inferred.",
+          "sources": [
+            {
+              "locator": "TIM_TypeDef.SR",
+              "source": "header"
+            },
+            {
+              "locator": "page:630",
+              "source": "rm_tim_sr"
+            },
+            {
+              "locator": "page:630",
+              "source": "rm_tim_sr"
+            },
+            {
+              "locator": "page:631",
+              "source": "rm_tim_status"
+            },
+            {
+              "locator": "rm0090/page:624",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "rm0090/page:630",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "rm0090/page:624",
+              "source": "timer_routes_evidence"
+            },
+            {
+              "locator": "rm0090/page:629",
+              "source": "timer_routes_evidence"
+            },
+            {
+              "locator": "rm0090/page:630",
+              "source": "timer_irq_evidence"
+            },
+            {
+              "locator": "rm0090/page:631",
+              "source": "timer_irq_evidence"
+            }
+          ],
+          "width": 32
+        },
+        {
+          "access": "WO",
+          "access_widths": [
+            32
+          ],
+          "count": 1,
+          "fields": [
+            {
+              "lsb": 0,
+              "mask": 1,
+              "meaning": "Write1 generates update/reinitialization and transfers preloads; never RMW.",
+              "name": "UG",
+              "sources": [
+                {
+                  "locator": "TIM_EGR_UG_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:631",
+                  "source": "rm_tim_status"
+                },
+                {
+                  "locator": "page:632",
+                  "source": "rm_tim_egr"
+                },
+                {
+                  "locator": "rm0090/page:632",
+                  "source": "timer_modes_evidence"
+                },
+                {
+                  "locator": "rm0090/page:624",
+                  "source": "timer_routes_evidence"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 1,
+              "mask": 2,
+              "meaning": "Write1 in input mode captures CNT into CCR1 and sets capture/overcapture status.",
+              "name": "CC1G",
+              "sources": [
+                {
+                  "locator": "TIM_EGR_CC1G_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "rm0090/page:632",
+                  "source": "timer_modes_evidence"
+                }
+              ],
+              "width": 1
+            }
+          ],
+          "io_address": null,
+          "name": "EGR",
+          "offset": 20,
+          "reset": 0,
+          "side_effects": "Write-only actions; UG reinitializes/transfers preloads and may set UIF/TRGO; CC1G generates software capture. Never RMW. Additional TIM5 application is limited to capture_ch3_pa2; other timer applicability is not inferred.",
+          "sources": [
+            {
+              "locator": "TIM_TypeDef.EGR",
+              "source": "header"
+            },
+            {
+              "locator": "page:632",
+              "source": "rm_tim_egr"
+            },
+            {
+              "locator": "page:631",
+              "source": "rm_tim_status"
+            },
+            {
+              "locator": "page:632",
+              "source": "rm_tim_egr"
+            },
+            {
+              "locator": "rm0090/page:624",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "rm0090/page:631",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "rm0090/page:624",
+              "source": "timer_routes_evidence"
+            }
+          ],
+          "width": 32
+        },
+        {
+          "access": "RW",
+          "access_widths": [
+            32
+          ],
+          "count": 1,
+          "field_views": {
+            "input_input": {
+              "fields": [
+                {
+                  "lsb": 0,
+                  "mask": 3,
+                  "meaning": "Declaration only; encoding requires reviewed semantics.",
+                  "name": "CC1S",
+                  "sources": [
+                    {
+                      "locator": "TIM_CCMR1_CC1S_Msk",
+                      "source": "header"
+                    }
+                  ],
+                  "width": 2
+                },
+                {
+                  "lsb": 2,
+                  "mask": 12,
+                  "meaning": "Declaration only; encoding requires reviewed semantics.",
+                  "name": "IC1PSC",
+                  "sources": [
+                    {
+                      "locator": "TIM_CCMR1_IC1PSC_Msk",
+                      "source": "header"
+                    }
+                  ],
+                  "width": 2
+                },
+                {
+                  "lsb": 4,
+                  "mask": 240,
+                  "meaning": "Declaration only; encoding requires reviewed semantics.",
+                  "name": "IC1F",
+                  "sources": [
+                    {
+                      "locator": "TIM_CCMR1_IC1F_Msk",
+                      "source": "header"
+                    }
+                  ],
+                  "width": 4
+                },
+                {
+                  "lsb": 8,
+                  "mask": 768,
+                  "meaning": "Declaration only; encoding requires reviewed semantics.",
+                  "name": "CC2S",
+                  "sources": [
+                    {
+                      "locator": "TIM_CCMR1_CC2S_Msk",
+                      "source": "header"
+                    }
+                  ],
+                  "width": 2
+                },
+                {
+                  "lsb": 10,
+                  "mask": 3072,
+                  "meaning": "Declaration only; encoding requires reviewed semantics.",
+                  "name": "IC2PSC",
+                  "sources": [
+                    {
+                      "locator": "TIM_CCMR1_IC2PSC_Msk",
+                      "source": "header"
+                    }
+                  ],
+                  "width": 2
+                },
+                {
+                  "lsb": 12,
+                  "mask": 61440,
+                  "meaning": "Declaration only; encoding requires reviewed semantics.",
+                  "name": "IC2F",
+                  "sources": [
+                    {
+                      "locator": "TIM_CCMR1_IC2F_Msk",
+                      "source": "header"
+                    }
+                  ],
+                  "width": 4
+                }
+              ],
+              "selection": "Configured declaration set only; selection conditions require reviewed semantics.",
+              "sources": [
+                {
+                  "locator": "TIM_CCMR1_CC1S_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "TIM_CCMR1_IC1PSC_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "TIM_CCMR1_IC1F_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "TIM_CCMR1_CC2S_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "TIM_CCMR1_IC2PSC_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "TIM_CCMR1_IC2F_Msk",
+                  "source": "header"
+                }
+              ]
+            },
+            "input_output": {
+              "fields": [
+                {
+                  "lsb": 0,
+                  "mask": 3,
+                  "meaning": "Channel selection:00 output;11 internal TRC only with an internal TS selection. Change only while corresponding CCxE=0.",
+                  "name": "CC1S",
+                  "sources": [
+                    {
+                      "locator": "TIM_CCMR1_CC1S_Msk",
+                      "source": "header"
+                    },
+                    {
+                      "locator": "rm0090/page:632",
+                      "source": "timer_modes_evidence"
+                    },
+                    {
+                      "locator": "rm0090/page:633",
+                      "source": "timer_modes_evidence"
+                    },
+                    {
+                      "locator": "rm0090/page:634",
+                      "source": "timer_modes_evidence"
+                    }
+                  ],
+                  "width": 2
+                },
+                {
+                  "lsb": 2,
+                  "mask": 12,
+                  "meaning": "00 captures every event without input prescaling.",
+                  "name": "IC1PSC",
+                  "sources": [
+                    {
+                      "locator": "TIM_CCMR1_IC1PSC_Msk",
+                      "source": "header"
+                    },
+                    {
+                      "locator": "rm0090/page:632",
+                      "source": "timer_modes_evidence"
+                    },
+                    {
+                      "locator": "rm0090/page:633",
+                      "source": "timer_modes_evidence"
+                    },
+                    {
+                      "locator": "rm0090/page:634",
+                      "source": "timer_modes_evidence"
+                    }
+                  ],
+                  "width": 2
+                },
+                {
+                  "lsb": 4,
+                  "mask": 240,
+                  "meaning": "0000 leaves input filter disabled; software capture makes no external filtering claim.",
+                  "name": "IC1F",
+                  "sources": [
+                    {
+                      "locator": "TIM_CCMR1_IC1F_Msk",
+                      "source": "header"
+                    },
+                    {
+                      "locator": "rm0090/page:632",
+                      "source": "timer_modes_evidence"
+                    },
+                    {
+                      "locator": "rm0090/page:633",
+                      "source": "timer_modes_evidence"
+                    },
+                    {
+                      "locator": "rm0090/page:634",
+                      "source": "timer_modes_evidence"
+                    }
+                  ],
+                  "width": 4
+                },
+                {
+                  "lsb": 8,
+                  "mask": 768,
+                  "meaning": "Channel selection:00 output;11 internal TRC only with an internal TS selection. Change only while corresponding CCxE=0.",
+                  "name": "CC2S",
+                  "sources": [
+                    {
+                      "locator": "TIM_CCMR1_CC2S_Msk",
+                      "source": "header"
+                    },
+                    {
+                      "locator": "rm0090/page:632",
+                      "source": "timer_modes_evidence"
+                    },
+                    {
+                      "locator": "rm0090/page:633",
+                      "source": "timer_modes_evidence"
+                    },
+                    {
+                      "locator": "rm0090/page:634",
+                      "source": "timer_modes_evidence"
+                    }
+                  ],
+                  "width": 2
+                },
+                {
+                  "lsb": 10,
+                  "mask": 1024,
+                  "meaning": "Keep0 in this subset: fast/clear behavior and channel2 waveform generation are unused.",
+                  "name": "OC2FE",
+                  "sources": [
+                    {
+                      "locator": "TIM_CCMR1_OC2FE_Msk",
+                      "source": "header"
+                    },
+                    {
+                      "locator": "rm0090/page:632",
+                      "source": "timer_modes_evidence"
+                    },
+                    {
+                      "locator": "rm0090/page:633",
+                      "source": "timer_modes_evidence"
+                    },
+                    {
+                      "locator": "rm0090/page:634",
+                      "source": "timer_modes_evidence"
+                    }
+                  ],
+                  "width": 1
+                },
+                {
+                  "lsb": 11,
+                  "mask": 2048,
+                  "meaning": "Keep0 in this subset: fast/clear behavior and channel2 waveform generation are unused.",
+                  "name": "OC2PE",
+                  "sources": [
+                    {
+                      "locator": "TIM_CCMR1_OC2PE_Msk",
+                      "source": "header"
+                    },
+                    {
+                      "locator": "rm0090/page:632",
+                      "source": "timer_modes_evidence"
+                    },
+                    {
+                      "locator": "rm0090/page:633",
+                      "source": "timer_modes_evidence"
+                    },
+                    {
+                      "locator": "rm0090/page:634",
+                      "source": "timer_modes_evidence"
+                    }
+                  ],
+                  "width": 1
+                },
+                {
+                  "lsb": 12,
+                  "mask": 28672,
+                  "meaning": "Keep0 in this subset: fast/clear behavior and channel2 waveform generation are unused.",
+                  "name": "OC2M",
+                  "sources": [
+                    {
+                      "locator": "TIM_CCMR1_OC2M_Msk",
+                      "source": "header"
+                    },
+                    {
+                      "locator": "rm0090/page:632",
+                      "source": "timer_modes_evidence"
+                    },
+                    {
+                      "locator": "rm0090/page:633",
+                      "source": "timer_modes_evidence"
+                    },
+                    {
+                      "locator": "rm0090/page:634",
+                      "source": "timer_modes_evidence"
+                    }
+                  ],
+                  "width": 3
+                },
+                {
+                  "lsb": 15,
+                  "mask": 32768,
+                  "meaning": "Keep0 in this subset: fast/clear behavior and channel2 waveform generation are unused.",
+                  "name": "OC2CE",
+                  "sources": [
+                    {
+                      "locator": "TIM_CCMR1_OC2CE_Msk",
+                      "source": "header"
+                    },
+                    {
+                      "locator": "rm0090/page:632",
+                      "source": "timer_modes_evidence"
+                    },
+                    {
+                      "locator": "rm0090/page:633",
+                      "source": "timer_modes_evidence"
+                    },
+                    {
+                      "locator": "rm0090/page:634",
+                      "source": "timer_modes_evidence"
+                    }
+                  ],
+                  "width": 1
+                }
+              ],
+              "selection": "TIM2 subset: CC1S=nonzero and CC2S=00; change selection only with CC1E/CC2E=0.",
+              "sources": [
+                {
+                  "locator": "TIM_CCMR1_CC1S_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "TIM_CCMR1_IC1PSC_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "TIM_CCMR1_IC1F_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "TIM_CCMR1_CC2S_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "TIM_CCMR1_OC2FE_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "TIM_CCMR1_OC2PE_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "TIM_CCMR1_OC2M_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "TIM_CCMR1_OC2CE_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "rm0090/page:632",
+                  "source": "timer_modes_evidence"
+                },
+                {
+                  "locator": "rm0090/page:633",
+                  "source": "timer_modes_evidence"
+                },
+                {
+                  "locator": "rm0090/page:634",
+                  "source": "timer_modes_evidence"
+                }
+              ]
+            },
+            "output_input": {
+              "fields": [
+                {
+                  "lsb": 0,
+                  "mask": 3,
+                  "meaning": "Declaration only; encoding requires reviewed semantics.",
+                  "name": "CC1S",
+                  "sources": [
+                    {
+                      "locator": "TIM_CCMR1_CC1S_Msk",
+                      "source": "header"
+                    }
+                  ],
+                  "width": 2
+                },
+                {
+                  "lsb": 2,
+                  "mask": 4,
+                  "meaning": "Declaration only; encoding requires reviewed semantics.",
+                  "name": "OC1FE",
+                  "sources": [
+                    {
+                      "locator": "TIM_CCMR1_OC1FE_Msk",
+                      "source": "header"
+                    }
+                  ],
+                  "width": 1
+                },
+                {
+                  "lsb": 3,
+                  "mask": 8,
+                  "meaning": "Declaration only; encoding requires reviewed semantics.",
+                  "name": "OC1PE",
+                  "sources": [
+                    {
+                      "locator": "TIM_CCMR1_OC1PE_Msk",
+                      "source": "header"
+                    }
+                  ],
+                  "width": 1
+                },
+                {
+                  "lsb": 4,
+                  "mask": 112,
+                  "meaning": "Declaration only; encoding requires reviewed semantics.",
+                  "name": "OC1M",
+                  "sources": [
+                    {
+                      "locator": "TIM_CCMR1_OC1M_Msk",
+                      "source": "header"
+                    }
+                  ],
+                  "width": 3
+                },
+                {
+                  "lsb": 7,
+                  "mask": 128,
+                  "meaning": "Declaration only; encoding requires reviewed semantics.",
+                  "name": "OC1CE",
+                  "sources": [
+                    {
+                      "locator": "TIM_CCMR1_OC1CE_Msk",
+                      "source": "header"
+                    }
+                  ],
+                  "width": 1
+                },
+                {
+                  "lsb": 8,
+                  "mask": 768,
+                  "meaning": "Declaration only; encoding requires reviewed semantics.",
+                  "name": "CC2S",
+                  "sources": [
+                    {
+                      "locator": "TIM_CCMR1_CC2S_Msk",
+                      "source": "header"
+                    }
+                  ],
+                  "width": 2
+                },
+                {
+                  "lsb": 10,
+                  "mask": 3072,
+                  "meaning": "Declaration only; encoding requires reviewed semantics.",
+                  "name": "IC2PSC",
+                  "sources": [
+                    {
+                      "locator": "TIM_CCMR1_IC2PSC_Msk",
+                      "source": "header"
+                    }
+                  ],
+                  "width": 2
+                },
+                {
+                  "lsb": 12,
+                  "mask": 61440,
+                  "meaning": "Declaration only; encoding requires reviewed semantics.",
+                  "name": "IC2F",
+                  "sources": [
+                    {
+                      "locator": "TIM_CCMR1_IC2F_Msk",
+                      "source": "header"
+                    }
+                  ],
+                  "width": 4
+                }
+              ],
+              "selection": "Configured declaration set only; selection conditions require reviewed semantics.",
+              "sources": [
+                {
+                  "locator": "TIM_CCMR1_CC1S_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "TIM_CCMR1_OC1FE_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "TIM_CCMR1_OC1PE_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "TIM_CCMR1_OC1M_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "TIM_CCMR1_OC1CE_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "TIM_CCMR1_CC2S_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "TIM_CCMR1_IC2PSC_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "TIM_CCMR1_IC2F_Msk",
+                  "source": "header"
+                }
+              ]
+            },
+            "output_output": {
+              "fields": [
+                {
+                  "lsb": 0,
+                  "mask": 3,
+                  "meaning": "Channel selection:00 output;11 internal TRC only with an internal TS selection. Change only while corresponding CCxE=0.",
+                  "name": "CC1S",
+                  "sources": [
+                    {
+                      "locator": "TIM_CCMR1_CC1S_Msk",
+                      "source": "header"
+                    },
+                    {
+                      "locator": "rm0090/page:632",
+                      "source": "timer_modes_evidence"
+                    },
+                    {
+                      "locator": "rm0090/page:633",
+                      "source": "timer_modes_evidence"
+                    },
+                    {
+                      "locator": "rm0090/page:634",
+                      "source": "timer_modes_evidence"
+                    }
+                  ],
+                  "width": 2
+                },
+                {
+                  "lsb": 2,
+                  "mask": 4,
+                  "meaning": "Keep0 in this subset: fast/clear behavior and channel2 waveform generation are unused.",
+                  "name": "OC1FE",
+                  "sources": [
+                    {
+                      "locator": "TIM_CCMR1_OC1FE_Msk",
+                      "source": "header"
+                    },
+                    {
+                      "locator": "rm0090/page:632",
+                      "source": "timer_modes_evidence"
+                    },
+                    {
+                      "locator": "rm0090/page:633",
+                      "source": "timer_modes_evidence"
+                    },
+                    {
+                      "locator": "rm0090/page:634",
+                      "source": "timer_modes_evidence"
+                    }
+                  ],
+                  "width": 1
+                },
+                {
+                  "lsb": 3,
+                  "mask": 8,
+                  "meaning": "1 buffers CCR1; update events transfer its preload to active compare state.",
+                  "name": "OC1PE",
+                  "sources": [
+                    {
+                      "locator": "TIM_CCMR1_OC1PE_Msk",
+                      "source": "header"
+                    },
+                    {
+                      "locator": "rm0090/page:632",
+                      "source": "timer_modes_evidence"
+                    },
+                    {
+                      "locator": "rm0090/page:633",
+                      "source": "timer_modes_evidence"
+                    },
+                    {
+                      "locator": "rm0090/page:634",
+                      "source": "timer_modes_evidence"
+                    }
+                  ],
+                  "width": 1
+                },
+                {
+                  "lsb": 4,
+                  "mask": 112,
+                  "meaning": "110 PWM1: in upcounting OC1REF is high while CNT<CCR1.",
+                  "name": "OC1M",
+                  "sources": [
+                    {
+                      "locator": "TIM_CCMR1_OC1M_Msk",
+                      "source": "header"
+                    },
+                    {
+                      "locator": "rm0090/page:632",
+                      "source": "timer_modes_evidence"
+                    },
+                    {
+                      "locator": "rm0090/page:633",
+                      "source": "timer_modes_evidence"
+                    },
+                    {
+                      "locator": "rm0090/page:634",
+                      "source": "timer_modes_evidence"
+                    }
+                  ],
+                  "width": 3
+                },
+                {
+                  "lsb": 7,
+                  "mask": 128,
+                  "meaning": "Keep0 in this subset: fast/clear behavior and channel2 waveform generation are unused.",
+                  "name": "OC1CE",
+                  "sources": [
+                    {
+                      "locator": "TIM_CCMR1_OC1CE_Msk",
+                      "source": "header"
+                    },
+                    {
+                      "locator": "rm0090/page:632",
+                      "source": "timer_modes_evidence"
+                    },
+                    {
+                      "locator": "rm0090/page:633",
+                      "source": "timer_modes_evidence"
+                    },
+                    {
+                      "locator": "rm0090/page:634",
+                      "source": "timer_modes_evidence"
+                    }
+                  ],
+                  "width": 1
+                },
+                {
+                  "lsb": 8,
+                  "mask": 768,
+                  "meaning": "00 selects channel2 output; change only with CC2E=0.",
+                  "name": "CC2S",
+                  "sources": [
+                    {
+                      "locator": "TIM_CCMR1_CC2S_Msk",
+                      "source": "header"
+                    },
+                    {
+                      "locator": "rm0090/page:632",
+                      "source": "timer_modes_evidence"
+                    },
+                    {
+                      "locator": "rm0090/page:633",
+                      "source": "timer_modes_evidence"
+                    },
+                    {
+                      "locator": "rm0090/page:634",
+                      "source": "timer_modes_evidence"
+                    },
+                    {
+                      "locator": "rm0090/page:632",
+                      "source": "timer_routes_evidence"
+                    }
+                  ],
+                  "width": 2
+                },
+                {
+                  "lsb": 10,
+                  "mask": 1024,
+                  "meaning": "0 disables fast mode.",
+                  "name": "OC2FE",
+                  "sources": [
+                    {
+                      "locator": "TIM_CCMR1_OC2FE_Msk",
+                      "source": "header"
+                    },
+                    {
+                      "locator": "rm0090/page:632",
+                      "source": "timer_modes_evidence"
+                    },
+                    {
+                      "locator": "rm0090/page:633",
+                      "source": "timer_modes_evidence"
+                    },
+                    {
+                      "locator": "rm0090/page:634",
+                      "source": "timer_modes_evidence"
+                    },
+                    {
+                      "locator": "rm0090/page:632",
+                      "source": "timer_routes_evidence"
+                    }
+                  ],
+                  "width": 1
+                },
+                {
+                  "lsb": 11,
+                  "mask": 2048,
+                  "meaning": "1 enables CCR2 preload in pwm_ch2_pa1; 0 disables preload on inactive channel2.",
+                  "name": "OC2PE",
+                  "sources": [
+                    {
+                      "locator": "TIM_CCMR1_OC2PE_Msk",
+                      "source": "header"
+                    },
+                    {
+                      "locator": "rm0090/page:632",
+                      "source": "timer_modes_evidence"
+                    },
+                    {
+                      "locator": "rm0090/page:633",
+                      "source": "timer_modes_evidence"
+                    },
+                    {
+                      "locator": "rm0090/page:634",
+                      "source": "timer_modes_evidence"
+                    },
+                    {
+                      "locator": "rm0090/page:632",
+                      "source": "timer_routes_evidence"
+                    }
+                  ],
+                  "width": 1
+                },
+                {
+                  "lsb": 12,
+                  "mask": 28672,
+                  "meaning": "110 PWM1: active while CNT<CCR2 for upcounting; 000 frozen for inactive channel2 in the earlier channel1 mode.",
+                  "name": "OC2M",
+                  "sources": [
+                    {
+                      "locator": "TIM_CCMR1_OC2M_Msk",
+                      "source": "header"
+                    },
+                    {
+                      "locator": "rm0090/page:632",
+                      "source": "timer_modes_evidence"
+                    },
+                    {
+                      "locator": "rm0090/page:633",
+                      "source": "timer_modes_evidence"
+                    },
+                    {
+                      "locator": "rm0090/page:634",
+                      "source": "timer_modes_evidence"
+                    },
+                    {
+                      "locator": "rm0090/page:632",
+                      "source": "timer_routes_evidence"
+                    }
+                  ],
+                  "width": 3
+                },
+                {
+                  "lsb": 15,
+                  "mask": 32768,
+                  "meaning": "0 disables external clear.",
+                  "name": "OC2CE",
+                  "sources": [
+                    {
+                      "locator": "TIM_CCMR1_OC2CE_Msk",
+                      "source": "header"
+                    },
+                    {
+                      "locator": "rm0090/page:632",
+                      "source": "timer_modes_evidence"
+                    },
+                    {
+                      "locator": "rm0090/page:633",
+                      "source": "timer_modes_evidence"
+                    },
+                    {
+                      "locator": "rm0090/page:634",
+                      "source": "timer_modes_evidence"
+                    },
+                    {
+                      "locator": "rm0090/page:632",
+                      "source": "timer_routes_evidence"
+                    }
+                  ],
+                  "width": 1
+                }
+              ],
+              "selection": "TIM2 subset: CC1S=00 and CC2S=00; change selection only with CC1E/CC2E=0.",
+              "sources": [
+                {
+                  "locator": "TIM_CCMR1_CC1S_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "TIM_CCMR1_OC1FE_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "TIM_CCMR1_OC1PE_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "TIM_CCMR1_OC1M_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "TIM_CCMR1_OC1CE_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "TIM_CCMR1_CC2S_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "TIM_CCMR1_OC2FE_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "TIM_CCMR1_OC2PE_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "TIM_CCMR1_OC2M_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "TIM_CCMR1_OC2CE_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "rm0090/page:632",
+                  "source": "timer_modes_evidence"
+                },
+                {
+                  "locator": "rm0090/page:633",
+                  "source": "timer_modes_evidence"
+                },
+                {
+                  "locator": "rm0090/page:634",
+                  "source": "timer_modes_evidence"
+                }
+              ]
+            }
+          },
+          "fields": [],
+          "io_address": null,
+          "name": "CCMR1",
+          "offset": 24,
+          "reset": 0,
+          "side_effects": "TIM2 reviewed subset only; preserve reserved bits and obey mode requirements. Writes/readback use words.",
+          "sources": [
+            {
+              "locator": "TIM_TypeDef.CCMR1",
+              "source": "header"
+            },
+            {
+              "locator": "rm0090/page:624",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "rm0090/page:632",
+              "source": "timer_modes_evidence"
+            }
+          ],
+          "width": 32
+        },
+        {
+          "access": "RW",
+          "access_widths": [
+            32
+          ],
+          "count": 1,
+          "field_views": {
+            "input_input": {
+              "fields": [
+                {
+                  "lsb": 0,
+                  "mask": 3,
+                  "meaning": "Declaration only; encoding requires reviewed semantics.",
+                  "name": "CC3S",
+                  "sources": [
+                    {
+                      "locator": "TIM_CCMR2_CC3S_Msk",
+                      "source": "header"
+                    }
+                  ],
+                  "width": 2
+                },
+                {
+                  "lsb": 2,
+                  "mask": 12,
+                  "meaning": "Declaration only; encoding requires reviewed semantics.",
+                  "name": "IC3PSC",
+                  "sources": [
+                    {
+                      "locator": "TIM_CCMR2_IC3PSC_Msk",
+                      "source": "header"
+                    }
+                  ],
+                  "width": 2
+                },
+                {
+                  "lsb": 4,
+                  "mask": 240,
+                  "meaning": "Declaration only; encoding requires reviewed semantics.",
+                  "name": "IC3F",
+                  "sources": [
+                    {
+                      "locator": "TIM_CCMR2_IC3F_Msk",
+                      "source": "header"
+                    }
+                  ],
+                  "width": 4
+                },
+                {
+                  "lsb": 8,
+                  "mask": 768,
+                  "meaning": "Declaration only; encoding requires reviewed semantics.",
+                  "name": "CC4S",
+                  "sources": [
+                    {
+                      "locator": "TIM_CCMR2_CC4S_Msk",
+                      "source": "header"
+                    }
+                  ],
+                  "width": 2
+                },
+                {
+                  "lsb": 10,
+                  "mask": 3072,
+                  "meaning": "Declaration only; encoding requires reviewed semantics.",
+                  "name": "IC4PSC",
+                  "sources": [
+                    {
+                      "locator": "TIM_CCMR2_IC4PSC_Msk",
+                      "source": "header"
+                    }
+                  ],
+                  "width": 2
+                },
+                {
+                  "lsb": 12,
+                  "mask": 61440,
+                  "meaning": "Declaration only; encoding requires reviewed semantics.",
+                  "name": "IC4F",
+                  "sources": [
+                    {
+                      "locator": "TIM_CCMR2_IC4F_Msk",
+                      "source": "header"
+                    }
+                  ],
+                  "width": 4
+                }
+              ],
+              "selection": "Configured declaration set only; selection conditions require reviewed semantics.",
+              "sources": [
+                {
+                  "locator": "TIM_CCMR2_CC3S_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "TIM_CCMR2_IC3PSC_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "TIM_CCMR2_IC3F_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "TIM_CCMR2_CC4S_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "TIM_CCMR2_IC4PSC_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "TIM_CCMR2_IC4F_Msk",
+                  "source": "header"
+                }
+              ]
+            },
+            "input_output": {
+              "fields": [
+                {
+                  "lsb": 0,
+                  "mask": 3,
+                  "meaning": "01 maps IC3 to TI3; change only when CC3E=0.",
+                  "name": "CC3S",
+                  "sources": [
+                    {
+                      "locator": "TIM_CCMR2_CC3S_Msk",
+                      "source": "header"
+                    },
+                    {
+                      "locator": "rm0090/page:634",
+                      "source": "timer_routes_evidence"
+                    }
+                  ],
+                  "width": 2
+                },
+                {
+                  "lsb": 2,
+                  "mask": 12,
+                  "meaning": "00 capture every detected edge.",
+                  "name": "IC3PSC",
+                  "sources": [
+                    {
+                      "locator": "TIM_CCMR2_IC3PSC_Msk",
+                      "source": "header"
+                    },
+                    {
+                      "locator": "rm0090/page:634",
+                      "source": "timer_routes_evidence"
+                    }
+                  ],
+                  "width": 2
+                },
+                {
+                  "lsb": 4,
+                  "mask": 240,
+                  "meaning": "0000 no digital filter, sampling at fDTS.",
+                  "name": "IC3F",
+                  "sources": [
+                    {
+                      "locator": "TIM_CCMR2_IC3F_Msk",
+                      "source": "header"
+                    },
+                    {
+                      "locator": "rm0090/page:634",
+                      "source": "timer_routes_evidence"
+                    }
+                  ],
+                  "width": 4
+                },
+                {
+                  "lsb": 8,
+                  "mask": 768,
+                  "meaning": "00 inactive output, CC4E remains0.",
+                  "name": "CC4S",
+                  "sources": [
+                    {
+                      "locator": "TIM_CCMR2_CC4S_Msk",
+                      "source": "header"
+                    },
+                    {
+                      "locator": "rm0090/page:634",
+                      "source": "timer_routes_evidence"
+                    }
+                  ],
+                  "width": 2
+                },
+                {
+                  "lsb": 10,
+                  "mask": 1024,
+                  "meaning": "0 fast mode disabled.",
+                  "name": "OC4FE",
+                  "sources": [
+                    {
+                      "locator": "TIM_CCMR2_OC4FE_Msk",
+                      "source": "header"
+                    },
+                    {
+                      "locator": "rm0090/page:634",
+                      "source": "timer_routes_evidence"
+                    }
+                  ],
+                  "width": 1
+                },
+                {
+                  "lsb": 11,
+                  "mask": 2048,
+                  "meaning": "0 preload disabled for inactive channel.",
+                  "name": "OC4PE",
+                  "sources": [
+                    {
+                      "locator": "TIM_CCMR2_OC4PE_Msk",
+                      "source": "header"
+                    },
+                    {
+                      "locator": "rm0090/page:634",
+                      "source": "timer_routes_evidence"
+                    }
+                  ],
+                  "width": 1
+                },
+                {
+                  "lsb": 12,
+                  "mask": 28672,
+                  "meaning": "000 frozen inactive output.",
+                  "name": "OC4M",
+                  "sources": [
+                    {
+                      "locator": "TIM_CCMR2_OC4M_Msk",
+                      "source": "header"
+                    },
+                    {
+                      "locator": "rm0090/page:634",
+                      "source": "timer_routes_evidence"
+                    }
+                  ],
+                  "width": 3
+                },
+                {
+                  "lsb": 15,
+                  "mask": 32768,
+                  "meaning": "0 external clear disabled.",
+                  "name": "OC4CE",
+                  "sources": [
+                    {
+                      "locator": "TIM_CCMR2_OC4CE_Msk",
+                      "source": "header"
+                    },
+                    {
+                      "locator": "rm0090/page:634",
+                      "source": "timer_routes_evidence"
+                    }
+                  ],
+                  "width": 1
+                }
+              ],
+              "selection": "CC3S=01 direct TI3 input; CC4S=00 inactive output. Write selection only with CC3E/CC4E clear.",
+              "sources": [
+                {
+                  "locator": "TIM_CCMR2_CC3S_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "TIM_CCMR2_IC3PSC_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "TIM_CCMR2_IC3F_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "TIM_CCMR2_CC4S_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "TIM_CCMR2_OC4FE_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "TIM_CCMR2_OC4PE_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "TIM_CCMR2_OC4M_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "TIM_CCMR2_OC4CE_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "rm0090/page:634",
+                  "source": "timer_routes_evidence"
+                }
+              ]
+            },
+            "output_input": {
+              "fields": [
+                {
+                  "lsb": 0,
+                  "mask": 3,
+                  "meaning": "Declaration only; encoding requires reviewed semantics.",
+                  "name": "CC3S",
+                  "sources": [
+                    {
+                      "locator": "TIM_CCMR2_CC3S_Msk",
+                      "source": "header"
+                    }
+                  ],
+                  "width": 2
+                },
+                {
+                  "lsb": 2,
+                  "mask": 4,
+                  "meaning": "Declaration only; encoding requires reviewed semantics.",
+                  "name": "OC3FE",
+                  "sources": [
+                    {
+                      "locator": "TIM_CCMR2_OC3FE_Msk",
+                      "source": "header"
+                    }
+                  ],
+                  "width": 1
+                },
+                {
+                  "lsb": 3,
+                  "mask": 8,
+                  "meaning": "Declaration only; encoding requires reviewed semantics.",
+                  "name": "OC3PE",
+                  "sources": [
+                    {
+                      "locator": "TIM_CCMR2_OC3PE_Msk",
+                      "source": "header"
+                    }
+                  ],
+                  "width": 1
+                },
+                {
+                  "lsb": 4,
+                  "mask": 112,
+                  "meaning": "Declaration only; encoding requires reviewed semantics.",
+                  "name": "OC3M",
+                  "sources": [
+                    {
+                      "locator": "TIM_CCMR2_OC3M_Msk",
+                      "source": "header"
+                    }
+                  ],
+                  "width": 3
+                },
+                {
+                  "lsb": 7,
+                  "mask": 128,
+                  "meaning": "Declaration only; encoding requires reviewed semantics.",
+                  "name": "OC3CE",
+                  "sources": [
+                    {
+                      "locator": "TIM_CCMR2_OC3CE_Msk",
+                      "source": "header"
+                    }
+                  ],
+                  "width": 1
+                },
+                {
+                  "lsb": 8,
+                  "mask": 768,
+                  "meaning": "Declaration only; encoding requires reviewed semantics.",
+                  "name": "CC4S",
+                  "sources": [
+                    {
+                      "locator": "TIM_CCMR2_CC4S_Msk",
+                      "source": "header"
+                    }
+                  ],
+                  "width": 2
+                },
+                {
+                  "lsb": 10,
+                  "mask": 3072,
+                  "meaning": "Declaration only; encoding requires reviewed semantics.",
+                  "name": "IC4PSC",
+                  "sources": [
+                    {
+                      "locator": "TIM_CCMR2_IC4PSC_Msk",
+                      "source": "header"
+                    }
+                  ],
+                  "width": 2
+                },
+                {
+                  "lsb": 12,
+                  "mask": 61440,
+                  "meaning": "Declaration only; encoding requires reviewed semantics.",
+                  "name": "IC4F",
+                  "sources": [
+                    {
+                      "locator": "TIM_CCMR2_IC4F_Msk",
+                      "source": "header"
+                    }
+                  ],
+                  "width": 4
+                }
+              ],
+              "selection": "Configured declaration set only; selection conditions require reviewed semantics.",
+              "sources": [
+                {
+                  "locator": "TIM_CCMR2_CC3S_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "TIM_CCMR2_OC3FE_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "TIM_CCMR2_OC3PE_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "TIM_CCMR2_OC3M_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "TIM_CCMR2_OC3CE_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "TIM_CCMR2_CC4S_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "TIM_CCMR2_IC4PSC_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "TIM_CCMR2_IC4F_Msk",
+                  "source": "header"
+                }
+              ]
+            },
+            "output_output": {
+              "fields": [
+                {
+                  "lsb": 0,
+                  "mask": 3,
+                  "meaning": "Declaration only; encoding requires reviewed semantics.",
+                  "name": "CC3S",
+                  "sources": [
+                    {
+                      "locator": "TIM_CCMR2_CC3S_Msk",
+                      "source": "header"
+                    }
+                  ],
+                  "width": 2
+                },
+                {
+                  "lsb": 2,
+                  "mask": 4,
+                  "meaning": "Declaration only; encoding requires reviewed semantics.",
+                  "name": "OC3FE",
+                  "sources": [
+                    {
+                      "locator": "TIM_CCMR2_OC3FE_Msk",
+                      "source": "header"
+                    }
+                  ],
+                  "width": 1
+                },
+                {
+                  "lsb": 3,
+                  "mask": 8,
+                  "meaning": "Declaration only; encoding requires reviewed semantics.",
+                  "name": "OC3PE",
+                  "sources": [
+                    {
+                      "locator": "TIM_CCMR2_OC3PE_Msk",
+                      "source": "header"
+                    }
+                  ],
+                  "width": 1
+                },
+                {
+                  "lsb": 4,
+                  "mask": 112,
+                  "meaning": "Declaration only; encoding requires reviewed semantics.",
+                  "name": "OC3M",
+                  "sources": [
+                    {
+                      "locator": "TIM_CCMR2_OC3M_Msk",
+                      "source": "header"
+                    }
+                  ],
+                  "width": 3
+                },
+                {
+                  "lsb": 7,
+                  "mask": 128,
+                  "meaning": "Declaration only; encoding requires reviewed semantics.",
+                  "name": "OC3CE",
+                  "sources": [
+                    {
+                      "locator": "TIM_CCMR2_OC3CE_Msk",
+                      "source": "header"
+                    }
+                  ],
+                  "width": 1
+                },
+                {
+                  "lsb": 8,
+                  "mask": 768,
+                  "meaning": "Declaration only; encoding requires reviewed semantics.",
+                  "name": "CC4S",
+                  "sources": [
+                    {
+                      "locator": "TIM_CCMR2_CC4S_Msk",
+                      "source": "header"
+                    }
+                  ],
+                  "width": 2
+                },
+                {
+                  "lsb": 10,
+                  "mask": 1024,
+                  "meaning": "Declaration only; encoding requires reviewed semantics.",
+                  "name": "OC4FE",
+                  "sources": [
+                    {
+                      "locator": "TIM_CCMR2_OC4FE_Msk",
+                      "source": "header"
+                    }
+                  ],
+                  "width": 1
+                },
+                {
+                  "lsb": 11,
+                  "mask": 2048,
+                  "meaning": "Declaration only; encoding requires reviewed semantics.",
+                  "name": "OC4PE",
+                  "sources": [
+                    {
+                      "locator": "TIM_CCMR2_OC4PE_Msk",
+                      "source": "header"
+                    }
+                  ],
+                  "width": 1
+                },
+                {
+                  "lsb": 12,
+                  "mask": 28672,
+                  "meaning": "Declaration only; encoding requires reviewed semantics.",
+                  "name": "OC4M",
+                  "sources": [
+                    {
+                      "locator": "TIM_CCMR2_OC4M_Msk",
+                      "source": "header"
+                    }
+                  ],
+                  "width": 3
+                },
+                {
+                  "lsb": 15,
+                  "mask": 32768,
+                  "meaning": "Declaration only; encoding requires reviewed semantics.",
+                  "name": "OC4CE",
+                  "sources": [
+                    {
+                      "locator": "TIM_CCMR2_OC4CE_Msk",
+                      "source": "header"
+                    }
+                  ],
+                  "width": 1
+                }
+              ],
+              "selection": "Configured declaration set only; selection conditions require reviewed semantics.",
+              "sources": [
+                {
+                  "locator": "TIM_CCMR2_CC3S_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "TIM_CCMR2_OC3FE_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "TIM_CCMR2_OC3PE_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "TIM_CCMR2_OC3M_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "TIM_CCMR2_OC3CE_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "TIM_CCMR2_CC4S_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "TIM_CCMR2_OC4FE_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "TIM_CCMR2_OC4PE_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "TIM_CCMR2_OC4M_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "TIM_CCMR2_OC4CE_Msk",
+                  "source": "header"
+                }
+              ]
+            }
+          },
+          "fields": [],
+          "io_address": null,
+          "name": "CCMR2",
+          "offset": 28,
+          "reset": 0,
+          "side_effects": "Write CCxS only while channel disabled; each selected field view is distinct. Reviewed TIM5 direct TI3 capture only.",
+          "sources": [
+            {
+              "locator": "TIM_TypeDef.CCMR2",
+              "source": "header"
+            },
+            {
+              "locator": "rm0090/page:624",
+              "source": "timer_routes_evidence"
+            },
+            {
+              "locator": "rm0090/page:634",
+              "source": "timer_routes_evidence"
+            },
+            {
+              "locator": "rm0090/page:634",
+              "source": "timer_irq_evidence"
+            },
+            {
+              "locator": "rm0090/page:635",
+              "source": "timer_irq_evidence"
+            }
+          ],
+          "width": 32
+        },
+        {
+          "access": "RW",
+          "access_widths": [
+            32
+          ],
+          "count": 1,
+          "fields": [
+            {
+              "lsb": 0,
+              "mask": 1,
+              "meaning": "PWM reference leaves0; input capture enables1 only after setup.",
+              "name": "CC1E",
+              "sources": [
+                {
+                  "locator": "TIM_CCER_CC1E_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "rm0090/page:637",
+                  "source": "timer_modes_evidence"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 1,
+              "mask": 2,
+              "meaning": "0 selects noninverted/rising polarity with CC1NP=0.",
+              "name": "CC1P",
+              "sources": [
+                {
+                  "locator": "TIM_CCER_CC1P_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "rm0090/page:637",
+                  "source": "timer_modes_evidence"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 2,
+              "mask": 4,
+              "meaning": "Declaration only; encoding requires reviewed semantics.",
+              "name": "CC1NE",
+              "sources": [
+                {
+                  "locator": "TIM_CCER_CC1NE_Msk",
+                  "source": "header"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 3,
+              "mask": 8,
+              "meaning": "0; output mode requires it cleared; input pair00 selects rising.",
+              "name": "CC1NP",
+              "sources": [
+                {
+                  "locator": "TIM_CCER_CC1NP_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "rm0090/page:637",
+                  "source": "timer_modes_evidence"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 4,
+              "mask": 16,
+              "meaning": "1 enables TIM2 channel2 physical output only after PA1 route and independent TIM5 capture are ready.",
+              "name": "CC2E",
+              "sources": [
+                {
+                  "locator": "TIM_CCER_CC2E_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "rm0090/page:635",
+                  "source": "timer_routes_evidence"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 5,
+              "mask": 32,
+              "meaning": "0 selects active-high PWM output; unsupported polarity modes excluded.",
+              "name": "CC2P",
+              "sources": [
+                {
+                  "locator": "TIM_CCER_CC2P_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "rm0090/page:635",
+                  "source": "timer_routes_evidence"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 6,
+              "mask": 64,
+              "meaning": "Declaration only; encoding requires reviewed semantics.",
+              "name": "CC2NE",
+              "sources": [
+                {
+                  "locator": "TIM_CCER_CC2NE_Msk",
+                  "source": "header"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 7,
+              "mask": 128,
+              "meaning": "0 selects active-high PWM output; unsupported polarity modes excluded.",
+              "name": "CC2NP",
+              "sources": [
+                {
+                  "locator": "TIM_CCER_CC2NP_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "rm0090/page:635",
+                  "source": "timer_routes_evidence"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 8,
+              "mask": 256,
+              "meaning": "1 enables IC3 capture; enable only after route/timebase setup; 0 disables capture.",
+              "name": "CC3E",
+              "sources": [
+                {
+                  "locator": "TIM_CCER_CC3E_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "rm0090/page:635",
+                  "source": "timer_routes_evidence"
+                },
+                {
+                  "locator": "rm0090/page:624",
+                  "source": "timer_routes_evidence"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 9,
+              "mask": 512,
+              "meaning": "0 with CC3NP=0 selects rising-edge capture.",
+              "name": "CC3P",
+              "sources": [
+                {
+                  "locator": "TIM_CCER_CC3P_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "rm0090/page:635",
+                  "source": "timer_routes_evidence"
+                },
+                {
+                  "locator": "rm0090/page:624",
+                  "source": "timer_routes_evidence"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 10,
+              "mask": 1024,
+              "meaning": "Declaration only; encoding requires reviewed semantics.",
+              "name": "CC3NE",
+              "sources": [
+                {
+                  "locator": "TIM_CCER_CC3NE_Msk",
+                  "source": "header"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 11,
+              "mask": 2048,
+              "meaning": "0 with CC3P=0 selects rising edge; unsupported edge modes not implied.",
+              "name": "CC3NP",
+              "sources": [
+                {
+                  "locator": "TIM_CCER_CC3NP_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "rm0090/page:635",
+                  "source": "timer_routes_evidence"
+                },
+                {
+                  "locator": "rm0090/page:624",
+                  "source": "timer_routes_evidence"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 12,
+              "mask": 4096,
+              "meaning": "Declaration only; encoding requires reviewed semantics.",
+              "name": "CC4E",
+              "sources": [
+                {
+                  "locator": "TIM_CCER_CC4E_Msk",
+                  "source": "header"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 13,
+              "mask": 8192,
+              "meaning": "Declaration only; encoding requires reviewed semantics.",
+              "name": "CC4P",
+              "sources": [
+                {
+                  "locator": "TIM_CCER_CC4P_Msk",
+                  "source": "header"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 15,
+              "mask": 32768,
+              "meaning": "Declaration only; encoding requires reviewed semantics.",
+              "name": "CC4NP",
+              "sources": [
+                {
+                  "locator": "TIM_CCER_CC4NP_Msk",
+                  "source": "header"
+                }
+              ],
+              "width": 1
+            }
+          ],
+          "io_address": null,
+          "name": "CCER",
+          "offset": 32,
+          "reset": 0,
+          "side_effects": "TIM2 reviewed subset only; preserve reserved bits and obey mode requirements. Writes/readback use words. Additional TIM5 application is limited to capture_ch3_pa2; other timer applicability is not inferred.",
+          "sources": [
+            {
+              "locator": "TIM_TypeDef.CCER",
+              "source": "header"
+            },
+            {
+              "locator": "rm0090/page:624",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "rm0090/page:636",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "rm0090/page:624",
+              "source": "timer_routes_evidence"
+            },
+            {
+              "locator": "rm0090/page:635",
+              "source": "timer_routes_evidence"
+            }
+          ],
+          "width": 32
+        },
+        {
+          "access": "RW",
+          "access_widths": [
+            32
+          ],
+          "count": 1,
+          "fields": [
+            {
+              "lsb": 0,
+              "mask": 4294967295,
+              "meaning": "32-bit TIM2/TIM5 counter; stopped writes/readback precede software capture.",
+              "name": "CNT",
+              "sources": [
+                {
+                  "locator": "TIM_CNT_CNT_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "rm0090/page:638",
+                  "source": "timer_modes_evidence"
+                },
+                {
+                  "locator": "rm0090/page:638",
+                  "source": "timer_routes_evidence"
+                },
+                {
+                  "locator": "rm0090/page:639",
+                  "source": "timer_routes_evidence"
+                },
+                {
+                  "locator": "rm0090/page:624",
+                  "source": "timer_routes_evidence"
+                }
+              ],
+              "width": 32
+            }
+          ],
+          "io_address": null,
+          "name": "CNT",
+          "offset": 36,
+          "reset": 0,
+          "side_effects": "TIM2 reviewed subset only; preserve reserved bits and obey mode requirements. Writes/readback use words. Additional TIM5 application is limited to capture_ch3_pa2; other timer applicability is not inferred.",
+          "sources": [
+            {
+              "locator": "TIM_TypeDef.CNT",
+              "source": "header"
+            },
+            {
+              "locator": "page:638",
+              "source": "rm_tim_values"
+            },
+            {
+              "locator": "rm0090/page:624",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "rm0090/page:638",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "rm0090/page:624",
+              "source": "timer_routes_evidence"
+            }
+          ],
+          "width": 32
+        },
+        {
+          "access": "RW",
+          "access_widths": [
+            32
+          ],
+          "count": 1,
+          "fields": [
+            {
+              "lsb": 0,
+              "mask": 65535,
+              "meaning": "16-bit divider minus1, buffered until update. HSI16/1MHz gives15.",
+              "name": "PSC",
+              "sources": [
+                {
+                  "locator": "TIM_PSC_PSC_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:638",
+                  "source": "rm_tim_values"
+                },
+                {
+                  "locator": "rm0090/page:638",
+                  "source": "timer_modes_evidence"
+                },
+                {
+                  "locator": "rm0090/page:624",
+                  "source": "timer_routes_evidence"
+                }
+              ],
+              "width": 16
+            }
+          ],
+          "io_address": null,
+          "name": "PSC",
+          "offset": 40,
+          "reset": 0,
+          "side_effects": "TIM2 reviewed subset only; preserve reserved bits and obey mode requirements. Writes/readback use words. Additional TIM5 application is limited to capture_ch3_pa2; other timer applicability is not inferred.",
+          "sources": [
+            {
+              "locator": "TIM_TypeDef.PSC",
+              "source": "header"
+            },
+            {
+              "locator": "page:638",
+              "source": "rm_tim_values"
+            },
+            {
+              "locator": "page:638",
+              "source": "rm_tim_values"
+            },
+            {
+              "locator": "rm0090/page:624",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "rm0090/page:638",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "rm0090/page:624",
+              "source": "timer_routes_evidence"
+            }
+          ],
+          "width": 32
+        },
+        {
+          "access": "RW",
+          "access_widths": [
+            32
+          ],
+          "count": 1,
+          "fields": [
+            {
+              "lsb": 0,
+              "mask": 4294967295,
+              "meaning": "32-bit TIM2/TIM5 reload; zero blocks counting. PWM uses period-1.",
+              "name": "ARR",
+              "sources": [
+                {
+                  "locator": "TIM_ARR_ARR_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:638",
+                  "source": "rm_tim_values"
+                },
+                {
+                  "locator": "page:639",
+                  "source": "rm_tim_arr"
+                },
+                {
+                  "locator": "rm0090/page:639",
+                  "source": "timer_modes_evidence"
+                },
+                {
+                  "locator": "rm0090/page:638",
+                  "source": "timer_routes_evidence"
+                },
+                {
+                  "locator": "rm0090/page:639",
+                  "source": "timer_routes_evidence"
+                },
+                {
+                  "locator": "rm0090/page:624",
+                  "source": "timer_routes_evidence"
+                }
+              ],
+              "width": 32
+            }
+          ],
+          "io_address": null,
+          "name": "ARR",
+          "offset": 44,
+          "reset": 4294967295,
+          "side_effects": "TIM2 reviewed subset only; preserve reserved bits and obey mode requirements. Writes/readback use words. Additional TIM5 application is limited to capture_ch3_pa2; other timer applicability is not inferred.",
+          "sources": [
+            {
+              "locator": "TIM_TypeDef.ARR",
+              "source": "header"
+            },
+            {
+              "locator": "page:639",
+              "source": "rm_tim_arr"
+            },
+            {
+              "locator": "page:638",
+              "source": "rm_tim_values"
+            },
+            {
+              "locator": "page:639",
+              "source": "rm_tim_arr"
+            },
+            {
+              "locator": "rm0090/page:624",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "rm0090/page:638",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "rm0090/page:624",
+              "source": "timer_routes_evidence"
+            }
+          ],
+          "width": 32
+        },
+        {
+          "access": "mixed",
+          "access_widths": [
+            32
+          ],
+          "count": 1,
+          "fields": [
+            {
+              "lsb": 0,
+              "mask": 65535,
+              "meaning": "32-bit TIM2 value: output preload when OC1PE=1; read-only capture data when CC1S!=0; reading clears input CC1IF.",
+              "name": "CCR1",
+              "sources": [
+                {
+                  "locator": "TIM_CCR1_CCR1_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "rm0090/page:639",
+                  "source": "timer_modes_evidence"
+                }
+              ],
+              "width": 16
+            }
+          ],
+          "io_address": null,
+          "name": "CCR1",
+          "offset": 52,
+          "reset": 0,
+          "side_effects": "Output-mode preload; read-only in input mode, where reads clear CC1IF. No input-mode write is permitted.",
+          "sources": [
+            {
+              "locator": "TIM_TypeDef.CCR1",
+              "source": "header"
+            },
+            {
+              "locator": "rm0090/page:624",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "rm0090/page:639",
+              "source": "timer_modes_evidence"
+            }
+          ],
+          "width": 32
+        },
+        {
+          "access": "mixed",
+          "access_widths": [
+            32
+          ],
+          "count": 1,
+          "fields": [
+            {
+              "lsb": 0,
+              "mask": 65535,
+              "meaning": "Declared low16 mask; TIM2/TIM5 full32-bit register transfers are required by the reviewed manual. Do not mask a captured word to this field.",
+              "name": "CCR2",
+              "sources": [
+                {
+                  "locator": "TIM_CCR2_CCR2_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "rm0090/page:640",
+                  "source": "timer_routes_evidence"
+                },
+                {
+                  "locator": "rm0090/page:624",
+                  "source": "timer_routes_evidence"
+                }
+              ],
+              "width": 16
+            }
+          ],
+          "io_address": null,
+          "name": "CCR2",
+          "offset": 56,
+          "reset": 0,
+          "side_effects": "TIM2/TIM5 registers are 32-bit: output compare is preload-capable, input capture is read-only and reading clears the corresponding CCxIF. Never write an input CCR. Header field mask documents low16 bits, not the complete hardware value.",
+          "sources": [
+            {
+              "locator": "TIM_TypeDef.CCR2",
+              "source": "header"
+            },
+            {
+              "locator": "rm0090/page:624",
+              "source": "timer_routes_evidence"
+            },
+            {
+              "locator": "rm0090/page:640",
+              "source": "timer_routes_evidence"
+            }
+          ],
+          "width": 32
+        },
+        {
+          "access": "mixed",
+          "access_widths": [
+            32
+          ],
+          "count": 1,
+          "fields": [
+            {
+              "lsb": 0,
+              "mask": 65535,
+              "meaning": "Declared low16 mask; TIM2/TIM5 full32-bit register transfers are required by the reviewed manual. Do not mask a captured word to this field.",
+              "name": "CCR3",
+              "sources": [
+                {
+                  "locator": "TIM_CCR3_CCR3_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "rm0090/page:640",
+                  "source": "timer_routes_evidence"
+                },
+                {
+                  "locator": "rm0090/page:624",
+                  "source": "timer_routes_evidence"
+                }
+              ],
+              "width": 16
+            }
+          ],
+          "io_address": null,
+          "name": "CCR3",
+          "offset": 60,
+          "reset": 0,
+          "side_effects": "TIM2/TIM5 registers are 32-bit: output compare is preload-capable, input capture is read-only and reading clears the corresponding CCxIF. Never write an input CCR. Header field mask documents low16 bits, not the complete hardware value.",
+          "sources": [
+            {
+              "locator": "TIM_TypeDef.CCR3",
+              "source": "header"
+            },
+            {
+              "locator": "rm0090/page:624",
+              "source": "timer_routes_evidence"
+            },
+            {
+              "locator": "rm0090/page:640",
+              "source": "timer_routes_evidence"
+            }
+          ],
+          "width": 32
+        }
+      ],
+      "review": {
+        "basis": "Complete RM0090 Rev22 and PM0214 Rev10 source parts plus exact pinned IRQ/priority declarations. Implementing-author review only; independent signoff and new physical IRQ qualification pending.",
+        "reviewer": "Codex source-backed editorial review through Praxis ingestion MCP",
+        "status": "reviewed"
+      },
+      "reviewed_markdown": "reviewed/timer-irq-v1/tim.md",
+      "title": "TIM2: reviewed update interrupt subset"
+    }
+  ],
+  "schema_version": 1
+}

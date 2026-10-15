@@ -15,7 +15,6 @@ from praxis.compiler import compile_bundle, parse_cmsis_headers
 from praxis.coverage import order
 from praxis.errors import PraxisError
 from praxis.evaluation import evaluate
-from praxis.models import MAX_DOCUMENT_BYTES
 from praxis.routing import Session
 from conftest import ROOT, require_tool
 
@@ -40,7 +39,10 @@ def test_whole_header_inventory_and_readiness(broad):
     assert {'tim', 'spi', 'i2c', 'dma_stream', 'can', 'adc', 'rtc', 'exti', 'syscfg', 'usb_otg_global'} <= broad.manifest.peripherals.keys()
     assert report['counts']['published'] > 30
     assert report['counts']['reviewed_subsets'] == 4
-    assert report['peripherals']['itm']['status'] == 'blocked'
+    assert report['peripherals']['itm']['status'] == 'declarations_only'
+    assert report['peripherals']['itm']['published']
+    itm = broad.read('wiki/peripherals/itm.md')
+    assert '## Declared C storage views' in itm and 'ITM_Type.PORT.u8' in itm
     assert report['peripherals']['usb_otg_inendpoint']['status'] == 'unmapped_type'
     assert report['peripherals']['flash']['status'] == 'partial_declarations'
     assert 'bit fields withheld' in broad.read('wiki/peripherals/flash.md')
@@ -52,7 +54,8 @@ def test_whole_header_inventory_and_readiness(broad):
     assert report['source_catalog'] == '[[sources]]'
     assert set(report['sources']) == {'profile'}
     assert len(broad.manifest.sources) > len(report['sources'])
-    assert all(len(text.encode()) <= MAX_DOCUMENT_BYTES for text in broad.documents.values())
+    assert all("## Register map" in broad.read(path) and "## Bit fields" in broad.read(path)
+               for path in broad.manifest.peripherals.values())
     assert 'declarations only' in broad.read('wiki/peripherals/tim.md')
     assert 'Not reviewed.' in broad.read('wiki/peripherals/tim.md')
     assert broad.manifest.aliases['tim2'] == 'tim'
@@ -100,10 +103,10 @@ def test_custom_structure_and_prefix(tmp_path):
 
 def test_unsupported_union_is_explicit(tmp_path):
     header = tmp_path / 'union.h'
-    header.write_text('typedef struct { union { unsigned int W; unsigned char B; } PORT; } Odd_TypeDef;')
+    header.write_text('typedef struct { union { unsigned int W; unsigned char B[4]; } PORT; } Odd_TypeDef;')
     failures = {}
     assert cmsis(header, None, [], failures=failures) == {}
-    assert 'Unsupported nested member: PORT' in failures['Odd_TypeDef']
+    assert 'Unsupported union view: PORT.B' in failures['Odd_TypeDef']
 
 
 def test_explicit_array_expansion_and_overlapping_field_views(tmp_path):
@@ -205,7 +208,7 @@ async def test_real_stdio_dynamic_dependencies(broad, tmp_path):
 
 
 @pytest.mark.parametrize('explicit', [False, True])
-def test_oversized_automatic_document_reported_but_explicit_document_fails(tmp_path, monkeypatch, explicit):
+def test_large_automatic_and_explicit_documents_publish_in_full(tmp_path, monkeypatch, explicit):
     import praxis.compiler as compiler
     source = tmp_path / 'source'
     shutil.copytree(SOURCE, source, ignore=shutil.ignore_patterns("imports"))
@@ -221,14 +224,8 @@ def test_oversized_automatic_document_reported_but_explicit_document_fails(tmp_p
 
     monkeypatch.setattr(compiler, 'peripheral', oversized)
     output = tmp_path / 'output'
-    if explicit:
-        with pytest.raises(PraxisError, match='DOCUMENT_TOO_LARGE'):
-            compile_bundle(profile, output)
-        assert not output.exists()
-    else:
-        bundle = Bundle(compile_bundle(profile, output))
-        row = coverage(bundle)['peripherals']['tim']
-        assert row['status'] == 'blocked' and not row['published']
-        assert 'DOCUMENT_TOO_LARGE' in row['issues'][0]
-        assert 'tim' not in bundle.manifest.peripherals
-        assert not (bundle.root / 'wiki/peripherals/tim.md').exists()
+    bundle = Bundle(compile_bundle(profile, output))
+    row = coverage(bundle)['peripherals']['tim']
+    assert row['published'] and row['bytes_limit'] is None
+    assert bundle.read('wiki/peripherals/tim.md').endswith('X' * 65536)
+    assert '## Register map' in bundle.read('wiki/peripherals/tim.md')

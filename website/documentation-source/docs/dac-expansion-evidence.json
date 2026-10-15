@@ -1,0 +1,185 @@
+{
+  "build": {
+    "artifact_id": "439161f0a1cc60eaa0a62aca0c6e5c1bcca7fd17a138629bf06bf5c8ac660695",
+    "asset_revision": "22310c7ad54daa553cf5cb11e4db08e4c8f9e93e191f3f12ec8410dd1fb40b59",
+    "bundle_revision": "f14b00bf0189b882d50a2e8a8d11a48ec484cace3e3dd6b68eb6d7bd9e26cab2",
+    "compile_passed": true,
+    "compiler_versions": {
+      "arm-none-eabi-gcc": "arm-none-eabi-gcc (15:12.2.rel1-1) 12.2.1 20221205",
+      "avr-gcc": "avr-gcc (GCC) 5.4.0"
+    },
+    "image": "sha256:4748b01d5c1d2313e5617878f9450ff1d432f8244416732d0cc57aa1867cc120",
+    "image_validated": true,
+    "physical_behavior": "not tested",
+    "retained_integration_entry": {
+      "address": "0x800028d",
+      "bytes": 404,
+      "main_calls_entry": false,
+      "symbol": "application_output"
+    },
+    "source_sha256": "083a8ba4a24bc2105540947006a97b78abf12593473e7cb3996cfb439f4af382",
+    "validation": {
+      "asset_revision": "22310c7ad54daa553cf5cb11e4db08e4c8f9e93e191f3f12ec8410dd1fb40b59",
+      "checks": [
+        "ELF architecture",
+        "load/section memory bounds",
+        "main-SRAM stack",
+        "98-entry vendor/header vector layout",
+        "startup copy/zero symbols"
+      ],
+      "elf_sha256": "c5b21d51d6cd70e87c9373b18b897d25020110cf21b9b189643950b92b27482b",
+      "errors": [],
+      "initial_sp": "0x20020000",
+      "physical_behavior": "not tested",
+      "profile": "stm32f407vg-c11-flash",
+      "valid": true
+    }
+  },
+  "catalog": {
+    "exhaustive": false,
+    "metric": {
+      "denominator": 30,
+      "numerator": 12,
+      "percent": 40.0,
+      "scope": "Unweighted, authored catalog goals only; changing the catalog changes the denominator"
+    },
+    "overall_mcu_completion": "unknown"
+  },
+  "date": "2026-10-12",
+  "deterministic_publication": {
+    "bundle_revision": "f14b00bf0189b882d50a2e8a8d11a48ec484cace3e3dd6b68eb6d7bd9e26cab2",
+    "byte_identical": true,
+    "counts": {
+      "blocked": 1,
+      "fields": 2100,
+      "published": 41,
+      "register_blocks": 42,
+      "registers": 523,
+      "reviewed_subsets": 19,
+      "unmapped_types": 11
+    },
+    "generated_files": 49,
+    "maximum_document_bytes": 55033,
+    "mode_contracts": 20,
+    "source_catalog_bytes": 55033,
+    "workflows_ready": 13,
+    "workflows_total": 25
+  },
+  "format": "praxis-dac-expansion-evidence-v1",
+  "hardware_operations": 0,
+  "limits": [
+    "No probe access, flash, reset, debug operation or physical DAC measurement occurred.",
+    "Main never calls the retained output entry and leaves EN1=EN2=0.",
+    "Broad feature_dac and dac_channel1_wired_output workflows remain blocked.",
+    "No board DAC output/reference endpoint, GPIO integration, reference/load or conflict qualification is added.",
+    "DOR and host model completion establish digital content, not analog settling or voltage accuracy.",
+    "The datasheet settling row has a ten-bit transition condition and does not establish arbitrary twelve-bit analog accuracy.",
+    "Channel2, dual, external-trigger, waveform, DMA and interrupt contracts remain outside scope.",
+    "Retrieval compliance and compile success do not prove arbitrary firmware order or electrical correctness.",
+    "No clean-machine or hosted CI run is claimed; overall MCU completion remains unknown."
+  ],
+  "mcp": {
+    "bundle_revision": "f14b00bf0189b882d50a2e8a8d11a48ec484cace3e3dd6b68eb6d7bd9e26cab2",
+    "checks": {
+      "artifact_revalidated": true,
+      "complete_documents_within_limit": true,
+      "index_gate": true,
+      "matching_bundle_pair": true,
+      "mode:dac/channel1_software_trigger": true,
+      "mode:rcc/dac_gate_reset": true,
+      "mode:tim/polling_update_delay": true,
+      "no_hardware_tools": true,
+      "target_compilation": true,
+      "three_readonly_tools": true,
+      "workflow:dac_channel1_software_trigger:True": true,
+      "workflow:dac_channel1_wired_output:False": true,
+      "workflow:feature_dac:False": true
+    },
+    "passed": true,
+    "tool_calls": 13
+  },
+  "mcu": "STM32F407VGT6",
+  "model": {
+    "access_order_violations": 0,
+    "analog_measurement": false,
+    "cases": 30,
+    "controller_sha256": "557194b36ce925e4e8fa1804bdd4465cd064314eba28cb6b1f97ac4f4044ebe9",
+    "effect_model_sha256": "a9c6022661ff4e10e9edf671bea22b41c3baa0fa65de48f88e2683626164626d"
+  },
+  "physical_board_revision": "unconfirmed",
+  "reference_board_revision": "MB997-E-01",
+  "regression": {
+    "errors": 0,
+    "failures": 0,
+    "junit_sha256": "0f989ff8beb0f79094e2bfc2876b24f7fa7a1ea1e2bd378f1c94be971a175e6e",
+    "passed": 609,
+    "ruff": "passed",
+    "seconds": 103.259,
+    "skipped": 4,
+    "skips": "Four KiCad-dependent checks: kicad-cli unavailable",
+    "tests": 613
+  },
+  "release_gate": {
+    "blockers": [
+      "Missing external tool: kicad-cli",
+      "Independent review of the exact current bundle revisions is missing",
+      "Independent review of the exact firmware asset revision is missing"
+    ],
+    "release_ready": false
+  },
+  "review": "Implementing-author source-backed editorial review; independent review and silicon errata qualification pending",
+  "scope": "DAC channel1 twelve-bit right-aligned software trigger and digital completion at PCLK1=42MHz; main configures with EN1=EN2=0",
+  "source_evidence": {
+    "actual_authoring_calls": 60,
+    "ds8626_sha256": "1f41b4fa49a9960215ebb76cd0a75f20241db82eed60d308345a80463caeed22",
+    "inspected_page_images": {
+      "ds8626": [
+        142,
+        143
+      ],
+      "rm0090": [
+        447,
+        450,
+        455
+      ]
+    },
+    "parent_hash_advertised_through_mcp": true,
+    "published_ds8626_pages": [
+      141,
+      142,
+      143
+    ],
+    "published_rm0090_pages": [
+      238,
+      239,
+      247,
+      435,
+      436,
+      437,
+      438,
+      439,
+      440,
+      441,
+      442,
+      443,
+      444,
+      445,
+      446,
+      447,
+      448,
+      449,
+      450,
+      451,
+      452,
+      453,
+      454,
+      455,
+      456
+    ],
+    "reviewed_parent_hash": "5b1fff5d51d54247e418ebb797bf38dc668d84fa86a4361f83f5ed1dabc3c5d2",
+    "rm0090_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca",
+    "tool_errors": [],
+    "transport": "Actual ingestion MCP, complete cached source parts, source images and registered reviewed records"
+  },
+  "target": "stm32f407g_disc1_mb997_e01"
+}

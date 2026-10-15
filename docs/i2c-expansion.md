@@ -98,7 +98,8 @@ path, hash and metadata reference; then shared authority, version, license and
 origin. The manifest retains expanded metadata. Every value is preserved while
 repeated long URLs/import versions are stored once per identical tuple. The new
 source catalog is 47,918 bytes and the largest document is 50,996 bytes. Register
-and field tables remain contiguous; the 64 KiB hard limit remains unchanged.
+and field tables remain contiguous. New compilation no longer imposes the historical 64 KiB ceiling;
+see [complete-document behavior](document-scale.md).
 
 The reusable [workflow MCP client](../tools/check_workflow_mcp.py) accepts exact
 workflow/mode expectations, blocked workflows, optional register exclusions and

@@ -63,7 +63,7 @@ behavior. The existing UART telemetry ABI does not decode this example's globals
 No physical interrupt delivery, external-bus operation or timing measurement is claimed.
 ```
 
-The subsequent [RX initialization candidate](telemetry_rx_application/README.md)
+The subsequent [RX initialization candidate](README_RX.md)
 publishes an explicit source-backed PD0 prerequisite and preserves the failed
 run above. Its [follow-up report](../../docs/can-rx-followup.md) separates
 software/model/MCP evidence from the subsequent approved physical test, which

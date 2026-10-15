@@ -6,7 +6,7 @@ import subprocess
 
 import pytest
 
-from conftest import ROOT
+from conftest import ROOT, require_tool
 
 APP = ROOT / 'examples/stm32f407g-disc1-uart-loopback/application'
 
@@ -18,9 +18,8 @@ def app(request):
 
 @pytest.fixture(scope='module')
 def protocol(tmp_path_factory, app):
+    require_tool('gcc')
     cc = shutil.which('gcc')
-    if cc is None:
-        pytest.skip('host GCC unavailable')
     out = tmp_path_factory.mktemp('uart-protocol') / 'protocol.so'
     subprocess.run([cc, '-std=c11', '-Wall', '-Wextra', '-Werror', '-shared', '-fPIC',
                     str(app / 'protocol.c'), '-o', str(out)], check=True, capture_output=True, timeout=20)
@@ -57,9 +56,8 @@ def test_independent_crc_payload_sequence_and_corruption(protocol, sequence):
 
 
 def test_controller_and_debounce_boundaries(tmp_path, app):
+    require_tool('gcc')
     cc = shutil.which('gcc')
-    if cc is None:
-        pytest.skip('host GCC unavailable')
     executable = tmp_path / 'controller-test'
     subprocess.run([cc, '-std=c11', '-Wall', '-Wextra', '-Werror',
                     '-fsanitize=undefined', '-fno-sanitize-recover=all', '-I' + str(app),

@@ -22,7 +22,9 @@ def refs(sources: list[SourceRef]) -> str:
 def identity(target: Target) -> str:
     return (f"Target: `{target.id}`; MCU: `{target.mcu}`; package: `{target.package}`; "
             f"board revision: `{target.board_revision}`; silicon: `{target.silicon_revision}`.\n\n"
-            + ("**Illustrative fixture; not a manufactured or hardware-qualified board.**\n"
+            + ("**Experimental MCU-only knowledge; no board wiring, active clock configuration "
+               "or physical qualification is supplied.**\n" if target.scope == "mcu" else
+             "**Illustrative fixture; not a manufactured or hardware-qualified board.**\n"
              if target.example_only else
              "**Documented reference board revision; physical board revision and modifications "
              "must be checked. Not hardware-qualified by Praxis.**\n"))
@@ -58,6 +60,14 @@ def source_catalog(sources: list[Source]) -> str:
             "\n## Shared source metadata\n\n" +
             table(["Metadata", "Authority", "Version", "License", "Origin"],
                   [[key, *value] for value, key in shared.items()]))
+
+
+def source_documents(target, sources, review) -> dict[str, str]:
+    """Publish the complete source registry without a per-document size ceiling."""
+    header = "# Source provenance\n\n" + identity(target) + "\n"
+    footer = (f"\nEditorial reviewer: {review.reviewer}. Basis: {review.basis}.\n\n"
+              "Editorial review is not independent hardware sign-off. See [[index]].\n")
+    return {"wiki/sources.md": header + source_catalog(sources) + footer}
 
 
 def peripheral(target: Target, item: Peripheral, narrative: str) -> str:
@@ -117,9 +127,37 @@ def peripheral(target: Target, item: Peripheral, narrative: str) -> str:
             for row, (_, mode) in zip(mode_rows, sorted(item.operating_modes.items()), strict=True):
                 row.append("; ".join(f"[[peripherals/{dep.peripheral}]] / {dep.mode}: "
                                      + ", ".join(dep.instances) for dep in mode.requires_modes))
+        if any(mode.field_views for mode in item.operating_modes.values()):
+            mode_columns.append("Selected register field views")
+            for row, (_, mode) in zip(mode_rows, sorted(item.operating_modes.items()), strict=True):
+                row.append("; ".join(f"{register}: {view}" for register, view in sorted(mode.field_views.items())))
         output.insert(-3, "## Reviewed operating modes\n\n" + table(
             mode_columns, mode_rows))
-    return "\n".join(output)
+    text = "\n".join(output)
+    if any(register.field_views for register in item.registers):
+        views = ["## Alternative register field views\n",
+                 "Each table is a separate interpretation of the same register. Select exactly one view "
+                 "per register as required by a reviewed operating contract. Fields in different views "
+                 "must never be combined into one write. Declaration sets alone do not establish "
+                 "selection conditions, instance availability, pin routing or operating support.\n"]
+        for register in item.registers:
+            for name, view in sorted(register.field_views.items()):
+                views.extend([f"### {register.name}: {name}\n",
+                    f"Selection: {view.selection}\n\nSources: {refs(view.sources)}\n",
+                    table(["Register", "Field", "Bits", "Mask", "Meaning", "Sources"],
+                          [[register.name, f.name, f"{f.lsb + f.width - 1}:{f.lsb}",
+                            f"0x{f.mask:X}", f.meaning, refs(f.sources)] for f in register.fields_for(name)])])
+        text = text.replace("## Bit fields\n", "\n".join(views) + "\n## Bit fields\n", 1)
+    if any(register.storage_views for register in item.registers):
+        views = ("## Declared C storage views\n\n"
+            "These union members share storage; the register map records its ABI size and array stride. "
+            "Declared C widths do not establish legal hardware access widths, permissions, reset values "
+            "or operating semantics. Those require separate reviewed evidence.\n\n" +
+            table(["Register", "Union member", "Declared C type", "Width bits", "Sources"],
+                  [[register.name, view.name, view.c_type, view.width, refs(view.sources)]
+                   for register in item.registers for view in register.storage_views]))
+        text = text.replace("## Bit fields\n", views + "\n## Bit fields\n", 1)
+    return text
 
 
 NET_COLUMNS = ["Net", "Endpoint", "Pin", "Sheet", "Package", "Aliases", "Sources"]
@@ -133,7 +171,10 @@ def netlist(target: Target, nets: list[Net], *, pin_document: str | None = "gpio
             rows.append([net.name, pin.endpoint, pin.name, pin.sheet, pin.package,
                          ";".join(net.aliases), refs(sources)])
     return ("# Resolved schematic netlist\n\n" + identity(target) +
-            "\nElectrical nets are direct exported memberships. Components do not join their two nets. "
+            ("\nConnectivity status: unavailable (MCU-only). No schematic or package pin mapping was ingested. "
+             "Do not infer LED, button, connector or peripheral wiring from MCU declarations. "
+             if target.scope == "mcu" else
+             "\nElectrical nets are direct exported memberships. Components do not join their two nets. ") +
             "Device Tree configuration is separate evidence. See [[index]], " +
             (f"[[peripherals/{pin_document}]], " if pin_document else "") +
             "and [[sources]].\n\n" + table(NET_COLUMNS, rows))

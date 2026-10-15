@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.generated/
+.build-staging/
+.vercel/
+.env
+.env.*
+.DS_Store

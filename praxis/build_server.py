@@ -115,7 +115,7 @@ def create_build_server(bundle: Path, assets: Path, workspace: Path, artifacts: 
         if telemetry:
             @server.tool(annotations=readonly)
             def read_firmware_telemetry(connection_id: str, samples: int = 2, interval_ms: int = 100) -> dict:
-                """Read the launch-selected built-in ABI after exact image checks (UART or CAN).
+                """Read the launch-selected built-in ABI after exact image checks (UART, CAN or timer).
 
                 1–5 coherent samples, 10–1000ms spacing. No caller address/symbol/artifact,
                 halt/reset or memory-write operation. Counters are firmware self-reports.

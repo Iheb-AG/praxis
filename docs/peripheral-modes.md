@@ -1,5 +1,11 @@
 # Operating-mode support and Milestone 4 qualification
 
+The later [paired timer route increment](timer-routes.md) adds explicit per-mode
+instance scopes. A workflow can select different exact instances for modes in the
+same canonical document, without inferring applicability from a shared structure.
+This field is optional for legacy uniform scopes and mandatory-complete when used;
+its aggregate scope must equal the union of the selected per-mode instances.
+
 For the subsequent FLASH/PWR and reusable mode-dependency extension, see
 [clock-mode support](clock-modes.md). Its separately selected bundle has 15 reviewed subsets
 and 12 contracts. The counts and blocked PLL workflow below describe the earlier feature-v1 baseline.
@@ -78,8 +84,8 @@ semantic provenance for used registers/fields. Required workflow gates check mod
 instances, dependency closure and exact board signal lookups. A DMA1 stream cannot inherit
 DMA2 memory-copy support just because both use the same register structure.
 
-Full tables remain contiguous; the largest published document is 58,172 bytes, below
-the 64 KiB limit. Oversize publication is rejected rather than truncated. The generated
+Full tables remain contiguous; this historical bundle's largest document is 58,172 bytes.
+New publication has no fixed per-document ceiling and returns complete content. The generated
 `features.md` is indexed from `index.md`; it and `coverage.md` remain Markdown knowledge.
 Their embedded JSON supports deterministic offline reporting. The three retrieval tool
 signatures remain unchanged. MCP initialization additionally advertises the verified target

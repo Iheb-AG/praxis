@@ -1,42 +1,78 @@
-# Praxis documentation website — React + Vite
+# Praxis documentation
 
-Public documentation reader for [Iheb-AG/praxis](https://github.com/Iheb-AG/praxis).
-Dark graphite surfaces, neutral text and cyan links; local search, complete Markdown,
-reference tables, downloadable sources and Mermaid diagrams. Original Praxis artwork is retained.
+Independent React + Vite documentation website for [Project Praxis](https://github.com/Iheb-AG/praxis).
+The public guides, architecture, sequence diagrams, examples, reports and reviewed hardware
+references are owned by this repository under `documentation-source/`. The original Praxis
+logo and background are included.
 
-```bash
-npm ci --prefix website
-npm run dev --prefix website
-```
+## Run locally
 
-Run these from the repository root with Node 22.12+ or Node 24+. Vite supplies the development
-server and React/CSS hot updates. React owns navigation, search, filters, Markdown reading,
-themes and diagram controls. Dependency versions and integrity hashes are in `package-lock.json`.
-After editing source Markdown, regenerate with `npm run catalog --prefix website` and refresh.
+Use Node **24.x** and run from this repository's root:
 
 ```bash
-npm test --prefix website
-npm run build --prefix website
-npm run preview --prefix website
+npm ci --include=dev
+npm run dev
 ```
 
-Production builds generate a validated Markdown snapshot in `.generated/`, collect dependency
-notices, then use Vite to produce `dist/` with hashed assets. Mermaid is loaded on demand.
-Both output directories and `node_modules` are ignored by Git. Source Markdown is copied
-byte-for-byte; no hardware tools, Python ingestion dependencies, model or embeddings are used.
+For a production check:
 
-Import the **praxis** repository into Vercel using the repository root, Framework **Vite**,
-Install Command `npm ci --prefix website --include=dev`, Build Command `npm run build --prefix website`,
-and Output Directory `website/dist`. The root `vercel.json` records these settings.
-Remove any old dashboard overrides that skip installation or run only `node website/build.mjs`.
-No application environment variables are required.
-Deployments rebuild from the checked-out commit, so documentation follows Git pushes.
+```bash
+npm test
+npm run build
+npm run preview
+```
 
-The public site excludes the local live progress API, command log, probe/approval data,
-raw downloads and firmware binaries. `#/progress` opens the authored project status instead.
-The separate local `/home/.../Praxis_Docs` app retains its live monitor; it is not uploaded.
-There are no firmware, flashing or shell controls on the public site.
+## Documentation lives here
 
-See [Vercel setup and deployment boundaries](../docs/vercel-hosting.md). The generated
-`THIRD_PARTY_NOTICES.txt` retains installed dependency notices; source-derived content keeps
-its existing notices. The previous standalone public renderer and vendored JS bundles are removed.
+```text
+praxis-documentation/
+├── documentation-source/
+│   ├── README.md             # Praxis project introduction
+│   ├── docs/                 # Guides, architecture, diagrams and reports
+│   ├── examples/             # Example guides and linked source files
+│   ├── bundles/              # Published Markdown reference snapshots
+│   ├── sources/              # Reviewed reference material
+│   └── assets/               # Linked public supporting files and notices
+├── public/branding/          # Original logo and background
+├── src/                      # React reader, search and diagram controls
+├── build.mjs                 # Builds a catalog from local documentation only
+└── vercel.json
+```
+
+This content was copied once from Praxis. Builds never read the parent repository, clone
+Praxis, pull its Git history or use `PRAXIS_DOCS_SOURCE`. No synchronization or ingestion job
+is required. Links to GitHub and manufacturer references are ordinary citations, not feeds.
+
+Edit or add Markdown **directly in `documentation-source/`**, keeping relative links and
+complete tables. Run `npm run catalog` after content changes during development and refresh
+the page; `npm run build` regenerates the catalog automatically. Its hash describes the
+current local content, so edits do not require an external inventory or re-export.
+The included hardware snapshots document experimental support; editing this website does
+not modify or certify an operational Praxis MCP bundle.
+
+The catalog includes complete Markdown and explicitly linked public attachments, preserving
+source bytes and provenance. It excludes private paths, raw manuals, firmware binaries and
+symlinks. Search runs in the browser; Markdown uses React Markdown/GFM and Mermaid diagrams
+load on demand. The site contains no local command log, probe credentials or hardware controls.
+
+## Deploy to Vercel
+
+Import **Iheb-AG/praxis-documentation** with:
+
+| Setting | Value |
+| --- | --- |
+| Root Directory | `.` |
+| Framework | Vite |
+| Node.js Version | 24.x |
+| Install Command | `npm ci --include=dev` |
+| Build Command | `npm run build` |
+| Output Directory | `dist` |
+
+`vercel.json` records the commands. Remove old dashboard overrides referring to `website/`
+and obsolete `PRAXIS_DOCS_SOURCE` settings. Commit `documentation-source/`, the frontend,
+configuration and npm lockfile. Dependencies and outputs (`node_modules/`, `.generated/`,
+`dist/`) are regenerated and ignored. Pushes to **this documentation repository** trigger
+its deployment; changes to the Praxis repository do not alter this site.
+
+`LICENSE` covers the project. Imported material retains its existing notices. Builds emit
+installed dependency notices as `THIRD_PARTY_NOTICES.txt`.

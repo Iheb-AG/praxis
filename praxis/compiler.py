@@ -2,27 +2,21 @@ from __future__ import annotations
 
 import json
 import os
-import re
 import tempfile
-from importlib.metadata import version
 from pathlib import Path
 
 from pydantic import ValidationError
 
 from praxis import __version__
-from praxis.bundle import Bundle, decode, digest, read_inside, revision
+from praxis.adapters.constraints import validate_headers
+from praxis.bundle import Bundle, decode, digest, read_inside, read_source_inside, revision
+from praxis.contracts import load_contract, validate_required_registers
 from praxis.errors import PraxisError
 from praxis.jsonio import load_json
-from praxis.models import MAX_DOCUMENT_BYTES, Dependency, Instance, Manifest, Net, Peripheral, Profile, Register, Source, SourceRef
+from praxis.models import Dependency, Instance, Manifest, Net, Peripheral, Profile, Register, Source, SourceRef
 from praxis.process import run
-from praxis.render import identity, netlist, peripheral, source_catalog, table, topology
+from praxis.render import identity, netlist, peripheral, source_documents, table, topology
 
-F407_REQUIRED_REGISTERS = {
-    "rcc": {"CR", "PLLCFGR", "CFGR", "AHB1ENR", "APB1ENR", "APB1RSTR"},
-    "gpio": {"MODER", "OTYPER", "OSPEEDR", "PUPDR", "AFRL"},
-    "usart": {"SR", "DR", "BRR", "CR1", "CR2", "CR3"},
-    "nvic": {"ISER", "ICER", "ICPR", "IP"},
-}
 
 
 def _web_sources(profile, paths, sources, root):
@@ -101,11 +95,9 @@ def parse_device_tree(path: Path, *, overlays: list[Path] | None = None,
                        registered_sources=registered_sources)
 
 
-def _discover(profile, paths, items, root):
-    from praxis.targets import cmsis_cpu
-    core = [s.id for s in profile.sources if Path(s.path).name == "core_cm4.h"]
-    if profile.discovery is None and len(core) != 1:
-        raise PraxisError("UNKNOWN_SOURCE", "Legacy discovery requires one hash-registered core_cm4.h")
+def _discover(profile, paths, items, root, contract):
+    if profile.discovery is None and not contract.legacy_discovery:
+        raise PraxisError("INVALID_CONTRACT", "Discovery requires explicit peripheral mappings or inventory policy")
     include_dirs = []
     for name in profile.header.include_directories:
         directory = (root / name).resolve(strict=True)
@@ -137,34 +129,23 @@ def _discover(profile, paths, items, root):
                              if spec is not None and instance in spec.instances else [])])
                            for instance, base in sorted(declaration.instances.items())],
                 reviewed_markdown="", review=None)
-        # Validate the complete configured graph before pruning any optional documents.
+        # Size never removes a selected block or its dependencies.
         order({name: item.prerequisites for name, item in known.items()})
-        blocked = set()
-        for name, item in known.items():
-            narrative = (decode(read_inside(root, item.reviewed_markdown), item.reviewed_markdown)
-                         if item.review is not None else _declaration_notice(name, catalog[name]))
-            if len(peripheral(profile.target, item, narrative).encode()) > MAX_DOCUMENT_BYTES:
-                if item.review is not None or name in profile.discovery.peripherals:
-                    raise PraxisError("DOCUMENT_TOO_LARGE", f"{name}: reduce the complete document before publication")
-                blocked.add(name)
-                coverage_entries[name].update(status="blocked", issues=["DOCUMENT_TOO_LARGE: editorial reduction required"])
-        changed = True
-        while changed:
-            changed = False
-            for name, item in known.items():
-                missing = sorted(set(item.prerequisites) & blocked)
-                if name not in blocked and missing:
-                    if item.review is not None or name in profile.discovery.peripherals:
-                        raise PraxisError("PUBLICATION_BLOCKED", f"{name}: missing dependencies {missing}")
-                    blocked.add(name)
-                    coverage_entries[name].update(status="blocked", issues=[f"Dependencies not publishable: {missing}"])
-                    changed = True
-        items = [known[name] for name in sorted(known) if name not in blocked]
+        items = [known[name] for name in sorted(known)]
         catalog = {item.id: catalog[item.id] for item in items}
     else:
         catalog = parse_cmsis_headers(paths[profile.header.source], include_directories=include_dirs,
                                  defines=profile.header.defines, source_id=profile.header.source,
-                                 core_source_id=core[0], registered_sources=list(paths.values()))
+                                 core_source_id=contract.core_source or profile.header.source,
+                                 registered_sources=list(paths.values()), cpu=contract.cpu,
+                                 structures={k: v.structure for k, v in contract.legacy_discovery.items()},
+                                 prefixes={k: v.prefix or k.upper() for k, v in contract.legacy_discovery.items()},
+                                 stm32_views=False,
+                                 member_views={k: v.member_views for k, v in contract.legacy_discovery.items()},
+                                 view_sources={k: {member: SourceRef(source=profile.compilation_contract,
+                                     locator=f"legacy_discovery.{k}.member_views.{member}")
+                                     for member in v.member_views}
+                                     for k, v in contract.legacy_discovery.items()})
     if set(catalog) != {item.id for item in items}:
         raise PraxisError("MISSING_DECLARATION", "Selected declarations and peripheral definitions disagree")
     if not profile.header.required_registers.keys() <= catalog.keys():
@@ -173,15 +154,12 @@ def _discover(profile, paths, items, root):
     merged = []
     for item in items:
         declared = catalog[item.id]
-        reviewed = {r.name: r for r in item.registers}
+        # Discovered records are declarations, not semantic overrides of
+        # themselves. Merging them duplicated provenance and inflated tables.
+        reviewed = {r.name: r for r in item.registers} if item.review is not None else {}
         available = {r.name for r in declared.registers}
         if not reviewed.keys() <= available:
             raise PraxisError("DECLARATION_CONFLICT", f"Unknown reviewed registers in {item.id}")
-        required = set(profile.header.required_registers.get(item.id, []))
-        if profile.target.mcu == "STM32F407VGT6":
-            required |= F407_REQUIRED_REGISTERS.get(item.id, set())
-        if not required <= reviewed.keys() or any(reviewed[r].access == "unknown" for r in required):
-            raise PraxisError("UNREVIEWED_REQUIRED_FACT", f"{item.id}: required registers need reviewed operating semantics: {sorted(required)}")
         registers = []
         for register in declared.registers:
             previous = reviewed.get(register.name)
@@ -193,6 +171,9 @@ def _discover(profile, paths, items, root):
                 raise PraxisError("DECLARATION_CONFLICT", f"{item.id}.{register.name}: reviewed layout differs")
             if previous.reset is not None and register.reset is not None and previous.reset != register.reset:
                 raise PraxisError("DECLARATION_CONFLICT", f"{item.id}.{register.name}: reset values conflict")
+            if previous.storage_views and [v.model_dump(exclude={"sources"}) for v in previous.storage_views] != [
+                    v.model_dump(exclude={"sources"}) for v in register.storage_views]:
+                raise PraxisError("DECLARATION_CONFLICT", f"{item.id}.{register.name}: union storage views conflict")
             masks = {f.mask: f for f in register.fields}
             if any(f.mask not in masks for f in previous.fields):
                 raise PraxisError("DECLARATION_CONFLICT", f"{item.id}.{register.name}: reviewed field not in header")
@@ -202,9 +183,29 @@ def _discover(profile, paths, items, root):
                 semantic = semantic_fields.get(field.mask)
                 fields.append(field if semantic is None else field.model_copy(update={
                     "meaning": semantic.meaning, "sources": [*field.sources, *semantic.sources]}))
+            if not previous.field_views.keys() <= register.field_views.keys():
+                raise PraxisError("DECLARATION_CONFLICT", f"{item.id}.{register.name}: reviewed view not configured")
+            alternatives = {}
+            for name, view in register.field_views.items():
+                semantic = previous.field_views.get(name)
+                if semantic is None:
+                    alternatives[name] = view
+                    continue
+                reviewed_fields = {field.name: field for field in semantic.fields}
+                declared_fields = {field.name: field for field in view.fields}
+                if any(field not in declared_fields or value.mask != declared_fields[field].mask
+                       for field, value in reviewed_fields.items()):
+                    raise PraxisError("DECLARATION_CONFLICT",
+                                      f"{item.id}.{register.name}.{name}: reviewed field differs from header")
+                alternatives[name] = view.model_copy(update={
+                    "selection": semantic.selection, "sources": [*view.sources, *semantic.sources],
+                    "fields": [field if field.name not in reviewed_fields else field.model_copy(update={
+                        "meaning": reviewed_fields[field.name].meaning,
+                        "sources": [*field.sources, *reviewed_fields[field.name].sources]}) for field in view.fields]})
             registers.append(Register.model_validate({**previous.model_dump(),
                 "reset": previous.reset if previous.reset is not None else register.reset,
-                "fields": fields, "sources": [*register.sources, *previous.sources]}))
+                "fields": fields, "storage_views": register.storage_views, "field_views": alternatives,
+                "sources": [*register.sources, *previous.sources]}))
         instances = {i.name: i for i in item.instances}
         if not instances.keys() <= declared.instances.keys():
             raise PraxisError("DECLARATION_CONFLICT", f"{item.id}: reviewed instance not declared")
@@ -226,7 +227,7 @@ def _discover(profile, paths, items, root):
     from praxis.adapters.headers import macros
     from praxis.expressions import integer
     definitions = macros(paths[profile.header.source], "arm-none-eabi-gcc",
-                         [f"-mcpu={cmsis_cpu(profile.target)}", "-mthumb",
+                         [f"-mcpu={contract.cpu}", "-mthumb",
                           *profile.header.defines, *[f"-I{p}" for p in include_dirs]])
     for field, expression in profile.header.field_expressions.items():
         if field not in field_expressions or integer(expression, definitions) != integer(field_expressions[field], definitions):
@@ -239,15 +240,19 @@ def _discover(profile, paths, items, root):
     return merged, profile.model_copy(update={"header": spec}), coverage_entries
 
 
-def _declaration_notice(name, declaration=None):
+def _declaration_notice(name, declaration=None, *, gaps=None, notes=None):
+    gaps = declaration.unresolved_masks if declaration is not None else gaps or []
+    notes = declaration.notes if declaration is not None else notes or []
     return (f"**{name}: declarations only; operating semantics are NOT reviewed.**\n\n"
             "Do not generate initialization code from this document alone. Register access modes, "
             "side effects, readiness checks, clock domains, pin routing, and supported modes require "
             "reviewed manual/datasheet/errata evidence. Dependencies are configuration policy "
             "from `profile:discovery`, not operating facts. See the coverage report in [[index]].\n" +
             ("\nMask extraction gaps (the affected register's entire bit-field set is withheld):\n\n" +
-             "\n".join("- " + note for note in declaration.unresolved_masks) + "\n"
-             if declaration is not None and declaration.unresolved_masks else ""))
+             "\n".join("- " + note for note in gaps) + "\n" if gaps else "") +
+            ("\nCompound declaration masks:\n\n" +
+             "\n".join("- " + note for note in notes if note.startswith("Compound mask ")) + "\n"
+             if any(note.startswith("Compound mask ") for note in notes) else ""))
 
 
 def _aliases(profile, items):
@@ -277,8 +282,12 @@ def _definitions(profile, paths, root):
         references = [s for instance in item.instances for s in instance.sources]
         for register in item.registers:
             references.extend(register.sources)
+            references.extend(ref for view in register.storage_views for ref in view.sources)
             for field in register.fields:
                 references.extend(field.sources)
+            for view in register.field_views.values():
+                references.extend(view.sources)
+                references.extend(ref for field in view.fields for ref in field.sources)
         authorities = {s.id: s.authority for s in profile.sources}
         for register in item.registers:
             if register.write_mask is not None and not any(
@@ -294,7 +303,11 @@ def _definitions(profile, paths, root):
                 if (not register.access_widths
                         or not any(authorities.get(ref.source) == "semantics" for ref in register.sources)):
                     raise PraxisError("SOURCE_AUTHORITY", f"{item.id}.{name}: mode needs reviewed bus access widths and semantics")
-                fields = {f.name: f for f in register.fields}
+                view = mode.field_views.get(name)
+                if view is not None and not any(authorities.get(ref.source) == "semantics"
+                                                for ref in register.field_views[view].sources):
+                    raise PraxisError("SOURCE_AUTHORITY", f"{item.id}.{name}.{view}: mode needs reviewed view selection")
+                fields = {f.name: f for f in register.fields_for(view)}
                 for field in mode.fields.get(name, []):
                     if not any(authorities.get(ref.source) == "semantics" for ref in fields[field].sources):
                         raise PraxisError("SOURCE_AUTHORITY", f"{item.id}.{name}.{field}: mode needs reviewed field semantics")
@@ -306,82 +319,6 @@ def _definitions(profile, paths, root):
     mode_order(items)
     return sorted(items, key=lambda p: p.id)
 
-
-def _headers(profile, paths, items, root):
-    from praxis.adapters.headers import avr, cmsis, macros
-    from praxis.expressions import integer
-    from praxis.targets import check_header_identity, cmsis_cpu
-
-    spec = profile.header
-    header = paths[spec.source]
-    include_flags = []
-    for name in spec.include_directories:
-        directory = (root / name).resolve(strict=True)
-        if not directory.is_relative_to(root) or not directory.is_dir():
-            raise PraxisError("INVALID_PATH", "Header include directory escapes source tree")
-        include_flags.append(f"-I{directory}")
-    defines = [*spec.defines, *include_flags]
-    by_id = {p.id: p for p in items}
-    versions = {}
-    if spec.kind == "cmsis":
-        layouts = cmsis(header, sorted(set(spec.structures.values())), defines,
-                        registered_sources=list(paths.values()), cpu=cmsis_cpu(profile.target))
-        versions["clang"] = run(["clang", "--version"]).splitlines()[0]
-        versions["libclang"] = version("libclang")
-        compiler = "arm-none-eabi-gcc"
-        flags = [f"-mcpu={cmsis_cpu(profile.target)}", "-mthumb", *defines]
-        for name, item in by_id.items():
-            if name not in spec.structures or name not in spec.members:
-                raise PraxisError("MISSING_DECLARATION", f"No header mapping for {name}")
-            fields = layouts[spec.structures[name]]
-            for register in item.registers:
-                member = spec.members[name].get(register.name, register.name)
-                if member in fields:
-                    layout = fields[member]
-                    if (register.offset, register.width, register.count) != (layout["offset"], layout["width"], layout["count"]):
-                        raise PraxisError("DECLARATION_CONFLICT", f"{name}.{member}: register layout differs")
-                    continue
-                match = re.fullmatch(r"(\w+)(?:\[(\d+)\])?", member)
-                if not match or match[1] not in fields:
-                    raise PraxisError("MISSING_DECLARATION", f"Missing {name}.{member}")
-                layout = fields[match[1]]
-                index = int(match[2] or 0)
-                if index >= layout["count"]:
-                    raise PraxisError("DECLARATION_CONFLICT", f"Array index out of bounds: {member}")
-                offset = layout["offset"] + index * layout["width"] // 8
-                if register.offset != offset or register.width != layout["width"]:
-                    raise PraxisError("DECLARATION_CONFLICT", f"{name}.{member}: header layout differs from reviewed facts")
-                if register.count > 1 and (match[2] is not None or register.count != layout["count"]):
-                    raise PraxisError("DECLARATION_CONFLICT", f"{name}.{member}: register array count differs")
-    else:
-        compiler = "avr-gcc"
-        flags = ["-mmcu=atmega328p", *defines]
-        registers = avr(header, sorted({r.name for p in items for r in p.registers}), flags)
-        for item in items:
-            for register in item.registers:
-                extracted = registers[register.name]
-                if (register.offset != extracted["offset"] or register.width != extracted["width"]
-                        or register.io_address != extracted["io_address"]):
-                    raise PraxisError("DECLARATION_CONFLICT", f"{register.name}: AVR address/width mismatch")
-    versions[compiler] = run([compiler, "--version"]).splitlines()[0]
-    definitions = macros(header, compiler, flags)
-    check_header_identity(profile.target, definitions)
-    instances = {i.name: i for p in items for i in p.instances}
-    for name, expression in spec.base_macros.items():
-        if name not in instances or (re.fullmatch(r"[A-Za-z_]\w*", expression) and expression not in definitions):
-            raise PraxisError("MISSING_DECLARATION", f"Missing instance or macro {name}:{expression}")
-        if integer(definitions.get(expression, expression), definitions) != instances[name].base_address:
-            raise PraxisError("DECLARATION_CONFLICT", f"Base address mismatch: {name}")
-    for name, expected in spec.constant_macros.items():
-        if name not in definitions or integer(definitions[name], definitions) != expected:
-            raise PraxisError("DECLARATION_CONFLICT", f"Constant macro mismatch: {name}")
-    fields = {f"{p.id}.{r.name}.{f.name}": f for p in items for r in p.registers for f in r.fields}
-    if set(spec.field_expressions) != set(fields):
-        raise PraxisError("MISSING_DECLARATION", "Every published field requires exactly one header-backed mask expression")
-    for name, field in fields.items():
-        if integer(spec.field_expressions[name], definitions) != field.mask:
-            raise PraxisError("DECLARATION_CONFLICT", f"Bit-field mask differs from header: {name}")
-    return versions
 
 
 def compile_bundle(profile_path: Path, output: Path, *, _coverage_only: bool = False) -> Path:
@@ -397,36 +334,44 @@ def compile_bundle(profile_path: Path, output: Path, *, _coverage_only: bool = F
     paths, sources = {}, []
     for source in profile.sources:
         # Provenance is hashed before any compiler processes it; paths stay inside the input tree.
-        contents = read_inside(root, source.path, 8 * 1024 * 1024)
+        contents = read_source_inside(root, source.path)
+        if source.expected_sha256 is not None and digest(contents) != source.expected_sha256:
+            raise PraxisError("SOURCE_HASH_MISMATCH", f"Pinned source {source.id} changed; restore its declared bytes or review a new source version")
         paths[source.id] = (root / source.path).resolve()
-        sources.append(Source(**source.model_dump(), sha256=digest(contents)))
+        sources.append(Source(**source.model_dump(exclude={"expected_sha256"}), sha256=digest(contents)))
     sources.append(Source(id="profile", path=profile_path.name, sha256=digest(profile_path.read_bytes()),
                           authority="configuration", version="1", license="MIT", origin="Local target profile"))
     _web_sources(profile, paths, sources, root)
-    required = {profile.definitions, profile.header.source, profile.netlist, *profile.definition_extensions}
+    required = {profile.definitions, profile.header.source, *profile.definition_extensions}
+    if profile.netlist is not None:
+        required.add(profile.netlist)
     if profile.board:
         required.add(profile.board)
     if profile.devicetree:
         required |= {profile.devicetree.source, *profile.devicetree.overlays, *profile.devicetree.includes}
     if not required <= paths.keys():
         raise PraxisError("UNKNOWN_SOURCE", f"Missing sources: {required - paths.keys()}")
-    if (profile.target.family != "avr") != (profile.header.kind == "cmsis"):
-        raise PraxisError("TARGET_MISMATCH", "Header adapter does not match the target family")
+    contract = load_contract(profile, root)
     items = _definitions(profile, paths, root)
     coverage_entries = None
     if profile.header.discover:
         if profile.header.kind != "cmsis":
             raise PraxisError("INVALID_PROFILE", "Automatic discovery currently supports CMSIS only")
-        items, profile, coverage_entries = _discover(profile, paths, items, root)
-    versions = {"praxis": __version__, **_headers(profile, paths, items, root)}
+        items, profile, coverage_entries = _discover(profile, paths, items, root, contract)
+    validate_required_registers(profile, contract, items)
+    versions = {"praxis": __version__, "publication-contract": "v1",
+                **validate_headers(profile, paths, items, root, contract)}
     if profile.header.discover:
         versions["cmsis-discovery"] = "v1; Clang layouts and restricted object-macro evaluation"
     from praxis.adapters.kicad import import_schematic, parse_schematic
     from praxis.board import load as load_board
     from praxis.board import render_board, render_components, validate, validate_schematic
 
-    net_path = paths[profile.netlist]
-    if profile.netlist_format == "reviewed":
+    net_path = paths[profile.netlist] if profile.netlist is not None else None
+    if net_path is None:
+        schematic = None
+        versions["netlist"] = "Unavailable: MCU-only scope; no schematic ingested"
+    elif profile.netlist_format == "reviewed":
         from praxis.adapters.reviewed import parse as parse_reviewed
         schematic = parse_reviewed(net_path, profile.target)
         versions["netlist"] = "Reviewed PDF transcription adapter v1; no geometry inference"
@@ -438,10 +383,11 @@ def compile_bundle(profile_path: Path, output: Path, *, _coverage_only: bool = F
         schematic = parse_schematic(net_path, profile.netlist, profile.target, profile.pin_map)
         versions["netlist"] = "KiCad XML adapter v1 (pre-exported source)"
     authorities = {source.id: source.authority for source in sources}
-    if authorities[profile.netlist] != "connectivity":
-        raise PraxisError("SOURCE_AUTHORITY", "Schematic sources must have connectivity authority")
-    validate_schematic(schematic, profile.target, profile.pin_map, set(authorities))
-    nets = schematic.nets
+    if schematic is not None:
+        if authorities[profile.netlist] != "connectivity":
+            raise PraxisError("SOURCE_AUTHORITY", "Schematic sources must have connectivity authority")
+        validate_schematic(schematic, profile.target, profile.pin_map, set(authorities))
+    nets = schematic.nets if schematic is not None else []
     board = load_board(paths[profile.board]) if profile.board else None
     if board and (authorities[profile.board] != "semantics" or
                   getattr(schematic, "coverage", board.coverage) != board.coverage):
@@ -465,19 +411,19 @@ def compile_bundle(profile_path: Path, output: Path, *, _coverage_only: bool = F
     documents = {}
     for item in items:
         narrative = (decode(read_inside(root, item.reviewed_markdown), item.reviewed_markdown)
-                     if item.review is not None else _declaration_notice(item.id))
-        if item.review is None and coverage_entries is not None:
-            gaps = coverage_entries[item.id].get("unresolved_masks", [])
-            narrative += "\nMask extraction gaps:\n\n" + "\n".join("- " + gap for gap in gaps) + "\n" if gaps else ""
+                     if item.review is not None else _declaration_notice(item.id,
+                         gaps=coverage_entries[item.id].get("unresolved_masks", []) if coverage_entries else [],
+                         notes=coverage_entries[item.id]["issues"] if coverage_entries else []))
         documents[f"wiki/peripherals/{item.id}.md"] = peripheral(profile.target, item, narrative)
     coverage_report = None
-    pin_document = "gpio" if any(item.id == "gpio" for item in items) else None
+    pin_document = contract.pin_document
     if coverage_entries is not None:
         from praxis.coverage import markdown, report
         from praxis.netlist import NetlistIndex
         coverage_report = report(profile, coverage_entries, items,
                                  NetlistIndex(netlist(profile.target, nets, pin_document=pin_document),
-                                              profile.target.primary_mcu_ref))
+                                              profile.target.primary_mcu_ref,
+                                              allow_empty=profile.target.scope == "mcu"))
         # The complete hash/version registry already lives in sources.md and the
         # manifest. Repeating it here exhausted the document budget as reviewed
         # evidence grew. Keep the selected profile identity and link the complete
@@ -500,7 +446,7 @@ def compile_bundle(profile_path: Path, output: Path, *, _coverage_only: bool = F
     documents[netlist_path] = netlist(profile.target, nets, pin_document=pin_document)
     if board:
         documents["wiki/schemas/board.md"] = render_board(profile.target, board, circuits,
-            prerequisite_documents=tuple(name for name in ("rcc", "gpio") if name in {p.id for p in items}))
+            prerequisite_documents=tuple(contract.board_prerequisites))
         documents["wiki/schemas/components.md"] = render_components(profile.target, schematic)
         documents[netlist_path] = documents[netlist_path].replace(
             "Electrical nets are direct exported memberships.",
@@ -520,17 +466,19 @@ def compile_bundle(profile_path: Path, output: Path, *, _coverage_only: bool = F
         versions["dtc"] = run(["dtc", "--version"]).strip()
         if dt.overlays:
             versions["fdtoverlay"] = run(["fdtoverlay", "--version"]).strip()
-    order = ["rcc", "gpio", "usart", "nvic"] if profile.target.family == "stm32" else ["clock", "gpio", "usart", "interrupts"]
+    from praxis.coverage import order as graph_order
+    graph = {item.id: item.prerequisites for item in items}
+    route = graph_order(graph)
     index = ["# Project Praxis hardware execution index\n", identity(profile.target),
              "## Hardware Execution Dependency Graph\n",
-             " → ".join(f"[[peripherals/{name}]]" for name in order) + "\n",
-             (("Read this index first. Retrieve the matching net, then follow the applicable graph prefix. "
-               "GPIO polling stops at GPIO; UART polling stops at USART. Peripheral interrupts require "
-               "the final stage. Core timer/startup requirements are documented separately. "
-               "Tool gates establish retrieval evidence, not code correctness or physical behavior.\n")
-              if board else ("Read this index first. Retrieve the matching net, then follow every stage in order. "
-               "Polling stops at peripheral control; interrupts/DMA require the final stage. "
-               "Tool gates establish retrieval evidence, not code correctness or physical behavior.\n")),
+             "Graph prerequisites are listed below. Retrieve only the requested entity's dependency closure.\n",
+             "\n".join(f"- [[peripherals/{name}]] requires " +
+                       (", ".join(f"[[peripherals/{parent}]]" for parent in graph[name]) or "[[index]]")
+                       for name in route),
+             "Read this index first. Retrieve the matching net when board connectivity is available, "
+             "then follow the applicable prerequisite edges. A topological listing does not impose "
+             "dependencies between unrelated entities. Requested workflows determine the required "
+             "operating modes. Tool gates establish retrieval evidence, not code correctness or physical behavior.\n",
              "## Clock assumptions\n", *[f"- {v}" for v in profile.target.clock_assumptions],
              *[f"- Fuse assumption: {v}" for v in profile.target.fuse_assumptions],
              "\n## Routing\n", "- [[schemas/custom_pcb_netlist]]: direct electrical connectivity.",
@@ -551,17 +499,20 @@ def compile_bundle(profile_path: Path, output: Path, *, _coverage_only: bool = F
             ". This is a knowledge-only target. No target firmware assets, sandbox compiler "
             "profile, flashing or physical qualification are supplied by this adapter. "
             "Clock assumptions and HEDG edges are explicit profile policy, not inferred from a diagram.\n")
-    if coverage_report is not None:
-        from praxis.coverage import markdown, order as graph_order
-        graph = {item.id: item.prerequisites for item in items}
-        route = graph_order(graph)
-        # v2 routes are the actual graph; a topological listing is not a mandatory linear chain.
+    if profile.target.scope == "mcu":
         documents["wiki/index.md"] = documents["wiki/index.md"].replace(
-            " → ".join(f"[[peripherals/{name}]]" for name in order),
-            "Graph prerequisites are listed below. Retrieve only the requested entity's dependency closure.\n\n" +
-            "\n".join(f"- [[peripherals/{name}]] requires " +
-                      (", ".join(f"[[peripherals/{p}]]" for p in graph[name]) or "[[index]]")
-                      for name in route))
+            "Retrieve the matching net, then follow every stage in order.",
+            "Board connectivity is unavailable; retrieve the requested declaration dependency closure.").replace(
+            "- [[schemas/custom_pcb_netlist]]: direct electrical connectivity.",
+            "- [[schemas/custom_pcb_netlist]]: explicit absence of board connectivity.")
+        documents["wiki/index.md"] += (
+            "\n## MCU-only applicability\n\nScope: `profile:target.scope=mcu`. "
+            "No evaluation board, package pin map, LED/button aliases, active bus clocks or "
+            "firmware/flash assets are supplied. A missing schematic query is missing evidence, "
+            "not proof that a signal is absent from the silicon. "
+            "Register layouts and masks do not establish initialization sequences.\n")
+    if coverage_report is not None:
+        from praxis.coverage import markdown
         documents["wiki/index.md"] += "\n" + markdown(coverage_report) + "\nSee [[coverage]] and [[sources]].\n"
         documents["wiki/index.md"] += ("\n## Mode-specific support\n\nSee [[features]] for instance-scoped "
             "operating contracts. Header coverage does not establish complete MCU feature support.\n\n" +
@@ -574,18 +525,28 @@ def compile_bundle(profile_path: Path, output: Path, *, _coverage_only: bool = F
             f"Applicability: {board.applicability}\n\n" +
             "Signals: " + ", ".join(alias for signal in board.signals for alias in signal.aliases) +
             ". Query a signal to retrieve its reviewed board context and separate circuit nets.\n\n" +
-            "GPIO polling route: index → net query → clocks → GPIO. USART is needed only for UART; "
-            "button polling does not require EXTI. Core timer/interrupt setup is a separate startup concern.\n\n" +
+            "Retrieve each requested signal, then its peripheral dependency closure. "
+            "Use reviewed workflow contracts to determine whether interrupt or core setup is required.\n\n" +
             "See [[schemas/board]] and [[schemas/components]].\n")
     if profile.header.discover:
         documents["wiki/index.md"] += ("\nMetadata and clock assumptions: `profile:target`. "
             "These are declared operating assumptions, not measurements. "
             "All register declarations are retained; unknown access/reset/encoding facts remain "
             "explicitly unasserted and must not be used to generate unsupported operations.\n")
-    documents["wiki/sources.md"] = ("# Source provenance\n\n" + identity(profile.target) + "\n" +
-        source_catalog(sources) +
-        f"\nEditorial reviewer: {profile.review.reviewer}. Basis: {profile.review.basis}.\n\n"
-        "Editorial review is not independent hardware sign-off. See [[index]].\n")
+    documents["wiki/index.md"] += (
+        f"\nPublication policy: `{profile.compilation_contract}:{contract.id}`; "
+        "its exact input hash and review scope are recorded in [[sources]]. "
+        "See [[policy]] for the complete declarative contract. Requirements constrain publication; "
+        "they do not manufacture missing hardware facts.\n")
+    documents["wiki/policy.md"] = (
+        "# Publication contract\n\n"
+        f"Source: `{profile.compilation_contract}`; hash and origin: [[sources]].\n\n"
+        "This reviewed scope defines minimum evidence, extraction identity, and routing links. "
+        "It does not establish complete MCU coverage, independently certify its sources, or grant "
+        "firmware build/flash qualification. Changing it requires an explicit new source pin "
+        "and produces a new immutable revision. See [[index]] for available workflow coverage.\n\n```json\n" +
+        json.dumps(contract.model_dump(), sort_keys=True, indent=2, ensure_ascii=False) + "\n```\n")
+    documents.update(source_documents(profile.target, sources, profile.review))
     manifest_data = dict(schema_version=2 if profile.discovery is not None else 1,
                          compiler_version=__version__, bundle_revision="0" * 64,
                          target=profile.target, review=profile.review,
@@ -600,7 +561,7 @@ def compile_bundle(profile_path: Path, output: Path, *, _coverage_only: bool = F
     draft["bundle_revision"] = revision(draft)
     manifest = Manifest(**draft)
     for source in sources:
-        if digest(read_inside(root, source.path, 8 * 1024 * 1024)) != source.sha256:
+        if digest(read_source_inside(root, source.path)) != source.sha256:
             raise PraxisError("SOURCE_CHANGED", "An input changed during compilation; retry with stable sources")
     output = output.absolute()
     output.parent.mkdir(parents=True, exist_ok=True)

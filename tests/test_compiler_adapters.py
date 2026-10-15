@@ -83,9 +83,13 @@ def test_compiler_rejects_bad_sources_without_publication(tmp_path, failure):
     elif failure == "unreviewed":
         data[0]["review"]["status"] = "draft"
     else:
-        (source / "reviewed/usart.md").write_text("x" * 65537)
+        (source / "reviewed/usart.md").write_text("x" * 200_000)
     definitions.write_text(json.dumps(data))
     output = tmp_path / "output"
+    if failure == "oversized":
+        bundle = Bundle(compile_bundle(source / "profile.json", output))
+        assert "x" * 200_000 in bundle.read("wiki/peripherals/usart.md")
+        return
     with pytest.raises(PraxisError):
         compile_bundle(source / "profile.json", output)
     assert not output.exists()

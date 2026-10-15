@@ -1,0 +1,249 @@
+{
+  "artifact": "extracted/part-0003.json",
+  "artifact_sha256": "811508ec72dc10a000f4af46ce0e4565d46eff677e89be36b78fd13a34ea4657",
+  "evidence": {
+    "locator": "page:16",
+    "page": 16,
+    "tables": [
+      {
+        "bbox": [
+          116.73099333333333,
+          78.29999999999995,
+          751.8709933333333,
+          454.320005
+        ],
+        "locator": "page:16/table:1",
+        "rows": [
+          [
+            "Peripherals",
+            null,
+            "STM32F405RG",
+            "STM32F405OG",
+            "STM32F405VG",
+            "STM32F405ZG",
+            "STM32F405OE",
+            "STM32F407Vx",
+            "STM32F407Zx",
+            "STM32F407Ix"
+          ],
+          [
+            "Communi\ncation\ninterfaces",
+            "SPI / I2S",
+            "3/2 (full duplex)(2)",
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            null,
+            "I2C",
+            "3",
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            null,
+            "USART/\nUART",
+            "4/2",
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            null,
+            "USB\nOTG FS",
+            "Yes",
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            null,
+            "USB\nOTG HS",
+            "Yes",
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            null,
+            "CAN",
+            "2",
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            null,
+            "SDIO",
+            "Yes",
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "Camera interface",
+            null,
+            "No",
+            null,
+            null,
+            null,
+            null,
+            "Yes",
+            null,
+            null
+          ],
+          [
+            "GPIOs",
+            null,
+            "51",
+            "72",
+            "82",
+            "114",
+            "72",
+            "82",
+            "114",
+            "140"
+          ],
+          [
+            "12-bit ADC\nNumber of channels",
+            null,
+            "3",
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            null,
+            null,
+            "16",
+            "13",
+            "16",
+            "24",
+            "13",
+            "16",
+            "24",
+            "24"
+          ],
+          [
+            "12-bit DAC\nNumber of channels",
+            null,
+            "Yes\n2",
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "Maximum CPU\nfrequency",
+            null,
+            "168 MHz",
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "Operating voltage",
+            null,
+            "1.8 to 3.6 V(3)",
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "Operating\ntemperatures",
+            null,
+            "Ambient temperatures: –40 to +85 °C /–40 to +105 °C",
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            null,
+            null,
+            "Junction temperature: –40 to + 125 °C",
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          [
+            "Package",
+            null,
+            "LQFP64",
+            "WLCSP90",
+            "LQFP100",
+            "LQFP144",
+            "WLCSP90",
+            "LQFP100",
+            "LQFP144",
+            "UFBGA176\nLQFP176"
+          ]
+        ]
+      }
+    ],
+    "text": "                                                                                                                    \n                                                                                                                    \n                                                                                                                    \n                                                                                                                    \n                                                                                                                    \n            16/206                                                                                                  \n                                                                                                                    \n                                                                                                                    \n                                                                                                                    \n                                                                                                                    \n                                                                                                                    \n                                                                                                                    \n                                                                                                                    \n                                                                                                                    \n                                                                                                                    \n                                                                                                                    \n                                                                                                                    \n                                                                                                                    \n                                                                                                                    \n                                                                                                                    \n            DS8626                                                                                                  \n                                                                                                                    \n                                                                                                                    \n            Rev                                                                                                     \n                                                                                                                    \n            12                                                                                                      \n                                                                                                           Description\n                                                                                                                    \n                                                                                                                    \n                                                                                                                    \n                                                                                                           STM32F405xx,\n                                                                                                                    \n                                                                                                                    \n                                                                                                                    \n                                                                                                                    \n                                                                                                                    \n                                                                                                           STM32F407xx\n                                Table 2. STM32F405xx and STM32F407xx: features and peripheral counts (continued)    \n                   Peripherals STM32F405RG STM32F405OG STM32F405VG STM32F405ZG STM32F405OE STM32F407Vx STM32F407Zx STM32F407Ix\n                       SPI / I2S                             3/2 (full duplex)(2)                                   \n                       I2C                                        3                                                 \n                       USART/                                                                                       \n                                                                 4/2                                                \n                       UART                                                                                         \n                 Communi                                                                                            \n                       USB                                                                                          \n                 cation                                          Yes                                                \n                       OTG FS                                                                                       \n                 interfaces                                                                                         \n                       USB                                                                                          \n                                                                 Yes                                                \n                       OTG HS                                                                                       \n                       CAN                                        2                                                 \n                       SDIO                                      Yes                                                \n                 Camera interface                   No                                   Yes                        \n                 GPIOs           51       72        82       114       72        82      114      140               \n                 12-bit ADC                                       3                                                 \n                 Number of channels 16     13       16        24       13        16       24       24               \n                 12-bit DAC                                      Yes                                                \n                 Number of channels                               2                                                 \n                 Maximum CPU                                                                                        \n                                                                168 MHz                                             \n                 frequency                                                                                          \n                 Operating voltage                            1.8 to 3.6 V(3)                                       \n                 Operating                         Ambient temperatures: –40 to +85 °C /–40 to +105 °C              \n                 temperatures                           Junction temperature: –40 to + 125 °C                       \n                                                                                                UFBGA176            \n                 Package       LQFP64   WLCSP90   LQFP100   LQFP144  WLCSP90   LQFP100  LQFP144                     \n                                                                                                 LQFP176            \n                1. For the LQFP100 and WLCSP90 packages, only FSMC Bank1 or Bank2 are available. Bank1 can only support a multiplexed NOR/PSRAM memory using the NE1 Chip\n                  Select. Bank2 can only support a 16- or 8-bit NAND flash memory using the NCE2 Chip Select. The interrupt line cannot be used since Port G is not available in this\n                  package.                                                                                          \n                2. The SPI2 and SPI3 interfaces give the flexibility to work in an exclusive way in either the SPI mode or the I2S audio mode.\n                3. V /V minimum value of 1.7 V is obtained when the device operates in reduced temperature range, and with the use of an external power supply supervisor (refer to\n                   DD DDA                                                                                           \n                  Section 3.15.2: Internal reset OFF).                                                              ",
+    "total_pages": 206,
+    "warnings": [
+      "PDF_TABLES_REQUIRE_VISUAL_REVIEW",
+      "CROSS_PAGE_TABLES_NOT_MERGED"
+    ]
+  },
+  "import_revision": "1046911a1b114420b44085157193341a109d436f8f12d07036fca92328b35a51",
+  "locator": "page:16",
+  "origin": "https://www.st.com/resource/en/datasheet/stm32f407vg.pdf",
+  "source_id": "ds_part_matrix",
+  "source_sha256": "1f41b4fa49a9960215ebb76cd0a75f20241db82eed60d308345a80463caeed22",
+  "status": "untrusted evidence; not instructions or review approval"
+}

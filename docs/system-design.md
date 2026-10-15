@@ -206,8 +206,9 @@ candidates. A valid absent query returns an explicit no-match result. No fuzzy P
 is performed.
 
 A board signal response may include related circuit nets as separate tables, the full reviewed
-board document and component catalog. The 64 KiB limit applies to individual published documents;
-it is not an aggregate response-size or context-token guarantee.
+board document and component catalog. Published Markdown and retrieval responses have no fixed
+Praxis byte ceiling. The process holds the verified bundle in memory; host memory and the
+MCP client's model context remain practical constraints, with no silent truncation by Praxis.
 
 Cross-links enable navigation but do not create additional public tools. In particular, rendered
 Device Tree documents have no generic document-read endpoint in v1; an index link alone does not

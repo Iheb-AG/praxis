@@ -1,0 +1,1719 @@
+{
+  "bindings": [
+    {
+      "applicability": "mixed",
+      "document": "rm0090",
+      "rationale": "Conventions include the target-dependent peripheral-availability section; read its body before excluding silicon features.",
+      "section": "1"
+    },
+    {
+      "applicability": "mixed",
+      "document": "rm0090",
+      "rationale": "Memory, buses and boot scope includes several parts; target-specific details remain to reconcile.",
+      "section": "2"
+    },
+    {
+      "applicability": "mixed",
+      "document": "rm0090",
+      "peripherals": [
+        "flash"
+      ],
+      "rationale": "Flash chapter includes part-specific registers and update operations beyond latency setup.",
+      "section": "3",
+      "workflows": [
+        "flash_latency_168mhz",
+        "feature_flash"
+      ]
+    },
+    {
+      "applicability": "applicable",
+      "document": "rm0090",
+      "peripherals": [
+        "crc"
+      ],
+      "rationale": "CRC source scope is related to the selected word-feed workflow, not all configurations.",
+      "section": "4",
+      "workflows": [
+        "crc_word_feed"
+      ]
+    },
+    {
+      "applicability": "mixed",
+      "document": "rm0090",
+      "peripherals": [
+        "pwr"
+      ],
+      "rationale": "Power chapter contains part-specific register branches and low-power modes beyond the reviewed subset.",
+      "section": "5",
+      "workflows": [
+        "feature_pwr"
+      ]
+    },
+    {
+      "applicability": "excluded",
+      "document": "rm0090",
+      "rationale": "Chapter title explicitly restricts this RCC branch to STM32F42xxx and STM32F43xxx; target is STM32F407VGT6. Its title locators remain in the pinned outline.",
+      "section": "6"
+    },
+    {
+      "applicability": "applicable",
+      "document": "rm0090",
+      "peripherals": [
+        "rcc"
+      ],
+      "rationale": "Chapter title explicitly includes STM32F405xx/07xx. Only selected clock recipes are currently reviewed.",
+      "section": "7",
+      "workflows": [
+        "pll_hse8_168mhz",
+        "arm_hsi16_core_checked"
+      ]
+    },
+    {
+      "applicability": "applicable",
+      "document": "rm0090",
+      "peripherals": [
+        "gpio"
+      ],
+      "rationale": "GPIO chapter applies; package pin/AF and mode completeness remain separate requirements.",
+      "section": "8",
+      "workflows": [
+        "gpio_led_button"
+      ]
+    },
+    {
+      "applicability": "mixed",
+      "document": "rm0090",
+      "peripherals": [
+        "syscfg"
+      ],
+      "rationale": "SYSCFG chapter has explicit part-specific branches.",
+      "section": "9"
+    },
+    {
+      "applicability": "applicable",
+      "document": "rm0090",
+      "peripherals": [
+        "syscfg"
+      ],
+      "rationale": "Section title names STM32F405xx/07xx and STM32F415xx/17xx.",
+      "section": "9.2"
+    },
+    {
+      "applicability": "excluded",
+      "document": "rm0090",
+      "rationale": "Section title names STM32F42xxx and STM32F43xxx, outside this target.",
+      "section": "9.3"
+    },
+    {
+      "applicability": "applicable",
+      "document": "rm0090",
+      "peripherals": [
+        "dma",
+        "dma_stream"
+      ],
+      "rationale": "DMA source scope; the memory-copy example does not cover every request, channel or operating mode.",
+      "section": "10",
+      "workflows": [
+        "dma2_memory_copy"
+      ]
+    },
+    {
+      "applicability": "pending",
+      "document": "rm0090",
+      "rationale": "DMA2D availability must be reconciled against the target-specific availability table; shared manual coverage is not proof of presence.",
+      "section": "11"
+    },
+    {
+      "applicability": "applicable",
+      "document": "rm0090",
+      "peripherals": [
+        "exti",
+        "nvic"
+      ],
+      "rationale": "Interrupt/event scope extends beyond the existing UART/button example.",
+      "section": "12",
+      "workflows": [
+        "uart_timer_interrupts"
+      ]
+    },
+    {
+      "applicability": "applicable",
+      "document": "rm0090",
+      "peripherals": [
+        "adc",
+        "adc_common"
+      ],
+      "rationale": "ADC scope; internal-reference conversion is only one supported subset.",
+      "section": "13",
+      "workflows": [
+        "adc1_internal_reference"
+      ]
+    },
+    {
+      "applicability": "applicable",
+      "document": "rm0090",
+      "peripherals": [
+        "dac"
+      ],
+      "rationale": "DAC scope; software trigger does not establish wired analog-output qualification.",
+      "section": "14",
+      "workflows": [
+        "dac_channel1_software_trigger",
+        "dac_channel1_wired_output"
+      ]
+    },
+    {
+      "applicability": "applicable",
+      "document": "rm0090",
+      "evidence": [
+        {
+          "evidence": "part_ds_part_matrix_page_16",
+          "locator": "page:16"
+        }
+      ],
+      "peripherals": [
+        "dcmi"
+      ],
+      "rationale": "DS8626 Table 2 distinguishes F407Vx from F405 variants and confirms the camera interface for the selected part group. Mode and pin constraints remain to author.",
+      "section": "15"
+    },
+    {
+      "applicability": "excluded",
+      "document": "rm0090",
+      "evidence": [
+        {
+          "evidence": "part_rm_feature_applicability_page_480",
+          "locator": "page:480"
+        }
+      ],
+      "rationale": "The chapter introduction explicitly names other STM32 parts/families; its target restriction excludes STM32F407VGT6. This is an applicability decision, not a missing implementation.",
+      "section": "16"
+    },
+    {
+      "applicability": "applicable",
+      "document": "rm0090",
+      "peripherals": [
+        "tim"
+      ],
+      "rationale": "Advanced timer scope requires explicit PWM, capture, trigger and advanced-mode contracts.",
+      "section": "17"
+    },
+    {
+      "applicability": "applicable",
+      "document": "rm0090",
+      "peripherals": [
+        "tim"
+      ],
+      "rationale": "General timer scope extends beyond the selected TIM2 update/interrupt scenario.",
+      "section": "18",
+      "workflows": [
+        "uart_timer_interrupts"
+      ]
+    },
+    {
+      "applicability": "applicable",
+      "document": "rm0090",
+      "peripherals": [
+        "tim"
+      ],
+      "rationale": "Additional timer instances require their own instance/mode requirements.",
+      "section": "19"
+    },
+    {
+      "applicability": "applicable",
+      "document": "rm0090",
+      "peripherals": [
+        "tim"
+      ],
+      "rationale": "Basic timer scope; no all-mode qualification inferred from register discovery.",
+      "section": "20"
+    },
+    {
+      "applicability": "applicable",
+      "document": "rm0090",
+      "peripherals": [
+        "iwdg"
+      ],
+      "rationale": "Watchdog configure/refresh is related knowledge only.",
+      "section": "21",
+      "workflows": [
+        "iwdg_configure_refresh"
+      ]
+    },
+    {
+      "applicability": "applicable",
+      "document": "rm0090",
+      "peripherals": [
+        "wwdg"
+      ],
+      "rationale": "Window-watchdog operating requirements remain to author.",
+      "section": "22"
+    },
+    {
+      "applicability": "excluded",
+      "document": "rm0090",
+      "evidence": [
+        {
+          "evidence": "part_rm_feature_applicability_page_716",
+          "locator": "page:716"
+        }
+      ],
+      "rationale": "The chapter introduction explicitly names other STM32 parts/families; its target restriction excludes STM32F407VGT6. This is an applicability decision, not a missing implementation.",
+      "section": "23"
+    },
+    {
+      "applicability": "applicable",
+      "document": "rm0090",
+      "peripherals": [
+        "rng"
+      ],
+      "rationale": "RNG scope includes more than the reviewed PLL/polling mode.",
+      "section": "24",
+      "workflows": [
+        "rng_pll_polling"
+      ]
+    },
+    {
+      "applicability": "excluded",
+      "document": "rm0090",
+      "evidence": [
+        {
+          "evidence": "part_rm_feature_applicability_page_768",
+          "locator": "page:768"
+        }
+      ],
+      "rationale": "The chapter introduction explicitly names other STM32 parts/families; its target restriction excludes STM32F407VGT6. This is an applicability decision, not a missing implementation.",
+      "section": "25"
+    },
+    {
+      "applicability": "applicable",
+      "document": "rm0090",
+      "peripherals": [
+        "rtc"
+      ],
+      "rationale": "RTC operating requirements remain blocked.",
+      "section": "26",
+      "workflows": [
+        "feature_rtc"
+      ]
+    },
+    {
+      "applicability": "applicable",
+      "document": "rm0090",
+      "peripherals": [
+        "i2c"
+      ],
+      "rationale": "I2C controller-only knowledge does not cover every mode or a wired slave.",
+      "section": "27",
+      "workflows": [
+        "i2c1_controller_transmit",
+        "i2c1_wired_transmit"
+      ]
+    },
+    {
+      "applicability": "applicable",
+      "document": "rm0090",
+      "peripherals": [
+        "spi"
+      ],
+      "rationale": "SPI/I2S scope includes mode and pin-route work beyond current polling knowledge.",
+      "section": "28",
+      "workflows": [
+        "spi1_wired_polling"
+      ]
+    },
+    {
+      "applicability": "excluded",
+      "document": "rm0090",
+      "evidence": [
+        {
+          "evidence": "part_rm_feature_applicability_page_921",
+          "locator": "page:921"
+        }
+      ],
+      "rationale": "The chapter introduction explicitly names other STM32 parts/families; its target restriction excludes STM32F407VGT6. This is an applicability decision, not a missing implementation.",
+      "section": "29"
+    },
+    {
+      "applicability": "applicable",
+      "document": "rm0090",
+      "peripherals": [
+        "usart"
+      ],
+      "rationale": "USART source scope includes configurations beyond the UART2 scenario.",
+      "section": "30",
+      "workflows": [
+        "uart_timer_interrupts"
+      ]
+    },
+    {
+      "applicability": "applicable",
+      "document": "rm0090",
+      "peripherals": [
+        "sdio"
+      ],
+      "rationale": "SDIO card-transfer requirements and hardware setup remain open.",
+      "section": "31",
+      "workflows": [
+        "feature_sdio"
+      ]
+    },
+    {
+      "applicability": "applicable",
+      "document": "rm0090",
+      "peripherals": [
+        "can"
+      ],
+      "rationale": "CAN internal loopback is a scoped subset; external bus remains blocked.",
+      "section": "32",
+      "workflows": [
+        "can1_rx_guarded_loopback_irq",
+        "can1_external_bus"
+      ]
+    },
+    {
+      "applicability": "applicable",
+      "document": "rm0090",
+      "peripherals": [
+        "eth"
+      ],
+      "rationale": "Ethernet operating modes, board interface and fixture remain unqualified.",
+      "section": "33",
+      "workflows": [
+        "feature_eth"
+      ]
+    },
+    {
+      "applicability": "applicable",
+      "document": "rm0090",
+      "peripherals": [
+        "usb_otg_global",
+        "usb_otg_device",
+        "usb_otg_host"
+      ],
+      "rationale": "USB FS source scope; endpoint maps, device/host modes and protocol qualification remain open.",
+      "section": "34",
+      "workflows": [
+        "feature_usb_otg_global"
+      ]
+    },
+    {
+      "applicability": "applicable",
+      "document": "rm0090",
+      "peripherals": [
+        "usb_otg_global",
+        "usb_otg_device",
+        "usb_otg_host"
+      ],
+      "rationale": "USB HS controller scope requires precise PHY/interface and board applicability review.",
+      "section": "35"
+    },
+    {
+      "applicability": "mixed",
+      "document": "rm0090",
+      "evidence": [
+        {
+          "evidence": "part_ds_part_matrix_page_16",
+          "locator": "page:16"
+        }
+      ],
+      "peripherals": [
+        "fsmc_bank1",
+        "fsmc_bank1e",
+        "fsmc_bank2_3",
+        "fsmc_bank4"
+      ],
+      "rationale": "FSMC is present, but DS8626 Table 2 footnote 1 restricts LQFP100 to Bank1/Bank2 with specified chip-select/memory modes and no Port-G interrupt. Do not infer access to all discovered controller banks.",
+      "section": "36",
+      "workflows": [
+        "feature_fsmc_bank1"
+      ]
+    },
+    {
+      "applicability": "excluded",
+      "document": "rm0090",
+      "evidence": [
+        {
+          "evidence": "part_rm_feature_applicability_page_1590",
+          "locator": "page:1590"
+        }
+      ],
+      "rationale": "The chapter introduction explicitly names other STM32 parts/families; its target restriction excludes STM32F407VGT6. This is an applicability decision, not a missing implementation.",
+      "section": "37"
+    },
+    {
+      "applicability": "applicable",
+      "document": "rm0090",
+      "peripherals": [
+        "dbgmcu",
+        "coredebug",
+        "dwt",
+        "itm",
+        "tpi"
+      ],
+      "rationale": "Debug/trace source scope; current probe operations are not all-mode qualification.",
+      "section": "38"
+    },
+    {
+      "applicability": "pending",
+      "document": "rm0090",
+      "rationale": "Electronic signature requirements and field provenance need explicit normalized records.",
+      "section": "39"
+    },
+    {
+      "applicability": "pending",
+      "document": "rm0090",
+      "rationale": "Security notice requires review alongside boot/update requirements.",
+      "section": "40"
+    },
+    {
+      "applicability": "document_metadata",
+      "document": "rm0090",
+      "rationale": "Revision history; retain source identity and change review.",
+      "section": "41"
+    },
+    {
+      "applicability": "document_metadata",
+      "document": "ds8626",
+      "rationale": "Datasheet introduction.",
+      "section": "1"
+    },
+    {
+      "applicability": "mixed",
+      "document": "ds8626",
+      "rationale": "Part description and family compatibility require exact-part reconciliation.",
+      "section": "2"
+    },
+    {
+      "applicability": "applicable",
+      "document": "ds8626",
+      "evidence": [
+        {
+          "evidence": "part_ds_part_matrix_page_14",
+          "locator": "page:14"
+        },
+        {
+          "evidence": "part_ds_part_matrix_page_16",
+          "locator": "page:16"
+        }
+      ],
+      "rationale": "The functional overview applies to the documented F405/F407 family; Table 2 confirms the selected F407Vx feature group. Exact instance, pin and operating-condition requirements remain separate.",
+      "section": "3"
+    },
+    {
+      "applicability": "mixed",
+      "document": "ds8626",
+      "rationale": "Pinouts and alternate functions are package-specific; not every shared-manual pin exists on LQFP100.",
+      "section": "4"
+    },
+    {
+      "applicability": "mixed",
+      "document": "ds8626",
+      "rationale": "Memory map requires exact density and bank constraints.",
+      "section": "5"
+    },
+    {
+      "applicability": "mixed",
+      "document": "ds8626",
+      "rationale": "Electrical conditions and limits require exact voltage, temperature, clock and interface context.",
+      "section": "6"
+    },
+    {
+      "applicability": "mixed",
+      "document": "ds8626",
+      "rationale": "Several package branches occur in this document.",
+      "section": "7"
+    },
+    {
+      "applicability": "applicable",
+      "document": "ds8626",
+      "rationale": "Section title explicitly names the selected LQFP100 package; mechanical and pin constraints remain to review.",
+      "section": "7.4"
+    },
+    {
+      "applicability": "applicable",
+      "document": "ds8626",
+      "evidence": [
+        {
+          "evidence": "part_ds_ordering_page_186",
+          "locator": "page:186"
+        }
+      ],
+      "rationale": "Ordering definition confirms V=100 pins, G=1024 Kbytes, T=LQFP and 6=industrial -40 to +85 C for the exact selected ordering code.",
+      "section": "8"
+    },
+    {
+      "applicability": "pending",
+      "document": "ds8626",
+      "rationale": "Security notice remains part of requirements review.",
+      "section": "9"
+    },
+    {
+      "applicability": "document_metadata",
+      "document": "ds8626",
+      "rationale": "Revision history.",
+      "section": "10"
+    },
+    {
+      "applicability": "pending",
+      "document": "ds8626",
+      "rationale": "Application diagrams need visual review; headings do not reconstruct their connections.",
+      "section": "A"
+    },
+    {
+      "applicability": "applicable",
+      "document": "pm0214",
+      "evidence": [
+        {
+          "evidence": "part_ds_part_matrix_page_14",
+          "locator": "page:14"
+        }
+      ],
+      "rationale": "DS8626 describes the selected MCU core as Cortex-M4 with single-precision FPU, DSP and MPU. This establishes core-document applicability, not complete instruction/exception/mode correctness.",
+      "section": "1"
+    },
+    {
+      "applicability": "applicable",
+      "document": "pm0214",
+      "evidence": [
+        {
+          "evidence": "part_ds_part_matrix_page_14",
+          "locator": "page:14"
+        }
+      ],
+      "peripherals": [
+        "scb",
+        "nvic"
+      ],
+      "rationale": "DS8626 describes the selected MCU core as Cortex-M4 with single-precision FPU, DSP and MPU. This establishes core-document applicability, not complete instruction/exception/mode correctness.",
+      "section": "2"
+    },
+    {
+      "applicability": "applicable",
+      "document": "pm0214",
+      "evidence": [
+        {
+          "evidence": "part_ds_part_matrix_page_14",
+          "locator": "page:14"
+        }
+      ],
+      "rationale": "DS8626 describes the selected MCU core as Cortex-M4 with single-precision FPU, DSP and MPU. This establishes core-document applicability, not complete instruction/exception/mode correctness.",
+      "section": "3"
+    },
+    {
+      "applicability": "applicable",
+      "document": "pm0214",
+      "evidence": [
+        {
+          "evidence": "part_ds_part_matrix_page_14",
+          "locator": "page:14"
+        }
+      ],
+      "peripherals": [
+        "scb",
+        "nvic",
+        "mpu",
+        "fpu",
+        "systick"
+      ],
+      "rationale": "DS8626 describes the selected MCU core as Cortex-M4 with single-precision FPU, DSP and MPU. This establishes core-document applicability, not complete instruction/exception/mode correctness.",
+      "section": "4"
+    },
+    {
+      "applicability": "applicable",
+      "document": "pm0214",
+      "peripherals": [
+        "systick"
+      ],
+      "rationale": "SysTick section relates to selected core timing examples, not every mode.",
+      "section": "4.5",
+      "workflows": [
+        "systick_1khz_interrupt",
+        "systick_core_polling"
+      ]
+    },
+    {
+      "applicability": "document_metadata",
+      "document": "pm0214",
+      "rationale": "Revision history.",
+      "section": "5"
+    },
+    {
+      "applicability": "mixed",
+      "document": "es0182",
+      "rationale": "Errata summary applicability depends on exact silicon revision and operating conditions. Preserve revision cells literally until body/legend review; physical revision remains unspecified.",
+      "section": "2"
+    },
+    {
+      "applicability": "excluded",
+      "document": "ds8626",
+      "evidence": [
+        {
+          "evidence": "part_ds_part_matrix_page_16",
+          "locator": "page:16"
+        }
+      ],
+      "rationale": "Mechanical information for a different package; Table 2 selects LQFP100 for STM32F407Vx. This does not exclude the underlying peripheral from other parts.",
+      "section": "7.2"
+    },
+    {
+      "applicability": "excluded",
+      "document": "ds8626",
+      "evidence": [
+        {
+          "evidence": "part_ds_part_matrix_page_16",
+          "locator": "page:16"
+        }
+      ],
+      "rationale": "Mechanical information for a different package; Table 2 selects LQFP100 for STM32F407Vx. This does not exclude the underlying peripheral from other parts.",
+      "section": "7.3"
+    },
+    {
+      "applicability": "excluded",
+      "document": "ds8626",
+      "evidence": [
+        {
+          "evidence": "part_ds_part_matrix_page_16",
+          "locator": "page:16"
+        }
+      ],
+      "rationale": "Mechanical information for a different package; Table 2 selects LQFP100 for STM32F407Vx. This does not exclude the underlying peripheral from other parts.",
+      "section": "7.5"
+    },
+    {
+      "applicability": "excluded",
+      "document": "ds8626",
+      "evidence": [
+        {
+          "evidence": "part_ds_part_matrix_page_16",
+          "locator": "page:16"
+        }
+      ],
+      "rationale": "Mechanical information for a different package; Table 2 selects LQFP100 for STM32F407Vx. This does not exclude the underlying peripheral from other parts.",
+      "section": "7.6"
+    },
+    {
+      "applicability": "excluded",
+      "document": "ds8626",
+      "evidence": [
+        {
+          "evidence": "part_ds_part_matrix_page_16",
+          "locator": "page:16"
+        }
+      ],
+      "rationale": "Mechanical information for a different package; Table 2 selects LQFP100 for STM32F407Vx. This does not exclude the underlying peripheral from other parts.",
+      "section": "7.7"
+    }
+  ],
+  "documents": [
+    {
+      "id": "rm0090",
+      "path": "outlines/rm0090.json",
+      "revision_label": "RM0090 Rev 22",
+      "sha256": "adb78cf7c75d2268cafc794eb06da8d0234ea8c1b0073db7e0b265815a5d6fce"
+    },
+    {
+      "id": "ds8626",
+      "path": "outlines/ds8626.json",
+      "revision_label": "DS8626 Rev 12",
+      "sha256": "506f2574be9d83c025c6c07218eb7975a5f4c7577b643df6b517464b7344efbd"
+    },
+    {
+      "id": "pm0214",
+      "path": "outlines/pm0214.json",
+      "revision_label": "PM0214 Rev 10",
+      "sha256": "cebf174090f1ca343253011ae156178ff730ea04da8524330c1852c798cdd12a"
+    },
+    {
+      "id": "es0182",
+      "path": "outlines/es0182.json",
+      "revision_label": "ES0182 Rev 19",
+      "sha256": "6354929d74cd806842f6ff13ff4935df3a6bdeee9007d7cb70726163a0a7fc0a"
+    }
+  ],
+  "exhaustiveness_review": "pending",
+  "facts": [
+    {
+      "description": "Manufacturer table column for this target",
+      "evidence": [
+        {
+          "evidence": "part_ds_part_matrix_page_16",
+          "locator": "page:16"
+        }
+      ],
+      "id": "selected_sales_group",
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+      "unit": "",
+      "value": "STM32F407Vx"
+    },
+    {
+      "description": "Package in the selected sales-group column",
+      "evidence": [
+        {
+          "evidence": "part_ds_part_matrix_page_16",
+          "locator": "page:16"
+        }
+      ],
+      "id": "selected_package",
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+      "unit": "",
+      "value": "LQFP100"
+    },
+    {
+      "description": "GPIO count for STM32F407Vx",
+      "evidence": [
+        {
+          "evidence": "part_ds_part_matrix_page_16",
+          "locator": "page:16"
+        }
+      ],
+      "id": "gpio_count",
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+      "unit": "pins",
+      "value": 82
+    },
+    {
+      "description": "ADC units in Table 2",
+      "evidence": [
+        {
+          "evidence": "part_ds_part_matrix_page_16",
+          "locator": "page:16"
+        }
+      ],
+      "id": "adc_count",
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+      "unit": "controllers",
+      "value": 3
+    },
+    {
+      "description": "ADC channel count in the selected sales-group column; electrical/pin constraints still apply",
+      "evidence": [
+        {
+          "evidence": "part_ds_part_matrix_page_16",
+          "locator": "page:16"
+        }
+      ],
+      "id": "adc_channel_count",
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+      "unit": "channels",
+      "value": 16
+    },
+    {
+      "description": "DAC channel count in Table 2",
+      "evidence": [
+        {
+          "evidence": "part_ds_part_matrix_page_16",
+          "locator": "page:16"
+        }
+      ],
+      "id": "dac_channels",
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+      "unit": "channels",
+      "value": 2
+    },
+    {
+      "description": "SPI interface count; SPI2/3 I2S use is exclusive",
+      "evidence": [
+        {
+          "evidence": "part_ds_part_matrix_page_16",
+          "locator": "page:16"
+        }
+      ],
+      "id": "spi_count",
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+      "unit": "interfaces",
+      "value": 3
+    },
+    {
+      "description": "Full-duplex I2S interface count; not an additional SAI block",
+      "evidence": [
+        {
+          "evidence": "part_ds_part_matrix_page_16",
+          "locator": "page:16"
+        }
+      ],
+      "id": "i2s_count",
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+      "unit": "interfaces",
+      "value": 2
+    },
+    {
+      "description": "I2C interface count",
+      "evidence": [
+        {
+          "evidence": "part_ds_part_matrix_page_16",
+          "locator": "page:16"
+        }
+      ],
+      "id": "i2c_count",
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+      "unit": "interfaces",
+      "value": 3
+    },
+    {
+      "description": "USART interface count",
+      "evidence": [
+        {
+          "evidence": "part_ds_part_matrix_page_16",
+          "locator": "page:16"
+        }
+      ],
+      "id": "usart_count",
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+      "unit": "interfaces",
+      "value": 4
+    },
+    {
+      "description": "UART interface count",
+      "evidence": [
+        {
+          "evidence": "part_ds_part_matrix_page_16",
+          "locator": "page:16"
+        }
+      ],
+      "id": "uart_count",
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+      "unit": "interfaces",
+      "value": 2
+    },
+    {
+      "description": "CAN interface count",
+      "evidence": [
+        {
+          "evidence": "part_ds_part_matrix_page_16",
+          "locator": "page:16"
+        }
+      ],
+      "id": "can_count",
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+      "unit": "controllers",
+      "value": 2
+    },
+    {
+      "description": "Camera interface is available in the selected F407Vx group",
+      "evidence": [
+        {
+          "evidence": "part_ds_part_matrix_page_16",
+          "locator": "page:16"
+        }
+      ],
+      "id": "camera_present",
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+      "unit": "",
+      "value": true
+    },
+    {
+      "description": "USB OTG FS controller is listed; this does not qualify a board interface",
+      "evidence": [
+        {
+          "evidence": "part_ds_part_matrix_page_16",
+          "locator": "page:16"
+        }
+      ],
+      "id": "usb_fs_present",
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+      "unit": "",
+      "value": true
+    },
+    {
+      "description": "USB OTG HS controller is listed; PHY and board constraints remain separate",
+      "evidence": [
+        {
+          "evidence": "part_ds_part_matrix_page_16",
+          "locator": "page:16"
+        }
+      ],
+      "id": "usb_hs_present",
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+      "unit": "",
+      "value": true
+    },
+    {
+      "description": "SDIO controller is listed; card/socket/wiring are not inferred",
+      "evidence": [
+        {
+          "evidence": "part_ds_part_matrix_page_16",
+          "locator": "page:16"
+        }
+      ],
+      "id": "sdio_present",
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+      "unit": "",
+      "value": true
+    },
+    {
+      "description": "Ethernet is present in the F407 sales groups; external PHY is not inferred",
+      "evidence": [
+        {
+          "evidence": "part_ds_part_matrix_page_15",
+          "locator": "page:15"
+        }
+      ],
+      "id": "ethernet_present",
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+      "unit": "",
+      "value": true
+    },
+    {
+      "description": "General-purpose timer count",
+      "evidence": [
+        {
+          "evidence": "part_ds_part_matrix_page_15",
+          "locator": "page:15"
+        }
+      ],
+      "id": "general_timers",
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+      "unit": "timers",
+      "value": 10
+    },
+    {
+      "description": "Advanced-control timer count",
+      "evidence": [
+        {
+          "evidence": "part_ds_part_matrix_page_15",
+          "locator": "page:15"
+        }
+      ],
+      "id": "advanced_timers",
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+      "unit": "timers",
+      "value": 2
+    },
+    {
+      "description": "Basic timer count",
+      "evidence": [
+        {
+          "evidence": "part_ds_part_matrix_page_15",
+          "locator": "page:15"
+        }
+      ],
+      "id": "basic_timers",
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+      "unit": "timers",
+      "value": 2
+    },
+    {
+      "description": "Exact G-density ordering code denotes 1024 Kbytes; this is not an erase/programming contract",
+      "evidence": [
+        {
+          "evidence": "part_ds_part_matrix_page_15",
+          "locator": "page:15"
+        },
+        {
+          "evidence": "part_ds_ordering_page_186",
+          "locator": "page:186"
+        }
+      ],
+      "id": "flash_density",
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+      "unit": "KiB",
+      "value": 1024
+    },
+    {
+      "description": "Total system SRAM including separate memory banks; never treat this as contiguous linker RAM",
+      "evidence": [
+        {
+          "evidence": "part_ds_part_matrix_page_15",
+          "locator": "page:15"
+        }
+      ],
+      "id": "system_sram_total",
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+      "unit": "KiB",
+      "value": 192
+    },
+    {
+      "description": "DS8626 Table 2 footnote 1 package restriction",
+      "evidence": [
+        {
+          "evidence": "part_ds_part_matrix_page_16",
+          "locator": "page:16"
+        }
+      ],
+      "id": "fsmc_lqfp100_constraint",
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+      "unit": "",
+      "value": "Only Bank1 or Bank2: Bank1 multiplexed NOR/PSRAM with NE1; Bank2 8/16-bit NAND with NCE2; no FSMC interrupt line because Port G is unavailable."
+    },
+    {
+      "description": "V ordering code pin count; distinct from available GPIO count",
+      "evidence": [
+        {
+          "evidence": "part_ds_ordering_page_186",
+          "locator": "page:186"
+        }
+      ],
+      "id": "package_pin_count",
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+      "unit": "pins",
+      "value": 100
+    }
+  ],
+  "format": "praxis-capability-inventory-v1",
+  "missing_sources": [
+    {
+      "id": "boot_protocol_references",
+      "reason": "Part-specific ROM bootloader protocols, routing and update/recovery requirements need their referenced manufacturer application notes."
+    },
+    {
+      "id": "complete_board_netlist",
+      "reason": "Board connectivity is a partial reviewed transcription; complete CAD connectivity/assembly and physical revision evidence remain unavailable."
+    },
+    {
+      "id": "mode_requirement_inventory",
+      "reason": "Section outlines do not enumerate all body/table operating modes, instances, constraints and errata workarounds; their normalized requirement inventory is not yet authored."
+    }
+  ],
+  "outline_repairs": [
+    {
+      "action": "classify_metadata",
+      "document": "rm0090",
+      "evidence": [
+        {
+          "evidence": "layout_rm0090_scope_page_3",
+          "locator": "page:3/word:7"
+        }
+      ],
+      "gap_locator": "page:3/line:60",
+      "rationale": "The matching source word is below the footer in the MCP page layout. Representative rendered source pages confirm the non-content footer/logo area; every individual word position is retained. This is a text-layer artifact, not a section.",
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending"
+    },
+    {
+      "action": "repair_entry",
+      "destination_page": 141,
+      "document": "rm0090",
+      "evidence": [
+        {
+          "evidence": "layout_rm0090_scope_page_4",
+          "locator": "page:4/word:964"
+        },
+        {
+          "evidence": "layout_rm0090_scope_page_4",
+          "locator": "page:4/word:971"
+        }
+      ],
+      "gap_locator": "page:4/line:45",
+      "rationale": "Read the full MCP-rendered source page and word geometry: repair the long aligned heading or reattach its BAT subscript; preserve the original entry and unresolved fragment.",
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+      "section": "5.4",
+      "title": "Power control registers (STM32F405xx/07xx and STM32F415xx/17xx)"
+    },
+    {
+      "action": "classify_metadata",
+      "document": "rm0090",
+      "evidence": [
+        {
+          "evidence": "layout_rm0090_scope_page_5",
+          "locator": "page:5/word:7"
+        }
+      ],
+      "gap_locator": "page:5/line:60",
+      "rationale": "The matching source word is below the footer in the MCP page layout. Representative rendered source pages confirm the non-content footer/logo area; every individual word position is retained. This is a text-layer artifact, not a section.",
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending"
+    },
+    {
+      "action": "classify_metadata",
+      "document": "rm0090",
+      "evidence": [
+        {
+          "evidence": "layout_rm0090_scope_page_7",
+          "locator": "page:7/word:7"
+        }
+      ],
+      "gap_locator": "page:7/line:60",
+      "rationale": "The matching source word is below the footer in the MCP page layout. Representative rendered source pages confirm the non-content footer/logo area; every individual word position is retained. This is a text-layer artifact, not a section.",
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending"
+    },
+    {
+      "action": "classify_metadata",
+      "document": "rm0090",
+      "evidence": [
+        {
+          "evidence": "layout_rm0090_scope_page_9",
+          "locator": "page:9/word:7"
+        }
+      ],
+      "gap_locator": "page:9/line:60",
+      "rationale": "The matching source word is below the footer in the MCP page layout. Representative rendered source pages confirm the non-content footer/logo area; every individual word position is retained. This is a text-layer artifact, not a section.",
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending"
+    },
+    {
+      "action": "repair_entry",
+      "destination_page": 334,
+      "document": "rm0090",
+      "evidence": [
+        {
+          "evidence": "layout_rm0090_scope_page_10",
+          "locator": "page:10/word:291"
+        },
+        {
+          "evidence": "layout_rm0090_scope_page_10",
+          "locator": "page:10/word:303"
+        }
+      ],
+      "gap_locator": "page:10/line:21",
+      "rationale": "Read the full MCP-rendered source page and word geometry: repair the long aligned heading or reattach its BAT subscript; preserve the original entry and unresolved fragment.",
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+      "section": "10.5.8",
+      "title": "DMA stream x memory 0 address register (DMA_SxM0AR) (x = 0..7)"
+    },
+    {
+      "action": "repair_entry",
+      "destination_page": 334,
+      "document": "rm0090",
+      "evidence": [
+        {
+          "evidence": "layout_rm0090_scope_page_10",
+          "locator": "page:10/word:304"
+        },
+        {
+          "evidence": "layout_rm0090_scope_page_10",
+          "locator": "page:10/word:316"
+        }
+      ],
+      "gap_locator": "page:10/line:23",
+      "rationale": "Read the full MCP-rendered source page and word geometry: repair the long aligned heading or reattach its BAT subscript; preserve the original entry and unresolved fragment.",
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+      "section": "10.5.9",
+      "title": "DMA stream x memory 1 address register (DMA_SxM1AR) (x = 0..7)"
+    },
+    {
+      "action": "classify_metadata",
+      "document": "rm0090",
+      "evidence": [
+        {
+          "evidence": "layout_rm0090_scope_page_11",
+          "locator": "page:11/word:7"
+        }
+      ],
+      "gap_locator": "page:11/line:60",
+      "rationale": "The matching source word is below the footer in the MCP page layout. Representative rendered source pages confirm the non-content footer/logo area; every individual word position is retained. This is a text-layer artifact, not a section.",
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending"
+    },
+    {
+      "action": "classify_metadata",
+      "document": "rm0090",
+      "evidence": [
+        {
+          "evidence": "layout_rm0090_scope_page_13",
+          "locator": "page:13/word:7"
+        }
+      ],
+      "gap_locator": "page:13/line:60",
+      "rationale": "The matching source word is below the footer in the MCP page layout. Representative rendered source pages confirm the non-content footer/logo area; every individual word position is retained. This is a text-layer artifact, not a section.",
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending"
+    },
+    {
+      "action": "classify_metadata",
+      "document": "rm0090",
+      "evidence": [
+        {
+          "evidence": "layout_rm0090_scope_page_15",
+          "locator": "page:15/word:7"
+        }
+      ],
+      "gap_locator": "page:15/line:60",
+      "rationale": "The matching source word is below the footer in the MCP page layout. Representative rendered source pages confirm the non-content footer/logo area; every individual word position is retained. This is a text-layer artifact, not a section.",
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending"
+    },
+    {
+      "action": "classify_metadata",
+      "document": "rm0090",
+      "evidence": [
+        {
+          "evidence": "layout_rm0090_scope_page_17",
+          "locator": "page:17/word:7"
+        }
+      ],
+      "gap_locator": "page:17/line:60",
+      "rationale": "The matching source word is below the footer in the MCP page layout. Representative rendered source pages confirm the non-content footer/logo area; every individual word position is retained. This is a text-layer artifact, not a section.",
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending"
+    },
+    {
+      "action": "classify_metadata",
+      "document": "rm0090",
+      "evidence": [
+        {
+          "evidence": "layout_rm0090_scope_page_19",
+          "locator": "page:19/word:7"
+        }
+      ],
+      "gap_locator": "page:19/line:60",
+      "rationale": "The matching source word is below the footer in the MCP page layout. Representative rendered source pages confirm the non-content footer/logo area; every individual word position is retained. This is a text-layer artifact, not a section.",
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending"
+    },
+    {
+      "action": "classify_metadata",
+      "document": "rm0090",
+      "evidence": [
+        {
+          "evidence": "layout_rm0090_scope_page_21",
+          "locator": "page:21/word:7"
+        }
+      ],
+      "gap_locator": "page:21/line:60",
+      "rationale": "The matching source word is below the footer in the MCP page layout. Representative rendered source pages confirm the non-content footer/logo area; every individual word position is retained. This is a text-layer artifact, not a section.",
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending"
+    },
+    {
+      "action": "classify_metadata",
+      "document": "rm0090",
+      "evidence": [
+        {
+          "evidence": "layout_rm0090_scope_page_23",
+          "locator": "page:23/word:7"
+        }
+      ],
+      "gap_locator": "page:23/line:60",
+      "rationale": "The matching source word is below the footer in the MCP page layout. Representative rendered source pages confirm the non-content footer/logo area; every individual word position is retained. This is a text-layer artifact, not a section.",
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending"
+    },
+    {
+      "action": "classify_metadata",
+      "document": "rm0090",
+      "evidence": [
+        {
+          "evidence": "layout_rm0090_scope_page_25",
+          "locator": "page:25/word:7"
+        }
+      ],
+      "gap_locator": "page:25/line:60",
+      "rationale": "The matching source word is below the footer in the MCP page layout. Representative rendered source pages confirm the non-content footer/logo area; every individual word position is retained. This is a text-layer artifact, not a section.",
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending"
+    },
+    {
+      "action": "classify_metadata",
+      "document": "rm0090",
+      "evidence": [
+        {
+          "evidence": "layout_rm0090_scope_page_27",
+          "locator": "page:27/word:7"
+        }
+      ],
+      "gap_locator": "page:27/line:60",
+      "rationale": "The matching source word is below the footer in the MCP page layout. Representative rendered source pages confirm the non-content footer/logo area; every individual word position is retained. This is a text-layer artifact, not a section.",
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending"
+    },
+    {
+      "action": "classify_metadata",
+      "document": "rm0090",
+      "evidence": [
+        {
+          "evidence": "layout_rm0090_scope_page_29",
+          "locator": "page:29/word:7"
+        }
+      ],
+      "gap_locator": "page:29/line:60",
+      "rationale": "The matching source word is below the footer in the MCP page layout. Representative rendered source pages confirm the non-content footer/logo area; every individual word position is retained. This is a text-layer artifact, not a section.",
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending"
+    },
+    {
+      "action": "classify_metadata",
+      "document": "rm0090",
+      "evidence": [
+        {
+          "evidence": "layout_rm0090_scope_page_31",
+          "locator": "page:31/word:7"
+        }
+      ],
+      "gap_locator": "page:31/line:60",
+      "rationale": "The matching source word is below the footer in the MCP page layout. Representative rendered source pages confirm the non-content footer/logo area; every individual word position is retained. This is a text-layer artifact, not a section.",
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending"
+    },
+    {
+      "action": "classify_metadata",
+      "document": "rm0090",
+      "evidence": [
+        {
+          "evidence": "layout_rm0090_scope_page_33",
+          "locator": "page:33/word:7"
+        }
+      ],
+      "gap_locator": "page:33/line:60",
+      "rationale": "The matching source word is below the footer in the MCP page layout. Representative rendered source pages confirm the non-content footer/logo area; every individual word position is retained. This is a text-layer artifact, not a section.",
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending"
+    },
+    {
+      "action": "classify_metadata",
+      "document": "rm0090",
+      "evidence": [
+        {
+          "evidence": "layout_rm0090_scope_page_35",
+          "locator": "page:35/word:7"
+        }
+      ],
+      "gap_locator": "page:35/line:60",
+      "rationale": "The matching source word is below the footer in the MCP page layout. Representative rendered source pages confirm the non-content footer/logo area; every individual word position is retained. This is a text-layer artifact, not a section.",
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending"
+    },
+    {
+      "action": "classify_metadata",
+      "document": "rm0090",
+      "evidence": [
+        {
+          "evidence": "layout_rm0090_scope_page_37",
+          "locator": "page:37/word:7"
+        }
+      ],
+      "gap_locator": "page:37/line:60",
+      "rationale": "The matching source word is below the footer in the MCP page layout. Representative rendered source pages confirm the non-content footer/logo area; every individual word position is retained. This is a text-layer artifact, not a section.",
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending"
+    },
+    {
+      "action": "classify_metadata",
+      "document": "rm0090",
+      "evidence": [
+        {
+          "evidence": "layout_rm0090_scope_page_39",
+          "locator": "page:39/word:7"
+        }
+      ],
+      "gap_locator": "page:39/line:60",
+      "rationale": "The matching source word is below the footer in the MCP page layout. Representative rendered source pages confirm the non-content footer/logo area; every individual word position is retained. This is a text-layer artifact, not a section.",
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending"
+    },
+    {
+      "action": "repair_entry",
+      "destination_page": 33,
+      "document": "ds8626",
+      "evidence": [
+        {
+          "evidence": "layout_ds_dac_contents_page_3",
+          "locator": "page:3/word:1117"
+        },
+        {
+          "evidence": "layout_ds_dac_contents_page_3",
+          "locator": "page:3/word:1166"
+        },
+        {
+          "evidence": "layout_ds_dac_contents_page_3",
+          "locator": "page:3/word:1119"
+        }
+      ],
+      "gap_locator": "page:3/line:55",
+      "rationale": "Read the full MCP-rendered source page and word geometry: repair the long aligned heading or reattach its BAT subscript; preserve the original entry and unresolved fragment.",
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+      "section": "3.20",
+      "title": "VBAT operation"
+    },
+    {
+      "action": "classify_metadata",
+      "document": "ds8626",
+      "evidence": [
+        {
+          "evidence": "layout_ds_dac_contents_page_3",
+          "locator": "page:3/word:8"
+        }
+      ],
+      "gap_locator": "page:3/line:60",
+      "rationale": "The matching source word is below the footer in the MCP page layout. Representative rendered source pages confirm the non-content footer/logo area; every individual word position is retained. This is a text-layer artifact, not a section.",
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending"
+    },
+    {
+      "action": "repair_entry",
+      "destination_page": 141,
+      "document": "ds8626",
+      "evidence": [
+        {
+          "evidence": "layout_ds_dac_contents_page_5",
+          "locator": "page:5/word:806"
+        },
+        {
+          "evidence": "layout_ds_dac_contents_page_5",
+          "locator": "page:5/word:841"
+        },
+        {
+          "evidence": "layout_ds_dac_contents_page_5",
+          "locator": "page:5/word:808"
+        }
+      ],
+      "gap_locator": "page:5/line:41",
+      "rationale": "Read the full MCP-rendered source page and word geometry: repair the long aligned heading or reattach its BAT subscript; preserve the original entry and unresolved fragment.",
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+      "section": "6.3.23",
+      "title": "VBAT monitoring characteristics"
+    },
+    {
+      "action": "classify_metadata",
+      "document": "ds8626",
+      "evidence": [
+        {
+          "evidence": "layout_ds_dac_contents_page_5",
+          "locator": "page:5/word:8"
+        }
+      ],
+      "gap_locator": "page:5/line:60",
+      "rationale": "The matching source word is below the footer in the MCP page layout. Representative rendered source pages confirm the non-content footer/logo area; every individual word position is retained. This is a text-layer artifact, not a section.",
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending"
+    },
+    {
+      "action": "classify_metadata",
+      "document": "pm0214",
+      "evidence": [
+        {
+          "evidence": "layout_pm0214_core_page_3",
+          "locator": "page:3/word:7"
+        }
+      ],
+      "gap_locator": "page:3/line:60",
+      "rationale": "The matching source word is below the footer in the MCP page layout. Representative rendered source pages confirm the non-content footer/logo area; every individual word position is retained. This is a text-layer artifact, not a section.",
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending"
+    },
+    {
+      "action": "classify_metadata",
+      "document": "pm0214",
+      "evidence": [
+        {
+          "evidence": "layout_pm0214_core_page_5",
+          "locator": "page:5/word:7"
+        }
+      ],
+      "gap_locator": "page:5/line:60",
+      "rationale": "The matching source word is below the footer in the MCP page layout. Representative rendered source pages confirm the non-content footer/logo area; every individual word position is retained. This is a text-layer artifact, not a section.",
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending"
+    },
+    {
+      "action": "classify_metadata",
+      "document": "pm0214",
+      "evidence": [
+        {
+          "evidence": "layout_pm0214_core_page_7",
+          "locator": "page:7/word:7"
+        }
+      ],
+      "gap_locator": "page:7/line:60",
+      "rationale": "The matching source word is below the footer in the MCP page layout. Representative rendered source pages confirm the non-content footer/logo area; every individual word position is retained. This is a text-layer artifact, not a section.",
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending"
+    }
+  ],
+  "scope": "Second F407 source-scope review: all original index records and raw gaps retained; source-bound editorial repairs and applicability evidence are additional data. Independent review and body/mode qualification remain pending.",
+  "supporting_evidence": [
+    {
+      "id": "part_ds_part_matrix_page_14",
+      "path": "supporting-evidence-v2/part_ds_part_matrix_page_14.json",
+      "sha256": "3cdc8c356d289be0e33edb8d37f76f00ad5cf3d17a6e0ac9bd2a6df7b6a65c3c"
+    },
+    {
+      "id": "part_ds_part_matrix_page_15",
+      "path": "supporting-evidence-v2/part_ds_part_matrix_page_15.json",
+      "sha256": "fc9cf8c19a15de9a793b0674dbea2c4e7b0ea69681a9fa902078284206bdcaa9"
+    },
+    {
+      "id": "part_ds_part_matrix_page_16",
+      "path": "supporting-evidence-v2/part_ds_part_matrix_page_16.json",
+      "sha256": "9f0d6ffc22e065ef2ca6297c4356ae0d81c4454e6c855dc312316bc8fb1f5a9e"
+    },
+    {
+      "id": "part_rm_availability_page_58",
+      "path": "supporting-evidence-v2/part_rm_availability_page_58.json",
+      "sha256": "37c874a617d7a466f656026686ef5f7467214de29adca5f2b0553bd4b666fdb2"
+    },
+    {
+      "id": "part_rm_availability_page_59",
+      "path": "supporting-evidence-v2/part_rm_availability_page_59.json",
+      "sha256": "73deed03784a2709044e01dd87ba7394c925f167b389e23b715bf5bc234da857"
+    },
+    {
+      "id": "part_rm_feature_applicability_page_1590",
+      "path": "supporting-evidence-v2/part_rm_feature_applicability_page_1590.json",
+      "sha256": "17e8c3e5a9c2934af918114d6f5df25195d386de574acbbd51163ee5c582f7cb"
+    },
+    {
+      "id": "part_rm_feature_applicability_page_1591",
+      "path": "supporting-evidence-v2/part_rm_feature_applicability_page_1591.json",
+      "sha256": "138a49d81d83f822dc322b0ded2638a83c5e1b77f9a12d100a8ec1322277a4d9"
+    },
+    {
+      "id": "part_rm_feature_applicability_page_341",
+      "path": "supporting-evidence-v2/part_rm_feature_applicability_page_341.json",
+      "sha256": "8f27db142c4b8d37269785b3ab82c8a9caddbf90f720037a56a3d6f2958d8471"
+    },
+    {
+      "id": "part_rm_feature_applicability_page_342",
+      "path": "supporting-evidence-v2/part_rm_feature_applicability_page_342.json",
+      "sha256": "2a563cf7a1d0289d2744129e547e09d03294a72e47156307d3d4c2eb2cdc7e89"
+    },
+    {
+      "id": "part_rm_feature_applicability_page_480",
+      "path": "supporting-evidence-v2/part_rm_feature_applicability_page_480.json",
+      "sha256": "c5d78794730176fba5cee636e277f51ae946cc4a9d8d2e145b6146f85822c4fe"
+    },
+    {
+      "id": "part_rm_feature_applicability_page_481",
+      "path": "supporting-evidence-v2/part_rm_feature_applicability_page_481.json",
+      "sha256": "a45279407b72c310a0b8f5f3885ce6ced9272042a6dcbca9d57516550d274712"
+    },
+    {
+      "id": "part_rm_feature_applicability_page_716",
+      "path": "supporting-evidence-v2/part_rm_feature_applicability_page_716.json",
+      "sha256": "77053566d5bdc2516b15dd38b4731f2bd970db9784ae24daec8f34b474c9217c"
+    },
+    {
+      "id": "part_rm_feature_applicability_page_717",
+      "path": "supporting-evidence-v2/part_rm_feature_applicability_page_717.json",
+      "sha256": "327cd15a435cc8cb61a7264a8a4774ae0db7bca9945ce780471ee9dc5fa821ba"
+    },
+    {
+      "id": "part_rm_feature_applicability_page_768",
+      "path": "supporting-evidence-v2/part_rm_feature_applicability_page_768.json",
+      "sha256": "0cb7d32d59fb50d1db674c77c0872b911fee02f5d271dfc4116bce31363bf04f"
+    },
+    {
+      "id": "part_rm_feature_applicability_page_769",
+      "path": "supporting-evidence-v2/part_rm_feature_applicability_page_769.json",
+      "sha256": "82de69e6786e1a5877acf738f23a566d12d009b6e53fae45f4485f466c2e6c9b"
+    },
+    {
+      "id": "part_rm_feature_applicability_page_921",
+      "path": "supporting-evidence-v2/part_rm_feature_applicability_page_921.json",
+      "sha256": "3d996419498e5dc3718c0ac3a1f989c7fc42e7d9f0f6de155797ced4b7365332"
+    },
+    {
+      "id": "part_rm_feature_applicability_page_922",
+      "path": "supporting-evidence-v2/part_rm_feature_applicability_page_922.json",
+      "sha256": "433655ba71b9a4528c6638c7f494f4943ba4c303e8cfa69e572a3acd45be59b1"
+    },
+    {
+      "id": "layout_ds_dac_contents_page_3",
+      "path": "supporting-evidence-v2/layout_ds_dac_contents_page_3.json",
+      "sha256": "60c1d584bdbd69bba20af524ba5cc5185be479dd1244e0ae1d592132a6399829"
+    },
+    {
+      "id": "layout_ds_dac_contents_page_5",
+      "path": "supporting-evidence-v2/layout_ds_dac_contents_page_5.json",
+      "sha256": "ed065d47849bf56d9c2a5869350b1bb730e5699dab29355b92a837db5292437a"
+    },
+    {
+      "id": "layout_pm0214_core_page_3",
+      "path": "supporting-evidence-v2/layout_pm0214_core_page_3.json",
+      "sha256": "ff115ac378ca936cfcacda06411755c624a0edc539dc533a81315290f62f3759"
+    },
+    {
+      "id": "layout_pm0214_core_page_5",
+      "path": "supporting-evidence-v2/layout_pm0214_core_page_5.json",
+      "sha256": "7c90ac64b21c5ad4ad0f7075c04163cad967076853d0427d91602ae7be5be7c1"
+    },
+    {
+      "id": "layout_pm0214_core_page_7",
+      "path": "supporting-evidence-v2/layout_pm0214_core_page_7.json",
+      "sha256": "35ef51ae74553395c20868484a04a20cff6c5ca1e7fb7295a1cb5cfb11005561"
+    },
+    {
+      "id": "layout_rm0090_scope_page_10",
+      "path": "supporting-evidence-v2/layout_rm0090_scope_page_10.json",
+      "sha256": "a6d20650c7ee888d052db0b589753c3e797395631dc5a5e773af8d263f559c86"
+    },
+    {
+      "id": "layout_rm0090_scope_page_11",
+      "path": "supporting-evidence-v2/layout_rm0090_scope_page_11.json",
+      "sha256": "79d83d51bd8a6f49276be590e86d48d65c948fd18342181c1753818c5442e98b"
+    },
+    {
+      "id": "layout_rm0090_scope_page_13",
+      "path": "supporting-evidence-v2/layout_rm0090_scope_page_13.json",
+      "sha256": "28a9a455020bc0ae4bfa4e7eb6d249266b8bf1560f3494fd3f1bcd89cdd00392"
+    },
+    {
+      "id": "layout_rm0090_scope_page_15",
+      "path": "supporting-evidence-v2/layout_rm0090_scope_page_15.json",
+      "sha256": "a3403c364de8f5e567925973c22ee3905f8e5a058889ef63f75d5eaa98907ac0"
+    },
+    {
+      "id": "layout_rm0090_scope_page_17",
+      "path": "supporting-evidence-v2/layout_rm0090_scope_page_17.json",
+      "sha256": "28ade166059e97d837a874637d091538ee61edc4004ee22da0f8b934fa2eca69"
+    },
+    {
+      "id": "layout_rm0090_scope_page_19",
+      "path": "supporting-evidence-v2/layout_rm0090_scope_page_19.json",
+      "sha256": "203b271962f2bcc642873bfe11e6efd46732ce997bc7da393a3d84e4d6c71e85"
+    },
+    {
+      "id": "layout_rm0090_scope_page_21",
+      "path": "supporting-evidence-v2/layout_rm0090_scope_page_21.json",
+      "sha256": "2dedb3b6eaff4e36b2d97472c5164e2b9896dd45e44bf668aee2bbc8b2b60ca2"
+    },
+    {
+      "id": "layout_rm0090_scope_page_23",
+      "path": "supporting-evidence-v2/layout_rm0090_scope_page_23.json",
+      "sha256": "83fe64692af55e673cc7073b4c11cff14ba3b278ccbcd3aeed4e2591aba6a36a"
+    },
+    {
+      "id": "layout_rm0090_scope_page_25",
+      "path": "supporting-evidence-v2/layout_rm0090_scope_page_25.json",
+      "sha256": "b9cf29784fc99fa3450c4e9c62830424b84b68f0ec5925c3152385d90e117517"
+    },
+    {
+      "id": "layout_rm0090_scope_page_27",
+      "path": "supporting-evidence-v2/layout_rm0090_scope_page_27.json",
+      "sha256": "f8f3f0ba0f87b1dafaaad242afec63401183fe6e5c8de29df5ad0680d322e8d6"
+    },
+    {
+      "id": "layout_rm0090_scope_page_29",
+      "path": "supporting-evidence-v2/layout_rm0090_scope_page_29.json",
+      "sha256": "8d855e83f775d49bc3a936f6f2294d5189701f0a451263ed3fa457e0018827b0"
+    },
+    {
+      "id": "layout_rm0090_scope_page_3",
+      "path": "supporting-evidence-v2/layout_rm0090_scope_page_3.json",
+      "sha256": "beda21e0c961290f401c48ba3a320d6ff1931db05c3167a3b379102f0116cdba"
+    },
+    {
+      "id": "layout_rm0090_scope_page_31",
+      "path": "supporting-evidence-v2/layout_rm0090_scope_page_31.json",
+      "sha256": "919e7540c822efa1ee8ee465e572955176b5bbbec550ad097d76de4becabfd5c"
+    },
+    {
+      "id": "layout_rm0090_scope_page_33",
+      "path": "supporting-evidence-v2/layout_rm0090_scope_page_33.json",
+      "sha256": "3ea933d60e5ab6289702b1886c8649aed2adbec2f2f85b9f2eff3c705492c621"
+    },
+    {
+      "id": "layout_rm0090_scope_page_35",
+      "path": "supporting-evidence-v2/layout_rm0090_scope_page_35.json",
+      "sha256": "19ffc70458b570d4cf92c784640a680ed5b54f5401215a97f42028001faae181"
+    },
+    {
+      "id": "layout_rm0090_scope_page_37",
+      "path": "supporting-evidence-v2/layout_rm0090_scope_page_37.json",
+      "sha256": "1bfc13a0cd5a47c6ac187828a72ef1cf441b5077ed4026bc3bf8a549508f6227"
+    },
+    {
+      "id": "layout_rm0090_scope_page_39",
+      "path": "supporting-evidence-v2/layout_rm0090_scope_page_39.json",
+      "sha256": "4ea618f47cf74f56e9ec0d1fcaf5ae8dd0328f58a1c042349fb8c14dcc5617e9"
+    },
+    {
+      "id": "layout_rm0090_scope_page_4",
+      "path": "supporting-evidence-v2/layout_rm0090_scope_page_4.json",
+      "sha256": "ef04e1a928db5a41fe1ff55bf9b5413b9116f2312c9c26da441508c36905f355"
+    },
+    {
+      "id": "layout_rm0090_scope_page_5",
+      "path": "supporting-evidence-v2/layout_rm0090_scope_page_5.json",
+      "sha256": "733734df23d8b3b57f0e9b8a46ccacf75f94be76629aa340c1c1204ef6d10c94"
+    },
+    {
+      "id": "layout_rm0090_scope_page_7",
+      "path": "supporting-evidence-v2/layout_rm0090_scope_page_7.json",
+      "sha256": "a2622dd1631ba37f74e6af4ade6111ab86e57349fd85c303a5d168f7acdcde62"
+    },
+    {
+      "id": "layout_rm0090_scope_page_9",
+      "path": "supporting-evidence-v2/layout_rm0090_scope_page_9.json",
+      "sha256": "80da0a3cefc0387fc688d9d09dbb5ba8ffaf93e4af9825a971bcf72ae5c1405d"
+    },
+    {
+      "id": "part_ds_ordering_page_186",
+      "path": "supporting-evidence-v2/part_ds_ordering_page_186.json",
+      "sha256": "3b36838e3c1607d285bd8b7fce5b63f6c1e481969ae1f1fc92fc7e5d0215b8fe"
+    }
+  ],
+  "target": {
+    "board_revision": "MB997-E-01",
+    "id": "stm32f407g_disc1_mb997_e01",
+    "mcu": "STM32F407VGT6",
+    "package": "Package_QFP:LQFP-100_14x14mm_P0.5mm"
+  }
+}

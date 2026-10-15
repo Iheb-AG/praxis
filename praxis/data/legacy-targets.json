@@ -1,0 +1,81 @@
+{
+  "adapter_excluded_families": [
+    "avr"
+  ],
+  "identity_patterns": {
+    "stm32": "STM32[A-Z0-9]{4,24}"
+  },
+  "legacy_cmsis_structures": {
+    "gpio": "GPIO_TypeDef",
+    "nvic": "NVIC_Type",
+    "rcc": "RCC_TypeDef",
+    "usart": "USART_TypeDef"
+  },
+  "legacy_member_views": {
+    "gpio": {
+      "AFR": [
+        "AFRL",
+        "AFRH"
+      ]
+    }
+  },
+  "purpose": "Compatibility and qualification boundaries for historical immutable bundles; new compilation requires a source-pinned contract.",
+  "schema_version": 1,
+  "targets": [
+    {
+      "avr_mcu": null,
+      "clock_hz": 16000000,
+      "cpu": "cortex-m4",
+      "family": "stm32",
+      "header_identity": [
+        "__STM32F401xE_H"
+      ],
+      "header_kind": "cmsis",
+      "legacy_stages": [
+        "rcc",
+        "gpio",
+        "usart",
+        "nvic"
+      ],
+      "mcu": "STM32F401RE",
+      "package": "Package_QFP:LQFP-64_10x10mm_P0.5mm",
+      "require_fuses": false
+    },
+    {
+      "avr_mcu": null,
+      "clock_hz": 168000000,
+      "cpu": "cortex-m4",
+      "family": "stm32",
+      "header_identity": [
+        "__STM32F407xx_H"
+      ],
+      "header_kind": "cmsis",
+      "legacy_stages": [
+        "rcc",
+        "gpio",
+        "usart",
+        "nvic"
+      ],
+      "mcu": "STM32F407VGT6",
+      "package": "Package_QFP:LQFP-100_14x14mm_P0.5mm",
+      "require_fuses": false
+    },
+    {
+      "avr_mcu": "atmega328p",
+      "clock_hz": 16000000,
+      "cpu": null,
+      "family": "avr",
+      "header_identity": [],
+      "header_kind": "avr",
+      "legacy_stages": [
+        "clock",
+        "gpio",
+        "usart",
+        "interrupts"
+      ],
+      "mcu": "ATmega328P-PU",
+      "package": "Package_DIP:DIP-28_W7.62mm",
+      "require_fuses": true
+    }
+  ]
+}

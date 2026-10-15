@@ -1,0 +1,432 @@
+{
+  "artifacts": "New compilation outputs are in .praxis-output/compiler-contracts. Existing published bundle paths are unchanged.",
+  "changes": [
+    "Source-pinned declarative publication requirements and clock constraints",
+    "Generic dependency routing and named array views with mapping provenance",
+    "Source-format header validation isolated from compiler orchestration",
+    "Data-backed historical qualification/manifest compatibility",
+    "Complete linked provenance tables under the document budget"
+  ],
+  "date": "2026-10-14",
+  "dependency_lock": {
+    "command": "UV_CACHE_DIR=/tmp/praxis-uv-cache uv lock --check --offline",
+    "passed": true
+  },
+  "determinism": {
+    "f407": {
+      "files": 52,
+      "largest_document_bytes": 54966,
+      "passed": true,
+      "revision": "0ef554a2ad9d0e31a22afa785327cca2197f7a4f95ddaa7bb3a345a1034f2aa3"
+    },
+    "stm32f103c8t6": {
+      "files": 37,
+      "largest_document_bytes": 31890,
+      "passed": true,
+      "revision": "cb72531e120c57b1b52e11efb43d12425c6c2d390c9c730be7a184b94c7e97a7"
+    },
+    "stm32g071rbt6": {
+      "files": 42,
+      "largest_document_bytes": 37923,
+      "passed": true,
+      "revision": "6ff6aa04abcce811786e9e0ed2f10a3c4767bdb315a7437453e2d91eb0c8db91"
+    },
+    "stm32h743zit6": {
+      "files": 84,
+      "largest_document_bytes": 64765,
+      "passed": true,
+      "revision": "c49ce337d442f4adc07734b49ef524bfe4fe3c913597467d46b99d7f322fd4a0"
+    }
+  },
+  "distribution": {
+    "branding_assets_passed": true,
+    "experimental_target_inputs_verified": 37,
+    "passed": true,
+    "private_and_raw_paths_excluded": true,
+    "public_documentation_file_links_passed": true,
+    "publication_contracts_verified": 19,
+    "source_members": 2375,
+    "wheel_members": 57
+  },
+  "docker": {
+    "architecture": "amd64",
+    "image": "project-praxis:compiler-contracts",
+    "image_id": "sha256:863c7e24921284cef36c8db6cc3ecf2f8ffb10b68db138ceb9aa8843bdb4c895",
+    "limits": "Local architecture only; no compiler, physical board, or remote registry publication tested.",
+    "negative_and_runtime_checks": [
+      "MISSING_FILE",
+      "INTEGRITY_ERROR",
+      "non_root",
+      "read_only_filesystem_and_bundle",
+      "no_optional_extras"
+    ],
+    "os": "linux",
+    "passed": true,
+    "sessions": [
+      {
+        "calls": 38,
+        "complete_documents": 30,
+        "revision": "cb72531e120c57b1b52e11efb43d12425c6c2d390c9c730be7a184b94c7e97a7",
+        "target": "stm32f103c8t6_inventory"
+      },
+      {
+        "calls": 43,
+        "complete_documents": 35,
+        "revision": "6ff6aa04abcce811786e9e0ed2f10a3c4767bdb315a7437453e2d91eb0c8db91",
+        "target": "stm32g071rbt6_inventory"
+      },
+      {
+        "calls": 84,
+        "complete_documents": 76,
+        "revision": "c49ce337d442f4adc07734b49ef524bfe4fe3c913597467d46b99d7f322fd4a0",
+        "target": "stm32h743zit6_inventory"
+      },
+      {
+        "calls": 49,
+        "complete_documents": 41,
+        "revision": "0ef554a2ad9d0e31a22afa785327cca2197f7a4f95ddaa7bb3a345a1034f2aa3",
+        "target": "stm32f407g_disc1_mb997_e01"
+      },
+      {
+        "calls": 49,
+        "complete_documents": 41,
+        "revision": "edb8249ce849c59e6642f2edab2b58e036bc0105925897d8a61c04449b00f7e5",
+        "target": "stm32f407g_disc1_mb997_e01"
+      },
+      {
+        "calls": 12,
+        "complete_documents": 4,
+        "revision": "9254f63b1d16f4296641e3bf5ab047593373d8a8fe42666b43b89362b1efc7e7",
+        "target": "atmega328p_fixture"
+      },
+      {
+        "calls": 38,
+        "complete_documents": 30,
+        "revision": "cb72531e120c57b1b52e11efb43d12425c6c2d390c9c730be7a184b94c7e97a7",
+        "target": "stm32f103c8t6_inventory"
+      }
+    ],
+    "total_calls": 313
+  },
+  "format": "praxis-compiler-contracts-evidence-v1",
+  "historical_bundles_validated": {
+    "atmega328p": "9254f63b1d16f4296641e3bf5ab047593373d8a8fe42666b43b89362b1efc7e7",
+    "stm32f103c8t6-inventory-v1": "9f03fe953e7c76ea94b22d61054920410524f28996874259a63b879d6ffc1fe2",
+    "stm32f103c8t6-inventory-v2": "801b0126a094c4f5b211f2db999aa466a3014f99b2ed695c6493afd6e0cd448e",
+    "stm32f401re": "b283ed10bbc173c8932d185fb022c8d27829bef7011656840889b14b736c033d",
+    "stm32f407g-disc1-e01": "8a794192394d9e5dacea00324bfd91e061b0c086628b096c1ddd7bf25268800c",
+    "stm32f407g-disc1-e01-adc-v1": "102a3d0ca329d7e9351709179e082a51a44347b10b9345365f72e94ab58f24a8",
+    "stm32f407g-disc1-e01-arm-core-v1": "e60c26a7ba6580c5ec8fcf98fbbeb1ba470b86d252242d19c3a62507db06e5d7",
+    "stm32f407g-disc1-e01-arm-core-v2": "edb8249ce849c59e6642f2edab2b58e036bc0105925897d8a61c04449b00f7e5",
+    "stm32f407g-disc1-e01-can-rx-v1": "123a65450d9ff6849c1368aa595f9f575d8da71d740cdb68dcaa42cfc4e41a93",
+    "stm32f407g-disc1-e01-can-v1": "c16f763c075ac70682f8fda1bc64d012397c733feb156213707d691781b4f5d4",
+    "stm32f407g-disc1-e01-clock-v1": "0e8737e667f05858aa39cf6484cd7a5c30125fd5ae2910c441187185380eccda",
+    "stm32f407g-disc1-e01-dac-v1": "f14b00bf0189b882d50a2e8a8d11a48ec484cace3e3dd6b68eb6d7bd9e26cab2",
+    "stm32f407g-disc1-e01-discovery-v1": "5335ed3d1d4efca3960e5cccfb8f9f30800a59d6fd2c14f3d3c309409dd09f4c",
+    "stm32f407g-disc1-e01-discovery-v2": "84939f75664926a15854c881419d20d807ba7f93d98745ab0ac853e281ed9635",
+    "stm32f407g-disc1-e01-features-v1": "bd8b793388dff8303e5f7d46469b48afea1807dd2f7ae9b71541eb01779a3fbc",
+    "stm32f407g-disc1-e01-i2c-v1": "3e0deab3da3c5a4404782e2845e9e24206045912fb324bafd801fbe40212fc7e",
+    "stm32f407g-disc1-e01-m1": "53474b5de83dddffbdccfb86057c6ec9ad362f1949afd6a74e90effb2c27fc9b",
+    "stm32f407g-disc1-e01-uart-v1": "1e7e9f44e7e8a4a9c2f1730ae725a2fed50cd80271b75adf63cdaa495899900b",
+    "stm32f407vgt6": "6af1b28071ee90db0cb5be8b5ee9072240583d0ca3affd98b159630a6cebbe33",
+    "stm32g071rbt6-inventory-v1": "7a36c61aee04435e4b1054431285b8e0528c4e009c0836079873c224608d680b",
+    "stm32g071rbt6-inventory-v2": "71006e075674d00f6f1b8ccd0ad978090ce81ebe4b287eb9060b2054e54fbfce",
+    "stm32h743zit6-inventory-v1": "e75ec11f9cc747936fc8335d53165a7d2432e30e09ba1a4e8e879a2ac1e3a295",
+    "stm32h743zit6-inventory-v2": "c48e538d8caee607a7439550ccbdb28db424911e06bd7e0b8d03fed857c13ed3",
+    "synthetic-cortex-m3-v1": "549fac8ec55251b7f49c77d6d458229394ddeef3b628f8f25000e6cf55db63e4"
+  },
+  "limits": [
+    "No new operating modes or peripheral semantics were added",
+    "Experimental MCU inventories remain declarations only",
+    "No physical board operation, flashing, registry upload or hosted CI run",
+    "Firmware/probe backends remain independently target-qualified",
+    "Review metadata and hashes do not authenticate hardware truth"
+  ],
+  "lint": {
+    "command": ".venv/bin/ruff check praxis tests tools server.py compiler.py",
+    "passed": true
+  },
+  "migrated_profiles": 19,
+  "native_mcp": {
+    "passed": true,
+    "sessions": [
+      {
+        "all_trace_checks_passed": true,
+        "calls": 39,
+        "discovered_tools": [
+          "query_schematic_netlist",
+          "read_peripheral_doc",
+          "read_wiki_index"
+        ],
+        "limits": "Actual MCP retrieval and complete-byte checks only; no live LLM, operating-semantic, build or physical qualification.",
+        "passed": true,
+        "report_sha256": "45d504b721457f1a894089680184357fd6731f8f8b3f36adde1ba257887d55e6",
+        "revision": "cb72531e120c57b1b52e11efb43d12425c6c2d390c9c730be7a184b94c7e97a7",
+        "target": {
+          "board_revision": "not-applicable",
+          "clock_assumptions": [
+            "Active SYSCLK, peripheral clocks, oscillators and prescalers are unknown; no board or startup configuration is represented."
+          ],
+          "clock_hz": null,
+          "example_only": true,
+          "family": "stm32",
+          "fuse_assumptions": [],
+          "id": "stm32f103c8t6_inventory",
+          "knowledge_adapter": {
+            "cpu": "cortex-m3",
+            "header_identity": [
+              "__STM32F103xB_H",
+              "STM32F103xB"
+            ],
+            "kind": "cmsis_cortex_m",
+            "mask_suffix": "_Msk",
+            "position_suffix": "_Pos"
+          },
+          "mcu": "STM32F103C8T6",
+          "package": "LQFP48 (pin map unreviewed)",
+          "primary_mcu_ref": "not-applicable",
+          "scope": "mcu",
+          "silicon_revision": "unqualified"
+        }
+      },
+      {
+        "all_trace_checks_passed": true,
+        "calls": 44,
+        "discovered_tools": [
+          "query_schematic_netlist",
+          "read_peripheral_doc",
+          "read_wiki_index"
+        ],
+        "limits": "Actual MCP retrieval and complete-byte checks only; no live LLM, operating-semantic, build or physical qualification.",
+        "passed": true,
+        "report_sha256": "565f3b2ad578484020bceea14eff520e18f84f845c5aa89565ac272e0a9a854e",
+        "revision": "6ff6aa04abcce811786e9e0ed2f10a3c4767bdb315a7437453e2d91eb0c8db91",
+        "target": {
+          "board_revision": "not-applicable",
+          "clock_assumptions": [
+            "Active SYSCLK, peripheral clocks, oscillators and prescalers are unknown; no board or startup configuration is represented."
+          ],
+          "clock_hz": null,
+          "example_only": true,
+          "family": "stm32",
+          "fuse_assumptions": [],
+          "id": "stm32g071rbt6_inventory",
+          "knowledge_adapter": {
+            "cpu": "cortex-m0plus",
+            "header_identity": [
+              "STM32G071xx_H",
+              "STM32G071xx"
+            ],
+            "kind": "cmsis_cortex_m",
+            "mask_suffix": "_Msk",
+            "position_suffix": "_Pos"
+          },
+          "mcu": "STM32G071RBT6",
+          "package": "LQFP64 (pin map unreviewed)",
+          "primary_mcu_ref": "not-applicable",
+          "scope": "mcu",
+          "silicon_revision": "unqualified"
+        }
+      },
+      {
+        "all_trace_checks_passed": true,
+        "calls": 85,
+        "discovered_tools": [
+          "query_schematic_netlist",
+          "read_peripheral_doc",
+          "read_wiki_index"
+        ],
+        "limits": "Actual MCP retrieval and complete-byte checks only; no live LLM, operating-semantic, build or physical qualification.",
+        "passed": true,
+        "report_sha256": "dca067a213c0fc5e2b88f2e2eefd92aa3ad2724b0b4673578b023698a1ff890d",
+        "revision": "c49ce337d442f4adc07734b49ef524bfe4fe3c913597467d46b99d7f322fd4a0",
+        "target": {
+          "board_revision": "not-applicable",
+          "clock_assumptions": [
+            "Active SYSCLK, peripheral clocks, oscillators and prescalers are unknown; no board or startup configuration is represented."
+          ],
+          "clock_hz": null,
+          "example_only": true,
+          "family": "stm32",
+          "fuse_assumptions": [],
+          "id": "stm32h743zit6_inventory",
+          "knowledge_adapter": {
+            "cpu": "cortex-m7",
+            "header_identity": [
+              "STM32H743xx_H",
+              "STM32H743xx"
+            ],
+            "kind": "cmsis_cortex_m",
+            "mask_suffix": "_Msk",
+            "position_suffix": "_Pos"
+          },
+          "mcu": "STM32H743ZIT6",
+          "package": "LQFP144 (pin map unreviewed)",
+          "primary_mcu_ref": "not-applicable",
+          "scope": "mcu",
+          "silicon_revision": "unqualified"
+        }
+      },
+      {
+        "all_trace_checks_passed": true,
+        "calls": 51,
+        "discovered_tools": [
+          "query_schematic_netlist",
+          "read_peripheral_doc",
+          "read_wiki_index"
+        ],
+        "limits": "Actual MCP retrieval and complete-byte checks only; no live LLM, operating-semantic, build or physical qualification.",
+        "passed": true,
+        "report_sha256": "2222c9f1708e9b3920dd02ed01da197cddf0e3663400313c3871d06fa6c68049",
+        "revision": "0ef554a2ad9d0e31a22afa785327cca2197f7a4f95ddaa7bb3a345a1034f2aa3",
+        "target": {
+          "board_revision": "MB997-E-01",
+          "clock_assumptions": [
+            "Reference board: STM32F407G-DISC1, MB997 E-01 schematic. Actual card revision is unconfirmed.",
+            "8 MHz X2 crystal is documented for E-01; verify oscillator assembly and solder bridges against the actual card.",
+            "168 MHz is a validated software clock recipe, NOT a claim about the running firmware. Preserve a known working clock setup for GPIO tests.",
+            "Recipe only: PLLM=8, PLLN=336, PLLP=2, PLLQ=7; AHB /1; APB1 /4 (42 MHz); APB2 /2 (84 MHz); 5 FLASH wait states, supply within the reviewed range.",
+            "SysTick_Config uses the processor clock. For 1 ms use actual SystemCoreClock / 1000 after synchronizing SystemCoreClock; do not divide by 8.",
+            "UART loopback application explicitly selects HSI nominal 16 MHz, AHB/APB1/APB2 all /1; the 168 MHz recipe is not used for this scenario. See RCC/USART/TIM2 reviewed notes; timing remains unmeasured.",
+            "ADC example additionally assumes VDDA/VREF+ in the reviewed 2.7\u20133.6 V operating range; analog supply is not measured or physically qualified."
+          ],
+          "clock_hz": 168000000,
+          "example_only": false,
+          "family": "stm32",
+          "fuse_assumptions": [],
+          "id": "stm32f407g_disc1_mb997_e01",
+          "mcu": "STM32F407VGT6",
+          "package": "Package_QFP:LQFP-100_14x14mm_P0.5mm",
+          "primary_mcu_ref": "U4",
+          "silicon_revision": "Unspecified; errata review pending"
+        }
+      }
+    ],
+    "total_calls": 219
+  },
+  "next": "Review bounded F103/G071 clock, GPIO and UART workflows through the generic contract path; qualify firmware profiles separately",
+  "profiles": [
+    {
+      "contract": "sources/atmega328p/contracts/profile.json",
+      "contract_sha256": "d2dee254c2b1b6dce65d178f7bfb0389738af283a5b6dcbb20d3567b67ccfcd8",
+      "path": "sources/atmega328p/profile.json",
+      "sha256": "cae8ffeecaf41317243c5887828b1958763d32d91085f03d5f10e569a3dcd7b0"
+    },
+    {
+      "contract": "sources/stm32-experimental/stm32f103c8t6/contracts/profile.json",
+      "contract_sha256": "52608c169dc852fc6624f448a3a8fc866a956f4396a9038761adccbbf90c759d",
+      "path": "sources/stm32-experimental/stm32f103c8t6/profile.json",
+      "sha256": "8d652c4a6e73c38a96056ff87b909150a34eea02e346eeff912445f3b9a4e9c8"
+    },
+    {
+      "contract": "sources/stm32-experimental/stm32g071rbt6/contracts/profile.json",
+      "contract_sha256": "da519b4b80efd20d7943106243d71a74ff799af629fbe41a5b6221e246e5cf7f",
+      "path": "sources/stm32-experimental/stm32g071rbt6/profile.json",
+      "sha256": "c55238a63d886c34069b123553977e0527a4fb4d58c817bc7dccb77b2ee51152"
+    },
+    {
+      "contract": "sources/stm32-experimental/stm32h743zit6/contracts/profile.json",
+      "contract_sha256": "3278610160a05ca2ae71ad0bf6d63be25992b95a3dac1ec18ebf5e5f1ab6a371",
+      "path": "sources/stm32-experimental/stm32h743zit6/profile.json",
+      "sha256": "00cd880ea67547dba1c1e969326f02e59f8890b01a0b789585b321bf233b1516"
+    },
+    {
+      "contract": "sources/stm32f401re/contracts/profile.json",
+      "contract_sha256": "ef4a2ab9fc59391d1cf435a112c9a8e18144086dac4888199d4274bc6dda7092",
+      "path": "sources/stm32f401re/profile.json",
+      "sha256": "1cdb9d8b03d3fa7bbfa47bd0653e56d302a0263f15a3c1131d56c70dade9cecd"
+    },
+    {
+      "contract": "sources/stm32f407g-disc1/contracts/profile-adc-v1.json",
+      "contract_sha256": "10940ac37ebfc77e6e2aaac13bf4a9b14376c53d15e2dc27f3bd90e4f4a89078",
+      "path": "sources/stm32f407g-disc1/profile-adc-v1.json",
+      "sha256": "fb5d40ba00c6b580a6ba7c5c6e0b620213b307a2ce0444466453cf2dcf7989b4"
+    },
+    {
+      "contract": "sources/stm32f407g-disc1/contracts/profile-arm-core-v1.json",
+      "contract_sha256": "2933ff2da70d2600e3ae4b46c4827f17066d798584e1a5f34f13e777cc3979e8",
+      "path": "sources/stm32f407g-disc1/profile-arm-core-v1.json",
+      "sha256": "eb975ef12f73fffa5e9fb84bacc47db8bd02a90e35b36493caa362c5a7bf63da"
+    },
+    {
+      "contract": "sources/stm32f407g-disc1/contracts/profile-arm-core-v2.json",
+      "contract_sha256": "2933ff2da70d2600e3ae4b46c4827f17066d798584e1a5f34f13e777cc3979e8",
+      "path": "sources/stm32f407g-disc1/profile-arm-core-v2.json",
+      "sha256": "ede5924609912117794cf905b1f73b21a2a300ed20a031bfe19a870e0743f676"
+    },
+    {
+      "contract": "sources/stm32f407g-disc1/contracts/profile-can-rx-v1.json",
+      "contract_sha256": "2933ff2da70d2600e3ae4b46c4827f17066d798584e1a5f34f13e777cc3979e8",
+      "path": "sources/stm32f407g-disc1/profile-can-rx-v1.json",
+      "sha256": "a9e862f9c2b178fe882f3beb7cd3c0eefad758cdaaac5af62d315f1d764d464b"
+    },
+    {
+      "contract": "sources/stm32f407g-disc1/contracts/profile-can-v1.json",
+      "contract_sha256": "76d194571111c63b994ea84ad7f80e247219a03eb7ad82cdd6b5f8c35f5e4374",
+      "path": "sources/stm32f407g-disc1/profile-can-v1.json",
+      "sha256": "69210ab2d9b9d38cbc4f62c3b128f74ebd489395428c24db9fdb74a7f2f0b6b1"
+    },
+    {
+      "contract": "sources/stm32f407g-disc1/contracts/profile-clock-v1.json",
+      "contract_sha256": "aa2ff2ea4396103e784d89def161c04c3d3d3f9119a8591257c35e00f2a64898",
+      "path": "sources/stm32f407g-disc1/profile-clock-v1.json",
+      "sha256": "c1d23822264badc141c7eca6f827d12cbe2f3d0d78438db4d3d57fbc77e29e09"
+    },
+    {
+      "contract": "sources/stm32f407g-disc1/contracts/profile-dac-v1.json",
+      "contract_sha256": "76d194571111c63b994ea84ad7f80e247219a03eb7ad82cdd6b5f8c35f5e4374",
+      "path": "sources/stm32f407g-disc1/profile-dac-v1.json",
+      "sha256": "6bc0379b5356e1f80431f1032538161c46760253c2aa9c6caf6838112a310dda"
+    },
+    {
+      "contract": "sources/stm32f407g-disc1/contracts/profile-discovery.json",
+      "contract_sha256": "090bd96a1ba058383566c20ecc30c39a0450aff6161a690319b54260b6ff6e76",
+      "path": "sources/stm32f407g-disc1/profile-discovery.json",
+      "sha256": "df5718b4a9ade057f9ef6501bff5b716e559f1e7f22ba5edf535af27f0b9ed6b"
+    },
+    {
+      "contract": "sources/stm32f407g-disc1/contracts/profile-features-v1.json",
+      "contract_sha256": "aa2ff2ea4396103e784d89def161c04c3d3d3f9119a8591257c35e00f2a64898",
+      "path": "sources/stm32f407g-disc1/profile-features-v1.json",
+      "sha256": "ff1f00b68bc6a3d96a7a942677ccb5585e4fb962876ce5c8234c5c2b314543b3"
+    },
+    {
+      "contract": "sources/stm32f407g-disc1/contracts/profile-i2c-v1.json",
+      "contract_sha256": "76d194571111c63b994ea84ad7f80e247219a03eb7ad82cdd6b5f8c35f5e4374",
+      "path": "sources/stm32f407g-disc1/profile-i2c-v1.json",
+      "sha256": "4b5a33ff22a2d6ffbfa5b7a417d2393cc9e7ec025cbecf75d8d3ec24e0ccc857"
+    },
+    {
+      "contract": "sources/stm32f407g-disc1/contracts/profile-uart-loopback.json",
+      "contract_sha256": "61f538c9ffc2ab6d9c7363ce74bc1578c3689e96495bb0eaf1ac15209f12be26",
+      "path": "sources/stm32f407g-disc1/profile-uart-loopback.json",
+      "sha256": "b8cae136e1bb9c4f67e160abf8e50a2f6659ec62b2c528d8bbcdad7c3c26c079"
+    },
+    {
+      "contract": "sources/stm32f407g-disc1/contracts/profile.json",
+      "contract_sha256": "03ba7e40d86506e1df732e1a14f87f60f47acfbc7c54088d09ea733936f93a03",
+      "path": "sources/stm32f407g-disc1/profile.json",
+      "sha256": "35f4337085acf73fe7efed84a39bd43404b2fc887f57772b7cd8bb02870c89c6"
+    },
+    {
+      "contract": "sources/stm32f407vgt6/contracts/profile.json",
+      "contract_sha256": "c04e419ba149c63d3df2ac69e58c37a5f622c4af24a607b9e2316b8aeb64faf5",
+      "path": "sources/stm32f407vgt6/profile.json",
+      "sha256": "a771fc7db740f0e3e2ba2ccec33198f559b034998ab2d7e9728bbfd728739b7d"
+    },
+    {
+      "contract": "sources/synthetic-cortex-m3/contracts/profile.json",
+      "contract_sha256": "66ace6196cbac81570e4c0b9d28c88f34f07827dbb82b225fb8e0f8afe58c6b9",
+      "path": "sources/synthetic-cortex-m3/profile.json",
+      "sha256": "4f644dcb276fd5fbd0ae3cd4a03adec868c8a25c8496c843baa4216396c3b2fd"
+    }
+  ],
+  "status": "implemented_and_verified",
+  "tests": {
+    "command": ".venv/bin/pytest -q",
+    "duration_seconds": 187.74,
+    "passed": 922,
+    "skipped": 4,
+    "skips": "Native KiCad checks: kicad-cli unavailable"
+  }
+}

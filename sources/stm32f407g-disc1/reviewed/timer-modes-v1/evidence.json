@@ -1,0 +1,1273 @@
+{
+  "clock_and_gate_scope": {
+    "APB1_divisor": 1,
+    "TIM1EN": 0,
+    "TIM2EN": 0,
+    "TIM2RST": 0,
+    "clock_hz": 16000000
+  },
+  "errata": {
+    "2.7.1": "Advanced break/AOE excluded.",
+    "2.7.2": "No downstream consumers during UG/TRGO initialization and no live clock changes. TIM1 remains gated for incoming ITR0.",
+    "2.7.3": "PWM1 reference only; no toggle/center-aligned or consecutive compare-event guarantee.",
+    "2.7.4": "OC1CE=0 and SMS=0; no external counter-reset/clear modes."
+  },
+  "format": "praxis-reviewed-timer-facts-v1",
+  "limits": [
+    "Internal reference and software event examples only; external pins/routing and actual timing not qualified.",
+    "All other timer instances and modes retain their prior coverage status."
+  ],
+  "pages": {
+    "es0182/page:17": {
+      "artifact": "extracted/part-0011.json",
+      "artifact_sha256": "0406c0126dcdbd0717fb575e6ae8df15a16a4e75a05327169534828d1d9abce7",
+      "import_revision": "acf57497462c09081b4527930b51dcf047fd8b7d6bdbdfff38d6fd7d8a46e60b",
+      "locator": "page:17",
+      "origin": "https://www.st.com/resource/en/errata_sheet/es0182-stm32f405407xx-and-stm32f415417xx-device-errata-stmicroelectronics.pdf",
+      "source_sha256": "1d3da0f99b85013548d17df07919516bf862f8f38cbd1a61f08e75abb8e4c54f"
+    },
+    "es0182/page:18": {
+      "artifact": "extracted/part-0012.json",
+      "artifact_sha256": "c9882c99b635f99fcd52b448aa0beed90deb711ba5e4a7dff592da67dc954345",
+      "import_revision": "acf57497462c09081b4527930b51dcf047fd8b7d6bdbdfff38d6fd7d8a46e60b",
+      "locator": "page:18",
+      "origin": "https://www.st.com/resource/en/errata_sheet/es0182-stm32f405407xx-and-stm32f415417xx-device-errata-stmicroelectronics.pdf",
+      "source_sha256": "1d3da0f99b85013548d17df07919516bf862f8f38cbd1a61f08e75abb8e4c54f"
+    },
+    "es0182/page:19": {
+      "artifact": "extracted/part-0013.json",
+      "artifact_sha256": "74f7273cb9c8ccd25c6a73dd88f50c5a4a5e0bed817c41d4f314ade76d6052b9",
+      "import_revision": "acf57497462c09081b4527930b51dcf047fd8b7d6bdbdfff38d6fd7d8a46e60b",
+      "locator": "page:19",
+      "origin": "https://www.st.com/resource/en/errata_sheet/es0182-stm32f405407xx-and-stm32f415417xx-device-errata-stmicroelectronics.pdf",
+      "source_sha256": "1d3da0f99b85013548d17df07919516bf862f8f38cbd1a61f08e75abb8e4c54f"
+    },
+    "rm0090/page:238": {
+      "artifact": "extracted/part-0001.json",
+      "artifact_sha256": "c48fd9849bc233989d661684b20e691f1885dab9e35571c9446cd650648666be",
+      "import_revision": "7efcc996331188255a32a34fbbcb4f4fe26d1e20eb7283230ef7c608448434fc",
+      "locator": "page:238",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:239": {
+      "artifact": "extracted/part-0001.json",
+      "artifact_sha256": "42a36de8a9f986be70890a17de8d03ff0e4ef5ee71f5fc1afdad7ba24547953d",
+      "import_revision": "9b6d9fe2ab9134d7aaacebc23f0f13745c41e1ffb52b3f0ce980b69332aaca6b",
+      "locator": "page:239",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:240": {
+      "artifact": "extracted/part-0002.json",
+      "artifact_sha256": "3d0c069a1bca78f6e34b328254e8f64f60ef2686e42574465b55953eb3960187",
+      "import_revision": "9b6d9fe2ab9134d7aaacebc23f0f13745c41e1ffb52b3f0ce980b69332aaca6b",
+      "locator": "page:240",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:247": {
+      "artifact": "extracted/part-0002.json",
+      "artifact_sha256": "2c403f7b2b70fbd257bf314c204d633ca6442214a223890aa34a551800367ab8",
+      "import_revision": "7efcc996331188255a32a34fbbcb4f4fe26d1e20eb7283230ef7c608448434fc",
+      "locator": "page:247",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:248": {
+      "artifact": "extracted/part-0003.json",
+      "artifact_sha256": "6532b0beb1441590e200d0dcb18d21543d093b8bce4287c71fe9ab859f0f305e",
+      "import_revision": "9b6d9fe2ab9134d7aaacebc23f0f13745c41e1ffb52b3f0ce980b69332aaca6b",
+      "locator": "page:248",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:249": {
+      "artifact": "extracted/part-0004.json",
+      "artifact_sha256": "7ec9e01e60e3b1ac5ec53fdc0d9562c26f944011cfb8e234afdce266bbe12b88",
+      "import_revision": "9b6d9fe2ab9134d7aaacebc23f0f13745c41e1ffb52b3f0ce980b69332aaca6b",
+      "locator": "page:249",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:250": {
+      "artifact": "extracted/part-0005.json",
+      "artifact_sha256": "7cc7bf3d478ae58995e038840c66f8d862443082224390435bc187bde9a6ef47",
+      "import_revision": "9b6d9fe2ab9134d7aaacebc23f0f13745c41e1ffb52b3f0ce980b69332aaca6b",
+      "locator": "page:250",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:251": {
+      "artifact": "extracted/part-0006.json",
+      "artifact_sha256": "db2e85a96ddf94211132b49847cafda93dca397dabd1211d2ad9e82404e9b0f2",
+      "import_revision": "9b6d9fe2ab9134d7aaacebc23f0f13745c41e1ffb52b3f0ce980b69332aaca6b",
+      "locator": "page:251",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:590": {
+      "artifact": "extracted/part-0001.json",
+      "artifact_sha256": "470947743a487544196681f7c8b7c2fd525630ac29dd620d12e521bbd5a56eb6",
+      "import_revision": "948340f29702a60fb74485b36ee6da335fad3b9fcf04a95afb1376b8d468e1b3",
+      "locator": "page:590",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:591": {
+      "artifact": "extracted/part-0002.json",
+      "artifact_sha256": "fe322304659c8b64303caaf8f55fc7a6a419e32448842fd5cef0e1c6fb6776b1",
+      "import_revision": "948340f29702a60fb74485b36ee6da335fad3b9fcf04a95afb1376b8d468e1b3",
+      "locator": "page:591",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:604": {
+      "artifact": "extracted/part-0004.json",
+      "artifact_sha256": "5e5d9d8d7136189b8556afcf6fe6e68c8503e18b362cae4f81c415848e128961",
+      "import_revision": "948340f29702a60fb74485b36ee6da335fad3b9fcf04a95afb1376b8d468e1b3",
+      "locator": "page:604",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:605": {
+      "artifact": "extracted/part-0005.json",
+      "artifact_sha256": "10d57dc350e49eece96467ab2813fc1a06d4b5a0587348fbfc3cc554470fda72",
+      "import_revision": "948340f29702a60fb74485b36ee6da335fad3b9fcf04a95afb1376b8d468e1b3",
+      "locator": "page:605",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:607": {
+      "artifact": "extracted/part-0007.json",
+      "artifact_sha256": "22e84a813c2f85e00b132432578150cf09be038be17b7cb9bd733ceec01bbe86",
+      "import_revision": "948340f29702a60fb74485b36ee6da335fad3b9fcf04a95afb1376b8d468e1b3",
+      "locator": "page:607",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:608": {
+      "artifact": "extracted/part-0008.json",
+      "artifact_sha256": "631b6f6f35308c236383f0a61a23c0c0fdc2d2fd73347e2fc1e2f4061f9f31be",
+      "import_revision": "948340f29702a60fb74485b36ee6da335fad3b9fcf04a95afb1376b8d468e1b3",
+      "locator": "page:608",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:623": {
+      "artifact": "extracted/part-0010.json",
+      "artifact_sha256": "4eb52d97e9a4aae743dbb0176096b51fdd9d3ad917b28c3e8b66f1f30651289d",
+      "import_revision": "948340f29702a60fb74485b36ee6da335fad3b9fcf04a95afb1376b8d468e1b3",
+      "locator": "page:623",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:624": {
+      "artifact": "extracted/part-0011.json",
+      "artifact_sha256": "0aa49dfc56131b2af8bc0b1e2107581cd7a766b28286f78cbe0b15d50d92d7eb",
+      "import_revision": "948340f29702a60fb74485b36ee6da335fad3b9fcf04a95afb1376b8d468e1b3",
+      "locator": "page:624",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:625": {
+      "artifact": "extracted/part-0012.json",
+      "artifact_sha256": "37d32e0a0d38b741dc4ecbfc752e56e3e2f5a76a3c6a2723e4109d43f977cd92",
+      "import_revision": "948340f29702a60fb74485b36ee6da335fad3b9fcf04a95afb1376b8d468e1b3",
+      "locator": "page:625",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:626": {
+      "artifact": "extracted/part-0013.json",
+      "artifact_sha256": "951b73d1b0108ef94422e5a78480123da7f8cf9509a4f6d1207ab6cb3525d7c2",
+      "import_revision": "948340f29702a60fb74485b36ee6da335fad3b9fcf04a95afb1376b8d468e1b3",
+      "locator": "page:626",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:627": {
+      "artifact": "extracted/part-0014.json",
+      "artifact_sha256": "63959765fe47a399dab1f2b4222df495890abbc299876663a37a3b4b5e6077a7",
+      "import_revision": "948340f29702a60fb74485b36ee6da335fad3b9fcf04a95afb1376b8d468e1b3",
+      "locator": "page:627",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:628": {
+      "artifact": "extracted/part-0015.json",
+      "artifact_sha256": "f3c27ee080a928f8b039e139a3f6a51303421e904b4dfa724d71a4716a0b26af",
+      "import_revision": "948340f29702a60fb74485b36ee6da335fad3b9fcf04a95afb1376b8d468e1b3",
+      "locator": "page:628",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:629": {
+      "artifact": "extracted/part-0016.json",
+      "artifact_sha256": "2a9bd44e140cafa227b2b488002d391f15b8db997d9f5e6df420b989912aef1b",
+      "import_revision": "948340f29702a60fb74485b36ee6da335fad3b9fcf04a95afb1376b8d468e1b3",
+      "locator": "page:629",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:630": {
+      "artifact": "extracted/part-0017.json",
+      "artifact_sha256": "6994ebfc114dab48aecafb188ef1ec72655398f2abc06b3b5e0f0b6a7bfb5ea7",
+      "import_revision": "948340f29702a60fb74485b36ee6da335fad3b9fcf04a95afb1376b8d468e1b3",
+      "locator": "page:630",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:631": {
+      "artifact": "extracted/part-0018.json",
+      "artifact_sha256": "5a691da085255144af2d3975f4e800de7964733742d3250c2224b25332d3a14d",
+      "import_revision": "948340f29702a60fb74485b36ee6da335fad3b9fcf04a95afb1376b8d468e1b3",
+      "locator": "page:631",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:632": {
+      "artifact": "extracted/part-0019.json",
+      "artifact_sha256": "b871f4981b9e69feb0cd9a728e31787c42e6cbdcbcce4c025db4e929f19244fc",
+      "import_revision": "948340f29702a60fb74485b36ee6da335fad3b9fcf04a95afb1376b8d468e1b3",
+      "locator": "page:632",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:633": {
+      "artifact": "extracted/part-0020.json",
+      "artifact_sha256": "cc4ac36d77d8238956d59d5c4f6e1542d46b217b3845dec2d1975a50cf1dae43",
+      "import_revision": "948340f29702a60fb74485b36ee6da335fad3b9fcf04a95afb1376b8d468e1b3",
+      "locator": "page:633",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:634": {
+      "artifact": "extracted/part-0021.json",
+      "artifact_sha256": "fcf0d8fb989d13a447917a8bb684d06f09d248ca87022a70659a44307e2dd32f",
+      "import_revision": "948340f29702a60fb74485b36ee6da335fad3b9fcf04a95afb1376b8d468e1b3",
+      "locator": "page:634",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:636": {
+      "artifact": "extracted/part-0023.json",
+      "artifact_sha256": "4f9e226f84287c5c06068cd73e6316118c760a0720686d022aea6173272237fe",
+      "import_revision": "948340f29702a60fb74485b36ee6da335fad3b9fcf04a95afb1376b8d468e1b3",
+      "locator": "page:636",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:637": {
+      "artifact": "extracted/part-0024.json",
+      "artifact_sha256": "200a5dca81fbd6cc2982a15824bbe13a625d5cab698e66fcf7e9d3b2d8a5055d",
+      "import_revision": "948340f29702a60fb74485b36ee6da335fad3b9fcf04a95afb1376b8d468e1b3",
+      "locator": "page:637",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:638": {
+      "artifact": "extracted/part-0025.json",
+      "artifact_sha256": "464a8ff413acfbbadbcb71a4faef9b5400e704dd23e6d865c18f1870fca9cff6",
+      "import_revision": "948340f29702a60fb74485b36ee6da335fad3b9fcf04a95afb1376b8d468e1b3",
+      "locator": "page:638",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:639": {
+      "artifact": "extracted/part-0026.json",
+      "artifact_sha256": "5dc00b215b723c282d9a6029d8e96f36405cff1b8ee0e9a2346cc392ae51cf7d",
+      "import_revision": "948340f29702a60fb74485b36ee6da335fad3b9fcf04a95afb1376b8d468e1b3",
+      "locator": "page:639",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:640": {
+      "artifact": "extracted/part-0027.json",
+      "artifact_sha256": "9f89a1715a3c46654f5bd770efa9040173f0e5304dd18fadb5f2114a20bbb48a",
+      "import_revision": "948340f29702a60fb74485b36ee6da335fad3b9fcf04a95afb1376b8d468e1b3",
+      "locator": "page:640",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    }
+  },
+  "registers": {
+    "ARR": {
+      "access": "RW",
+      "access_widths": [
+        32
+      ],
+      "field_meanings": {
+        "ARR": "32-bit TIM2 reload; zero blocks counting. PWM uses period-1."
+      },
+      "offset": 44,
+      "page": 638,
+      "width": 32
+    },
+    "CCER": {
+      "access": "RW",
+      "access_widths": [
+        32
+      ],
+      "field_meanings": {
+        "CC1E": "PWM reference leaves0; input capture enables1 only after setup.",
+        "CC1NP": "0; output mode requires it cleared; input pair00 selects rising.",
+        "CC1P": "0 selects noninverted/rising polarity with CC1NP=0."
+      },
+      "offset": 32,
+      "page": 636,
+      "width": 32
+    },
+    "CCMR1": {
+      "access": "RW",
+      "access_widths": [
+        32
+      ],
+      "field_meanings": {},
+      "offset": 24,
+      "page": 632,
+      "width": 32
+    },
+    "CCR1": {
+      "access": "mixed",
+      "access_widths": [
+        32
+      ],
+      "field_meanings": {
+        "CCR1": "32-bit TIM2 value: output preload when OC1PE=1; read-only capture data when CC1S!=0; reading clears input CC1IF."
+      },
+      "offset": 52,
+      "page": 639,
+      "width": 32
+    },
+    "CNT": {
+      "access": "RW",
+      "access_widths": [
+        32
+      ],
+      "field_meanings": {
+        "CNT": "32-bit TIM2 counter; stopped writes/readback precede software capture."
+      },
+      "offset": 36,
+      "page": 638,
+      "width": 32
+    },
+    "CR1": {
+      "access": "RW",
+      "access_widths": [
+        32
+      ],
+      "field_meanings": {
+        "ARPE": "1 buffers ARR; UG and later update events transfer its preload.",
+        "CEN": "Enable counter last; keep zero for stopped software capture.",
+        "CKD": "00 selects undivided digital-filter sampling basis.",
+        "CMS": "00 selects edge-aligned mode.",
+        "DIR": "0 selects upcounting.",
+        "OPM": "0 leaves PWM continuous.",
+        "UDIS": "0 permits update events/preload transfer.",
+        "URS": "0 allows UG to set UIF; discard that stale flag."
+      },
+      "offset": 0,
+      "page": 624,
+      "width": 32
+    },
+    "CR2": {
+      "access": "RW",
+      "access_widths": [
+        32
+      ],
+      "field_meanings": {
+        "CCDS": "0; DMA requests remain disabled.",
+        "MMS": "000 exposes UG on TRGO; require no downstream consumers.",
+        "TI1S": "0 excludes the XOR input combination."
+      },
+      "offset": 4,
+      "page": 625,
+      "width": 32
+    },
+    "DIER": {
+      "access": "RW",
+      "access_widths": [
+        32
+      ],
+      "field_meanings": {
+        "CC1DE": "0 keeps capture/compare DMA disabled.",
+        "CC1IE": "0 keeps capture/compare interrupts disabled.",
+        "UDE": "0 keeps update DMA disabled.",
+        "UIE": "0 keeps update interrupts disabled."
+      },
+      "offset": 12,
+      "page": 629,
+      "width": 32
+    },
+    "EGR": {
+      "access": "WO",
+      "access_widths": [
+        32
+      ],
+      "field_meanings": {
+        "CC1G": "Write1 in input mode captures CNT into CCR1 and sets capture/overcapture status.",
+        "UG": "Write1 generates update/reinitialization and transfers preloads; never RMW."
+      },
+      "offset": 20,
+      "page": 631,
+      "width": 32
+    },
+    "PSC": {
+      "access": "RW",
+      "access_widths": [
+        32
+      ],
+      "field_meanings": {
+        "PSC": "16-bit divider minus1, buffered until update. HSI16/1MHz gives15."
+      },
+      "offset": 40,
+      "page": 638,
+      "width": 32
+    },
+    "SMCR": {
+      "access": "RW",
+      "access_widths": [
+        32
+      ],
+      "field_meanings": {
+        "ECE": "0 disables external clock mode2.",
+        "SMS": "000 disables slave mode.",
+        "TS": "000 selects TIM2 ITR0 from TIM1_TRGO; keep TIM1 gated."
+      },
+      "offset": 8,
+      "page": 626,
+      "width": 32
+    },
+    "SR": {
+      "access": "RW",
+      "access_widths": [
+        32
+      ],
+      "field_meanings": {
+        "CC1IF": "rc_w0; input capture sets this flag and reading CCR1 clears it.",
+        "CC1OF": "rc_w0; another capture while CC1IF is set indicates lost/ambiguous data.",
+        "UIF": "rc_w0; UG and natural updates set UIF; discard stale UIF before waiting."
+      },
+      "offset": 16,
+      "page": 630,
+      "width": 32
+    }
+  },
+  "review": "Implementing-author editorial review; independent engineering/physical qualification pending",
+  "target": "STM32F407VGT6",
+  "views": {
+    "input_input": {
+      "fields": [
+        {
+          "lsb": 0,
+          "mask": 3,
+          "meaning": "Declaration only; encoding requires reviewed semantics.",
+          "name": "CC1S",
+          "sources": [
+            {
+              "locator": "TIM_CCMR1_CC1S_Msk",
+              "source": "header"
+            }
+          ],
+          "width": 2
+        },
+        {
+          "lsb": 2,
+          "mask": 12,
+          "meaning": "Declaration only; encoding requires reviewed semantics.",
+          "name": "IC1PSC",
+          "sources": [
+            {
+              "locator": "TIM_CCMR1_IC1PSC_Msk",
+              "source": "header"
+            }
+          ],
+          "width": 2
+        },
+        {
+          "lsb": 4,
+          "mask": 240,
+          "meaning": "Declaration only; encoding requires reviewed semantics.",
+          "name": "IC1F",
+          "sources": [
+            {
+              "locator": "TIM_CCMR1_IC1F_Msk",
+              "source": "header"
+            }
+          ],
+          "width": 4
+        },
+        {
+          "lsb": 8,
+          "mask": 768,
+          "meaning": "Declaration only; encoding requires reviewed semantics.",
+          "name": "CC2S",
+          "sources": [
+            {
+              "locator": "TIM_CCMR1_CC2S_Msk",
+              "source": "header"
+            }
+          ],
+          "width": 2
+        },
+        {
+          "lsb": 10,
+          "mask": 3072,
+          "meaning": "Declaration only; encoding requires reviewed semantics.",
+          "name": "IC2PSC",
+          "sources": [
+            {
+              "locator": "TIM_CCMR1_IC2PSC_Msk",
+              "source": "header"
+            }
+          ],
+          "width": 2
+        },
+        {
+          "lsb": 12,
+          "mask": 61440,
+          "meaning": "Declaration only; encoding requires reviewed semantics.",
+          "name": "IC2F",
+          "sources": [
+            {
+              "locator": "TIM_CCMR1_IC2F_Msk",
+              "source": "header"
+            }
+          ],
+          "width": 4
+        }
+      ],
+      "selection": "Configured declaration set only; selection conditions require reviewed semantics.",
+      "sources": [
+        {
+          "locator": "TIM_CCMR1_CC1S_Msk",
+          "source": "header"
+        },
+        {
+          "locator": "TIM_CCMR1_IC1PSC_Msk",
+          "source": "header"
+        },
+        {
+          "locator": "TIM_CCMR1_IC1F_Msk",
+          "source": "header"
+        },
+        {
+          "locator": "TIM_CCMR1_CC2S_Msk",
+          "source": "header"
+        },
+        {
+          "locator": "TIM_CCMR1_IC2PSC_Msk",
+          "source": "header"
+        },
+        {
+          "locator": "TIM_CCMR1_IC2F_Msk",
+          "source": "header"
+        }
+      ]
+    },
+    "input_output": {
+      "fields": [
+        {
+          "lsb": 0,
+          "mask": 3,
+          "meaning": "Channel selection:00 output;11 internal TRC only with an internal TS selection. Change only while corresponding CCxE=0.",
+          "name": "CC1S",
+          "sources": [
+            {
+              "locator": "TIM_CCMR1_CC1S_Msk",
+              "source": "header"
+            },
+            {
+              "locator": "rm0090/page:632",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "rm0090/page:633",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "rm0090/page:634",
+              "source": "timer_modes_evidence"
+            }
+          ],
+          "width": 2
+        },
+        {
+          "lsb": 2,
+          "mask": 12,
+          "meaning": "00 captures every event without input prescaling.",
+          "name": "IC1PSC",
+          "sources": [
+            {
+              "locator": "TIM_CCMR1_IC1PSC_Msk",
+              "source": "header"
+            },
+            {
+              "locator": "rm0090/page:632",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "rm0090/page:633",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "rm0090/page:634",
+              "source": "timer_modes_evidence"
+            }
+          ],
+          "width": 2
+        },
+        {
+          "lsb": 4,
+          "mask": 240,
+          "meaning": "0000 leaves input filter disabled; software capture makes no external filtering claim.",
+          "name": "IC1F",
+          "sources": [
+            {
+              "locator": "TIM_CCMR1_IC1F_Msk",
+              "source": "header"
+            },
+            {
+              "locator": "rm0090/page:632",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "rm0090/page:633",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "rm0090/page:634",
+              "source": "timer_modes_evidence"
+            }
+          ],
+          "width": 4
+        },
+        {
+          "lsb": 8,
+          "mask": 768,
+          "meaning": "Channel selection:00 output;11 internal TRC only with an internal TS selection. Change only while corresponding CCxE=0.",
+          "name": "CC2S",
+          "sources": [
+            {
+              "locator": "TIM_CCMR1_CC2S_Msk",
+              "source": "header"
+            },
+            {
+              "locator": "rm0090/page:632",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "rm0090/page:633",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "rm0090/page:634",
+              "source": "timer_modes_evidence"
+            }
+          ],
+          "width": 2
+        },
+        {
+          "lsb": 10,
+          "mask": 1024,
+          "meaning": "Keep0 in this subset: fast/clear behavior and channel2 waveform generation are unused.",
+          "name": "OC2FE",
+          "sources": [
+            {
+              "locator": "TIM_CCMR1_OC2FE_Msk",
+              "source": "header"
+            },
+            {
+              "locator": "rm0090/page:632",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "rm0090/page:633",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "rm0090/page:634",
+              "source": "timer_modes_evidence"
+            }
+          ],
+          "width": 1
+        },
+        {
+          "lsb": 11,
+          "mask": 2048,
+          "meaning": "Keep0 in this subset: fast/clear behavior and channel2 waveform generation are unused.",
+          "name": "OC2PE",
+          "sources": [
+            {
+              "locator": "TIM_CCMR1_OC2PE_Msk",
+              "source": "header"
+            },
+            {
+              "locator": "rm0090/page:632",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "rm0090/page:633",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "rm0090/page:634",
+              "source": "timer_modes_evidence"
+            }
+          ],
+          "width": 1
+        },
+        {
+          "lsb": 12,
+          "mask": 28672,
+          "meaning": "Keep0 in this subset: fast/clear behavior and channel2 waveform generation are unused.",
+          "name": "OC2M",
+          "sources": [
+            {
+              "locator": "TIM_CCMR1_OC2M_Msk",
+              "source": "header"
+            },
+            {
+              "locator": "rm0090/page:632",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "rm0090/page:633",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "rm0090/page:634",
+              "source": "timer_modes_evidence"
+            }
+          ],
+          "width": 3
+        },
+        {
+          "lsb": 15,
+          "mask": 32768,
+          "meaning": "Keep0 in this subset: fast/clear behavior and channel2 waveform generation are unused.",
+          "name": "OC2CE",
+          "sources": [
+            {
+              "locator": "TIM_CCMR1_OC2CE_Msk",
+              "source": "header"
+            },
+            {
+              "locator": "rm0090/page:632",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "rm0090/page:633",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "rm0090/page:634",
+              "source": "timer_modes_evidence"
+            }
+          ],
+          "width": 1
+        }
+      ],
+      "selection": "TIM2 subset: CC1S=nonzero and CC2S=00; change selection only with CC1E/CC2E=0.",
+      "sources": [
+        {
+          "locator": "TIM_CCMR1_CC1S_Msk",
+          "source": "header"
+        },
+        {
+          "locator": "TIM_CCMR1_IC1PSC_Msk",
+          "source": "header"
+        },
+        {
+          "locator": "TIM_CCMR1_IC1F_Msk",
+          "source": "header"
+        },
+        {
+          "locator": "TIM_CCMR1_CC2S_Msk",
+          "source": "header"
+        },
+        {
+          "locator": "TIM_CCMR1_OC2FE_Msk",
+          "source": "header"
+        },
+        {
+          "locator": "TIM_CCMR1_OC2PE_Msk",
+          "source": "header"
+        },
+        {
+          "locator": "TIM_CCMR1_OC2M_Msk",
+          "source": "header"
+        },
+        {
+          "locator": "TIM_CCMR1_OC2CE_Msk",
+          "source": "header"
+        },
+        {
+          "locator": "rm0090/page:632",
+          "source": "timer_modes_evidence"
+        },
+        {
+          "locator": "rm0090/page:633",
+          "source": "timer_modes_evidence"
+        },
+        {
+          "locator": "rm0090/page:634",
+          "source": "timer_modes_evidence"
+        }
+      ]
+    },
+    "output_input": {
+      "fields": [
+        {
+          "lsb": 0,
+          "mask": 3,
+          "meaning": "Declaration only; encoding requires reviewed semantics.",
+          "name": "CC1S",
+          "sources": [
+            {
+              "locator": "TIM_CCMR1_CC1S_Msk",
+              "source": "header"
+            }
+          ],
+          "width": 2
+        },
+        {
+          "lsb": 2,
+          "mask": 4,
+          "meaning": "Declaration only; encoding requires reviewed semantics.",
+          "name": "OC1FE",
+          "sources": [
+            {
+              "locator": "TIM_CCMR1_OC1FE_Msk",
+              "source": "header"
+            }
+          ],
+          "width": 1
+        },
+        {
+          "lsb": 3,
+          "mask": 8,
+          "meaning": "Declaration only; encoding requires reviewed semantics.",
+          "name": "OC1PE",
+          "sources": [
+            {
+              "locator": "TIM_CCMR1_OC1PE_Msk",
+              "source": "header"
+            }
+          ],
+          "width": 1
+        },
+        {
+          "lsb": 4,
+          "mask": 112,
+          "meaning": "Declaration only; encoding requires reviewed semantics.",
+          "name": "OC1M",
+          "sources": [
+            {
+              "locator": "TIM_CCMR1_OC1M_Msk",
+              "source": "header"
+            }
+          ],
+          "width": 3
+        },
+        {
+          "lsb": 7,
+          "mask": 128,
+          "meaning": "Declaration only; encoding requires reviewed semantics.",
+          "name": "OC1CE",
+          "sources": [
+            {
+              "locator": "TIM_CCMR1_OC1CE_Msk",
+              "source": "header"
+            }
+          ],
+          "width": 1
+        },
+        {
+          "lsb": 8,
+          "mask": 768,
+          "meaning": "Declaration only; encoding requires reviewed semantics.",
+          "name": "CC2S",
+          "sources": [
+            {
+              "locator": "TIM_CCMR1_CC2S_Msk",
+              "source": "header"
+            }
+          ],
+          "width": 2
+        },
+        {
+          "lsb": 10,
+          "mask": 3072,
+          "meaning": "Declaration only; encoding requires reviewed semantics.",
+          "name": "IC2PSC",
+          "sources": [
+            {
+              "locator": "TIM_CCMR1_IC2PSC_Msk",
+              "source": "header"
+            }
+          ],
+          "width": 2
+        },
+        {
+          "lsb": 12,
+          "mask": 61440,
+          "meaning": "Declaration only; encoding requires reviewed semantics.",
+          "name": "IC2F",
+          "sources": [
+            {
+              "locator": "TIM_CCMR1_IC2F_Msk",
+              "source": "header"
+            }
+          ],
+          "width": 4
+        }
+      ],
+      "selection": "Configured declaration set only; selection conditions require reviewed semantics.",
+      "sources": [
+        {
+          "locator": "TIM_CCMR1_CC1S_Msk",
+          "source": "header"
+        },
+        {
+          "locator": "TIM_CCMR1_OC1FE_Msk",
+          "source": "header"
+        },
+        {
+          "locator": "TIM_CCMR1_OC1PE_Msk",
+          "source": "header"
+        },
+        {
+          "locator": "TIM_CCMR1_OC1M_Msk",
+          "source": "header"
+        },
+        {
+          "locator": "TIM_CCMR1_OC1CE_Msk",
+          "source": "header"
+        },
+        {
+          "locator": "TIM_CCMR1_CC2S_Msk",
+          "source": "header"
+        },
+        {
+          "locator": "TIM_CCMR1_IC2PSC_Msk",
+          "source": "header"
+        },
+        {
+          "locator": "TIM_CCMR1_IC2F_Msk",
+          "source": "header"
+        }
+      ]
+    },
+    "output_output": {
+      "fields": [
+        {
+          "lsb": 0,
+          "mask": 3,
+          "meaning": "Channel selection:00 output;11 internal TRC only with an internal TS selection. Change only while corresponding CCxE=0.",
+          "name": "CC1S",
+          "sources": [
+            {
+              "locator": "TIM_CCMR1_CC1S_Msk",
+              "source": "header"
+            },
+            {
+              "locator": "rm0090/page:632",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "rm0090/page:633",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "rm0090/page:634",
+              "source": "timer_modes_evidence"
+            }
+          ],
+          "width": 2
+        },
+        {
+          "lsb": 2,
+          "mask": 4,
+          "meaning": "Keep0 in this subset: fast/clear behavior and channel2 waveform generation are unused.",
+          "name": "OC1FE",
+          "sources": [
+            {
+              "locator": "TIM_CCMR1_OC1FE_Msk",
+              "source": "header"
+            },
+            {
+              "locator": "rm0090/page:632",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "rm0090/page:633",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "rm0090/page:634",
+              "source": "timer_modes_evidence"
+            }
+          ],
+          "width": 1
+        },
+        {
+          "lsb": 3,
+          "mask": 8,
+          "meaning": "1 buffers CCR1; update events transfer its preload to active compare state.",
+          "name": "OC1PE",
+          "sources": [
+            {
+              "locator": "TIM_CCMR1_OC1PE_Msk",
+              "source": "header"
+            },
+            {
+              "locator": "rm0090/page:632",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "rm0090/page:633",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "rm0090/page:634",
+              "source": "timer_modes_evidence"
+            }
+          ],
+          "width": 1
+        },
+        {
+          "lsb": 4,
+          "mask": 112,
+          "meaning": "110 PWM1: in upcounting OC1REF is high while CNT<CCR1.",
+          "name": "OC1M",
+          "sources": [
+            {
+              "locator": "TIM_CCMR1_OC1M_Msk",
+              "source": "header"
+            },
+            {
+              "locator": "rm0090/page:632",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "rm0090/page:633",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "rm0090/page:634",
+              "source": "timer_modes_evidence"
+            }
+          ],
+          "width": 3
+        },
+        {
+          "lsb": 7,
+          "mask": 128,
+          "meaning": "Keep0 in this subset: fast/clear behavior and channel2 waveform generation are unused.",
+          "name": "OC1CE",
+          "sources": [
+            {
+              "locator": "TIM_CCMR1_OC1CE_Msk",
+              "source": "header"
+            },
+            {
+              "locator": "rm0090/page:632",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "rm0090/page:633",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "rm0090/page:634",
+              "source": "timer_modes_evidence"
+            }
+          ],
+          "width": 1
+        },
+        {
+          "lsb": 8,
+          "mask": 768,
+          "meaning": "Channel selection:00 output;11 internal TRC only with an internal TS selection. Change only while corresponding CCxE=0.",
+          "name": "CC2S",
+          "sources": [
+            {
+              "locator": "TIM_CCMR1_CC2S_Msk",
+              "source": "header"
+            },
+            {
+              "locator": "rm0090/page:632",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "rm0090/page:633",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "rm0090/page:634",
+              "source": "timer_modes_evidence"
+            }
+          ],
+          "width": 2
+        },
+        {
+          "lsb": 10,
+          "mask": 1024,
+          "meaning": "Keep0 in this subset: fast/clear behavior and channel2 waveform generation are unused.",
+          "name": "OC2FE",
+          "sources": [
+            {
+              "locator": "TIM_CCMR1_OC2FE_Msk",
+              "source": "header"
+            },
+            {
+              "locator": "rm0090/page:632",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "rm0090/page:633",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "rm0090/page:634",
+              "source": "timer_modes_evidence"
+            }
+          ],
+          "width": 1
+        },
+        {
+          "lsb": 11,
+          "mask": 2048,
+          "meaning": "Keep0 in this subset: fast/clear behavior and channel2 waveform generation are unused.",
+          "name": "OC2PE",
+          "sources": [
+            {
+              "locator": "TIM_CCMR1_OC2PE_Msk",
+              "source": "header"
+            },
+            {
+              "locator": "rm0090/page:632",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "rm0090/page:633",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "rm0090/page:634",
+              "source": "timer_modes_evidence"
+            }
+          ],
+          "width": 1
+        },
+        {
+          "lsb": 12,
+          "mask": 28672,
+          "meaning": "Keep0 in this subset: fast/clear behavior and channel2 waveform generation are unused.",
+          "name": "OC2M",
+          "sources": [
+            {
+              "locator": "TIM_CCMR1_OC2M_Msk",
+              "source": "header"
+            },
+            {
+              "locator": "rm0090/page:632",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "rm0090/page:633",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "rm0090/page:634",
+              "source": "timer_modes_evidence"
+            }
+          ],
+          "width": 3
+        },
+        {
+          "lsb": 15,
+          "mask": 32768,
+          "meaning": "Keep0 in this subset: fast/clear behavior and channel2 waveform generation are unused.",
+          "name": "OC2CE",
+          "sources": [
+            {
+              "locator": "TIM_CCMR1_OC2CE_Msk",
+              "source": "header"
+            },
+            {
+              "locator": "rm0090/page:632",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "rm0090/page:633",
+              "source": "timer_modes_evidence"
+            },
+            {
+              "locator": "rm0090/page:634",
+              "source": "timer_modes_evidence"
+            }
+          ],
+          "width": 1
+        }
+      ],
+      "selection": "TIM2 subset: CC1S=00 and CC2S=00; change selection only with CC1E/CC2E=0.",
+      "sources": [
+        {
+          "locator": "TIM_CCMR1_CC1S_Msk",
+          "source": "header"
+        },
+        {
+          "locator": "TIM_CCMR1_OC1FE_Msk",
+          "source": "header"
+        },
+        {
+          "locator": "TIM_CCMR1_OC1PE_Msk",
+          "source": "header"
+        },
+        {
+          "locator": "TIM_CCMR1_OC1M_Msk",
+          "source": "header"
+        },
+        {
+          "locator": "TIM_CCMR1_OC1CE_Msk",
+          "source": "header"
+        },
+        {
+          "locator": "TIM_CCMR1_CC2S_Msk",
+          "source": "header"
+        },
+        {
+          "locator": "TIM_CCMR1_OC2FE_Msk",
+          "source": "header"
+        },
+        {
+          "locator": "TIM_CCMR1_OC2PE_Msk",
+          "source": "header"
+        },
+        {
+          "locator": "TIM_CCMR1_OC2M_Msk",
+          "source": "header"
+        },
+        {
+          "locator": "TIM_CCMR1_OC2CE_Msk",
+          "source": "header"
+        },
+        {
+          "locator": "rm0090/page:632",
+          "source": "timer_modes_evidence"
+        },
+        {
+          "locator": "rm0090/page:633",
+          "source": "timer_modes_evidence"
+        },
+        {
+          "locator": "rm0090/page:634",
+          "source": "timer_modes_evidence"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,157 @@
+{
+  "format": "praxis-target-acceptance-plan-v1",
+  "target": {
+    "id": "stm32f407g_disc1_mb997_e01",
+    "mcu": "STM32F407VGT6",
+    "package": "Package_QFP:LQFP-100_14x14mm_P0.5mm",
+    "board_revision": "MB997-E-01"
+  },
+  "scope": "All existing twelve F407 application cases plus two internal timer examples against one revision. Software cohesion only; no full MCU or physical acceptance.",
+  "cases": [
+    {
+      "id": "led_button",
+      "source_directory": "stm32f407g-disc1-led-button/application",
+      "workflows": [
+        "gpio_led_button"
+      ],
+      "limitations": [
+        "Historical physical evidence belongs to its original artifact and bundle, not this rebuild."
+      ]
+    },
+    {
+      "id": "uart_loopback",
+      "source_directory": "stm32f407g-disc1-uart-loopback/application",
+      "workflows": [
+        "uart_timer_interrupts"
+      ],
+      "limitations": [
+        "No wire capture, button stimulus or live execution in this audit."
+      ]
+    },
+    {
+      "id": "uart_telemetry",
+      "source_directory": "stm32f407g-disc1-uart-loopback/telemetry_application",
+      "workflows": [
+        "uart_timer_interrupts"
+      ],
+      "limitations": [
+        "Existing failure/recovery anomalies remain unresolved; compilation does not establish repeatability."
+      ]
+    },
+    {
+      "id": "crc_dma",
+      "source_directory": "stm32f407g-disc1-crc-dma/application",
+      "workflows": [
+        "crc_word_feed",
+        "dma2_memory_copy"
+      ],
+      "limitations": [
+        "Compile-only CRC/DMA example; no hardware result observation is performed."
+      ]
+    },
+    {
+      "id": "clock",
+      "source_directory": "stm32f407g-disc1-clock/application",
+      "workflows": [
+        "pll_hse8_168mhz",
+        "flash_latency_168mhz"
+      ],
+      "limitations": [
+        "Clock transition code linked only; oscillator frequency and timing not measured. This case does not exercise RNG."
+      ]
+    },
+    {
+      "id": "adc",
+      "source_directory": "stm32f407g-disc1-adc/application",
+      "workflows": [
+        "adc1_internal_reference"
+      ],
+      "limitations": [
+        "Internal-reference conversion example only; external analog channels and electrical accuracy unqualified."
+      ]
+    },
+    {
+      "id": "i2c",
+      "source_directory": "stm32f407g-disc1-i2c/application",
+      "workflows": [
+        "i2c1_controller_transmit"
+      ],
+      "limitations": [
+        "Controller-only compile integration; no wired slave transaction or electrical validation."
+      ]
+    },
+    {
+      "id": "dac",
+      "source_directory": "stm32f407g-disc1-dac/application",
+      "workflows": [
+        "dac_channel1_software_trigger"
+      ],
+      "limitations": [
+        "Output entry is retained for compilation, but EN1/EN2 remain disabled in main; no analog output behavior is claimed."
+      ]
+    },
+    {
+      "id": "can",
+      "source_directory": "stm32f407g-disc1-can/application",
+      "workflows": [
+        "can1_silent_loopback",
+        "can1_silent_loopback_irq"
+      ],
+      "limitations": [
+        "Internal loopback example only; not a normal external CAN bus or every interrupt path."
+      ]
+    },
+    {
+      "id": "can_telemetry",
+      "source_directory": "stm32f407g-disc1-can/telemetry_application",
+      "workflows": [
+        "can1_silent_loopback_irq"
+      ],
+      "limitations": [
+        "No fresh telemetry sampling or hardware action; historical CAN observations remain artifact-bound."
+      ]
+    },
+    {
+      "id": "can_rx_telemetry",
+      "source_directory": "stm32f407g-disc1-can/telemetry_rx_application",
+      "workflows": [
+        "can1_rx_guarded_loopback_irq"
+      ],
+      "limitations": [
+        "Guarded internal RX loopback only; external PD0 wiring and normal CAN bus are not qualified by linking."
+      ]
+    },
+    {
+      "id": "arm_core",
+      "source_directory": "stm32f407g-disc1-arm-core/application",
+      "workflows": [
+        "arm_hsi16_core_checked",
+        "arm_flash_vector_table",
+        "systick_1khz_interrupt"
+      ],
+      "limitations": [
+        "Linked SysTick/SCB example only; not bootloader handoff, all exceptions, FPU or MPU qualification."
+      ]
+    },
+    {
+      "id": "timer_pwm_reference",
+      "source_directory": "stm32f407g-disc1-timer/pwm_application",
+      "workflows": [
+        "tim2_pwm_ch1_reference"
+      ],
+      "limitations": [
+        "No flashing, execution, pin waveform or input measurement. Internal reference/software event only; nominal timing and independent review remain unqualified."
+      ]
+    },
+    {
+      "id": "timer_software_capture",
+      "source_directory": "stm32f407g-disc1-timer/capture_application",
+      "workflows": [
+        "tim2_software_capture_ch1"
+      ],
+      "limitations": [
+        "No flashing, execution, pin waveform or input measurement. Internal reference/software event only; nominal timing and independent review remain unqualified."
+      ]
+    }
+  ]
+}

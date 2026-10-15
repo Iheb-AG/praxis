@@ -10,7 +10,8 @@ from praxis.render import NET_COLUMNS
 
 class NetlistIndex:
     def __init__(self, markdown: str, primary_mcu_ref: str,
-                 board_markdown: str | None = None, components_markdown: str | None = None):
+                 board_markdown: str | None = None, components_markdown: str | None = None,
+                 *, allow_empty: bool = False):
         lines = markdown.splitlines()
         start = next((i for i, line in enumerate(lines)
                       if line.startswith("| ") and self._cells(line) == NET_COLUMNS), None)
@@ -43,7 +44,11 @@ class NetlistIndex:
                 self.exact.setdefault(key, set()).add(net)
             if endpoint.startswith(primary_mcu_ref + ":"):
                 self.pins.setdefault(pin.casefold(), set()).add(net)
-        if not self.nets:
+        if allow_empty and self.nets:
+            raise PraxisError("INVALID_NETLIST", "An MCU-only bundle cannot claim electrical net membership")
+        if not self.nets and not (allow_empty
+                and "Connectivity status: unavailable (MCU-only)." in self.preamble
+                and board_markdown is None and components_markdown is None):
             raise PraxisError("INVALID_NETLIST", "Published netlist is empty")
         self.board_markdown = board_markdown
         self.components_markdown = components_markdown
@@ -93,6 +98,9 @@ class NetlistIndex:
         if len(matches) > 1:
             raise PraxisError("AMBIGUOUS_IDENTITY", f"{target!r} identifies multiple nets: {', '.join(sorted(matches))}; use an endpoint or exact net name")
         if not matches:
+            if not self.nets:
+                return (f"No match for {target!r}: board connectivity is unavailable in this MCU-only bundle. "
+                        "Supply a separately reviewed board profile and schematic before selecting physical pins.")
             return f"No match for {target!r} in this target's published schematic netlist."
         name = next(iter(matches))
         result = self.preamble + self.header + "\n".join(self.nets[name]) + "\n"

@@ -1,0 +1,140 @@
+{
+  "avr_mcu": null,
+  "board_prerequisites": [
+    "rcc",
+    "gpio"
+  ],
+  "clock_plan": {
+    "ahb_div": {
+      "equals": 1
+    },
+    "apb1_div": {
+      "equals": 4
+    },
+    "apb2_div": {
+      "equals": 2
+    },
+    "flash_wait_states": {
+      "equals": 5
+    },
+    "hse_hz": {
+      "equals": 8000000
+    },
+    "pll_m": {
+      "equals": 8
+    },
+    "pll_n": {
+      "equals": 336
+    },
+    "pll_p": {
+      "equals": 2
+    },
+    "pll_q": {
+      "equals": 7
+    },
+    "vdd_mv": {
+      "maximum": 3600,
+      "minimum": 2700
+    }
+  },
+  "core_source": "cmsis_core",
+  "cpu": "cortex-m4",
+  "family": "stm32",
+  "header_identity": [
+    "__STM32F407xx_H"
+  ],
+  "header_kind": "cmsis",
+  "id": "publication_policy",
+  "legacy_discovery": {
+    "gpio": {
+      "member_views": {
+        "AFR": [
+          "AFRL",
+          "AFRH"
+        ]
+      },
+      "prerequisites": [
+        "rcc"
+      ],
+      "structure": "GPIO_TypeDef"
+    },
+    "nvic": {
+      "member_views": {},
+      "prerequisites": [
+        "usart"
+      ],
+      "structure": "NVIC_Type"
+    },
+    "rcc": {
+      "member_views": {},
+      "prerequisites": [],
+      "structure": "RCC_TypeDef"
+    },
+    "usart": {
+      "member_views": {},
+      "prerequisites": [
+        "gpio"
+      ],
+      "structure": "USART_TypeDef"
+    }
+  },
+  "mcu": "STM32F407VGT6",
+  "package": "Package_QFP:LQFP-100_14x14mm_P0.5mm",
+  "pin_document": "gpio",
+  "required_registers": {
+    "gpio": [
+      "AFRH",
+      "AFRL",
+      "BSRR",
+      "IDR",
+      "LCKR",
+      "MODER",
+      "ODR",
+      "OSPEEDR",
+      "OTYPER",
+      "PUPDR"
+    ],
+    "nvic": [
+      "IABR",
+      "ICER",
+      "ICPR",
+      "IP",
+      "ISER",
+      "ISPR",
+      "STIR"
+    ],
+    "rcc": [
+      "AHB1ENR",
+      "APB1ENR",
+      "APB1RSTR",
+      "CFGR",
+      "CR",
+      "PLLCFGR"
+    ],
+    "usart": [
+      "BRR",
+      "CR1",
+      "CR2",
+      "CR3",
+      "DR",
+      "GTPR",
+      "SR"
+    ]
+  },
+  "review": {
+    "basis": "Pinned ST/Arm declarations, DS8626 and ST clock example; independent board and semantics sign-off remains pending.",
+    "reviewer": "Codex source-backed F407 fixture editorial review",
+    "status": "reviewed"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "locator": "reviewed peripheral publication scope",
+      "source": "definitions"
+    },
+    {
+      "locator": "target, header and clock assumptions",
+      "source": "profile"
+    }
+  ]
+}

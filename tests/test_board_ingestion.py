@@ -115,7 +115,8 @@ def test_documented_board_is_deterministic_across_input_locations(tmp_path):
     bundle = Bundle(tmp_path / "first-bundle")
     assert not bundle.manifest.target.example_only
     assert "schemas/board" in bundle.manifest.documents
-    assert max(len(text.encode()) for text in bundle.documents.values()) <= 65536
+    assert all("## Register map" in bundle.read(path) and "## Bit fields" in bundle.read(path)
+               for path in bundle.manifest.peripherals.values())
 
 
 def test_kicad_component_values_properties_and_dnp_are_preserved(tmp_path):

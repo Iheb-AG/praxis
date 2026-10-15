@@ -1,0 +1,2229 @@
+{
+  "acceptance_replay": {
+    "all_linked_and_elf_revalidated": true,
+    "applications": 12,
+    "calls": 81,
+    "full_mcu_accepted": false,
+    "software_checks_passed": true
+  },
+  "all_features_supported": false,
+  "bundle_revision": "b740659eca4934318119722a6ca55b30f5e2918e76fc1a3e8b857ae23a226b20",
+  "counts": {
+    "applicability_pending_or_mixed": 299,
+    "editorial_repairs": 29,
+    "indexed_sections": 1683,
+    "missing_sources": 3,
+    "source_documents": 4,
+    "unresolved_extraction_items": 29,
+    "unresolved_extraction_items_after_review": 0
+  },
+  "date": "2026-10-14",
+  "docker": {
+    "architecture": "amd64",
+    "calls": 161,
+    "image_id": "sha256:ee9be4ffc2c9af4106b2e5005f723d8481b86fb88419d3e6320af5e5235b29a3",
+    "inventory_cli": {
+      "bundle_revision": "b740659eca4934318119722a6ca55b30f5e2918e76fc1a3e8b857ae23a226b20",
+      "counts": {
+        "applicability_pending_or_mixed": 299,
+        "editorial_repairs": 29,
+        "indexed_sections": 1683,
+        "missing_sources": 3,
+        "source_documents": 4,
+        "unresolved_extraction_items": 29,
+        "unresolved_extraction_items_after_review": 0
+      },
+      "require_complete_exit_code": 1,
+      "runtime_only_report_passed": true,
+      "scope_facts": 24
+    },
+    "negative_and_runtime_checks": [
+      "MISSING_FILE",
+      "INTEGRITY_ERROR",
+      "non_root",
+      "read_only_filesystem_and_bundle",
+      "no_optional_extras"
+    ],
+    "os": "linux",
+    "passed": true,
+    "sessions": 4
+  },
+  "format": "praxis-inventory-reconciliation-evidence-v1",
+  "gaps": [
+    "299 indexed sections still require applicability reconciliation",
+    "boot_protocol_references: Part-specific ROM bootloader protocols, routing and update/recovery requirements need their referenced manufacturer application notes.",
+    "complete_board_netlist: Board connectivity is a partial reviewed transcription; complete CAD connectivity/assembly and physical revision evidence remain unavailable.",
+    "mode_requirement_inventory: Section outlines do not enumerate all body/table operating modes, instances, constraints and errata workarounds; their normalized requirement inventory is not yet authored.",
+    "Full section bodies, tables, instance/mode requirements and errata workarounds need review",
+    "Manufacturer-wide exhaustiveness review is pending; indexed headings are not the capability denominator",
+    "Build and physical qualification remain separate exact-artifact evidence"
+  ],
+  "hardware_operations": 0,
+  "inventory_complete": false,
+  "inventory_sha256": "9ded5ffeb24dd10d70ef5980235e5d783d7d91d9048dd6fba84fc63b05e8a177",
+  "operating_workflow_coverage_changed": false,
+  "original_inventory_sha256": "47907d56bad056fee69d434a6b53f88befc321560f6ab2db61f235745e794ae8",
+  "overall_mcu_completion_percent": null,
+  "quality": {
+    "deterministic_inventory_reports": true,
+    "distribution_contents_passed": true,
+    "inventory_input_hashes_verified": 52,
+    "lock_check_passed": true,
+    "offline_wheel_and_sdist_build_passed": true,
+    "private_and_raw_paths_excluded": true,
+    "public_documentation_links_passed": true,
+    "ruff_passed": true
+  },
+  "regression": {
+    "duration_seconds": 180.55,
+    "passed": 1022,
+    "required_external_tools": true,
+    "skipped": 0
+  },
+  "release_gate": {
+    "independent_review_pending": true,
+    "release_ready": false
+  },
+  "scope_facts": [
+    {
+      "description": "Manufacturer table column for this target",
+      "evidence": [
+        {
+          "evidence": "part_ds_part_matrix_page_16",
+          "locator": "page:16"
+        }
+      ],
+      "id": "selected_sales_group",
+      "provenance": [
+        {
+          "evidence": "part_ds_part_matrix_page_16",
+          "evidence_sha256": "9f0d6ffc22e065ef2ca6297c4356ae0d81c4454e6c855dc312316bc8fb1f5a9e",
+          "locator": "page:16",
+          "origin": "https://www.st.com/resource/en/datasheet/stm32f407vg.pdf",
+          "source_sha256": "1f41b4fa49a9960215ebb76cd0a75f20241db82eed60d308345a80463caeed22"
+        }
+      ],
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+      "status": "editorial_inventory_fact_not_operating_or_physical_qualification",
+      "unit": "",
+      "value": "STM32F407Vx"
+    },
+    {
+      "description": "Package in the selected sales-group column",
+      "evidence": [
+        {
+          "evidence": "part_ds_part_matrix_page_16",
+          "locator": "page:16"
+        }
+      ],
+      "id": "selected_package",
+      "provenance": [
+        {
+          "evidence": "part_ds_part_matrix_page_16",
+          "evidence_sha256": "9f0d6ffc22e065ef2ca6297c4356ae0d81c4454e6c855dc312316bc8fb1f5a9e",
+          "locator": "page:16",
+          "origin": "https://www.st.com/resource/en/datasheet/stm32f407vg.pdf",
+          "source_sha256": "1f41b4fa49a9960215ebb76cd0a75f20241db82eed60d308345a80463caeed22"
+        }
+      ],
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+      "status": "editorial_inventory_fact_not_operating_or_physical_qualification",
+      "unit": "",
+      "value": "LQFP100"
+    },
+    {
+      "description": "GPIO count for STM32F407Vx",
+      "evidence": [
+        {
+          "evidence": "part_ds_part_matrix_page_16",
+          "locator": "page:16"
+        }
+      ],
+      "id": "gpio_count",
+      "provenance": [
+        {
+          "evidence": "part_ds_part_matrix_page_16",
+          "evidence_sha256": "9f0d6ffc22e065ef2ca6297c4356ae0d81c4454e6c855dc312316bc8fb1f5a9e",
+          "locator": "page:16",
+          "origin": "https://www.st.com/resource/en/datasheet/stm32f407vg.pdf",
+          "source_sha256": "1f41b4fa49a9960215ebb76cd0a75f20241db82eed60d308345a80463caeed22"
+        }
+      ],
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+      "status": "editorial_inventory_fact_not_operating_or_physical_qualification",
+      "unit": "pins",
+      "value": 82
+    },
+    {
+      "description": "ADC units in Table 2",
+      "evidence": [
+        {
+          "evidence": "part_ds_part_matrix_page_16",
+          "locator": "page:16"
+        }
+      ],
+      "id": "adc_count",
+      "provenance": [
+        {
+          "evidence": "part_ds_part_matrix_page_16",
+          "evidence_sha256": "9f0d6ffc22e065ef2ca6297c4356ae0d81c4454e6c855dc312316bc8fb1f5a9e",
+          "locator": "page:16",
+          "origin": "https://www.st.com/resource/en/datasheet/stm32f407vg.pdf",
+          "source_sha256": "1f41b4fa49a9960215ebb76cd0a75f20241db82eed60d308345a80463caeed22"
+        }
+      ],
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+      "status": "editorial_inventory_fact_not_operating_or_physical_qualification",
+      "unit": "controllers",
+      "value": 3
+    },
+    {
+      "description": "ADC channel count in the selected sales-group column; electrical/pin constraints still apply",
+      "evidence": [
+        {
+          "evidence": "part_ds_part_matrix_page_16",
+          "locator": "page:16"
+        }
+      ],
+      "id": "adc_channel_count",
+      "provenance": [
+        {
+          "evidence": "part_ds_part_matrix_page_16",
+          "evidence_sha256": "9f0d6ffc22e065ef2ca6297c4356ae0d81c4454e6c855dc312316bc8fb1f5a9e",
+          "locator": "page:16",
+          "origin": "https://www.st.com/resource/en/datasheet/stm32f407vg.pdf",
+          "source_sha256": "1f41b4fa49a9960215ebb76cd0a75f20241db82eed60d308345a80463caeed22"
+        }
+      ],
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+      "status": "editorial_inventory_fact_not_operating_or_physical_qualification",
+      "unit": "channels",
+      "value": 16
+    },
+    {
+      "description": "DAC channel count in Table 2",
+      "evidence": [
+        {
+          "evidence": "part_ds_part_matrix_page_16",
+          "locator": "page:16"
+        }
+      ],
+      "id": "dac_channels",
+      "provenance": [
+        {
+          "evidence": "part_ds_part_matrix_page_16",
+          "evidence_sha256": "9f0d6ffc22e065ef2ca6297c4356ae0d81c4454e6c855dc312316bc8fb1f5a9e",
+          "locator": "page:16",
+          "origin": "https://www.st.com/resource/en/datasheet/stm32f407vg.pdf",
+          "source_sha256": "1f41b4fa49a9960215ebb76cd0a75f20241db82eed60d308345a80463caeed22"
+        }
+      ],
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+      "status": "editorial_inventory_fact_not_operating_or_physical_qualification",
+      "unit": "channels",
+      "value": 2
+    },
+    {
+      "description": "SPI interface count; SPI2/3 I2S use is exclusive",
+      "evidence": [
+        {
+          "evidence": "part_ds_part_matrix_page_16",
+          "locator": "page:16"
+        }
+      ],
+      "id": "spi_count",
+      "provenance": [
+        {
+          "evidence": "part_ds_part_matrix_page_16",
+          "evidence_sha256": "9f0d6ffc22e065ef2ca6297c4356ae0d81c4454e6c855dc312316bc8fb1f5a9e",
+          "locator": "page:16",
+          "origin": "https://www.st.com/resource/en/datasheet/stm32f407vg.pdf",
+          "source_sha256": "1f41b4fa49a9960215ebb76cd0a75f20241db82eed60d308345a80463caeed22"
+        }
+      ],
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+      "status": "editorial_inventory_fact_not_operating_or_physical_qualification",
+      "unit": "interfaces",
+      "value": 3
+    },
+    {
+      "description": "Full-duplex I2S interface count; not an additional SAI block",
+      "evidence": [
+        {
+          "evidence": "part_ds_part_matrix_page_16",
+          "locator": "page:16"
+        }
+      ],
+      "id": "i2s_count",
+      "provenance": [
+        {
+          "evidence": "part_ds_part_matrix_page_16",
+          "evidence_sha256": "9f0d6ffc22e065ef2ca6297c4356ae0d81c4454e6c855dc312316bc8fb1f5a9e",
+          "locator": "page:16",
+          "origin": "https://www.st.com/resource/en/datasheet/stm32f407vg.pdf",
+          "source_sha256": "1f41b4fa49a9960215ebb76cd0a75f20241db82eed60d308345a80463caeed22"
+        }
+      ],
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+      "status": "editorial_inventory_fact_not_operating_or_physical_qualification",
+      "unit": "interfaces",
+      "value": 2
+    },
+    {
+      "description": "I2C interface count",
+      "evidence": [
+        {
+          "evidence": "part_ds_part_matrix_page_16",
+          "locator": "page:16"
+        }
+      ],
+      "id": "i2c_count",
+      "provenance": [
+        {
+          "evidence": "part_ds_part_matrix_page_16",
+          "evidence_sha256": "9f0d6ffc22e065ef2ca6297c4356ae0d81c4454e6c855dc312316bc8fb1f5a9e",
+          "locator": "page:16",
+          "origin": "https://www.st.com/resource/en/datasheet/stm32f407vg.pdf",
+          "source_sha256": "1f41b4fa49a9960215ebb76cd0a75f20241db82eed60d308345a80463caeed22"
+        }
+      ],
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+      "status": "editorial_inventory_fact_not_operating_or_physical_qualification",
+      "unit": "interfaces",
+      "value": 3
+    },
+    {
+      "description": "USART interface count",
+      "evidence": [
+        {
+          "evidence": "part_ds_part_matrix_page_16",
+          "locator": "page:16"
+        }
+      ],
+      "id": "usart_count",
+      "provenance": [
+        {
+          "evidence": "part_ds_part_matrix_page_16",
+          "evidence_sha256": "9f0d6ffc22e065ef2ca6297c4356ae0d81c4454e6c855dc312316bc8fb1f5a9e",
+          "locator": "page:16",
+          "origin": "https://www.st.com/resource/en/datasheet/stm32f407vg.pdf",
+          "source_sha256": "1f41b4fa49a9960215ebb76cd0a75f20241db82eed60d308345a80463caeed22"
+        }
+      ],
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+      "status": "editorial_inventory_fact_not_operating_or_physical_qualification",
+      "unit": "interfaces",
+      "value": 4
+    },
+    {
+      "description": "UART interface count",
+      "evidence": [
+        {
+          "evidence": "part_ds_part_matrix_page_16",
+          "locator": "page:16"
+        }
+      ],
+      "id": "uart_count",
+      "provenance": [
+        {
+          "evidence": "part_ds_part_matrix_page_16",
+          "evidence_sha256": "9f0d6ffc22e065ef2ca6297c4356ae0d81c4454e6c855dc312316bc8fb1f5a9e",
+          "locator": "page:16",
+          "origin": "https://www.st.com/resource/en/datasheet/stm32f407vg.pdf",
+          "source_sha256": "1f41b4fa49a9960215ebb76cd0a75f20241db82eed60d308345a80463caeed22"
+        }
+      ],
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+      "status": "editorial_inventory_fact_not_operating_or_physical_qualification",
+      "unit": "interfaces",
+      "value": 2
+    },
+    {
+      "description": "CAN interface count",
+      "evidence": [
+        {
+          "evidence": "part_ds_part_matrix_page_16",
+          "locator": "page:16"
+        }
+      ],
+      "id": "can_count",
+      "provenance": [
+        {
+          "evidence": "part_ds_part_matrix_page_16",
+          "evidence_sha256": "9f0d6ffc22e065ef2ca6297c4356ae0d81c4454e6c855dc312316bc8fb1f5a9e",
+          "locator": "page:16",
+          "origin": "https://www.st.com/resource/en/datasheet/stm32f407vg.pdf",
+          "source_sha256": "1f41b4fa49a9960215ebb76cd0a75f20241db82eed60d308345a80463caeed22"
+        }
+      ],
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+      "status": "editorial_inventory_fact_not_operating_or_physical_qualification",
+      "unit": "controllers",
+      "value": 2
+    },
+    {
+      "description": "Camera interface is available in the selected F407Vx group",
+      "evidence": [
+        {
+          "evidence": "part_ds_part_matrix_page_16",
+          "locator": "page:16"
+        }
+      ],
+      "id": "camera_present",
+      "provenance": [
+        {
+          "evidence": "part_ds_part_matrix_page_16",
+          "evidence_sha256": "9f0d6ffc22e065ef2ca6297c4356ae0d81c4454e6c855dc312316bc8fb1f5a9e",
+          "locator": "page:16",
+          "origin": "https://www.st.com/resource/en/datasheet/stm32f407vg.pdf",
+          "source_sha256": "1f41b4fa49a9960215ebb76cd0a75f20241db82eed60d308345a80463caeed22"
+        }
+      ],
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+      "status": "editorial_inventory_fact_not_operating_or_physical_qualification",
+      "unit": "",
+      "value": true
+    },
+    {
+      "description": "USB OTG FS controller is listed; this does not qualify a board interface",
+      "evidence": [
+        {
+          "evidence": "part_ds_part_matrix_page_16",
+          "locator": "page:16"
+        }
+      ],
+      "id": "usb_fs_present",
+      "provenance": [
+        {
+          "evidence": "part_ds_part_matrix_page_16",
+          "evidence_sha256": "9f0d6ffc22e065ef2ca6297c4356ae0d81c4454e6c855dc312316bc8fb1f5a9e",
+          "locator": "page:16",
+          "origin": "https://www.st.com/resource/en/datasheet/stm32f407vg.pdf",
+          "source_sha256": "1f41b4fa49a9960215ebb76cd0a75f20241db82eed60d308345a80463caeed22"
+        }
+      ],
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+      "status": "editorial_inventory_fact_not_operating_or_physical_qualification",
+      "unit": "",
+      "value": true
+    },
+    {
+      "description": "USB OTG HS controller is listed; PHY and board constraints remain separate",
+      "evidence": [
+        {
+          "evidence": "part_ds_part_matrix_page_16",
+          "locator": "page:16"
+        }
+      ],
+      "id": "usb_hs_present",
+      "provenance": [
+        {
+          "evidence": "part_ds_part_matrix_page_16",
+          "evidence_sha256": "9f0d6ffc22e065ef2ca6297c4356ae0d81c4454e6c855dc312316bc8fb1f5a9e",
+          "locator": "page:16",
+          "origin": "https://www.st.com/resource/en/datasheet/stm32f407vg.pdf",
+          "source_sha256": "1f41b4fa49a9960215ebb76cd0a75f20241db82eed60d308345a80463caeed22"
+        }
+      ],
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+      "status": "editorial_inventory_fact_not_operating_or_physical_qualification",
+      "unit": "",
+      "value": true
+    },
+    {
+      "description": "SDIO controller is listed; card/socket/wiring are not inferred",
+      "evidence": [
+        {
+          "evidence": "part_ds_part_matrix_page_16",
+          "locator": "page:16"
+        }
+      ],
+      "id": "sdio_present",
+      "provenance": [
+        {
+          "evidence": "part_ds_part_matrix_page_16",
+          "evidence_sha256": "9f0d6ffc22e065ef2ca6297c4356ae0d81c4454e6c855dc312316bc8fb1f5a9e",
+          "locator": "page:16",
+          "origin": "https://www.st.com/resource/en/datasheet/stm32f407vg.pdf",
+          "source_sha256": "1f41b4fa49a9960215ebb76cd0a75f20241db82eed60d308345a80463caeed22"
+        }
+      ],
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+      "status": "editorial_inventory_fact_not_operating_or_physical_qualification",
+      "unit": "",
+      "value": true
+    },
+    {
+      "description": "Ethernet is present in the F407 sales groups; external PHY is not inferred",
+      "evidence": [
+        {
+          "evidence": "part_ds_part_matrix_page_15",
+          "locator": "page:15"
+        }
+      ],
+      "id": "ethernet_present",
+      "provenance": [
+        {
+          "evidence": "part_ds_part_matrix_page_15",
+          "evidence_sha256": "fc9cf8c19a15de9a793b0674dbea2c4e7b0ea69681a9fa902078284206bdcaa9",
+          "locator": "page:15",
+          "origin": "https://www.st.com/resource/en/datasheet/stm32f407vg.pdf",
+          "source_sha256": "1f41b4fa49a9960215ebb76cd0a75f20241db82eed60d308345a80463caeed22"
+        }
+      ],
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+      "status": "editorial_inventory_fact_not_operating_or_physical_qualification",
+      "unit": "",
+      "value": true
+    },
+    {
+      "description": "General-purpose timer count",
+      "evidence": [
+        {
+          "evidence": "part_ds_part_matrix_page_15",
+          "locator": "page:15"
+        }
+      ],
+      "id": "general_timers",
+      "provenance": [
+        {
+          "evidence": "part_ds_part_matrix_page_15",
+          "evidence_sha256": "fc9cf8c19a15de9a793b0674dbea2c4e7b0ea69681a9fa902078284206bdcaa9",
+          "locator": "page:15",
+          "origin": "https://www.st.com/resource/en/datasheet/stm32f407vg.pdf",
+          "source_sha256": "1f41b4fa49a9960215ebb76cd0a75f20241db82eed60d308345a80463caeed22"
+        }
+      ],
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+      "status": "editorial_inventory_fact_not_operating_or_physical_qualification",
+      "unit": "timers",
+      "value": 10
+    },
+    {
+      "description": "Advanced-control timer count",
+      "evidence": [
+        {
+          "evidence": "part_ds_part_matrix_page_15",
+          "locator": "page:15"
+        }
+      ],
+      "id": "advanced_timers",
+      "provenance": [
+        {
+          "evidence": "part_ds_part_matrix_page_15",
+          "evidence_sha256": "fc9cf8c19a15de9a793b0674dbea2c4e7b0ea69681a9fa902078284206bdcaa9",
+          "locator": "page:15",
+          "origin": "https://www.st.com/resource/en/datasheet/stm32f407vg.pdf",
+          "source_sha256": "1f41b4fa49a9960215ebb76cd0a75f20241db82eed60d308345a80463caeed22"
+        }
+      ],
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+      "status": "editorial_inventory_fact_not_operating_or_physical_qualification",
+      "unit": "timers",
+      "value": 2
+    },
+    {
+      "description": "Basic timer count",
+      "evidence": [
+        {
+          "evidence": "part_ds_part_matrix_page_15",
+          "locator": "page:15"
+        }
+      ],
+      "id": "basic_timers",
+      "provenance": [
+        {
+          "evidence": "part_ds_part_matrix_page_15",
+          "evidence_sha256": "fc9cf8c19a15de9a793b0674dbea2c4e7b0ea69681a9fa902078284206bdcaa9",
+          "locator": "page:15",
+          "origin": "https://www.st.com/resource/en/datasheet/stm32f407vg.pdf",
+          "source_sha256": "1f41b4fa49a9960215ebb76cd0a75f20241db82eed60d308345a80463caeed22"
+        }
+      ],
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+      "status": "editorial_inventory_fact_not_operating_or_physical_qualification",
+      "unit": "timers",
+      "value": 2
+    },
+    {
+      "description": "Exact G-density ordering code denotes 1024 Kbytes; this is not an erase/programming contract",
+      "evidence": [
+        {
+          "evidence": "part_ds_part_matrix_page_15",
+          "locator": "page:15"
+        },
+        {
+          "evidence": "part_ds_ordering_page_186",
+          "locator": "page:186"
+        }
+      ],
+      "id": "flash_density",
+      "provenance": [
+        {
+          "evidence": "part_ds_part_matrix_page_15",
+          "evidence_sha256": "fc9cf8c19a15de9a793b0674dbea2c4e7b0ea69681a9fa902078284206bdcaa9",
+          "locator": "page:15",
+          "origin": "https://www.st.com/resource/en/datasheet/stm32f407vg.pdf",
+          "source_sha256": "1f41b4fa49a9960215ebb76cd0a75f20241db82eed60d308345a80463caeed22"
+        },
+        {
+          "evidence": "part_ds_ordering_page_186",
+          "evidence_sha256": "3b36838e3c1607d285bd8b7fce5b63f6c1e481969ae1f1fc92fc7e5d0215b8fe",
+          "locator": "page:186",
+          "origin": "https://www.st.com/resource/en/datasheet/stm32f407vg.pdf",
+          "source_sha256": "1f41b4fa49a9960215ebb76cd0a75f20241db82eed60d308345a80463caeed22"
+        }
+      ],
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+      "status": "editorial_inventory_fact_not_operating_or_physical_qualification",
+      "unit": "KiB",
+      "value": 1024
+    },
+    {
+      "description": "Total system SRAM including separate memory banks; never treat this as contiguous linker RAM",
+      "evidence": [
+        {
+          "evidence": "part_ds_part_matrix_page_15",
+          "locator": "page:15"
+        }
+      ],
+      "id": "system_sram_total",
+      "provenance": [
+        {
+          "evidence": "part_ds_part_matrix_page_15",
+          "evidence_sha256": "fc9cf8c19a15de9a793b0674dbea2c4e7b0ea69681a9fa902078284206bdcaa9",
+          "locator": "page:15",
+          "origin": "https://www.st.com/resource/en/datasheet/stm32f407vg.pdf",
+          "source_sha256": "1f41b4fa49a9960215ebb76cd0a75f20241db82eed60d308345a80463caeed22"
+        }
+      ],
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+      "status": "editorial_inventory_fact_not_operating_or_physical_qualification",
+      "unit": "KiB",
+      "value": 192
+    },
+    {
+      "description": "DS8626 Table 2 footnote 1 package restriction",
+      "evidence": [
+        {
+          "evidence": "part_ds_part_matrix_page_16",
+          "locator": "page:16"
+        }
+      ],
+      "id": "fsmc_lqfp100_constraint",
+      "provenance": [
+        {
+          "evidence": "part_ds_part_matrix_page_16",
+          "evidence_sha256": "9f0d6ffc22e065ef2ca6297c4356ae0d81c4454e6c855dc312316bc8fb1f5a9e",
+          "locator": "page:16",
+          "origin": "https://www.st.com/resource/en/datasheet/stm32f407vg.pdf",
+          "source_sha256": "1f41b4fa49a9960215ebb76cd0a75f20241db82eed60d308345a80463caeed22"
+        }
+      ],
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+      "status": "editorial_inventory_fact_not_operating_or_physical_qualification",
+      "unit": "",
+      "value": "Only Bank1 or Bank2: Bank1 multiplexed NOR/PSRAM with NE1; Bank2 8/16-bit NAND with NCE2; no FSMC interrupt line because Port G is unavailable."
+    },
+    {
+      "description": "V ordering code pin count; distinct from available GPIO count",
+      "evidence": [
+        {
+          "evidence": "part_ds_ordering_page_186",
+          "locator": "page:186"
+        }
+      ],
+      "id": "package_pin_count",
+      "provenance": [
+        {
+          "evidence": "part_ds_ordering_page_186",
+          "evidence_sha256": "3b36838e3c1607d285bd8b7fce5b63f6c1e481969ae1f1fc92fc7e5d0215b8fe",
+          "locator": "page:186",
+          "origin": "https://www.st.com/resource/en/datasheet/stm32f407vg.pdf",
+          "source_sha256": "1f41b4fa49a9960215ebb76cd0a75f20241db82eed60d308345a80463caeed22"
+        }
+      ],
+      "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+      "status": "editorial_inventory_fact_not_operating_or_physical_qualification",
+      "unit": "pins",
+      "value": 100
+    }
+  ],
+  "source_documents": {
+    "ds8626": {
+      "editorial_repairs": [
+        {
+          "action": "repair_entry",
+          "destination_page": 33,
+          "document": "ds8626",
+          "evidence": [
+            {
+              "evidence": "layout_ds_dac_contents_page_3",
+              "locator": "page:3/word:1117"
+            },
+            {
+              "evidence": "layout_ds_dac_contents_page_3",
+              "locator": "page:3/word:1166"
+            },
+            {
+              "evidence": "layout_ds_dac_contents_page_3",
+              "locator": "page:3/word:1119"
+            }
+          ],
+          "gap_locator": "page:3/line:55",
+          "original_gap": {
+            "locators": [
+              "page:3/line:55"
+            ],
+            "reason": "unrecognized_contents_line",
+            "text": "BAT"
+          },
+          "provenance": [
+            {
+              "evidence": "layout_ds_dac_contents_page_3",
+              "evidence_sha256": "60c1d584bdbd69bba20af524ba5cc5185be479dd1244e0ae1d592132a6399829",
+              "locator": "page:3/word:1117",
+              "origin": "https://www.st.com/resource/en/datasheet/stm32f407vg.pdf",
+              "source_sha256": "1f41b4fa49a9960215ebb76cd0a75f20241db82eed60d308345a80463caeed22"
+            },
+            {
+              "evidence": "layout_ds_dac_contents_page_3",
+              "evidence_sha256": "60c1d584bdbd69bba20af524ba5cc5185be479dd1244e0ae1d592132a6399829",
+              "locator": "page:3/word:1166",
+              "origin": "https://www.st.com/resource/en/datasheet/stm32f407vg.pdf",
+              "source_sha256": "1f41b4fa49a9960215ebb76cd0a75f20241db82eed60d308345a80463caeed22"
+            },
+            {
+              "evidence": "layout_ds_dac_contents_page_3",
+              "evidence_sha256": "60c1d584bdbd69bba20af524ba5cc5185be479dd1244e0ae1d592132a6399829",
+              "locator": "page:3/word:1119",
+              "origin": "https://www.st.com/resource/en/datasheet/stm32f407vg.pdf",
+              "source_sha256": "1f41b4fa49a9960215ebb76cd0a75f20241db82eed60d308345a80463caeed22"
+            }
+          ],
+          "rationale": "Read the full MCP-rendered source page and word geometry: repair the long aligned heading or reattach its BAT subscript; preserve the original entry and unresolved fragment.",
+          "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+          "section": "3.20",
+          "status": "implementing_author_editorial_review_not_independent_signoff",
+          "title": "VBAT operation"
+        },
+        {
+          "action": "classify_metadata",
+          "destination_page": null,
+          "document": "ds8626",
+          "evidence": [
+            {
+              "evidence": "layout_ds_dac_contents_page_3",
+              "locator": "page:3/word:8"
+            }
+          ],
+          "gap_locator": "page:3/line:60",
+          "original_gap": {
+            "locators": [
+              "page:3/line:60"
+            ],
+            "reason": "unlabelled_numeric_line",
+            "text": "6"
+          },
+          "provenance": [
+            {
+              "evidence": "layout_ds_dac_contents_page_3",
+              "evidence_sha256": "60c1d584bdbd69bba20af524ba5cc5185be479dd1244e0ae1d592132a6399829",
+              "locator": "page:3/word:8",
+              "origin": "https://www.st.com/resource/en/datasheet/stm32f407vg.pdf",
+              "source_sha256": "1f41b4fa49a9960215ebb76cd0a75f20241db82eed60d308345a80463caeed22"
+            }
+          ],
+          "rationale": "The matching source word is below the footer in the MCP page layout. Representative rendered source pages confirm the non-content footer/logo area; every individual word position is retained. This is a text-layer artifact, not a section.",
+          "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+          "section": null,
+          "status": "implementing_author_editorial_review_not_independent_signoff",
+          "title": null
+        },
+        {
+          "action": "repair_entry",
+          "destination_page": 141,
+          "document": "ds8626",
+          "evidence": [
+            {
+              "evidence": "layout_ds_dac_contents_page_5",
+              "locator": "page:5/word:806"
+            },
+            {
+              "evidence": "layout_ds_dac_contents_page_5",
+              "locator": "page:5/word:841"
+            },
+            {
+              "evidence": "layout_ds_dac_contents_page_5",
+              "locator": "page:5/word:808"
+            }
+          ],
+          "gap_locator": "page:5/line:41",
+          "original_gap": {
+            "locators": [
+              "page:5/line:41"
+            ],
+            "reason": "unrecognized_contents_line",
+            "text": "BAT"
+          },
+          "provenance": [
+            {
+              "evidence": "layout_ds_dac_contents_page_5",
+              "evidence_sha256": "ed065d47849bf56d9c2a5869350b1bb730e5699dab29355b92a837db5292437a",
+              "locator": "page:5/word:806",
+              "origin": "https://www.st.com/resource/en/datasheet/stm32f407vg.pdf",
+              "source_sha256": "1f41b4fa49a9960215ebb76cd0a75f20241db82eed60d308345a80463caeed22"
+            },
+            {
+              "evidence": "layout_ds_dac_contents_page_5",
+              "evidence_sha256": "ed065d47849bf56d9c2a5869350b1bb730e5699dab29355b92a837db5292437a",
+              "locator": "page:5/word:841",
+              "origin": "https://www.st.com/resource/en/datasheet/stm32f407vg.pdf",
+              "source_sha256": "1f41b4fa49a9960215ebb76cd0a75f20241db82eed60d308345a80463caeed22"
+            },
+            {
+              "evidence": "layout_ds_dac_contents_page_5",
+              "evidence_sha256": "ed065d47849bf56d9c2a5869350b1bb730e5699dab29355b92a837db5292437a",
+              "locator": "page:5/word:808",
+              "origin": "https://www.st.com/resource/en/datasheet/stm32f407vg.pdf",
+              "source_sha256": "1f41b4fa49a9960215ebb76cd0a75f20241db82eed60d308345a80463caeed22"
+            }
+          ],
+          "rationale": "Read the full MCP-rendered source page and word geometry: repair the long aligned heading or reattach its BAT subscript; preserve the original entry and unresolved fragment.",
+          "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+          "section": "6.3.23",
+          "status": "implementing_author_editorial_review_not_independent_signoff",
+          "title": "VBAT monitoring characteristics"
+        },
+        {
+          "action": "classify_metadata",
+          "destination_page": null,
+          "document": "ds8626",
+          "evidence": [
+            {
+              "evidence": "layout_ds_dac_contents_page_5",
+              "locator": "page:5/word:8"
+            }
+          ],
+          "gap_locator": "page:5/line:60",
+          "original_gap": {
+            "locators": [
+              "page:5/line:60"
+            ],
+            "reason": "unlabelled_numeric_line",
+            "text": "6"
+          },
+          "provenance": [
+            {
+              "evidence": "layout_ds_dac_contents_page_5",
+              "evidence_sha256": "ed065d47849bf56d9c2a5869350b1bb730e5699dab29355b92a837db5292437a",
+              "locator": "page:5/word:8",
+              "origin": "https://www.st.com/resource/en/datasheet/stm32f407vg.pdf",
+              "source_sha256": "1f41b4fa49a9960215ebb76cd0a75f20241db82eed60d308345a80463caeed22"
+            }
+          ],
+          "rationale": "The matching source word is below the footer in the MCP page layout. Representative rendered source pages confirm the non-content footer/logo area; every individual word position is retained. This is a text-layer artifact, not a section.",
+          "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+          "section": null,
+          "status": "implementing_author_editorial_review_not_independent_signoff",
+          "title": null
+        }
+      ],
+      "original_extraction_gaps": [
+        {
+          "locators": [
+            "page:3/line:55"
+          ],
+          "reason": "unrecognized_contents_line",
+          "text": "BAT"
+        },
+        {
+          "locators": [
+            "page:3/line:60"
+          ],
+          "reason": "unlabelled_numeric_line",
+          "text": "6"
+        },
+        {
+          "locators": [
+            "page:5/line:41"
+          ],
+          "reason": "unrecognized_contents_line",
+          "text": "BAT"
+        },
+        {
+          "locators": [
+            "page:5/line:60"
+          ],
+          "reason": "unlabelled_numeric_line",
+          "text": "6"
+        }
+      ],
+      "outline_sha256": "506f2574be9d83c025c6c07218eb7975a5f4c7577b643df6b517464b7344efbd",
+      "remaining_extraction_gaps": [],
+      "source": {
+        "id": "ds_dac_contents",
+        "import_revision": "5169396226a8d7d02fe6c09ade036c648ad159d924dfd66ce50081e8d43de4d8",
+        "origin": "https://www.st.com/resource/en/datasheet/stm32f407vg.pdf",
+        "sha256": "1f41b4fa49a9960215ebb76cd0a75f20241db82eed60d308345a80463caeed22",
+        "target": "STM32F407VGT6"
+      }
+    },
+    "es0182": {
+      "editorial_repairs": [],
+      "original_extraction_gaps": [],
+      "outline_sha256": "6354929d74cd806842f6ff13ff4935df3a6bdeee9007d7cb70726163a0a7fc0a",
+      "remaining_extraction_gaps": [],
+      "source": {
+        "id": "es0182",
+        "import_revision": "3fea116c9ea5d742ca9ef4602e52e7ace15c21cb9124739219ebf48da82607b1",
+        "origin": "https://www.st.com/resource/en/errata_sheet/es0182-stm32f405407xx-and-stm32f415417xx-device-errata-stmicroelectronics.pdf",
+        "sha256": "1d3da0f99b85013548d17df07919516bf862f8f38cbd1a61f08e75abb8e4c54f",
+        "target": "STM32F407VGT6"
+      }
+    },
+    "pm0214": {
+      "editorial_repairs": [
+        {
+          "action": "classify_metadata",
+          "destination_page": null,
+          "document": "pm0214",
+          "evidence": [
+            {
+              "evidence": "layout_pm0214_core_page_3",
+              "locator": "page:3/word:7"
+            }
+          ],
+          "gap_locator": "page:3/line:60",
+          "original_gap": {
+            "locators": [
+              "page:3/line:60"
+            ],
+            "reason": "unlabelled_numeric_line",
+            "text": "8"
+          },
+          "provenance": [
+            {
+              "evidence": "layout_pm0214_core_page_3",
+              "evidence_sha256": "ff115ac378ca936cfcacda06411755c624a0edc539dc533a81315290f62f3759",
+              "locator": "page:3/word:7",
+              "origin": "https://www.st.com/resource/en/programming_manual/pm0214-stm32-cortexm4-mcus-and-mpus-programming-manual-stmicroelectronics.pdf",
+              "source_sha256": "fb54012a46c674a26dee56bc8cdfa281315f78634f18998001144980b08d1b03"
+            }
+          ],
+          "rationale": "The matching source word is below the footer in the MCP page layout. Representative rendered source pages confirm the non-content footer/logo area; every individual word position is retained. This is a text-layer artifact, not a section.",
+          "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+          "section": null,
+          "status": "implementing_author_editorial_review_not_independent_signoff",
+          "title": null
+        },
+        {
+          "action": "classify_metadata",
+          "destination_page": null,
+          "document": "pm0214",
+          "evidence": [
+            {
+              "evidence": "layout_pm0214_core_page_5",
+              "locator": "page:5/word:7"
+            }
+          ],
+          "gap_locator": "page:5/line:60",
+          "original_gap": {
+            "locators": [
+              "page:5/line:60"
+            ],
+            "reason": "unlabelled_numeric_line",
+            "text": "8"
+          },
+          "provenance": [
+            {
+              "evidence": "layout_pm0214_core_page_5",
+              "evidence_sha256": "7c90ac64b21c5ad4ad0f7075c04163cad967076853d0427d91602ae7be5be7c1",
+              "locator": "page:5/word:7",
+              "origin": "https://www.st.com/resource/en/programming_manual/pm0214-stm32-cortexm4-mcus-and-mpus-programming-manual-stmicroelectronics.pdf",
+              "source_sha256": "fb54012a46c674a26dee56bc8cdfa281315f78634f18998001144980b08d1b03"
+            }
+          ],
+          "rationale": "The matching source word is below the footer in the MCP page layout. Representative rendered source pages confirm the non-content footer/logo area; every individual word position is retained. This is a text-layer artifact, not a section.",
+          "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+          "section": null,
+          "status": "implementing_author_editorial_review_not_independent_signoff",
+          "title": null
+        },
+        {
+          "action": "classify_metadata",
+          "destination_page": null,
+          "document": "pm0214",
+          "evidence": [
+            {
+              "evidence": "layout_pm0214_core_page_7",
+              "locator": "page:7/word:7"
+            }
+          ],
+          "gap_locator": "page:7/line:60",
+          "original_gap": {
+            "locators": [
+              "page:7/line:60"
+            ],
+            "reason": "unlabelled_numeric_line",
+            "text": "8"
+          },
+          "provenance": [
+            {
+              "evidence": "layout_pm0214_core_page_7",
+              "evidence_sha256": "35ef51ae74553395c20868484a04a20cff6c5ca1e7fb7295a1cb5cfb11005561",
+              "locator": "page:7/word:7",
+              "origin": "https://www.st.com/resource/en/programming_manual/pm0214-stm32-cortexm4-mcus-and-mpus-programming-manual-stmicroelectronics.pdf",
+              "source_sha256": "fb54012a46c674a26dee56bc8cdfa281315f78634f18998001144980b08d1b03"
+            }
+          ],
+          "rationale": "The matching source word is below the footer in the MCP page layout. Representative rendered source pages confirm the non-content footer/logo area; every individual word position is retained. This is a text-layer artifact, not a section.",
+          "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+          "section": null,
+          "status": "implementing_author_editorial_review_not_independent_signoff",
+          "title": null
+        }
+      ],
+      "original_extraction_gaps": [
+        {
+          "locators": [
+            "page:3/line:60"
+          ],
+          "reason": "unlabelled_numeric_line",
+          "text": "8"
+        },
+        {
+          "locators": [
+            "page:5/line:60"
+          ],
+          "reason": "unlabelled_numeric_line",
+          "text": "8"
+        },
+        {
+          "locators": [
+            "page:7/line:60"
+          ],
+          "reason": "unlabelled_numeric_line",
+          "text": "8"
+        }
+      ],
+      "outline_sha256": "cebf174090f1ca343253011ae156178ff730ea04da8524330c1852c798cdd12a",
+      "remaining_extraction_gaps": [],
+      "source": {
+        "id": "pm0214_core",
+        "import_revision": "ffdd80d8b5709d99ead46d52ccd24aa05c011be7bc4891711d9240a4b79e48e6",
+        "origin": "https://www.st.com/resource/en/programming_manual/pm0214-stm32-cortexm4-mcus-and-mpus-programming-manual-stmicroelectronics.pdf",
+        "sha256": "fb54012a46c674a26dee56bc8cdfa281315f78634f18998001144980b08d1b03",
+        "target": "STM32F407VGT6"
+      }
+    },
+    "rm0090": {
+      "editorial_repairs": [
+        {
+          "action": "classify_metadata",
+          "destination_page": null,
+          "document": "rm0090",
+          "evidence": [
+            {
+              "evidence": "layout_rm0090_scope_page_3",
+              "locator": "page:3/word:7"
+            }
+          ],
+          "gap_locator": "page:3/line:60",
+          "original_gap": {
+            "locators": [
+              "page:3/line:60"
+            ],
+            "reason": "unlabelled_numeric_line",
+            "text": "39"
+          },
+          "provenance": [
+            {
+              "evidence": "layout_rm0090_scope_page_3",
+              "evidence_sha256": "beda21e0c961290f401c48ba3a320d6ff1931db05c3167a3b379102f0116cdba",
+              "locator": "page:3/word:7",
+              "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+              "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+            }
+          ],
+          "rationale": "The matching source word is below the footer in the MCP page layout. Representative rendered source pages confirm the non-content footer/logo area; every individual word position is retained. This is a text-layer artifact, not a section.",
+          "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+          "section": null,
+          "status": "implementing_author_editorial_review_not_independent_signoff",
+          "title": null
+        },
+        {
+          "action": "repair_entry",
+          "destination_page": 141,
+          "document": "rm0090",
+          "evidence": [
+            {
+              "evidence": "layout_rm0090_scope_page_4",
+              "locator": "page:4/word:964"
+            },
+            {
+              "evidence": "layout_rm0090_scope_page_4",
+              "locator": "page:4/word:971"
+            }
+          ],
+          "gap_locator": "page:4/line:45",
+          "original_gap": {
+            "fragments": [
+              "Power control registers (STM32F405xx/07xx and STM32F415xx/17xx) 141"
+            ],
+            "locators": [
+              "page:4/line:45"
+            ],
+            "raw_fragments": [
+              "Power control registers (STM32F405xx/07xx and STM32F415xx/17xx) 141"
+            ],
+            "reason": "heading_without_supported_page_leader",
+            "section": "5.4"
+          },
+          "provenance": [
+            {
+              "evidence": "layout_rm0090_scope_page_4",
+              "evidence_sha256": "ef04e1a928db5a41fe1ff55bf9b5413b9116f2312c9c26da441508c36905f355",
+              "locator": "page:4/word:964",
+              "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+              "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+            },
+            {
+              "evidence": "layout_rm0090_scope_page_4",
+              "evidence_sha256": "ef04e1a928db5a41fe1ff55bf9b5413b9116f2312c9c26da441508c36905f355",
+              "locator": "page:4/word:971",
+              "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+              "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+            }
+          ],
+          "rationale": "Read the full MCP-rendered source page and word geometry: repair the long aligned heading or reattach its BAT subscript; preserve the original entry and unresolved fragment.",
+          "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+          "section": "5.4",
+          "status": "implementing_author_editorial_review_not_independent_signoff",
+          "title": "Power control registers (STM32F405xx/07xx and STM32F415xx/17xx)"
+        },
+        {
+          "action": "classify_metadata",
+          "destination_page": null,
+          "document": "rm0090",
+          "evidence": [
+            {
+              "evidence": "layout_rm0090_scope_page_5",
+              "locator": "page:5/word:7"
+            }
+          ],
+          "gap_locator": "page:5/line:60",
+          "original_gap": {
+            "locators": [
+              "page:5/line:60"
+            ],
+            "reason": "unlabelled_numeric_line",
+            "text": "39"
+          },
+          "provenance": [
+            {
+              "evidence": "layout_rm0090_scope_page_5",
+              "evidence_sha256": "733734df23d8b3b57f0e9b8a46ccacf75f94be76629aa340c1c1204ef6d10c94",
+              "locator": "page:5/word:7",
+              "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+              "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+            }
+          ],
+          "rationale": "The matching source word is below the footer in the MCP page layout. Representative rendered source pages confirm the non-content footer/logo area; every individual word position is retained. This is a text-layer artifact, not a section.",
+          "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+          "section": null,
+          "status": "implementing_author_editorial_review_not_independent_signoff",
+          "title": null
+        },
+        {
+          "action": "classify_metadata",
+          "destination_page": null,
+          "document": "rm0090",
+          "evidence": [
+            {
+              "evidence": "layout_rm0090_scope_page_7",
+              "locator": "page:7/word:7"
+            }
+          ],
+          "gap_locator": "page:7/line:60",
+          "original_gap": {
+            "locators": [
+              "page:7/line:60"
+            ],
+            "reason": "unlabelled_numeric_line",
+            "text": "39"
+          },
+          "provenance": [
+            {
+              "evidence": "layout_rm0090_scope_page_7",
+              "evidence_sha256": "a2622dd1631ba37f74e6af4ade6111ab86e57349fd85c303a5d168f7acdcde62",
+              "locator": "page:7/word:7",
+              "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+              "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+            }
+          ],
+          "rationale": "The matching source word is below the footer in the MCP page layout. Representative rendered source pages confirm the non-content footer/logo area; every individual word position is retained. This is a text-layer artifact, not a section.",
+          "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+          "section": null,
+          "status": "implementing_author_editorial_review_not_independent_signoff",
+          "title": null
+        },
+        {
+          "action": "classify_metadata",
+          "destination_page": null,
+          "document": "rm0090",
+          "evidence": [
+            {
+              "evidence": "layout_rm0090_scope_page_9",
+              "locator": "page:9/word:7"
+            }
+          ],
+          "gap_locator": "page:9/line:60",
+          "original_gap": {
+            "locators": [
+              "page:9/line:60"
+            ],
+            "reason": "unlabelled_numeric_line",
+            "text": "39"
+          },
+          "provenance": [
+            {
+              "evidence": "layout_rm0090_scope_page_9",
+              "evidence_sha256": "80da0a3cefc0387fc688d9d09dbb5ba8ffaf93e4af9825a971bcf72ae5c1405d",
+              "locator": "page:9/word:7",
+              "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+              "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+            }
+          ],
+          "rationale": "The matching source word is below the footer in the MCP page layout. Representative rendered source pages confirm the non-content footer/logo area; every individual word position is retained. This is a text-layer artifact, not a section.",
+          "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+          "section": null,
+          "status": "implementing_author_editorial_review_not_independent_signoff",
+          "title": null
+        },
+        {
+          "action": "repair_entry",
+          "destination_page": 334,
+          "document": "rm0090",
+          "evidence": [
+            {
+              "evidence": "layout_rm0090_scope_page_10",
+              "locator": "page:10/word:291"
+            },
+            {
+              "evidence": "layout_rm0090_scope_page_10",
+              "locator": "page:10/word:303"
+            }
+          ],
+          "gap_locator": "page:10/line:21",
+          "original_gap": {
+            "fragments": [
+              "DMA stream x memory 0 address register (DMA_SxM0AR) (x = 0..7) 334"
+            ],
+            "locators": [
+              "page:10/line:21"
+            ],
+            "raw_fragments": [
+              "DMA stream x memory 0 address register (DMA_SxM0AR) (x = 0..7) 334"
+            ],
+            "reason": "heading_without_supported_page_leader",
+            "section": "10.5.8"
+          },
+          "provenance": [
+            {
+              "evidence": "layout_rm0090_scope_page_10",
+              "evidence_sha256": "a6d20650c7ee888d052db0b589753c3e797395631dc5a5e773af8d263f559c86",
+              "locator": "page:10/word:291",
+              "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+              "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+            },
+            {
+              "evidence": "layout_rm0090_scope_page_10",
+              "evidence_sha256": "a6d20650c7ee888d052db0b589753c3e797395631dc5a5e773af8d263f559c86",
+              "locator": "page:10/word:303",
+              "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+              "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+            }
+          ],
+          "rationale": "Read the full MCP-rendered source page and word geometry: repair the long aligned heading or reattach its BAT subscript; preserve the original entry and unresolved fragment.",
+          "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+          "section": "10.5.8",
+          "status": "implementing_author_editorial_review_not_independent_signoff",
+          "title": "DMA stream x memory 0 address register (DMA_SxM0AR) (x = 0..7)"
+        },
+        {
+          "action": "repair_entry",
+          "destination_page": 334,
+          "document": "rm0090",
+          "evidence": [
+            {
+              "evidence": "layout_rm0090_scope_page_10",
+              "locator": "page:10/word:304"
+            },
+            {
+              "evidence": "layout_rm0090_scope_page_10",
+              "locator": "page:10/word:316"
+            }
+          ],
+          "gap_locator": "page:10/line:23",
+          "original_gap": {
+            "fragments": [
+              "DMA stream x memory 1 address register (DMA_SxM1AR) (x = 0..7) 334"
+            ],
+            "locators": [
+              "page:10/line:23"
+            ],
+            "raw_fragments": [
+              "DMA stream x memory 1 address register (DMA_SxM1AR) (x = 0..7) 334"
+            ],
+            "reason": "heading_without_supported_page_leader",
+            "section": "10.5.9"
+          },
+          "provenance": [
+            {
+              "evidence": "layout_rm0090_scope_page_10",
+              "evidence_sha256": "a6d20650c7ee888d052db0b589753c3e797395631dc5a5e773af8d263f559c86",
+              "locator": "page:10/word:304",
+              "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+              "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+            },
+            {
+              "evidence": "layout_rm0090_scope_page_10",
+              "evidence_sha256": "a6d20650c7ee888d052db0b589753c3e797395631dc5a5e773af8d263f559c86",
+              "locator": "page:10/word:316",
+              "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+              "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+            }
+          ],
+          "rationale": "Read the full MCP-rendered source page and word geometry: repair the long aligned heading or reattach its BAT subscript; preserve the original entry and unresolved fragment.",
+          "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+          "section": "10.5.9",
+          "status": "implementing_author_editorial_review_not_independent_signoff",
+          "title": "DMA stream x memory 1 address register (DMA_SxM1AR) (x = 0..7)"
+        },
+        {
+          "action": "classify_metadata",
+          "destination_page": null,
+          "document": "rm0090",
+          "evidence": [
+            {
+              "evidence": "layout_rm0090_scope_page_11",
+              "locator": "page:11/word:7"
+            }
+          ],
+          "gap_locator": "page:11/line:60",
+          "original_gap": {
+            "locators": [
+              "page:11/line:60"
+            ],
+            "reason": "unlabelled_numeric_line",
+            "text": "39"
+          },
+          "provenance": [
+            {
+              "evidence": "layout_rm0090_scope_page_11",
+              "evidence_sha256": "79d83d51bd8a6f49276be590e86d48d65c948fd18342181c1753818c5442e98b",
+              "locator": "page:11/word:7",
+              "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+              "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+            }
+          ],
+          "rationale": "The matching source word is below the footer in the MCP page layout. Representative rendered source pages confirm the non-content footer/logo area; every individual word position is retained. This is a text-layer artifact, not a section.",
+          "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+          "section": null,
+          "status": "implementing_author_editorial_review_not_independent_signoff",
+          "title": null
+        },
+        {
+          "action": "classify_metadata",
+          "destination_page": null,
+          "document": "rm0090",
+          "evidence": [
+            {
+              "evidence": "layout_rm0090_scope_page_13",
+              "locator": "page:13/word:7"
+            }
+          ],
+          "gap_locator": "page:13/line:60",
+          "original_gap": {
+            "locators": [
+              "page:13/line:60"
+            ],
+            "reason": "unlabelled_numeric_line",
+            "text": "39"
+          },
+          "provenance": [
+            {
+              "evidence": "layout_rm0090_scope_page_13",
+              "evidence_sha256": "28a9a455020bc0ae4bfa4e7eb6d249266b8bf1560f3494fd3f1bcd89cdd00392",
+              "locator": "page:13/word:7",
+              "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+              "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+            }
+          ],
+          "rationale": "The matching source word is below the footer in the MCP page layout. Representative rendered source pages confirm the non-content footer/logo area; every individual word position is retained. This is a text-layer artifact, not a section.",
+          "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+          "section": null,
+          "status": "implementing_author_editorial_review_not_independent_signoff",
+          "title": null
+        },
+        {
+          "action": "classify_metadata",
+          "destination_page": null,
+          "document": "rm0090",
+          "evidence": [
+            {
+              "evidence": "layout_rm0090_scope_page_15",
+              "locator": "page:15/word:7"
+            }
+          ],
+          "gap_locator": "page:15/line:60",
+          "original_gap": {
+            "locators": [
+              "page:15/line:60"
+            ],
+            "reason": "unlabelled_numeric_line",
+            "text": "39"
+          },
+          "provenance": [
+            {
+              "evidence": "layout_rm0090_scope_page_15",
+              "evidence_sha256": "a3403c364de8f5e567925973c22ee3905f8e5a058889ef63f75d5eaa98907ac0",
+              "locator": "page:15/word:7",
+              "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+              "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+            }
+          ],
+          "rationale": "The matching source word is below the footer in the MCP page layout. Representative rendered source pages confirm the non-content footer/logo area; every individual word position is retained. This is a text-layer artifact, not a section.",
+          "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+          "section": null,
+          "status": "implementing_author_editorial_review_not_independent_signoff",
+          "title": null
+        },
+        {
+          "action": "classify_metadata",
+          "destination_page": null,
+          "document": "rm0090",
+          "evidence": [
+            {
+              "evidence": "layout_rm0090_scope_page_17",
+              "locator": "page:17/word:7"
+            }
+          ],
+          "gap_locator": "page:17/line:60",
+          "original_gap": {
+            "locators": [
+              "page:17/line:60"
+            ],
+            "reason": "unlabelled_numeric_line",
+            "text": "39"
+          },
+          "provenance": [
+            {
+              "evidence": "layout_rm0090_scope_page_17",
+              "evidence_sha256": "28ade166059e97d837a874637d091538ee61edc4004ee22da0f8b934fa2eca69",
+              "locator": "page:17/word:7",
+              "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+              "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+            }
+          ],
+          "rationale": "The matching source word is below the footer in the MCP page layout. Representative rendered source pages confirm the non-content footer/logo area; every individual word position is retained. This is a text-layer artifact, not a section.",
+          "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+          "section": null,
+          "status": "implementing_author_editorial_review_not_independent_signoff",
+          "title": null
+        },
+        {
+          "action": "classify_metadata",
+          "destination_page": null,
+          "document": "rm0090",
+          "evidence": [
+            {
+              "evidence": "layout_rm0090_scope_page_19",
+              "locator": "page:19/word:7"
+            }
+          ],
+          "gap_locator": "page:19/line:60",
+          "original_gap": {
+            "locators": [
+              "page:19/line:60"
+            ],
+            "reason": "unlabelled_numeric_line",
+            "text": "39"
+          },
+          "provenance": [
+            {
+              "evidence": "layout_rm0090_scope_page_19",
+              "evidence_sha256": "203b271962f2bcc642873bfe11e6efd46732ce997bc7da393a3d84e4d6c71e85",
+              "locator": "page:19/word:7",
+              "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+              "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+            }
+          ],
+          "rationale": "The matching source word is below the footer in the MCP page layout. Representative rendered source pages confirm the non-content footer/logo area; every individual word position is retained. This is a text-layer artifact, not a section.",
+          "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+          "section": null,
+          "status": "implementing_author_editorial_review_not_independent_signoff",
+          "title": null
+        },
+        {
+          "action": "classify_metadata",
+          "destination_page": null,
+          "document": "rm0090",
+          "evidence": [
+            {
+              "evidence": "layout_rm0090_scope_page_21",
+              "locator": "page:21/word:7"
+            }
+          ],
+          "gap_locator": "page:21/line:60",
+          "original_gap": {
+            "locators": [
+              "page:21/line:60"
+            ],
+            "reason": "unlabelled_numeric_line",
+            "text": "39"
+          },
+          "provenance": [
+            {
+              "evidence": "layout_rm0090_scope_page_21",
+              "evidence_sha256": "2dedb3b6eaff4e36b2d97472c5164e2b9896dd45e44bf668aee2bbc8b2b60ca2",
+              "locator": "page:21/word:7",
+              "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+              "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+            }
+          ],
+          "rationale": "The matching source word is below the footer in the MCP page layout. Representative rendered source pages confirm the non-content footer/logo area; every individual word position is retained. This is a text-layer artifact, not a section.",
+          "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+          "section": null,
+          "status": "implementing_author_editorial_review_not_independent_signoff",
+          "title": null
+        },
+        {
+          "action": "classify_metadata",
+          "destination_page": null,
+          "document": "rm0090",
+          "evidence": [
+            {
+              "evidence": "layout_rm0090_scope_page_23",
+              "locator": "page:23/word:7"
+            }
+          ],
+          "gap_locator": "page:23/line:60",
+          "original_gap": {
+            "locators": [
+              "page:23/line:60"
+            ],
+            "reason": "unlabelled_numeric_line",
+            "text": "39"
+          },
+          "provenance": [
+            {
+              "evidence": "layout_rm0090_scope_page_23",
+              "evidence_sha256": "83fe64692af55e673cc7073b4c11cff14ba3b278ccbcd3aeed4e2591aba6a36a",
+              "locator": "page:23/word:7",
+              "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+              "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+            }
+          ],
+          "rationale": "The matching source word is below the footer in the MCP page layout. Representative rendered source pages confirm the non-content footer/logo area; every individual word position is retained. This is a text-layer artifact, not a section.",
+          "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+          "section": null,
+          "status": "implementing_author_editorial_review_not_independent_signoff",
+          "title": null
+        },
+        {
+          "action": "classify_metadata",
+          "destination_page": null,
+          "document": "rm0090",
+          "evidence": [
+            {
+              "evidence": "layout_rm0090_scope_page_25",
+              "locator": "page:25/word:7"
+            }
+          ],
+          "gap_locator": "page:25/line:60",
+          "original_gap": {
+            "locators": [
+              "page:25/line:60"
+            ],
+            "reason": "unlabelled_numeric_line",
+            "text": "39"
+          },
+          "provenance": [
+            {
+              "evidence": "layout_rm0090_scope_page_25",
+              "evidence_sha256": "b9cf29784fc99fa3450c4e9c62830424b84b68f0ec5925c3152385d90e117517",
+              "locator": "page:25/word:7",
+              "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+              "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+            }
+          ],
+          "rationale": "The matching source word is below the footer in the MCP page layout. Representative rendered source pages confirm the non-content footer/logo area; every individual word position is retained. This is a text-layer artifact, not a section.",
+          "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+          "section": null,
+          "status": "implementing_author_editorial_review_not_independent_signoff",
+          "title": null
+        },
+        {
+          "action": "classify_metadata",
+          "destination_page": null,
+          "document": "rm0090",
+          "evidence": [
+            {
+              "evidence": "layout_rm0090_scope_page_27",
+              "locator": "page:27/word:7"
+            }
+          ],
+          "gap_locator": "page:27/line:60",
+          "original_gap": {
+            "locators": [
+              "page:27/line:60"
+            ],
+            "reason": "unlabelled_numeric_line",
+            "text": "39"
+          },
+          "provenance": [
+            {
+              "evidence": "layout_rm0090_scope_page_27",
+              "evidence_sha256": "f8f3f0ba0f87b1dafaaad242afec63401183fe6e5c8de29df5ad0680d322e8d6",
+              "locator": "page:27/word:7",
+              "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+              "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+            }
+          ],
+          "rationale": "The matching source word is below the footer in the MCP page layout. Representative rendered source pages confirm the non-content footer/logo area; every individual word position is retained. This is a text-layer artifact, not a section.",
+          "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+          "section": null,
+          "status": "implementing_author_editorial_review_not_independent_signoff",
+          "title": null
+        },
+        {
+          "action": "classify_metadata",
+          "destination_page": null,
+          "document": "rm0090",
+          "evidence": [
+            {
+              "evidence": "layout_rm0090_scope_page_29",
+              "locator": "page:29/word:7"
+            }
+          ],
+          "gap_locator": "page:29/line:60",
+          "original_gap": {
+            "locators": [
+              "page:29/line:60"
+            ],
+            "reason": "unlabelled_numeric_line",
+            "text": "39"
+          },
+          "provenance": [
+            {
+              "evidence": "layout_rm0090_scope_page_29",
+              "evidence_sha256": "8d855e83f775d49bc3a936f6f2294d5189701f0a451263ed3fa457e0018827b0",
+              "locator": "page:29/word:7",
+              "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+              "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+            }
+          ],
+          "rationale": "The matching source word is below the footer in the MCP page layout. Representative rendered source pages confirm the non-content footer/logo area; every individual word position is retained. This is a text-layer artifact, not a section.",
+          "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+          "section": null,
+          "status": "implementing_author_editorial_review_not_independent_signoff",
+          "title": null
+        },
+        {
+          "action": "classify_metadata",
+          "destination_page": null,
+          "document": "rm0090",
+          "evidence": [
+            {
+              "evidence": "layout_rm0090_scope_page_31",
+              "locator": "page:31/word:7"
+            }
+          ],
+          "gap_locator": "page:31/line:60",
+          "original_gap": {
+            "locators": [
+              "page:31/line:60"
+            ],
+            "reason": "unlabelled_numeric_line",
+            "text": "39"
+          },
+          "provenance": [
+            {
+              "evidence": "layout_rm0090_scope_page_31",
+              "evidence_sha256": "919e7540c822efa1ee8ee465e572955176b5bbbec550ad097d76de4becabfd5c",
+              "locator": "page:31/word:7",
+              "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+              "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+            }
+          ],
+          "rationale": "The matching source word is below the footer in the MCP page layout. Representative rendered source pages confirm the non-content footer/logo area; every individual word position is retained. This is a text-layer artifact, not a section.",
+          "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+          "section": null,
+          "status": "implementing_author_editorial_review_not_independent_signoff",
+          "title": null
+        },
+        {
+          "action": "classify_metadata",
+          "destination_page": null,
+          "document": "rm0090",
+          "evidence": [
+            {
+              "evidence": "layout_rm0090_scope_page_33",
+              "locator": "page:33/word:7"
+            }
+          ],
+          "gap_locator": "page:33/line:60",
+          "original_gap": {
+            "locators": [
+              "page:33/line:60"
+            ],
+            "reason": "unlabelled_numeric_line",
+            "text": "39"
+          },
+          "provenance": [
+            {
+              "evidence": "layout_rm0090_scope_page_33",
+              "evidence_sha256": "3ea933d60e5ab6289702b1886c8649aed2adbec2f2f85b9f2eff3c705492c621",
+              "locator": "page:33/word:7",
+              "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+              "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+            }
+          ],
+          "rationale": "The matching source word is below the footer in the MCP page layout. Representative rendered source pages confirm the non-content footer/logo area; every individual word position is retained. This is a text-layer artifact, not a section.",
+          "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+          "section": null,
+          "status": "implementing_author_editorial_review_not_independent_signoff",
+          "title": null
+        },
+        {
+          "action": "classify_metadata",
+          "destination_page": null,
+          "document": "rm0090",
+          "evidence": [
+            {
+              "evidence": "layout_rm0090_scope_page_35",
+              "locator": "page:35/word:7"
+            }
+          ],
+          "gap_locator": "page:35/line:60",
+          "original_gap": {
+            "locators": [
+              "page:35/line:60"
+            ],
+            "reason": "unlabelled_numeric_line",
+            "text": "39"
+          },
+          "provenance": [
+            {
+              "evidence": "layout_rm0090_scope_page_35",
+              "evidence_sha256": "19ffc70458b570d4cf92c784640a680ed5b54f5401215a97f42028001faae181",
+              "locator": "page:35/word:7",
+              "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+              "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+            }
+          ],
+          "rationale": "The matching source word is below the footer in the MCP page layout. Representative rendered source pages confirm the non-content footer/logo area; every individual word position is retained. This is a text-layer artifact, not a section.",
+          "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+          "section": null,
+          "status": "implementing_author_editorial_review_not_independent_signoff",
+          "title": null
+        },
+        {
+          "action": "classify_metadata",
+          "destination_page": null,
+          "document": "rm0090",
+          "evidence": [
+            {
+              "evidence": "layout_rm0090_scope_page_37",
+              "locator": "page:37/word:7"
+            }
+          ],
+          "gap_locator": "page:37/line:60",
+          "original_gap": {
+            "locators": [
+              "page:37/line:60"
+            ],
+            "reason": "unlabelled_numeric_line",
+            "text": "39"
+          },
+          "provenance": [
+            {
+              "evidence": "layout_rm0090_scope_page_37",
+              "evidence_sha256": "1bfc13a0cd5a47c6ac187828a72ef1cf441b5077ed4026bc3bf8a549508f6227",
+              "locator": "page:37/word:7",
+              "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+              "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+            }
+          ],
+          "rationale": "The matching source word is below the footer in the MCP page layout. Representative rendered source pages confirm the non-content footer/logo area; every individual word position is retained. This is a text-layer artifact, not a section.",
+          "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+          "section": null,
+          "status": "implementing_author_editorial_review_not_independent_signoff",
+          "title": null
+        },
+        {
+          "action": "classify_metadata",
+          "destination_page": null,
+          "document": "rm0090",
+          "evidence": [
+            {
+              "evidence": "layout_rm0090_scope_page_39",
+              "locator": "page:39/word:7"
+            }
+          ],
+          "gap_locator": "page:39/line:60",
+          "original_gap": {
+            "locators": [
+              "page:39/line:60"
+            ],
+            "reason": "unlabelled_numeric_line",
+            "text": "39"
+          },
+          "provenance": [
+            {
+              "evidence": "layout_rm0090_scope_page_39",
+              "evidence_sha256": "4ea618f47cf74f56e9ec0d1fcaf5ae8dd0328f58a1c042349fb8c14dcc5617e9",
+              "locator": "page:39/word:7",
+              "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+              "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+            }
+          ],
+          "rationale": "The matching source word is below the footer in the MCP page layout. Representative rendered source pages confirm the non-content footer/logo area; every individual word position is retained. This is a text-layer artifact, not a section.",
+          "reviewer": "Codex implementing-author source-backed editorial review; independent sign-off pending",
+          "section": null,
+          "status": "implementing_author_editorial_review_not_independent_signoff",
+          "title": null
+        }
+      ],
+      "original_extraction_gaps": [
+        {
+          "locators": [
+            "page:3/line:60"
+          ],
+          "reason": "unlabelled_numeric_line",
+          "text": "39"
+        },
+        {
+          "fragments": [
+            "Power control registers (STM32F405xx/07xx and STM32F415xx/17xx) 141"
+          ],
+          "locators": [
+            "page:4/line:45"
+          ],
+          "raw_fragments": [
+            "Power control registers (STM32F405xx/07xx and STM32F415xx/17xx) 141"
+          ],
+          "reason": "heading_without_supported_page_leader",
+          "section": "5.4"
+        },
+        {
+          "locators": [
+            "page:5/line:60"
+          ],
+          "reason": "unlabelled_numeric_line",
+          "text": "39"
+        },
+        {
+          "locators": [
+            "page:7/line:60"
+          ],
+          "reason": "unlabelled_numeric_line",
+          "text": "39"
+        },
+        {
+          "locators": [
+            "page:9/line:60"
+          ],
+          "reason": "unlabelled_numeric_line",
+          "text": "39"
+        },
+        {
+          "fragments": [
+            "DMA stream x memory 0 address register (DMA_SxM0AR) (x = 0..7) 334"
+          ],
+          "locators": [
+            "page:10/line:21"
+          ],
+          "raw_fragments": [
+            "DMA stream x memory 0 address register (DMA_SxM0AR) (x = 0..7) 334"
+          ],
+          "reason": "heading_without_supported_page_leader",
+          "section": "10.5.8"
+        },
+        {
+          "fragments": [
+            "DMA stream x memory 1 address register (DMA_SxM1AR) (x = 0..7) 334"
+          ],
+          "locators": [
+            "page:10/line:23"
+          ],
+          "raw_fragments": [
+            "DMA stream x memory 1 address register (DMA_SxM1AR) (x = 0..7) 334"
+          ],
+          "reason": "heading_without_supported_page_leader",
+          "section": "10.5.9"
+        },
+        {
+          "locators": [
+            "page:11/line:60"
+          ],
+          "reason": "unlabelled_numeric_line",
+          "text": "39"
+        },
+        {
+          "locators": [
+            "page:13/line:60"
+          ],
+          "reason": "unlabelled_numeric_line",
+          "text": "39"
+        },
+        {
+          "locators": [
+            "page:15/line:60"
+          ],
+          "reason": "unlabelled_numeric_line",
+          "text": "39"
+        },
+        {
+          "locators": [
+            "page:17/line:60"
+          ],
+          "reason": "unlabelled_numeric_line",
+          "text": "39"
+        },
+        {
+          "locators": [
+            "page:19/line:60"
+          ],
+          "reason": "unlabelled_numeric_line",
+          "text": "39"
+        },
+        {
+          "locators": [
+            "page:21/line:60"
+          ],
+          "reason": "unlabelled_numeric_line",
+          "text": "39"
+        },
+        {
+          "locators": [
+            "page:23/line:60"
+          ],
+          "reason": "unlabelled_numeric_line",
+          "text": "39"
+        },
+        {
+          "locators": [
+            "page:25/line:60"
+          ],
+          "reason": "unlabelled_numeric_line",
+          "text": "39"
+        },
+        {
+          "locators": [
+            "page:27/line:60"
+          ],
+          "reason": "unlabelled_numeric_line",
+          "text": "39"
+        },
+        {
+          "locators": [
+            "page:29/line:60"
+          ],
+          "reason": "unlabelled_numeric_line",
+          "text": "39"
+        },
+        {
+          "locators": [
+            "page:31/line:60"
+          ],
+          "reason": "unlabelled_numeric_line",
+          "text": "39"
+        },
+        {
+          "locators": [
+            "page:33/line:60"
+          ],
+          "reason": "unlabelled_numeric_line",
+          "text": "39"
+        },
+        {
+          "locators": [
+            "page:35/line:60"
+          ],
+          "reason": "unlabelled_numeric_line",
+          "text": "39"
+        },
+        {
+          "locators": [
+            "page:37/line:60"
+          ],
+          "reason": "unlabelled_numeric_line",
+          "text": "39"
+        },
+        {
+          "locators": [
+            "page:39/line:60"
+          ],
+          "reason": "unlabelled_numeric_line",
+          "text": "39"
+        }
+      ],
+      "outline_sha256": "adb78cf7c75d2268cafc794eb06da8d0234ea8c1b0073db7e0b265815a5d6fce",
+      "remaining_extraction_gaps": [],
+      "source": {
+        "id": "rm0090_scope",
+        "import_revision": "3598593b1827126a7af7fd2801fa3a2226b6c17db4e1b9348c280ba5bd85440f",
+        "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+        "sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca",
+        "target": "STM32F407VGT6"
+      }
+    }
+  },
+  "source_mcp_calls": 62,
+  "supporting_evidence": [
+    {
+      "id": "part_ds_part_matrix_page_14",
+      "path": "supporting-evidence-v2/part_ds_part_matrix_page_14.json",
+      "sha256": "3cdc8c356d289be0e33edb8d37f76f00ad5cf3d17a6e0ac9bd2a6df7b6a65c3c"
+    },
+    {
+      "id": "part_ds_part_matrix_page_15",
+      "path": "supporting-evidence-v2/part_ds_part_matrix_page_15.json",
+      "sha256": "fc9cf8c19a15de9a793b0674dbea2c4e7b0ea69681a9fa902078284206bdcaa9"
+    },
+    {
+      "id": "part_ds_part_matrix_page_16",
+      "path": "supporting-evidence-v2/part_ds_part_matrix_page_16.json",
+      "sha256": "9f0d6ffc22e065ef2ca6297c4356ae0d81c4454e6c855dc312316bc8fb1f5a9e"
+    },
+    {
+      "id": "part_rm_availability_page_58",
+      "path": "supporting-evidence-v2/part_rm_availability_page_58.json",
+      "sha256": "37c874a617d7a466f656026686ef5f7467214de29adca5f2b0553bd4b666fdb2"
+    },
+    {
+      "id": "part_rm_availability_page_59",
+      "path": "supporting-evidence-v2/part_rm_availability_page_59.json",
+      "sha256": "73deed03784a2709044e01dd87ba7394c925f167b389e23b715bf5bc234da857"
+    },
+    {
+      "id": "part_rm_feature_applicability_page_1590",
+      "path": "supporting-evidence-v2/part_rm_feature_applicability_page_1590.json",
+      "sha256": "17e8c3e5a9c2934af918114d6f5df25195d386de574acbbd51163ee5c582f7cb"
+    },
+    {
+      "id": "part_rm_feature_applicability_page_1591",
+      "path": "supporting-evidence-v2/part_rm_feature_applicability_page_1591.json",
+      "sha256": "138a49d81d83f822dc322b0ded2638a83c5e1b77f9a12d100a8ec1322277a4d9"
+    },
+    {
+      "id": "part_rm_feature_applicability_page_341",
+      "path": "supporting-evidence-v2/part_rm_feature_applicability_page_341.json",
+      "sha256": "8f27db142c4b8d37269785b3ab82c8a9caddbf90f720037a56a3d6f2958d8471"
+    },
+    {
+      "id": "part_rm_feature_applicability_page_342",
+      "path": "supporting-evidence-v2/part_rm_feature_applicability_page_342.json",
+      "sha256": "2a563cf7a1d0289d2744129e547e09d03294a72e47156307d3d4c2eb2cdc7e89"
+    },
+    {
+      "id": "part_rm_feature_applicability_page_480",
+      "path": "supporting-evidence-v2/part_rm_feature_applicability_page_480.json",
+      "sha256": "c5d78794730176fba5cee636e277f51ae946cc4a9d8d2e145b6146f85822c4fe"
+    },
+    {
+      "id": "part_rm_feature_applicability_page_481",
+      "path": "supporting-evidence-v2/part_rm_feature_applicability_page_481.json",
+      "sha256": "a45279407b72c310a0b8f5f3885ce6ced9272042a6dcbca9d57516550d274712"
+    },
+    {
+      "id": "part_rm_feature_applicability_page_716",
+      "path": "supporting-evidence-v2/part_rm_feature_applicability_page_716.json",
+      "sha256": "77053566d5bdc2516b15dd38b4731f2bd970db9784ae24daec8f34b474c9217c"
+    },
+    {
+      "id": "part_rm_feature_applicability_page_717",
+      "path": "supporting-evidence-v2/part_rm_feature_applicability_page_717.json",
+      "sha256": "327cd15a435cc8cb61a7264a8a4774ae0db7bca9945ce780471ee9dc5fa821ba"
+    },
+    {
+      "id": "part_rm_feature_applicability_page_768",
+      "path": "supporting-evidence-v2/part_rm_feature_applicability_page_768.json",
+      "sha256": "0cb7d32d59fb50d1db674c77c0872b911fee02f5d271dfc4116bce31363bf04f"
+    },
+    {
+      "id": "part_rm_feature_applicability_page_769",
+      "path": "supporting-evidence-v2/part_rm_feature_applicability_page_769.json",
+      "sha256": "82de69e6786e1a5877acf738f23a566d12d009b6e53fae45f4485f466c2e6c9b"
+    },
+    {
+      "id": "part_rm_feature_applicability_page_921",
+      "path": "supporting-evidence-v2/part_rm_feature_applicability_page_921.json",
+      "sha256": "3d996419498e5dc3718c0ac3a1f989c7fc42e7d9f0f6de155797ced4b7365332"
+    },
+    {
+      "id": "part_rm_feature_applicability_page_922",
+      "path": "supporting-evidence-v2/part_rm_feature_applicability_page_922.json",
+      "sha256": "433655ba71b9a4528c6638c7f494f4943ba4c303e8cfa69e572a3acd45be59b1"
+    },
+    {
+      "id": "layout_ds_dac_contents_page_3",
+      "path": "supporting-evidence-v2/layout_ds_dac_contents_page_3.json",
+      "sha256": "60c1d584bdbd69bba20af524ba5cc5185be479dd1244e0ae1d592132a6399829"
+    },
+    {
+      "id": "layout_ds_dac_contents_page_5",
+      "path": "supporting-evidence-v2/layout_ds_dac_contents_page_5.json",
+      "sha256": "ed065d47849bf56d9c2a5869350b1bb730e5699dab29355b92a837db5292437a"
+    },
+    {
+      "id": "layout_pm0214_core_page_3",
+      "path": "supporting-evidence-v2/layout_pm0214_core_page_3.json",
+      "sha256": "ff115ac378ca936cfcacda06411755c624a0edc539dc533a81315290f62f3759"
+    },
+    {
+      "id": "layout_pm0214_core_page_5",
+      "path": "supporting-evidence-v2/layout_pm0214_core_page_5.json",
+      "sha256": "7c90ac64b21c5ad4ad0f7075c04163cad967076853d0427d91602ae7be5be7c1"
+    },
+    {
+      "id": "layout_pm0214_core_page_7",
+      "path": "supporting-evidence-v2/layout_pm0214_core_page_7.json",
+      "sha256": "35ef51ae74553395c20868484a04a20cff6c5ca1e7fb7295a1cb5cfb11005561"
+    },
+    {
+      "id": "layout_rm0090_scope_page_10",
+      "path": "supporting-evidence-v2/layout_rm0090_scope_page_10.json",
+      "sha256": "a6d20650c7ee888d052db0b589753c3e797395631dc5a5e773af8d263f559c86"
+    },
+    {
+      "id": "layout_rm0090_scope_page_11",
+      "path": "supporting-evidence-v2/layout_rm0090_scope_page_11.json",
+      "sha256": "79d83d51bd8a6f49276be590e86d48d65c948fd18342181c1753818c5442e98b"
+    },
+    {
+      "id": "layout_rm0090_scope_page_13",
+      "path": "supporting-evidence-v2/layout_rm0090_scope_page_13.json",
+      "sha256": "28a9a455020bc0ae4bfa4e7eb6d249266b8bf1560f3494fd3f1bcd89cdd00392"
+    },
+    {
+      "id": "layout_rm0090_scope_page_15",
+      "path": "supporting-evidence-v2/layout_rm0090_scope_page_15.json",
+      "sha256": "a3403c364de8f5e567925973c22ee3905f8e5a058889ef63f75d5eaa98907ac0"
+    },
+    {
+      "id": "layout_rm0090_scope_page_17",
+      "path": "supporting-evidence-v2/layout_rm0090_scope_page_17.json",
+      "sha256": "28ade166059e97d837a874637d091538ee61edc4004ee22da0f8b934fa2eca69"
+    },
+    {
+      "id": "layout_rm0090_scope_page_19",
+      "path": "supporting-evidence-v2/layout_rm0090_scope_page_19.json",
+      "sha256": "203b271962f2bcc642873bfe11e6efd46732ce997bc7da393a3d84e4d6c71e85"
+    },
+    {
+      "id": "layout_rm0090_scope_page_21",
+      "path": "supporting-evidence-v2/layout_rm0090_scope_page_21.json",
+      "sha256": "2dedb3b6eaff4e36b2d97472c5164e2b9896dd45e44bf668aee2bbc8b2b60ca2"
+    },
+    {
+      "id": "layout_rm0090_scope_page_23",
+      "path": "supporting-evidence-v2/layout_rm0090_scope_page_23.json",
+      "sha256": "83fe64692af55e673cc7073b4c11cff14ba3b278ccbcd3aeed4e2591aba6a36a"
+    },
+    {
+      "id": "layout_rm0090_scope_page_25",
+      "path": "supporting-evidence-v2/layout_rm0090_scope_page_25.json",
+      "sha256": "b9cf29784fc99fa3450c4e9c62830424b84b68f0ec5925c3152385d90e117517"
+    },
+    {
+      "id": "layout_rm0090_scope_page_27",
+      "path": "supporting-evidence-v2/layout_rm0090_scope_page_27.json",
+      "sha256": "f8f3f0ba0f87b1dafaaad242afec63401183fe6e5c8de29df5ad0680d322e8d6"
+    },
+    {
+      "id": "layout_rm0090_scope_page_29",
+      "path": "supporting-evidence-v2/layout_rm0090_scope_page_29.json",
+      "sha256": "8d855e83f775d49bc3a936f6f2294d5189701f0a451263ed3fa457e0018827b0"
+    },
+    {
+      "id": "layout_rm0090_scope_page_3",
+      "path": "supporting-evidence-v2/layout_rm0090_scope_page_3.json",
+      "sha256": "beda21e0c961290f401c48ba3a320d6ff1931db05c3167a3b379102f0116cdba"
+    },
+    {
+      "id": "layout_rm0090_scope_page_31",
+      "path": "supporting-evidence-v2/layout_rm0090_scope_page_31.json",
+      "sha256": "919e7540c822efa1ee8ee465e572955176b5bbbec550ad097d76de4becabfd5c"
+    },
+    {
+      "id": "layout_rm0090_scope_page_33",
+      "path": "supporting-evidence-v2/layout_rm0090_scope_page_33.json",
+      "sha256": "3ea933d60e5ab6289702b1886c8649aed2adbec2f2f85b9f2eff3c705492c621"
+    },
+    {
+      "id": "layout_rm0090_scope_page_35",
+      "path": "supporting-evidence-v2/layout_rm0090_scope_page_35.json",
+      "sha256": "19ffc70458b570d4cf92c784640a680ed5b54f5401215a97f42028001faae181"
+    },
+    {
+      "id": "layout_rm0090_scope_page_37",
+      "path": "supporting-evidence-v2/layout_rm0090_scope_page_37.json",
+      "sha256": "1bfc13a0cd5a47c6ac187828a72ef1cf441b5077ed4026bc3bf8a549508f6227"
+    },
+    {
+      "id": "layout_rm0090_scope_page_39",
+      "path": "supporting-evidence-v2/layout_rm0090_scope_page_39.json",
+      "sha256": "4ea618f47cf74f56e9ec0d1fcaf5ae8dd0328f58a1c042349fb8c14dcc5617e9"
+    },
+    {
+      "id": "layout_rm0090_scope_page_4",
+      "path": "supporting-evidence-v2/layout_rm0090_scope_page_4.json",
+      "sha256": "ef04e1a928db5a41fe1ff55bf9b5413b9116f2312c9c26da441508c36905f355"
+    },
+    {
+      "id": "layout_rm0090_scope_page_5",
+      "path": "supporting-evidence-v2/layout_rm0090_scope_page_5.json",
+      "sha256": "733734df23d8b3b57f0e9b8a46ccacf75f94be76629aa340c1c1204ef6d10c94"
+    },
+    {
+      "id": "layout_rm0090_scope_page_7",
+      "path": "supporting-evidence-v2/layout_rm0090_scope_page_7.json",
+      "sha256": "a2622dd1631ba37f74e6af4ade6111ab86e57349fd85c303a5d168f7acdcde62"
+    },
+    {
+      "id": "layout_rm0090_scope_page_9",
+      "path": "supporting-evidence-v2/layout_rm0090_scope_page_9.json",
+      "sha256": "80da0a3cefc0387fc688d9d09dbb5ba8ffaf93e4af9825a971bcf72ae5c1405d"
+    },
+    {
+      "id": "part_ds_ordering_page_186",
+      "path": "supporting-evidence-v2/part_ds_ordering_page_186.json",
+      "sha256": "3b36838e3c1607d285bd8b7fce5b63f6c1e481969ae1f1fc92fc7e5d0215b8fe"
+    }
+  ],
+  "target": {
+    "board_revision": "MB997-E-01",
+    "clock_assumptions": [
+      "Reference board: STM32F407G-DISC1, MB997 E-01 schematic. Actual card revision is unconfirmed.",
+      "8 MHz X2 crystal is documented for E-01; verify oscillator assembly and solder bridges against the actual card.",
+      "168 MHz is a validated software clock recipe, NOT a claim about the running firmware. Preserve a known working clock setup for GPIO tests.",
+      "Recipe only: PLLM=8, PLLN=336, PLLP=2, PLLQ=7; AHB /1; APB1 /4 (42 MHz); APB2 /2 (84 MHz); 5 FLASH wait states, supply within the reviewed range.",
+      "SysTick_Config uses the processor clock. For 1 ms use actual SystemCoreClock / 1000 after synchronizing SystemCoreClock; do not divide by 8.",
+      "UART loopback application explicitly selects HSI nominal 16 MHz, AHB/APB1/APB2 all /1; the 168 MHz recipe is not used for this scenario. See RCC/USART/TIM2 reviewed notes; timing remains unmeasured.",
+      "ADC example additionally assumes VDDA/VREF+ in the reviewed 2.7–3.6 V operating range; analog supply is not measured or physically qualified."
+    ],
+    "clock_hz": 168000000,
+    "example_only": false,
+    "family": "stm32",
+    "fuse_assumptions": [],
+    "id": "stm32f407g_disc1_mb997_e01",
+    "mcu": "STM32F407VGT6",
+    "package": "Package_QFP:LQFP-100_14x14mm_P0.5mm",
+    "primary_mcu_ref": "U4",
+    "silicon_revision": "Unspecified; errata review pending"
+  }
+}

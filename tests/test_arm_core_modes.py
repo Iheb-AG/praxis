@@ -128,7 +128,8 @@ def test_new_bundle_exposes_exact_core_contracts_without_uart_gate():
     assert 'Reviewed write-value mask' in scb and '0x3FFFFE00' in scb
     assert 'PENDSTSET=0' in tick and 'All four reset values remain unasserted' in tick
     assert 'core_clock_interrupt' in tick and 'flash_vector_table' in scb
-    assert all(len(doc.encode()) <= 65536 for doc in bundle.documents.values())
+    assert all("## Register map" in bundle.read(path) and "## Bit fields" in bundle.read(path)
+               for path in bundle.manifest.peripherals.values())
 
 
 def test_dependency_modes_and_conflicting_reset_values_remain_explicit():

@@ -26,6 +26,13 @@ const hash = bytes => createHash('sha256').update(bytes).digest('hex');
 const decode = bytes => new TextDecoder('utf-8', { fatal: true }).decode(bytes);
 const forbidden = name => name.split('/').some(part => EXCLUDED.has(part) || part.startsWith('.env'));
 
+export function resolveSourceRoot({ websiteRoot = HERE } = {}) {
+  const source = path.join(websiteRoot, 'documentation-source');
+  if (safeFile(source, 'docs/README.md')) return fs.realpathSync(source);
+  throw new Error('Missing checked-in documentation-source/docs/README.md. Restore it in this '
+    + 'documentation repository. Builds use only local documentation-source/ content.');
+}
+
 function safeFile(root, name) {
   if (!name || forbidden(name) || path.posix.isAbsolute(name) || name.split('/').includes('..')) return null;
   const parts = name.split('/');
@@ -107,8 +114,8 @@ export function createSnapshot(source) {
     sourceName: 'praxis', repositoryURL: 'https://github.com/Iheb-AG/praxis', snapshotHash } };
 }
 
-export function build(source = path.dirname(HERE)) {
-  const { catalog, files } = createSnapshot(source);
+export function build() {
+  const { catalog, files } = createSnapshot(resolveSourceRoot());
   const output = path.join(HERE, '.generated'), staging = path.join(HERE, '.build-staging');
   fs.rmSync(staging, { recursive: true, force: true });
   fs.cpSync(path.join(HERE, 'public'), staging, { recursive: true });

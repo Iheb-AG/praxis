@@ -360,7 +360,7 @@ def test_backend_limits_no_fallback(telemetry, monkeypatch, failure):
         "inconsistent_row",
     ],
 )
-@pytest.mark.parametrize('kind', ['uart-loopback-v1', 'can-loopback-v1'])
+@pytest.mark.parametrize('kind', ['uart-loopback-v1', 'can-loopback-v1', 'timer-routes-v1', 'timer-irq-v1'])
 def test_actual_tcl_identity_image_and_seqlock_guards(tmp_path, case, kind):
     require_tool("openocd")
     image = bytes(range(256)) * 2
@@ -382,6 +382,10 @@ def test_actual_tcl_identity_image_and_seqlock_guards(tmp_path, case, kind):
     contract = get_contract(kind)
     if kind == 'can-loopback-v1':
         from test_can_telemetry import words as sample_words
+    elif kind == 'timer-routes-v1':
+        from test_timer_route_telemetry import words as sample_words
+    elif kind == 'timer-irq-v1':
+        from test_timer_irq import words as sample_words
     else:
         sample_words = words
     row = " ".join(hex(v) for v in sample_words(generation=3 if case == "busy" else 2))
@@ -406,7 +410,7 @@ def test_actual_tcl_identity_image_and_seqlock_guards(tmp_path, case, kind):
         "  foreach index {0 4 5} {lset test_row $index [expr {[lindex $test_row $index]+100}]}\n"
         '  if {$test_case eq "image_changed"} {dict set test_values 0x08000000 0}\n }\n}\n'
     )
-    if kind == 'can-loopback-v1':
+    if kind in ('can-loopback-v1', 'timer-routes-v1', 'timer-irq-v1'):
         prelude = prelude.replace(
             'foreach index {0 4 5} {lset test_row $index [expr {[lindex $test_row $index]+100}]}',
             'lset test_row 0 [expr {[lindex $test_row 0]+2}]\n'

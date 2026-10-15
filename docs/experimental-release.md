@@ -1,5 +1,10 @@
 # First experimental STM32 release scope
 
+The active engineering priority is now **full F407 coverage before further family expansion**.
+The [full-scope acceptance audit](f407-full-acceptance.md) records the remaining gaps and
+checks all existing F407 applications against one combined candidate. Full MCU acceptance
+remains open; the published experimental baseline below is narrower.
+
 The first public experimental baseline should center on **STM32F407VGT6, the MB997-E-01
 reference bundle and Cortex-M4**, with explicit feature and evidence boundaries. This matches
 the available board, reviewed sources and existing build/probe integration. Additional STM32
@@ -22,7 +27,7 @@ percentage or complete implementation of any register block.
 | F407 operating knowledge | Scoped GPIO, USART/timer/EXTI, CRC, DMA memory-copy, watchdog, SPI, RNG, clocks, ADC, I2C, DAC, CAN and core contracts |
 | ARM core example | SysTick/SCB modeled and isolated ARM build/link/ELF checked; current example unflashed |
 | Physical demonstrations | Earlier exact LED/button and UART images with user observations; CAN internal-loopback software telemetry from its own image |
-| Wider STM32 support | Configurable explicit knowledge adapters; each part/package and workflow needs its own evidence and validation |
+| Wider STM32 support | Real F103/G071/H743 MCU-only declaration bundles and offline batch compilation; reviewed operating/board/firmware support remains target-specific |
 | Remaining complex workflows | Timer PWM/capture, richer SPI routing, USB, Ethernet, SDIO, RTC, firmware-controlled flash updates and bootloader handoff remain incomplete or blocked |
 | General autonomous debugging | Scoped probe/programming/telemetry tools exist; arbitrary debugging and self-repair are incomplete |
 
@@ -44,8 +49,9 @@ uv run python tools/check_distribution.py /tmp/praxis-experimental-dist
 ```
 
 Serving a prebuilt bundle needs runtime dependencies only. Native ingestion and sandbox tests
-need their documented tools and a provisioned rootless image. Missing tools remain recorded
-skips during development; the qualified-v1 gate fails instead of treating them as success.
+need their documented tools and a provisioned rootless image. Required task checks run with
+`PRAXIS_REQUIRE_EXTERNAL_TOOLS=1`; install missing dependencies before proceeding. Unexpected
+skips fail strict acceptance and never qualify missing coverage as verified.
 
 The distribution checker verifies expected public sources/bundles/docs, rejects private/raw
 paths and checks documentation links. Imported PDFs, operator approvals, probe identities,

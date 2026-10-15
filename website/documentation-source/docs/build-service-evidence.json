@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-10",
+  "scope": "Implemented F407 build/link/image validation; no physical hardware execution",
+  "regression": {
+    "command": "PRAXIS_REQUIRE_EXTERNAL_TOOLS=1 .venv/bin/pytest -q",
+    "environment": "Project-local rootless Podman and KiCad 9.0.4 enabled on PATH",
+    "passed": 180,
+    "failed": 0,
+    "skipped": 0,
+    "duration_seconds": 48.42
+  },
+  "checks": {
+    "real_stdio_build_and_validate": "passed",
+    "configured_opencode_launcher_from_unrelated_cwd": "passed",
+    "rootless_full_link": "passed",
+    "repeat_build_same_artifact_id": "passed",
+    "artifact_corruption_rejected": "passed",
+    "compile_failure_no_accepted_artifact": "passed",
+    "container_isolation": "passed",
+    "stm32f401_uart_polling_interrupt_objects": "passed",
+    "atmega328p_uart_polling_interrupt_objects": "passed",
+    "ruff": "passed",
+    "wheel_and_sdist": "passed"
+  },
+  "reference": {
+    "bundle_revision": "53474b5de83dddffbdccfb86057c6ec9ad362f1949afd6a74e90effb2c27fc9b",
+    "asset_revision": "22310c7ad54daa553cf5cb11e4db08e4c8f9e93e191f3f12ec8410dd1fb40b59",
+    "image": "sha256:4748b01d5c1d2313e5617878f9450ff1d432f8244416732d0cc57aa1867cc120",
+    "artifact_id": "2ca00df430a75add6055b6fb413e7d4e0d4ed697c6f15694803f91eafa9bc9d6",
+    "initial_sp": "0x20020000",
+    "vectors": 98,
+    "physical_behavior": "not tested"
+  },
+  "negative_original_opencode_image": {
+    "path": "temp/led_button_test/led_button_test.elf",
+    "modified": false,
+    "accepted": false,
+    "initial_sp": "0x20030000",
+    "errors": 69,
+    "key_errors": ["STACK_ADDRESS", "INITIAL_SP", "VECTOR_LAYOUT", "VECTOR_HANDLER"]
+  },
+  "release_ready": false,
+  "remaining": [
+    "Independent embedded review of exact bundle and firmware asset revisions",
+    "OpenCode live-model workflow evaluation using the newly configured build MCP",
+    "Physical PCB revision confirmation",
+    "Probe inspection, authorized flashing, execution and physical test adapters"
+  ]
+}

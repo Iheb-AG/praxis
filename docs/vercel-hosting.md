@@ -1,68 +1,75 @@
-# Public documentation on Vercel
+# Hosting the standalone documentation website
 
-The public site uses **React + Vite**, built from `website/` and the root `vercel.json`.
-Its host is independent of the knowledge/build MCP processes and the connected development board.
-Publishing the site does not expose a probe, local API, command feed or MCP server to the internet.
+This website is maintained in [Iheb-AG/praxis-documentation](https://github.com/Iheb-AG/praxis-documentation).
+It owns its content under `documentation-source/` and builds independently of the Praxis
+codebase. The guides, examples, diagrams, reports and hardware reference snapshots were
+copied once; subsequent edits belong to this documentation repository.
 
-## Deploy from GitHub
+In the Praxis development workspace, this independent checkout is currently located in
+`website/`. From the Praxis root you can use `npm run build --prefix website`; it reads only
+`website/documentation-source/`, not the surrounding project's documentation. The separate
+repository's own `vercel.json` applies when deployed from its root.
 
-1. Push the new `website/`, `vercel.json`, `.vercelignore` and associated documentation changes
-   to [Iheb-AG/praxis](https://github.com/Iheb-AG/praxis).
-2. In Vercel, add a project and import that repository.
-3. Keep **Root Directory** at the repository root (`.`). Select Framework **Vite** if asked.
-4. Use **Install Command** `npm ci --prefix website --include=dev`, **Build Command**
-   `npm run build --prefix website`, and **Output Directory** `website/dist`.
-   The checked-in configuration supplies these values. Remove any previous dashboard overrides
-   that skip installation or run only the old catalog command. Use Node 22.12+ or Node 24+.
-5. Deploy, then verify the actual returned URL, search, source downloads and a sequence diagram.
-   Add that URL to the GitHub repository's About/Website field after deployment succeeds.
+## Local development
 
-No service API keys or board details are required. GitHub/Vercel account access is required
-to connect the repository and create the hosted deployment. This environment currently has
-no Vercel credential or linked project; a prepared build is not a deployed URL.
-
-Vercel supports repository imports and file-based build/output configuration; see its
-[Git deployment guide](https://vercel.com/docs/git) and
-[vercel.json reference](https://vercel.com/docs/project-configuration/vercel-json) and
-[Vite integration](https://vercel.com/docs/frameworks/frontend/vite).
-
-## Build and verify locally
+Use Node 24.x. From the documentation repository root:
 
 ```bash
-npm ci --prefix website
-npm test --prefix website
-npm run build --prefix website
-npm run preview --prefix website -- --port 4184
+npm ci --include=dev
+npm run dev
 ```
 
-Open `http://127.0.0.1:4184/`. For development use `npm run dev --prefix website` and the
-printed Vite URL (normally port 5173). The production app needs static hosting and uses hash routes
-for guide/library navigation. It does not need an SPA fallback that could turn missing
-JSON or private API requests into successful HTML responses.
+Edit Markdown directly in `documentation-source/`. During development, run `npm run catalog`
+and refresh after editing content. No compiler run, external source checkout, hash-inventory
+refresh or re-export is needed. To check production:
 
-The snapshot compiler copies complete Markdown and explicitly linked public attachments. It excludes
-raw/private paths, PDF originals, firmware binaries and symlinks; it validates local image
-signatures and computes a deterministic snapshot hash. Tests cover complete table preservation,
-hash changes, private/escaped/symlink rejection and image/evidence handling. Reader tests cover
-legacy routes, exact registered links, wiki resolution, duplicate heading anchors, complete React
-Markdown tables, inert HTML and deterministic search. React Markdown and GFM render the content;
-Mermaid is an on-demand dependency with sanitized SVG output and React zoom/fullscreen controls.
+```bash
+npm test
+npm run build
+npm run preview
+```
 
-Vite bundles the React application and CSS into hashed production assets. `package-lock.json`
-pins npm dependencies. Installed dependency notices are emitted as `THIRD_PARTY_NOTICES.txt`.
-Installation needs package registry access; runtime reading fetches only the deployed static assets.
-No Next.js server, native Python runtime, or filesystem-reading API is deployed.
+The build creates a deterministic local catalog in `.generated/`, collects dependency
+notices and bundles React with Vite into `dist/`. Navigation, full-text search, complete
+Markdown tables and Mermaid diagrams work from the deployed static files. Hash routes
+preserve guide bookmarks. There is no Python backend or documentation synchronization API.
 
-The public theme uses neutral off-white text on graphite backgrounds, cyan links, larger
-monospace code and reference tables, and matching diagram colors. Light mode is also neutral.
-Source documentation is unchanged by rendering and site builds.
+## Vercel configuration
 
-## Local progress monitoring
+Import **Iheb-AG/praxis-documentation**, then use:
 
-The separate development website retains Python/SSE live monitoring. The Vercel build has
-no monitor script, local command history or API backend. Public readers can open `docs/STATUS.md`
-for the authored milestone assessment; it updates when documentation is committed and deployed.
-The public site does not advertise this as a live development feed.
+| Setting | Value |
+| --- | --- |
+| Root Directory | `.` |
+| Framework | Vite |
+| Node.js Version | 24.x |
+| Install Command | `npm ci --include=dev` |
+| Build Command | `npm run build` |
+| Output Directory | `dist` |
 
-**Next:** push the prepared website files, connect the repository in Vercel, deploy and record
-the real site URL. Hosted behavior remains unverified until an actual deployment is available.
+The root `vercel.json` supplies these commands. Remove earlier dashboard overrides using
+`--prefix website` or `website/dist`, and remove obsolete `PRAXIS_DOCS_SOURCE` environment
+variables. The build ignores that variable and always reads this repository's content.
+
+Commit `documentation-source/` with the frontend sources, configuration and lockfile.
+Do not commit `node_modules/`, `.generated/` or `dist/`; Vercel creates them during its build.
+If `documentation-source/docs/README.md` is missing, restore it in this repository. The
+builder deliberately does not fall back to a parent checkout or download external content.
+
+Push to this documentation repository to deploy its changes. A push to the Praxis codebase
+alone has no effect on this site. The documentation can be edited and versioned independently.
+
+## Publication boundaries
+
+Ordinary links to GitHub and manufacturers preserve reference attribution; following a link
+is optional and does not feed the catalog. The catalog includes only local Markdown and
+explicitly linked public attachments. Raw manuals, private paths, symlinks and firmware
+binaries are excluded. Original branding and existing source notices are retained.
+
+The public site has no MCP server, board connection, flashing controls, private telemetry,
+local progress API or development command feed. The separate local development monitor
+remains separate. Hardware reference snapshots describe their recorded experimental support;
+site edits do not publish or validate new operational knowledge bundles.
+
+**Next:** commit the standalone content and configuration, push this repository, then check
+its Vercel deployment and production URL.

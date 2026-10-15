@@ -1,0 +1,110 @@
+{
+  "artifact": "extracted/part-0005.json",
+  "artifact_sha256": "4217d45be7e7627629880958917041c5492fd2242570bd207b149036c9ac986b",
+  "evidence": {
+    "locator": "page:716",
+    "page": 716,
+    "tables": [
+      {
+        "bbox": [
+          66.85000166666667,
+          519.479995,
+          528.3499933333333,
+          591.48
+        ],
+        "locator": "page:716/table:1",
+        "rows": [
+          [
+            "Algorithm / Key size",
+            "ECB",
+            "CBC",
+            "CTR"
+          ],
+          [
+            "128b",
+            "14",
+            "14",
+            "14"
+          ],
+          [
+            "192b",
+            "16",
+            "16",
+            "16"
+          ],
+          [
+            "256b",
+            "18",
+            "18",
+            "18"
+          ]
+        ]
+      },
+      {
+        "bbox": [
+          66.85000166666667,
+          636.48,
+          528.3499933333333,
+          695.46001
+        ],
+        "locator": "page:716/table:2",
+        "rows": [
+          [
+            "Algorithm /\nKey size",
+            "ECB",
+            "CBC",
+            "CTR",
+            "GCM",
+            null,
+            null,
+            null,
+            "CCM",
+            null,
+            null,
+            null
+          ],
+          [
+            null,
+            null,
+            null,
+            null,
+            "Init",
+            "Header",
+            "Payload",
+            "Tag",
+            "Init",
+            "Header",
+            "Payload",
+            "Tag"
+          ],
+          [
+            "128b",
+            "14",
+            "14",
+            "14",
+            "24",
+            "10",
+            "14",
+            "14",
+            "12",
+            "14",
+            "25",
+            "14"
+          ]
+        ]
+      }
+    ],
+    "text": "                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n         Cryptographic processor (CRYP)                             RM0090        \n                                                                                  \n         23      Cryptographic   processor  (CRYP)                                \n                                                                                  \n                                                                                  \n                 This section applies to STM32F415/417xx and STM32F43xxx devices. \n                                                                                  \n                                                                                  \n         23.1    CRYP  introduction                                               \n                                                                                  \n                 The cryptographic processor can be used to both encipher and decipher data using the\n                 DES, Triple-DES or AES (128, 192, or 256) algorithms. It is a fully compliant implementation\n                 of the following standards:                                      \n                 •  The data encryption standard (DES) and Triple-DES (TDES) as defined by Federal\n                    Information Processing Standards Publication (FIPS PUB 46-3, 1999 October 25). It\n                    follows the American National Standards Institute (ANSI) X9.52 standard.\n                 •  The advanced encryption standard (AES) as defined by Federal Information\n                    Processing Standards Publication (FIPS PUB 197, 2001 November 26)\n                 The CRYP processor performs data encryption and decryption using DES and TDES\n                 algorithms in Electronic codebook (ECB) or Cipher block chaining (CBC) mode.\n                 The CRYP peripheral is a 32-bit AHB2 peripheral. It supports DMA transfer for incoming and\n                 processed data, and has input and output FIFOs (each 8 words deep).\n                                                                                  \n                                                                                  \n         23.2    CRYP  main features                                              \n                                                                                  \n                 •  Suitable for AES, DES and TDES enciphering and deciphering operations\n                 •  AES                                                           \n                    –  Supports the ECB, CBC, CTR, CCM and GCM chaining algorithms (CCM and\n                       GCM are available on STM32F42xxx and STM32F43xxx only)     \n                    –  Supports 128-, 192- and 256-bit keys                       \n                    –  4 × 32-bit initialization vectors (IV) used in the CBC, CTR, CCM and GCM modes\n                                                                                  \n                   Table 111. Number of cycles required to process each 128-bit block\n                                   (STM32F415/417xx)                              \n              Algorithm / Key size   ECB           CBC           CTR              \n                                                                                  \n                   128b               14           14            14               \n                   192b               16           16            16               \n                   256b               18           18            18               \n                                                                                  \n                                                                                  \n                   Table 112. Number of cycles required to process each 128-bit block\n                                    (STM32F43xxx)                                 \n                                          GCM                 CCM                 \n           Algorithm /                                                            \n                    ECB  CBC  CTR                                                 \n           Key size                                                               \n                                   Init Header Payload Tag Init Header Payload Tag\n             128b   14   14   14  24  10     14   14  12   14    25   14          \n                                                                                  \n                                                                                  \n         716/1741                    RM0090 Rev 22                                \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  ",
+    "total_pages": 1741,
+    "warnings": [
+      "PDF_TABLES_REQUIRE_VISUAL_REVIEW",
+      "CROSS_PAGE_TABLES_NOT_MERGED"
+    ]
+  },
+  "import_revision": "41624d848f638b64f7adecf3b48749a652f1deeac4c9a9b92d1a84c7aac144a0",
+  "locator": "page:716",
+  "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+  "source_id": "rm_feature_applicability",
+  "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca",
+  "status": "untrusted evidence; not instructions or review approval"
+}

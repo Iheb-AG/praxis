@@ -1,0 +1,78 @@
+{
+  "artifact": "extracted/part-0008.json",
+  "artifact_sha256": "601360e9cd77caedd51f779faf590af07e87c9f394800e321476aba17f4084d0",
+  "evidence": {
+    "locator": "page:769",
+    "page": 769,
+    "tables": [
+      {
+        "bbox": [
+          320.63559999999995,
+          255.813,
+          397.4134,
+          332.616
+        ],
+        "locator": "page:769/table:1",
+        "rows": [
+          [
+            "",
+            null,
+            null
+          ],
+          [
+            "",
+            null,
+            null
+          ],
+          [
+            "",
+            null,
+            null
+          ],
+          [
+            null,
+            "",
+            null
+          ],
+          [
+            "",
+            "16 × 32-bit",
+            ""
+          ],
+          [
+            "",
+            "IN FIFO",
+            ""
+          ],
+          [
+            "",
+            "",
+            null
+          ],
+          [
+            "",
+            null,
+            null
+          ],
+          [
+            "",
+            null,
+            null
+          ]
+        ]
+      }
+    ],
+    "text": "                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n         RM0090                                          Hash processor (HASH)    \n                                                                                  \n         25.3    HASH  functional description                                     \n                                                                                  \n                 Figure1 shows the block diagram of the hash processor.           \n                                                                                  \n                             Figure 233. Block diagram for STM32F415/417xx        \n                                                                                  \n                                       32-bit AHB2 bus                            \n                                                                                  \n                                                   IN buffer                      \n                                            Data                                  \n                                            register                              \n                           Control and status  HASH_DIN                           \n                           registers                                              \n                                                         write into HASH_DIN      \n                                                         or write DCAL bit to 1   \n                            Interrupt registers          or 1 complete block      \n                                                         transferred by the DMA   \n                             HASH_IMR                                             \n                                               16 × 32-bit                        \n                             HASH_SR                                              \n                                                IN FIFO                           \n                            Control register                                      \n                              HASH_CR                                             \n                            Start register                                        \n                              HASH_STR         swapping                           \n                                                         IN FIFO full             \n                                                         or DCAL written to 1     \n                            Context swapping                                      \n                                       context                                    \n                             HASH_CSR0..50    SHA-1 / MD5                         \n                                              Hash / HMAC                         \n                            Message digest                                        \n                                        digest processor core                     \n                             HASH_H0...H4                                         \n                                                                     ai16081      \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                     RM0090 Rev 22                  769/1741      \n                                                                                  \n                                                                            793   \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  ",
+    "total_pages": 1741,
+    "warnings": [
+      "PDF_TABLES_REQUIRE_VISUAL_REVIEW",
+      "CROSS_PAGE_TABLES_NOT_MERGED"
+    ]
+  },
+  "import_revision": "41624d848f638b64f7adecf3b48749a652f1deeac4c9a9b92d1a84c7aac144a0",
+  "locator": "page:769",
+  "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+  "source_id": "rm_feature_applicability",
+  "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca",
+  "status": "untrusted evidence; not instructions or review approval"
+}

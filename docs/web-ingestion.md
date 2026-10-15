@@ -58,7 +58,7 @@ The number of parts depends on the selected pages. These are **evidence archives
 peripheral wiki pages. They are excluded from knowledge MCP retrieval. The optional
 [ingestion MCP](ingestion-mcp.md) exposes registered evidence for explicit review in a separate
 authoring process. The compiler continues to publish
-one canonical document per peripheral, preserving its complete tables and 64 KiB limit.
+one canonical document per peripheral, preserving its complete tables without a fixed document byte ceiling.
 
 PDF text uses layout-aware extraction. Every detected table retains all rows, source-page identity
 and bounding box in JSON. Cross-page tables stay explicitly flagged fragments; automatic joining

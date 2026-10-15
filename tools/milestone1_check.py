@@ -19,7 +19,8 @@ TARGETS = ["stm32f401re", "atmega328p", "stm32f407vgt6", "stm32f407g-disc1-e01-m
            "stm32f407g-disc1-e01-discovery-v2"]
 TESTS = ["tests/test_compiler_adapters.py", "tests/test_f407_ingestion.py",
          "tests/test_board_ingestion.py", "tests/test_bundle_routing.py", "tests/test_web_import.py",
-         "tests/test_configurable_discovery.py"]
+         "tests/test_configurable_discovery.py", "tests/test_large_documents.py",
+         "tests/test_kicad_pin_names.py", "tests/test_dependency_policy.py"]
 
 
 def main(argv=None):

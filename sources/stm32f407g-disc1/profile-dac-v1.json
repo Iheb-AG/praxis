@@ -16,6 +16,7 @@
     "pll_q": 7,
     "vdd_mv": 3300
   },
+  "compilation_contract": "compilation_policy",
   "definition_extensions": [
     "adc_extension",
     "i2c_extension",
@@ -2258,6 +2259,15 @@
       "origin": "Scoped implementing-author review from actual ingestion MCP evidence; independent review pending",
       "path": "reviewed/dac-v1/rcc.md",
       "version": "dac-v1"
+    },
+    {
+      "authority": "configuration",
+      "expected_sha256": "76d194571111c63b994ea84ad7f80e247219a03eb7ad82cdd6b5f8c35f5e4374",
+      "id": "compilation_policy",
+      "license": "MIT",
+      "origin": "Explicit publication scope migrated from existing reviewed target/profile policy; not independent hardware sign-off",
+      "path": "contracts/profile-dac-v1.json",
+      "version": "publication-policy-v1"
     }
   ],
   "target": {

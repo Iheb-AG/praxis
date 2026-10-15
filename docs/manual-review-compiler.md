@@ -98,8 +98,8 @@ readiness waits and dependency edges require explicit review rather than numeric
 Numeric PDF page order is preserved. Gaps in selected pages break inherited register context.
 Part selection includes complete source parts, never arbitrary text slices. The packet is limited
 to 256 KiB, 2,000 candidate observations and 500 requirement hints. Exceeding a limit fails with
-`REVIEW_LIMIT`; select fewer complete registers or parts. No silent truncation occurs. The separate
-64 KiB published peripheral document limit remains unchanged.
+`REVIEW_LIMIT`; select fewer complete registers or parts. No silent truncation occurs. These
+authoring-operation bounds are separate from published Markdown, which has no fixed byte ceiling.
 
 ## Configuration
 

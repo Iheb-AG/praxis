@@ -1,0 +1,619 @@
+{
+  "applicable_mcus": [
+    "STM32F407VGT6"
+  ],
+  "base_sha256": "a59f7eed1ce3bc2e0746db6e1950c46bf9b9aecee0e052526cc3d5b88b28108d",
+  "parent_definitions_sha256": "dc2c81d6873eb797cabf3ad88733784a12ea7fa3949dcf6f959c556561bd8b10",
+  "replacements": [
+    {
+      "id": "tim",
+      "instances": [
+        {
+          "base_address": 1073741824,
+          "bus": "APB1",
+          "clock": "Explicitly selected HSI scenario; see RCC and reviewed notes",
+          "name": "TIM2",
+          "sources": [
+            {
+              "locator": "TIM2_BASE",
+              "source": "header"
+            }
+          ]
+        }
+      ],
+      "operating_modes": {
+        "polling_update_delay": {
+          "fields": {
+            "ARR": [
+              "ARR"
+            ],
+            "CR1": [
+              "CEN",
+              "UDIS",
+              "URS",
+              "OPM",
+              "DIR",
+              "CMS",
+              "ARPE"
+            ],
+            "DIER": [
+              "UIE",
+              "UDE"
+            ],
+            "EGR": [
+              "UG"
+            ],
+            "PSC": [
+              "PSC"
+            ],
+            "SR": [
+              "UIF"
+            ]
+          },
+          "instances": [
+            "TIM2"
+          ],
+          "registers": [
+            "CR1",
+            "DIER",
+            "SR",
+            "EGR",
+            "PSC",
+            "ARR"
+          ],
+          "requirements": [
+            "Exclusive fresh TIM2, no channel/slave/interrupt/DMA owners, declared HSE8 PLL mode and APB1/4; TIM2CLK=2*PCLK1=84 MHz.",
+            "Keep CEN=0 and DIER=0 while setting PSC=8399, ARR=9. Write EGR=UG to load PSC/reinitialize counter; write SR=0 afterward to discard the UG-created UIF.",
+            "Set CR1=OPM|CEN with UDIS/URS/DIR/CMS/ARPE zero. Poll UIF with a finite budget and verify CEN cleared. This is 1 ms nominal under the declared clock assumptions, not measured timing.",
+            "Do not accept the stale UG flag as elapsed time. Stop the owned timer on failure. This operation uses no timer output pin or NVIC interrupt."
+          ],
+          "requires_modes": [
+            {
+              "instances": [
+                "RCC"
+              ],
+              "mode": "pll_hse8_168mhz",
+              "peripheral": "rcc"
+            },
+            {
+              "instances": [
+                "RCC"
+              ],
+              "mode": "adc_timer_gates",
+              "peripheral": "rcc"
+            }
+          ],
+          "sources": [
+            {
+              "locator": "page:624",
+              "source": "rm_tim_cr1"
+            },
+            {
+              "locator": "page:625",
+              "source": "rm_tim_control"
+            },
+            {
+              "locator": "page:631",
+              "source": "rm_tim_status"
+            },
+            {
+              "locator": "page:632",
+              "source": "rm_tim_egr"
+            },
+            {
+              "locator": "page:638",
+              "source": "rm_tim_values"
+            },
+            {
+              "locator": "page:639",
+              "source": "rm_tim_arr"
+            },
+            {
+              "locator": "page:218",
+              "source": "rm_clock"
+            }
+          ],
+          "title": "Owned TIM2 one-pulse polling delay at TIM2CLK=84 MHz"
+        }
+      },
+      "prerequisites": [
+        "rcc"
+      ],
+      "registers": [
+        {
+          "access": "RW",
+          "access_widths": [
+            32
+          ],
+          "count": 1,
+          "fields": [
+            {
+              "lsb": 0,
+              "mask": 1,
+              "meaning": "Counter enable; OPM clears it at update.",
+              "name": "CEN",
+              "sources": [
+                {
+                  "locator": "TIM_CR1_CEN_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:624",
+                  "source": "rm_tim_cr1"
+                },
+                {
+                  "locator": "page:625",
+                  "source": "rm_tim_control"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 1,
+              "mask": 2,
+              "meaning": "0 permits update events.",
+              "name": "UDIS",
+              "sources": [
+                {
+                  "locator": "TIM_CR1_UDIS_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:624",
+                  "source": "rm_tim_cr1"
+                },
+                {
+                  "locator": "page:625",
+                  "source": "rm_tim_control"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 2,
+              "mask": 4,
+              "meaning": "0 permits UG to set UIF; clear stale UIF after UG.",
+              "name": "URS",
+              "sources": [
+                {
+                  "locator": "TIM_CR1_URS_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:624",
+                  "source": "rm_tim_cr1"
+                },
+                {
+                  "locator": "page:625",
+                  "source": "rm_tim_control"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 3,
+              "mask": 8,
+              "meaning": "1 stops the counter at the next update.",
+              "name": "OPM",
+              "sources": [
+                {
+                  "locator": "TIM_CR1_OPM_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:624",
+                  "source": "rm_tim_cr1"
+                },
+                {
+                  "locator": "page:625",
+                  "source": "rm_tim_control"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 4,
+              "mask": 16,
+              "meaning": "0 selects upcounting.",
+              "name": "DIR",
+              "sources": [
+                {
+                  "locator": "TIM_CR1_DIR_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:624",
+                  "source": "rm_tim_cr1"
+                },
+                {
+                  "locator": "page:625",
+                  "source": "rm_tim_control"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 5,
+              "mask": 96,
+              "meaning": "00 selects edge-aligned.",
+              "name": "CMS",
+              "sources": [
+                {
+                  "locator": "TIM_CR1_CMS_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:624",
+                  "source": "rm_tim_cr1"
+                },
+                {
+                  "locator": "page:625",
+                  "source": "rm_tim_control"
+                }
+              ],
+              "width": 2
+            },
+            {
+              "lsb": 7,
+              "mask": 128,
+              "meaning": "0 selects unbuffered ARR.",
+              "name": "ARPE",
+              "sources": [
+                {
+                  "locator": "TIM_CR1_ARPE_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:624",
+                  "source": "rm_tim_cr1"
+                },
+                {
+                  "locator": "page:625",
+                  "source": "rm_tim_control"
+                }
+              ],
+              "width": 1
+            }
+          ],
+          "io_address": null,
+          "name": "CR1",
+          "offset": 0,
+          "reset": 0,
+          "side_effects": "CEN/URS/UDIS/ARPE; supported TIM2 upcounter controls.",
+          "sources": [
+            {
+              "locator": "TIM_TypeDef.CR1",
+              "source": "header"
+            },
+            {
+              "locator": "page:624",
+              "source": "rm_tim_cr1"
+            },
+            {
+              "locator": "page:624",
+              "source": "rm_tim_cr1"
+            },
+            {
+              "locator": "page:625",
+              "source": "rm_tim_control"
+            }
+          ],
+          "width": 32
+        },
+        {
+          "access": "RW",
+          "access_widths": [
+            32
+          ],
+          "count": 1,
+          "fields": [
+            {
+              "lsb": 0,
+              "mask": 1,
+              "meaning": "0 disables update interrupt.",
+              "name": "UIE",
+              "sources": [
+                {
+                  "locator": "TIM_DIER_UIE_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:629",
+                  "source": "rm_tim_dier"
+                },
+                {
+                  "locator": "page:630",
+                  "source": "rm_tim_sr"
+                }
+              ],
+              "width": 1
+            },
+            {
+              "lsb": 8,
+              "mask": 256,
+              "meaning": "0 disables update DMA request.",
+              "name": "UDE",
+              "sources": [
+                {
+                  "locator": "TIM_DIER_UDE_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:629",
+                  "source": "rm_tim_dier"
+                },
+                {
+                  "locator": "page:630",
+                  "source": "rm_tim_sr"
+                }
+              ],
+              "width": 1
+            }
+          ],
+          "io_address": null,
+          "name": "DIER",
+          "offset": 12,
+          "reset": 0,
+          "side_effects": "UIE only; leave DMA/channel requests disabled.",
+          "sources": [
+            {
+              "locator": "TIM_TypeDef.DIER",
+              "source": "header"
+            },
+            {
+              "locator": "page:629",
+              "source": "rm_tim_dier"
+            },
+            {
+              "locator": "page:629",
+              "source": "rm_tim_dier"
+            },
+            {
+              "locator": "page:630",
+              "source": "rm_tim_sr"
+            }
+          ],
+          "width": 32
+        },
+        {
+          "access": "mixed",
+          "access_widths": [
+            32
+          ],
+          "count": 1,
+          "fields": [
+            {
+              "lsb": 0,
+              "mask": 1,
+              "meaning": "Update flag; clear by writing zero, not W1C.",
+              "name": "UIF",
+              "sources": [
+                {
+                  "locator": "TIM_SR_UIF_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:630",
+                  "source": "rm_tim_sr"
+                },
+                {
+                  "locator": "page:631",
+                  "source": "rm_tim_status"
+                }
+              ],
+              "width": 1
+            }
+          ],
+          "io_address": null,
+          "name": "SR",
+          "offset": 16,
+          "reset": 0,
+          "side_effects": "rc_w0 flags: write zero to clear; SR=0 clears all flags in the update-only workflow.",
+          "sources": [
+            {
+              "locator": "TIM_TypeDef.SR",
+              "source": "header"
+            },
+            {
+              "locator": "page:630",
+              "source": "rm_tim_sr"
+            },
+            {
+              "locator": "page:630",
+              "source": "rm_tim_sr"
+            },
+            {
+              "locator": "page:631",
+              "source": "rm_tim_status"
+            }
+          ],
+          "width": 32
+        },
+        {
+          "access": "WO",
+          "access_widths": [
+            32
+          ],
+          "count": 1,
+          "fields": [
+            {
+              "lsb": 0,
+              "mask": 1,
+              "meaning": "Self-clearing write-only command loads PSC and reinitializes counter; can set UIF.",
+              "name": "UG",
+              "sources": [
+                {
+                  "locator": "TIM_EGR_UG_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:631",
+                  "source": "rm_tim_status"
+                },
+                {
+                  "locator": "page:632",
+                  "source": "rm_tim_egr"
+                }
+              ],
+              "width": 1
+            }
+          ],
+          "io_address": null,
+          "name": "EGR",
+          "offset": 20,
+          "reset": 0,
+          "side_effects": "Write UG to reload prescaler/counter; self-clearing action, may set UIF.",
+          "sources": [
+            {
+              "locator": "TIM_TypeDef.EGR",
+              "source": "header"
+            },
+            {
+              "locator": "page:632",
+              "source": "rm_tim_egr"
+            },
+            {
+              "locator": "page:631",
+              "source": "rm_tim_status"
+            },
+            {
+              "locator": "page:632",
+              "source": "rm_tim_egr"
+            }
+          ],
+          "width": 32
+        },
+        {
+          "access": "RW",
+          "access_widths": [],
+          "count": 1,
+          "fields": [],
+          "io_address": null,
+          "name": "CNT",
+          "offset": 36,
+          "reset": 0,
+          "side_effects": "TIM2 32-bit counter; writes only while stopped in this workflow.",
+          "sources": [
+            {
+              "locator": "TIM_TypeDef.CNT",
+              "source": "header"
+            },
+            {
+              "locator": "page:638",
+              "source": "rm_tim_values"
+            }
+          ],
+          "width": 32
+        },
+        {
+          "access": "RW",
+          "access_widths": [
+            32
+          ],
+          "count": 1,
+          "fields": [
+            {
+              "lsb": 0,
+              "mask": 65535,
+              "meaning": "16-bit prescaler: division is PSC+1.",
+              "name": "PSC",
+              "sources": [
+                {
+                  "locator": "TIM_PSC_PSC_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:638",
+                  "source": "rm_tim_values"
+                }
+              ],
+              "width": 16
+            }
+          ],
+          "io_address": null,
+          "name": "PSC",
+          "offset": 40,
+          "reset": 0,
+          "side_effects": "16-bit prescaler; update event transfers buffered value.",
+          "sources": [
+            {
+              "locator": "TIM_TypeDef.PSC",
+              "source": "header"
+            },
+            {
+              "locator": "page:638",
+              "source": "rm_tim_values"
+            },
+            {
+              "locator": "page:638",
+              "source": "rm_tim_values"
+            }
+          ],
+          "width": 32
+        },
+        {
+          "access": "RW",
+          "access_widths": [
+            32
+          ],
+          "count": 1,
+          "fields": [
+            {
+              "lsb": 0,
+              "mask": 4294967295,
+              "meaning": "TIM2 has a 32-bit ARR; period uses ARR+1, zero blocks counter.",
+              "name": "ARR",
+              "sources": [
+                {
+                  "locator": "TIM_ARR_ARR_Msk",
+                  "source": "header"
+                },
+                {
+                  "locator": "page:638",
+                  "source": "rm_tim_values"
+                },
+                {
+                  "locator": "page:639",
+                  "source": "rm_tim_arr"
+                }
+              ],
+              "width": 32
+            }
+          ],
+          "io_address": null,
+          "name": "ARR",
+          "offset": 44,
+          "reset": 4294967295,
+          "side_effects": "TIM2 32-bit auto-reload; nonzero period required.",
+          "sources": [
+            {
+              "locator": "TIM_TypeDef.ARR",
+              "source": "header"
+            },
+            {
+              "locator": "page:639",
+              "source": "rm_tim_arr"
+            },
+            {
+              "locator": "page:638",
+              "source": "rm_tim_values"
+            },
+            {
+              "locator": "page:639",
+              "source": "rm_tim_arr"
+            }
+          ],
+          "width": 32
+        }
+      ],
+      "review": {
+        "basis": "Header declarations checked against complete RM0090/DS8626 parts; ST RCC implementation resolves the ADC1 enable-table typo. No independent sign-off or physical qualification.; alternative CCMR declaration views retain their unreviewed status; no new operating scope",
+        "reviewer": "Codex scoped source-backed editorial review via ingestion MCP",
+        "status": "reviewed"
+      },
+      "reviewed_markdown": "reviewed/timer-views-v1/tim.md",
+      "title": "TIM2: reviewed update interrupt subset"
+    }
+  ],
+  "schema_version": 1
+}

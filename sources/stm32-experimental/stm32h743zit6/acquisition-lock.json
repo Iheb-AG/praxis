@@ -1,0 +1,47 @@
+{
+  "family": "h7",
+  "st_commit": "81db1ec63cdc191fae1565b772da3ea5aa29a683",
+  "cmsis_tag": "5.9.0",
+  "files": {
+    "stm32h743xx.h": {
+      "url": "https://raw.githubusercontent.com/STMicroelectronics/cmsis-device-h7/81db1ec63cdc191fae1565b772da3ea5aa29a683/Include/stm32h743xx.h",
+      "sha256": "9a4ea0860707868a1cc562140ba214d535fb5a64fde91b451b2767276eef7e03"
+    },
+    "system_stm32h7xx.h": {
+      "url": "https://raw.githubusercontent.com/STMicroelectronics/cmsis-device-h7/81db1ec63cdc191fae1565b772da3ea5aa29a683/Include/system_stm32h7xx.h",
+      "sha256": "e77e7dfe5ff780928c28cf37576135050e5af7bf31776400ac700e8b917d24be"
+    },
+    "LICENSE-ST.md": {
+      "url": "https://raw.githubusercontent.com/STMicroelectronics/cmsis-device-h7/81db1ec63cdc191fae1565b772da3ea5aa29a683/LICENSE.md",
+      "sha256": "053a83960032ab6bbd2231a3b6300bde3b4e526dcf11a61394907c0bdaacd713"
+    },
+    "core_cm7.h": {
+      "url": "https://raw.githubusercontent.com/ARM-software/CMSIS_5/5.9.0/CMSIS/Core/Include/core_cm7.h",
+      "sha256": "e974d0a91752487d0154457cd422c37667328e9ddb7ba4fa2fed479a63577f63"
+    },
+    "cmsis_compiler.h": {
+      "url": "https://raw.githubusercontent.com/ARM-software/CMSIS_5/5.9.0/CMSIS/Core/Include/cmsis_compiler.h",
+      "sha256": "b51963d271c1571ca3463654c76aa7ea50c4eac5d0a2710df10414ac64d9e0f8"
+    },
+    "cmsis_gcc.h": {
+      "url": "https://raw.githubusercontent.com/ARM-software/CMSIS_5/5.9.0/CMSIS/Core/Include/cmsis_gcc.h",
+      "sha256": "43bfd1fe69fbbc2ca70aaf7d43cc3e20f16e0c7f66e1bdef9b51af6dc14b2617"
+    },
+    "cmsis_version.h": {
+      "url": "https://raw.githubusercontent.com/ARM-software/CMSIS_5/5.9.0/CMSIS/Core/Include/cmsis_version.h",
+      "sha256": "184c19fd3ee73632edf35a0b4d49cd48be75fbf49e6ccb19d9db05fa83bea4b3"
+    },
+    "mpu_armv7.h": {
+      "url": "https://raw.githubusercontent.com/ARM-software/CMSIS_5/5.9.0/CMSIS/Core/Include/mpu_armv7.h",
+      "sha256": "29206b52ee02290ed6f5a5415ebd4187de802cf176d9b3cb844390d8e5571372"
+    },
+    "cachel1_armv7.h": {
+      "url": "https://raw.githubusercontent.com/ARM-software/CMSIS_5/5.9.0/CMSIS/Core/Include/cachel1_armv7.h",
+      "sha256": "2e336a64f60a9c0eaf5a08e2c4845d94da86c3fd84d219d0d0c9f530e63bc9c3"
+    },
+    "LICENSE-CMSIS.txt": {
+      "url": "https://raw.githubusercontent.com/ARM-software/CMSIS_5/5.9.0/LICENSE.txt",
+      "sha256": "b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1"
+    }
+  }
+}

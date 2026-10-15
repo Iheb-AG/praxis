@@ -1,0 +1,54 @@
+{
+  "blockers": [],
+  "bundle_revisions": {
+    "atmega328p": "9254f63b1d16f4296641e3bf5ab047593373d8a8fe42666b43b89362b1efc7e7",
+    "stm32f401re": "b283ed10bbc173c8932d185fb022c8d27829bef7011656840889b14b736c033d",
+    "stm32f407g-disc1-e01-m1": "53474b5de83dddffbdccfb86057c6ec9ad362f1949afd6a74e90effb2c27fc9b",
+    "stm32f407vgt6": "6af1b28071ee90db0cb5be8b5ee9072240583d0ca3affd98b159630a6cebbe33"
+  },
+  "implementation_checks_passed": true,
+  "independent_review_passed": false,
+  "kicad_package": {
+    "installation": "Signature-verified local extraction under /tmp, not a system installation",
+    "sha256": "7aaded4a3a65f22bcbd7a644d5d3f1c24e24c3d4d9f098df547e51ab6c9273ae",
+    "signature_key": "E75CD4814A77AD943C7AB5A3E0959FEA8B550539",
+    "signature_verified": true,
+    "url": "https://archive.archlinux.org/packages/k/kicad/kicad-9.0.4-1-x86_64.pkg.tar.zst",
+    "version": "9.0.4"
+  },
+  "milestone": 1,
+  "milestone_complete": true,
+  "packaging": {
+    "ruff": "passed",
+    "source_distribution": "passed",
+    "wheel": "passed"
+  },
+  "pdf_schematics": "Reviewed transcription supported; automatic geometry interpretation is deferred",
+  "physical_board": "STM32F407G-DISC1 identified; PCB revision and modifications unconfirmed",
+  "regression_suite": {
+    "duration_seconds": 20.69,
+    "passed": 158,
+    "skipped": 2,
+    "skipped_reason": "Podman runtime and isolation tests; outside Milestone 1"
+  },
+  "release_notes": [
+    "Milestone 1 implementation acceptance does not establish v1 release readiness.",
+    "Independent engineering review and the remaining sandbox/release checks are separate.",
+    "Independent review of all included reference revisions remains pending."
+  ],
+  "tests": {
+    "exit_code": 0,
+    "stderr": "",
+    "stdout": "........................................................................ [ 54%]\n...........................................................              [100%]\n131 passed in 18.47s\n"
+  },
+  "tools": {
+    "arm-none-eabi-gcc": "/usr/bin/arm-none-eabi-gcc",
+    "avr-gcc": "/usr/bin/avr-gcc",
+    "clang": "/usr/bin/clang",
+    "dtc": "/usr/bin/dtc",
+    "fdtoverlay": "/usr/bin/fdtoverlay",
+    "gcc": "/usr/bin/gcc",
+    "kicad-cli": "/tmp/praxis-kicad-root/usr/bin/kicad-cli"
+  },
+  "validation_date": "2026-10-10"
+}

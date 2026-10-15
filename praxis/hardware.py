@@ -252,7 +252,7 @@ class HardwareService:
         if platform.system() != 'Linux':
             raise PraxisError('UNSUPPORTED_PLATFORM', 'Hardware inspection requires Linux')
         try:
-            self.profile = HardwareProfile.model_validate_json(read_inside(profile_path.parent.resolve(), profile_path.name))
+            self.profile = HardwareProfile.model_validate_json(read_inside(profile_path.parent.resolve(), profile_path.name, 64 * 1024))
         except ValidationError as exc:
             raise PraxisError('INVALID_HARDWARE_PROFILE', str(exc)) from exc
         if profile_revision(self.profile.model_dump()) != self.profile.profile_revision:

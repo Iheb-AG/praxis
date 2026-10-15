@@ -102,7 +102,7 @@ The growing source registry initially exceeded the coverage document limit.
 New coverage reports retain the profile hash and link to `[[sources]]`; the
 complete source registry remains in that Markdown document and the manifest.
 Every coverage gap and register/field table remains complete. All documents
-still have a hard64KiB limit; no table truncation was introduced.
+now have no fixed publication byte ceiling; no table truncation is introduced.
 
 ## Reproduction and use
 

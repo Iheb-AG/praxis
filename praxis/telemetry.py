@@ -33,7 +33,7 @@ SIZE = len(FIELDS) * 4
 MAX_IMAGE_BYTES = 64 * 1024
 STATES = ('paused', 'running', 'pausing', 'failed')
 FAILURES = ('none', 'timeout', 'invalid_frame', 'unexpected_rx', 'uart_error', 'queue_overflow')
-KINDS = ('uart-loopback-v1', 'can-loopback-v1')
+KINDS = ('uart-loopback-v1', 'can-loopback-v1', 'timer-routes-v1', 'timer-irq-v1')
 LIMITS = [
     'SRAM values are firmware self-reports, not independent electrical or optical measurements.',
     'Timer/counter progress does not measure oscillator accuracy or prove arbitrary interrupt ordering.',
@@ -65,6 +65,14 @@ def get_contract(kind: str = 'uart-loopback-v1') -> TelemetryContract:
     if kind == 'can-loopback-v1':
         from praxis import can_telemetry as can
         return TelemetryContract(kind, can.SYMBOL, can.ABI, can.FIELDS, can.decode_sample, can.assess)
+    if kind == 'timer-routes-v1':
+        from praxis import timer_route_telemetry as timer
+        return TelemetryContract(kind, timer.SYMBOL, timer.ABI, timer.FIELDS,
+                                 timer.decode_sample, timer.assess)
+    if kind == 'timer-irq-v1':
+        from praxis import timer_irq_telemetry as timer
+        return TelemetryContract(kind, timer.SYMBOL, timer.ABI, timer.FIELDS,
+                                 timer.decode_sample, timer.assess)
     raise PraxisError('TELEMETRY_UNSUPPORTED', 'Select a built-in telemetry kind at server launch')
 
 

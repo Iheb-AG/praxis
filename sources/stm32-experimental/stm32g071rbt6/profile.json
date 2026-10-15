@@ -1,0 +1,218 @@
+{
+  "compilation_contract": "compilation_policy",
+  "definitions": "definitions",
+  "discovery": {
+    "automatic": true,
+    "default_prerequisites": [],
+    "peripherals": {
+      "gpio": {
+        "member_views": {
+          "AFR": [
+            "AFRL",
+            "AFRH"
+          ]
+        },
+        "structure": "GPIO_TypeDef"
+      }
+    }
+  },
+  "header": {
+    "constant_macros": {
+      "__CORTEX_M": 0,
+      "__NVIC_PRIO_BITS": 2
+    },
+    "defines": [
+      "-DSTM32G071xx"
+    ],
+    "discover": true,
+    "include_directories": [
+      "raw"
+    ],
+    "kind": "cmsis",
+    "source": "header"
+  },
+  "review": {
+    "basis": "Review covers source identity, licensed structural extraction and honest absence of board/operating evidence only. It does not certify package availability, electrical facts or initialization semantics.",
+    "reviewer": "Praxis experimental compiler scope review",
+    "status": "reviewed"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "authority": "configuration",
+      "expected_sha256": "b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1",
+      "id": "license_cmsis_txt",
+      "license": "Apache-2.0; see retained upstream license",
+      "origin": "https://raw.githubusercontent.com/ARM-software/CMSIS_5/5.9.0/LICENSE.txt",
+      "path": "raw/LICENSE-CMSIS.txt",
+      "version": "CMSIS_5/5.9.0"
+    },
+    {
+      "authority": "configuration",
+      "expected_sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "id": "license_st_md",
+      "license": "Apache-2.0; see retained upstream license",
+      "origin": "https://raw.githubusercontent.com/STMicroelectronics/cmsis-device-g0/7c77b7cbcee497dfbb5cc08f9562a80515e78013/LICENSE.md",
+      "path": "raw/LICENSE-ST.md",
+      "version": "7c77b7cbcee497dfbb5cc08f9562a80515e78013"
+    },
+    {
+      "authority": "declarations",
+      "expected_sha256": "b51963d271c1571ca3463654c76aa7ea50c4eac5d0a2710df10414ac64d9e0f8",
+      "id": "cmsis_compiler_h",
+      "license": "Apache-2.0; see retained upstream license",
+      "origin": "https://raw.githubusercontent.com/ARM-software/CMSIS_5/5.9.0/CMSIS/Core/Include/cmsis_compiler.h",
+      "path": "raw/cmsis_compiler.h",
+      "version": "CMSIS_5/5.9.0"
+    },
+    {
+      "authority": "declarations",
+      "expected_sha256": "43bfd1fe69fbbc2ca70aaf7d43cc3e20f16e0c7f66e1bdef9b51af6dc14b2617",
+      "id": "cmsis_gcc_h",
+      "license": "Apache-2.0; see retained upstream license",
+      "origin": "https://raw.githubusercontent.com/ARM-software/CMSIS_5/5.9.0/CMSIS/Core/Include/cmsis_gcc.h",
+      "path": "raw/cmsis_gcc.h",
+      "version": "CMSIS_5/5.9.0"
+    },
+    {
+      "authority": "declarations",
+      "expected_sha256": "184c19fd3ee73632edf35a0b4d49cd48be75fbf49e6ccb19d9db05fa83bea4b3",
+      "id": "cmsis_version_h",
+      "license": "Apache-2.0; see retained upstream license",
+      "origin": "https://raw.githubusercontent.com/ARM-software/CMSIS_5/5.9.0/CMSIS/Core/Include/cmsis_version.h",
+      "path": "raw/cmsis_version.h",
+      "version": "CMSIS_5/5.9.0"
+    },
+    {
+      "authority": "declarations",
+      "expected_sha256": "a09fa9c6b8b21d1920bce15b98aa56182b027e9278cca0b154812bac2aea3cfa",
+      "id": "core_cm0plus_h",
+      "license": "Apache-2.0; see retained upstream license",
+      "origin": "https://raw.githubusercontent.com/ARM-software/CMSIS_5/5.9.0/CMSIS/Core/Include/core_cm0plus.h",
+      "path": "raw/core_cm0plus.h",
+      "version": "CMSIS_5/5.9.0"
+    },
+    {
+      "authority": "declarations",
+      "expected_sha256": "0b19058af668cff72649ae3871f6729b0fa68c6e81794cefbd1b0d63e0943fb3",
+      "id": "header",
+      "license": "Apache-2.0; see retained upstream license",
+      "origin": "https://raw.githubusercontent.com/STMicroelectronics/cmsis-device-g0/7c77b7cbcee497dfbb5cc08f9562a80515e78013/Include/stm32g071xx.h",
+      "path": "raw/stm32g071xx.h",
+      "version": "7c77b7cbcee497dfbb5cc08f9562a80515e78013"
+    },
+    {
+      "authority": "declarations",
+      "expected_sha256": "20ee999e4431472a7c351e2412537aa0ef7f5f5e499a21a92c1d4cc21f84ebf1",
+      "id": "system_stm32g0xx_h",
+      "license": "Apache-2.0; see retained upstream license",
+      "origin": "https://raw.githubusercontent.com/STMicroelectronics/cmsis-device-g0/7c77b7cbcee497dfbb5cc08f9562a80515e78013/Include/system_stm32g0xx.h",
+      "path": "raw/system_stm32g0xx.h",
+      "version": "7c77b7cbcee497dfbb5cc08f9562a80515e78013"
+    },
+    {
+      "authority": "configuration",
+      "expected_sha256": "4dba2173503a026acf81f46893aacdd3353231cb00315d391f0708fd9fc64853",
+      "id": "acquisition_lock",
+      "license": "MIT (metadata); upstream file licenses retained",
+      "origin": "Exact source URLs, commits and downloaded SHA-256 values",
+      "path": "acquisition-lock.json",
+      "version": "1"
+    },
+    {
+      "authority": "semantics",
+      "expected_sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "id": "definitions",
+      "license": "MIT",
+      "origin": "Empty operating definitions; no peripheral operating review claimed",
+      "path": "definitions.json",
+      "version": "1"
+    },
+    {
+      "authority": "declarations",
+      "expected_sha256": "29206b52ee02290ed6f5a5415ebd4187de802cf176d9b3cb844390d8e5571372",
+      "id": "mpu_armv7_h",
+      "license": "Apache-2.0; see retained upstream license",
+      "origin": "https://raw.githubusercontent.com/ARM-software/CMSIS_5/5.9.0/CMSIS/Core/Include/mpu_armv7.h",
+      "path": "raw/mpu_armv7.h",
+      "version": "CMSIS_5/5.9.0"
+    },
+    {
+      "authority": "configuration",
+      "expected_sha256": "da519b4b80efd20d7943106243d71a74ff799af629fbe41a5b6221e246e5cf7f",
+      "id": "compilation_policy",
+      "license": "MIT",
+      "origin": "Explicit publication scope migrated from existing reviewed target/profile policy; not independent hardware sign-off",
+      "path": "contracts/profile.json",
+      "version": "publication-policy-v1"
+    }
+  ],
+  "target": {
+    "board_revision": "not-applicable",
+    "clock_assumptions": [
+      "Active SYSCLK, peripheral clocks, oscillators and prescalers are unknown; no board or startup configuration is represented."
+    ],
+    "clock_hz": null,
+    "example_only": true,
+    "family": "stm32",
+    "id": "stm32g071rbt6_inventory",
+    "knowledge_adapter": {
+      "cpu": "cortex-m0plus",
+      "header_identity": [
+        "STM32G071xx_H",
+        "STM32G071xx"
+      ],
+      "kind": "cmsis_cortex_m"
+    },
+    "mcu": "STM32G071RBT6",
+    "package": "LQFP64 (pin map unreviewed)",
+    "primary_mcu_ref": "not-applicable",
+    "scope": "mcu",
+    "silicon_revision": "unqualified"
+  },
+  "workflows": {
+    "gpio_output": {
+      "peripherals": [
+        "rcc",
+        "gpio"
+      ],
+      "registers": {
+        "gpio": [
+          "MODER",
+          "ODR"
+        ]
+      },
+      "signals": [
+        "LED_A"
+      ]
+    },
+    "timer_interrupt": {
+      "peripherals": [
+        "rcc",
+        "tim",
+        "nvic"
+      ],
+      "registers": {
+        "tim": [
+          "CR1",
+          "DIER",
+          "PSC",
+          "ARR"
+        ]
+      }
+    },
+    "uart_polling": {
+      "peripherals": [
+        "rcc",
+        "gpio",
+        "usart"
+      ],
+      "registers": {
+        "usart": [
+          "CR1",
+          "BRR"
+        ]
+      }
+    }
+  }
+}

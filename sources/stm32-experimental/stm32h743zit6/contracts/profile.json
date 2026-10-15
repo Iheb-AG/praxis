@@ -1,0 +1,38 @@
+{
+  "avr_mcu": null,
+  "board_prerequisites": [
+    "rcc",
+    "gpio"
+  ],
+  "clock_plan": null,
+  "core_source": null,
+  "cpu": "cortex-m7",
+  "family": "stm32",
+  "header_identity": [
+    "STM32H743xx_H",
+    "STM32H743xx"
+  ],
+  "header_kind": "cmsis",
+  "id": "publication_policy",
+  "legacy_discovery": {},
+  "mcu": "STM32H743ZIT6",
+  "package": "LQFP144 (pin map unreviewed)",
+  "pin_document": "gpio",
+  "required_registers": {},
+  "review": {
+    "basis": "Review covers source identity, licensed structural extraction and honest absence of board/operating evidence only. It does not certify package availability, electrical facts or initialization semantics.",
+    "reviewer": "Praxis experimental compiler scope review",
+    "status": "reviewed"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "locator": "reviewed peripheral publication scope",
+      "source": "definitions"
+    },
+    {
+      "locator": "target, header and clock assumptions",
+      "source": "profile"
+    }
+  ]
+}

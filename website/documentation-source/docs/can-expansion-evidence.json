@@ -1,0 +1,201 @@
+{
+  "build": {
+    "artifact_id": "df61da07b9700e29af4a9e939478ad202b18fbf92a4f13c2b25af0a24519f61b",
+    "asset_revision": "22310c7ad54daa553cf5cb11e4db08e4c8f9e93e191f3f12ec8410dd1fb40b59",
+    "bundle_revision": "c16f763c075ac70682f8fda1bc64d012397c733feb156213707d691781b4f5d4",
+    "compile_passed": true,
+    "compiler_versions": {
+      "arm-none-eabi-gcc": "arm-none-eabi-gcc (15:12.2.rel1-1) 12.2.1 20221205",
+      "avr-gcc": "avr-gcc (GCC) 5.4.0"
+    },
+    "image": "sha256:4748b01d5c1d2313e5617878f9450ff1d432f8244416732d0cc57aa1867cc120",
+    "image_validated": true,
+    "interrupt_link": {
+      "address": "0x8000441",
+      "bytes": 520,
+      "irq": 20,
+      "symbol": "CAN1_RX0_IRQHandler",
+      "vector_slot": 36
+    },
+    "physical_behavior": "not tested",
+    "source_sha256": "2673b446c619ca9efd01c71de7fbd65bced50db2f463abccc4cd7cc73d456602",
+    "validation": {
+      "asset_revision": "22310c7ad54daa553cf5cb11e4db08e4c8f9e93e191f3f12ec8410dd1fb40b59",
+      "checks": [
+        "ELF architecture",
+        "load/section memory bounds",
+        "main-SRAM stack",
+        "98-entry vendor/header vector layout",
+        "startup copy/zero symbols"
+      ],
+      "elf_sha256": "9ec962115bd9fe0ff1cac5360f70fd255bec6a0c235d7d922b4d6dbed5bd0607",
+      "errors": [],
+      "initial_sp": "0x20020000",
+      "physical_behavior": "not tested",
+      "profile": "stm32f407vg-c11-flash",
+      "valid": true
+    }
+  },
+  "catalog": {
+    "exhaustive": false,
+    "metric": {
+      "denominator": 33,
+      "numerator": 14,
+      "percent": 42.4,
+      "scope": "Unweighted, authored catalog goals only; changing the catalog changes the denominator"
+    },
+    "overall_mcu_completion": "unknown"
+  },
+  "date": "2026-10-12",
+  "deterministic_publication": {
+    "bundle_revision": "c16f763c075ac70682f8fda1bc64d012397c733feb156213707d691781b4f5d4",
+    "byte_identical": true,
+    "counts": {
+      "blocked": 1,
+      "fields": 2131,
+      "published": 41,
+      "register_blocks": 42,
+      "registers": 523,
+      "reviewed_subsets": 20,
+      "unmapped_types": 11
+    },
+    "generated_files": 49,
+    "maximum_document_bytes": 62364,
+    "mode_contracts": 24,
+    "source_catalog_bytes": 62364,
+    "workflows_ready": 15,
+    "workflows_total": 28
+  },
+  "format": "praxis-can-expansion-evidence-v1",
+  "hardware_operations": 0,
+  "limits": [
+    "No probe,flash,reset,debug attachment or physical CAN test occurred.",
+    "Existing board firmware and client selections remain unchanged.",
+    "The compiled example performs a one-shot self-test if later programmed; compilation did not execute it.",
+    "No external CAN bus,transceiver/board wiring,CAN2,extended/remote/time-trigger,FD or broad recovery qualification.",
+    "CAN1-only filter aperture is scoped despite the vendor reused register structure.",
+    "Full mailbox/filter reset values remain unknown; FMR unmodeled bits are preserved rather than asserted.",
+    "Effect models and vector binding do not prove physical exception delivery,timing or arbitrary generated code correctness.",
+    "Debug-visible CAN globals are not the UART telemetry ABI; artifact-bound CAN observation remains next work.",
+    "Implementing-author review is not independent release sign-off; overall MCU completion is unknown.",
+    "CI definitions were extended but no hosted CI execution is claimed."
+  ],
+  "mcp": {
+    "bundle_revision": "c16f763c075ac70682f8fda1bc64d012397c733feb156213707d691781b4f5d4",
+    "checks": {
+      "artifact_revalidated": true,
+      "complete_documents_within_limit": true,
+      "index_gate": true,
+      "matching_bundle_pair": true,
+      "mode:can/silent_loopback": true,
+      "mode:can/silent_loopback_fifo0_irq": true,
+      "mode:nvic/can1_rx0_prepare": true,
+      "mode:rcc/can1_gate_reset": true,
+      "no_hardware_tools": true,
+      "target_compilation": true,
+      "three_readonly_tools": true,
+      "workflow:can1_external_bus:False": true,
+      "workflow:can1_silent_loopback_irq:True": true,
+      "workflow:feature_can:False": true
+    },
+    "passed": true,
+    "tool_calls": 16
+  },
+  "mcu": "STM32F407VGT6",
+  "model": {
+    "access_order_violations": 0,
+    "cases": 46,
+    "controller_sha256": "8ae430cf8744eeb79f3d2ac37ba4c1dc4b1fe68464c5b876ea8f227ed775f5df",
+    "effect_model_sha256": "3590c647a2d2cdda009b9e8048f70ecbd3a1e66f9f7ede788a28b65eb2edbc66",
+    "physical_irq_delivery": false
+  },
+  "physical_board_revision": "unconfirmed",
+  "reference_board_revision": "MB997-E-01",
+  "regression": {
+    "errors": 0,
+    "failures": 0,
+    "focused_can_tests_passed": 51,
+    "junit_sha256": "aa4374e2c42c7418a1c472ead55d5172e9d6f786571224951c4f94db1b3a584c",
+    "passed": 660,
+    "ruff_passed": true,
+    "seconds": 114.9,
+    "skipped": 4,
+    "skips": "Four live KiCad checks; kicad-cli is unavailable",
+    "tests": 664
+  },
+  "release_gate": {
+    "blockers": [
+      "Missing external tool: kicad-cli",
+      "Independent review of the exact current bundle revisions is missing",
+      "Independent review of the exact firmware asset revision is missing"
+    ],
+    "release_ready": false
+  },
+  "review": "Implementing-author scoped source-backed editorial review; independent review and silicon-errata qualification pending",
+  "scope": "CAN1 silent internal-loopback standard0x123 eight-byte one-shot and FIFO0 interrupt receipt at nominal500kbit/s,PCLK1=42MHz",
+  "source_evidence": {
+    "actual_authoring_calls": 72,
+    "inspected_page_images": [
+      1075,
+      1081,
+      1089,
+      1104,
+      1111
+    ],
+    "inspected_rm_pages": [
+      1069,
+      1070,
+      1071,
+      1072,
+      1073,
+      1074,
+      1075,
+      1076,
+      1077,
+      1078,
+      1079,
+      1080,
+      1081,
+      1082,
+      1083,
+      1084,
+      1085,
+      1086,
+      1087,
+      1088,
+      1089,
+      1090,
+      1091,
+      1092,
+      1093,
+      1094,
+      1095,
+      1096,
+      1097,
+      1098,
+      1099,
+      1100,
+      1101,
+      1102,
+      1103,
+      1104,
+      1105,
+      1106,
+      1107,
+      1108,
+      1109,
+      1110,
+      1111,
+      1112
+    ],
+    "parent_hash_advertised_through_mcp": true,
+    "reviewed_parent_hash": "ffdc160c969a3dd9380c26ed7416665ca1203f38585025731b91d40743ce05e0",
+    "rm0090_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca",
+    "tool_errors": [
+      "Error executing tool publish_reviewed_bundle: SOURCE_AUTHORITY: can: operating modes require registered semantic evidence",
+      "Error executing tool publish_reviewed_bundle: DISCOVERY_BLOCKED: Configured peripheral can: AMBIGUOUS_MASK: CAN_TSR: overlapping field declarations at LOW0"
+    ],
+    "transport": "Actual ingestion MCP, complete cached chapter, selected source images and registered reviewed records"
+  },
+  "target": "stm32f407g_disc1_mb997_e01"
+}

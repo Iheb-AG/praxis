@@ -15,6 +15,10 @@ def main(argv: list[str] | None = None) -> int:
     compile_parser = commands.add_parser("compile", help="Compile reviewed inputs into an immutable bundle")
     compile_parser.add_argument("--profile", required=True, type=Path)
     compile_parser.add_argument("--output", required=True, type=Path)
+    matrix_parser = commands.add_parser("compile-matrix", help="Compile registered target profiles independently; offline experimental batch support")
+    matrix_parser.add_argument("--catalog", required=True, type=Path)
+    matrix_parser.add_argument("--output", required=True, type=Path)
+    matrix_parser.add_argument("--target", action="append", help="Exact registered target ID; repeat or omit to compile all")
     coverage_parser = commands.add_parser("coverage", help="Inventory declarations and report workflow publication gaps")
     coverage_parser.add_argument("--profile", required=True, type=Path)
     coverage_parser.add_argument("--output", type=Path, help="New JSON report file; default stdout")
@@ -32,6 +36,11 @@ def main(argv: list[str] | None = None) -> int:
     support.add_argument("--catalog", type=Path, help="Optional authored capability scope; not hardware evidence")
     support.add_argument("--workflow", help="Exact declared workflow; exit 1 if knowledge is blocked")
     support.add_argument("--format", choices=("json", "markdown"), default="json")
+    inventory_parser = commands.add_parser("inventory", help="Reconcile pinned manufacturer source scope with bundle coverage; not all-mode qualification")
+    inventory_parser.add_argument("--bundle", required=True, type=Path)
+    inventory_parser.add_argument("--inventory", required=True, type=Path)
+    inventory_parser.add_argument("--format", choices=("json", "markdown"), default="json")
+    inventory_parser.add_argument("--require-complete", action="store_true", help="Exit 1 while manufacturer-wide inventory review remains incomplete")
     qualify = commands.add_parser("qualify-telemetry", help="Check recorded MCP telemetry against a phase; no hardware access")
     qualify.add_argument("--bundle", required=True, type=Path)
     qualify.add_argument("--artifact", required=True)
@@ -45,6 +54,18 @@ def main(argv: list[str] | None = None) -> int:
     can_qualify.add_argument("--expect", choices=("passed", "failed"), default="passed")
     can_qualify.add_argument("--observation", required=True, action="append", type=Path)
     can_qualify.add_argument("--output", type=Path, help="New sanitized report; default stdout")
+    timer_qualify = commands.add_parser("qualify-timer", help="Recompute recorded paired timer capture results; no hardware access")
+    timer_qualify.add_argument("--bundle", required=True, type=Path)
+    timer_qualify.add_argument("--artifact", required=True)
+    timer_qualify.add_argument("--expect", choices=("passed", "timeout", "failed"), default="passed")
+    timer_qualify.add_argument("--observation", required=True, action="append", type=Path)
+    timer_qualify.add_argument("--output", type=Path, help="New sanitized report; default stdout")
+    irq_qualify = commands.add_parser("qualify-timer-irq", help="Qualify recorded timer IRQ receipts and raw periods; no hardware access")
+    irq_qualify.add_argument("--bundle", required=True, type=Path)
+    irq_qualify.add_argument("--artifact", required=True)
+    irq_qualify.add_argument("--expect", choices=("passed", "timeout", "failed"), default="passed")
+    irq_qualify.add_argument("--observation", required=True, action="append", type=Path)
+    irq_qualify.add_argument("--output", type=Path, help="New sanitized report; default stdout")
     for name in ("lint", "serve", "verify", "evaluate"):
         sub = commands.add_parser(name)
         sub.add_argument("--bundle", required=True, type=Path)
@@ -67,7 +88,7 @@ def main(argv: list[str] | None = None) -> int:
             sub.add_argument("--hardware-profile", type=Path, help="Opt in to read-only ST-LINK inspection")
             sub.add_argument("--hardware-authorization", type=Path, help="Operator scope for target-bound programming/control")
             sub.add_argument("--telemetry-artifact", help="Opt in to fixed ABI SRAM reads for this accepted artifact ID")
-            sub.add_argument("--telemetry-kind", choices=("uart-loopback-v1", "can-loopback-v1"),
+            sub.add_argument("--telemetry-kind", choices=("uart-loopback-v1", "can-loopback-v1", "timer-routes-v1", "timer-irq-v1"),
                              default="uart-loopback-v1", help="Explicit built-in ABI; defaults to existing UART ABI")
         else:
             sub.add_argument("--hardware-profile", required=True, type=Path)
@@ -118,7 +139,7 @@ def main(argv: list[str] | None = None) -> int:
     review_parser.add_argument("--reviewer", required=True)
     review_parser.add_argument("--notes-file", required=True, type=Path)
     schema_parser = commands.add_parser("schema", help="Print an ingestion JSON Schema for authoring/validation")
-    schema_parser.add_argument("--kind", choices=("profile", "board", "reviewed-netlist", "capability-catalog", "definition-extension"), required=True)
+    schema_parser.add_argument("--kind", choices=("profile", "board", "reviewed-netlist", "capability-catalog", "capability-inventory", "definition-extension", "target-matrix"), required=True)
     ingest_server = commands.add_parser("ingest-serve", help="Opt-in source evidence and reviewed publication MCP")
     for flag in ("profile", "catalog", "archive-root", "publication-root"):
         ingest_server.add_argument("--" + flag, required=True, type=Path)
@@ -150,7 +171,13 @@ def main(argv: list[str] | None = None) -> int:
             else:
                 print(json.dumps(report, sort_keys=True, indent=2, ensure_ascii=False))
             return 1 if args.workflow and not report["selected_workflow"]["knowledge_ready"] else 0
-        elif args.command in ("qualify-telemetry", "qualify-can"):
+        elif args.command == "inventory":
+            from praxis.bundle import Bundle
+            from praxis.capability_inventory import from_spec, markdown
+            report = from_spec(Bundle(args.bundle), args.inventory)
+            print(markdown(report) if args.format == "markdown" else json.dumps(report, sort_keys=True, indent=2))
+            return 1 if args.require_complete and not report["inventory_complete"] else 0
+        elif args.command in ("qualify-telemetry", "qualify-can", "qualify-timer", "qualify-timer-irq"):
             from praxis.bundle import Bundle, digest
             from praxis.jsonio import load_json
             from praxis.qualification import qualify_windows
@@ -168,6 +195,14 @@ def main(argv: list[str] | None = None) -> int:
                 from praxis.can_telemetry import qualify_windows as qualify_can
                 report = qualify_can(inputs, artifact_id=args.artifact,
                                      bundle_revision=revision, expected=args.expect)
+            elif args.command == "qualify-timer-irq":
+                from praxis.timer_irq_telemetry import qualify_windows as qualify_irq
+                report = qualify_irq(inputs, artifact_id=args.artifact,
+                                     bundle_revision=revision, expected=args.expect)
+            elif args.command == "qualify-timer":
+                from praxis.timer_route_telemetry import qualify_windows as qualify_timer
+                report = qualify_timer(inputs, artifact_id=args.artifact,
+                                       bundle_revision=revision, expected=args.expect)
             else:
                 report = qualify_windows(inputs, artifact_id=args.artifact,
                     bundle_revision=revision, phase=args.phase, minimum_frames=args.minimum_frames)
@@ -183,6 +218,11 @@ def main(argv: list[str] | None = None) -> int:
             from praxis.compiler import compile_bundle
             result = compile_bundle(args.profile, args.output)
             print(result)
+        elif args.command == "compile-matrix":
+            from praxis.target_matrix import compile_matrix
+            report = compile_matrix(args.catalog, args.output, args.target)
+            print(json.dumps(report, sort_keys=True, indent=2))
+            return 0 if report["passed"] else 1
         elif args.command == "coverage":
             import tempfile
             from praxis.bundle import Bundle
@@ -191,8 +231,8 @@ def main(argv: list[str] | None = None) -> int:
                 bundle = Bundle(compile_bundle(args.profile, Path(directory) / "bundle", _coverage_only=True))
                 if bundle.manifest.schema_version != 2:
                     raise PraxisError("INVALID_PROFILE", "Configure profile.discovery for a complete coverage inventory")
-                text = bundle.read(bundle.manifest.documents["coverage"])
-                report = text.split("```json\n", 1)[1].split("\n```", 1)[0] + "\n"
+                from praxis.reports import read_report
+                report = json.dumps(read_report(bundle, "coverage"), sort_keys=True, separators=(",", ":")) + "\n"
             if args.output:
                 args.output.parent.mkdir(parents=True, exist_ok=True)
                 with args.output.open("x", encoding="utf-8") as handle:
@@ -293,8 +333,11 @@ def main(argv: list[str] | None = None) -> int:
             from praxis.board import BoardDefinition
             from praxis.models import DefinitionExtension, Profile, ReviewedSchematic
             from praxis.support import CapabilityCatalog
+            from praxis.capability_inventory import InventorySpec
+            from praxis.target_matrix import TargetMatrix
             model = {"profile": Profile, "board": BoardDefinition, "reviewed-netlist": ReviewedSchematic,
-                     "capability-catalog": CapabilityCatalog, "definition-extension": DefinitionExtension}[args.kind]
+                     "capability-catalog": CapabilityCatalog, "definition-extension": DefinitionExtension,
+                     "target-matrix": TargetMatrix, "capability-inventory": InventorySpec}[args.kind]
             print(json.dumps(model.model_json_schema(), indent=2, sort_keys=True))
         return 0
     except PraxisError as exc:

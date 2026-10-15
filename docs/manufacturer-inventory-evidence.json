@@ -1,0 +1,435 @@
+{
+  "acceptance_replay": {
+    "all_applications_linked_and_revalidated": true,
+    "applications": 12,
+    "full_mcu_accepted": false,
+    "manufacturer_inventory_assessed": true,
+    "software_checks_passed": true,
+    "tool_calls": 81
+  },
+  "all_features_supported": false,
+  "bundle_revision": "b740659eca4934318119722a6ca55b30f5e2918e76fc1a3e8b857ae23a226b20",
+  "counts": {
+    "applicability_pending_or_mixed": 741,
+    "indexed_sections": 1683,
+    "missing_sources": 3,
+    "source_documents": 4,
+    "unresolved_extraction_items": 29
+  },
+  "date": "2026-10-14",
+  "docker": {
+    "architecture": "amd64",
+    "calls": 161,
+    "image_id": "sha256:6f819537943d2eeb6e8653f50ad7da0934d2e0f7c64ffa3b751340463b1f29ef",
+    "inventory_cli": {
+      "bundle_revision": "edb8249ce849c59e6642f2edab2b58e036bc0105925897d8a61c04449b00f7e5",
+      "counts": {
+        "applicability_pending_or_mixed": 741,
+        "indexed_sections": 1683,
+        "missing_sources": 3,
+        "source_documents": 4,
+        "unresolved_extraction_items": 29
+      },
+      "require_complete_exit_code": 1,
+      "runtime_only_report_passed": true
+    },
+    "negative_and_runtime_checks": [
+      "MISSING_FILE",
+      "INTEGRITY_ERROR",
+      "non_root",
+      "read_only_filesystem_and_bundle",
+      "no_optional_extras"
+    ],
+    "os": "linux",
+    "passed": true,
+    "sessions": 4
+  },
+  "documents": {
+    "ds8626": {
+      "contents_boundaries_observed": true,
+      "counts": {
+        "accounted_nonempty_lines": 279,
+        "entries": 109,
+        "incomplete_entries": 0,
+        "selected_pages": 7,
+        "unresolved": 4
+      },
+      "extraction_gaps": [
+        {
+          "locators": [
+            "page:3/line:55"
+          ],
+          "reason": "unrecognized_contents_line",
+          "text": "BAT"
+        },
+        {
+          "locators": [
+            "page:3/line:60"
+          ],
+          "reason": "unlabelled_numeric_line",
+          "text": "6"
+        },
+        {
+          "locators": [
+            "page:5/line:41"
+          ],
+          "reason": "unrecognized_contents_line",
+          "text": "BAT"
+        },
+        {
+          "locators": [
+            "page:5/line:60"
+          ],
+          "reason": "unlabelled_numeric_line",
+          "text": "6"
+        }
+      ],
+      "outline_sha256": "506f2574be9d83c025c6c07218eb7975a5f4c7577b643df6b517464b7344efbd",
+      "packet_sha256": "02dea16f8377469447678ca85a8b64bc2250a19af940ed1d0fb5020f52720709",
+      "revision_label": "DS8626 Rev 12",
+      "source": {
+        "id": "ds_dac_contents",
+        "import_revision": "5169396226a8d7d02fe6c09ade036c648ad159d924dfd66ce50081e8d43de4d8",
+        "origin": "https://www.st.com/resource/en/datasheet/stm32f407vg.pdf",
+        "sha256": "1f41b4fa49a9960215ebb76cd0a75f20241db82eed60d308345a80463caeed22",
+        "target": "STM32F407VGT6"
+      }
+    },
+    "es0182": {
+      "contents_boundaries_observed": true,
+      "counts": {
+        "accounted_nonempty_lines": 330,
+        "accounted_table_rows": 128,
+        "entries": 91,
+        "selected_pages": 6,
+        "unresolved": 0
+      },
+      "extraction_gaps": [],
+      "outline_sha256": "6354929d74cd806842f6ff13ff4935df3a6bdeee9007d7cb70726163a0a7fc0a",
+      "packet_sha256": "c7e43b1bf3b60de22aaffe1b283438bce837e066d2e4a63107c53e8ad263cdac",
+      "revision_label": "ES0182 Rev 19",
+      "source": {
+        "id": "es0182",
+        "import_revision": "3fea116c9ea5d742ca9ef4602e52e7ace15c21cb9124739219ebf48da82607b1",
+        "origin": "https://www.st.com/resource/en/errata_sheet/es0182-stm32f405407xx-and-stm32f415417xx-device-errata-stmicroelectronics.pdf",
+        "sha256": "1d3da0f99b85013548d17df07919516bf862f8f38cbd1a61f08e75abb8e4c54f",
+        "target": "STM32F407VGT6"
+      }
+    },
+    "pm0214": {
+      "contents_boundaries_observed": true,
+      "counts": {
+        "accounted_nonempty_lines": 333,
+        "entries": 228,
+        "incomplete_entries": 0,
+        "selected_pages": 9,
+        "unresolved": 3
+      },
+      "extraction_gaps": [
+        {
+          "locators": [
+            "page:3/line:60"
+          ],
+          "reason": "unlabelled_numeric_line",
+          "text": "8"
+        },
+        {
+          "locators": [
+            "page:5/line:60"
+          ],
+          "reason": "unlabelled_numeric_line",
+          "text": "8"
+        },
+        {
+          "locators": [
+            "page:7/line:60"
+          ],
+          "reason": "unlabelled_numeric_line",
+          "text": "8"
+        }
+      ],
+      "outline_sha256": "cebf174090f1ca343253011ae156178ff730ea04da8524330c1852c798cdd12a",
+      "packet_sha256": "56d162d39e61124c078fcca0d574b35588d900661ce2f11e20e605948c395048",
+      "revision_label": "PM0214 Rev 10",
+      "source": {
+        "id": "pm0214_core",
+        "import_revision": "ffdd80d8b5709d99ead46d52ccd24aa05c011be7bc4891711d9240a4b79e48e6",
+        "origin": "https://www.st.com/resource/en/programming_manual/pm0214-stm32-cortexm4-mcus-and-mpus-programming-manual-stmicroelectronics.pdf",
+        "sha256": "fb54012a46c674a26dee56bc8cdfa281315f78634f18998001144980b08d1b03",
+        "target": "STM32F407VGT6"
+      }
+    },
+    "rm0090": {
+      "contents_boundaries_observed": true,
+      "counts": {
+        "accounted_nonempty_lines": 1506,
+        "entries": 1255,
+        "incomplete_entries": 3,
+        "selected_pages": 40,
+        "unresolved": 22
+      },
+      "extraction_gaps": [
+        {
+          "locators": [
+            "page:3/line:60"
+          ],
+          "reason": "unlabelled_numeric_line",
+          "text": "39"
+        },
+        {
+          "fragments": [
+            "Power control registers (STM32F405xx/07xx and STM32F415xx/17xx) 141"
+          ],
+          "locators": [
+            "page:4/line:45"
+          ],
+          "raw_fragments": [
+            "Power control registers (STM32F405xx/07xx and STM32F415xx/17xx) 141"
+          ],
+          "reason": "heading_without_supported_page_leader",
+          "section": "5.4"
+        },
+        {
+          "locators": [
+            "page:5/line:60"
+          ],
+          "reason": "unlabelled_numeric_line",
+          "text": "39"
+        },
+        {
+          "locators": [
+            "page:7/line:60"
+          ],
+          "reason": "unlabelled_numeric_line",
+          "text": "39"
+        },
+        {
+          "locators": [
+            "page:9/line:60"
+          ],
+          "reason": "unlabelled_numeric_line",
+          "text": "39"
+        },
+        {
+          "fragments": [
+            "DMA stream x memory 0 address register (DMA_SxM0AR) (x = 0..7) 334"
+          ],
+          "locators": [
+            "page:10/line:21"
+          ],
+          "raw_fragments": [
+            "DMA stream x memory 0 address register (DMA_SxM0AR) (x = 0..7) 334"
+          ],
+          "reason": "heading_without_supported_page_leader",
+          "section": "10.5.8"
+        },
+        {
+          "fragments": [
+            "DMA stream x memory 1 address register (DMA_SxM1AR) (x = 0..7) 334"
+          ],
+          "locators": [
+            "page:10/line:23"
+          ],
+          "raw_fragments": [
+            "DMA stream x memory 1 address register (DMA_SxM1AR) (x = 0..7) 334"
+          ],
+          "reason": "heading_without_supported_page_leader",
+          "section": "10.5.9"
+        },
+        {
+          "locators": [
+            "page:11/line:60"
+          ],
+          "reason": "unlabelled_numeric_line",
+          "text": "39"
+        },
+        {
+          "locators": [
+            "page:13/line:60"
+          ],
+          "reason": "unlabelled_numeric_line",
+          "text": "39"
+        },
+        {
+          "locators": [
+            "page:15/line:60"
+          ],
+          "reason": "unlabelled_numeric_line",
+          "text": "39"
+        },
+        {
+          "locators": [
+            "page:17/line:60"
+          ],
+          "reason": "unlabelled_numeric_line",
+          "text": "39"
+        },
+        {
+          "locators": [
+            "page:19/line:60"
+          ],
+          "reason": "unlabelled_numeric_line",
+          "text": "39"
+        },
+        {
+          "locators": [
+            "page:21/line:60"
+          ],
+          "reason": "unlabelled_numeric_line",
+          "text": "39"
+        },
+        {
+          "locators": [
+            "page:23/line:60"
+          ],
+          "reason": "unlabelled_numeric_line",
+          "text": "39"
+        },
+        {
+          "locators": [
+            "page:25/line:60"
+          ],
+          "reason": "unlabelled_numeric_line",
+          "text": "39"
+        },
+        {
+          "locators": [
+            "page:27/line:60"
+          ],
+          "reason": "unlabelled_numeric_line",
+          "text": "39"
+        },
+        {
+          "locators": [
+            "page:29/line:60"
+          ],
+          "reason": "unlabelled_numeric_line",
+          "text": "39"
+        },
+        {
+          "locators": [
+            "page:31/line:60"
+          ],
+          "reason": "unlabelled_numeric_line",
+          "text": "39"
+        },
+        {
+          "locators": [
+            "page:33/line:60"
+          ],
+          "reason": "unlabelled_numeric_line",
+          "text": "39"
+        },
+        {
+          "locators": [
+            "page:35/line:60"
+          ],
+          "reason": "unlabelled_numeric_line",
+          "text": "39"
+        },
+        {
+          "locators": [
+            "page:37/line:60"
+          ],
+          "reason": "unlabelled_numeric_line",
+          "text": "39"
+        },
+        {
+          "locators": [
+            "page:39/line:60"
+          ],
+          "reason": "unlabelled_numeric_line",
+          "text": "39"
+        }
+      ],
+      "outline_sha256": "adb78cf7c75d2268cafc794eb06da8d0234ea8c1b0073db7e0b265815a5d6fce",
+      "packet_sha256": "de5e006da9ab992127099d7c94e45ba0dcb0537714099a0ec1a2d01fe1ca67b2",
+      "revision_label": "RM0090 Rev 22",
+      "source": {
+        "id": "rm0090_scope",
+        "import_revision": "3598593b1827126a7af7fd2801fa3a2226b6c17db4e1b9348c280ba5bd85440f",
+        "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+        "sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca",
+        "target": "STM32F407VGT6"
+      }
+    }
+  },
+  "earlier_failure": {
+    "error": "UNSUPPORTED_OUTLINE: No dotted-leader section entries found",
+    "is_error": true,
+    "resolution": "Added generic explicit section/title table-column support; all revision cells retained without interpretation",
+    "source": "es0182",
+    "tool": "prepare_source_outline"
+  },
+  "exhaustiveness_review": "pending",
+  "format": "praxis-manufacturer-inventory-evidence-v1",
+  "gaps": [
+    "rm0090: 22 unresolved index extraction lines/rows",
+    "ds8626: 4 unresolved index extraction lines/rows",
+    "pm0214: 3 unresolved index extraction lines/rows",
+    "741 indexed sections still require applicability reconciliation",
+    "boot_protocol_references: Part-specific ROM bootloader protocols, routing and update/recovery requirements need their referenced manufacturer application notes.",
+    "complete_board_netlist: Board connectivity is a partial reviewed transcription; complete CAD connectivity/assembly and physical revision evidence remain unavailable.",
+    "mode_requirement_inventory: Section outlines do not enumerate all body/table operating modes, instances, constraints and errata workarounds; their normalized requirement inventory is not yet authored.",
+    "Full section bodies, tables, instance/mode requirements and errata workarounds need review",
+    "Manufacturer-wide exhaustiveness review is pending; indexed headings are not the capability denominator",
+    "Build and physical qualification remain separate exact-artifact evidence"
+  ],
+  "hardware_operations": 0,
+  "inventory_complete": false,
+  "inventory_sha256": "47907d56bad056fee69d434a6b53f88befc321560f6ab2db61f235745e794ae8",
+  "missing_sources": [
+    {
+      "id": "boot_protocol_references",
+      "reason": "Part-specific ROM bootloader protocols, routing and update/recovery requirements need their referenced manufacturer application notes."
+    },
+    {
+      "id": "complete_board_netlist",
+      "reason": "Board connectivity is a partial reviewed transcription; complete CAD connectivity/assembly and physical revision evidence remain unavailable."
+    },
+    {
+      "id": "mode_requirement_inventory",
+      "reason": "Section outlines do not enumerate all body/table operating modes, instances, constraints and errata workarounds; their normalized requirement inventory is not yet authored."
+    }
+  ],
+  "operating_mode_coverage_changed": false,
+  "outline_replay": {
+    "byte_identical_packets": true,
+    "calls": 8,
+    "source_count": 4,
+    "tools": [
+      "prepare_source_outline"
+    ]
+  },
+  "quality": {
+    "dependency_lock_check_passed": true,
+    "ruff_passed": true
+  },
+  "regression": {
+    "duration_seconds": 186.42,
+    "passed": 1005,
+    "required_external_tools": true,
+    "skipped": 0
+  },
+  "target": {
+    "board_revision": "MB997-E-01",
+    "clock_assumptions": [
+      "Reference board: STM32F407G-DISC1, MB997 E-01 schematic. Actual card revision is unconfirmed.",
+      "8 MHz X2 crystal is documented for E-01; verify oscillator assembly and solder bridges against the actual card.",
+      "168 MHz is a validated software clock recipe, NOT a claim about the running firmware. Preserve a known working clock setup for GPIO tests.",
+      "Recipe only: PLLM=8, PLLN=336, PLLP=2, PLLQ=7; AHB /1; APB1 /4 (42 MHz); APB2 /2 (84 MHz); 5 FLASH wait states, supply within the reviewed range.",
+      "SysTick_Config uses the processor clock. For 1 ms use actual SystemCoreClock / 1000 after synchronizing SystemCoreClock; do not divide by 8.",
+      "UART loopback application explicitly selects HSI nominal 16 MHz, AHB/APB1/APB2 all /1; the 168 MHz recipe is not used for this scenario. See RCC/USART/TIM2 reviewed notes; timing remains unmeasured.",
+      "ADC example additionally assumes VDDA/VREF+ in the reviewed 2.7\u20133.6 V operating range; analog supply is not measured or physically qualified."
+    ],
+    "clock_hz": 168000000,
+    "example_only": false,
+    "family": "stm32",
+    "fuse_assumptions": [],
+    "id": "stm32f407g_disc1_mb997_e01",
+    "mcu": "STM32F407VGT6",
+    "package": "Package_QFP:LQFP-100_14x14mm_P0.5mm",
+    "primary_mcu_ref": "U4",
+    "silicon_revision": "Unspecified; errata review pending"
+  }
+}

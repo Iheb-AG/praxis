@@ -1,0 +1,296 @@
+{
+  "format": "praxis-adc-build-evidence-v1",
+  "hardware_operations": 0,
+  "limits": [
+    "Initial missing-Podman result is preserved in previous_evidence.",
+    "Compilation, linking and ELF checks do not establish ADC behavior or supply/timing correctness.",
+    "No flash, reset, halt, resume, debug attachment or SRAM read occurred.",
+    "Physical PCB revision and independent engineering review remain unconfirmed."
+  ],
+  "mcp": {
+    "all_mcu_features_supported": false,
+    "bundle_revision": "102a3d0ca329d7e9351709179e082a51a44347b10b9345365f72e94ab58f24a8",
+    "checks": {
+      "adc1_internal_only_scope": true,
+      "adc_publication_gate": true,
+      "artifact_revalidated": true,
+      "build_without_hardware_tools": true,
+      "complete_reviewed_documents": true,
+      "explicit_mode_route": true,
+      "feature_adc_gate": true,
+      "flash_programming_blocked": true,
+      "gate_conflict_resolved": true,
+      "index_gate": true,
+      "matching_bundle_pair": true,
+      "side_effects_retained": true,
+      "target_compilation": true,
+      "three_readonly_tools": true
+    },
+    "firmware_build": {
+      "artifact_id": "74a18d92fd2925ba52d343fc1c0d588b3a71afa2490a1c1d2ce28dd7b5e1c9d3",
+      "asset_revision": "22310c7ad54daa553cf5cb11e4db08e4c8f9e93e191f3f12ec8410dd1fb40b59",
+      "bundle_revision": "102a3d0ca329d7e9351709179e082a51a44347b10b9345365f72e94ab58f24a8",
+      "commands": [
+        {
+          "arguments": [
+            "-mcpu=cortex-m4",
+            "-mthumb",
+            "-mfloat-abi=soft",
+            "-DSTM32F407xx",
+            "-DHSE_VALUE=8000000U",
+            "-DHSI_VALUE=16000000U",
+            "-DUSER_VECT_TAB_ADDRESS",
+            "-std=c11",
+            "-ffreestanding",
+            "-fno-common",
+            "-Wall",
+            "-Wextra",
+            "-Werror",
+            "-fmax-errors=20",
+            "-O2",
+            "-g",
+            "-ffunction-sections",
+            "-fdata-sections",
+            "-I/approved/include",
+            "-I/src",
+            "-fdebug-prefix-map=/src=source",
+            "-fdebug-prefix-map=/approved=approved",
+            "-c",
+            "/src/main.c",
+            "-o",
+            "/out/unit-000.o"
+          ],
+          "executable": "arm-none-eabi-gcc",
+          "failure": null,
+          "returncode": 0
+        },
+        {
+          "arguments": [
+            "-mcpu=cortex-m4",
+            "-mthumb",
+            "-mfloat-abi=soft",
+            "-DSTM32F407xx",
+            "-DHSE_VALUE=8000000U",
+            "-DHSI_VALUE=16000000U",
+            "-DUSER_VECT_TAB_ADDRESS",
+            "-std=c11",
+            "-ffreestanding",
+            "-fno-common",
+            "-Wall",
+            "-Wextra",
+            "-Werror",
+            "-fmax-errors=20",
+            "-O2",
+            "-g",
+            "-ffunction-sections",
+            "-fdata-sections",
+            "-I/approved/include",
+            "-I/src",
+            "-fdebug-prefix-map=/src=source",
+            "-fdebug-prefix-map=/approved=approved",
+            "-c",
+            "/approved/system_stm32f4xx.c",
+            "-o",
+            "/out/unit-001.o"
+          ],
+          "executable": "arm-none-eabi-gcc",
+          "failure": null,
+          "returncode": 0
+        },
+        {
+          "arguments": [
+            "-mcpu=cortex-m4",
+            "-mthumb",
+            "-mfloat-abi=soft",
+            "-DSTM32F407xx",
+            "-DHSE_VALUE=8000000U",
+            "-DHSI_VALUE=16000000U",
+            "-DUSER_VECT_TAB_ADDRESS",
+            "-std=c11",
+            "-ffreestanding",
+            "-fno-common",
+            "-Wall",
+            "-Wextra",
+            "-Werror",
+            "-fmax-errors=20",
+            "-O2",
+            "-g",
+            "-ffunction-sections",
+            "-fdata-sections",
+            "-I/approved/include",
+            "-I/src",
+            "-fdebug-prefix-map=/src=source",
+            "-fdebug-prefix-map=/approved=approved",
+            "-c",
+            "/approved/runtime.c",
+            "-o",
+            "/out/unit-002.o"
+          ],
+          "executable": "arm-none-eabi-gcc",
+          "failure": null,
+          "returncode": 0
+        },
+        {
+          "arguments": [
+            "-mcpu=cortex-m4",
+            "-mthumb",
+            "-mfloat-abi=soft",
+            "-DSTM32F407xx",
+            "-DHSE_VALUE=8000000U",
+            "-DHSI_VALUE=16000000U",
+            "-DUSER_VECT_TAB_ADDRESS",
+            "-std=c11",
+            "-ffreestanding",
+            "-fno-common",
+            "-Wall",
+            "-Wextra",
+            "-Werror",
+            "-fmax-errors=20",
+            "-O2",
+            "-g",
+            "-ffunction-sections",
+            "-fdata-sections",
+            "-I/approved/include",
+            "-I/src",
+            "-fdebug-prefix-map=/src=source",
+            "-fdebug-prefix-map=/approved=approved",
+            "-c",
+            "/approved/startup_stm32f407xx.s",
+            "-o",
+            "/out/unit-003.o"
+          ],
+          "executable": "arm-none-eabi-gcc",
+          "failure": null,
+          "returncode": 0
+        },
+        {
+          "arguments": [
+            "-mcpu=cortex-m4",
+            "-mthumb",
+            "-mfloat-abi=soft",
+            "-DSTM32F407xx",
+            "-DHSE_VALUE=8000000U",
+            "-DHSI_VALUE=16000000U",
+            "-DUSER_VECT_TAB_ADDRESS",
+            "-std=c11",
+            "-ffreestanding",
+            "-fno-common",
+            "-Wall",
+            "-Wextra",
+            "-Werror",
+            "-fmax-errors=20",
+            "-O2",
+            "-g",
+            "-ffunction-sections",
+            "-fdata-sections",
+            "-I/approved/include",
+            "-I/src",
+            "-fdebug-prefix-map=/src=source",
+            "-fdebug-prefix-map=/approved=approved",
+            "-nostdlib",
+            "-Wl,--gc-sections,--build-id=none",
+            "-Wl,-Map=/out/firmware.map",
+            "-T/approved/stm32f407vg_flash.ld",
+            "/out/unit-000.o",
+            "/out/unit-001.o",
+            "/out/unit-002.o",
+            "/out/unit-003.o",
+            "-lgcc",
+            "-o",
+            "/out/firmware.elf"
+          ],
+          "executable": "arm-none-eabi-gcc",
+          "failure": null,
+          "returncode": 0
+        },
+        {
+          "arguments": [
+            "-O",
+            "binary",
+            "/out/firmware.elf",
+            "/out/firmware.bin"
+          ],
+          "executable": "arm-none-eabi-objcopy",
+          "failure": null,
+          "returncode": 0
+        },
+        {
+          "arguments": [
+            "-O",
+            "ihex",
+            "/out/firmware.elf",
+            "/out/firmware.hex"
+          ],
+          "executable": "arm-none-eabi-objcopy",
+          "failure": null,
+          "returncode": 0
+        }
+      ],
+      "compile_passed": true,
+      "compiler_versions": {
+        "arm-none-eabi-gcc": "arm-none-eabi-gcc (15:12.2.rel1-1) 12.2.1 20221205",
+        "avr-gcc": "avr-gcc (GCC) 5.4.0"
+      },
+      "diagnostics": "",
+      "image": "sha256:4748b01d5c1d2313e5617878f9450ff1d432f8244416732d0cc57aa1867cc120",
+      "image_validated": true,
+      "physical_behavior": "not tested",
+      "source_sha256": "63b37123de6c24b26f497d54f402da3493cded7f6ce89887dfc3df5048841a4a",
+      "validation": {
+        "asset_revision": "22310c7ad54daa553cf5cb11e4db08e4c8f9e93e191f3f12ec8410dd1fb40b59",
+        "checks": [
+          "ELF architecture",
+          "load/section memory bounds",
+          "main-SRAM stack",
+          "98-entry vendor/header vector layout",
+          "startup copy/zero symbols"
+        ],
+        "elf_sha256": "e33bbc3f7584dab3a09e27a9595e5f039f9fcc8c4c5a159dd4049bc18cda6b13",
+        "errors": [],
+        "initial_sp": "0x20020000",
+        "physical_behavior": "not tested",
+        "profile": "stm32f407vg-c11-flash",
+        "valid": true
+      }
+    },
+    "format": "praxis-adc-mcp-replay-v1",
+    "hardware_operations": 0,
+    "limits": [
+      "No external model or physical test.",
+      "Compilation is separate from runtime peripheral qualification.",
+      "ADC scope is one internal-reference mode; supply, timing and physical behavior remain unqualified."
+    ],
+    "passed": true,
+    "tool_calls": 12
+  },
+  "mcp_report_sha256": "0dc0aaafbd924aa641801497cb2fac9e81cd7b2f0d2a5a73a1302e2436dfa90c",
+  "physical_behavior": "not tested",
+  "podman": {
+    "image": "sha256:4748b01d5c1d2313e5617878f9450ff1d432f8244416732d0cc57aa1867cc120",
+    "provisioning": "Exact existing image imported from project-local VFS store into default rootless store; no image rebuild or download; toolchain locks unchanged",
+    "rootless": true,
+    "version": "6.1.3"
+  },
+  "previous_evidence": "adc-expansion-evidence.json",
+  "regression": {
+    "errors": 0,
+    "external_tools_required": false,
+    "failures": 0,
+    "junit_sha256": "2ce202f6aab10381d6dfa0ca2c51da9a0d527c17e806cc75195726ca8cf973c9",
+    "passed": 535,
+    "skip_reasons": {
+      "Optional external tool missing: kicad-cli": 4
+    },
+    "skipped": 4,
+    "tests": 539
+  },
+  "release_gate": {
+    "blockers": [
+      "Missing external tool: kicad-cli",
+      "Independent review of the exact current bundle revisions is missing",
+      "Independent review of the exact firmware asset revision is missing"
+    ],
+    "release_ready": false
+  },
+  "ruff_passed": true
+}

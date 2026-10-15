@@ -1,0 +1,134 @@
+{
+  "all_mcu_features_supported": false,
+  "application_sources": {
+    "adc_sequence.h": "291b41826edbd3f4179686263061513cf8e8d58f9af3ee7e7aa17a80a8a20df1",
+    "clock_sequence.h": "f77489e1cf49ebe9ebfd1d4984d49b5550e979739dc8a43a2d67bc7d80f2adde",
+    "clock_setup.h": "12b4f16485fc0d42b278c134cb4c5f4212c16a2edcad81fb82cc3cb280c6be05",
+    "main.c": "f03e3874c7ee69c16441b2417f9bbd47b3fe91e6d4f550fa8312b2a807d940c0"
+  },
+  "build_mcp": {
+    "all_mcu_features_supported": false,
+    "bundle_revision": "102a3d0ca329d7e9351709179e082a51a44347b10b9345365f72e94ab58f24a8",
+    "checks": {
+      "adc1_internal_only_scope": true,
+      "adc_publication_gate": true,
+      "build_without_hardware_tools": true,
+      "complete_reviewed_documents": true,
+      "explicit_mode_route": true,
+      "feature_adc_gate": true,
+      "flash_programming_blocked": true,
+      "gate_conflict_resolved": true,
+      "index_gate": true,
+      "matching_bundle_pair": true,
+      "side_effects_retained": true,
+      "target_compilation": false,
+      "three_readonly_tools": true
+    },
+    "firmware_build": "Error executing tool build_firmware: MISSING_TOOL: Install rootless Podman; native fallback is intentionally unavailable",
+    "format": "praxis-adc-mcp-replay-v1",
+    "hardware_operations": 0,
+    "limits": [
+      "No external model or physical test.",
+      "Compilation is separate from runtime peripheral qualification.",
+      "ADC scope is one internal-reference mode; supply, timing and physical behavior remain unqualified."
+    ],
+    "passed": false,
+    "tool_calls": 11
+  },
+  "bundle_revision": "102a3d0ca329d7e9351709179e082a51a44347b10b9345365f72e94ab58f24a8",
+  "counts": {
+    "blocked": 1,
+    "fields": 2100,
+    "published": 41,
+    "register_blocks": 42,
+    "registers": 523,
+    "reviewed_subsets": 17,
+    "unmapped_types": 11
+  },
+  "declared_workflows": 21,
+  "determinism": {
+    "bundle_revision": "102a3d0ca329d7e9351709179e082a51a44347b10b9345365f72e94ab58f24a8",
+    "byte_identical": true,
+    "files": 49
+  },
+  "distribution": {
+    "distribution_contents_passed": true,
+    "private_and_raw_paths_excluded": true,
+    "public_documentation_file_links_passed": true,
+    "source_members": 671,
+    "wheel_members": 48
+  },
+  "format": "praxis-adc-expansion-evidence-v1",
+  "hardware_operations": 0,
+  "knowledge_mcp": {
+    "all_mcu_features_supported": false,
+    "bundle_revision": "102a3d0ca329d7e9351709179e082a51a44347b10b9345365f72e94ab58f24a8",
+    "checks": {
+      "adc1_internal_only_scope": true,
+      "adc_publication_gate": true,
+      "complete_reviewed_documents": true,
+      "explicit_mode_route": true,
+      "feature_adc_gate": true,
+      "flash_programming_blocked": true,
+      "gate_conflict_resolved": true,
+      "index_gate": true,
+      "side_effects_retained": true,
+      "three_readonly_tools": true
+    },
+    "firmware_build": null,
+    "format": "praxis-adc-mcp-replay-v1",
+    "hardware_operations": 0,
+    "limits": [
+      "No external model or physical test.",
+      "Compilation is separate from runtime peripheral qualification.",
+      "ADC scope is one internal-reference mode; supply, timing and physical behavior remain unqualified."
+    ],
+    "passed": true,
+    "tool_calls": 9
+  },
+  "knowledge_ready_workflows": 11,
+  "largest_document_bytes": 60851,
+  "limits": [
+    "Internal-reference ADC1 only, conditional clock/supply assumptions; no calibrated voltage measurement.",
+    "Host register models do not simulate silicon or measure timing.",
+    "ADC example has not been linked, ELF-validated or flashed.",
+    "KiCad and Podman are missing in this environment; full release qualification is blocked.",
+    "Existing published bundles and default client launchers were preserved."
+  ],
+  "new_physical_qualification": false,
+  "regression": {
+    "errors": 0,
+    "external_tools_required": false,
+    "failures": 0,
+    "junit_sha256": "554a2ac43bef3a0f2e5ec68060c53c251e754c40d18ee82d87d7cc93ab7e2e2d",
+    "passed": 529,
+    "skip_reasons": {
+      "Optional external tool missing: kicad-cli": 4,
+      "Optional external tool missing: podman": 6
+    },
+    "skipped": 10,
+    "tests": 539
+  },
+  "release_gate": {
+    "blockers": [
+      "Missing external tool: kicad-cli",
+      "Missing external tool: podman",
+      "Independent review of the exact current bundle revisions is missing",
+      "Independent review of the exact firmware asset revision is missing"
+    ],
+    "release_ready": false
+  },
+  "reviewed_mode_contracts": 16,
+  "ruff_passed": true,
+  "source_registry_count": 182,
+  "source_review": "Implementing-author scoped editorial review; independent engineering review pending",
+  "target": "stm32f407g_disc1_mb997_e01",
+  "target_compilation": {
+    "reason": "MISSING_TOOL: rootless Podman is unavailable; native fallback was not used",
+    "status": "NOT RUN"
+  },
+  "validation_notes": [
+    "A prior full regression exposed four synthetic profiles missing the new optional field; fixtures were updated and source-authority rejection remains tested.",
+    "A subsequent attempt failed when temporary fixture copies filled /tmp. Generated task copies were removed, private import archives excluded from synthetic copies, and the complete clean rerun passed."
+  ]
+}

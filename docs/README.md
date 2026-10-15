@@ -1,5 +1,27 @@
 # Project Praxis documentation
 
+- [TIM5 capture interrupts: source contracts, failure models, fixed telemetry and MCP replay](timer-irq.md).
+
+- [Physical paired-timer trial: wired success, no-edge timeout and recovery status](reports/timer-route-results.md).
+
+- [Artifact-bound timer observations, raw-period qualification and physical-test procedure](timer-observations.md).
+
+- [Routed timer PWM/capture, per-mode instance scopes and verification](timer-routes.md).
+
+- [F407 timer operating contracts, internal examples and verification](timer-modes.md).
+
+- [Alternative register interpretations and timer ingestion](register-field-views.md).
+
+- [F407 applicability, package constraints and source-backed extraction repairs](inventory-reconciliation.md).
+
+- [Manufacturer capability inventory, source scope and reconciliation](manufacturer-inventory.md).
+
+- [Full F407 acceptance audit, remaining gaps and closure sequence](f407-full-acceptance.md).
+
+- [Complete document retrieval, native KiCad compatibility and zero-skip acceptance](document-scale.md).
+
+- [Declarative compiler contracts, algorithms and sequence diagrams](compiler-contracts.md).
+
 Praxis is a local hardware knowledge compiler and a read-only MCP retrieval server. A coding
 assistant consumes its evidence and creates firmware in a separate workspace. This documentation
 describes the implemented development baseline, the reasoning behind it, and the evidence needed
@@ -32,6 +54,7 @@ Execution-only reset/run and a human LED/button check subsequently passed; see
 | Run the knowledge MCP in Docker | [Docker setup and client configurations](docker.md) | [Experimental release scope](experimental-release.md) |
 | Add a board | [Board ingestion](board-ingestion.md) | [Source format and modules](architecture.md) |
 | Add a Cortex-M knowledge target | [Reusable target adapters](target-adapters.md) | [Contribution guide](../CONTRIBUTING.md) |
+| Explore STM32F1/G0/H7 knowledge | [Experimental multi-family compiler](stm32-family-expansion.md) | [Offline target matrix](../sources/stm32-experimental/catalog.json) |
 | Contribute a mode, board or MCU | [Contribution guide](../CONTRIBUTING.md) | [Scoped capability assessment](capability-support.md) |
 | Understand the STM32/ARM experimental baseline | [Experimental release scope](experimental-release.md) | [ARM core contracts and sequence](arm-core-support.md) |
 | Acquire web documents | [Web ingestion](web-ingestion.md) | [F407 header ingestion](f407-ingestion.md) |

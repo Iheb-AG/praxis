@@ -1,6 +1,183 @@
 # Milestone evidence and release status
 
+Timer capture IRQ increment, 2026-10-15: **1,462 full-suite tests passed, zero skipped**,
+with required external tools. The new [source-bound IRQ workflow](timer-irq.md) adds
+TIM5 CH3 IRQ50 capture paired with TIM2 CH2 PWM, a fixed 180-byte software ABI,
+independent exception delivery/failure models and raw period/receipt/cleanup qualification.
+Coverage is **43 mode contracts and 24/39 ready authored workflows**, not all-MCU coverage.
+Two ingestion MCP publications and a CLI publication match byte-for-byte. All 17
+applications build/revalidate through 94 actual MCP calls; native retrieval passes 52
+calls and rebuilt Docker passes 162 calls plus seven explicitly synthetic qualifier cases.
+Packaging, public-link checks, pinned inputs, Ruff and the offline lock check pass.
+The 5,984-byte artifact 70aab2ee7184… is not flashed. Read-only preflight cannot currently
+see the selected ST-LINK; reconnect/wiring confirmation is pending. New physical IRQ
+qualification, DMA, broader F407 modes and independent release review remain open.
+See [exact software evidence](timer-irq-evidence.json). Next: reconnect the selected
+probe, obtain fresh exact-image approval, and test IRQ success/no-edge/recovery through MCP.
+
+Physical paired-timer trial, 2026-10-15: **wired success, clean no-edge timeout and
+wired recovery all passed** for telemetry artifact `ba3ff2fcb1e2…`, with user-confirmed
+unpowered PA1/P1-11 ↔ PA2/P1-14 wiring changes. One approved MCP flash verified all
+4,424 bytes after sector 0 erase; one MCP reset/run followed. Later phases used user
+power cycles and read-only MCP. Six windows/18 samples preserve the timeout latch;
+success qualification correctly rejects the removed-jumper observations. Both positive
+boots report eight periods of 1,000 local ticks and quiet shutdown. There were 25 MCP
+calls total, two mutating. No independent frequency/duty measurement, formal repeatability,
+physical PCB revision confirmation, timer IRQ/DMA or full MCU acceptance is implied.
+See [actual results](reports/timer-route-results.md) and [sanitized evidence](timer-route-physical-evidence.json).
+Next: timer capture interrupt contracts, failure models and isolated builds, then DMA.
+
+Timer observation increment, 2026-10-15: **1,270 full-suite tests passed, zero skipped**,
+with required external tools; **155 affected checks** also passed, including a stricter
+raw-prefix check and two later-added regression cases. Totals overlap. The fixed
+[timer telemetry ABI and offline qualifier](timer-observations.md) use the unchanged
+immutable timer-routes-v1 knowledge bundle. Counts remain 39 contracts and 23/38 ready
+authored workflows: this strengthens Milestone 4 without claiming new MCU modes. All 16
+applications build/revalidate through 92 actual MCP calls. Native knowledge retrieval
+passes 52 calls; rebuilt Docker passes 162 calls in four sessions and five clearly
+synthetic qualification outcomes. Packaging/lock checks pass. Telemetry artifact
+ba3ff2fcb1e2… is 4,424 bytes and has not been flashed. No physical probe/target operation
+occurred; exact-bundle/asset independent review and wired physical qualification
+remain open. Next: fresh wiring confirmation, exact-image approval and artifact-bound
+success/no-edge/recovery observations, then timer IRQ/DMA support.
+
+Routed timer increment, 2026-10-14: **1,165 full-suite tests passed, zero skipped**, with
+required external tools. A 51-test focused run additionally checks six later-added
+bundle/source validations; these overlapping totals are not added. The new immutable
+[timer-routes-v1 bundle](timer-routes.md) adds exact PA1/TIM2_CH2 PWM and PA2/TIM5_CH3
+rising capture, supported by generic per-mode instance scopes. Counts: **22 reviewed
+subsets, 39 contracts, 23/38 ready authored workflows**. Two ingestion MCP publications
+and a CLI publication are byte-identical. All 15 examples build/revalidate in 90 actual
+MCP calls; rebuilt Docker passes 162 calls in four sessions. Source review used 72
+actual ingestion MCP calls. Packaging and offline lock checks pass. No flash, probe,
+reset, physical route test or independent sign-off occurred. Next: artifact-bound
+wired route qualification, then timer IRQ/DMA contracts and the remaining F407 gaps.
+
 This repository is an implemented development baseline. **The v1 release gate is not yet met.**
+
+F407 timer operating continuation, 2026-10-14: **1,120 tests passed, zero skipped**, with
+required external tools. Source-profile data adds owned TIM2 RCC gate/reset, internal PWM1
+reference and stopped-counter software-capture contracts; core compiler/runtime code is unchanged.
+Two ingestion MCP publications and an independent CLI compilation are byte-identical.
+All fourteen application cases build and ELF-revalidate through86 MCP calls; a5-call focused
+replay checks new mode rows and blocked external workflows. The existing Docker image passes
+161 calls across four sessions without rebuilding. Instrumented effect tests cover preload
+transfer, full-word/read-to-clear capture, stale and racing overcapture, wrong ownership/clock,
+configuration failure and unsuccessful cleanup. Reviewed coverage is **22 subsets,35 mode
+contracts and22/37 ready authored workflows**; external pin PWM/capture remains blocked.
+No flash, reset, probe access or physical acceptance occurred. See [contracts and sequence](timer-modes.md)
+and [exact evidence](timer-modes-evidence.json). Next: package/AF/board routes and shared-pin
+ownership for external PWM and capture, then separate routed-mode and physical qualification.
+
+F407 register interpretation continuation, 2026-10-14: **1,052 tests passed, zero skipped**,
+with external tools required. Generic, profile-configured field views now preserve timer
+input/output interpretations and mixed channel directions without manufacturer branches.
+The new immutable timer-views-v1 bundle publishes eight complete view tables (64 rows,
+28 distinct name/mask pairs) and restores eight input filter/prescaler declarations.
+Repeated compilation produces 50 byte-identical files. Actual ingestion MCP yields 32
+position/offset/reset candidates with no conflicts; access/reset review remains open.
+Native stdio passes 52 complete-document calls, all 12 existing applications link/revalidate
+in 81 MCP calls, and rebuilt Docker passes 161 calls across four sessions. An earlier
+regression overlapped a source-profile edit and correctly failed `SOURCE_CHANGED`; the
+final run used frozen inputs. Reviewed support remains **22 subsets, 32 modes and 20/33
+ready workflows**. No hardware operation or new PWM/capture operating qualification occurred.
+See [schema, algorithms and sequence](register-field-views.md) and
+[exact evidence](register-field-views-evidence.json). Next: source-backed, instance-scoped
+TIM2 PWM/capture contracts, instrumented failure models and isolated MCP example builds.
+
+F407 source reconciliation, 2026-10-14: **1,022 tests passed, zero skipped**, external tools required.
+A second immutable-input inventory revision resolves all 29
+recorded layout items through explicit source-bound editorial records, retaining original entries,
+gaps and provenance. Pending/mixed applicability falls from 741 to 299 across the same 1,683 records.
+Five RM controller chapters are excluded using explicit non-F407 body restrictions; 24 scope facts
+include exact-part ordering, resource counts and the LQFP100 FSMC Bank1/Bank2 constraints.
+The generic ingestion MCP adds complete page-layout evidence. All 12 examples link/revalidate
+in 81 actual MCP calls; the rebuilt Docker runtime passes 161 calls across four sessions. No new operating mode, physical
+qualification, bundle replacement or hardware action is implied. See
+[source review, algorithms and next work](inventory-reconciliation.md) and
+[evidence](inventory-reconciliation-evidence.json). Next: timer PWM/capture instance/mode
+requirements, remaining applicability and silicon-revision review, and source-backed package gates.
+
+Manufacturer inventory continuation, 2026-10-14: the generic source-outline MCP adapter now
+supports dotted contents and explicitly labelled table indices. **1,005 tests passed, zero skipped**,
+with required external tools enabled. Four source-pinned documents
+yield 1,683 indexed records, retaining 29 extraction items and 741 pending/mixed applicability
+sections. The cached RM index's missing tail is now extracted; incomplete headings remain
+visible. Target scope and mappings live in JSON. `praxis inventory` validates provenance and
+reconciles related workflows without declaring whole-section support. The acceptance MCP client
+includes these gaps and still links/revalidates all 12 applications in 81 calls. Four repeated
+outline preparations are identical. The rebuilt Docker runtime passes 161 calls across four
+sessions; its inventory CLI works without ingestion extras and rejects incomplete acceptance.
+No hardware
+operation occurred. Full source/body-mode reconciliation, topology, physical qualification and
+independent review remain open. See [algorithms, source scope and reproduction](manufacturer-inventory.md)
+and [evidence](manufacturer-inventory-evidence.json). Next: reconcile exact-part availability
+and repair extraction gaps, then author complete instance/mode requirements for F407.
+
+Full F407 acceptance audit, 2026-10-14: **970 passed, zero skipped**, external dependencies
+required. Generic scalar-union extraction closes the ITM declaration blocker without inferring
+operating semantics. Two ingestion-MCP publications produce51 byte-identical files. The candidate
+publishes42/42 recognized blocks,541 register rows and2,144 field records; operating coverage
+remains22 reviewed subsets and20/33 ready authored workflows. The combined real MCP replay
+links/revalidates all12 existing F407 applications in81 calls. Its initial CAN RX README rejection
+is preserved; moving documentation outside C/header inputs fixes the layout without relaxing
+sandbox policy. The rebuilt Docker image passes161 calls across four sessions. No board writes,
+reset or new physical qualification occurred. See [the full scope and closure sequence](f407-full-acceptance.md)
+and [machine-readable evidence](f407-full-acceptance-evidence.json). Full F407 coverage now takes
+priority over further family expansion. Next: reconcile the manufacturer-wide feature inventory,
+classify unmapped declarations and close missing timer/boot/storage operating contracts.
+
+
+Complete-document/native-KiCad continuation, 2026-10-14: **942 tests passed, zero skipped**
+with strict required-dependency acceptance. Installed KiCad 10.0.7 now passes all four native
+AVR/STM32 export and compilation checks. The parser recognizes endpoint-qualified names
+only with exact same-pin library evidence; seven positive/negative cases preserve conflict
+rejection. Published Markdown has no fixed byte ceiling. Size no longer prunes selected
+peripherals or their dependencies; full field meanings, source catalogs and coverage JSON
+remain intact. A 10,156,004-byte UTF-8 USART document passes exact native and Docker MCP
+response checks, with corruption/encoding/link failures detected at its tail. The rebuilt
+knowledge image passed 326 calls across eight sessions, including old and new bundles.
+Historical revisions and physical firmware remain unchanged. Required task checks cannot
+pass with skips; missing dependencies must be installed before acceptance continues.
+See [behavior and reproduction](document-scale.md) and [evidence](document-scale-evidence.json).
+Earlier proposed next step (superseded by the F407 priority above): review bounded F103/G071 clock/GPIO/UART workflows through data contracts, then qualify
+compile-only firmware profiles separately. Independent review and broader physical qualification
+remain release requirements.
+
+
+Declarative compiler continuation, 2026-10-14: **922 tests passed, four native KiCad checks
+skipped**. All 19 source profiles now require registered, hash-pinned publication contracts.
+F407 minimum-register and clock policy, named array views and routing names have moved out
+of compiler branches into reviewed input data. Format-specific header checks live in adapters;
+historical target qualification and manifest-v1 routes use a versioned compatibility catalog.
+A synthetic test changes entity names, array names and dependencies through data alone.
+Missing reviewed registers, changed contract bytes and conflicting extraction identities still
+block publication. Large source catalogs preserve complete tables in linked provenance documents.
+Fresh F103/G071/H743 and F407 publications are byte-identical across repeated builds. Actual
+stdio passed 219 calls; the rebuilt Docker image passed 313 calls across seven isolated sessions,
+including historical F407/AVR revisions. Existing bundle paths and physical firmware are unchanged.
+Distribution checks also verify all 19 contract files ship with their declared hashes.
+This is compiler generalization, not new operating-feature coverage. See [algorithms, sequence
+diagrams and migration](compiler-contracts.md) and [exact evidence](compiler-contracts-evidence.json).
+Next: review bounded F103/G071 clock/GPIO/UART workflows using data contracts, then qualify
+compile-only firmware profiles separately. Complete MCU support and the qualified-v1 gate remain open.
+
+STM32 family expansion, 2026-10-14: **903 tests passed, four native KiCad checks skipped**;
+Ruff, the dependency lock and source distribution checks passed. Real source-backed MCU-only
+bundles now cover STM32F103C8T6 (30 published blocks), STM32G071RBT6 (35) and STM32H743ZIT6 (76).
+Together they publish 1,667 register rows and 6,149 primitive field definitions. Three repeated
+compilations are byte-identical to the shipped inventory-v2 revisions. Exact compound-mask
+partitioning restores G0/H7 USART CR1 fields while preserving source identities and missing
+operating semantics. Lossless meaning dictionaries preserve full H7 RCC/Ethernet tables;
+registered JSON companions keep large coverage reports within 64 KiB. Real stdio passed 168
+calls; a separately tagged Docker runtime passed 252 calls across five isolated sessions,
+including the existing F407 bundle. MCU-only scope permits unknown active clocks and absent
+schematics without weakening board requirements or granting F407 firmware/flash support.
+All three new target inventories have zero reviewed operating subsets and blocked authored
+GPIO/UART/timer workflows. No physical board operation occurred. See [architecture, sequence
+and contributor workflow](stm32-family-expansion.md) and [exact evidence](stm32-family-expansion-evidence.json).
+Next: review bounded clock/GPIO/UART workflows for F103/G071, then add independently scoped
+compile-only firmware profiles. Complete MCU support and the qualified-v1 gate remain open.
 
 Docker knowledge runtime, 2026-10-13: a multi-stage image installs the locked runtime package
 on digest-pinned Python/uv bases. Its build context excludes working files and raw imports;

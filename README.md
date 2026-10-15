@@ -16,7 +16,7 @@ Protocol. It compiles engineering sources into indexed Markdown bundles, retriev
 register tables and board connections, and checks documentation dependencies before peripheral
 bring-up. **Local, vectorless retrieval: no embeddings or vector database.**
 
-**Experimental alpha · STM32F407 / Cortex-M4 first.** Useful for supported prototypes,
+**Experimental alpha · reviewed F407 workflows plus STM32F1/G0/H7 inventories.** Useful for supported prototypes,
 experiments and contributions. Universal MCU support and production qualification remain open.
 
 ## Why Praxis?
@@ -79,12 +79,14 @@ these counts do not imply complete MCU coverage.
 | Layer | Current evidence |
 | --- | --- |
 | Knowledge MCP in Docker | Linux amd64; 110 real tool calls across three sessions passed |
-| Software regression | 861 tests passed; four native KiCad checks skipped |
+| Software regression | 903 tests passed; four native KiCad checks skipped |
 | Physical demonstrations | LED/button, UART loopback and scoped CAN internal-loopback observations |
 | Latest ARM-core example | Modeled and target-compiled; unflashed |
 
-F401/AVR and synthetic inputs are labeled fixtures. Other targets need explicit profiles and
-review. USB, Ethernet, SDIO, bootloader handoff and several peripheral modes remain incomplete.
+Experimental [F103, G071 and H743 bundles](docs/stm32-family-expansion.md) add source-backed
+register declarations through a reusable offline target matrix; their operating workflows,
+board wiring and firmware support remain unreviewed. F401/AVR and synthetic inputs are labeled
+fixtures. USB, Ethernet, SDIO, bootloader handoff and several peripheral modes remain incomplete.
 The Docker image packages retrieval; ingestion, Linux/Podman builds and USB access require
 separate setup. No registry image has been published yet. See [release scope](docs/experimental-release.md),
 [test evidence](docs/STATUS.md) and [remaining qualification work](docs/PUBLICATION_READINESS.md).

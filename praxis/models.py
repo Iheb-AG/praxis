@@ -5,11 +5,10 @@ from __future__ import annotations
 import re
 from typing import Annotated, Literal
 
-from pydantic import BaseModel, ConfigDict, Field, field_validator, model_serializer, model_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, field_validator, model_serializer, model_validator
 
 Identifier = Annotated[str, Field(pattern=r"^[a-z][a-z0-9_]*$", max_length=64)]
 Digest = Annotated[str, Field(pattern=r"^[0-9a-f]{64}$")]
-MAX_DOCUMENT_BYTES = 64 * 1024
 
 
 class Record(BaseModel):
@@ -73,10 +72,11 @@ class Target(Record):
     board_revision: str
     primary_mcu_ref: str
     example_only: bool = True
-    clock_hz: int = Field(gt=0)
+    clock_hz: int | None = Field(default=None, gt=0)
     clock_assumptions: list[str] = Field(min_length=1)
     fuse_assumptions: list[str] = []
     knowledge_adapter: CortexMKnowledgeAdapter | None = None
+    scope: Literal["board", "mcu"] = "board"
 
     @model_serializer(mode="wrap")
     def serialize(self, handler):
@@ -84,33 +84,38 @@ class Target(Record):
         value = handler(self)
         if self.knowledge_adapter is None:
             value.pop("knowledge_adapter", None)
+        if self.scope == "board":
+            value.pop("scope", None)
         return value
 
     @model_validator(mode="after")
     def supported_fixture(self):
-        supported = {
-            "stm32": {
-                ("STM32F401RE", "Package_QFP:LQFP-64_10x10mm_P0.5mm"): 16_000_000,
-                ("STM32F407VGT6", "Package_QFP:LQFP-100_14x14mm_P0.5mm"): 168_000_000,
-            },
-            "avr": {("ATmega328P-PU", "Package_DIP:DIP-28_W7.62mm"): 16_000_000},
-        }
+        if self.scope == "mcu":
+            if self.knowledge_adapter is None or not self.example_only:
+                raise ValueError("MCU-only targets require an explicit experimental knowledge adapter")
+            if self.board_revision != "not-applicable" or self.primary_mcu_ref != "not-applicable":
+                raise ValueError("MCU-only targets must declare board_revision and primary_mcu_ref as not-applicable")
+        elif self.clock_hz is None:
+            raise ValueError("Board targets require an explicit clock assumption")
+        from praxis.compatibility import catalog, qualified_target
+        compatibility = catalog()
         if self.knowledge_adapter is not None:
             if any(not value.strip() for value in (self.mcu, self.package, self.silicon_revision,
                                                   self.board_revision, self.primary_mcu_ref)):
                 raise ValueError("Custom knowledge targets require explicit nonempty identity fields")
-            if self.family == "stm32" and not re.fullmatch(r"STM32[A-Z0-9]{4,24}", self.mcu):
-                raise ValueError("Custom STM32 profiles require an explicit STM32 part identity")
-            if self.family == "avr" or any(
-                    self.mcu == model for entries in supported.values() for model, _ in entries):
+            pattern = compatibility["identity_patterns"].get(self.family)
+            if pattern is not None and not re.fullmatch(pattern, self.mcu):
+                raise ValueError("Target identity does not match its declared family")
+            if self.family in compatibility["adapter_excluded_families"] or any(
+                    self.mcu == entry["mcu"] for entry in compatibility["targets"]):
                 raise ValueError("Knowledge adapters cannot override validated builtin target identities")
             return self
-        clock = supported.get(self.family, {}).get((self.mcu, self.package))
-        if clock is None:
+        qualified = qualified_target(self)
+        if qualified is None:
             raise ValueError("Unsupported MCU/package for the v1 validated target adapters")
-        if self.clock_hz != clock:
+        if self.clock_hz != qualified["clock_hz"]:
             raise ValueError("Target must use its validated clock profile")
-        if self.family == "avr" and not self.fuse_assumptions:
+        if qualified["require_fuses"] and not self.fuse_assumptions:
             raise ValueError("AVR profiles must state the external clock/fuse assumptions")
         return self
 
@@ -130,6 +135,22 @@ class BitField(Record):
         return self
 
 
+class StorageView(Record):
+    """A C union member, without a claim about legal hardware bus accesses."""
+    name: MacroName
+    c_type: str = Field(min_length=1)
+    width: Literal[8, 16, 32]
+    sources: list[SourceRef] = Field(min_length=1)
+
+
+class FieldView(Record):
+    """Alternative interpretation of register bits, not a C storage alias."""
+
+    selection: str = Field(min_length=1)
+    fields: list[BitField] = Field(min_length=1)
+    sources: list[SourceRef] = Field(min_length=1)
+
+
 class Register(Record):
     name: str
     offset: int = Field(ge=0)
@@ -143,16 +164,29 @@ class Register(Record):
     side_effects: str = Field(min_length=1)
     fields: list[BitField] = []
     sources: list[SourceRef] = Field(min_length=1)
+    storage_views: list[StorageView] = []
+    field_views: dict[Identifier, FieldView] = {}
 
     @model_serializer(mode="wrap")
     def serialize(self, handler):
         value = handler(self)
         if self.write_mask is None:
             value.pop("write_mask", None)
+        if not self.storage_views:
+            value.pop("storage_views", None)
+        if not self.field_views:
+            value.pop("field_views", None)
         return value
+
+    def fields_for(self, view: str | None = None) -> list[BitField]:
+        """Common fields plus exactly one explicitly selected interpretation."""
+        return [*self.fields, *(self.field_views[view].fields if view is not None else [])]
 
     @model_validator(mode="after")
     def check_fields(self):
+        if (len({view.name for view in self.storage_views}) != len(self.storage_views)
+                or any(view.width > self.width for view in self.storage_views)):
+            raise ValueError(f"{self.name}: storage views must be unique and fit the declared storage")
         if self.write_mask is not None and (
                 self.write_mask >= 1 << self.width or self.access == "unknown"
                 or self.access == "RO" and self.write_mask != 0):
@@ -160,16 +194,20 @@ class Register(Record):
         if (len(set(self.access_widths)) != len(self.access_widths)
                 or any(self.offset % (width // 8) for width in self.access_widths)):
             raise ValueError(f"{self.name}: access widths must be unique and naturally aligned")
-        used = 0
-        if len({field.name for field in self.fields}) != len(self.fields):
-            raise ValueError(f"{self.name}: duplicate canonical field name")
         if self.reset is not None and not 0 <= self.reset < 1 << self.width:
             raise ValueError(f"{self.name}: reset exceeds register width")
-        for field in self.fields:
-            if field.mask >= 1 << self.width or used & field.mask:
-                raise ValueError(f"{self.name}: overlapping or out-of-range fields")
-            used |= field.mask
-        if self.write_mask is not None and self.fields and self.write_mask & ~used:
+        envelope = 0
+        for view in [None, *self.field_views]:
+            used = 0
+            fields = self.fields_for(view)
+            if len({field.name for field in fields}) != len(fields):
+                raise ValueError(f"{self.name}: duplicate canonical field name in view {view}")
+            for field in fields:
+                if field.mask >= 1 << self.width or used & field.mask:
+                    raise ValueError(f"{self.name}: overlapping or out-of-range fields in view {view}")
+                used |= field.mask
+            envelope |= used
+        if self.write_mask is not None and envelope and self.write_mask & ~envelope:
             raise ValueError(f"{self.name}: reviewed write mask exceeds the declared field envelope")
         return self
 
@@ -203,9 +241,17 @@ class OperatingMode(Record):
     instances: list[str] = Field(min_length=1)
     registers: list[str] = Field(min_length=1)
     fields: dict[str, list[str]] = {}
+    field_views: dict[str, Identifier] = {}
     requirements: list[str] = Field(min_length=1)
     sources: list[SourceRef] = Field(min_length=1)
     requires_modes: list[ModeDependency] = []
+
+    @model_serializer(mode="wrap")
+    def serialize(self, handler):
+        value = handler(self)
+        if not self.field_views:
+            value.pop("field_views", None)
+        return value
 
     @model_validator(mode="after")
     def explicit_scope(self):
@@ -214,6 +260,8 @@ class OperatingMode(Record):
                 raise ValueError("Operating mode scope and requirements must be nonempty and unique")
         if not self.fields.keys() <= set(self.registers):
             raise ValueError("Mode fields must name required registers")
+        if not self.field_views.keys() <= set(self.registers):
+            raise ValueError("Mode field views must name required registers")
         keys = [(dependency.peripheral, dependency.mode) for dependency in self.requires_modes]
         if len(keys) != len(set(keys)):
             raise ValueError("Duplicate required mode; combine its exact instance scope")
@@ -253,8 +301,14 @@ class Peripheral(Record):
                 raise ValueError("Operating mode names an undeclared register")
             if any(available[r].access == "unknown" for r in mode.registers):
                 raise ValueError("Operating mode requires reviewed register access semantics")
+            for name in mode.registers:
+                view = mode.field_views.get(name)
+                if available[name].field_views and view is None:
+                    raise ValueError("Operating mode must select an explicit register field view")
+                if view is not None and view not in available[name].field_views:
+                    raise ValueError("Operating mode selects an undeclared register field view")
             for register, fields in mode.fields.items():
-                if not set(fields) <= {f.name for f in available[register].fields}:
+                if not set(fields) <= {f.name for f in available[register].fields_for(mode.field_views.get(register))}:
                     raise ValueError("Operating mode names an undeclared bit field")
         return self
 
@@ -416,6 +470,14 @@ class SourceSpec(Record):
     version: str
     license: str
     origin: str
+    expected_sha256: Digest | None = None
+
+    @model_serializer(mode="wrap")
+    def serialize(self, handler):
+        value = handler(self)
+        if self.expected_sha256 is None:
+            value.pop("expected_sha256", None)
+        return value
 
 
 class HeaderSpec(Record):
@@ -446,15 +508,34 @@ class PeripheralDiscovery(Record):
     instances: dict[str, str] = {}
     register_prefixes: dict[str, str] = {}
     expand_arrays: list[str] = []
+    member_views: dict[MacroName, list[MacroName]] = {}
     register_fields: dict[str, list[str]] = {}
+    field_views: dict[str, dict[Identifier, list[str]]] = {}
+
+    @model_serializer(mode="wrap")
+    def serialize(self, handler):
+        value = handler(self)
+        if not self.field_views:
+            value.pop("field_views", None)
+        return value
 
     @model_validator(mode="after")
     def explicit_views(self):
         if len(set(self.expand_arrays)) != len(self.expand_arrays):
             raise ValueError("Duplicate expanded array member")
+        if self.member_views.keys() & set(self.expand_arrays):
+            raise ValueError("A member cannot have both a named view and numeric expansion")
+        for names in self.member_views.values():
+            if not names or len(set(names)) != len(names):
+                raise ValueError("Member views require unique, nonempty register names")
         for names in self.register_fields.values():
             if not names or len(set(names)) != len(names):
                 raise ValueError("Register field views require unique, nonempty field names")
+        if self.field_views.keys() & self.register_fields.keys():
+            raise ValueError("A register cannot have both a legacy field selection and alternative field views")
+        for views in self.field_views.values():
+            if not views or any(not names or len(set(names)) != len(names) for names in views.values()):
+                raise ValueError("Alternative field views require nonempty, unique field names")
         return self
 
 
@@ -464,7 +545,7 @@ class DiscoveryPolicy(Record):
     automatic: bool = False
     peripherals: dict[Identifier, PeripheralDiscovery] = {}
     exclude: list[Identifier] = []
-    default_prerequisites: list[Identifier] = ["rcc"]
+    default_prerequisites: list[Identifier] = []
 
 
 class ManualSpec(Record):
@@ -505,7 +586,15 @@ class WorkflowRequirement(Record):
     operating_semantics: bool = True
     instances: dict[Identifier, list[str]] = {}
     modes: dict[Identifier, list[Identifier]] = {}
+    mode_instances: dict[Identifier, dict[Identifier, list[str]]] = {}
     signals: list[str] = []
+
+    @model_serializer(mode="wrap")
+    def serialize(self, handler):
+        value = handler(self)
+        if not self.mode_instances:
+            value.pop("mode_instances", None)
+        return value
 
     @model_validator(mode="after")
     def mode_scope(self):
@@ -516,6 +605,16 @@ class WorkflowRequirement(Record):
         for values in (*self.instances.values(), *self.modes.values()):
             if not values or len(set(values)) != len(values):
                 raise ValueError("Instance/mode requirements must be nonempty and unique")
+        if not self.mode_instances.keys() <= self.modes.keys():
+            raise ValueError("Per-mode instances must name selected workflow modes")
+        for entity, scopes in self.mode_instances.items():
+            if scopes.keys() != set(self.modes[entity]):
+                raise ValueError("Per-mode instances must cover every selected mode of that entity")
+            for names in scopes.values():
+                ModeDependency(peripheral=entity, mode="scope", instances=names)
+            union = {name for names in scopes.values() for name in names}
+            if entity in self.instances and union != set(self.instances[entity]):
+                raise ValueError("Workflow instance scope must equal the union of its per-mode instances")
         if (len(set(self.signals)) != len(self.signals) or any(not s.strip() or len(s) > 128
                 or any(ord(c) < 32 or ord(c) == 127 for c in s) for s in self.signals)):
             raise ValueError("Workflow signal queries must be unique, bounded and nonempty")
@@ -528,44 +627,21 @@ class DtsSpec(Record):
     includes: list[Identifier] = []
 
 
-class F407ClockPlan(Record):
-    hse_hz: int = Field(gt=0)
-    pll_m: int = Field(ge=2, le=63)
-    pll_n: int = Field(ge=192, le=432)
-    pll_p: Literal[2, 4, 6, 8]
-    pll_q: int = Field(ge=2, le=15)
-    ahb_div: Literal[1, 2, 4, 8, 16, 64, 128, 256, 512]
-    apb1_div: Literal[1, 2, 4, 8, 16]
-    apb2_div: Literal[1, 2, 4, 8, 16]
-    vdd_mv: int
-    flash_wait_states: int
-
-    @model_validator(mode="after")
-    def validated_clock_profile(self):
-        # A deliberately narrow, source-reviewed v1 operating point.
-        if ((self.hse_hz, self.pll_m, self.pll_n, self.pll_p, self.pll_q,
-             self.ahb_div, self.apb1_div, self.apb2_div) !=
-                (8_000_000, 8, 336, 2, 7, 1, 4, 2)):
-            raise ValueError("F407 workflow requires HSE8, M8/N336/P2/Q7, AHB/1, APB1/4, APB2/2")
-        if not 2700 <= self.vdd_mv <= 3600 or self.flash_wait_states != 5:
-            raise ValueError("168 MHz profile requires reviewed 2.7–3.6 V supply and 5 FLASH wait states")
-        return self
-
-
 class Profile(Record):
     schema_version: Literal[1] = 1
     target: Target
     review: Review
     sources: list[SourceSpec] = Field(min_length=1)
     definitions: Identifier
+    compilation_contract: Identifier
     definition_extensions: list[Identifier] = []
     header: HeaderSpec
-    netlist: Identifier
-    pin_map: dict[str, str]
+    netlist: Identifier | None = None
+    pin_map: dict[str, str] = {}
     aliases: dict[str, Identifier] = {}
     signal_aliases: dict[str, list[str]] = {}
     devicetree: DtsSpec | None = None
-    clock_plan: F407ClockPlan | None = None
+    clock_plan: dict[MacroName, StrictInt] | None = None
     web_imports: dict[Identifier, str] = {}
     netlist_format: Literal["kicad", "reviewed"] = "kicad"
     board: Identifier | None = None
@@ -577,6 +653,11 @@ class Profile(Record):
 
     @model_validator(mode="after")
     def clock_applicability(self):
+        if self.target.scope == "mcu":
+            if self.netlist is not None or self.pin_map or self.signal_aliases or self.board or self.required_workflows:
+                raise ValueError("MCU-only profiles cannot claim board sources, pin mappings or board workflows")
+        elif self.netlist is None:
+            raise ValueError("Board profiles require a schematic netlist source")
         if self.target.knowledge_adapter is not None and (
                 self.discovery is None or not self.header.discover or self.header.kind != "cmsis"):
             raise ValueError("Custom knowledge targets require configurable CMSIS discovery")
@@ -586,8 +667,6 @@ class Profile(Record):
             raise ValueError("Configurable discovery requires header.discover and the CMSIS adapter")
         if not set(self.publication_requires) <= self.workflows.keys():
             raise ValueError("publication_requires must name declared workflows")
-        if (self.target.mcu == "STM32F407VGT6") != (self.clock_plan is not None):
-            raise ValueError("Only STM32F407VGT6 requires the explicit F407 clock plan")
         if (not self.target.example_only or self.required_workflows) and self.board is None:
             raise ValueError("Documented boards and board workflows require a reviewed board source")
         return self

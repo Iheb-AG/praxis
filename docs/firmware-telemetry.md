@@ -1,5 +1,15 @@
 # Artifact-bound firmware telemetry
 
+The separate [timer IRQ workflow and qualifier](timer-irq.md) add launch-selected
+`--telemetry-kind timer-irq-v1` for a 180-byte record. IRQ receipts, vector/priority
+checks and known quiet line/source cleanup supplement raw timestamp qualification.
+A pending capture without ISR delivery cannot qualify as a no-edge timeout.
+This image has no physical IRQ qualification yet; the original ABIs remain unchanged.
+
+The later [timer-route ABI and raw-period qualifier](timer-observations.md) add
+explicit `--telemetry-kind timer-routes-v1` support. This is a separate one-shot
+application contract; no new physical timer observation is claimed.
+
 The optional build/hardware MCP can observe the UART example's software counters on a running
 STM32F407. The knowledge server retains its three read-only tools. Hardware addresses and
 configuration came from the selected bundle through MCP; the telemetry layout is a separate

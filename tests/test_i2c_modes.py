@@ -90,7 +90,8 @@ def test_bundle_retains_all_nine_registers_and_no_f42_filter():
     text = bundle.read('wiki/peripherals/i2c.md')
     assert '| TRISE | 0x020 |' in text and '| FLTR | 0x024 |' not in text
     assert 'not W1C' in text and 'forbids software STOP' in text
-    assert all(len(text.encode()) <= 65536 for text in bundle.documents.values())
+    assert all("## Register map" in bundle.read(path) and "## Bit fields" in bundle.read(path)
+               for path in bundle.manifest.peripherals.values())
     session = Session(bundle)
     session.read_wiki_index()
     with pytest.raises(PraxisError, match='rcc, flash, pwr'):

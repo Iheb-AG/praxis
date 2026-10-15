@@ -1,0 +1,316 @@
+{
+  "facts": {
+    "irq": "TIM5_IRQn50, vector slot66, handler TIM5_IRQHandler; device header lines125-129",
+    "locator_reconciliation": "DIER is RM0090 p629, status630-631. Earlier broad628/629 context references are retained only as history; new selected field semantics use exact pages.",
+    "priority_bits": 4,
+    "priority_policy": "Logical priority2 is application policy; encoded byte0x20; retain checked PRIGROUP0.",
+    "source": "CC3IE bit3 enables capture3 IRQ; CC3IF consumed by full CCR3 read; CC3OF rc_w0 must be rejected before/after read."
+  },
+  "format": "praxis-reviewed-timer-irq-facts-v1",
+  "limits": [
+    "TIM2 CH2 PWM plus TIM5 CH3 direct rising IRQ, nominalHSI16/divisors1 only. No DMA/other modes or physical IRQ acceptance.",
+    "Own fresh privileged MSP startup, no other interrupt/source/timer/GPIO owners or downstream TRGO consumers; never write AIRCR.",
+    "Only source/model/compiler checks in this increment; existing polling physical evidence does not transfer to the new artifact."
+  ],
+  "pages": {
+    "cmsis_core/lines:1675-1830": {
+      "locator": "lines:1675-1830",
+      "origin": "https://raw.githubusercontent.com/ARM-software/CMSIS_5/5.9.0/CMSIS/Core/Include/core_cm4.h",
+      "registered_source": "cmsis_core",
+      "registered_source_sha256": "f5b63d52dd1557b15ca414cb59c264f595a7b5669db2a5878dffe22f4caedc8c"
+    },
+    "header/lines:40-140": {
+      "locator": "lines:40-140",
+      "origin": "https://raw.githubusercontent.com/STMicroelectronics/cmsis-device-f4/3c77349ce04c8af401454cc51f85ea9a50e34fc1/Include/stm32f407xx.h",
+      "registered_source": "header",
+      "registered_source_sha256": "ae1ab57d8ab750f64f04fd73476bc2760c761e18e45bde648e0bc350c9a1d9ac"
+    },
+    "header/lines:40-170": {
+      "locator": "lines:40-170",
+      "origin": "https://raw.githubusercontent.com/STMicroelectronics/cmsis-device-f4/3c77349ce04c8af401454cc51f85ea9a50e34fc1/Include/stm32f407xx.h",
+      "registered_source": "header",
+      "registered_source_sha256": "ae1ab57d8ab750f64f04fd73476bc2760c761e18e45bde648e0bc350c9a1d9ac"
+    },
+    "pm0214/page:208": {
+      "artifact": "extracted/part-0005.json",
+      "artifact_sha256": "3bc6637eff5ca94f1c4f2b7921372595cc87a8bd711df7c2a7d64d11ed5ef0e2",
+      "import_revision": "35a4109312f04107102b8f9896cfcf67840a770e4310aba19a526e291ee463ac",
+      "locator": "page:208",
+      "origin": "https://www.st.com/resource/en/programming_manual/pm0214-stm32-cortexm4-mcus-and-mpus-programming-manual-stmicroelectronics.pdf",
+      "source_sha256": "fb54012a46c674a26dee56bc8cdfa281315f78634f18998001144980b08d1b03"
+    },
+    "pm0214/page:209": {
+      "artifact": "extracted/part-0006.json",
+      "artifact_sha256": "351c620e33dac901a1f569ac26878ea68e1363e778c8b8a4890344422cacb1ca",
+      "import_revision": "35a4109312f04107102b8f9896cfcf67840a770e4310aba19a526e291ee463ac",
+      "locator": "page:209",
+      "origin": "https://www.st.com/resource/en/programming_manual/pm0214-stm32-cortexm4-mcus-and-mpus-programming-manual-stmicroelectronics.pdf",
+      "source_sha256": "fb54012a46c674a26dee56bc8cdfa281315f78634f18998001144980b08d1b03"
+    },
+    "pm0214/page:210": {
+      "artifact": "extracted/part-0007.json",
+      "artifact_sha256": "6b724179a61761ce448f4ced74404e4ae8352aadb6d4c81c963c40c89ff6b58b",
+      "import_revision": "35a4109312f04107102b8f9896cfcf67840a770e4310aba19a526e291ee463ac",
+      "locator": "page:210",
+      "origin": "https://www.st.com/resource/en/programming_manual/pm0214-stm32-cortexm4-mcus-and-mpus-programming-manual-stmicroelectronics.pdf",
+      "source_sha256": "fb54012a46c674a26dee56bc8cdfa281315f78634f18998001144980b08d1b03"
+    },
+    "pm0214/page:211": {
+      "artifact": "extracted/part-0008.json",
+      "artifact_sha256": "62aa8aaecc51e5966e41600570a1fcf8224abba17ed7eac77f81607863c673dc",
+      "import_revision": "35a4109312f04107102b8f9896cfcf67840a770e4310aba19a526e291ee463ac",
+      "locator": "page:211",
+      "origin": "https://www.st.com/resource/en/programming_manual/pm0214-stm32-cortexm4-mcus-and-mpus-programming-manual-stmicroelectronics.pdf",
+      "source_sha256": "fb54012a46c674a26dee56bc8cdfa281315f78634f18998001144980b08d1b03"
+    },
+    "pm0214/page:212": {
+      "artifact": "extracted/part-0009.json",
+      "artifact_sha256": "722c34d10c1cdb810690f5ddcaa0b4bd60178b771506b67127d0d56b53b1e251",
+      "import_revision": "35a4109312f04107102b8f9896cfcf67840a770e4310aba19a526e291ee463ac",
+      "locator": "page:212",
+      "origin": "https://www.st.com/resource/en/programming_manual/pm0214-stm32-cortexm4-mcus-and-mpus-programming-manual-stmicroelectronics.pdf",
+      "source_sha256": "fb54012a46c674a26dee56bc8cdfa281315f78634f18998001144980b08d1b03"
+    },
+    "pm0214/page:213": {
+      "artifact": "extracted/part-0010.json",
+      "artifact_sha256": "01f9e876af340e861ba8987b40dc4f37d911f1e9b31781e5052ea8e0290ead0e",
+      "import_revision": "35a4109312f04107102b8f9896cfcf67840a770e4310aba19a526e291ee463ac",
+      "locator": "page:213",
+      "origin": "https://www.st.com/resource/en/programming_manual/pm0214-stm32-cortexm4-mcus-and-mpus-programming-manual-stmicroelectronics.pdf",
+      "source_sha256": "fb54012a46c674a26dee56bc8cdfa281315f78634f18998001144980b08d1b03"
+    },
+    "pm0214/page:214": {
+      "artifact": "extracted/part-0011.json",
+      "artifact_sha256": "ae8b7c2068adab8097302a06dcf34412f39d61d73de0d8f4f69f03043460fe6a",
+      "import_revision": "35a4109312f04107102b8f9896cfcf67840a770e4310aba19a526e291ee463ac",
+      "locator": "page:214",
+      "origin": "https://www.st.com/resource/en/programming_manual/pm0214-stm32-cortexm4-mcus-and-mpus-programming-manual-stmicroelectronics.pdf",
+      "source_sha256": "fb54012a46c674a26dee56bc8cdfa281315f78634f18998001144980b08d1b03"
+    },
+    "pm0214/page:215": {
+      "artifact": "extracted/part-0012.json",
+      "artifact_sha256": "dddb2cea548e32879cdcdf77634992170c12dfb4b5d5f0cc937f037e15456d32",
+      "import_revision": "35a4109312f04107102b8f9896cfcf67840a770e4310aba19a526e291ee463ac",
+      "locator": "page:215",
+      "origin": "https://www.st.com/resource/en/programming_manual/pm0214-stm32-cortexm4-mcus-and-mpus-programming-manual-stmicroelectronics.pdf",
+      "source_sha256": "fb54012a46c674a26dee56bc8cdfa281315f78634f18998001144980b08d1b03"
+    },
+    "pm0214/page:216": {
+      "artifact": "extracted/part-0013.json",
+      "artifact_sha256": "d146a9a400b568adf85f04008fd6f6084e9218807d07721984b7605d020fdda3",
+      "import_revision": "35a4109312f04107102b8f9896cfcf67840a770e4310aba19a526e291ee463ac",
+      "locator": "page:216",
+      "origin": "https://www.st.com/resource/en/programming_manual/pm0214-stm32-cortexm4-mcus-and-mpus-programming-manual-stmicroelectronics.pdf",
+      "source_sha256": "fb54012a46c674a26dee56bc8cdfa281315f78634f18998001144980b08d1b03"
+    },
+    "pm0214/page:22": {
+      "origin": "ST PM0214 Rev10; exact-byte evidence acquired and reviewed through Praxis ingestion MCP",
+      "original_locator": "page:22",
+      "registered_source": "pm_core_22",
+      "registered_source_sha256": "96de599ec8adf0c5f2520dadf4528fd50c0e9c81514403339138817fbcb70799"
+    },
+    "pm0214/page:225": {
+      "origin": "ST PM0214 Rev10; exact-byte evidence acquired and reviewed through Praxis ingestion MCP",
+      "original_locator": "page:225",
+      "registered_source": "pm_core_225",
+      "registered_source_sha256": "aaf132e95e9713adeaa8839e186de3b2e6c7953fd81f71ab4328e953166409cb"
+    },
+    "pm0214/page:226": {
+      "origin": "ST PM0214 Rev10; exact-byte evidence acquired and reviewed through Praxis ingestion MCP",
+      "original_locator": "page:226",
+      "registered_source": "pm_core_226",
+      "registered_source_sha256": "13f48be730e6194f6c7c4f9369c8a8319585fb72ff32eb029472ac2e49101274"
+    },
+    "pm0214/page:227": {
+      "origin": "ST PM0214 Rev10; exact-byte evidence acquired and reviewed through Praxis ingestion MCP",
+      "original_locator": "page:227",
+      "registered_source": "pm_core_227",
+      "registered_source_sha256": "eaefa7ec15351bffb49ec141a3c895c1220dcd3cc1a564cefefe9373d02d6ddb"
+    },
+    "pm0214/page:228": {
+      "artifact": "extracted/part-0014.json",
+      "artifact_sha256": "fec9c0594d7b7ac566ed6578af640698cdb4111bfaf8d3ce98c87db0a909d00c",
+      "import_revision": "35a4109312f04107102b8f9896cfcf67840a770e4310aba19a526e291ee463ac",
+      "locator": "page:228",
+      "origin": "https://www.st.com/resource/en/programming_manual/pm0214-stm32-cortexm4-mcus-and-mpus-programming-manual-stmicroelectronics.pdf",
+      "source_sha256": "fb54012a46c674a26dee56bc8cdfa281315f78634f18998001144980b08d1b03"
+    },
+    "pm0214/page:229": {
+      "artifact": "extracted/part-0015.json",
+      "artifact_sha256": "0b9435236f3172f509c6878384b542e851d805e7adba0bcdd003f7b59a3c8249",
+      "import_revision": "35a4109312f04107102b8f9896cfcf67840a770e4310aba19a526e291ee463ac",
+      "locator": "page:229",
+      "origin": "https://www.st.com/resource/en/programming_manual/pm0214-stm32-cortexm4-mcus-and-mpus-programming-manual-stmicroelectronics.pdf",
+      "source_sha256": "fb54012a46c674a26dee56bc8cdfa281315f78634f18998001144980b08d1b03"
+    },
+    "pm0214/page:23": {
+      "artifact": "extracted/part-0001.json",
+      "artifact_sha256": "3f819e9c27189c59271971926db27ef0149e78b3fcedd4695feaa427e094eb47",
+      "import_revision": "35a4109312f04107102b8f9896cfcf67840a770e4310aba19a526e291ee463ac",
+      "locator": "page:23",
+      "origin": "https://www.st.com/resource/en/programming_manual/pm0214-stm32-cortexm4-mcus-and-mpus-programming-manual-stmicroelectronics.pdf",
+      "source_sha256": "fb54012a46c674a26dee56bc8cdfa281315f78634f18998001144980b08d1b03"
+    },
+    "pm0214/page:233": {
+      "origin": "ST PM0214 Rev10; exact-byte evidence acquired and reviewed through Praxis ingestion MCP",
+      "original_locator": "page:233",
+      "registered_source": "pm_core_233",
+      "registered_source_sha256": "70c8e7b7976ec9be375f1bde044d2bf28619922c0f01628fe354ed6bfbc346a9"
+    },
+    "pm0214/page:234": {
+      "origin": "ST PM0214 Rev10; exact-byte evidence acquired and reviewed through Praxis ingestion MCP",
+      "original_locator": "page:234",
+      "registered_source": "pm_core_234",
+      "registered_source_sha256": "2486cabdeeccc3064979e58736b7f9aa078193a570fcd4d8279e6a66a219cf55"
+    },
+    "pm0214/page:24": {
+      "artifact": "extracted/part-0002.json",
+      "artifact_sha256": "1d58a04433d99e30e4f0952032559432f4b7a08b5c55522493bf2ecec58d1436",
+      "import_revision": "35a4109312f04107102b8f9896cfcf67840a770e4310aba19a526e291ee463ac",
+      "locator": "page:24",
+      "origin": "https://www.st.com/resource/en/programming_manual/pm0214-stm32-cortexm4-mcus-and-mpus-programming-manual-stmicroelectronics.pdf",
+      "source_sha256": "fb54012a46c674a26dee56bc8cdfa281315f78634f18998001144980b08d1b03"
+    },
+    "pm0214/page:247": {
+      "origin": "ST PM0214 Rev10; exact-byte evidence acquired and reviewed through Praxis ingestion MCP",
+      "original_locator": "page:247",
+      "registered_source": "pm_core_247",
+      "registered_source_sha256": "0c65aa5ff51abe3b7af42a4557be69f511d2cf317200b4dc3aeb466fc895cdfa"
+    },
+    "pm0214/page:25": {
+      "artifact": "extracted/part-0003.json",
+      "artifact_sha256": "5795198f7948a975e230c4a1128c71edfce06b8f22f626f412c96176091e8095",
+      "import_revision": "35a4109312f04107102b8f9896cfcf67840a770e4310aba19a526e291ee463ac",
+      "locator": "page:25",
+      "origin": "https://www.st.com/resource/en/programming_manual/pm0214-stm32-cortexm4-mcus-and-mpus-programming-manual-stmicroelectronics.pdf",
+      "source_sha256": "fb54012a46c674a26dee56bc8cdfa281315f78634f18998001144980b08d1b03"
+    },
+    "pm0214/page:26": {
+      "artifact": "extracted/part-0004.json",
+      "artifact_sha256": "bd92426daaab33e7ff96ac410af29917fe1e967f956aed27136ef466cd73aac4",
+      "import_revision": "35a4109312f04107102b8f9896cfcf67840a770e4310aba19a526e291ee463ac",
+      "locator": "page:26",
+      "origin": "https://www.st.com/resource/en/programming_manual/pm0214-stm32-cortexm4-mcus-and-mpus-programming-manual-stmicroelectronics.pdf",
+      "source_sha256": "fb54012a46c674a26dee56bc8cdfa281315f78634f18998001144980b08d1b03"
+    },
+    "pm0214/page:39": {
+      "origin": "ST PM0214 Rev10; exact-byte evidence acquired and reviewed through Praxis ingestion MCP",
+      "original_locator": "page:39",
+      "registered_source": "pm_core_39",
+      "registered_source_sha256": "322784d964049c1814aaf5a571b048dffd601a6f979098c750f2f761d93749dd"
+    },
+    "pm0214/page:40": {
+      "origin": "ST PM0214 Rev10; exact-byte evidence acquired and reviewed through Praxis ingestion MCP",
+      "original_locator": "page:40",
+      "registered_source": "pm_core_40",
+      "registered_source_sha256": "b262700f618720b8f380b91a292a9df34e82ef984193bab308ef8b90c2a6684b"
+    },
+    "pm0214/page:41": {
+      "origin": "ST PM0214 Rev10; exact-byte evidence acquired and reviewed through Praxis ingestion MCP",
+      "original_locator": "page:41",
+      "registered_source": "pm_core_41",
+      "registered_source_sha256": "95bc656b5fb1a2ea25764a384590324e830dfeade70d386ef41534824b2ed291"
+    },
+    "rm0090/page:624": {
+      "artifact": "extracted/part-0011.json",
+      "artifact_sha256": "0aa49dfc56131b2af8bc0b1e2107581cd7a766b28286f78cbe0b15d50d92d7eb",
+      "import_revision": "948340f29702a60fb74485b36ee6da335fad3b9fcf04a95afb1376b8d468e1b3",
+      "locator": "page:624",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:628": {
+      "artifact": "extracted/part-0015.json",
+      "artifact_sha256": "f3c27ee080a928f8b039e139a3f6a51303421e904b4dfa724d71a4716a0b26af",
+      "import_revision": "948340f29702a60fb74485b36ee6da335fad3b9fcf04a95afb1376b8d468e1b3",
+      "locator": "page:628",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:629": {
+      "artifact": "extracted/part-0016.json",
+      "artifact_sha256": "2a9bd44e140cafa227b2b488002d391f15b8db997d9f5e6df420b989912aef1b",
+      "import_revision": "948340f29702a60fb74485b36ee6da335fad3b9fcf04a95afb1376b8d468e1b3",
+      "locator": "page:629",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:630": {
+      "artifact": "extracted/part-0017.json",
+      "artifact_sha256": "6994ebfc114dab48aecafb188ef1ec72655398f2abc06b3b5e0f0b6a7bfb5ea7",
+      "import_revision": "948340f29702a60fb74485b36ee6da335fad3b9fcf04a95afb1376b8d468e1b3",
+      "locator": "page:630",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:631": {
+      "artifact": "extracted/part-0018.json",
+      "artifact_sha256": "5a691da085255144af2d3975f4e800de7964733742d3250c2224b25332d3a14d",
+      "import_revision": "948340f29702a60fb74485b36ee6da335fad3b9fcf04a95afb1376b8d468e1b3",
+      "locator": "page:631",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:632": {
+      "artifact": "extracted/part-0019.json",
+      "artifact_sha256": "b871f4981b9e69feb0cd9a728e31787c42e6cbdcbcce4c025db4e929f19244fc",
+      "import_revision": "948340f29702a60fb74485b36ee6da335fad3b9fcf04a95afb1376b8d468e1b3",
+      "locator": "page:632",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:634": {
+      "artifact": "extracted/part-0021.json",
+      "artifact_sha256": "fcf0d8fb989d13a447917a8bb684d06f09d248ca87022a70659a44307e2dd32f",
+      "import_revision": "948340f29702a60fb74485b36ee6da335fad3b9fcf04a95afb1376b8d468e1b3",
+      "locator": "page:634",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:635": {
+      "artifact": "extracted/part-0022.json",
+      "artifact_sha256": "aaad4929ce46f6726df4cba4818ce41d78a0180a873b497338de2d603faa59b9",
+      "import_revision": "948340f29702a60fb74485b36ee6da335fad3b9fcf04a95afb1376b8d468e1b3",
+      "locator": "page:635",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:636": {
+      "artifact": "extracted/part-0023.json",
+      "artifact_sha256": "4f9e226f84287c5c06068cd73e6316118c760a0720686d022aea6173272237fe",
+      "import_revision": "948340f29702a60fb74485b36ee6da335fad3b9fcf04a95afb1376b8d468e1b3",
+      "locator": "page:636",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:638": {
+      "artifact": "extracted/part-0025.json",
+      "artifact_sha256": "464a8ff413acfbbadbcb71a4faef9b5400e704dd23e6d865c18f1870fca9cff6",
+      "import_revision": "948340f29702a60fb74485b36ee6da335fad3b9fcf04a95afb1376b8d468e1b3",
+      "locator": "page:638",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:639": {
+      "artifact": "extracted/part-0026.json",
+      "artifact_sha256": "5dc00b215b723c282d9a6029d8e96f36405cff1b8ee0e9a2346cc392ae51cf7d",
+      "import_revision": "948340f29702a60fb74485b36ee6da335fad3b9fcf04a95afb1376b8d468e1b3",
+      "locator": "page:639",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:640": {
+      "artifact": "extracted/part-0027.json",
+      "artifact_sha256": "9f89a1715a3c46654f5bd770efa9040173f0e5304dd18fadb5f2114a20bbb48a",
+      "import_revision": "948340f29702a60fb74485b36ee6da335fad3b9fcf04a95afb1376b8d468e1b3",
+      "locator": "page:640",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    }
+  },
+  "review": {
+    "basis": "Complete RM0090 Rev22 and PM0214 Rev10 source parts plus exact pinned IRQ/priority declarations. Implementing-author review only; independent signoff and new physical IRQ qualification pending.",
+    "reviewer": "Codex source-backed editorial review through Praxis ingestion MCP",
+    "status": "reviewed"
+  }
+}

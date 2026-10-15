@@ -1,0 +1,45 @@
+{
+  "artifact": "extracted/part-0004.json",
+  "artifact_sha256": "1705b96a5f761514037c5f13595cd940a7470e0535efc92e569afaf2ce2d1fc5",
+  "evidence": {
+    "locator": "page:481",
+    "page": 481,
+    "tables": [
+      {
+        "bbox": [
+          174.27976636,
+          208.041332,
+          389.12108168,
+          356.346986
+        ],
+        "locator": "page:481/table:1",
+        "rows": [
+          [
+            "AHB\ninterface",
+            null,
+            null,
+            "Layer1\nPFC\nFIFO\nBlending Dithering\nunit unit\nLayer1\nPFC\nFIFO\nTiming\ngenerator"
+          ],
+          [
+            "Configuration\nand status\nregisters",
+            "Configuration\nand status\nregisters",
+            "",
+            null
+          ]
+        ]
+      }
+    ],
+    "text": "                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n         RM0090                                        LCD-TFT controller (LTDC)  \n                                                                                  \n         16.3    LTDC  functional description                                     \n                                                                                  \n         16.3.1  LTDC block diagram                                               \n                                                                                  \n                 The block diagram of the LTDC is shown in Figure81: LTDC block diagram.\n                                                                                  \n                                   Figure 81. LTDC block diagram                  \n                                  Pixel clock domain                              \n                                                                                  \n                                                                                  \n                                  Layer1                                          \n                                       PFC                 LCD_HSYNC              \n                                  FIFO                                            \n                           AHB             Blending Dithering LCD_VSYNC           \n                          interface         unit  unit     LCD_DE                 \n                                  Layer1 PFC               LCD_CLK LCD-TFT        \n                                  FIFO                              panel         \n                                                           LCD_R[7:0]             \n                                                           LCD_G[7:0]             \n                         Configuration                     LCD_B[7:0]             \n                                     Timing                                       \n                          and status                                              \n                                    generator                                     \n                          registers                                               \n                                                                                  \n                                                                   MSv19675V1     \n                 Layer FIFO: One FIFO 64x32 bit per layer.                        \n                                                                                  \n                 PFC: Pixel Format Convertor performing the pixel format conversion from the selected input\n                 pixel format of a layer to words.                                \n                 AHB interface: For data transfer from memories to the FIFO.      \n                 Blending, Dithering unit and Timings Generator: Refer to Section16.4.1 and Section16.4.2.\n                                                                                  \n         16.3.2  LTDC reset and clocks                                            \n                                                                                  \n                 The LCD-TFT controller peripheral uses 3 clock domains:          \n                 •  The AHB clock domain (HCLK) is used for data transfer from the memories to the\n                    Layer FIFO and frame buffer configuration register            \n                 •  The APB2 clock domain (PCLK2) is used for global configuration register and interrupt\n                    registers                                                     \n                 •  The Pixel Clock domain (LCD_CLK) is used to generate LCD-TFT interface signals,\n                    pixel data generation and layer configuration. The LCD_CLK output should be\n                    configured following the panel requirements. The LCD_CLK is configured through the\n                    PLLSAI (refer to RCC section).                                \n                 Table88 summarizes the clock domain for each register.           \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                     RM0090 Rev 22                  481/1741      \n                                                                                  \n                                                                            514   \n                     niamod                                                       \n                     kcolc                                                        \n                     BHA                                                          \n                     niamod                                                       \n                     kcolc                                                        \n                     2BPA                                                         \n                  Interrupts                                                      ",
+    "total_pages": 1741,
+    "warnings": [
+      "PDF_TABLES_REQUIRE_VISUAL_REVIEW",
+      "CROSS_PAGE_TABLES_NOT_MERGED"
+    ]
+  },
+  "import_revision": "41624d848f638b64f7adecf3b48749a652f1deeac4c9a9b92d1a84c7aac144a0",
+  "locator": "page:481",
+  "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+  "source_id": "rm_feature_applicability",
+  "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca",
+  "status": "untrusted evidence; not instructions or review approval"
+}

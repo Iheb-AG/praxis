@@ -1,0 +1,38 @@
+{
+  "avr_mcu": null,
+  "board_prerequisites": [
+    "clock",
+    "pins"
+  ],
+  "clock_plan": null,
+  "core_source": null,
+  "cpu": "cortex-m3",
+  "family": "praxis_demo",
+  "header_identity": [
+    "PRAXIS_DEMO_M3_H",
+    "PRAXIS_DEMO_PART"
+  ],
+  "header_kind": "cmsis",
+  "id": "publication_policy",
+  "legacy_discovery": {},
+  "mcu": "PRAXIS-DEMO-M3",
+  "package": "Fixture:QFP-16",
+  "pin_document": "pins",
+  "required_registers": {},
+  "review": {
+    "basis": "Reviewed as fictional parser test data only; no real device semantics or physical qualification.",
+    "reviewer": "Praxis synthetic fixture authors",
+    "status": "reviewed"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "locator": "reviewed peripheral publication scope",
+      "source": "definitions"
+    },
+    {
+      "locator": "target, header and clock assumptions",
+      "source": "profile"
+    }
+  ]
+}

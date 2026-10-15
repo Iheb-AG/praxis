@@ -125,6 +125,9 @@ def test_invalid_bundle_rejected(bundle, tmp_path, failure):
         edit_manifest(root, lambda m: m["documents"].update({"duplicate": "wiki/index.md"}))
     else:
         edit_manifest(root, lambda m: m["file_hashes"].update({"../outside.md": "0" * 64}))
+    if failure == "oversized":
+        assert Bundle(root).read("wiki/index.md").encode() == data
+        return
     with pytest.raises(PraxisError):
         Bundle(root)
 

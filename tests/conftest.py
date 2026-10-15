@@ -2,6 +2,7 @@ import os
 import shutil
 import json
 import subprocess
+import importlib
 from pathlib import Path
 
 import pytest
@@ -16,6 +17,25 @@ def require_tool(name):
         if os.environ.get("PRAXIS_REQUIRE_EXTERNAL_TOOLS") == "1":
             pytest.fail(f"Required release tool missing: {name}")
         pytest.skip(f"Optional external tool missing: {name}")
+
+
+def require_module(name):
+    try:
+        return importlib.import_module(name)
+    except ModuleNotFoundError:
+        if os.environ.get("PRAXIS_REQUIRE_EXTERNAL_TOOLS") == "1":
+            pytest.fail(f"Required test dependency missing: {name}; install the corresponding project extra")
+        pytest.skip(f"Optional Python dependency missing: {name}")
+
+
+@pytest.hookimpl(trylast=True)
+def pytest_sessionfinish(session, exitstatus):
+    # Strict acceptance may never succeed with unexecuted checks, including
+    # collection-level skips or a new test that bypasses require_tool/module.
+    if os.environ.get("PRAXIS_REQUIRE_EXTERNAL_TOOLS") == "1":
+        reporter = session.config.pluginmanager.get_plugin("terminalreporter")
+        if exitstatus == pytest.ExitCode.OK and reporter is not None and reporter.stats.get("skipped"):
+            session.exitstatus = pytest.ExitCode.TESTS_FAILED
 
 
 def require_image(lock):

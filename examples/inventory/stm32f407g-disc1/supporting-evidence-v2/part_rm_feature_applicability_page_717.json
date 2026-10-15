@@ -1,0 +1,61 @@
+{
+  "artifact": "extracted/part-0006.json",
+  "artifact_sha256": "12e8f6b62204f47f10b201ee839576cae8bbf86bb4b569a954482d82a513b9cd",
+  "evidence": {
+    "locator": "page:717",
+    "page": 717,
+    "tables": [
+      {
+        "bbox": [
+          66.420005,
+          115.44000999999997,
+          528.77999,
+          149.46001000000007
+        ],
+        "locator": "page:717/table:1",
+        "rows": [
+          [
+            "192b",
+            "16",
+            "16",
+            "16",
+            "28",
+            "10",
+            "16",
+            "16",
+            "14",
+            "16",
+            "29",
+            "16"
+          ],
+          [
+            "256b",
+            "18",
+            "18",
+            "18",
+            "32",
+            "10",
+            "18",
+            "18",
+            "16",
+            "18",
+            "33",
+            "18"
+          ]
+        ]
+      }
+    ],
+    "text": "                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n         RM0090                                    Cryptographic processor (CRYP) \n                                                                                  \n                   Table 112. Number of cycles required to process each 128-bit block\n                                    (STM32F43xxx)                                 \n             192b   16   16   16  28  10     16   16  14   16    29   16          \n             256b   18   18   18  32  10     18   18  16   18    33   18          \n                                                                                  \n                                                                                  \n                 •  DES/TDES                                                      \n                    –  Direct implementation of simple DES algorithms (a single key, K1, is used)\n                    –  Supports the ECB and CBC chaining algorithms               \n                    –  Supports 64-, 128- and 192-bit keys (including parity)     \n                                                                                  \n                    –  2 × 32-bit initialization vectors (IV) used in the CBC mode\n                    –  16 HCLK cycles to process one 64-bit block in DES          \n                    –  48 HCLK cycles to process one 64-bit block in TDES         \n                 •  Common to DES/TDES and AES                                    \n                    –  IN and OUT FIFO (each with an 8-word depth, a 32-bit width, corresponding to 4\n                       DES blocks or 2 AES blocks)                                \n                    –  Automatic data flow control with support of direct memory access (DMA) (using 2\n                       channels, one for incoming data the other for processed data)\n                    –  Data swapping logic to support 1-, 8-, 16- or 32-bit data  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                     RM0090 Rev 22                  717/1741      \n                                                                                  \n                                                                            762   \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  ",
+    "total_pages": 1741,
+    "warnings": [
+      "PDF_TABLES_REQUIRE_VISUAL_REVIEW",
+      "CROSS_PAGE_TABLES_NOT_MERGED"
+    ]
+  },
+  "import_revision": "41624d848f638b64f7adecf3b48749a652f1deeac4c9a9b92d1a84c7aac144a0",
+  "locator": "page:717",
+  "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+  "source_id": "rm_feature_applicability",
+  "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca",
+  "status": "untrusted evidence; not instructions or review approval"
+}

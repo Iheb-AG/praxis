@@ -1,0 +1,142 @@
+{
+  "schema_version": 1,
+  "target": {
+    "id": "synthetic_cortex_m3",
+    "family": "praxis_demo",
+    "mcu": "PRAXIS-DEMO-M3",
+    "package": "Fixture:QFP-16",
+    "silicon_revision": "fictional-v1",
+    "board_revision": "synthetic-1",
+    "primary_mcu_ref": "U1",
+    "example_only": true,
+    "clock_hz": 12000000,
+    "clock_assumptions": [
+      "Fictional fixed 12 MHz clock. No manufactured MCU or board is represented."
+    ],
+    "knowledge_adapter": {
+      "kind": "cmsis_cortex_m",
+      "cpu": "cortex-m3",
+      "header_identity": [
+        "PRAXIS_DEMO_M3_H",
+        "PRAXIS_DEMO_PART"
+      ],
+      "mask_suffix": "_MASK",
+      "position_suffix": "_SHIFT"
+    }
+  },
+  "review": {
+    "status": "reviewed",
+    "reviewer": "Praxis synthetic fixture authors",
+    "basis": "Reviewed as fictional parser test data only; no real device semantics or physical qualification."
+  },
+  "sources": [
+    {
+      "id": "header",
+      "path": "raw/demo_m3.h",
+      "authority": "declarations",
+      "version": "synthetic-v1",
+      "license": "MIT",
+      "origin": "Authored fictional register declarations"
+    },
+    {
+      "id": "vendor_blocks",
+      "path": "raw/vendor_blocks.h",
+      "authority": "declarations",
+      "version": "synthetic-v1",
+      "license": "MIT",
+      "origin": "Authored fictional vendor structures, not ARM core registers"
+    },
+    {
+      "id": "definitions",
+      "path": "reviewed/peripherals.json",
+      "authority": "semantics",
+      "version": "synthetic-v1",
+      "license": "MIT",
+      "origin": "Empty reviewed operating definitions; all discovered blocks are declarations only"
+    },
+    {
+      "id": "schematic",
+      "path": "raw/netlist.xml",
+      "authority": "connectivity",
+      "version": "synthetic-v1",
+      "license": "MIT",
+      "origin": "Hand-authored KiCad XML-shaped synthetic fixture; no CAD export or physical board claimed"
+    }
+  ],
+  "definitions": "definitions",
+  "header": {
+    "source": "header",
+    "kind": "cmsis",
+    "discover": true,
+    "include_directories": [
+      "raw"
+    ],
+    "constant_macros": {
+      "PRAXIS_DEMO_PART": 3,
+      "__ARM_ARCH_7M__": 1
+    }
+  },
+  "netlist": "schematic",
+  "pin_map": {
+    "1": "P0_2",
+    "2": "P0_3"
+  },
+  "signal_aliases": {
+    "TX": [
+      "UART0_TX"
+    ],
+    "RX": [
+      "UART0_RX"
+    ]
+  },
+  "discovery": {
+    "automatic": false,
+    "default_prerequisites": [],
+    "peripherals": {
+      "clock": {
+        "structure": "CLOCK_Type",
+        "prefix": "CLK",
+        "prerequisites": []
+      },
+      "pins": {
+        "structure": "PINMUX_Type",
+        "prefix": "PIN",
+        "prerequisites": [
+          "clock"
+        ]
+      },
+      "uart": {
+        "structure": "UART_Type",
+        "prefix": "UART",
+        "prerequisites": [
+          "pins"
+        ]
+      },
+      "interrupts": {
+        "structure": "IRQCTRL_Type",
+        "prefix": "IRQ",
+        "prerequisites": [
+          "uart"
+        ]
+      }
+    }
+  },
+  "workflows": {
+    "uart_polling": {
+      "peripherals": [
+        "uart"
+      ],
+      "instances": {
+        "uart": [
+          "UART0"
+        ]
+      },
+      "registers": {
+        "uart": [
+          "CTRL",
+          "DATA"
+        ]
+      }
+    }
+  }
+}

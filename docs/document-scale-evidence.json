@@ -1,0 +1,211 @@
+{
+  "compiler_sources": {
+    "praxis/adapters/kicad.py": "5a4133366df0b2614f95024c48110cbd723aef6f5311c658c64becea86bbf575",
+    "praxis/bundle.py": "b7dbc0b705f9784162f569668af23cccfe7e17b8024553d01245db33ed6d4fde",
+    "praxis/compiler.py": "8d1a475fbc37566bc2853d0e5dd2ce2129f4b9d2fe786c19ba809248a96ab5cf",
+    "praxis/coverage.py": "e36d44322342bf2ee297084d059018e90688ab333ae1b56ec7ecd4de752d98e1",
+    "praxis/render.py": "08fdbae4150c53dd8efa42b3b1f5e61449c9f522599fcdd67ce48c30347788cd",
+    "praxis/reports.py": "73a6aae6db8f3e8ae9e5cf9f02a0004f275c324ec3cb5a86a6d12272cd505ba8",
+    "tests/conftest.py": "744c139fc40cd298df64496dee98f3a0462820fe21f852723c39685e93b78e5e"
+  },
+  "date": "2026-10-14",
+  "dependency_lock": {
+    "passed": true
+  },
+  "determinism": {
+    "f407": {
+      "byte_identical": true,
+      "documents_above_former_ceiling": 1,
+      "files": 50,
+      "largest_document_bytes": 65814,
+      "revision": "60f5bcf7c7c4957012633074641065b69542aa95e9faf4401cafe401c9cabd48"
+    },
+    "large-avr": {
+      "byte_identical": true,
+      "documents_above_former_ceiling": 1,
+      "files": 9,
+      "largest_document_bytes": 10156004,
+      "revision": "156df60fab43e88a74812833273ffe3f13d5b6660aecbb7ea7462fc65d574bca"
+    },
+    "stm32f103c8t6": {
+      "byte_identical": true,
+      "documents_above_former_ceiling": 0,
+      "files": 37,
+      "largest_document_bytes": 31860,
+      "revision": "b09250af18e6eadddab659a5dd19d310ba35de8c829471ff81277a110f815e89"
+    },
+    "stm32g071rbt6": {
+      "byte_identical": true,
+      "documents_above_former_ceiling": 0,
+      "files": 42,
+      "largest_document_bytes": 37888,
+      "revision": "7e32ff3bf2bafb7a3971f5a3853ffb81476829d3cb10d2eab21d8cea7cb8a34f"
+    },
+    "stm32h743zit6": {
+      "byte_identical": true,
+      "documents_above_former_ceiling": 4,
+      "files": 84,
+      "largest_document_bytes": 81839,
+      "revision": "cd9a6c56c3624285fec54752f41b5c6b2a9d176b0da0eaea99e164b0fac61d1a"
+    }
+  },
+  "distribution": {
+    "branding_assets_passed": true,
+    "experimental_target_inputs_verified": 37,
+    "passed": true,
+    "private_and_raw_paths_excluded": true,
+    "public_documentation_file_links_passed": true,
+    "publication_contracts_verified": 19,
+    "source_members": 2381,
+    "wheel_members": 57
+  },
+  "docker": {
+    "architecture": "amd64",
+    "image": "project-praxis:complete-documents",
+    "image_id": "sha256:391aacce21aee5106580a1143e6724c4c4d27ff1e09f16dd8bd5c8b667f9b925",
+    "limits": "Local architecture only; no compiler, physical board, or remote registry publication tested.",
+    "negative_and_runtime_checks": [
+      "MISSING_FILE",
+      "INTEGRITY_ERROR",
+      "non_root",
+      "read_only_filesystem_and_bundle",
+      "no_optional_extras"
+    ],
+    "os": "linux",
+    "passed": true,
+    "sessions": [
+      {
+        "calls": 38,
+        "complete_documents": 30,
+        "revision": "b09250af18e6eadddab659a5dd19d310ba35de8c829471ff81277a110f815e89",
+        "target": "stm32f103c8t6_inventory"
+      },
+      {
+        "calls": 43,
+        "complete_documents": 35,
+        "revision": "7e32ff3bf2bafb7a3971f5a3853ffb81476829d3cb10d2eab21d8cea7cb8a34f",
+        "target": "stm32g071rbt6_inventory"
+      },
+      {
+        "calls": 85,
+        "complete_documents": 77,
+        "revision": "cd9a6c56c3624285fec54752f41b5c6b2a9d176b0da0eaea99e164b0fac61d1a",
+        "target": "stm32h743zit6_inventory"
+      },
+      {
+        "calls": 49,
+        "complete_documents": 41,
+        "revision": "60f5bcf7c7c4957012633074641065b69542aa95e9faf4401cafe401c9cabd48",
+        "target": "stm32f407g_disc1_mb997_e01"
+      },
+      {
+        "calls": 12,
+        "complete_documents": 4,
+        "revision": "156df60fab43e88a74812833273ffe3f13d5b6660aecbb7ea7462fc65d574bca",
+        "target": "atmega328p_fixture"
+      },
+      {
+        "calls": 49,
+        "complete_documents": 41,
+        "revision": "edb8249ce849c59e6642f2edab2b58e036bc0105925897d8a61c04449b00f7e5",
+        "target": "stm32f407g_disc1_mb997_e01"
+      },
+      {
+        "calls": 12,
+        "complete_documents": 4,
+        "revision": "9254f63b1d16f4296641e3bf5ab047593373d8a8fe42666b43b89362b1efc7e7",
+        "target": "atmega328p_fixture"
+      },
+      {
+        "calls": 38,
+        "complete_documents": 30,
+        "revision": "b09250af18e6eadddab659a5dd19d310ba35de8c829471ff81277a110f815e89",
+        "target": "stm32f103c8t6_inventory"
+      }
+    ],
+    "total_calls": 326
+  },
+  "format": "praxis-document-scale-evidence-v1",
+  "historical_bundles": {
+    "atmega328p": "9254f63b1d16f4296641e3bf5ab047593373d8a8fe42666b43b89362b1efc7e7",
+    "stm32f103c8t6-inventory-v1": "9f03fe953e7c76ea94b22d61054920410524f28996874259a63b879d6ffc1fe2",
+    "stm32f103c8t6-inventory-v2": "801b0126a094c4f5b211f2db999aa466a3014f99b2ed695c6493afd6e0cd448e",
+    "stm32f401re": "b283ed10bbc173c8932d185fb022c8d27829bef7011656840889b14b736c033d",
+    "stm32f407g-disc1-e01": "8a794192394d9e5dacea00324bfd91e061b0c086628b096c1ddd7bf25268800c",
+    "stm32f407g-disc1-e01-adc-v1": "102a3d0ca329d7e9351709179e082a51a44347b10b9345365f72e94ab58f24a8",
+    "stm32f407g-disc1-e01-arm-core-v1": "e60c26a7ba6580c5ec8fcf98fbbeb1ba470b86d252242d19c3a62507db06e5d7",
+    "stm32f407g-disc1-e01-arm-core-v2": "edb8249ce849c59e6642f2edab2b58e036bc0105925897d8a61c04449b00f7e5",
+    "stm32f407g-disc1-e01-can-rx-v1": "123a65450d9ff6849c1368aa595f9f575d8da71d740cdb68dcaa42cfc4e41a93",
+    "stm32f407g-disc1-e01-can-v1": "c16f763c075ac70682f8fda1bc64d012397c733feb156213707d691781b4f5d4",
+    "stm32f407g-disc1-e01-clock-v1": "0e8737e667f05858aa39cf6484cd7a5c30125fd5ae2910c441187185380eccda",
+    "stm32f407g-disc1-e01-dac-v1": "f14b00bf0189b882d50a2e8a8d11a48ec484cace3e3dd6b68eb6d7bd9e26cab2",
+    "stm32f407g-disc1-e01-discovery-v1": "5335ed3d1d4efca3960e5cccfb8f9f30800a59d6fd2c14f3d3c309409dd09f4c",
+    "stm32f407g-disc1-e01-discovery-v2": "84939f75664926a15854c881419d20d807ba7f93d98745ab0ac853e281ed9635",
+    "stm32f407g-disc1-e01-features-v1": "bd8b793388dff8303e5f7d46469b48afea1807dd2f7ae9b71541eb01779a3fbc",
+    "stm32f407g-disc1-e01-i2c-v1": "3e0deab3da3c5a4404782e2845e9e24206045912fb324bafd801fbe40212fc7e",
+    "stm32f407g-disc1-e01-m1": "53474b5de83dddffbdccfb86057c6ec9ad362f1949afd6a74e90effb2c27fc9b",
+    "stm32f407g-disc1-e01-uart-v1": "1e7e9f44e7e8a4a9c2f1730ae725a2fed50cd80271b75adf63cdaa495899900b",
+    "stm32f407vgt6": "6af1b28071ee90db0cb5be8b5ee9072240583d0ca3affd98b159630a6cebbe33",
+    "stm32g071rbt6-inventory-v1": "7a36c61aee04435e4b1054431285b8e0528c4e009c0836079873c224608d680b",
+    "stm32g071rbt6-inventory-v2": "71006e075674d00f6f1b8ccd0ad978090ce81ebe4b287eb9060b2054e54fbfce",
+    "stm32h743zit6-inventory-v1": "e75ec11f9cc747936fc8335d53165a7d2432e30e09ba1a4e8e879a2ac1e3a295",
+    "stm32h743zit6-inventory-v2": "c48e538d8caee607a7439550ccbdb28db424911e06bd7e0b8d03fed857c13ed3",
+    "synthetic-cortex-m3-v1": "549fac8ec55251b7f49c77d6d458229394ddeef3b628f8f25000e6cf55db63e4"
+  },
+  "kicad": {
+    "native_export_and_compile_checks_passed": 4,
+    "negative_cases": 5,
+    "pin_normalization_cases_passed": 7,
+    "positive_cases": 2,
+    "source_reference": "https://docs.kicad.org/doxygen/netlist__exporter__xml_8cpp_source.html",
+    "version": "10.0.7"
+  },
+  "large_document": {
+    "bundle_revision": "156df60fab43e88a74812833273ffe3f13d5b6660aecbb7ea7462fc65d574bca",
+    "docker_exact_response_passed": true,
+    "native_stdio_exact_response_passed": true,
+    "repeated_evidence_rows": 350000,
+    "tail_checks": [
+      "INTEGRITY_ERROR",
+      "INVALID_ENCODING",
+      "BROKEN_LINK"
+    ],
+    "utf8_document_bytes": 10156004
+  },
+  "limits": [
+    "Host memory and MCP client/model context remain practical constraints",
+    "Raw engineering inputs, authoring packets, sandbox resources and hardware operations keep their independent bounds",
+    "Unknown operating semantics and unsupported extraction constructs remain explicit gaps",
+    "No physical board action, hosted CI, registry upload or independent engineering sign-off"
+  ],
+  "lint": {
+    "passed": true
+  },
+  "next": "Review bounded F103/G071 clock/GPIO/UART operating workflows through source-backed contracts",
+  "publication_document_limit_bytes": null,
+  "retrieval_document_limit_bytes": null,
+  "status": "implementation_verified",
+  "strict_dependency_policy": {
+    "both_pinned_sandbox_images_available": true,
+    "native_tools": [
+      "clang",
+      "gcc",
+      "arm-none-eabi-gcc",
+      "avr-gcc",
+      "dtc",
+      "fdtoverlay",
+      "kicad-cli",
+      "openocd",
+      "podman"
+    ],
+    "negative_policy_cases_passed": 3,
+    "preflight_missing": [],
+    "unexpected_skips_fail_session": true
+  },
+  "tests": {
+    "command": "PRAXIS_REQUIRE_EXTERNAL_TOOLS=1 .venv/bin/pytest -q",
+    "duration_seconds": 174.55,
+    "passed": 942,
+    "skipped": 0
+  }
+}

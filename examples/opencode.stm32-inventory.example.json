@@ -1,0 +1,15 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "project-praxis": {
+      "type": "local",
+      "command": [
+        "/absolute/path/Praxis_Bundle/.venv/bin/praxis",
+        "serve",
+        "--bundle",
+        "/absolute/path/Praxis_Bundle/bundles/stm32g071rbt6-inventory-v2"
+      ],
+      "enabled": true
+    }
+  }
+}

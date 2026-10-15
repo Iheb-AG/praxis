@@ -1,0 +1,373 @@
+{
+  "aliases": {
+    "gpioa": "gpio",
+    "usart2": "usart"
+  },
+  "clock_plan": {
+    "ahb_div": 1,
+    "apb1_div": 4,
+    "apb2_div": 2,
+    "flash_wait_states": 5,
+    "hse_hz": 8000000,
+    "pll_m": 8,
+    "pll_n": 336,
+    "pll_p": 2,
+    "pll_q": 7,
+    "vdd_mv": 3300
+  },
+  "definitions": "definitions",
+  "devicetree": {
+    "includes": [],
+    "overlays": [
+      "overlay"
+    ],
+    "source": "dts"
+  },
+  "header": {
+    "constant_macros": {
+      "FLASH_ACR_LATENCY_5WS": 5,
+      "PWR_CR_VOS": 16384,
+      "RCC_CFGR_PPRE1_DIV4": 5120,
+      "RCC_CFGR_PPRE2_DIV2": 32768,
+      "USART_CR1_UE": 8192,
+      "__NVIC_PRIO_BITS": 4
+    },
+    "defines": [
+      "-DSTM32F407xx"
+    ],
+    "discover": true,
+    "include_directories": [
+      "raw/vendor"
+    ],
+    "kind": "cmsis",
+    "required_registers": {
+      "gpio": [
+        "MODER",
+        "OTYPER",
+        "OSPEEDR",
+        "PUPDR",
+        "IDR",
+        "ODR",
+        "BSRR",
+        "LCKR",
+        "AFRL",
+        "AFRH"
+      ],
+      "nvic": [
+        "ISER",
+        "ICER",
+        "ISPR",
+        "ICPR",
+        "IABR",
+        "IP",
+        "STIR"
+      ],
+      "rcc": [
+        "CR",
+        "PLLCFGR",
+        "CFGR",
+        "AHB1ENR",
+        "APB1ENR",
+        "APB1RSTR"
+      ],
+      "usart": [
+        "SR",
+        "DR",
+        "BRR",
+        "CR1",
+        "CR2",
+        "CR3",
+        "GTPR"
+      ]
+    },
+    "source": "header"
+  },
+  "netlist": "netlist",
+  "pin_map": {
+    "1": "PE2",
+    "10": "VSS",
+    "100": "VDD",
+    "11": "VDD",
+    "12": "PH0",
+    "13": "PH1",
+    "14": "NRST",
+    "15": "PC0",
+    "16": "PC1",
+    "17": "PC2",
+    "18": "PC3",
+    "19": "VDD",
+    "2": "PE3",
+    "20": "VSSA",
+    "21": "VREF+",
+    "22": "VDDA",
+    "23": "PA0",
+    "24": "PA1",
+    "25": "PA2",
+    "26": "PA3",
+    "27": "VSS",
+    "28": "VDD",
+    "29": "PA4",
+    "3": "PE4",
+    "30": "PA5",
+    "31": "PA6",
+    "32": "PA7",
+    "33": "PC4",
+    "34": "PC5",
+    "35": "PB0",
+    "36": "PB1",
+    "37": "PB2",
+    "38": "PE7",
+    "39": "PE8",
+    "4": "PE5",
+    "40": "PE9",
+    "41": "PE10",
+    "42": "PE11",
+    "43": "PE12",
+    "44": "PE13",
+    "45": "PE14",
+    "46": "PE15",
+    "47": "PB10",
+    "48": "PB11",
+    "49": "VCAP_1",
+    "5": "PE6",
+    "50": "VDD",
+    "51": "PB12",
+    "52": "PB13",
+    "53": "PB14",
+    "54": "PB15",
+    "55": "PD8",
+    "56": "PD9",
+    "57": "PD10",
+    "58": "PD11",
+    "59": "PD12",
+    "6": "VBAT",
+    "60": "PD13",
+    "61": "PD14",
+    "62": "PD15",
+    "63": "PC6",
+    "64": "PC7",
+    "65": "PC8",
+    "66": "PC9",
+    "67": "PA8",
+    "68": "PA9",
+    "69": "PA10",
+    "7": "PC13",
+    "70": "PA11",
+    "71": "PA12",
+    "72": "PA13",
+    "73": "VCAP_2",
+    "74": "VSS",
+    "75": "VDD",
+    "76": "PA14",
+    "77": "PA15",
+    "78": "PC10",
+    "79": "PC11",
+    "8": "PC14",
+    "80": "PC12",
+    "81": "PD0",
+    "82": "PD1",
+    "83": "PD2",
+    "84": "PD3",
+    "85": "PD4",
+    "86": "PD5",
+    "87": "PD6",
+    "88": "PD7",
+    "89": "PB3",
+    "9": "PC15",
+    "90": "PB4",
+    "91": "PB5",
+    "92": "PB6",
+    "93": "PB7",
+    "94": "BOOT0",
+    "95": "PB8",
+    "96": "PB9",
+    "97": "PE0",
+    "98": "PE1",
+    "99": "VSS"
+  },
+  "review": {
+    "basis": "Pinned ST/Arm declarations, DS8626 and ST clock example; independent board and semantics sign-off remains pending.",
+    "reviewer": "Codex source-backed F407 fixture editorial review",
+    "status": "reviewed"
+  },
+  "schema_version": 1,
+  "signal_aliases": {
+    "UART_RX": [
+      "USART2_RX"
+    ],
+    "UART_TX_MCU": [
+      "USART2_TX"
+    ]
+  },
+  "sources": [
+    {
+      "authority": "semantics",
+      "id": "definitions",
+      "license": "MIT",
+      "origin": "Source-backed editorial facts; RM0090/DS8626; independent review pending",
+      "path": "reviewed/peripherals.json",
+      "version": "f407-fixture-1"
+    },
+    {
+      "authority": "semantics",
+      "id": "rcc_review",
+      "license": "MIT",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "reviewed/rcc.md",
+      "version": "f407-fixture-1"
+    },
+    {
+      "authority": "semantics",
+      "id": "gpio_review",
+      "license": "MIT",
+      "origin": "https://www.st.com/resource/en/datasheet/stm32f407vg.pdf",
+      "path": "reviewed/gpio.md",
+      "version": "f407-fixture-1"
+    },
+    {
+      "authority": "semantics",
+      "id": "usart_review",
+      "license": "MIT",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "path": "reviewed/usart.md",
+      "version": "f407-fixture-1"
+    },
+    {
+      "authority": "semantics",
+      "id": "nvic_review",
+      "license": "MIT",
+      "origin": "Arm CMSIS core NVIC and ST device IRQ declarations",
+      "path": "reviewed/nvic.md",
+      "version": "f407-fixture-1"
+    },
+    {
+      "authority": "connectivity",
+      "id": "netlist",
+      "license": "MIT",
+      "origin": "Hand-authored partial illustrative KiCad XML; replace with actual board export",
+      "path": "raw/netlist.xml",
+      "version": "f407-fixture-1"
+    },
+    {
+      "authority": "semantics",
+      "id": "clock_review",
+      "license": "BSD-3-Clause",
+      "origin": "https://raw.githubusercontent.com/STMicroelectronics/STM32CubeF4/v1.28.1/Projects/STM32F4-Discovery/Examples/UART/UART_TwoBoards_ComPolling/Src/main.c",
+      "path": "raw/st_clock_example.c",
+      "version": "STM32CubeF4 v1.28.1"
+    },
+    {
+      "authority": "configuration",
+      "id": "dts",
+      "license": "MIT",
+      "origin": "Synthetic DTS; 42 MHz clock is a declared configuration, not measured wiring",
+      "path": "raw/topology.dts",
+      "version": "f407-fixture-1"
+    },
+    {
+      "authority": "configuration",
+      "id": "overlay",
+      "license": "MIT",
+      "origin": "Synthetic UART enable overlay",
+      "path": "raw/enable_uart.dtso",
+      "version": "f407-fixture-1"
+    },
+    {
+      "authority": "declarations",
+      "id": "vendor_0",
+      "license": "Apache-2.0",
+      "origin": "https://raw.githubusercontent.com/ARM-software/CMSIS_5/5.9.0/LICENSE.txt",
+      "path": "raw/vendor/LICENSE-CMSIS.txt",
+      "version": "ST commit 3c77349ce04c8af401454cc51f85ea9a50e34fc1 / Arm CMSIS 5.9.0"
+    },
+    {
+      "authority": "declarations",
+      "id": "vendor_1",
+      "license": "BSD-3-Clause",
+      "origin": "https://raw.githubusercontent.com/STMicroelectronics/cmsis-device-f4/3c77349ce04c8af401454cc51f85ea9a50e34fc1/LICENSE.md",
+      "path": "raw/vendor/LICENSE-ST.md",
+      "version": "ST commit 3c77349ce04c8af401454cc51f85ea9a50e34fc1 / Arm CMSIS 5.9.0"
+    },
+    {
+      "authority": "declarations",
+      "id": "vendor_2",
+      "license": "Apache-2.0",
+      "origin": "https://raw.githubusercontent.com/ARM-software/CMSIS_5/5.9.0/CMSIS/Core/Include/cmsis_compiler.h",
+      "path": "raw/vendor/cmsis_compiler.h",
+      "version": "ST commit 3c77349ce04c8af401454cc51f85ea9a50e34fc1 / Arm CMSIS 5.9.0"
+    },
+    {
+      "authority": "declarations",
+      "id": "vendor_3",
+      "license": "Apache-2.0",
+      "origin": "https://raw.githubusercontent.com/ARM-software/CMSIS_5/5.9.0/CMSIS/Core/Include/cmsis_gcc.h",
+      "path": "raw/vendor/cmsis_gcc.h",
+      "version": "ST commit 3c77349ce04c8af401454cc51f85ea9a50e34fc1 / Arm CMSIS 5.9.0"
+    },
+    {
+      "authority": "declarations",
+      "id": "vendor_4",
+      "license": "Apache-2.0",
+      "origin": "https://raw.githubusercontent.com/ARM-software/CMSIS_5/5.9.0/CMSIS/Core/Include/cmsis_version.h",
+      "path": "raw/vendor/cmsis_version.h",
+      "version": "ST commit 3c77349ce04c8af401454cc51f85ea9a50e34fc1 / Arm CMSIS 5.9.0"
+    },
+    {
+      "authority": "declarations",
+      "id": "cmsis_core",
+      "license": "Apache-2.0",
+      "origin": "https://raw.githubusercontent.com/ARM-software/CMSIS_5/5.9.0/CMSIS/Core/Include/core_cm4.h",
+      "path": "raw/vendor/core_cm4.h",
+      "version": "ST commit 3c77349ce04c8af401454cc51f85ea9a50e34fc1 / Arm CMSIS 5.9.0"
+    },
+    {
+      "authority": "declarations",
+      "id": "vendor_6",
+      "license": "Apache-2.0",
+      "origin": "https://raw.githubusercontent.com/ARM-software/CMSIS_5/5.9.0/CMSIS/Core/Include/mpu_armv7.h",
+      "path": "raw/vendor/mpu_armv7.h",
+      "version": "ST commit 3c77349ce04c8af401454cc51f85ea9a50e34fc1 / Arm CMSIS 5.9.0"
+    },
+    {
+      "authority": "declarations",
+      "id": "vendor_7",
+      "license": "MIT",
+      "origin": "Pinned vendor source inventory",
+      "path": "raw/vendor/provenance.json",
+      "version": "ST commit 3c77349ce04c8af401454cc51f85ea9a50e34fc1 / Arm CMSIS 5.9.0"
+    },
+    {
+      "authority": "declarations",
+      "id": "header",
+      "license": "BSD-3-Clause",
+      "origin": "https://raw.githubusercontent.com/STMicroelectronics/cmsis-device-f4/3c77349ce04c8af401454cc51f85ea9a50e34fc1/Include/stm32f407xx.h",
+      "path": "raw/vendor/stm32f407xx.h",
+      "version": "ST commit 3c77349ce04c8af401454cc51f85ea9a50e34fc1 / Arm CMSIS 5.9.0"
+    },
+    {
+      "authority": "declarations",
+      "id": "vendor_9",
+      "license": "BSD-3-Clause",
+      "origin": "https://raw.githubusercontent.com/STMicroelectronics/cmsis-device-f4/3c77349ce04c8af401454cc51f85ea9a50e34fc1/Include/system_stm32f4xx.h",
+      "path": "raw/vendor/system_stm32f4xx.h",
+      "version": "ST commit 3c77349ce04c8af401454cc51f85ea9a50e34fc1 / Arm CMSIS 5.9.0"
+    }
+  ],
+  "target": {
+    "board_revision": "praxis-f407-example-1",
+    "clock_assumptions": [
+      "LQFP100; assumed 8 MHz HSE crystal, HSEBYP=0; VDD=3.3 V, internal regulator Scale 1.",
+      "PLLM=8, PLLN=336, PLLP=2, PLLQ=7; SYSCLK=HCLK=168 MHz; AHB /1.",
+      "APB1 /4: PCLK1=42 MHz; APB2 /2: PCLK2=84 MHz; 5 FLASH wait states before raising HCLK.",
+      "Validate actual oscillator, supply, board routing and silicon errata before hardware use."
+    ],
+    "clock_hz": 168000000,
+    "example_only": true,
+    "family": "stm32",
+    "id": "stm32f407vgt6_fixture",
+    "mcu": "STM32F407VGT6",
+    "package": "Package_QFP:LQFP-100_14x14mm_P0.5mm",
+    "primary_mcu_ref": "U1",
+    "silicon_revision": "Unspecified; errata review pending"
+  }
+}

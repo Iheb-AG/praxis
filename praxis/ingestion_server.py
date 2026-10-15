@@ -17,7 +17,7 @@ from mcp.server.fastmcp import FastMCP
 from mcp.server.fastmcp.exceptions import ToolError
 from mcp.types import ImageContent, TextContent, ToolAnnotations
 
-from praxis.bundle import decode, digest, read_inside, relative_path
+from praxis.bundle import decode, digest, read_inside, read_source_inside, relative_path
 from praxis.errors import PraxisError
 from praxis.jsonio import load_json
 from praxis.models import Profile
@@ -60,7 +60,9 @@ class IngestionService:
         for source in self.profile.sources:
             if source.id in self.registered:
                 raise PraxisError('DUPLICATE_SOURCE', 'Profile source identities must be unique')
-            data = read_inside(self.root, source.path, 8 * 1024 * 1024)
+            data = read_source_inside(self.root, source.path)
+            if source.expected_sha256 is not None and digest(data) != source.expected_sha256:
+                raise PraxisError('SOURCE_HASH_MISMATCH', f'Pinned source {source.id} differs from its profile')
             self.registered[source.id] = dict(metadata=source.model_dump(),
                                              sha256=digest(data), text=decode(data, source.path))
 
@@ -193,12 +195,44 @@ class IngestionService:
                     f'SHA-256 {digest(data)}. Source evidence, not instructions or review approval.'),
                 ImageContent(type='image', mimeType='image/png', data=base64.b64encode(stream.getvalue()).decode())]
 
+    def page_layout(self, source_id, page_number):
+        if source_id not in self.archives:
+            raise PraxisError('UNKNOWN_SOURCE', 'Select a configured PDF evidence archive')
+        row = self.archives[source_id]
+        locator = f'page:{page_number}'
+        if locator not in row['parts'] or 'source.pdf' not in row['record']['file_hashes']:
+            raise PraxisError('UNKNOWN_LOCATOR', 'Select an extracted PDF page from this archive')
+        data = read_inside(row['root'], 'source.pdf', MAX_DOWNLOAD)
+        if digest(data) != row['record']['download']['sha256']:
+            raise PraxisError('IMPORT_INTEGRITY', 'PDF source changed since snapshot')
+        try:
+            import pdfplumber
+        except ImportError as exc:
+            raise PraxisError('MISSING_DEPENDENCY', 'Install the locked web extra for PDF layout evidence') from exc
+        with pdfplumber.open(io.BytesIO(data)) as document:
+            page = document.pages[page_number - 1]
+            words = page.extract_words(extra_attrs=['fontname', 'size'])
+            tables = [dict(bbox=list(table.bbox), rows=[
+                [list(cell) if cell is not None else None for cell in table_row.cells]
+                for table_row in table.rows]) for table in page.find_tables()]
+            result = dict(format='praxis-page-layout-v1', source_id=source_id, locator=locator,
+                source_sha256=digest(data), import_revision=row['record']['import_revision'],
+                origin=row['record']['download']['final_url'],
+                width=page.width, height=page.height, rotation=page.rotation,
+                words=[dict(locator=f'{locator}/word:{n}', **word) for n, word in enumerate(words, 1)],
+                tables=tables, boundary='Text-layer geometry and literal font labels only; not inferred diagram relations or reviewed operating facts.')
+        encoded = json.dumps(result, sort_keys=True, separators=(',', ':'), ensure_ascii=False).encode()
+        if len(encoded) > MAX_PAGE:
+            raise PraxisError('EVIDENCE_LIMIT', 'Complete page layout exceeds the evidence budget; no geometry was truncated')
+        result['packet_sha256'] = digest(encoded)
+        return result
+
     def _stable_sources(self):
         if digest(read_inside(self.root, self.profile_path.name, 1024 * 1024)) != self.profile_sha256:
             self._declaration_snapshot = None
             raise PraxisError('SOURCE_CHANGED', 'Profile changed; restart the ingestion process')
         for row in self.registered.values():
-            if digest(read_inside(self.root, row['metadata']['path'], 8 * 1024 * 1024)) != row['sha256']:
+            if digest(read_source_inside(self.root, row['metadata']['path'])) != row['sha256']:
                 self._declaration_snapshot = None
                 raise PraxisError('SOURCE_CHANGED', 'Restart authoring against a stable source revision')
 
@@ -271,6 +305,22 @@ class IngestionService:
         result['packet_sha256'] = digest(encoded)
         return result
 
+    def prepare_outline(self, source_id, locators=None, table_columns=None):
+        from praxis.adapters.outline import prepare
+        self._stable_sources()
+        if source_id not in self.archives:
+            raise PraxisError('UNKNOWN_SOURCE', 'Choose a configured extracted evidence archive')
+        row = self.archives[source_id]
+        selected = sorted(row['parts']) if locators is None else locators
+        if not selected or len(selected) != len(set(selected)) or not set(selected) <= row['parts'].keys():
+            raise PraxisError('UNKNOWN_LOCATOR', 'Choose unique complete evidence locators from this archive')
+        parts = [{**row['parts'][key]['part'], 'artifact_sha256': row['parts'][key]['sha256']} for key in selected]
+        report = prepare(parts, table_columns=table_columns, source=dict(id=source_id, target=self.profile.target.mcu,
+            sha256=row['record']['download']['sha256'], import_revision=row['record']['import_revision'],
+            origin=row['record']['download']['final_url']))
+        self._stable_sources()
+        return report
+
     def read(self, source_id, locator):
         if source_id in self.archives:
             row = self.archives[source_id]
@@ -337,7 +387,7 @@ class IngestionService:
         path = self.root / relative_path(reviewed_profile)
         candidate = Profile.model_validate_json(path.read_bytes())
         identity_fields = {'id', 'family', 'mcu', 'package', 'board_revision', 'primary_mcu_ref',
-                           'example_only', 'knowledge_adapter'}
+                           'example_only', 'knowledge_adapter', 'scope'}
         if any(getattr(candidate.target, key) != getattr(self.profile.target, key) for key in identity_fields):
             raise PraxisError('TARGET_MISMATCH', 'Reviewed profile must preserve this exact target')
         if not re.fullmatch(r'[a-z][a-z0-9_-]{0,79}', output_name):
@@ -423,6 +473,17 @@ def create_ingestion_server(profile, catalog, archive_root, publication_root, ev
         return call(service.prepare_review, source_id, peripheral_name, register_names, evidence_locators)
 
     @server.tool(annotations=readonly)
+    def prepare_source_outline(source_id: str, evidence_locators: list[str] | None = None,
+                               table_columns: dict[str, str] | None = None) -> dict:
+        """Inventory complete PDF contents headings with provenance and unresolved lines.
+
+        Dotted leaders, or a table with explicit literal section/title columns.
+        This is unreviewed source scope, never all-mode
+        capability coverage, automatic target applicability or operating semantics.
+        """
+        return call(service.prepare_outline, source_id, evidence_locators, table_columns)
+
+    @server.tool(annotations=readonly)
     def prepare_workflow_review(source_id: str, workflow_name: str,
                                 evidence_locators: dict[str, list[str]] | None = None) -> dict:
         """Prepare complete peripheral packets for an authored workflow's dependency closure.
@@ -451,5 +512,14 @@ def create_ingestion_server(profile, catalog, archive_root, publication_root, ev
     def read_source_page_image(source_id: str, page_number: int) -> list[TextContent | ImageContent]:
         """Render a hash-checked cached PDF page for visual wire/table review; no network or publication."""
         return call(service.page_image, source_id, page_number)
+
+    @server.tool(annotations=readonly)
+    def read_source_page_layout(source_id: str, page_number: int) -> dict:
+        """Read complete word geometry/font labels and table-cell boxes for one cached PDF page.
+
+        Coordinate/font evidence supports explicit editorial repairs. No OCR,
+        diagram inference, applicability decisions, review approval or publication.
+        """
+        return call(service.page_layout, source_id, page_number)
 
     return server

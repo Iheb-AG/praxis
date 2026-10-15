@@ -1,0 +1,174 @@
+{
+  "avr_mcu": null,
+  "board_prerequisites": [
+    "rcc",
+    "gpio"
+  ],
+  "clock_plan": {
+    "ahb_div": {
+      "equals": 1
+    },
+    "apb1_div": {
+      "equals": 4
+    },
+    "apb2_div": {
+      "equals": 2
+    },
+    "flash_wait_states": {
+      "equals": 5
+    },
+    "hse_hz": {
+      "equals": 8000000
+    },
+    "pll_m": {
+      "equals": 8
+    },
+    "pll_n": {
+      "equals": 336
+    },
+    "pll_p": {
+      "equals": 2
+    },
+    "pll_q": {
+      "equals": 7
+    },
+    "vdd_mv": {
+      "maximum": 3600,
+      "minimum": 2700
+    }
+  },
+  "core_source": "cmsis_core",
+  "cpu": "cortex-m4",
+  "family": "stm32",
+  "header_identity": [
+    "__STM32F407xx_H"
+  ],
+  "header_kind": "cmsis",
+  "id": "publication_policy",
+  "legacy_discovery": {},
+  "mcu": "STM32F407VGT6",
+  "member_views": {
+    "gpio": {
+      "AFR": [
+        "AFRL",
+        "AFRH"
+      ]
+    }
+  },
+  "package": "Package_QFP:LQFP-100_14x14mm_P0.5mm",
+  "pin_document": "gpio",
+  "required_registers": {
+    "crc": [
+      "CR",
+      "DR",
+      "IDR"
+    ],
+    "dma": [
+      "HIFCR",
+      "HISR",
+      "LIFCR",
+      "LISR"
+    ],
+    "dma_stream": [
+      "CR",
+      "FCR",
+      "M0AR",
+      "NDTR",
+      "PAR"
+    ],
+    "exti": [
+      "EMR",
+      "FTSR",
+      "IMR",
+      "PR",
+      "RTSR",
+      "SWIER"
+    ],
+    "gpio": [
+      "AFRH",
+      "AFRL",
+      "BSRR",
+      "IDR",
+      "LCKR",
+      "MODER",
+      "ODR",
+      "OSPEEDR",
+      "OTYPER",
+      "PUPDR"
+    ],
+    "iwdg": [
+      "KR",
+      "PR",
+      "RLR",
+      "SR"
+    ],
+    "nvic": [
+      "IABR",
+      "ICER",
+      "ICPR",
+      "IP",
+      "ISER",
+      "ISPR",
+      "STIR"
+    ],
+    "rcc": [
+      "AHB1ENR",
+      "AHB2ENR",
+      "APB1ENR",
+      "APB1RSTR",
+      "APB2ENR",
+      "CFGR",
+      "CR",
+      "PLLCFGR"
+    ],
+    "rng": [
+      "CR",
+      "DR",
+      "SR"
+    ],
+    "spi": [
+      "CR1",
+      "CR2",
+      "DR",
+      "I2SCFGR",
+      "SR"
+    ],
+    "syscfg": [
+      "EXTICR0"
+    ],
+    "tim": [
+      "ARR",
+      "CNT",
+      "CR1",
+      "DIER",
+      "EGR",
+      "PSC",
+      "SR"
+    ],
+    "usart": [
+      "BRR",
+      "CR1",
+      "CR2",
+      "CR3",
+      "DR",
+      "GTPR",
+      "SR"
+    ]
+  },
+  "review": {
+    "basis": "RM0090 Rev22 cached page evidence, import 76d4cc4fa4349310f75544d572bd2c6d326309e98f52dff9b1e044d17c85bd39. Target-scoped textual requirements; independent engineering review and new hardware qualification pending.; ADC1 internal-reference and TIM2 polling subset reviewed from complete MCP evidence; independent review pending; scoped I2C1 standard-mode transmitter reviewed from actual ingestion MCP; no wiring/errata qualification; MCP evidence-backed candidate PD0 AF9 pull-up prerequisite and finite RX/ack checks; hypothesis only, physical success and independent review pending.",
+    "reviewer": "Codex source-backed editorial review through Praxis ingestion MCP",
+    "status": "reviewed"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "locator": "reviewed peripheral publication scope",
+      "source": "definitions"
+    },
+    {
+      "locator": "target, header and clock assumptions",
+      "source": "profile"
+    }
+  ]
+}

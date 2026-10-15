@@ -10,7 +10,7 @@ literal source search and filesystem identities, with no embeddings or model cal
 explicit acquisition can contact the network. The three-tool knowledge server remains offline
 and serves one fixed immutable bundle. Authoring does not change a running retrieval session.
 
-The service exposes eleven tools. Its [manual review adapter](manual-review-compiler.md) is shared
+The service exposes thirteen tools. Its [manual review adapter](manual-review-compiler.md) is shared
 with the offline CLI and prepares candidates, never automatically approved operating facts.
 
 ## Launch and separation
@@ -68,6 +68,8 @@ flash or execute firmware. The knowledge MCP cannot acquire or publish source ma
 | `discover_source_declarations(peripheral_name)` | Configured CMSIS adapter result; layout/masks only, with coverage limitations |
 | `prepare_peripheral_review(source_id, peripheral_name, register_names=None, evidence_locators=None)` | Manual candidates checked against declarations; conflicts/gaps/provenance; always pending review |
 | `prepare_workflow_review(source_id, workflow_name, evidence_locators=None)` | Expand authored document/mode prerequisites and register scopes into per-peripheral review packets; always pending review |
+| `prepare_source_outline(source_id, evidence_locators=None, table_columns=None)` | Preserve section candidates, exact provenance and all unresolved contents lines; dotted-leader or explicit table-index columns; never all-mode support |
+| `read_source_page_layout(source_id, page_number)` | Complete text-layer word/font geometry and table-cell boxes for one cached PDF page; supports explicit editorial repair, not diagram inference |
 | `acquire_source_evidence(source_id, pages=None)` | Explicit HTTPS acquisition of an allowlisted catalog identity; no arbitrary URL or recursive crawl |
 | `stage_cached_source(source_id, pages, output_id)` | Extract selected cached bytes into a new authoring archive without network; retained URL is declared provenance |
 | `record_source_review(source_id, notes)` | Immutable exact-byte editorial review receipt after actual review; explicitly not independent engineering approval |
@@ -75,7 +77,7 @@ flash or execute firmware. The knowledge MCP cannot acquire or publish source ma
 
 A registered text range contains at most 200 lines and 1 MiB. Extracted page responses preserve
 complete text/tables; search snippets do not. The in-memory extracted evidence snapshot is
-bounded to 128 MiB. Published peripheral documents retain their separate 64 KiB limit. Rendered
+bounded to 128 MiB. Published peripheral documents have no fixed byte ceiling. Rendered
 PDF previews are bounded to 1800 pixels on their longest edge; use source bytes for any details that remain
 unreadable. Preview rendering requires the optional PDF dependencies.
 

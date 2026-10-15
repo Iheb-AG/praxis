@@ -16,6 +16,7 @@
     "pll_q": 7,
     "vdd_mv": 3300
   },
+  "compilation_contract": "compilation_policy",
   "definition_extensions": [
     "adc_extension"
   ],
@@ -1795,6 +1796,15 @@
       "origin": "Scoped reviewed normalized records from actual ingestion MCP evidence",
       "path": "reviewed/adc-v1/extension.json",
       "version": "adc-v1"
+    },
+    {
+      "authority": "configuration",
+      "expected_sha256": "10940ac37ebfc77e6e2aaac13bf4a9b14376c53d15e2dc27f3bd90e4f4a89078",
+      "id": "compilation_policy",
+      "license": "MIT",
+      "origin": "Explicit publication scope migrated from existing reviewed target/profile policy; not independent hardware sign-off",
+      "path": "contracts/profile-adc-v1.json",
+      "version": "publication-policy-v1"
     }
   ],
   "target": {

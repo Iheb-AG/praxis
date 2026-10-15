@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "project-praxis": {
+      "command": "/absolute/path/to/docker",
+      "args": [
+        "run", "--rm", "--init", "-i",
+        "--pull=never", "--network=none", "--read-only",
+        "--cap-drop=ALL", "--security-opt=no-new-privileges",
+        "--pids-limit=64", "--memory=256m", "--cpus=1",
+        "--mount", "type=bind,source=/absolute/path/Praxis_Bundle/bundles/stm32f407g-disc1-e01-arm-core-v2,target=/bundle,readonly",
+        "project-praxis:0.1.0"
+      ]
+    }
+  }
+}

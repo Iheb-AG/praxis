@@ -25,7 +25,7 @@ async def check(bundle_path: Path, peripheral: str, signal: str, output: Path):
     expected = Session(bundle)
     expected.read_wiki_index()
     net = expected.query_schematic_netlist(signal)
-    if net.startswith("No match"):
+    if net.startswith("No match") and bundle.manifest.target.scope != "mcu":
         raise PraxisError("UNKNOWN_NET", "Choose an existing exact net, pin, endpoint or signal alias")
     route = order(bundle.dependencies)
     unknown = "praxis_absent_entity"

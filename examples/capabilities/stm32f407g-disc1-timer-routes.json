@@ -1,0 +1,321 @@
+{
+  "exhaustive": false,
+  "format": "praxis-capability-catalog-v1",
+  "goals": [
+    {
+      "category": "gpio",
+      "description": "Reviewed LED/button GPIO knowledge",
+      "id": "gpio_led_button",
+      "workflows": [
+        "gpio_led_button"
+      ]
+    },
+    {
+      "category": "communication",
+      "description": "Reviewed UART/timer/interrupt scenario",
+      "id": "uart_timer_interrupts",
+      "workflows": [
+        "uart_timer_interrupts"
+      ]
+    },
+    {
+      "category": "processing",
+      "description": "CRC word-feed mode",
+      "id": "crc_word_feed",
+      "workflows": [
+        "crc_word_feed"
+      ]
+    },
+    {
+      "category": "transfer",
+      "description": "Selected DMA2 stream memory-copy mode",
+      "id": "dma2_memory_copy",
+      "workflows": [
+        "dma2_memory_copy"
+      ]
+    },
+    {
+      "category": "communication",
+      "description": "SPI1 polling with required board signals",
+      "id": "spi1_wired_polling",
+      "workflows": [
+        "spi1_wired_polling"
+      ]
+    },
+    {
+      "category": "processing",
+      "description": "RNG polling with declared PLL clock prerequisites",
+      "id": "rng_pll_polling",
+      "workflows": [
+        "rng_pll_polling"
+      ]
+    },
+    {
+      "category": "timing",
+      "description": "Independent watchdog configuration/refresh mode",
+      "id": "iwdg_configure_refresh",
+      "workflows": [
+        "iwdg_configure_refresh"
+      ]
+    },
+    {
+      "category": "analog",
+      "description": "Declared ADC single-conversion scope",
+      "id": "adc_single_conversion",
+      "workflows": [
+        "feature_adc"
+      ]
+    },
+    {
+      "category": "analog",
+      "description": "Declared DAC single-output scope",
+      "id": "dac_single_output",
+      "workflows": [
+        "feature_dac"
+      ]
+    },
+    {
+      "category": "communication",
+      "description": "Declared I2C master-polling scope",
+      "id": "i2c_master_polling",
+      "workflows": [
+        "feature_i2c"
+      ]
+    },
+    {
+      "category": "communication",
+      "description": "Declared CAN normal-bus scope",
+      "id": "can_normal_bus",
+      "workflows": [
+        "feature_can"
+      ]
+    },
+    {
+      "category": "communication",
+      "description": "Declared USB FS device scope",
+      "id": "usb_device",
+      "workflows": [
+        "feature_usb_otg_global"
+      ]
+    },
+    {
+      "category": "communication",
+      "description": "Declared Ethernet scope",
+      "id": "ethernet",
+      "workflows": [
+        "feature_eth"
+      ]
+    },
+    {
+      "category": "communication",
+      "description": "Declared SDIO card-transfer scope",
+      "id": "sdio_card_transfer",
+      "workflows": [
+        "feature_sdio"
+      ]
+    },
+    {
+      "category": "timing",
+      "description": "Declared RTC calendar scope",
+      "id": "rtc_calendar",
+      "workflows": [
+        "feature_rtc"
+      ]
+    },
+    {
+      "category": "memory",
+      "description": "Declared firmware-controlled FLASH programming/erase scope",
+      "id": "flash_program_erase",
+      "workflows": [
+        "feature_flash"
+      ]
+    },
+    {
+      "category": "memory",
+      "description": "Declared FSMC bank-1 external-memory scope",
+      "id": "fsmc_external_memory",
+      "workflows": [
+        "feature_fsmc_bank1"
+      ]
+    },
+    {
+      "category": "power",
+      "description": "Reviewed PWR voltage-scale scope",
+      "id": "pwr_voltage_scale",
+      "workflows": [
+        "feature_pwr"
+      ]
+    },
+    {
+      "category": "memory",
+      "description": "Reviewed FLASH read latency at the declared operating point",
+      "id": "flash_latency_168mhz",
+      "workflows": [
+        "flash_latency_168mhz"
+      ]
+    },
+    {
+      "category": "clocks",
+      "description": "Reviewed HSE/PLL operating point and dependencies",
+      "id": "pll_hse8_168mhz",
+      "workflows": [
+        "pll_hse8_168mhz"
+      ]
+    },
+    {
+      "category": "boot",
+      "description": "Planned application bootloader and image handoff; no workflow authored",
+      "id": "application_bootloader",
+      "workflows": []
+    },
+    {
+      "category": "boot",
+      "description": "Planned image validation policy and checks; no workflow authored",
+      "id": "boot_image_validation",
+      "workflows": []
+    },
+    {
+      "category": "boot",
+      "description": "Planned update/power-loss recovery; no workflow authored",
+      "id": "update_failure_recovery",
+      "workflows": []
+    },
+    {
+      "category": "core",
+      "description": "Planned configurable vector relocation/handoff; pinned startup assets alone do not satisfy it",
+      "id": "vector_relocation",
+      "workflows": []
+    },
+    {
+      "category": "memory",
+      "description": "Planned option-byte configuration; destructive modes need separate review and authorization",
+      "id": "option_byte_configuration",
+      "workflows": []
+    },
+    {
+      "category": "power",
+      "description": "Planned low-power entry/wake configuration; voltage scaling alone does not satisfy it",
+      "id": "low_power_transitions",
+      "workflows": []
+    },
+    {
+      "category": "communication",
+      "description": "Scoped I2C1 seven-bit100kHz controller transmitter; no wiring/device qualification",
+      "id": "i2c1_controller_transmit",
+      "workflows": [
+        "i2c1_controller_transmit"
+      ]
+    },
+    {
+      "category": "communication",
+      "description": "I2C1 transmitter plus reviewed board SCL/SDA endpoints; currently missing",
+      "id": "i2c1_wired_transmit",
+      "workflows": [
+        "i2c1_wired_transmit"
+      ]
+    },
+    {
+      "category": "analog",
+      "description": "Scoped DAC channel1 twelve-bit right-aligned software trigger and digital completion; no analog measurement",
+      "id": "dac_channel1_software_trigger",
+      "workflows": [
+        "dac_channel1_software_trigger"
+      ]
+    },
+    {
+      "category": "analog",
+      "description": "DAC channel1 plus reviewed board output/reference endpoints; currently missing",
+      "id": "dac_channel1_wired_output",
+      "workflows": [
+        "dac_channel1_wired_output"
+      ]
+    },
+    {
+      "category": "communication",
+      "description": "Scoped CAN1 standard0x123 eight-byte silent internal-loopback knowledge",
+      "id": "can1_silent_loopback",
+      "workflows": [
+        "can1_silent_loopback"
+      ]
+    },
+    {
+      "category": "communication",
+      "description": "CAN1 FIFO0 interrupt-delivered one-shot internal-loopback contract",
+      "id": "can1_silent_loopback_irq",
+      "workflows": [
+        "can1_silent_loopback_irq"
+      ]
+    },
+    {
+      "category": "communication",
+      "description": "External normal CAN bus, reviewed transceiver and board endpoints; currently blocked",
+      "id": "can1_external_bus",
+      "workflows": [
+        "can1_external_bus"
+      ]
+    },
+    {
+      "category": "core",
+      "description": "Read-only validation of the nominal HSI16 core context",
+      "id": "arm_hsi16_core_checked",
+      "workflows": [
+        "arm_hsi16_core_checked"
+      ]
+    },
+    {
+      "category": "core",
+      "description": "Fixed pinned Flash vector table and its device alignment; no image handoff",
+      "id": "arm_flash_vector_table",
+      "workflows": [
+        "arm_flash_vector_table"
+      ]
+    },
+    {
+      "category": "core",
+      "description": "Owned bounded periodic COUNTFLAG polling with pending-exception guard",
+      "id": "systick_core_polling",
+      "workflows": [
+        "systick_core_polling"
+      ]
+    },
+    {
+      "category": "core",
+      "description": "Owned1kHz SysTick exception, byte priority and source-enable ordering",
+      "id": "systick_1khz_interrupt",
+      "workflows": [
+        "systick_1khz_interrupt"
+      ]
+    },
+    {
+      "category": "timing",
+      "description": "Internal TIM2 PWM1 reference with external output disabled",
+      "id": "tim2_pwm_ch1_reference",
+      "workflows": [
+        "tim2_pwm_ch1_reference"
+      ]
+    },
+    {
+      "category": "timing",
+      "description": "Stopped TIM2 counter capture through software event and internal TRC",
+      "id": "tim2_software_capture_ch1",
+      "workflows": [
+        "tim2_software_capture_ch1"
+      ]
+    },
+    {
+      "category": "timing",
+      "description": "Paired TIM2 CH2 PWM output and independent TIM5 CH3 rising capture on reviewed reference header pins; physical qualification pending",
+      "id": "tim2_tim5_pwm_capture_loopback",
+      "workflows": [
+        "tim2_tim5_pwm_capture_loopback"
+      ]
+    }
+  ],
+  "scope": "Experimental F407 bounded contributor goals, extended with internal TIM2 PWM reference and software capture. Not an exhaustive MCU inventory or physical qualification.",
+  "target": {
+    "board_revision": "MB997-E-01",
+    "id": "stm32f407g_disc1_mb997_e01",
+    "mcu": "STM32F407VGT6",
+    "package": "Package_QFP:LQFP-100_14x14mm_P0.5mm"
+  }
+}

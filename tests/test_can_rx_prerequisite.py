@@ -95,7 +95,8 @@ def test_bundle_has_exact_topology_and_dependency_contracts():
     topology = bundle.read('wiki/schemas/custom_pcb_netlist.md')
     assert 'PD0' in topology and 'P2' in topology and '81' in topology and '34' in topology
     assert 'can1_rx_pd0' in bundle.read('wiki/peripherals/gpio.md')
-    assert all(len(doc.encode()) <= 65536 for doc in bundle.documents.values())
+    assert all("## Register map" in bundle.read(path) and "## Bit fields" in bundle.read(path)
+               for path in bundle.manifest.peripherals.values())
 
 
 def test_removing_gpio_mode_blocks_dependent_can_publication_workflow():

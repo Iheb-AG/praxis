@@ -13,7 +13,7 @@ import re
 from collections import defaultdict
 from typing import Literal
 
-from pydantic import Field
+from pydantic import Field, model_serializer
 
 from praxis.bundle import digest
 from praxis.errors import PraxisError
@@ -34,12 +34,20 @@ class Candidate(Record):
     register_name: str = Field(alias='register')
     kind: Literal['offset', 'reset', 'access', 'field']
     field: str | None = None
+    field_views: list[str] = []
     value: int | str | dict[str, int]
     qualifier: str = ''
     status: Literal['unreviewed', 'matches_declaration', 'conflict']
     locators: list[str] = Field(min_length=1)
     section_contexts: list[str] = []
     review_required: Literal[True] = True
+
+    @model_serializer(mode='wrap')
+    def serialize(self, handler):
+        value = handler(self)
+        if not self.field_views:
+            value.pop('field_views', None)
+        return value
 
 
 def canonical(data):
@@ -133,10 +141,17 @@ def prepare(declaration, parts, *, entity, target, source, spec=None, discovery=
                 issue('FIELD_RANGE', locator, f'{name}.{field}: bits {high}:{low} outside C member width')
                 return
             value = dict(lsb=low, width=high-low+1, mask=((1 << (high-low+1))-1) << low)
-            known = next((f for f in register.fields if f.name == field), None)
-            if known is None:
+            matches = [f for f in register.fields if f.name == field]
+            view_names = [view for view, record in sorted(register.field_views.items())
+                          if any(f.name == field for f in record.fields)]
+            matches.extend(f for view in view_names for f in register.field_views[view].fields if f.name == field)
+            if not matches:
                 issue('UNMAPPED_FIELD', locator, f'{name}.{field}: no exact header field')
                 return
+            if len({(f.lsb, f.width, f.mask) for f in matches}) != 1:
+                issue('AMBIGUOUS_FIELD_VIEW', locator, f'{name}.{field}: views disagree; review each interpretation')
+                return
+            known = matches[0]
             status = ('matches_declaration' if (known.lsb, known.width, known.mask) ==
                 (value['lsb'], value['width'], value['mask']) else 'conflict')
         else:
@@ -154,6 +169,7 @@ def prepare(declaration, parts, *, entity, target, source, spec=None, discovery=
         if len(facts) >= MAX_FACTS:
             raise PraxisError('REVIEW_LIMIT', 'Select fewer registers before preparing review')
         facts.append(Candidate(register=name, kind=kind, field=field, value=value,
+            field_views=view_names if kind == 'field' else [],
             qualifier=qualifier, status=status, locators=[locator],
             section_contexts=[active_context] if '/line:' in locator and active_context else []))
         mark(part)
@@ -266,6 +282,10 @@ def prepare(declaration, parts, *, entity, target, source, spec=None, discovery=
         fields = {f['field'] for f in merged if f['register'] == name and f['kind'] == 'field'}
         gaps[name] = dict(missing_categories=sorted({'offset', 'reset', 'access'} - present),
             missing_field_positions=sorted({f.name for f in available[name].fields} - fields))
+        if available[name].field_views:
+            gaps[name]['missing_view_field_positions'] = {
+                view: sorted({f.name for f in record.fields} - fields)
+                for view, record in sorted(available[name].field_views.items())}
     result = dict(format=FORMAT, status='pending-review', review_required=True,
         publication_ready=False, target=target, entity=entity, source=source,
         parser='literal-register-evidence-v1', parser_config_sha256=digest(canonical(spec.model_dump())),

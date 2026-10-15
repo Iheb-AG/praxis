@@ -1,0 +1,234 @@
+# Project Praxis hardware execution index
+
+Target: `stm32h743zit6_inventory`; MCU: `STM32H743ZIT6`; package: `LQFP144 (pin map unreviewed)`; board revision: `not-applicable`; silicon: `unqualified`.
+
+**Experimental MCU-only knowledge; no board wiring, active clock configuration or physical qualification is supplied.**
+
+## Hardware Execution Dependency Graph
+
+Graph prerequisites are listed below. Retrieve only the requested entity's dependency closure.
+
+- [[peripherals/adc]] requires [[index]]
+- [[peripherals/adc_common]] requires [[index]]
+- [[peripherals/bdma]] requires [[index]]
+- [[peripherals/bdma_channel]] requires [[index]]
+- [[peripherals/cec]] requires [[index]]
+- [[peripherals/comp]] requires [[index]]
+- [[peripherals/comp_common]] requires [[index]]
+- [[peripherals/compopt]] requires [[index]]
+- [[peripherals/coredebug]] requires [[index]]
+- [[peripherals/crc]] requires [[index]]
+- [[peripherals/crs]] requires [[index]]
+- [[peripherals/dac]] requires [[index]]
+- [[peripherals/dbgmcu]] requires [[index]]
+- [[peripherals/dcmi]] requires [[index]]
+- [[peripherals/dfsdm_channel]] requires [[index]]
+- [[peripherals/dfsdm_filter]] requires [[index]]
+- [[peripherals/dlyb]] requires [[index]]
+- [[peripherals/dma]] requires [[index]]
+- [[peripherals/dma2d]] requires [[index]]
+- [[peripherals/dma_stream]] requires [[index]]
+- [[peripherals/dmamux_channel]] requires [[index]]
+- [[peripherals/dmamux_channelstatus]] requires [[index]]
+- [[peripherals/dmamux_requestgen]] requires [[index]]
+- [[peripherals/dmamux_requestgenstatus]] requires [[index]]
+- [[peripherals/dwt]] requires [[index]]
+- [[peripherals/eth]] requires [[index]]
+- [[peripherals/exti]] requires [[index]]
+- [[peripherals/exti_core]] requires [[index]]
+- [[peripherals/fdcan_clockcalibrationunit]] requires [[index]]
+- [[peripherals/fdcan_global]] requires [[index]]
+- [[peripherals/flash]] requires [[index]]
+- [[peripherals/fmc_bank1]] requires [[index]]
+- [[peripherals/fmc_bank1e]] requires [[index]]
+- [[peripherals/fmc_bank2]] requires [[index]]
+- [[peripherals/fmc_bank3]] requires [[index]]
+- [[peripherals/fmc_bank5_6]] requires [[index]]
+- [[peripherals/fpu]] requires [[index]]
+- [[peripherals/gpio]] requires [[index]]
+- [[peripherals/hrtim_common]] requires [[index]]
+- [[peripherals/hrtim_timerx]] requires [[index]]
+- [[peripherals/hsem]] requires [[index]]
+- [[peripherals/i2c]] requires [[index]]
+- [[peripherals/iwdg]] requires [[index]]
+- [[peripherals/jpeg]] requires [[index]]
+- [[peripherals/lptim]] requires [[index]]
+- [[peripherals/ltdc]] requires [[index]]
+- [[peripherals/ltdc_layer]] requires [[index]]
+- [[peripherals/mdios]] requires [[index]]
+- [[peripherals/mdma]] requires [[index]]
+- [[peripherals/mdma_channel]] requires [[index]]
+- [[peripherals/mpu]] requires [[index]]
+- [[peripherals/nvic]] requires [[index]]
+- [[peripherals/opamp]] requires [[index]]
+- [[peripherals/pwr]] requires [[index]]
+- [[peripherals/quadspi]] requires [[index]]
+- [[peripherals/ramecc]] requires [[index]]
+- [[peripherals/ramecc_monitor]] requires [[index]]
+- [[peripherals/rcc]] requires [[index]]
+- [[peripherals/rng]] requires [[index]]
+- [[peripherals/rtc]] requires [[index]]
+- [[peripherals/sai]] requires [[index]]
+- [[peripherals/sai_block]] requires [[index]]
+- [[peripherals/scb]] requires [[index]]
+- [[peripherals/scnscb]] requires [[index]]
+- [[peripherals/sdmmc]] requires [[index]]
+- [[peripherals/spdifrx]] requires [[index]]
+- [[peripherals/spi]] requires [[index]]
+- [[peripherals/swpmi]] requires [[index]]
+- [[peripherals/syscfg]] requires [[index]]
+- [[peripherals/systick]] requires [[index]]
+- [[peripherals/tim]] requires [[index]]
+- [[peripherals/tpi]] requires [[index]]
+- [[peripherals/usart]] requires [[index]]
+- [[peripherals/usb_otg_global]] requires [[index]]
+- [[peripherals/vrefbuf]] requires [[index]]
+- [[peripherals/wwdg]] requires [[index]]
+
+Read this index first. Board connectivity is unavailable; retrieve the requested declaration dependency closure. Polling stops at peripheral control; interrupts/DMA require the final stage. Tool gates establish retrieval evidence, not code correctness or physical behavior.
+
+## Clock assumptions
+
+- Active SYSCLK, peripheral clocks, oscillators and prescalers are unknown; no board or startup configuration is represented.
+
+## Routing
+
+- [[schemas/custom_pcb_netlist]]: explicit absence of board connectivity.
+- [[sources]]: provenance, licenses, and editorial review.
+
+## Startup boundary
+
+Provide startup code and a vector table separately. Keep interrupts masked until their sources and handlers are safe. Quiesce active peripherals before changing clocks. Use bounded readiness waits. No flashing or runtime probe operations are provided.
+
+## Extraction scope
+
+Adapter: `cmsis_cortex_m`; declared CPU: `cortex-m7` (source: `profile:target.knowledge_adapter`). Header identity checks: `STM32H743xx_H`, `STM32H743xx`. This is a knowledge-only target. No target firmware assets, sandbox compiler profile, flashing or physical qualification are supplied by this adapter. Clock assumptions and HEDG edges are explicit profile policy, not inferred from a diagram.
+
+## MCU-only applicability
+
+Scope: `profile:target.scope=mcu`. No evaluation board, package pin map, LED/button aliases, active bus clocks or firmware/flash assets are supplied. A missing schematic query is missing evidence, not proof that a signal is absent from the silicon. Register layouts and masks do not establish initialization sequences.
+
+## Peripheral coverage
+
+CMSIS register types and configured instances; not every MCU capability or board connection. Dependencies are profile retrieval policy, not a proven hardware initialization sequence. `reviewed_subset` covers only the facts explicitly reviewed. `declarations_only` supplies layouts and masks, never operating guidance.
+
+| Entity | Structure | Instances | Status | Registers | Fields | Reviewed registers | Requires | Issues | Provenance |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| adc | ADC_TypeDef | ADC1, ADC2, ADC3 | declarations_only | 33 | 137 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | header:ADC_TypeDef |
+| adc_common | ADC_Common_TypeDef | ADC12_COMMON, ADC3_COMMON | declarations_only | 4 | 0 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | header:ADC_Common_TypeDef |
+| apsr | APSR_Type |  | unmapped_type | 0 | 0 | 0 |  | No typed instances: helper type or additional instance mapping required | core_cm7_h:APSR_Type |
+| bdma | BDMA_TypeDef | BDMA | declarations_only | 2 | 64 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | header:BDMA_TypeDef |
+| bdma_channel | BDMA_Channel_TypeDef | BDMA_Channel0, BDMA_Channel1, BDMA_Channel2, BDMA_Channel3, BDMA_Channel4, BDMA_Channel5, BDMA_Channel6, BDMA_Channel7 | declarations_only | 5 | 0 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | header:BDMA_Channel_TypeDef |
+| cec | CEC_TypeDef | CEC | declarations_only | 6 | 40 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | header:CEC_TypeDef |
+| comp | COMP_TypeDef | COMP1, COMP2 | declarations_only | 1 | 0 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | header:COMP_TypeDef |
+| comp_common | COMP_Common_TypeDef | COMP12_COMMON | declarations_only | 1 | 0 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | header:COMP_Common_TypeDef |
+| compopt | COMPOPT_TypeDef | COMP12 | declarations_only | 3 | 0 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | header:COMPOPT_TypeDef |
+| control | CONTROL_Type |  | unmapped_type | 0 | 0 | 0 |  | No typed instances: helper type or additional instance mapping required | core_cm7_h:CONTROL_Type |
+| coredebug | CoreDebug_Type | CoreDebug | declarations_only | 4 | 0 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | core_cm7_h:CoreDebug_Type |
+| crc | CRC_TypeDef | CRC | declarations_only | 5 | 8 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | header:CRC_TypeDef |
+| crs | CRS_TypeDef | CRS | declarations_only | 4 | 26 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | header:CRS_TypeDef |
+| dac | DAC_TypeDef | DAC1 | partial_declarations | 20 | 42 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted.; SR: bit fields withheld: UNSUPPORTED_MASK: DAC_SR_BWST1_Msk: non-contiguous bit field without an exact declared component partition | header:DAC_TypeDef |
+| dbgmcu | DBGMCU_TypeDef | DBGMCU | declarations_only | 7 | 37 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | header:DBGMCU_TypeDef |
+| dcmi | DCMI_TypeDef | DCMI | declarations_only | 11 | 39 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | header:DCMI_TypeDef |
+| dfsdm_channel | DFSDM_Channel_TypeDef | DFSDM1_Channel0, DFSDM1_Channel1, DFSDM1_Channel2, DFSDM1_Channel3, DFSDM1_Channel4, DFSDM1_Channel5, DFSDM1_Channel6, DFSDM1_Channel7 | declarations_only | 5 | 0 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | header:DFSDM_Channel_TypeDef |
+| dfsdm_filter | DFSDM_Filter_TypeDef | DFSDM1_Filter0, DFSDM1_Filter1, DFSDM1_Filter2, DFSDM1_Filter3 | declarations_only | 15 | 0 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | header:DFSDM_Filter_TypeDef |
+| dlyb | DLYB_TypeDef | DLYB_QUADSPI, DLYB_SDMMC1, DLYB_SDMMC2 | declarations_only | 2 | 6 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | header:DLYB_TypeDef |
+| dma | DMA_TypeDef | DMA1, DMA2 | declarations_only | 4 | 80 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | header:DMA_TypeDef |
+| dma2d | DMA2D_TypeDef | DMA2D | partial_declarations | 22 | 63 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted.; OCOLR: bit fields withheld: DECLARATION_CONFLICT: DMA2D_OCOLR_GREEN_2_Msk: position and mask disagree | header:DMA2D_TypeDef |
+| dma_stream | DMA_Stream_TypeDef | DMA1_Stream0, DMA1_Stream1, DMA1_Stream2, DMA1_Stream3, DMA1_Stream4, DMA1_Stream5, DMA1_Stream6, DMA1_Stream7, DMA2_Stream0, DMA2_Stream1, DMA2_Stream2, DMA2_Stream3, DMA2_Stream4, DMA2_Stream5, DMA2_Stream6, DMA2_Stream7 | declarations_only | 6 | 0 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | header:DMA_Stream_TypeDef |
+| dmamux_channel | DMAMUX_Channel_TypeDef | DMAMUX1, DMAMUX1_Channel0, DMAMUX1_Channel1, DMAMUX1_Channel10, DMAMUX1_Channel11, DMAMUX1_Channel12, DMAMUX1_Channel13, DMAMUX1_Channel14, DMAMUX1_Channel15, DMAMUX1_Channel2, DMAMUX1_Channel3, DMAMUX1_Channel4, DMAMUX1_Channel5, DMAMUX1_Channel6, DMAMUX1_Channel7, DMAMUX1_Channel8, DMAMUX1_Channel9, DMAMUX2, DMAMUX2_Channel0, DMAMUX2_Channel1, DMAMUX2_Channel2, DMAMUX2_Channel3, DMAMUX2_Channel4, DMAMUX2_Channel5, DMAMUX2_Channel6, DMAMUX2_Channel7 | declarations_only | 1 | 0 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | header:DMAMUX_Channel_TypeDef |
+| dmamux_channelstatus | DMAMUX_ChannelStatus_TypeDef | DMAMUX1_ChannelStatus, DMAMUX2_ChannelStatus | declarations_only | 2 | 0 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | header:DMAMUX_ChannelStatus_TypeDef |
+| dmamux_requestgen | DMAMUX_RequestGen_TypeDef | DMAMUX1_RequestGenerator0, DMAMUX1_RequestGenerator1, DMAMUX1_RequestGenerator2, DMAMUX1_RequestGenerator3, DMAMUX1_RequestGenerator4, DMAMUX1_RequestGenerator5, DMAMUX1_RequestGenerator6, DMAMUX1_RequestGenerator7, DMAMUX2_RequestGenerator0, DMAMUX2_RequestGenerator1, DMAMUX2_RequestGenerator2, DMAMUX2_RequestGenerator3, DMAMUX2_RequestGenerator4, DMAMUX2_RequestGenerator5, DMAMUX2_RequestGenerator6, DMAMUX2_RequestGenerator7 | declarations_only | 1 | 0 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | header:DMAMUX_RequestGen_TypeDef |
+| dmamux_requestgenstatus | DMAMUX_RequestGenStatus_TypeDef | DMAMUX1_RequestGenStatus, DMAMUX2_RequestGenStatus | declarations_only | 2 | 0 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | header:DMAMUX_RequestGenStatus_TypeDef |
+| dwt | DWT_Type | DWT | declarations_only | 22 | 23 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | core_cm7_h:DWT_Type |
+| eth | ETH_TypeDef | ETH | partial_declarations | 122 | 392 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted.; DMADSR: bit fields withheld: UNSUPPORTED_MASK: ETH_DMADSR_RPS_CLOSING_Msk: non-contiguous bit field without an exact declared component partition | header:ETH_TypeDef |
+| exti | EXTI_TypeDef | EXTI | partial_declarations | 27 | 189 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted.; Compound mask EXTI_RTSR2_TR_Msk=0xA0000 (header:EXTI_RTSR2_TR_Msk) is represented by its separately declared, disjoint contiguous components: EXTI_RTSR2_TR49_Msk=0x20000 (header:EXTI_RTSR2_TR49_Msk); EXTI_RTSR2_TR51_Msk=0x80000 (header:EXTI_RTSR2_TR51_Msk). Their bitwise union exactly equals the compound mask; encodings remain unreviewed.; Compound mask EXTI_FTSR2_TR_Msk=0xA0000 (header:EXTI_FTSR2_TR_Msk) is represented by its separately declared, disjoint contiguous components: EXTI_FTSR2_TR49_Msk=0x20000 (header:EXTI_FTSR2_TR49_Msk); EXTI_FTSR2_TR51_Msk=0x80000 (header:EXTI_FTSR2_TR51_Msk). Their bitwise union exactly equals the compound mask; encodings remain unreviewed.; Compound mask EXTI_RTSR3_TR_Msk=0x740000 (header:EXTI_RTSR3_TR_Msk) is represented by its separately declared, disjoint contiguous components: EXTI_RTSR3_TR82_Msk=0x40000 (header:EXTI_RTSR3_TR82_Msk); EXTI_RTSR3_TR84_Msk=0x100000 (header:EXTI_RTSR3_TR84_Msk); EXTI_RTSR3_TR85_Msk=0x200000 (header:EXTI_RTSR3_TR85_Msk); EXTI_RTSR3_TR86_Msk=0x400000 (header:EXTI_RTSR3_TR86_Msk). Their bitwise union exactly equals the compound mask; encodings remain unreviewed.; Compound mask EXTI_FTSR3_TR_Msk=0x740000 (header:EXTI_FTSR3_TR_Msk) is represented by its separately declared, disjoint contiguous components: EXTI_FTSR3_TR82_Msk=0x40000 (header:EXTI_FTSR3_TR82_Msk); EXTI_FTSR3_TR84_Msk=0x100000 (header:EXTI_FTSR3_TR84_Msk); EXTI_FTSR3_TR85_Msk=0x200000 (header:EXTI_FTSR3_TR85_Msk); EXTI_FTSR3_TR86_Msk=0x400000 (header:EXTI_FTSR3_TR86_Msk). Their bitwise union exactly equals the compound mask; encodings remain unreviewed.; Compound mask EXTI_IMR2_IM_Msk=0xFFFFDFFF (header:EXTI_IMR2_IM_Msk) is represented by its separately declared, disjoint contiguous components: EXTI_IMR2_IM32_Msk=0x1 (header:EXTI_IMR2_IM32_Msk); EXTI_IMR2_IM33_Msk=0x2 (header:EXTI_IMR2_IM33_Msk); EXTI_IMR2_IM34_Msk=0x4 (header:EXTI_IMR2_IM34_Msk); EXTI_IMR2_IM35_Msk=0x8 (header:EXTI_IMR2_IM35_Msk); EXTI_IMR2_IM36_Msk=0x10 (header:EXTI_IMR2_IM36_Msk); EXTI_IMR2_IM37_Msk=0x20 (header:EXTI_IMR2_IM37_Msk); EXTI_IMR2_IM38_Msk=0x40 (header:EXTI_IMR2_IM38_Msk); EXTI_IMR2_IM39_Msk=0x80 (header:EXTI_IMR2_IM39_Msk); EXTI_IMR2_IM40_Msk=0x100 (header:EXTI_IMR2_IM40_Msk); EXTI_IMR2_IM41_Msk=0x200 (header:EXTI_IMR2_IM41_Msk); EXTI_IMR2_IM42_Msk=0x400 (header:EXTI_IMR2_IM42_Msk); EXTI_IMR2_IM43_Msk=0x800 (header:EXTI_IMR2_IM43_Msk); EXTI_IMR2_IM44_Msk=0x1000 (header:EXTI_IMR2_IM44_Msk); EXTI_IMR2_IM46_Msk=0x4000 (header:EXTI_IMR2_IM46_Msk); EXTI_IMR2_IM47_Msk=0x8000 (header:EXTI_IMR2_IM47_Msk); EXTI_IMR2_IM48_Msk=0x10000 (header:EXTI_IMR2_IM48_Msk); EXTI_IMR2_IM49_Msk=0x20000 (header:EXTI_IMR2_IM49_Msk); EXTI_IMR2_IM50_Msk=0x40000 (header:EXTI_IMR2_IM50_Msk); EXTI_IMR2_IM51_Msk=0x80000 (header:EXTI_IMR2_IM51_Msk); EXTI_IMR2_IM52_Msk=0x100000 (header:EXTI_IMR2_IM52_Msk); EXTI_IMR2_IM53_Msk=0x200000 (header:EXTI_IMR2_IM53_Msk); EXTI_IMR2_IM54_Msk=0x400000 (header:EXTI_IMR2_IM54_Msk); EXTI_IMR2_IM55_Msk=0x800000 (header:EXTI_IMR2_IM55_Msk); EXTI_IMR2_IM56_Msk=0x1000000 (header:EXTI_IMR2_IM56_Msk); EXTI_IMR2_IM57_Msk=0x2000000 (header:EXTI_IMR2_IM57_Msk); EXTI_IMR2_IM58_Msk=0x4000000 (header:EXTI_IMR2_IM58_Msk); EXTI_IMR2_IM59_Msk=0x8000000 (header:EXTI_IMR2_IM59_Msk); EXTI_IMR2_IM60_Msk=0x10000000 (header:EXTI_IMR2_IM60_Msk); EXTI_IMR2_IM61_Msk=0x20000000 (header:EXTI_IMR2_IM61_Msk); EXTI_IMR2_IM62_Msk=0x40000000 (header:EXTI_IMR2_IM62_Msk); EXTI_IMR2_IM63_Msk=0x80000000 (header:EXTI_IMR2_IM63_Msk). Their bitwise union exactly equals the compound mask; encodings remain unreviewed.; Compound mask EXTI_EMR2_EM_Msk=0xFFFFDFFF (header:EXTI_EMR2_EM_Msk) is represented by its separately declared, disjoint contiguous components: EXTI_EMR2_EM32_Msk=0x1 (header:EXTI_EMR2_EM32_Msk); EXTI_EMR2_EM33_Msk=0x2 (header:EXTI_EMR2_EM33_Msk); EXTI_EMR2_EM34_Msk=0x4 (header:EXTI_EMR2_EM34_Msk); EXTI_EMR2_EM35_Msk=0x8 (header:EXTI_EMR2_EM35_Msk); EXTI_EMR2_EM36_Msk=0x10 (header:EXTI_EMR2_EM36_Msk); EXTI_EMR2_EM37_Msk=0x20 (header:EXTI_EMR2_EM37_Msk); EXTI_EMR2_EM38_Msk=0x40 (header:EXTI_EMR2_EM38_Msk); EXTI_EMR2_EM39_Msk=0x80 (header:EXTI_EMR2_EM39_Msk); EXTI_EMR2_EM40_Msk=0x100 (header:EXTI_EMR2_EM40_Msk); EXTI_EMR2_EM41_Msk=0x200 (header:EXTI_EMR2_EM41_Msk); EXTI_EMR2_EM42_Msk=0x400 (header:EXTI_EMR2_EM42_Msk); EXTI_EMR2_EM43_Msk=0x800 (header:EXTI_EMR2_EM43_Msk); EXTI_EMR2_EM44_Msk=0x1000 (header:EXTI_EMR2_EM44_Msk); EXTI_EMR2_EM46_Msk=0x4000 (header:EXTI_EMR2_EM46_Msk); EXTI_EMR2_EM47_Msk=0x8000 (header:EXTI_EMR2_EM47_Msk); EXTI_EMR2_EM48_Msk=0x10000 (header:EXTI_EMR2_EM48_Msk); EXTI_EMR2_EM49_Msk=0x20000 (header:EXTI_EMR2_EM49_Msk); EXTI_EMR2_EM50_Msk=0x40000 (header:EXTI_EMR2_EM50_Msk); EXTI_EMR2_EM51_Msk=0x80000 (header:EXTI_EMR2_EM51_Msk); EXTI_EMR2_EM52_Msk=0x100000 (header:EXTI_EMR2_EM52_Msk); EXTI_EMR2_EM53_Msk=0x200000 (header:EXTI_EMR2_EM53_Msk); EXTI_EMR2_EM54_Msk=0x400000 (header:EXTI_EMR2_EM54_Msk); EXTI_EMR2_EM55_Msk=0x800000 (header:EXTI_EMR2_EM55_Msk); EXTI_EMR2_EM56_Msk=0x1000000 (header:EXTI_EMR2_EM56_Msk); EXTI_EMR2_EM57_Msk=0x2000000 (header:EXTI_EMR2_EM57_Msk); EXTI_EMR2_EM58_Msk=0x4000000 (header:EXTI_EMR2_EM58_Msk); EXTI_EMR2_EM59_Msk=0x8000000 (header:EXTI_EMR2_EM59_Msk); EXTI_EMR2_EM60_Msk=0x10000000 (header:EXTI_EMR2_EM60_Msk); EXTI_EMR2_EM61_Msk=0x20000000 (header:EXTI_EMR2_EM61_Msk); EXTI_EMR2_EM62_Msk=0x40000000 (header:EXTI_EMR2_EM62_Msk); EXTI_EMR2_EM63_Msk=0x80000000 (header:EXTI_EMR2_EM63_Msk). Their bitwise union exactly equals the compound mask; encodings remain unreviewed.; Compound mask EXTI_PR2_PR_Msk=0xA0000 (header:EXTI_PR2_PR_Msk) is represented by its separately declared, disjoint contiguous components: EXTI_PR2_PR49_Msk=0x20000 (header:EXTI_PR2_PR49_Msk); EXTI_PR2_PR51_Msk=0x80000 (header:EXTI_PR2_PR51_Msk). Their bitwise union exactly equals the compound mask; encodings remain unreviewed.; Compound mask EXTI_IMR3_IM_Msk=0xF5FFFF (header:EXTI_IMR3_IM_Msk) is represented by its separately declared, disjoint contiguous components: EXTI_IMR3_IM64_Msk=0x1 (header:EXTI_IMR3_IM64_Msk); EXTI_IMR3_IM65_Msk=0x2 (header:EXTI_IMR3_IM65_Msk); EXTI_IMR3_IM66_Msk=0x4 (header:EXTI_IMR3_IM66_Msk); EXTI_IMR3_IM67_Msk=0x8 (header:EXTI_IMR3_IM67_Msk); EXTI_IMR3_IM68_Msk=0x10 (header:EXTI_IMR3_IM68_Msk); EXTI_IMR3_IM69_Msk=0x20 (header:EXTI_IMR3_IM69_Msk); EXTI_IMR3_IM70_Msk=0x40 (header:EXTI_IMR3_IM70_Msk); EXTI_IMR3_IM71_Msk=0x80 (header:EXTI_IMR3_IM71_Msk); EXTI_IMR3_IM72_Msk=0x100 (header:EXTI_IMR3_IM72_Msk); EXTI_IMR3_IM73_Msk=0x200 (header:EXTI_IMR3_IM73_Msk); EXTI_IMR3_IM74_Msk=0x400 (header:EXTI_IMR3_IM74_Msk); EXTI_IMR3_IM75_Msk=0x800 (header:EXTI_IMR3_IM75_Msk); EXTI_IMR3_IM76_Msk=0x1000 (header:EXTI_IMR3_IM76_Msk); EXTI_IMR3_IM77_Msk=0x2000 (header:EXTI_IMR3_IM77_Msk); EXTI_IMR3_IM78_Msk=0x4000 (header:EXTI_IMR3_IM78_Msk); EXTI_IMR3_IM79_Msk=0x8000 (header:EXTI_IMR3_IM79_Msk); EXTI_IMR3_IM80_Msk=0x10000 (header:EXTI_IMR3_IM80_Msk); EXTI_IMR3_IM82_Msk=0x40000 (header:EXTI_IMR3_IM82_Msk); EXTI_IMR3_IM84_Msk=0x100000 (header:EXTI_IMR3_IM84_Msk); EXTI_IMR3_IM85_Msk=0x200000 (header:EXTI_IMR3_IM85_Msk); EXTI_IMR3_IM86_Msk=0x400000 (header:EXTI_IMR3_IM86_Msk); EXTI_IMR3_IM87_Msk=0x800000 (header:EXTI_IMR3_IM87_Msk). Their bitwise union exactly equals the compound mask; encodings remain unreviewed.; Compound mask EXTI_PR3_PR_Msk=0x740000 (header:EXTI_PR3_PR_Msk) is represented by its separately declared, disjoint contiguous components: EXTI_PR3_PR82_Msk=0x40000 (header:EXTI_PR3_PR82_Msk); EXTI_PR3_PR84_Msk=0x100000 (header:EXTI_PR3_PR84_Msk); EXTI_PR3_PR85_Msk=0x200000 (header:EXTI_PR3_PR85_Msk); EXTI_PR3_PR86_Msk=0x400000 (header:EXTI_PR3_PR86_Msk). Their bitwise union exactly equals the compound mask; encodings remain unreviewed.; SWIER3: bit fields withheld: UNSUPPORTED_MASK: EXTI_SWIER3_SWI_Msk: non-contiguous bit field without an exact declared component partition; EMR3: bit fields withheld: UNSUPPORTED_MASK: EXTI_EMR3_EM_Msk: non-contiguous bit field without an exact declared component partition | header:EXTI_TypeDef |
+| exti_core | EXTI_Core_TypeDef | EXTI_D1, EXTI_D2 | declarations_only | 9 | 0 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | header:EXTI_Core_TypeDef |
+| fdcan_clockcalibrationunit | FDCAN_ClockCalibrationUnit_TypeDef | FDCAN_CCU | declarations_only | 6 | 0 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | header:FDCAN_ClockCalibrationUnit_TypeDef |
+| fdcan_global | FDCAN_GlobalTypeDef | FDCAN1, FDCAN2 | declarations_only | 46 | 0 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | header:FDCAN_GlobalTypeDef |
+| flash | FLASH_TypeDef | FLASH | declarations_only | 38 | 9 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | header:FLASH_TypeDef |
+| fmc_bank1 | FMC_Bank1_TypeDef | FMC_Bank1_R | declarations_only | 1 | 0 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | header:FMC_Bank1_TypeDef |
+| fmc_bank1e | FMC_Bank1E_TypeDef | FMC_Bank1E_R | declarations_only | 1 | 0 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | header:FMC_Bank1E_TypeDef |
+| fmc_bank2 | FMC_Bank2_TypeDef | FMC_Bank2_R | declarations_only | 5 | 0 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | header:FMC_Bank2_TypeDef |
+| fmc_bank3 | FMC_Bank3_TypeDef | FMC_Bank3_R | declarations_only | 5 | 0 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | header:FMC_Bank3_TypeDef |
+| fmc_bank5_6 | FMC_Bank5_6_TypeDef | FMC_Bank5_6_R | declarations_only | 5 | 0 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | header:FMC_Bank5_6_TypeDef |
+| fpu | FPU_Type | FPU | declarations_only | 6 | 27 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | core_cm7_h:FPU_Type |
+| gpio | GPIO_TypeDef | GPIOA, GPIOB, GPIOC, GPIOD, GPIOE, GPIOF, GPIOG, GPIOH, GPIOI, GPIOJ, GPIOK | declarations_only | 10 | 161 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | header:GPIO_TypeDef |
+| gpv | GPV_TypeDef | GPV | blocked | 0 | 0 | 0 |  | UNSUPPORTED_DECLARATION: UNSUPPORTED_DECLARATION: Unsupported field: RESERVED0 | header:GPV_TypeDef |
+| hrtim | HRTIM_TypeDef | HRTIM1 | blocked | 174 | 376 | 0 |  | DOCUMENT_TOO_LARGE: editorial reduction required | header:HRTIM_TypeDef |
+| hrtim_common | HRTIM_Common_TypeDef | HRTIM1_COMMON | declarations_only | 28 | 0 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | header:HRTIM_Common_TypeDef |
+| hrtim_master | HRTIM_Master_TypeDef |  | unmapped_type | 0 | 0 | 0 |  | No typed instances: helper type or additional instance mapping required | header:HRTIM_Master_TypeDef |
+| hrtim_timerx | HRTIM_Timerx_TypeDef | HRTIM1_TIMA, HRTIM1_TIMB, HRTIM1_TIMC, HRTIM1_TIMD, HRTIM1_TIME | declarations_only | 27 | 0 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | header:HRTIM_Timerx_TypeDef |
+| hsem | HSEM_TypeDef | HSEM | declarations_only | 8 | 137 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | header:HSEM_TypeDef |
+| hsem_common | HSEM_Common_TypeDef | HSEM_COMMON | blocked | 0 | 0 | 0 |  | MISSING_DECLARATION: No base-address macros for HSEM_Common_TypeDef | header:HSEM_Common_TypeDef |
+| i2c | I2C_TypeDef | I2C1, I2C2, I2C3, I2C4 | partial_declarations | 11 | 73 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted.; OAR2: bit fields withheld: UNSUPPORTED_MASK: I2C_OAR2_OA2MASK05_Msk: non-contiguous bit field without an exact declared component partition | header:I2C_TypeDef |
+| ipsr | IPSR_Type |  | unmapped_type | 0 | 0 | 0 |  | No typed instances: helper type or additional instance mapping required | core_cm7_h:IPSR_Type |
+| irqn | IRQn_Type |  | unmapped_type | 0 | 0 | 0 |  | No typed instances: helper type or additional instance mapping required | header:IRQn_Type |
+| itm | ITM_Type | ITM | blocked | 0 | 0 | 0 |  | UNSUPPORTED_DECLARATION: UNSUPPORTED_DECLARATION: Unsupported nested member: PORT | core_cm7_h:ITM_Type |
+| iwdg | IWDG_TypeDef | IWDG1 | declarations_only | 5 | 7 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | header:IWDG_TypeDef |
+| jpeg | JPEG_TypeDef | JPEG | declarations_only | 25 | 53 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | header:JPEG_TypeDef |
+| lptim | LPTIM_TypeDef | LPTIM1, LPTIM2, LPTIM3, LPTIM4, LPTIM5 | partial_declarations | 9 | 39 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted.; CR: bit fields withheld: UNSUPPORTED_MASK: LPTIM_CR_SNGSTRT_Msk: non-contiguous bit field without an exact declared component partition | header:LPTIM_TypeDef |
+| ltdc | LTDC_TypeDef | LTDC | declarations_only | 13 | 41 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | header:LTDC_TypeDef |
+| ltdc_layer | LTDC_Layer_TypeDef | LTDC_Layer1, LTDC_Layer2 | declarations_only | 12 | 0 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | header:LTDC_Layer_TypeDef |
+| mdios | MDIOS_TypeDef | MDIOS | declarations_only | 71 | 9 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | header:MDIOS_TypeDef |
+| mdma | MDMA_TypeDef | MDMA | declarations_only | 1 | 16 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | header:MDMA_TypeDef |
+| mdma_channel | MDMA_Channel_TypeDef | MDMA_Channel0, MDMA_Channel1, MDMA_Channel10, MDMA_Channel11, MDMA_Channel12, MDMA_Channel13, MDMA_Channel14, MDMA_Channel15, MDMA_Channel2, MDMA_Channel3, MDMA_Channel4, MDMA_Channel5, MDMA_Channel6, MDMA_Channel7, MDMA_Channel8, MDMA_Channel9 | declarations_only | 13 | 0 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | header:MDMA_Channel_TypeDef |
+| mpu | MPU_Type | MPU | declarations_only | 11 | 14 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | core_cm7_h:MPU_Type |
+| nvic | NVIC_Type | NVIC | declarations_only | 7 | 7 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | core_cm7_h:NVIC_Type |
+| opamp | OPAMP_TypeDef | OPAMP, OPAMP1, OPAMP2 | declarations_only | 3 | 15 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | header:OPAMP_TypeDef |
+| pwr | PWR_TypeDef | PWR | declarations_only | 9 | 63 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | header:PWR_TypeDef |
+| quadspi | QUADSPI_TypeDef | QUADSPI | declarations_only | 13 | 51 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | header:QUADSPI_TypeDef |
+| ramecc | RAMECC_TypeDef | RAMECC1, RAMECC2, RAMECC3 | declarations_only | 1 | 4 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | header:RAMECC_TypeDef |
+| ramecc_monitor | RAMECC_MonitorTypeDef | RAMECC1_Monitor1, RAMECC1_Monitor2, RAMECC1_Monitor3, RAMECC1_Monitor4, RAMECC1_Monitor5, RAMECC2_Monitor1, RAMECC2_Monitor2, RAMECC2_Monitor3, RAMECC2_Monitor4, RAMECC2_Monitor5, RAMECC3_Monitor1, RAMECC3_Monitor2 | declarations_only | 6 | 0 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | header:RAMECC_MonitorTypeDef |
+| rcc | RCC_TypeDef | RCC | declarations_only | 55 | 462 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | header:RCC_TypeDef |
+| rng | RNG_TypeDef | RNG | declarations_only | 3 | 8 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | header:RNG_TypeDef |
+| rtc | RTC_TypeDef | RTC | declarations_only | 51 | 164 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | header:RTC_TypeDef |
+| sai | SAI_TypeDef | SAI1, SAI2, SAI3, SAI4 | declarations_only | 3 | 16 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | header:SAI_TypeDef |
+| sai_block | SAI_Block_TypeDef | SAI1_Block_A, SAI1_Block_B, SAI2_Block_A, SAI2_Block_B, SAI3_Block_A, SAI3_Block_B, SAI4_Block_A, SAI4_Block_B | declarations_only | 8 | 0 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | header:SAI_Block_TypeDef |
+| scb | SCB_Type | SCB | declarations_only | 44 | 104 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | core_cm7_h:SCB_Type |
+| scnscb | SCnSCB_Type | SCnSCB | declarations_only | 2 | 0 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | core_cm7_h:SCnSCB_Type |
+| sdmmc | SDMMC_TypeDef | SDMMC1, SDMMC2 | declarations_only | 23 | 117 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | header:SDMMC_TypeDef |
+| spdifrx | SPDIFRX_TypeDef | SPDIFRX | declarations_only | 7 | 41 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | header:SPDIFRX_TypeDef |
+| spi | SPI_TypeDef | SPI1, SPI2, SPI3, SPI4, SPI5, SPI6 | declarations_only | 14 | 90 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | header:SPI_TypeDef |
+| swpmi | SWPMI_TypeDef | SWPMI1 | declarations_only | 9 | 44 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | header:SWPMI_TypeDef |
+| syscfg | SYSCFG_TypeDef | SYSCFG | declarations_only | 26 | 64 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | header:SYSCFG_TypeDef |
+| systick | SysTick_Type | SysTick | declarations_only | 4 | 0 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | core_cm7_h:SysTick_Type |
+| tim | TIM_TypeDef | TIM1, TIM12, TIM13, TIM14, TIM15, TIM16, TIM17, TIM2, TIM3, TIM4, TIM5, TIM6, TIM7, TIM8 | partial_declarations | 26 | 115 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted.; SMCR: bit fields withheld: UNSUPPORTED_MASK: TIM_SMCR_SMS_Msk: non-contiguous bit field without an exact declared component partition; CCMR1: bit fields withheld: UNSUPPORTED_MASK: TIM_CCMR1_OC1M_Msk: non-contiguous bit field without an exact declared component partition; CCMR2: bit fields withheld: UNSUPPORTED_MASK: TIM_CCMR2_OC3M_Msk: non-contiguous bit field without an exact declared component partition; CCMR3: bit fields withheld: UNSUPPORTED_MASK: TIM_CCMR3_OC5M_Msk: non-contiguous bit field without an exact declared component partition | header:TIM_TypeDef |
+| tpi | TPI_Type | TPI | partial_declarations | 17 | 32 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted.; DEVTYPE: bit fields withheld: DECLARATION_CONFLICT: TPI_DEVTYPE_SubType_Msk: position and mask disagree | core_cm7_h:TPI_Type |
+| ttcan | TTCAN_TypeDef |  | unmapped_type | 0 | 0 | 0 |  | No typed instances: helper type or additional instance mapping required | header:TTCAN_TypeDef |
+| usart | USART_TypeDef | LPUART1, UART4, UART5, UART7, UART8, USART1, USART2, USART3, USART6 | declarations_only | 12 | 125 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted.; Compound mask USART_CR1_M_Msk=0x10001000 (header:USART_CR1_M_Msk) is represented by its separately declared, disjoint contiguous components: USART_CR1_M0_Msk=0x1000 (header:USART_CR1_M0_Msk); USART_CR1_M1_Msk=0x10000000 (header:USART_CR1_M1_Msk). Their bitwise union exactly equals the compound mask; encodings remain unreviewed. | header:USART_TypeDef |
+| usb_otg_device | USB_OTG_DeviceTypeDef |  | unmapped_type | 0 | 0 | 0 |  | No typed instances: helper type or additional instance mapping required | header:USB_OTG_DeviceTypeDef |
+| usb_otg_global | USB_OTG_GlobalTypeDef | USB1_OTG_HS, USB2_OTG_FS | declarations_only | 24 | 0 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | header:USB_OTG_GlobalTypeDef |
+| usb_otg_host | USB_OTG_HostTypeDef |  | unmapped_type | 0 | 0 | 0 |  | No typed instances: helper type or additional instance mapping required | header:USB_OTG_HostTypeDef |
+| usb_otg_hostchannel | USB_OTG_HostChannelTypeDef |  | unmapped_type | 0 | 0 | 0 |  | No typed instances: helper type or additional instance mapping required | header:USB_OTG_HostChannelTypeDef |
+| usb_otg_inendpoint | USB_OTG_INEndpointTypeDef |  | unmapped_type | 0 | 0 | 0 |  | No typed instances: helper type or additional instance mapping required | header:USB_OTG_INEndpointTypeDef |
+| usb_otg_outendpoint | USB_OTG_OUTEndpointTypeDef |  | unmapped_type | 0 | 0 | 0 |  | No typed instances: helper type or additional instance mapping required | header:USB_OTG_OUTEndpointTypeDef |
+| vrefbuf | VREFBUF_TypeDef | VREFBUF | declarations_only | 2 | 5 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | header:VREFBUF_TypeDef |
+| wwdg | WWDG_TypeDef | WWDG1 | declarations_only | 3 | 6 | 0 |  | Enclosing masks represent contained aliases; absent masks remain unasserted. | header:WWDG_TypeDef |
+| xpsr | xPSR_Type |  | unmapped_type | 0 | 0 | 0 |  | No typed instances: helper type or additional instance mapping required | core_cm7_h:xPSR_Type |
+
+## Workflow readiness
+
+| Workflow | Ready | Required | Dependency closure | Missing evidence |
+| --- | --- | --- | --- | --- |
+| gpio_output | False | False | gpio, rcc | LED_A: board connectivity not published; gpio.MODER: access/operating semantics unreviewed; gpio.ODR: access/operating semantics unreviewed; gpio: operating semantics not reviewed; rcc: operating semantics not reviewed; rcc: specify workflow register requirements before claiming readiness |
+| timer_interrupt | False | False | nvic, rcc, tim | nvic: operating semantics not reviewed; nvic: specify workflow register requirements before claiming readiness; rcc: operating semantics not reviewed; rcc: specify workflow register requirements before claiming readiness; tim.ARR: access/operating semantics unreviewed; tim.CR1: access/operating semantics unreviewed; tim.DIER: access/operating semantics unreviewed; tim.PSC: access/operating semantics unreviewed; tim: operating semantics not reviewed |
+| uart_polling | False | False | gpio, rcc, usart | gpio: operating semantics not reviewed; gpio: specify workflow register requirements before claiming readiness; rcc: operating semantics not reviewed; rcc: specify workflow register requirements before claiming readiness; usart.BRR: access/operating semantics unreviewed; usart.CR1: access/operating semantics unreviewed; usart: operating semantics not reviewed |
+
+- Reviewed subsets do not establish support for every mode or instance.
+- Unreviewed declarations must not be used as initialization guidance.
+- Header absence does not prove that silicon lacks a capability.
+- Package availability, routing, timing and physical tests remain separate evidence.
+
+Complete source hashes, versions and origins: [[sources]].
+
+See [[coverage]] and [[sources]].
+
+## Mode-specific support
+
+See [[features]] for instance-scoped operating contracts. Header coverage does not establish complete MCU feature support.
+
+| Entity | Reviewed mode | Instances |
+| --- | --- | --- |
+
+Metadata and clock assumptions: `profile:target`. These are declared operating assumptions, not measurements. All register declarations are retained; unknown access/reset/encoding facts remain explicitly unasserted and must not be used to generate unsupported operations.

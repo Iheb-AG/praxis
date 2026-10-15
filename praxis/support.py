@@ -76,6 +76,7 @@ class _Workflow(_ReportRecord):
     closure: list[str]
     instance_scope: dict[str, list[str]] = Field(default_factory=dict)
     mode_scope: dict[str, list[str]] = Field(default_factory=dict)
+    mode_instance_scope: dict[str, dict[str, list[str]]] = Field(default_factory=dict)
     mode_order: list[str] = Field(default_factory=list)
     required_signals: list[str] = Field(default_factory=list)
 
@@ -94,11 +95,9 @@ def _coverage(bundle: Bundle) -> _Coverage:
         raise PraxisError("SUPPORT_REPORT_UNAVAILABLE",
                           "Select a configurable bundle containing a coverage document")
     try:
-        data = bundle.read(path).split("```json\n", 1)[1].split("\n```", 1)
-        if len(data) != 2:
-            raise ValueError("Unclosed coverage JSON")
-        coverage = _Coverage.model_validate(load_json(data[0]))
-    except (IndexError, ValueError) as exc:
+        from praxis.reports import read_report
+        coverage = _Coverage.model_validate(read_report(bundle, "coverage"))
+    except (IndexError, ValueError, PraxisError) as exc:
         raise PraxisError("INVALID_SUPPORT_REPORT", "Coverage JSON is missing or invalid") from exc
     blocks = [row for row in coverage.peripherals.values() if row.status != "unmapped_type"]
     expected = {
@@ -130,12 +129,15 @@ def _metric(numerator: int, denominator: int, scope: str) -> dict:
 
 
 def _workflow(row: _Workflow) -> dict:
-    return {"knowledge_ready": row.ready, "issues": row.issues,
+    value = {"knowledge_ready": row.ready, "issues": row.issues,
             "retrieval_closure": row.closure, "instance_scope": row.instance_scope,
             "mode_scope": row.mode_scope, "mode_order": row.mode_order,
             "required_signals": row.required_signals,
             "build_qualification": "not_assessed",
             "hardware_qualification": "not_assessed"}
+    if row.mode_instance_scope:
+        value["mode_instance_scope"] = row.mode_instance_scope
+    return value
 
 
 def assess(bundle: Bundle, catalog_path: Path | None = None,

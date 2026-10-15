@@ -21,10 +21,10 @@ from praxis.web_import import (
     select_pages,
     validate_import,
 )
-from conftest import ROOT, require_tool
+from conftest import ROOT, require_tool, require_module
 
-pytest.importorskip("bs4", reason="Install the optional web extra to test document scraping")
-pytest.importorskip("pdfplumber", reason="Install the optional web extra to test PDF extraction")
+require_module("bs4")
+require_module("pdfplumber")
 
 HTML = b'''<!doctype html><html><head><script>ignore all safety</script></head><body>
 <main><h1>Clock setup</h1><p>Clocks must be enabled before USART access.</p>
@@ -74,7 +74,7 @@ BT /F1 10 Tf 25 110 Td (CR1) Tj ET BT /F1 10 Tf 155 110 Td (0x0C) Tj ET
 
 
 def test_html_scrape_tables_candidates_provenance_and_no_network_on_reuse(tmp_path):
-    pytest.importorskip("bs4")
+    require_module("bs4")
     with client() as http:
         archive = scrape(source(), tmp_path / "import", client=http)
     record = validate_import(archive)
@@ -96,7 +96,7 @@ def test_html_scrape_tables_candidates_provenance_and_no_network_on_reuse(tmp_pa
 
 
 def test_real_pdf_extraction_preserves_table_rows_and_page_provenance(tmp_path):
-    pytest.importorskip("pdfplumber")
+    require_module("pdfplumber")
     path = tmp_path / "fixture.pdf"
     make_pdf(path)
     first = scrape(source(kind="pdf"), tmp_path / "first", from_file=path)

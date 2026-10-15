@@ -115,7 +115,8 @@ def test_complete_nested_tables_unknown_resets_and_prior_workflows_preserved():
     assert '| sFIFOMailBox_0__RIR | 0x1B0 | 32 | — | RO |' in text
     assert '| sTxMailBox_0__TIR | STID | 31:21 | 0xFFE00000 |' in text
     assert 'only in CAN1' in text and 'CAN2' in text
-    assert all(len(doc.encode()) <= 65536 for doc in bundle.documents.values())
+    assert all("## Register map" in bundle.read(path) and "## Bit fields" in bundle.read(path)
+               for path in bundle.manifest.peripherals.values())
 
 
 def test_can_routing_cannot_bypass_interrupt_and_clock_documents():

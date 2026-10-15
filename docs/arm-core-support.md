@@ -115,9 +115,10 @@ wrong clock state, old pending exceptions, incorrect stack/handler addresses, wr
 failures, finite waits, cleanup reporting and terminal failure without automatic reinitialization.
 See [recorded evidence](arm-core-evidence.json) for the final regression and artifact identifiers.
 
-Repeated MCP publication must produce identical bytes. Every served document stays within 64 KiB;
-the source catalog is currently 65,460 bytes, leaving little expansion room. The next compiler
-work must partition provenance losslessly rather than truncate facts or split peripheral tables.
+Repeated MCP publication must produce identical bytes. The historical source catalog measured
+65,460 bytes under the former 64 KiB ceiling. New compilation preserves complete Markdown
+without that ceiling; see [complete-document behavior](document-scale.md). Peripheral tables
+and source provenance remain intact.
 
 The first experimental release remains scoped to the documented F407/Cortex-M4 baseline.
 New STM32 parts can now use explicit knowledge adapters under the `stm32` family without

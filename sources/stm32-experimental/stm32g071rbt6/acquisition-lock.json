@@ -1,0 +1,43 @@
+{
+  "family": "g0",
+  "st_commit": "7c77b7cbcee497dfbb5cc08f9562a80515e78013",
+  "cmsis_tag": "5.9.0",
+  "files": {
+    "stm32g071xx.h": {
+      "url": "https://raw.githubusercontent.com/STMicroelectronics/cmsis-device-g0/7c77b7cbcee497dfbb5cc08f9562a80515e78013/Include/stm32g071xx.h",
+      "sha256": "0b19058af668cff72649ae3871f6729b0fa68c6e81794cefbd1b0d63e0943fb3"
+    },
+    "system_stm32g0xx.h": {
+      "url": "https://raw.githubusercontent.com/STMicroelectronics/cmsis-device-g0/7c77b7cbcee497dfbb5cc08f9562a80515e78013/Include/system_stm32g0xx.h",
+      "sha256": "20ee999e4431472a7c351e2412537aa0ef7f5f5e499a21a92c1d4cc21f84ebf1"
+    },
+    "LICENSE-ST.md": {
+      "url": "https://raw.githubusercontent.com/STMicroelectronics/cmsis-device-g0/7c77b7cbcee497dfbb5cc08f9562a80515e78013/LICENSE.md",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    "core_cm0plus.h": {
+      "url": "https://raw.githubusercontent.com/ARM-software/CMSIS_5/5.9.0/CMSIS/Core/Include/core_cm0plus.h",
+      "sha256": "a09fa9c6b8b21d1920bce15b98aa56182b027e9278cca0b154812bac2aea3cfa"
+    },
+    "cmsis_compiler.h": {
+      "url": "https://raw.githubusercontent.com/ARM-software/CMSIS_5/5.9.0/CMSIS/Core/Include/cmsis_compiler.h",
+      "sha256": "b51963d271c1571ca3463654c76aa7ea50c4eac5d0a2710df10414ac64d9e0f8"
+    },
+    "cmsis_gcc.h": {
+      "url": "https://raw.githubusercontent.com/ARM-software/CMSIS_5/5.9.0/CMSIS/Core/Include/cmsis_gcc.h",
+      "sha256": "43bfd1fe69fbbc2ca70aaf7d43cc3e20f16e0c7f66e1bdef9b51af6dc14b2617"
+    },
+    "cmsis_version.h": {
+      "url": "https://raw.githubusercontent.com/ARM-software/CMSIS_5/5.9.0/CMSIS/Core/Include/cmsis_version.h",
+      "sha256": "184c19fd3ee73632edf35a0b4d49cd48be75fbf49e6ccb19d9db05fa83bea4b3"
+    },
+    "LICENSE-CMSIS.txt": {
+      "url": "https://raw.githubusercontent.com/ARM-software/CMSIS_5/5.9.0/LICENSE.txt",
+      "sha256": "b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1"
+    },
+    "mpu_armv7.h": {
+      "url": "https://raw.githubusercontent.com/ARM-software/CMSIS_5/5.9.0/CMSIS/Core/Include/mpu_armv7.h",
+      "sha256": "29206b52ee02290ed6f5a5415ebd4187de802cf176d9b3cb844390d8e5571372"
+    }
+  }
+}

@@ -83,6 +83,28 @@ def cmsis(header: Path, structures: list[str] | None, defines: list[str], *,
             canonical = field_type.get_canonical()
             if canonical.kind == cindex.TypeKind.RECORD:
                 nested = canonical.get_declaration()
+                if nested.kind == cindex.CursorKind.UNION_DECL:
+                    views = []
+                    for alternative in nested.get_children():
+                        if alternative.kind != cindex.CursorKind.FIELD_DECL:
+                            continue
+                        view_type = alternative.type.get_canonical()
+                        width = view_type.get_size() * 8
+                        if (alternative.is_bitfield() or alternative.get_field_offsetof() != 0
+                                or not alternative.spelling or width not in (8, 16, 32)
+                                or view_type.kind not in (cindex.TypeKind.CHAR_U, cindex.TypeKind.UCHAR,
+                                    cindex.TypeKind.CHAR_S, cindex.TypeKind.SCHAR, cindex.TypeKind.USHORT,
+                                    cindex.TypeKind.SHORT, cindex.TypeKind.UINT, cindex.TypeKind.INT,
+                                    cindex.TypeKind.ULONG, cindex.TypeKind.LONG)):
+                            raise PraxisError("UNSUPPORTED_DECLARATION", f"Unsupported union view: {spelling}.{alternative.spelling}")
+                        views.append({"name": alternative.spelling, "width": width,
+                                      "c_type": alternative.type.spelling})
+                    width = canonical.get_size() * 8
+                    if (not views or width not in (8, 16, 32) or not 0 < count <= 1024
+                            or width != max(view["width"] for view in views)):
+                        raise PraxisError("UNSUPPORTED_DECLARATION", f"Unsupported union storage: {spelling}")
+                    fields[spelling] = {"offset": offset, "width": width, "count": count, "views": views}
+                    continue
                 if nested.kind != cindex.CursorKind.STRUCT_DECL or not 0 < count <= 1024:
                     raise PraxisError("UNSUPPORTED_DECLARATION", f"Unsupported nested member: {spelling}")
                 for index in range(count):

@@ -109,8 +109,8 @@ Duplicate JSON keys or canonical identities, conflicts, missing files, invalid e
 paths, broken links and invalid HEDG edges fail. The route is index → RCC → GPIO → USART → NVIC.
 
 Output is staged, validated and atomically published on the same filesystem. Each complete
-Markdown file must fit **64 KiB of UTF-8 bytes**. Oversized documents fail; no table is truncated
-or silently split. Published Markdown remains the runtime knowledge source.
+Markdown file is preserved completely without a fixed publication byte ceiling. No table is
+truncated or silently split. Published Markdown remains the runtime knowledge source.
 
 ## Verification limits
 

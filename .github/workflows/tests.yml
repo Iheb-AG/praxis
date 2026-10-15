@@ -7,10 +7,17 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version: '24'
       - run: npm ci --prefix website
       - run: npm test --prefix website
       - run: npm run build --prefix website
+      - name: Build an independent documentation checkout
+        run: |
+          mkdir /tmp/praxis-documentation
+          tar -C website --exclude=.git --exclude=node_modules --exclude=dist --exclude=.generated --exclude=.build-staging -cf - . | tar -C /tmp/praxis-documentation -xf -
+          cd /tmp/praxis-documentation
+          npm ci --include=dev
+          npm run build
       - uses: actions/upload-artifact@v4
         with:
           name: public-documentation

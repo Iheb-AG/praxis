@@ -14,7 +14,7 @@ from praxis.compiler import compile_bundle
 from praxis.errors import PraxisError
 from praxis.evaluation import evaluate
 from praxis.firmware_assets import FirmwareAssets
-from praxis.models import MAX_DOCUMENT_BYTES, Profile, Target
+from praxis.models import Profile, Target
 from praxis.routing import Session
 from praxis.verify import verify
 
@@ -39,7 +39,7 @@ def test_generic_layout_macro_conventions_and_provenance(compiled):
     assert "header:UART_CTRL_RESET_VALUE" in text
     assert "Not reviewed." in text
     assert "CMSIS" not in compiled.manifest.target.mcu
-    assert all(len(text.encode()) <= MAX_DOCUMENT_BYTES for text in compiled.documents.values())
+    assert text.count("## Register map") == 1 and text.count("## Bit fields") == 1
     index = compiled.read("wiki/index.md")
     assert "cortex-m3" in index and "knowledge-only target" in index
     assert "peripherals/rcc" not in index and "peripherals/gpio" not in index
@@ -73,7 +73,7 @@ def test_generic_generation_is_location_independent(compiled, tmp_path):
 
 
 @pytest.mark.parametrize("mutation,code", [
-    ("identity", "TARGET_MISMATCH"), ("wrong_cpu", "EXTRACTOR_FAILED"),
+    ("identity", "TARGET_MISMATCH"), ("wrong_cpu", "TARGET_MISMATCH"),
     ("unregistered_include", "UNREGISTERED_INCLUDE"), ("wrong_package", "PACKAGE_MISMATCH"),
     ("required_workflow", "PUBLICATION_BLOCKED"), ("cycle", "DEPENDENCY_CYCLE"),
     ("mask", "DISCOVERY_BLOCKED"),
@@ -248,6 +248,15 @@ def test_topology_only_custom_bundle_has_a_valid_evaluation(tmp_path):
     path = source / "profile.json"
     data = json.loads(path.read_text())
     data["discovery"]["peripherals"] = {}
+    # This deliberately reduced scope must also declare that it publishes no
+    # peripheral routing links, instead of inheriting the full fixture policy.
+    policy = next(s for s in data["sources"] if s["id"] == data["compilation_contract"])
+    contract_path = source / policy["path"]
+    contract = json.loads(contract_path.read_text())
+    contract.update(pin_document=None, board_prerequisites=[])
+    contract_path.write_text(json.dumps(contract))
+    from praxis.bundle import digest
+    policy["expected_sha256"] = digest(contract_path.read_bytes())
     path.write_text(json.dumps(data))
     bundle = Bundle(compile_bundle(path, tmp_path / "bundle"))
     assert not bundle.manifest.peripherals

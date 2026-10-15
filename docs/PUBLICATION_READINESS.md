@@ -1,18 +1,100 @@
 # Publication readiness
 
-Assessment date: 2026-10-12. Praxis is suitable for publication as an explicitly labeled
+Assessment date: 2026-10-15. Praxis is suitable for publication as an explicitly labeled
 **experimental development alpha**, once the public export and licensing review below are
 completed. It is **not ready for a qualified v1 release**. Passing tests and one working board
 do not establish universal MCU coverage or production hardware reliability.
 
 ## Current milestone state
 
-The current [STM32/ARM extension](arm-core-support.md) passed **861 tests with four native
+Timer capture IRQ increment, 2026-10-15: **1,462 full-suite tests passed, zero skipped**,
+with required external tools. The new [source-bound IRQ workflow](timer-irq.md) adds
+TIM5 CH3 IRQ50 capture paired with TIM2 CH2 PWM, a fixed 180-byte software ABI,
+independent exception delivery/failure models and raw period/receipt/cleanup qualification.
+Coverage is **43 mode contracts and 24/39 ready authored workflows**, not all-MCU coverage.
+Two ingestion MCP publications and a CLI publication match byte-for-byte. All 17
+applications build/revalidate through 94 actual MCP calls; native retrieval passes 52
+calls and rebuilt Docker passes 162 calls plus seven explicitly synthetic qualifier cases.
+Packaging, public-link checks, pinned inputs, Ruff and the offline lock check pass.
+The 5,984-byte artifact 70aab2ee7184… is not flashed. Read-only preflight cannot currently
+see the selected ST-LINK; reconnect/wiring confirmation is pending. New physical IRQ
+qualification, DMA, broader F407 modes and independent release review remain open.
+See [exact software evidence](timer-irq-evidence.json). Next: reconnect the selected
+probe, obtain fresh exact-image approval, and test IRQ success/no-edge/recovery through MCP.
+
+The [paired timer physical trial](reports/timer-route-results.md) now passes its
+three exact-artifact phases: wired success, clean no-edge timeout and wired recovery.
+One explicitly approved flash/readback and reset/run were followed by operator-driven
+power cycles and read-only MCP observations. Six windows/18 samples show eight
+1,000-tick periods in both positive boots, preserved timeout failure and quiet shutdown.
+This is scoped firmware/capture evidence; independent frequency/duty measurement,
+formal repeatability, physical PCB revision, timer IRQ/DMA, full F407 acceptance and
+independent release sign-off remain open. The prior software-only evidence below
+remains historical and is not retroactively qualified.
+
+The [timer observation increment](timer-observations.md) passes 1,270 strict full-suite
+tests with zero skips, plus 155 overlapping affected checks including two added later.
+All 16 examples build/revalidate through 92 MCP calls; Docker passes 162 retrieval calls
+and five synthetic qualification cases. It adds exact-artifact timer SRAM observation
+and recomputed raw-period/cleanup checks. Knowledge mode counts stay 39 and 23/38 ready
+workflows. No new flash, physical observation, independent review or all-mode MCU
+acceptance is implied. The release gate still exits 2 for missing exact-bundle and
+firmware-asset independent review.
+
+The [routed timer increment](timer-routes.md) passes **1,165 strict full-suite tests,
+zero skipped**, plus 51 focused checks including six added after full-suite collection.
+It adds generic exact per-mode instance scopes and data-defined PA1/TIM2_CH2 PWM /
+PA2/TIM5_CH3 capture, reaching 39 contracts and 23/38 ready authored workflows. All 15
+applications build/revalidate in 90 actual MCP calls; Docker passes 162 calls across
+four sessions. Three publications are byte-identical; distribution checks pass.
+The external route is source/model/compiler checked only: physical wiring/revision,
+exact-artifact execution and independent bundle/asset sign-off remain open. Full
+F407 acceptance is false; no hardware operation occurred in this increment.
+
+The [timer operating increment](timer-modes.md) passes **1,120 strict tests, zero skipped**.
+Two new internal TIM2 workflows and an RCC prerequisite contract raise mode support to35
+contracts and22/37 ready workflows. All fourteen examples link/revalidate through86 actual
+MCP calls;161 container calls pass using the existing image. These are modeled/compile-tested
+internal reference and software-event scopes. External PWM/capture, physical execution and
+independent exact-bundle/asset review remain open; no runtime/compiler specialization was added.
+
+The [register interpretation increment](register-field-views.md) passes **1,052 strict tests,
+zero skipped**. Its new immutable F407 bundle preserves full input/output and mixed-channel
+timer field tables through generic source-profile data. Native MCP passes 52 calls, all 12
+existing application builds/revalidations pass in 81 calls, and Docker passes 161 calls.
+This closes a compiler representation gap; the 22 reviewed subsets, 32 mode contracts and
+20/33 ready workflows remain unchanged. PWM/capture operating contracts, their matching
+example/physical qualification and independent release review remain open.
+
+The [second F407 source-scope review](inventory-reconciliation.md) resolves all 29 original layout
+items with source-bound editorial records, retains all 1,683 indexed records, and reduces pending/
+mixed applicability to 299 sections. It records 24 target/package facts without claiming new
+operating support. **1,022 strict tests pass with zero skips**; all 12 builds/revalidations and 161
+Docker MCP calls pass. Source interpretation is implementing-author editorial review, not
+independent sign-off; full body/mode, physical and release qualification remain open.
+
+The [manufacturer scope stage](manufacturer-inventory.md) adds a source-pinned inventory CLI
+and outline MCP tool. Strict regression passes **1,005 tests with zero skips**; all twelve
+F407 examples still build/revalidate through 81 MCP calls, and the rebuilt Docker runtime passes
+161 calls across four sessions. The 1,683 indexed records are source sections/errata rows,
+not a new feature-support percentage. Applicability, extraction, complete mode requirements,
+physical qualification and independent review remain open.
+
+The [full F407 audit](f407-full-acceptance.md) supersedes the older validation counts below:
+**970 tests passed, zero skipped**, with required external tools enabled. Installed KiCad
+10.0.7 passes native export/compilation checks. The fixed document ceiling has been removed.
+The new candidate publishes42/42 recognized blocks, while reviewed coverage remains22 subsets
+and20/33 authored workflows. All12 existing F407 applications link and ELF-revalidate through
+actual MCP against that revision;161 rebuilt Docker MCP calls pass across four sessions.
+Full manufacturer-mode coverage, complete board topology, broader physical qualification and
+independent review remain open. The next priority is closing F407 gaps, not expanding families.
+
+Earlier [STM32/ARM extension](arm-core-support.md) evidence passed **861 tests with four native
 KiCad skips**, Ruff, the lock check and actual MCP retrieval/build revalidation. It publishes22
 reviewed subsets and32 mode contracts, with20/33 ready authored workflows. The new core image
 is unflashed. [Experimental release scope](experimental-release.md) centers on F407/Cortex-M4;
-this is distinct from qualified-v1 approval and broad STM32 family support. The near-full
-source catalog needs lossless scaling before further large source expansion.
+this is distinct from qualified-v1 approval and broad STM32 family support. Source catalogs
+and Markdown now retain complete content without the former fixed document ceiling.
 
 The [reusable Cortex-M knowledge adapter](target-adapters.md) now demonstrates CPU/header
 and macro-convention portability through a fictional Cortex-M3 bundle. Full regression:

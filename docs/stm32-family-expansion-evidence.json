@@ -1,0 +1,330 @@
+{
+  "date": "2026-10-14",
+  "determinism": [
+    {
+      "byte_identical": true,
+      "revision": "801b0126a094c4f5b211f2db999aa466a3014f99b2ed695c6493afd6e0cd448e",
+      "target": "stm32f103c8t6"
+    },
+    {
+      "byte_identical": true,
+      "revision": "71006e075674d00f6f1b8ccd0ad978090ce81ebe4b287eb9060b2054e54fbfce",
+      "target": "stm32g071rbt6"
+    },
+    {
+      "byte_identical": true,
+      "revision": "c48e538d8caee607a7439550ccbdb28db424911e06bd7e0b8d03fed857c13ed3",
+      "target": "stm32h743zit6"
+    }
+  ],
+  "docker": {
+    "architecture": "amd64",
+    "image": "project-praxis:stm32-experimental",
+    "image_id": "sha256:bf5da627f1cce71cc1aa3251b4f58250f30795a8eb412f0e0f5c4d2021582212",
+    "limits": "Local architecture only; no compiler, physical board, or remote registry publication tested.",
+    "negative_and_runtime_checks": [
+      "MISSING_FILE",
+      "INTEGRITY_ERROR",
+      "non_root",
+      "read_only_filesystem_and_bundle",
+      "no_optional_extras"
+    ],
+    "os": "linux",
+    "passed": true,
+    "sessions": [
+      {
+        "calls": 38,
+        "complete_documents": 30,
+        "revision": "801b0126a094c4f5b211f2db999aa466a3014f99b2ed695c6493afd6e0cd448e",
+        "target": "stm32f103c8t6_inventory"
+      },
+      {
+        "calls": 43,
+        "complete_documents": 35,
+        "revision": "71006e075674d00f6f1b8ccd0ad978090ce81ebe4b287eb9060b2054e54fbfce",
+        "target": "stm32g071rbt6_inventory"
+      },
+      {
+        "calls": 84,
+        "complete_documents": 76,
+        "revision": "c48e538d8caee607a7439550ccbdb28db424911e06bd7e0b8d03fed857c13ed3",
+        "target": "stm32h743zit6_inventory"
+      },
+      {
+        "calls": 49,
+        "complete_documents": 41,
+        "revision": "edb8249ce849c59e6642f2edab2b58e036bc0105925897d8a61c04449b00f7e5",
+        "target": "stm32f407g_disc1_mb997_e01"
+      },
+      {
+        "calls": 38,
+        "complete_documents": 30,
+        "revision": "801b0126a094c4f5b211f2db999aa466a3014f99b2ed695c6493afd6e0cd448e",
+        "target": "stm32f103c8t6_inventory"
+      }
+    ],
+    "sessions_count": 5
+  },
+  "format": "praxis-stm32-family-expansion-evidence-v1",
+  "hardware_operations": 0,
+  "known_limits": [
+    "No board schematics or package pin map supplied",
+    "Active clocks unknown",
+    "No new reviewed operating subsets",
+    "No target firmware or flash support inherited from F407",
+    "Blocked union layouts and mask ambiguities remain explicit"
+  ],
+  "published_bundle_version": "inventory-v2",
+  "real_stdio_mcp": {
+    "stm32f103c8t6": {
+      "calls": 39,
+      "discovered_tools": [
+        "query_schematic_netlist",
+        "read_peripheral_doc",
+        "read_wiki_index"
+      ],
+      "limits": "Actual MCP retrieval and complete-byte checks only; no live LLM, operating-semantic, build or physical qualification.",
+      "passed": true,
+      "revision": "801b0126a094c4f5b211f2db999aa466a3014f99b2ed695c6493afd6e0cd448e"
+    },
+    "stm32g071rbt6": {
+      "calls": 44,
+      "discovered_tools": [
+        "query_schematic_netlist",
+        "read_peripheral_doc",
+        "read_wiki_index"
+      ],
+      "limits": "Actual MCP retrieval and complete-byte checks only; no live LLM, operating-semantic, build or physical qualification.",
+      "passed": true,
+      "revision": "71006e075674d00f6f1b8ccd0ad978090ce81ebe4b287eb9060b2054e54fbfce"
+    },
+    "stm32h743zit6": {
+      "calls": 85,
+      "discovered_tools": [
+        "query_schematic_netlist",
+        "read_peripheral_doc",
+        "read_wiki_index"
+      ],
+      "limits": "Actual MCP retrieval and complete-byte checks only; no live LLM, operating-semantic, build or physical qualification.",
+      "passed": true,
+      "revision": "c48e538d8caee607a7439550ccbdb28db424911e06bd7e0b8d03fed857c13ed3"
+    }
+  },
+  "real_stdio_mcp_total_calls": 168,
+  "regression": {
+    "duration_seconds": 171.09,
+    "passed": 903,
+    "skip_reason": "Native KiCad integration checks require kicad-cli",
+    "skipped": 4,
+    "status": "passed"
+  },
+  "scope": "MCU-only declaration extraction and real stdio retrieval; no reviewed operating support or physical qualification",
+  "target_matrix": {
+    "format": "praxis-target-matrix-v1",
+    "limits": "Publication and deterministic retrieval only. No firmware build, board connectivity, automatic operating semantics or physical qualification is implied.",
+    "passed": true,
+    "targets": {
+      "stm32f103c8t6_inventory": {
+        "bundle_directory": "stm32f103c8t6_inventory",
+        "bundle_revision": "801b0126a094c4f5b211f2db999aa466a3014f99b2ed695c6493afd6e0cd448e",
+        "counts": {
+          "blocked": 1,
+          "fields": 1153,
+          "published": 30,
+          "register_blocks": 31,
+          "registers": 303,
+          "reviewed_subsets": 0,
+          "unmapped_types": 8
+        },
+        "cpu": "cortex-m3",
+        "documents": 35,
+        "largest_document_bytes": 31862,
+        "mcu": "STM32F103C8T6",
+        "operating_support": "separate reviewed mode/workflow evidence required",
+        "physical_qualification": false,
+        "profile_sha256": "c5069e385a714da38f2b751523a6adac40005d58586667a937cb5436cb57138b",
+        "retrieval_replay_passed": true,
+        "scope": "mcu",
+        "status": "published",
+        "workflows": {
+          "gpio_output": {
+            "issues": [
+              "LED_A: board connectivity not published",
+              "gpio.CRL: access/operating semantics unreviewed",
+              "gpio.ODR: access/operating semantics unreviewed",
+              "gpio: operating semantics not reviewed",
+              "rcc: operating semantics not reviewed",
+              "rcc: specify workflow register requirements before claiming readiness"
+            ],
+            "ready": false
+          },
+          "timer_interrupt": {
+            "issues": [
+              "nvic: operating semantics not reviewed",
+              "nvic: specify workflow register requirements before claiming readiness",
+              "rcc: operating semantics not reviewed",
+              "rcc: specify workflow register requirements before claiming readiness",
+              "tim.ARR: access/operating semantics unreviewed",
+              "tim.CR1: access/operating semantics unreviewed",
+              "tim.DIER: access/operating semantics unreviewed",
+              "tim.PSC: access/operating semantics unreviewed",
+              "tim: operating semantics not reviewed"
+            ],
+            "ready": false
+          },
+          "uart_polling": {
+            "issues": [
+              "gpio: operating semantics not reviewed",
+              "gpio: specify workflow register requirements before claiming readiness",
+              "rcc: operating semantics not reviewed",
+              "rcc: specify workflow register requirements before claiming readiness",
+              "usart.BRR: access/operating semantics unreviewed",
+              "usart.CR1: access/operating semantics unreviewed",
+              "usart: operating semantics not reviewed"
+            ],
+            "ready": false
+          }
+        }
+      },
+      "stm32g071rbt6_inventory": {
+        "bundle_directory": "stm32g071rbt6_inventory",
+        "bundle_revision": "71006e075674d00f6f1b8ccd0ad978090ce81ebe4b287eb9060b2054e54fbfce",
+        "counts": {
+          "blocked": 0,
+          "fields": 1731,
+          "published": 35,
+          "register_blocks": 35,
+          "registers": 289,
+          "reviewed_subsets": 0,
+          "unmapped_types": 5
+        },
+        "cpu": "cortex-m0plus",
+        "documents": 40,
+        "largest_document_bytes": 37895,
+        "mcu": "STM32G071RBT6",
+        "operating_support": "separate reviewed mode/workflow evidence required",
+        "physical_qualification": false,
+        "profile_sha256": "0e5b98c233654fbbacc1b1defc80e106d6e9caeb94c7f9ede5521364a0611de9",
+        "retrieval_replay_passed": true,
+        "scope": "mcu",
+        "status": "published",
+        "workflows": {
+          "gpio_output": {
+            "issues": [
+              "LED_A: board connectivity not published",
+              "gpio.MODER: access/operating semantics unreviewed",
+              "gpio.ODR: access/operating semantics unreviewed",
+              "gpio: operating semantics not reviewed",
+              "rcc: operating semantics not reviewed",
+              "rcc: specify workflow register requirements before claiming readiness"
+            ],
+            "ready": false
+          },
+          "timer_interrupt": {
+            "issues": [
+              "nvic: operating semantics not reviewed",
+              "nvic: specify workflow register requirements before claiming readiness",
+              "rcc: operating semantics not reviewed",
+              "rcc: specify workflow register requirements before claiming readiness",
+              "tim.ARR: access/operating semantics unreviewed",
+              "tim.CR1: access/operating semantics unreviewed",
+              "tim.DIER: access/operating semantics unreviewed",
+              "tim.PSC: access/operating semantics unreviewed",
+              "tim: operating semantics not reviewed"
+            ],
+            "ready": false
+          },
+          "uart_polling": {
+            "issues": [
+              "gpio: operating semantics not reviewed",
+              "gpio: specify workflow register requirements before claiming readiness",
+              "rcc: operating semantics not reviewed",
+              "rcc: specify workflow register requirements before claiming readiness",
+              "usart.BRR: access/operating semantics unreviewed",
+              "usart.CR1: access/operating semantics unreviewed",
+              "usart: operating semantics not reviewed"
+            ],
+            "ready": false
+          }
+        }
+      },
+      "stm32h743zit6_inventory": {
+        "bundle_directory": "stm32h743zit6_inventory",
+        "bundle_revision": "c48e538d8caee607a7439550ccbdb28db424911e06bd7e0b8d03fed857c13ed3",
+        "counts": {
+          "blocked": 4,
+          "fields": 3265,
+          "published": 76,
+          "register_blocks": 80,
+          "registers": 1075,
+          "reviewed_subsets": 0,
+          "unmapped_types": 12
+        },
+        "cpu": "cortex-m7",
+        "documents": 82,
+        "largest_document_bytes": 64765,
+        "mcu": "STM32H743ZIT6",
+        "operating_support": "separate reviewed mode/workflow evidence required",
+        "physical_qualification": false,
+        "profile_sha256": "12eb63f926c780eeecbc9cd7ebc7a2432b20bcd5bae7f078cbecb9c8ec2c0dee",
+        "retrieval_replay_passed": true,
+        "scope": "mcu",
+        "status": "published",
+        "workflows": {
+          "gpio_output": {
+            "issues": [
+              "LED_A: board connectivity not published",
+              "gpio.MODER: access/operating semantics unreviewed",
+              "gpio.ODR: access/operating semantics unreviewed",
+              "gpio: operating semantics not reviewed",
+              "rcc: operating semantics not reviewed",
+              "rcc: specify workflow register requirements before claiming readiness"
+            ],
+            "ready": false
+          },
+          "timer_interrupt": {
+            "issues": [
+              "nvic: operating semantics not reviewed",
+              "nvic: specify workflow register requirements before claiming readiness",
+              "rcc: operating semantics not reviewed",
+              "rcc: specify workflow register requirements before claiming readiness",
+              "tim.ARR: access/operating semantics unreviewed",
+              "tim.CR1: access/operating semantics unreviewed",
+              "tim.DIER: access/operating semantics unreviewed",
+              "tim.PSC: access/operating semantics unreviewed",
+              "tim: operating semantics not reviewed"
+            ],
+            "ready": false
+          },
+          "uart_polling": {
+            "issues": [
+              "gpio: operating semantics not reviewed",
+              "gpio: specify workflow register requirements before claiming readiness",
+              "rcc: operating semantics not reviewed",
+              "rcc: specify workflow register requirements before claiming readiness",
+              "usart.BRR: access/operating semantics unreviewed",
+              "usart.CR1: access/operating semantics unreviewed",
+              "usart: operating semantics not reviewed"
+            ],
+            "ready": false
+          }
+        }
+      }
+    }
+  },
+  "validation": {
+    "compound_mask_negative_checks_passed": true,
+    "dependency_lock_passed": true,
+    "earlier_full_run": {
+      "cause": "USART CR1 field set withheld on G0/H7 for non-contiguous composite M mask; generic exact partition support added and complete regression rerun",
+      "failed": 2,
+      "passed": 894,
+      "skipped": 4
+    },
+    "legacy_bundle_hashes_readable": true,
+    "packaged_pinned_inputs_verified": 34,
+    "ruff_passed": true,
+    "source_distribution_checks_passed": true
+  },
+  "website_documentation_synchronized": false
+}

@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "allowed_hosts": [
+    "www.st.com",
+    "st.com"
+  ],
+  "sources": [
+    {
+      "id": "pm0214_core",
+      "target": "STM32F407VGT6",
+      "title": "ST PM0214 Cortex-M4 programming manual; applicability and source revision require review",
+      "kind": "pdf",
+      "url": "https://www.st.com/resource/en/programming_manual/pm0214-stm32-cortexm4-mcus-and-mpus-programming-manual-stmicroelectronics.pdf"
+    }
+  ]
+}

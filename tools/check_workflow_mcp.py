@@ -75,8 +75,8 @@ async def run(args):
 
         for entity in entities:
             await retrieve(entity)
-        checks['complete_documents_within_limit'] = all(
-            '## Register map' in text and '## Bit fields' in text and len(text.encode()) <= 65536
+        checks['complete_documents'] = all(
+            '## Register map' in text and '## Bit fields' in text
             for text in documents.values())
         for requested in args.mode:
             entity, mode = requested.split('/')

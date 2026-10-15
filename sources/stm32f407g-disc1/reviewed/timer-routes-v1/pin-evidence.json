@@ -1,0 +1,66 @@
+{
+  "facts": {
+    "PA1": {
+      "af": 1,
+      "channel": 2,
+      "package": "LQFP100",
+      "peripheral": "TIM2",
+      "physical_pin": "24"
+    },
+    "PA2": {
+      "af": 2,
+      "channel": 3,
+      "package": "LQFP100",
+      "peripheral": "TIM5",
+      "physical_pin": "25"
+    }
+  },
+  "format": "praxis-reviewed-pin-route-facts-v1",
+  "pages": {
+    "ds8626/page:49": {
+      "artifact": "extracted/part-0002.json",
+      "artifact_sha256": "809966a3631eacb3b5ab8b303ecc416863b2d2cf72a5ec6049ab833172f8696a",
+      "import_revision": "b1c4db7adc3e97a95eace910d024811fddbd9560d84fd36b5b597dd61703bdfa",
+      "locator": "page:49",
+      "origin": "https://www.st.com/resource/en/datasheet/stm32f407vg.pdf",
+      "source_sha256": "1f41b4fa49a9960215ebb76cd0a75f20241db82eed60d308345a80463caeed22"
+    },
+    "ds8626/page:50": {
+      "artifact": "extracted/part-0003.json",
+      "artifact_sha256": "cb9f67117d0541139557246197b618152d7bca96932e6a93c11e8e04710b69f7",
+      "import_revision": "b1c4db7adc3e97a95eace910d024811fddbd9560d84fd36b5b597dd61703bdfa",
+      "locator": "page:50",
+      "origin": "https://www.st.com/resource/en/datasheet/stm32f407vg.pdf",
+      "source_sha256": "1f41b4fa49a9960215ebb76cd0a75f20241db82eed60d308345a80463caeed22"
+    },
+    "ds8626/page:51": {
+      "artifact": "extracted/part-0004.json",
+      "artifact_sha256": "1c5cf245fd799f2dc211598f4911cf1a1449804e903cdaf3c690e1f21959808d",
+      "import_revision": "b1c4db7adc3e97a95eace910d024811fddbd9560d84fd36b5b597dd61703bdfa",
+      "locator": "page:51",
+      "origin": "https://www.st.com/resource/en/datasheet/stm32f407vg.pdf",
+      "source_sha256": "1f41b4fa49a9960215ebb76cd0a75f20241db82eed60d308345a80463caeed22"
+    },
+    "ds8626/page:64": {
+      "artifact": "extracted/part-0008.json",
+      "artifact_sha256": "13cd658536588253eb3d4eac5bb5c226b44a00f663631eaa6dde0d3277a9fb75",
+      "import_revision": "b1c4db7adc3e97a95eace910d024811fddbd9560d84fd36b5b597dd61703bdfa",
+      "locator": "page:64",
+      "origin": "https://www.st.com/resource/en/datasheet/stm32f407vg.pdf",
+      "source_sha256": "1f41b4fa49a9960215ebb76cd0a75f20241db82eed60d308345a80463caeed22"
+    },
+    "ds8626/page:65": {
+      "artifact": "extracted/part-0009.json",
+      "artifact_sha256": "94db17085c49b2f2cd23e4ee40ff85406eb721180f9ff978645ff83161855afd",
+      "import_revision": "b1c4db7adc3e97a95eace910d024811fddbd9560d84fd36b5b597dd61703bdfa",
+      "locator": "page:65",
+      "origin": "https://www.st.com/resource/en/datasheet/stm32f407vg.pdf",
+      "source_sha256": "1f41b4fa49a9960215ebb76cd0a75f20241db82eed60d308345a80463caeed22"
+    }
+  },
+  "review": {
+    "basis": "Exact MCP source parts and schematic images reviewed; implementing-author review only. Independent signoff and new physical qualification pending.",
+    "reviewer": "Codex source-backed editorial review through Praxis ingestion MCP",
+    "status": "reviewed"
+  }
+}

@@ -1,0 +1,288 @@
+{
+  "format": "praxis-reviewed-timer-route-facts-v1",
+  "limits": [
+    "TIM2 CH2 PWM1 and TIM5 CH3 direct TI3 rising capture only; no IRQ/DMA or other modes are qualified.",
+    "Nominal HSI16, AHB/APB1/APB2 divisors1. Same oscillator for both counters; no calibrated frequency claim.",
+    "Fresh exclusive privileged startup; no downstream TRGO consumers during UG. No live clock, pin or timer owner changes.",
+    "Only source/model/compiler evidence; physical board revision unknown and route not physically tested."
+  ],
+  "pages": {
+    "es0182/page:17": {
+      "artifact": "extracted/part-0011.json",
+      "artifact_sha256": "0406c0126dcdbd0717fb575e6ae8df15a16a4e75a05327169534828d1d9abce7",
+      "import_revision": "acf57497462c09081b4527930b51dcf047fd8b7d6bdbdfff38d6fd7d8a46e60b",
+      "locator": "page:17",
+      "origin": "https://www.st.com/resource/en/errata_sheet/es0182-stm32f405407xx-and-stm32f415417xx-device-errata-stmicroelectronics.pdf",
+      "source_sha256": "1d3da0f99b85013548d17df07919516bf862f8f38cbd1a61f08e75abb8e4c54f"
+    },
+    "es0182/page:18": {
+      "artifact": "extracted/part-0012.json",
+      "artifact_sha256": "c9882c99b635f99fcd52b448aa0beed90deb711ba5e4a7dff592da67dc954345",
+      "import_revision": "acf57497462c09081b4527930b51dcf047fd8b7d6bdbdfff38d6fd7d8a46e60b",
+      "locator": "page:18",
+      "origin": "https://www.st.com/resource/en/errata_sheet/es0182-stm32f405407xx-and-stm32f415417xx-device-errata-stmicroelectronics.pdf",
+      "source_sha256": "1d3da0f99b85013548d17df07919516bf862f8f38cbd1a61f08e75abb8e4c54f"
+    },
+    "es0182/page:19": {
+      "artifact": "extracted/part-0013.json",
+      "artifact_sha256": "74f7273cb9c8ccd25c6a73dd88f50c5a4a5e0bed817c41d4f314ade76d6052b9",
+      "import_revision": "acf57497462c09081b4527930b51dcf047fd8b7d6bdbdfff38d6fd7d8a46e60b",
+      "locator": "page:19",
+      "origin": "https://www.st.com/resource/en/errata_sheet/es0182-stm32f405407xx-and-stm32f415417xx-device-errata-stmicroelectronics.pdf",
+      "source_sha256": "1d3da0f99b85013548d17df07919516bf862f8f38cbd1a61f08e75abb8e4c54f"
+    },
+    "rm0090/page:240": {
+      "artifact": "extracted/part-0002.json",
+      "artifact_sha256": "3d0c069a1bca78f6e34b328254e8f64f60ef2686e42574465b55953eb3960187",
+      "import_revision": "9b6d9fe2ab9134d7aaacebc23f0f13745c41e1ffb52b3f0ce980b69332aaca6b",
+      "locator": "page:240",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:242": {
+      "artifact": "extracted/part-0001.json",
+      "artifact_sha256": "ed446f61372af530824815e87db16c92199948fb8361d2af642eedaccc08fc68",
+      "import_revision": "0bdf19dbb92f8346170093663a6390f1e81963660cd7a17f1be3c1a68589d208",
+      "locator": "page:242",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:243": {
+      "artifact": "extracted/part-0002.json",
+      "artifact_sha256": "ca2b077c192439e5bfb907abce9b587e68302b502d3ae9e77b5a1e30c4a89c78",
+      "import_revision": "0bdf19dbb92f8346170093663a6390f1e81963660cd7a17f1be3c1a68589d208",
+      "locator": "page:243",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:244": {
+      "artifact": "extracted/part-0003.json",
+      "artifact_sha256": "14d970dc96ef2393b1447b0591e0d22cc7c7b77097317b8ad52ccd96e7b2b0c3",
+      "import_revision": "0bdf19dbb92f8346170093663a6390f1e81963660cd7a17f1be3c1a68589d208",
+      "locator": "page:244",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:245": {
+      "artifact": "extracted/part-0001.json",
+      "artifact_sha256": "9c2a08a72a40d4876a43c8527f1b07f36a1c3f4908a5b3d6b3c17c9961f33f30",
+      "import_revision": "4802394e515e825a9ed428f85596ddc2626838252dedd3f51dbb4da047c614f8",
+      "locator": "page:245",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:248": {
+      "artifact": "extracted/part-0003.json",
+      "artifact_sha256": "6532b0beb1441590e200d0dcb18d21543d093b8bce4287c71fe9ab859f0f305e",
+      "import_revision": "9b6d9fe2ab9134d7aaacebc23f0f13745c41e1ffb52b3f0ce980b69332aaca6b",
+      "locator": "page:248",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:249": {
+      "artifact": "extracted/part-0004.json",
+      "artifact_sha256": "7ec9e01e60e3b1ac5ec53fdc0d9562c26f944011cfb8e234afdce266bbe12b88",
+      "import_revision": "9b6d9fe2ab9134d7aaacebc23f0f13745c41e1ffb52b3f0ce980b69332aaca6b",
+      "locator": "page:249",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:281": {
+      "artifact": "extracted/part-0001.json",
+      "artifact_sha256": "e891023f9e9f3d870285b0319ab1b35f768e63b40d8ece7c303c37dc5c4853c6",
+      "import_revision": "62d738596cb2778bfd6a7f9604722bcba8b3376d517470f607f6705842c2e4ec",
+      "locator": "page:281",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:282": {
+      "artifact": "extracted/part-0002.json",
+      "artifact_sha256": "3d4d29fe1a21183e14bbfcd97c6ab095ba44b1911e9df3c66532e1c7b0d75ff3",
+      "import_revision": "62d738596cb2778bfd6a7f9604722bcba8b3376d517470f607f6705842c2e4ec",
+      "locator": "page:282",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:283": {
+      "artifact": "extracted/part-0003.json",
+      "artifact_sha256": "d46ecf9e23249fe1c6c2229a90f10f048864e545ca076115f4fe12f1300bb770",
+      "import_revision": "62d738596cb2778bfd6a7f9604722bcba8b3376d517470f607f6705842c2e4ec",
+      "locator": "page:283",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:284": {
+      "artifact": "extracted/part-0004.json",
+      "artifact_sha256": "c2a20d3e10ecf4b59815d3f67d18144633a323905738cdb7a3780a4b060ab25c",
+      "import_revision": "62d738596cb2778bfd6a7f9604722bcba8b3376d517470f607f6705842c2e4ec",
+      "locator": "page:284",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:285": {
+      "artifact": "extracted/part-0005.json",
+      "artifact_sha256": "8dafdc2bc61a5b4b6ab7eb4d34fac79eff7d6f7fa71a4fc982498ecdfa777ef8",
+      "import_revision": "62d738596cb2778bfd6a7f9604722bcba8b3376d517470f607f6705842c2e4ec",
+      "locator": "page:285",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:286": {
+      "artifact": "extracted/part-0006.json",
+      "artifact_sha256": "1e1e66ac88824fc50c3bfbe7e2d9b71e2db69b6f37c2448181a587e8b71bcbd4",
+      "import_revision": "62d738596cb2778bfd6a7f9604722bcba8b3376d517470f607f6705842c2e4ec",
+      "locator": "page:286",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:287": {
+      "artifact": "extracted/part-0007.json",
+      "artifact_sha256": "b864571d87f0e3ffe2fafc3f96c986807ebb4d94e51975870c9bca8a5f089a71",
+      "import_revision": "62d738596cb2778bfd6a7f9604722bcba8b3376d517470f607f6705842c2e4ec",
+      "locator": "page:287",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:288": {
+      "artifact": "extracted/part-0008.json",
+      "artifact_sha256": "87a7a32c0807b208844643e27673a0c7ab1d75911cee601aefd4c908ffcde100",
+      "import_revision": "62d738596cb2778bfd6a7f9604722bcba8b3376d517470f607f6705842c2e4ec",
+      "locator": "page:288",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:289": {
+      "artifact": "extracted/part-0009.json",
+      "artifact_sha256": "18d8a9867b3f1209bba9c27649a67cc911eb38b2f46bdd15d21e430e9bf8cde4",
+      "import_revision": "62d738596cb2778bfd6a7f9604722bcba8b3376d517470f607f6705842c2e4ec",
+      "locator": "page:289",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:604": {
+      "artifact": "extracted/part-0004.json",
+      "artifact_sha256": "5e5d9d8d7136189b8556afcf6fe6e68c8503e18b362cae4f81c415848e128961",
+      "import_revision": "948340f29702a60fb74485b36ee6da335fad3b9fcf04a95afb1376b8d468e1b3",
+      "locator": "page:604",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:624": {
+      "artifact": "extracted/part-0011.json",
+      "artifact_sha256": "0aa49dfc56131b2af8bc0b1e2107581cd7a766b28286f78cbe0b15d50d92d7eb",
+      "import_revision": "948340f29702a60fb74485b36ee6da335fad3b9fcf04a95afb1376b8d468e1b3",
+      "locator": "page:624",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:628": {
+      "artifact": "extracted/part-0015.json",
+      "artifact_sha256": "f3c27ee080a928f8b039e139a3f6a51303421e904b4dfa724d71a4716a0b26af",
+      "import_revision": "948340f29702a60fb74485b36ee6da335fad3b9fcf04a95afb1376b8d468e1b3",
+      "locator": "page:628",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:629": {
+      "artifact": "extracted/part-0016.json",
+      "artifact_sha256": "2a9bd44e140cafa227b2b488002d391f15b8db997d9f5e6df420b989912aef1b",
+      "import_revision": "948340f29702a60fb74485b36ee6da335fad3b9fcf04a95afb1376b8d468e1b3",
+      "locator": "page:629",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:630": {
+      "artifact": "extracted/part-0017.json",
+      "artifact_sha256": "6994ebfc114dab48aecafb188ef1ec72655398f2abc06b3b5e0f0b6a7bfb5ea7",
+      "import_revision": "948340f29702a60fb74485b36ee6da335fad3b9fcf04a95afb1376b8d468e1b3",
+      "locator": "page:630",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:631": {
+      "artifact": "extracted/part-0018.json",
+      "artifact_sha256": "5a691da085255144af2d3975f4e800de7964733742d3250c2224b25332d3a14d",
+      "import_revision": "948340f29702a60fb74485b36ee6da335fad3b9fcf04a95afb1376b8d468e1b3",
+      "locator": "page:631",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:632": {
+      "artifact": "extracted/part-0019.json",
+      "artifact_sha256": "b871f4981b9e69feb0cd9a728e31787c42e6cbdcbcce4c025db4e929f19244fc",
+      "import_revision": "948340f29702a60fb74485b36ee6da335fad3b9fcf04a95afb1376b8d468e1b3",
+      "locator": "page:632",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:633": {
+      "artifact": "extracted/part-0020.json",
+      "artifact_sha256": "cc4ac36d77d8238956d59d5c4f6e1542d46b217b3845dec2d1975a50cf1dae43",
+      "import_revision": "948340f29702a60fb74485b36ee6da335fad3b9fcf04a95afb1376b8d468e1b3",
+      "locator": "page:633",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:634": {
+      "artifact": "extracted/part-0021.json",
+      "artifact_sha256": "fcf0d8fb989d13a447917a8bb684d06f09d248ca87022a70659a44307e2dd32f",
+      "import_revision": "948340f29702a60fb74485b36ee6da335fad3b9fcf04a95afb1376b8d468e1b3",
+      "locator": "page:634",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:635": {
+      "artifact": "extracted/part-0022.json",
+      "artifact_sha256": "aaad4929ce46f6726df4cba4818ce41d78a0180a873b497338de2d603faa59b9",
+      "import_revision": "948340f29702a60fb74485b36ee6da335fad3b9fcf04a95afb1376b8d468e1b3",
+      "locator": "page:635",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:636": {
+      "artifact": "extracted/part-0023.json",
+      "artifact_sha256": "4f9e226f84287c5c06068cd73e6316118c760a0720686d022aea6173272237fe",
+      "import_revision": "948340f29702a60fb74485b36ee6da335fad3b9fcf04a95afb1376b8d468e1b3",
+      "locator": "page:636",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:637": {
+      "artifact": "extracted/part-0024.json",
+      "artifact_sha256": "200a5dca81fbd6cc2982a15824bbe13a625d5cab698e66fcf7e9d3b2d8a5055d",
+      "import_revision": "948340f29702a60fb74485b36ee6da335fad3b9fcf04a95afb1376b8d468e1b3",
+      "locator": "page:637",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:638": {
+      "artifact": "extracted/part-0025.json",
+      "artifact_sha256": "464a8ff413acfbbadbcb71a4faef9b5400e704dd23e6d865c18f1870fca9cff6",
+      "import_revision": "948340f29702a60fb74485b36ee6da335fad3b9fcf04a95afb1376b8d468e1b3",
+      "locator": "page:638",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:639": {
+      "artifact": "extracted/part-0026.json",
+      "artifact_sha256": "5dc00b215b723c282d9a6029d8e96f36405cff1b8ee0e9a2346cc392ae51cf7d",
+      "import_revision": "948340f29702a60fb74485b36ee6da335fad3b9fcf04a95afb1376b8d468e1b3",
+      "locator": "page:639",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    },
+    "rm0090/page:640": {
+      "artifact": "extracted/part-0027.json",
+      "artifact_sha256": "9f89a1715a3c46654f5bd770efa9040173f0e5304dd18fadb5f2114a20bbb48a",
+      "import_revision": "948340f29702a60fb74485b36ee6da335fad3b9fcf04a95afb1376b8d468e1b3",
+      "locator": "page:640",
+      "origin": "https://www.st.com/resource/en/reference_manual/rm0090-stm32f4xx-reference-manual-stmicroelectronics.pdf",
+      "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca"
+    }
+  },
+  "review": {
+    "basis": "Exact MCP source parts and schematic images reviewed; implementing-author review only. Independent signoff and new physical qualification pending.",
+    "reviewer": "Codex source-backed editorial review through Praxis ingestion MCP",
+    "status": "reviewed"
+  }
+}
