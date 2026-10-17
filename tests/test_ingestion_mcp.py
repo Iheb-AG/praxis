@@ -124,7 +124,7 @@ async def test_actual_stdio_tools_and_errors(service, tmp_path):
                              'acquire_source_evidence', 'publish_reviewed_bundle',
                              'stage_cached_source', 'record_source_review', 'discover_source_declarations',
                              'read_source_page_image', 'prepare_peripheral_review', 'prepare_workflow_review',
-                             'prepare_source_outline', 'read_source_page_layout'}
+                             'prepare_source_outline', 'read_source_page_layout', 'prepare_routing_matrix'}
             result = await client.call_tool('search_source_evidence', {'source_id': 'manual', 'query': 'TIM2'})
             assert not result.isError
             result = await client.call_tool('read_source_evidence', {'source_id': 'manual', 'locator': '../source.txt'})

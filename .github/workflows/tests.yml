@@ -22,6 +22,25 @@ jobs:
         with:
           name: public-documentation
           path: website/dist
+  project-documents:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      PRAXIS_REQUIRE_EXTERNAL_TOOLS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: '3.12'
+      - run: sudo apt-get update && sudo apt-get install -y --no-install-recommends texlive-luatex texlive-latex-extra texlive-fonts-recommended texlive-pictures fonts-texgyre lmodern poppler-utils
+      - run: uv sync --locked
+      - run: uv run python tools/check_project_documents.py --output .praxis-output/project-documents
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: native-project-documents
+          include-hidden-files: true
+          path: .praxis-output/project-documents
   knowledge-container:
     runs-on: ubuntu-24.04
     steps:
@@ -58,7 +77,10 @@ jobs:
       - run: uv sync --locked --extra ingest --extra test --extra web
       - run: uv run ruff check praxis tests tools server.py compiler.py
       - name: Restore pinned manufacturer evidence
-        run: uv run python tools/restore_source_inputs.py --manifest sources/stm32f407g-disc1/source-replay.json --profile sources/stm32f407g-disc1/profile-timer-irq-v1.json --cache .praxis-output/source-downloads
+        run: |
+          set -o pipefail
+          mkdir -p .praxis-output
+          uv run python tools/restore_source_inputs.py --manifest sources/stm32f407g-disc1/source-replay.json --profile sources/stm32f407g-disc1/profile-timer-irq-v1.json --cache .praxis-output/source-downloads 2>&1 | tee .praxis-output/source-restore.log
       - uses: ./.github/actions/provision-toolchain
       - name: Full strict regression
         run: |
@@ -68,7 +90,9 @@ jobs:
         if: always()
         with:
           name: test-results-${{ matrix.python-version }}
+          include-hidden-files: true
           path: |
+            .praxis-output/source-restore.log
             .praxis-output/pytest-results.xml
             .praxis-output/pytest.log
       - run: uv run praxis lint --bundle bundles/stm32f401re && uv run praxis lint --bundle bundles/atmega328p
@@ -136,6 +160,7 @@ jobs:
         if: always()
         with:
           name: f407-application-acceptance
+          include-hidden-files: true
           path: |
             .praxis-output/ci-f407-acceptance/report.json
             .praxis-output/ci-f407-acceptance/trace.json

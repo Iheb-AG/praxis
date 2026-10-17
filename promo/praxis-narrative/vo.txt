@@ -1,0 +1,2 @@
+Praxis gives your assistant source-backed hardware context. MCP gates require the prerequisite documents, in order.
+Generated C is cross-compiled inside a rootless Podman container. Pinned assets and ELF checks produce an artifact you can inspect.

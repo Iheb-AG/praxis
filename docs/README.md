@@ -1,5 +1,7 @@
 # Project Praxis documentation
 
+- [Requested-project reporting: HTML, connectivity SVG, design explanations and evidence boundaries](project-reporting.md).
+
 - [TIM5 capture interrupts: source contracts, failure models, fixed telemetry and MCP replay](timer-irq.md).
 
 - [Physical paired-timer trial: wired success, no-edge timeout and recovery status](reports/timer-route-results.md).
