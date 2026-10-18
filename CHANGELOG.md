@@ -9,8 +9,10 @@ STM32F407G-DISC1 MB997-E-01 reference bundle. No public release or image upload 
 
 - Bounded transient retries for exact source restoration, longer HTTP read waits,
   single-job manufacturer-source acquisition and hash-verified shared CI caching.
-  Python matrix jobs restore/extract offline with all original integrity and review
-  checks; persistent failures and source changes remain blockers.
+  Historical extraction uses a manifest-pinned Python runtime in a separate offline
+  environment, preserving exact PDF geometry hashes across application test versions.
+  Python matrix tests and all original integrity/review checks remain required;
+  persistent failures and source changes remain blockers.
 
 - Optional requested-project reporting over CLI and build MCP: standalone HTML,
   Markdown, white formal styling, complete scoped net connectivity SVG, schema-validated

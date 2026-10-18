@@ -2,6 +2,7 @@
 
 import json
 import shutil
+import sys
 
 import httpx
 import pytest
@@ -221,11 +222,91 @@ def test_shipped_replay_covers_full_profile_without_embedding_document_content()
     profile = Profile.model_validate_json((root / "profile-timer-irq-v1.json").read_bytes())
     assert {r[0] for r in records} == set(profile.web_imports.values()) and len(records) == 16
     assert set(data["allowed_hosts"]) == {"www.st.com", "raw.githubusercontent.com"}
+    assert data["extraction_runtime"] == {"implementation": "cpython", "python": "3.12"}
     for _, record, record_text, review_text in records:
         assert record["download"]["sha256"] in record["file_hashes"].values()
         assert json.loads(record_text)["file_hashes"] == record["file_hashes"]
         assert json.loads(review_text)["status"] == "reviewed"
         assert not {"text", "tables"} & record.keys()
+
+
+def runtime_pin(replay, *, implementation=None, python=None):
+    data = json.loads(replay[0].read_bytes())
+    data["extraction_runtime"] = {
+        "implementation": implementation or sys.implementation.name,
+        "python": python or f"{sys.version_info.major}.{sys.version_info.minor}",
+    }
+    replay[0].write_text(json.dumps(data))
+
+
+def test_matching_runtime_replays_every_original_byte(replay):
+    runtime_pin(replay)
+    assert execute(replay)["passed"]
+    recovered = replay[1].parent / "imports/original"
+    assert {p.relative_to(replay[3]): p.read_bytes() for p in replay[3].rglob('*') if p.is_file()} == {
+        p.relative_to(recovered): p.read_bytes() for p in recovered.rglob('*') if p.is_file()}
+
+
+@pytest.mark.parametrize("pin", [{"implementation": "alternative"}, {"python": "99.0"}])
+def test_wrong_runtime_fails_before_download_extraction_or_receipt_restoration(replay, monkeypatch, pin):
+    runtime_pin(replay, **pin)
+    monkeypatch.setattr('tools.restore_source_inputs._source_file', lambda *a, **k: pytest.fail('No source access'))
+    monkeypatch.setattr('tools.restore_source_inputs.scrape', lambda *a, **k: pytest.fail('No extraction'))
+    with pytest.raises(PraxisError, match="EXTRACTION_RUNTIME.*separate environment"):
+        execute(replay)
+    assert not (replay[1].parent / 'imports').exists()
+    assert list(replay[2].iterdir()) == []
+
+
+def test_download_preparation_does_not_require_extraction_runtime(replay, monkeypatch):
+    runtime_pin(replay, python="99.0")
+    monkeypatch.setattr('tools.restore_source_inputs.scrape', lambda *a, **k: pytest.fail('No extraction'))
+    with httpx.Client(transport=httpx.MockTransport(lambda request: httpx.Response(200, content=replay[4]))) as client:
+        assert restore(*replay[:3], client=client, download_only=True)['passed']
+    assert not (replay[1].parent / 'imports').exists()
+
+
+def test_verified_existing_imports_can_be_consumed_with_another_runtime(replay):
+    execute(replay)
+    runtime_pin(replay, python="99.0")
+    assert restore(*replay[:3], offline=True)['archives'][0]['status'] == 'verified existing'
+    # The runtime distinction never permits altered evidence or receipts.
+    (replay[1].parent / 'imports/original/extracted/part-0001.json').write_bytes(b'changed')
+    with pytest.raises(PraxisError, match='IMPORT_INTEGRITY'):
+        restore(*replay[:3], offline=True)
+
+
+@pytest.mark.parametrize('runtime', [None, [], '3.12', {},
+    {'implementation': 'cpython', 'python': 3.12},
+    {'implementation': 'cpython', 'python': '3.12.0'},
+    {'implementation': 'cpython', 'python': '3.12', 'extra': True},
+    {'implementation': 'cpython\n', 'python': '3.12'},
+    {'implementation': 'cpython', 'python': '3.12\n'}])
+def test_invalid_runtime_policy_fails_before_restoration(replay, runtime):
+    data = json.loads(replay[0].read_bytes())
+    data['extraction_runtime'] = runtime
+    replay[0].write_text(json.dumps(data))
+    with pytest.raises(PraxisError, match='INVALID_REPLAY.*extraction_runtime'):
+        execute(replay)
+    assert not replay[2].exists()
+
+
+def test_mismatched_artifact_is_identified_without_restoring_receipt(replay, monkeypatch):
+    from tools import restore_source_inputs as module
+    original = module.scrape
+
+    def changed_hash(*args, **kwargs):
+        archive = original(*args, **kwargs)
+        path = archive / 'import.json'
+        record = json.loads(path.read_bytes())
+        record['file_hashes']['extracted/part-0001.json'] = 'f' * 64
+        path.write_text(json.dumps(record))
+        return archive
+
+    monkeypatch.setattr(module, 'scrape', changed_hash)
+    with pytest.raises(PraxisError, match=r'REPLAY_MISMATCH.*differing artifacts: extracted/part-0001.json'):
+        execute(replay)
+    assert not (replay[1].parent / 'imports/original').exists()
 
 
 def test_transient_read_timeouts_retry_without_changing_receipts(replay, monkeypatch, capsys):

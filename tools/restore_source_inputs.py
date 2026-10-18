@@ -47,6 +47,19 @@ def checked_manifest(path):
         or not 1 <= len(data["archives"]) <= 100
     ):
         raise PraxisError("INVALID_REPLAY", "Select a versioned bounded source replay manifest")
+    if "extraction_runtime" in data:
+        runtime = data["extraction_runtime"]
+        if (
+            not isinstance(runtime, dict)
+            or set(runtime) != {"implementation", "python"}
+            or not isinstance(runtime["implementation"], str)
+            or re.fullmatch(r"[a-z][a-z0-9_]*", runtime["implementation"]) is None
+            or not isinstance(runtime["python"], str)
+            or re.fullmatch(r"[1-9][0-9]*\.[0-9]+", runtime["python"]) is None
+        ):
+            raise PraxisError(
+                "INVALID_REPLAY", "extraction_runtime requires an implementation and major.minor Python version"
+            )
     records, seen = [], set()
     for entry in data["archives"]:
         if not isinstance(entry, dict) or not isinstance(entry.get("path"), str):
@@ -74,6 +87,23 @@ def checked_manifest(path):
             raise PraxisError("IMPORT_INTEGRITY", "Original receipt must bind this exact import")
         records.append((name, record, record_text, review_text))
     return data, records
+
+
+def _require_extraction_runtime(data):
+    """Historical extraction depends on interpreter arithmetic as well as packages."""
+    expected = data.get("extraction_runtime")
+    if expected is None:
+        return
+    actual = {"implementation": sys.implementation.name,
+              "python": f"{sys.version_info.major}.{sys.version_info.minor}"}
+    if actual != expected:
+        raise PraxisError(
+            "EXTRACTION_RUNTIME",
+            f"Historical replay requires {expected['implementation']} Python {expected['python']}; "
+            f"running {actual['implementation']} Python {actual['python']}. "
+            "Run restoration in a separate environment using the manifest runtime, then use the "
+            "verified imports with your application interpreter. No hashes or receipts were changed.",
+        )
 
 
 def _transient(exc: PraxisError) -> bool:
@@ -178,6 +208,8 @@ def restore(manifest: Path, profile: Path, cache: Path, *, client=None,
                 )
             results.append(dict(path=name, status="verified existing"))
             continue
+        if not download_only:
+            _require_extraction_runtime(data)
         for package, expected in (() if download_only else record["extractors"].items()):
             if package == "text":
                 continue
@@ -215,9 +247,14 @@ def restore(manifest: Path, profile: Path, cache: Path, *, client=None,
                 "file_hashes",
             ):
                 if regenerated[key] != record[key]:
+                    details = ""
+                    if key == "file_hashes":
+                        changed = sorted(path for path in record[key].keys() | regenerated[key].keys()
+                                         if record[key].get(path) != regenerated[key].get(path))
+                        details = f" (differing artifacts: {', '.join(changed[:5])})"
                     raise PraxisError(
                         "REPLAY_MISMATCH",
-                        f"{name}: original {key} not reproduced; no receipt restored",
+                        f"{name}: original {key} not reproduced{details}; no receipt restored",
                     )
             # Preserve historical acquisition/review bytes only after all original files match.
             (staging / "import.json").write_bytes(record_text.encode())

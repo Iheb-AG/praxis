@@ -114,7 +114,11 @@ jobs:
         run: |
           set -o pipefail
           mkdir -p .praxis-output
-          uv run python tools/restore_source_inputs.py --manifest sources/stm32f407g-disc1/source-replay.json --profile sources/stm32f407g-disc1/profile-timer-irq-v1.json --cache .praxis-output/source-downloads --offline 2>&1 | tee .praxis-output/source-restore.log
+          # Historical PDF hashes depend on Python's floating-point summation.
+          # Keep their replay runtime separate from the application test matrix.
+          replay_python="$(uv run python -c 'from pathlib import Path; from tools.restore_source_inputs import checked_manifest; print(checked_manifest(Path("sources/stm32f407g-disc1/source-replay.json"))[0]["extraction_runtime"]["python"])')"
+          uv python install "$replay_python"
+          UV_PYTHON="$replay_python" UV_PROJECT_ENVIRONMENT=.venv-source-replay uv run --locked --python "$replay_python" --extra web python tools/restore_source_inputs.py --manifest sources/stm32f407g-disc1/source-replay.json --profile sources/stm32f407g-disc1/profile-timer-irq-v1.json --cache .praxis-output/source-downloads --offline 2>&1 | tee .praxis-output/source-restore.log
       - uses: ./.github/actions/provision-toolchain
       - name: Full strict regression
         run: |

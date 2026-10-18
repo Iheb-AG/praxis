@@ -19,7 +19,8 @@ without changing published bundles or weakening provenance checks.
    the selected profile. Every required archive must be covered.
 2. Download each missing source from the configured public HTTPS hosts, checking its
    original SHA-256 and size; reuse verified local cache entries.
-3. Require the recorded extractor versions and reproduce the original page selection.
+3. Require the manifest's extraction runtime and recorded extractor versions, then
+   reproduce the original page selection.
 4. Compare every regenerated artifact hash, complete locator list, extraction warning
    and source identity with the original import record.
 5. Restore the original acquisition metadata and existing receipt only after those
@@ -33,7 +34,9 @@ ignored local directories and are not included in public distribution archives.
 
 ```bash
 uv sync --locked --extra ingest --extra test --extra web
-PRAXIS_REQUIRE_EXTERNAL_TOOLS=1 uv run python tools/restore_source_inputs.py \
+uv python install 3.12
+PRAXIS_REQUIRE_EXTERNAL_TOOLS=1 UV_PYTHON=3.12 UV_PROJECT_ENVIRONMENT=.venv-source-replay \
+  uv run --locked --python 3.12 --extra web python tools/restore_source_inputs.py \
   --manifest sources/stm32f407g-disc1/source-replay.json \
   --profile sources/stm32f407g-disc1/profile-timer-irq-v1.json \
   --cache .praxis-output/source-downloads
@@ -55,8 +58,11 @@ CI now prepares raw evidence in one `source-evidence` job, rather than downloadi
 the same manufacturer PDFs independently in each Python job. Its cache key includes
 the complete replay-manifest hash. Cache hits still undergo SHA-256 and byte-count
 validation. Each Python job restores that exact cache and runs extraction/receipt
-restoration with `--offline`, preserving interpreter-specific extraction checks and
-the full strict test suite. A missing or corrupt cache fails explicitly.
+restoration with `--offline` in a separate Python 3.12 environment. The application
+and full strict test suite still use the matrix interpreter (3.11, 3.12 or 3.13),
+including native PDF ingestion tests. Historical byte replay is a separate pinned
+toolchain check, not a claim that every interpreter produces identical PDF geometry.
+A missing or corrupt cache fails explicitly.
 This uses the documented [GitHub cache restore action](https://github.com/actions/cache/blob/v4/restore/README.md).
 
 Acquisition uses a 60-second HTTP read timeout and a 15-second connect timeout, with
@@ -75,7 +81,8 @@ PRAXIS_REQUIRE_EXTERNAL_TOOLS=1 uv run python tools/restore_source_inputs.py \
   --profile sources/stm32f407g-disc1/profile-timer-irq-v1.json \
   --cache .praxis-output/source-downloads --download-only
 
-PRAXIS_REQUIRE_EXTERNAL_TOOLS=1 uv run python tools/restore_source_inputs.py \
+PRAXIS_REQUIRE_EXTERNAL_TOOLS=1 UV_PYTHON=3.12 UV_PROJECT_ENVIRONMENT=.venv-source-replay \
+  uv run --locked --python 3.12 --extra web python tools/restore_source_inputs.py \
   --manifest sources/stm32f407g-disc1/source-replay.json \
   --profile sources/stm32f407g-disc1/profile-timer-irq-v1.json \
   --cache .praxis-output/source-downloads --offline
@@ -86,6 +93,32 @@ extracting pages or restoring reviews. It is preparation, not bundle acceptance.
 Retry configuration is bounded: `--download-attempts` accepts 1–5 and
 `--read-timeout` accepts 15–120 seconds. Logs identify the source URL, attempt,
 failure type and cache verification; CI retains the acquisition log separately.
+
+## Historical extraction runtime
+
+The next Actions run passed source acquisition and Python 3.12/3.13, but Python
+3.11 reported `REPLAY_MISMATCH` for `imports/adc-scenario/ds_adc_review`. Local
+reproduction with Python 3.11.17 confirmed identical page text and table cells,
+but different binary floating-point table coordinates: `66.78499999999998`
+instead of `66.785`. That changes the extracted JSON hash. Python 3.12 changed
+[`sum()` to use compensated summation](https://docs.python.org/3.12/whatsnew/3.12.html);
+pdfplumber uses it when averaging snapped table-edge coordinates.
+
+The replay manifest now declares `extraction_runtime` with implementation `cpython`
+and Python `3.12`. This is versioned source-recovery policy, not a manufacturer
+branch in the compiler. The utility rejects a different runtime before source
+access or extraction, with `EXTRACTION_RUNTIME` and recovery instructions.
+Download-only preparation does not need that runtime. Already restored imports
+can be verified and consumed by another supported application interpreter; every
+artifact hash and original metadata/receipt is still checked.
+
+CI installs the declared historical runtime in `.venv-source-replay`, while `.venv`
+and the `UV_PYTHON` supplied by the matrix remain unchanged for subsequent tests.
+The runtime pin is intentionally major/minor; extractor package versions and
+original artifact hashes remain exact, so any future patch-level output drift
+still fails closed. CI reads the version from the validated manifest, so the
+recovery policy has one source of truth. No table-coordinate rounding, numerical
+tolerance, library monkey-patching, new review or historical bundle rewrite is used.
 
 ## Evidence and current boundary
 
@@ -103,8 +136,17 @@ All six pinned sources were acquired into a fresh cache and all 16 historical
 archives restored into a separate clean source tree. Recompilation reproduced all
 51 files of the published timer-IRQ bundle byte-for-byte, retaining revision
 `9d2494ef9dcc4056ad83ef96f163801b5b57f89130528d5491b49d6482aa7404`.
-A new remote Actions run is
-still required to verify the updated GitHub matrix; local checks are not that evidence.
+
+The runtime-pin correction passes **75 source-replay/web-import checks on both
+Python 3.11 and 3.12**, and the full strict Python 3.11.17 regression passes
+**1,584 tests with zero skips**. Fresh offline extraction on Python 3.12 restored
+all 16 archives in a tracked-files-only source tree, preserving every historical
+record and receipt. Both Python 3.11 and 3.12 then compiled all 51 published bundle
+files byte-for-byte. The CI `uv` environment-switch flow was exercised offline:
+restoration used the manifest runtime and the next command retained Python 3.11.
+Local evidence is under `.praxis-output/ci-runtime-replay-20261018/`.
+A new remote Actions run is still required to verify this updated GitHub workflow;
+local checks are not that evidence.
 
 CI now provisions the required native tools and compiler image, disables matrix
 fail-fast, and retains an explicit allowlist of restoration/pytest logs and JUnit
