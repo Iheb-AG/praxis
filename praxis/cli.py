@@ -148,6 +148,9 @@ def main(argv: list[str] | None = None) -> int:
     review_parser.add_argument("--notes-file", required=True, type=Path)
     schema_parser = commands.add_parser("schema", help="Print an ingestion JSON Schema for authoring/validation")
     schema_parser.add_argument("--kind", choices=("profile", "board", "reviewed-netlist", "capability-catalog", "capability-inventory", "definition-extension", "target-matrix", "project"), required=True)
+    references = commands.add_parser("reference-serve", help="Hardware-independent documentation acquisition MCP")
+    references.add_argument("--archive-root", required=True, type=Path)
+    references.add_argument("--allow-host", action="append", default=[], help="Additional permitted redirect host")
     ingest_server = commands.add_parser("ingest-serve", help="Opt-in source evidence and reviewed publication MCP")
     for flag in ("profile", "catalog", "archive-root", "publication-root"):
         ingest_server.add_argument("--" + flag, required=True, type=Path)
@@ -174,6 +177,9 @@ def main(argv: list[str] | None = None) -> int:
                 handle.write(json.dumps(report, sort_keys=True, indent=2, ensure_ascii=False) + "\n")
             print(json.dumps({"packet_sha256": report["packet_sha256"], "counts": report["counts"],
                 "status": report["status"], "publication_ready": False}, sort_keys=True))
+        elif args.command == "reference-serve":
+            from praxis.reference_server import create_reference_server
+            create_reference_server(args.archive_root, args.allow_host).run(transport="stdio")
         elif args.command == "ingest-serve":
             from praxis.ingestion_server import create_ingestion_server
             create_ingestion_server(args.profile, args.catalog, args.archive_root,

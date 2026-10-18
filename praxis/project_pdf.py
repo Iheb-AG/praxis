@@ -21,7 +21,7 @@ from praxis.verify import bounded
 TOOLS = ('lualatex', 'kpsewhich', 'pdftocairo', 'pdfinfo')
 PACKAGES = ('circuitikz.sty', 'fontspec.sty', 'geometry.sty', 'microtype.sty',
             'graphicx.sty', 'longtable.sty', 'array.sty', 'booktabs.sty', 'fancyhdr.sty',
-            'xurl.sty', 'hyperref.sty')
+            'xurl.sty', 'hyperref.sty', 'needspace.sty')
 
 
 def dependencies() -> dict[str, str]:
