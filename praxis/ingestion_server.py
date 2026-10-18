@@ -305,6 +305,29 @@ class IngestionService:
         result['packet_sha256'] = digest(encoded)
         return result
 
+    def prepare_matrix(self, specification_source):
+        from praxis.adapters.matrix import MatrixSpec, prepare
+        self._stable_sources()
+        registered = self.registered.get(specification_source)
+        if registered is None or registered['metadata']['authority'] != 'configuration':
+            raise PraxisError('UNKNOWN_SOURCE', 'Choose a registered versioned matrix configuration source')
+        spec = MatrixSpec.model_validate(load_json(registered['text'].encode()))
+        if spec.target != self.profile.target.mcu:
+            raise PraxisError('TARGET_MISMATCH', 'Matrix configuration must select this exact target')
+        row = self.archives.get(spec.evidence_source)
+        if row is None:
+            raise PraxisError('UNKNOWN_SOURCE', 'Configure the matrix evidence archive before preparing routes')
+        selected = {spec.context_locator, *(s.split('/table:')[0] for s in spec.table_locators)}
+        if not selected <= row['parts'].keys():
+            raise PraxisError('UNKNOWN_LOCATOR', 'Stage all configured complete matrix pages')
+        parts = [{**row['parts'][key]['part'], 'artifact_sha256': row['parts'][key]['sha256']}
+                 for key in sorted(selected)]
+        result = prepare(parts, spec, dict(id=spec.evidence_source, target=self.profile.target.mcu,
+            sha256=row['record']['download']['sha256'], import_revision=row['record']['import_revision'],
+            origin=row['record']['download']['final_url']), registered['sha256'])
+        self._stable_sources()
+        return result
+
     def prepare_outline(self, source_id, locators=None, table_columns=None):
         from praxis.adapters.outline import prepare
         self._stable_sources()
@@ -471,6 +494,15 @@ def create_ingestion_server(profile, catalog, archive_root, publication_root, ev
         register_names if the complete packet would exceed its limit; no table is truncated.
         """
         return call(service.prepare_review, source_id, peripheral_name, register_names, evidence_locators)
+
+    @server.tool(annotations=readonly)
+    def prepare_routing_matrix(specification_source: str) -> dict:
+        """Extract complete configured request matrices with cell provenance and explicit gaps.
+
+        Select a hash-registered configuration identity, never inline MCU maps or paths.
+        Returns unreviewed candidates; never publishes, approves or programs hardware.
+        """
+        return call(service.prepare_matrix, specification_source)
 
     @server.tool(annotations=readonly)
     def prepare_source_outline(source_id: str, evidence_locators: list[str] | None = None,

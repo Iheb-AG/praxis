@@ -1,0 +1,70 @@
+{
+  "format": "praxis-project-v1",
+  "id": "f407_protocol_supervisor_v1",
+  "title": "Fault-aware UART protocol supervisor",
+  "objective": "Demonstrate a complete STM32F407 project workflow: source-backed pin selection, ordered initialization, an interrupt-driven binary protocol, bounded scheduling, visible status, isolated compilation and a project-focused engineering report. The first recording uses a passive UART loopback wire rather than a second device.",
+  "target_id": "stm32f407g_disc1_mb997_e01",
+  "bundle_revision": "9d2494ef9dcc4056ad83ef96f163801b5b57f89130528d5491b49d6482aa7404",
+  "requirements": [
+    {"id": "startup", "description": "Use the build service's pinned startup, runtime and linker assets. Select and check the nominal 16 MHz HSI clock; do not assume the reference 168 MHz recipe is running.", "workflows": ["arm_flash_vector_table", "arm_hsi16_core_checked"], "verification_plan": "Revalidate the exact ELF, vector table, RAM regions and bounded clock-readiness checks. Treat the physical HSI frequency as unmeasured."},
+    {"id": "scheduler", "description": "Use TIM2 interrupts for a nominal 1 kHz timebase, with rollover-safe deadlines and a nonblocking main loop.", "workflows": ["uart_timer_interrupts"], "verification_plan": "Run the existing controller/timing tests; inspect timer IRQ and uptime counter progress on the exact telemetry image when separately authorized."},
+    {"id": "uart", "description": "Use USART2 TX/RX interrupts, nominal 115200 baud, 8N1 and bounded software queues. Keep parsing and CRC work outside interrupt handlers.", "workflows": ["uart_timer_interrupts"], "verification_plan": "Check reviewed register semantics, queue boundaries and interrupt handlers. Compare transmitted/received byte counts and successful frame progress with the passive loopback fitted."},
+    {"id": "protocol", "description": "Send a 19-byte binary frame with sync bytes, version/type, a 32-bit sequence, an eight-byte deterministic payload and CRC-16/CCITT-FALSE. Validate sequence and payload as well as CRC.", "workflows": ["uart_timer_interrupts"], "verification_plan": "Run protocol golden and corruption tests. Confirm no false acceptance of invalid CRC, length, version, payload or sequence. CRC is software application logic, not a claim of hardware CRC-peripheral coverage."},
+    {"id": "backpressure", "description": "Allow one outstanding frame, start frames no faster than every 100 ms, bound frame completion to 250 ms, and latch UART errors or queue overflows.", "workflows": ["uart_timer_interrupts"], "verification_plan": "Use host tests for timeout, queue-full and corrupted-frame paths. An unplugged receiver may fail from a UART error before the timeout; do not label every such event a timeout."},
+    {"id": "operator", "description": "Boot paused. A debounced USER press starts a run; another requests pause after the current frame. A held button must not repeatedly toggle state.", "workflows": ["gpio_led_button", "uart_timer_interrupts"], "verification_plan": "Check 50 ms debounce, release-to-rearm and held-at-reset behavior in controller tests; later perform start/pause through the human operator."},
+    {"id": "indicators", "description": "Green heartbeat continues in every state. Orange pulses for validated frames, blue latches after 100 consecutive valid frames, and red latches a detected failure.", "workflows": ["gpio_led_button", "uart_timer_interrupts"], "verification_plan": "Green toggles nominally every 500 ms; orange pulses for 30 ms. Observe the LEDs separately from inspecting GPIO state or firmware counters."},
+    {"id": "telemetry", "description": "Expose the existing fixed UART telemetry ABI for coherent, artifact-bound counter sampling without stopping execution.", "workflows": ["uart_timer_interrupts"], "verification_plan": "Use read_firmware_telemetry only on a separately configured server pinned to the accepted artifact. Record running and paused windows. Firmware counters are self-reports, not independent electrical timing measurements."},
+    {"id": "failure_recovery", "description": "Demonstrate a missing-wire failure and a fresh-boot recovery, changing the jumper only with all board power disconnected.", "workflows": ["uart_timer_interrupts"], "verification_plan": "Record a wired success, power-off wire removal, failure indication, then power-off wire restoration and a new run. Do not claim existing historical recovery anomalies are resolved until this exact candidate passes."},
+    {"id": "deliverable", "description": "Deliver a readable project report containing the requested behavior, wiring, design rationale, source files, verification plan, build evidence and remaining gaps.", "workflows": ["uart_timer_interrupts"], "verification_plan": "Generate the report through MCP, inspect HTML/SVG and verify output hashes. Report creation itself cannot establish firmware or physical acceptance."}
+  ],
+  "explanations": [
+    {"title": "Dependency-driven initialization", "explanation": "Read the index, resolve board signals, and follow the returned prerequisite route before generating register access. Enable the relevant clocks, configure routing and peripheral state, clear sources safely and enable interrupts last. The graph enforces document retrieval, while firmware ordering still needs code review and tests.", "documents": ["peripherals/rcc", "peripherals/gpio", "peripherals/usart", "peripherals/tim", "peripherals/syscfg", "peripherals/exti", "peripherals/nvic"]},
+    {"title": "Clock and timing choices", "explanation": "This application deliberately uses the checked nominal 16 MHz HSI route with undivided buses. Its TIM2 prescaler/reload and USART2 divisor must be derived from those clocks, rather than copied from the separate 168 MHz reference recipe. Deadlines are bounded; exact physical timing remains unmeasured.", "documents": ["peripherals/rcc", "peripherals/tim", "peripherals/usart"]},
+    {"title": "Interrupt boundaries", "explanation": "The timer publishes ticks; UART handlers transfer bytes through bounded queues; EXTI captures button activity. The main loop handles debounce, protocol parsing, CRC, deadlines and state transitions. Source-clearing semantics differ across TIM, EXTI and USART and must follow the reviewed documentation.", "documents": ["peripherals/tim", "peripherals/usart", "peripherals/exti", "peripherals/syscfg", "peripherals/nvic"]},
+    {"title": "Wiring and visible controls", "explanation": "Use the published LED and USER aliases and exact connector endpoints. The proposed passive wire connects USART2 TX to RX. Component nets stay separate in the report, including resistor-separated LED nets. Confirm connector orientation, physical board revision and the USER solder-bridge condition before a physical run.", "documents": ["schemas/board", "schemas/components", "schemas/custom_pcb_netlist", "peripherals/gpio"]},
+    {"title": "Startup and image ownership", "explanation": "The model supplies application C/H files. The build service supplies its pinned startup, system/runtime and linker assets and validates the resulting ELF against their memory/vector contract. Code generation and compilation are distinct from flash permission and physical verification.", "documents": ["peripherals/scb", "peripherals/nvic", "peripherals/rcc"]}
+  ],
+  "diagrams": [
+    {
+      "id": "interrupt_to_application",
+      "title": "Interrupts and the application loop",
+      "description": "Intended software flow: interrupt handlers capture bounded work, while the application loop owns validation, deadlines and indicators. Arrow order illustrates responsibilities; it does not imply a measured interrupt schedule or sequential execution of independent interrupts.",
+      "documents": ["peripherals/tim", "peripherals/usart", "peripherals/exti", "peripherals/nvic", "peripherals/gpio"],
+      "participants": [
+        {"id": "interrupts", "label": "TIM2 / EXTI handlers"},
+        {"id": "application", "label": "Main application"},
+        {"id": "uart", "label": "USART2 handler"},
+        {"id": "status", "label": "LEDs / telemetry"}
+      ],
+      "messages": [
+        {"sender": "interrupts", "receiver": "application", "label": "Publish timer tick or button activity"},
+        {"sender": "application", "receiver": "uart", "label": "Queue one framed request; enable TX work"},
+        {"sender": "uart", "receiver": "application", "label": "Publish received bytes and sampled errors"},
+        {"sender": "application", "receiver": "application", "label": "Validate sequence, payload, CRC and deadline"},
+        {"sender": "application", "receiver": "status", "label": "Update indicators and coherent counters"}
+      ]
+    }
+  ],
+  "signals": ["LED_A", "LED_B", "BLUE_LED", "RED_LED", "USER_BUTTON", "PA2", "PA3"],
+  "proposed_wires": [
+    {"from_endpoint": "P1:14", "to_endpoint": "P1:13", "description": "With all board power disconnected, remove earlier test jumpers, verify PA2/PA3 header labels and orientation, and fit only this passive UART TX-to-RX wire. Reconnect ST-LINK USB afterward."}
+  ],
+  "files": ["telemetry_application/main.c", "telemetry_application/controller.c", "telemetry_application/controller.h", "telemetry_application/protocol.c", "telemetry_application/protocol.h", "telemetry_application/queue.h", "telemetry_application/telemetry.h"],
+  "procedure": [
+    "Retrieve and confirm the exact knowledge target and bundle revision; stop if the build server disagrees.",
+    "Resolve all LED, USER, TX/RX and connector endpoints through MCP; follow the actual document prerequisites.",
+    "Explain the architecture and build application C/H code with the pinned assets through the build MCP. Revalidate the accepted artifact.",
+    "Generate this project report. Inspect the schematic and design explanation before requesting any physical operation.",
+    "For recording a physical run, have the operator confirm the unpowered wiring change. Request fresh approval of the exact flash plan and image; never reuse an earlier approval.",
+    "After an approved flash/reset, show boot-paused heartbeat, press USER, observe valid frames, and wait at least 12 seconds for the blue success latch. Then request pause and verify that frame progress stops while the timer keeps advancing.",
+    "For the negative test, disconnect all power before removing the UART jumper. Reconnect and start a run; record the actual failure reason and visible behavior.",
+    "Disconnect all power, restore the jumper, reconnect and start a fresh run. Record recovery evidence without overwriting earlier observations or reports."
+  ],
+  "limitations": [
+    "Reference board: STM32F407G-DISC1 MB997-E-01. The user's physical PCB revision remains unconfirmed.",
+    "This is a scoped UART/timer/interrupt application, not full F407 acceptance. It does not exercise DMA, USB, Ethernet, external CAN, bootloader updates or external sensors.",
+    "The included source attachments are the existing telemetry example, originally authored against an earlier published bundle. This replay rebuilds it against the selected revision; attached-source-to-artifact binding is not automatically certified by reporting v1.",
+    "Published workflow readiness and citations do not automatically prove application algorithms, concurrency or resource compatibility.",
+    "No new physical pass is claimed by generating this document. Firmware telemetry, optical behavior and independent electrical measurements are separate evidence layers."
+  ]
+}

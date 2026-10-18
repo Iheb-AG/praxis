@@ -1,0 +1,595 @@
+{
+ "url": "http://127.0.0.1:4188",
+ "finalUrl": "http://127.0.0.1:4188/",
+ "capturedAt": "2026-10-16T09:24:07.785Z",
+ "viewport": {
+  "w": 1920,
+  "h": 1080
+ },
+ "docHeight": 2172,
+ "name": "Praxis documentation",
+ "title": "Praxis — Documentation",
+ "description": "Source-backed hardware knowledge, vectorless MCP retrieval and scoped firmware verification. Project Praxis documentation for STM32F407 and Cortex-M4.",
+ "tagline": "From hardware knowledge to working understanding.",
+ "lang": "en",
+ "themeColorMeta": "#07090c",
+ "colorSchemeMeta": null,
+ "manifest": null,
+ "copy": {
+  "h1": [
+   "From hardware knowledge to working understanding."
+  ],
+  "h2": [
+   "A good place to start",
+   "The project, at a glance",
+   "Implementation & evidence",
+   "Go further"
+  ],
+  "h3": [
+   "Understand the architecture",
+   "Follow the interactions",
+   "Run your first workflow"
+  ],
+  "heroLine": "From hardware knowledge to working understanding.",
+  "ctas": [
+   {
+    "text": "Start reading →",
+    "bg": "#7cc7e6",
+    "color": "#101825",
+    "border": "#7cc7e6",
+    "radius": 7,
+    "filled": true,
+    "inHeader": false,
+    "inHero": true,
+    "top": 1026,
+    "w": 128,
+    "h": 41
+   },
+   {
+    "text": "Skip to content",
+    "bg": "#11151b",
+    "color": "#7cc7e6",
+    "border": null,
+    "radius": 0,
+    "filled": true,
+    "inHeader": false,
+    "inHero": true,
+    "top": -70,
+    "w": 139,
+    "h": 50
+   },
+   {
+    "text": "◈ Project overview ↗",
+    "bg": "#162a33",
+    "color": "#7cc7e6",
+    "border": null,
+    "radius": 7,
+    "filled": true,
+    "inHeader": false,
+    "inHero": true,
+    "top": 163,
+    "w": 231,
+    "h": 39
+   },
+   {
+    "text": "Browse the library ↗",
+    "bg": "#11151b",
+    "color": "#d8dee7",
+    "border": "#303944",
+    "radius": 7,
+    "filled": true,
+    "inHeader": false,
+    "inHero": true,
+    "top": 1026,
+    "w": 148,
+    "h": 41
+   }
+  ],
+  "nav": [
+   "praxis/docs",
+   "GitHub ↗",
+   "Overview",
+   "Guides",
+   "Bundles",
+   "Examples"
+  ],
+  "sentences": [
+   "A connected view of the project’s architecture, compiler, MCP tools and verification evidence. Explore the documentation without getting lost in a folder of Markdown files."
+  ]
+ },
+ "colors": {
+  "theme": "dark",
+  "monochrome": false,
+  "ground": [
+   {
+    "hex": "#0d1015",
+    "share": 0.832,
+    "sources": [
+     "pixels",
+     "dom"
+    ]
+   },
+   {
+    "hex": "#000000",
+    "share": 0.102,
+    "sources": [
+     "dom",
+     "pixels"
+    ]
+   }
+  ],
+  "ink": {
+   "hex": "#f4f6f8",
+   "contrastOnGround": 17.59,
+   "source": "computed colour of the largest heading (h1 \"From hardware knowledge to working understanding.\", 46px)"
+  },
+  "inkSoft": {
+   "hex": "#d8dee7",
+   "contrastOnGround": 14.08,
+   "note": "body copy"
+  },
+  "accentCandidates": {
+   "note": "saturated colours sampled from imagery (a CSS/DOM accent exists, these are extra)",
+   "items": [
+    {
+     "hex": "#7bc6e5",
+     "file": "screens/01.jpg",
+     "share": 0.00213,
+     "sharePct": 0.21
+    },
+    {
+     "hex": "#3b6578",
+     "file": "screens/01.jpg",
+     "share": 0.00128,
+     "sharePct": 0.13
+    },
+    {
+     "hex": "#65a3bc",
+     "file": "screens/01.jpg",
+     "share": 0.00028,
+     "sharePct": 0.03
+    },
+    {
+     "hex": "#695836",
+     "file": "screens/01.jpg",
+     "share": 0.00021,
+     "sharePct": 0.02
+    }
+   ]
+  },
+  "inkMuted": {
+   "hex": "#a7b1be",
+   "contrastOnGround": 8.78
+  },
+  "accents": [
+   {
+    "hex": "#7cc7e6",
+    "role": "accent (primary)",
+    "score": 218,
+    "sources": [
+     "CTA background",
+     "css var --accent",
+     "button",
+     "text",
+     "link",
+     "background",
+     "screenshot pixels"
+    ]
+   },
+   {
+    "hex": "#162a33",
+    "role": "accent 2",
+    "score": 26,
+    "sources": [
+     "button",
+     "background"
+    ]
+   },
+   {
+    "hex": "#9bd8ed",
+    "role": "accent 3",
+    "score": 16,
+    "sources": [
+     "link",
+     "text"
+    ]
+   }
+  ],
+  "ctaBg": "#7cc7e6",
+  "link": "#d8dee7",
+  "palette": [
+   {
+    "hex": "#0d1015",
+    "role": "ground (dark theme)",
+    "share": 0.832
+   },
+   {
+    "hex": "#000000",
+    "role": "surface/ground 2",
+    "share": 0.102
+   },
+   {
+    "hex": "#f4f6f8",
+    "role": "ink (headline / logo ink)",
+    "contrast": 17.6
+   },
+   {
+    "hex": "#d8dee7",
+    "role": "ink-soft (body copy)",
+    "contrast": 14.1
+   },
+   {
+    "hex": "#a7b1be",
+    "role": "ink muted",
+    "contrast": 8.8
+   },
+   {
+    "hex": "#7cc7e6",
+    "role": "accent (primary)",
+    "sources": [
+     "CTA background",
+     "css var --accent",
+     "button",
+     "text",
+     "link",
+     "background",
+     "screenshot pixels"
+    ]
+   },
+   {
+    "hex": "#162a33",
+    "role": "accent 2",
+    "sources": [
+     "button",
+     "background"
+    ]
+   },
+   {
+    "hex": "#9bd8ed",
+    "role": "accent 3",
+    "sources": [
+     "link",
+     "text"
+    ]
+   }
+  ],
+  "pixelPalette": [
+   {
+    "hex": "#0d1015",
+    "share": 0.803
+   },
+   {
+    "hex": "#000000",
+    "share": 0.096
+   },
+   {
+    "hex": "#21282e",
+    "share": 0.038
+   },
+   {
+    "hex": "#373d44",
+    "share": 0.022
+   },
+   {
+    "hex": "#505359",
+    "share": 0.011
+   },
+   {
+    "hex": "#665e45",
+    "share": 0.004
+   },
+   {
+    "hex": "#676a6e",
+    "share": 0.004
+   },
+   {
+    "hex": "#3c3927",
+    "share": 0.003
+   },
+   {
+    "hex": "#7e7459",
+    "share": 0.003
+   },
+   {
+    "hex": "#355262",
+    "share": 0.002
+   }
+  ],
+  "domBackgrounds": [
+   {
+    "hex": "#07090c",
+    "share": 0.658
+   },
+   {
+    "hex": "#11151b",
+    "share": 0.124
+   },
+   {
+    "hex": "#000000",
+    "share": 0.109
+   },
+   {
+    "hex": "#0b0e13",
+    "share": 0.06
+   },
+   {
+    "hex": "#181b21",
+    "share": 0.018
+   },
+   {
+    "hex": "#151a22",
+    "share": 0.013
+   },
+   {
+    "hex": "#10141c",
+    "share": 0.013
+   },
+   {
+    "hex": "#162a33",
+    "share": 0.002
+   },
+   {
+    "hex": "#7cc7e6",
+    "share": 0.001
+   },
+   {
+    "hex": "#090d13",
+    "share": 0.001
+   }
+  ],
+  "textColors": [
+   {
+    "hex": "#d8dee7",
+    "share": 0.421
+   },
+   {
+    "hex": "#a7b1be",
+    "share": 0.318
+   },
+   {
+    "hex": "#7cc7e6",
+    "share": 0.142
+   },
+   {
+    "hex": "#f4f6f8",
+    "share": 0.11
+   },
+   {
+    "hex": "#9bd8ed",
+    "share": 0.005
+   },
+   {
+    "hex": "#101825",
+    "share": 0.004
+   }
+  ],
+  "cssVars": [
+   {
+    "name": "--bg",
+    "value": "#07090c",
+    "hex": "#07090c"
+   },
+   {
+    "name": "--panel",
+    "value": "#11151b",
+    "hex": "#11151b"
+   },
+   {
+    "name": "--sidebar",
+    "value": "#0b0e13",
+    "hex": "#0b0e13"
+   },
+   {
+    "name": "--text",
+    "value": "#d8dee7",
+    "hex": "#d8dee7"
+   },
+   {
+    "name": "--heading",
+    "value": "#f4f6f8",
+    "hex": "#f4f6f8"
+   },
+   {
+    "name": "--muted",
+    "value": "#a7b1be",
+    "hex": "#a7b1be"
+   },
+   {
+    "name": "--border",
+    "value": "#303944",
+    "hex": "#303944"
+   },
+   {
+    "name": "--accent",
+    "value": "#7cc7e6",
+    "hex": "#7cc7e6"
+   },
+   {
+    "name": "--accent-bg",
+    "value": "#162a33",
+    "hex": "#162a33"
+   },
+   {
+    "name": "--green",
+    "value": "#99d5b5",
+    "hex": "#99d5b5"
+   },
+   {
+    "name": "--green-bg",
+    "value": "#152b23",
+    "hex": "#152b23"
+   },
+   {
+    "name": "--orange",
+    "value": "#e7c48c",
+    "hex": "#e7c48c"
+   },
+   {
+    "name": "--code",
+    "value": "#090d13",
+    "hex": "#090d13"
+   }
+  ]
+ },
+ "fonts": {
+  "roles": {
+   "heading": {
+    "family": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+    "weight": "580",
+    "size": "46px",
+    "style": "normal",
+    "letterSpacing": "-1.7px",
+    "lineHeight": "57.5px",
+    "textTransform": "none",
+    "color": "#f4f6f8",
+    "primaryFamily": "Segoe UI",
+    "file": null,
+    "fileWeight": null
+   },
+   "body": {
+    "family": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+    "weight": "400",
+    "size": "15px",
+    "style": "normal",
+    "letterSpacing": "normal",
+    "lineHeight": "27px",
+    "textTransform": "none",
+    "color": "#d8dee7",
+    "primaryFamily": "Segoe UI",
+    "file": null,
+    "fileWeight": null
+   },
+   "button": {
+    "family": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+    "weight": "650",
+    "size": "12px",
+    "style": "normal",
+    "letterSpacing": "normal",
+    "lineHeight": "21px",
+    "textTransform": "none",
+    "color": "#101825",
+    "primaryFamily": "Segoe UI",
+    "file": null,
+    "fileWeight": null
+   },
+   "nav": {
+    "family": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+    "weight": "600",
+    "size": "23px",
+    "style": "normal",
+    "letterSpacing": "1px",
+    "lineHeight": "40.25px",
+    "textTransform": "none",
+    "color": "#f4f6f8",
+    "primaryFamily": "Segoe UI",
+    "file": null,
+    "fileWeight": null
+   }
+  },
+  "faces": [],
+  "loadedByPage": [],
+  "mostUsed": [
+   {
+    "key": "-apple-system|400",
+    "weight": 24869
+   },
+   {
+    "key": "-apple-system|650",
+    "weight": 4114
+   },
+   {
+    "key": "-apple-system|580",
+    "weight": 2162
+   },
+   {
+    "key": "-apple-system|750",
+    "weight": 1480
+   },
+   {
+    "key": "-apple-system|600",
+    "weight": 1452
+   },
+   {
+    "key": "-apple-system|700",
+    "weight": 1240
+   },
+   {
+    "key": "ui-monospace|400",
+    "weight": 120
+   },
+   {
+    "key": "-apple-system|450",
+    "weight": 56
+   }
+  ],
+  "platformFonts": {
+   "h1": [
+    {
+     "family": "Liberation Sans",
+     "custom": false,
+     "glyphs": 48
+    }
+   ],
+   "body": [
+    {
+     "family": "Liberation Sans",
+     "custom": false,
+     "glyphs": 37
+    }
+   ]
+  }
+ },
+ "logo": {
+  "file": "logo/logo.png",
+  "kind": "raster",
+  "source": "img http://127.0.0.1:4188/branding/praxis-logo.png",
+  "fills": [],
+  "onDark": null,
+  "favicon": "logo/favicon.png",
+  "appIcon": null,
+  "text": {
+   "text": "Skip to content",
+   "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+   "weight": "400",
+   "size": "15px",
+   "color": "#7cc7e6"
+  },
+  "candidates": [
+   {
+    "score": 16,
+    "why": [
+     "logo-attr",
+     "home-link",
+     "header",
+     "top"
+    ],
+    "members": [
+     "img 120x67 http://127.0.0.1:4188/branding/praxis-logo.png"
+    ],
+    "lockup": false
+   }
+  ]
+ },
+ "ogImage": null,
+ "screens": [
+  {
+   "file": "screens/01.jpg",
+   "scrollY": 0
+  },
+  {
+   "file": "screens/02.jpg",
+   "scrollY": 546
+  },
+  {
+   "file": "screens/03.jpg",
+   "scrollY": 1092
+  }
+ ],
+ "media": [],
+ "mediaDropped": [],
+ "warnings": [
+  "page is short (2172px): only 3 screenshots",
+  "heading font \"Segoe UI\" has no downloadable file (system font or blocked)",
+  "body font \"Segoe UI\" has no downloadable file (system font or blocked)"
+ ]
+}

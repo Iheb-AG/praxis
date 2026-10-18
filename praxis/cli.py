@@ -36,6 +36,13 @@ def main(argv: list[str] | None = None) -> int:
     support.add_argument("--catalog", type=Path, help="Optional authored capability scope; not hardware evidence")
     support.add_argument("--workflow", help="Exact declared workflow; exit 1 if knowledge is blocked")
     support.add_argument("--format", choices=("json", "markdown"), default="json")
+    project = commands.add_parser("project-report", help="Document a requested firmware project with scoped connectivity and evidence")
+    for flag in ("bundle", "spec", "output"):
+        project.add_argument("--" + flag, required=True, type=Path)
+    project.add_argument("--workspace", type=Path, help="Explicit root for optional UTF-8 project attachments")
+    pdf = commands.add_parser("project-pdf", help="Typeset controlled LaTeX/CircuitikZ sources into a new PDF report")
+    pdf.add_argument("--report", required=True, type=Path)
+    pdf.add_argument("--output", required=True, type=Path)
     inventory_parser = commands.add_parser("inventory", help="Reconcile pinned manufacturer source scope with bundle coverage; not all-mode qualification")
     inventory_parser.add_argument("--bundle", required=True, type=Path)
     inventory_parser.add_argument("--inventory", required=True, type=Path)
@@ -85,6 +92,7 @@ def main(argv: list[str] | None = None) -> int:
         if name == "build":
             sub.add_argument("--source", required=True, help="Directory relative to the configured workspace")
         elif name == "build-serve":
+            sub.add_argument("--project-reports", type=Path, help="Opt in to immutable project reporting under this output root")
             sub.add_argument("--hardware-profile", type=Path, help="Opt in to read-only ST-LINK inspection")
             sub.add_argument("--hardware-authorization", type=Path, help="Operator scope for target-bound programming/control")
             sub.add_argument("--telemetry-artifact", help="Opt in to fixed ABI SRAM reads for this accepted artifact ID")
@@ -139,7 +147,7 @@ def main(argv: list[str] | None = None) -> int:
     review_parser.add_argument("--reviewer", required=True)
     review_parser.add_argument("--notes-file", required=True, type=Path)
     schema_parser = commands.add_parser("schema", help="Print an ingestion JSON Schema for authoring/validation")
-    schema_parser.add_argument("--kind", choices=("profile", "board", "reviewed-netlist", "capability-catalog", "capability-inventory", "definition-extension", "target-matrix"), required=True)
+    schema_parser.add_argument("--kind", choices=("profile", "board", "reviewed-netlist", "capability-catalog", "capability-inventory", "definition-extension", "target-matrix", "project"), required=True)
     ingest_server = commands.add_parser("ingest-serve", help="Opt-in source evidence and reviewed publication MCP")
     for flag in ("profile", "catalog", "archive-root", "publication-root"):
         ingest_server.add_argument("--" + flag, required=True, type=Path)
@@ -147,7 +155,19 @@ def main(argv: list[str] | None = None) -> int:
                                help="Explicit existing evidence archive; repeat as needed")
     args = parser.parse_args(argv)
     try:
-        if args.command == "prepare-review":
+        if args.command == "project-pdf":
+            from praxis.project_pdf import render_pdf
+            print(json.dumps(render_pdf(args.report, args.output), sort_keys=True))
+        elif args.command == "project-report":
+            from praxis.bundle import Bundle
+            from praxis.project_report import parse_spec, write_report
+            with args.spec.open("rb") as handle:
+                raw = handle.read(1024 * 1024 + 1)
+            if len(raw) > 1024 * 1024:
+                raise PraxisError("PROJECT_LIMIT", "Select a project specification under 1 MiB")
+            print(json.dumps(write_report(Bundle(args.bundle), parse_spec(raw), args.output,
+                                          args.workspace), sort_keys=True))
+        elif args.command == "prepare-review":
             from praxis.review import prepare_review
             report = prepare_review(args.profile, args.archive, args.peripheral, args.register, args.locator)
             with args.output.open("x", encoding="utf-8") as handle:
@@ -268,7 +288,8 @@ def main(argv: list[str] | None = None) -> int:
                 from praxis.build_server import create_build_server
                 create_build_server(args.bundle, args.assets, args.workspace, args.artifacts, args.lock,
                                     args.hardware_profile, args.hardware_authorization,
-                                    args.telemetry_artifact, args.telemetry_kind).run(transport="stdio")
+                                    args.telemetry_artifact, args.telemetry_kind,
+                                    args.project_reports).run(transport="stdio")
             else:
                 from praxis.firmware_build import BuildService
                 service = BuildService(args.bundle, args.assets, args.workspace, args.artifacts, args.lock)
@@ -335,9 +356,11 @@ def main(argv: list[str] | None = None) -> int:
             from praxis.support import CapabilityCatalog
             from praxis.capability_inventory import InventorySpec
             from praxis.target_matrix import TargetMatrix
+            from praxis.project_report import ProjectSpec
             model = {"profile": Profile, "board": BoardDefinition, "reviewed-netlist": ReviewedSchematic,
                      "capability-catalog": CapabilityCatalog, "definition-extension": DefinitionExtension,
-                     "target-matrix": TargetMatrix, "capability-inventory": InventorySpec}[args.kind]
+                     "target-matrix": TargetMatrix, "capability-inventory": InventorySpec,
+                     "project": ProjectSpec}[args.kind]
             print(json.dumps(model.model_json_schema(), indent=2, sort_keys=True))
         return 0
     except PraxisError as exc:

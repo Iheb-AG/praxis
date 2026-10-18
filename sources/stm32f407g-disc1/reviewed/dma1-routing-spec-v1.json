@@ -1,0 +1,44 @@
+{
+  "column_axis": "Stream",
+  "column_ids": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "context_contains": [
+    "DMA1 request mapping"
+  ],
+  "context_locator": "page:309",
+  "empty_cells": [
+    "-"
+  ],
+  "evidence_source": "rm_timer_dma",
+  "format": "praxis-routing-matrix-v1",
+  "group": "DMA1",
+  "id": "dma1_requests",
+  "join_suffixes": [
+    "_"
+  ],
+  "row_axis": "Channel",
+  "row_ids": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "source_sha256": "f3ff2322eec21f4e49081f68481b764506eee81dba6031bc767e2f8955b27cca",
+  "table_locators": [
+    "page:309/table:2",
+    "page:310/table:1"
+  ],
+  "target": "STM32F407VGT6"
+}

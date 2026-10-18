@@ -7,6 +7,25 @@ STM32F407G-DISC1 MB997-E-01 reference bundle. No public release or image upload 
 
 ### Included
 
+- Bounded transient retries for exact source restoration, longer HTTP read waits,
+  single-job manufacturer-source acquisition and hash-verified shared CI caching.
+  Historical extraction uses a manifest-pinned Python runtime in a separate offline
+  environment, preserving exact PDF geometry hashes across application test versions.
+  Python matrix tests and all original integrity/review checks remain required;
+  persistent failures and source changes remain blockers.
+
+- Optional requested-project reporting over CLI and build MCP: standalone HTML,
+  Markdown, white formal styling, complete scoped net connectivity SVG, schema-validated
+  authored sequence diagrams, design explanations,
+  source attachments and revalidated build evidence. A recordable F407 UART protocol
+  supervisor scenario demonstrates the flow; physical acceptance and attachment-to-build
+  source binding remain explicitly unassessed.
+
+- Multi-part LaTeX authoring kit, native CircuitikZ electrical reference sheets and
+  controlled LuaLaTeX PDF typesetting. Electrical symbols require published component
+  kinds, terminal roles and exact nets; unknown internals remain terminal blocks. Document
+  status uses plain engineering control text rather than colored warning banners.
+
 - Source-bound TIM5 CH3 capture interrupt/TIM2 CH2 PWM workflow, fixed vector and
   priority checks, independent NVIC delivery/failure model and seventeenth isolated
   application. Separate timer IRQ software telemetry and offline qualification reject

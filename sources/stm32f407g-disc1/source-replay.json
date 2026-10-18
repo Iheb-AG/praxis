@@ -85,6 +85,10 @@
       "review_utf8": "{\n  \"format\": \"praxis.web-import/v1\",\n  \"import_revision\": \"5df1bd175a17d667d2120eb5bbb0607c4d2e1e9d694dafb4e4fb8defbeae0780\",\n  \"notes\": \"Actually read complete MCP pages 18 and 26 of UM1472 Rev9. USART2 TX PA2/P1-14 and RX PA3/P1-13 agree with rendered E-01 schematic and package pins 25/26. ST-LINK VCP is not connected to the MCU USART by default. Review limited to this connector route; other board revisions and actual physical wire placement remain unconfirmed.\",\n  \"reviewer\": \"Codex source-backed editorial review via ingestion MCP; independent review pending\",\n  \"status\": \"reviewed\",\n  \"target\": \"STM32F407VGT6\"\n}\n"
     }
   ],
+  "extraction_runtime": {
+    "implementation": "cpython",
+    "python": "3.12"
+  },
   "format": "praxis-source-replay-v1",
   "scope": "Historical exact-byte F407 import recovery metadata only. Raw manufacturer content is downloaded separately; existing implementing-author receipts are restored only after every original artifact hash matches. No new review or hardware approval."
 }

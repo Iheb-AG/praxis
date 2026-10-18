@@ -11,6 +11,12 @@ import zipfile
 from pathlib import Path, PurePosixPath
 
 REQUIRED = {
+    'praxis/latex_text.py', 'praxis/electrical.py', 'praxis/project_latex.py', 'praxis/project_pdf.py',
+    'tests/test_project_documents.py', 'tools/check_project_documents.py',
+    'praxis/project_report.py', 'tests/test_project_report.py', 'docs/project-reporting.md',
+    'tools/check_project_report_mcp.py',
+    *{f'examples/projects/stm32f407-protocol-supervisor/{name}'
+      for name in ('project.json', 'README.md', 'PROMPT.md')},
     'praxis/timer_irq_telemetry.py', 'praxis/data/timer-irq-telemetry-v1.json',
     'tests/test_timer_irq.py', 'tests/test_timer_irq_effects.py',
     'tests/fixtures/f407_timer_irq_model.c',
@@ -245,7 +251,8 @@ def main():
     with zipfile.ZipFile(wheels[0]) as archive:
         wheel = set(archive.namelist())
     checked_names(wheel)
-    if not {'praxis/telemetry.py', 'praxis/server.py', 'praxis/cli.py',
+    if not {'praxis/telemetry.py', 'praxis/server.py', 'praxis/cli.py', 'praxis/project_report.py',
+            'praxis/latex_text.py', 'praxis/electrical.py', 'praxis/project_latex.py', 'praxis/project_pdf.py',
             'praxis/adapters/manual.py', 'praxis/review.py', 'praxis/support.py',
             'praxis/definitions.py', 'praxis/workflow_review.py',
             'praxis/can_telemetry.py', 'praxis/can_diagnostics.py', 'praxis/targets.py',

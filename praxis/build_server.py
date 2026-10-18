@@ -15,8 +15,14 @@ def create_build_server(bundle: Path, assets: Path, workspace: Path, artifacts: 
                         hardware_profile: Path | None = None,
                         hardware_authorization: Path | None = None,
                         telemetry_artifact: str | None = None,
-                        telemetry_kind: str = 'uart-loopback-v1') -> FastMCP:
+                        telemetry_kind: str = 'uart-loopback-v1',
+                        project_reports: Path | None = None) -> FastMCP:
     service = BuildService(bundle, assets, workspace, artifacts, lock)
+    report_root = None
+    if project_reports is not None:
+        if project_reports.is_symlink() or project_reports.resolve().is_relative_to(service.bundle.root):
+            raise PraxisError('INVALID_PATH', 'Keep project reports outside knowledge bundles; no symlink output root')
+        report_root = project_reports.resolve()
     hardware = None
     programming = None
     telemetry = None
@@ -47,7 +53,9 @@ def create_build_server(bundle: Path, assets: Path, workspace: Path, artifacts: 
         'Reset/run may continue after return. Never claim boot or physical success from '
         'compile success, programming/readback success or GPIO latches. '
         'Optional telemetry reads one launch-selected artifact ABI, checks exact image bytes and '
-        'returns firmware self-reports; it does not generate stimuli or capture wire traffic.')
+        'returns firmware self-reports; it does not generate stimuli or capture wire traffic. '
+        'Optional generate_project_report documents the requested application, cites published facts and '
+        'renders scoped connectivity. Report generation never establishes physical acceptance.')
     readonly = ToolAnnotations(readOnlyHint=True, destructiveHint=False, openWorldHint=False)
 
     def call(operation, *args):
@@ -80,6 +88,35 @@ def create_build_server(bundle: Path, assets: Path, workspace: Path, artifacts: 
     def validate_firmware(artifact_id: str) -> dict:
         """Recheck a previously accepted artifact's hashes and F407 memory/vector contract."""
         return call(service.validate, artifact_id)
+
+    if report_root is not None:
+        def project_documentation(specification, artifact_id):
+            import json
+            from praxis.bundle import read_inside
+            from praxis.project_report import parse_spec, write_report
+            spec = parse_spec(specification)
+            destination = report_root / spec.id
+            if not destination.resolve().is_relative_to(report_root):
+                raise PraxisError('INVALID_PATH', 'Project output escapes the configured report root')
+            checked = None
+            if artifact_id is not None:
+                validation = service.validate(artifact_id)
+                checked = json.loads(read_inside(service.artifacts / artifact_id, 'report.json', 1024 * 1024))
+                checked['validation'] = validation['validation']
+            return write_report(service.bundle, spec, destination, service.workspace, checked)
+
+        @server.tool(annotations=ToolAnnotations(readOnlyHint=False, destructiveHint=False, openWorldHint=False))
+        def generate_project_report(specification: dict, artifact_id: str | None = None) -> dict:
+            """Write HTML/Markdown/SVG and a multi-part LaTeX/CircuitikZ authoring kit for the requested project.
+
+            Supply a praxis-project-v1 spec with this exact target/bundle revision, requirement workflow
+            IDs, authored explanations citing registered documents, exact signal/endpoint names, verification
+            plans and limitations. Optional files are workspace-relative UTF-8 attachments. An artifact_id
+            is revalidated from the configured store; callers cannot submit a success receipt. Output is
+            report-root/spec.id and cannot be overwritten. No build, flash or physical acceptance is implied.
+            Native PDF typesetting is a separate opt-in local project-pdf CLI; this tool executes no TeX.
+            """
+            return call(project_documentation, specification, artifact_id)
 
     if hardware:
         @server.tool(annotations=readonly)

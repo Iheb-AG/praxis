@@ -2,6 +2,7 @@
 
 import json
 import shutil
+import sys
 
 import httpx
 import pytest
@@ -221,8 +222,245 @@ def test_shipped_replay_covers_full_profile_without_embedding_document_content()
     profile = Profile.model_validate_json((root / "profile-timer-irq-v1.json").read_bytes())
     assert {r[0] for r in records} == set(profile.web_imports.values()) and len(records) == 16
     assert set(data["allowed_hosts"]) == {"www.st.com", "raw.githubusercontent.com"}
+    assert data["extraction_runtime"] == {"implementation": "cpython", "python": "3.12"}
     for _, record, record_text, review_text in records:
         assert record["download"]["sha256"] in record["file_hashes"].values()
         assert json.loads(record_text)["file_hashes"] == record["file_hashes"]
         assert json.loads(review_text)["status"] == "reviewed"
         assert not {"text", "tables"} & record.keys()
+
+
+def runtime_pin(replay, *, implementation=None, python=None):
+    data = json.loads(replay[0].read_bytes())
+    data["extraction_runtime"] = {
+        "implementation": implementation or sys.implementation.name,
+        "python": python or f"{sys.version_info.major}.{sys.version_info.minor}",
+    }
+    replay[0].write_text(json.dumps(data))
+
+
+def test_matching_runtime_replays_every_original_byte(replay):
+    runtime_pin(replay)
+    assert execute(replay)["passed"]
+    recovered = replay[1].parent / "imports/original"
+    assert {p.relative_to(replay[3]): p.read_bytes() for p in replay[3].rglob('*') if p.is_file()} == {
+        p.relative_to(recovered): p.read_bytes() for p in recovered.rglob('*') if p.is_file()}
+
+
+@pytest.mark.parametrize("pin", [{"implementation": "alternative"}, {"python": "99.0"}])
+def test_wrong_runtime_fails_before_download_extraction_or_receipt_restoration(replay, monkeypatch, pin):
+    runtime_pin(replay, **pin)
+    monkeypatch.setattr('tools.restore_source_inputs._source_file', lambda *a, **k: pytest.fail('No source access'))
+    monkeypatch.setattr('tools.restore_source_inputs.scrape', lambda *a, **k: pytest.fail('No extraction'))
+    with pytest.raises(PraxisError, match="EXTRACTION_RUNTIME.*separate environment"):
+        execute(replay)
+    assert not (replay[1].parent / 'imports').exists()
+    assert list(replay[2].iterdir()) == []
+
+
+def test_download_preparation_does_not_require_extraction_runtime(replay, monkeypatch):
+    runtime_pin(replay, python="99.0")
+    monkeypatch.setattr('tools.restore_source_inputs.scrape', lambda *a, **k: pytest.fail('No extraction'))
+    with httpx.Client(transport=httpx.MockTransport(lambda request: httpx.Response(200, content=replay[4]))) as client:
+        assert restore(*replay[:3], client=client, download_only=True)['passed']
+    assert not (replay[1].parent / 'imports').exists()
+
+
+def test_verified_existing_imports_can_be_consumed_with_another_runtime(replay):
+    execute(replay)
+    runtime_pin(replay, python="99.0")
+    assert restore(*replay[:3], offline=True)['archives'][0]['status'] == 'verified existing'
+    # The runtime distinction never permits altered evidence or receipts.
+    (replay[1].parent / 'imports/original/extracted/part-0001.json').write_bytes(b'changed')
+    with pytest.raises(PraxisError, match='IMPORT_INTEGRITY'):
+        restore(*replay[:3], offline=True)
+
+
+@pytest.mark.parametrize('runtime', [None, [], '3.12', {},
+    {'implementation': 'cpython', 'python': 3.12},
+    {'implementation': 'cpython', 'python': '3.12.0'},
+    {'implementation': 'cpython', 'python': '3.12', 'extra': True},
+    {'implementation': 'cpython\n', 'python': '3.12'},
+    {'implementation': 'cpython', 'python': '3.12\n'}])
+def test_invalid_runtime_policy_fails_before_restoration(replay, runtime):
+    data = json.loads(replay[0].read_bytes())
+    data['extraction_runtime'] = runtime
+    replay[0].write_text(json.dumps(data))
+    with pytest.raises(PraxisError, match='INVALID_REPLAY.*extraction_runtime'):
+        execute(replay)
+    assert not replay[2].exists()
+
+
+def test_mismatched_artifact_is_identified_without_restoring_receipt(replay, monkeypatch):
+    from tools import restore_source_inputs as module
+    original = module.scrape
+
+    def changed_hash(*args, **kwargs):
+        archive = original(*args, **kwargs)
+        path = archive / 'import.json'
+        record = json.loads(path.read_bytes())
+        record['file_hashes']['extracted/part-0001.json'] = 'f' * 64
+        path.write_text(json.dumps(record))
+        return archive
+
+    monkeypatch.setattr(module, 'scrape', changed_hash)
+    with pytest.raises(PraxisError, match=r'REPLAY_MISMATCH.*differing artifacts: extracted/part-0001.json'):
+        execute(replay)
+    assert not (replay[1].parent / 'imports/original').exists()
+
+
+def test_transient_read_timeouts_retry_without_changing_receipts(replay, monkeypatch, capsys):
+    attempts, waits = [], []
+    monkeypatch.setattr('tools.restore_source_inputs.time.sleep', waits.append)
+
+    def handler(request):
+        attempts.append(str(request.url))
+        if len(attempts) < 3:
+            raise httpx.ReadTimeout('fixture timeout', request=request)
+        return httpx.Response(200, content=replay[4])
+
+    with httpx.Client(transport=httpx.MockTransport(handler)) as client:
+        result = restore(*replay[:3], client=client)
+    assert result['passed'] and waits == [2, 4]
+    assert attempts == ['https://docs.example.org/manual'] * 3
+    archive = replay[1].parent / 'imports/original'
+    for name in ('import.json', 'review.json', 'source.txt'):
+        assert (archive / name).read_bytes() == (replay[3] / name).read_bytes()
+    assert 'ReadTimeout' in capsys.readouterr().err
+
+
+def test_exhausted_timeouts_fail_with_bounded_attempts_and_no_partial_publication(replay, monkeypatch, capsys):
+    calls, waits = [], []
+    monkeypatch.setattr('tools.restore_source_inputs.time.sleep', waits.append)
+
+    def handler(request):
+        calls.append(request.url)
+        raise httpx.ReadTimeout('persistent timeout', request=request)
+
+    with httpx.Client(transport=httpx.MockTransport(handler)) as client:
+        with pytest.raises(PraxisError, match='DOWNLOAD_FAILED.*failed after 4 attempts.*ReadTimeout'):
+            restore(*replay[:3], client=client)
+    assert len(calls) == 4 and waits == [2, 4, 8]
+    assert not (replay[1].parent / 'imports/original').exists()
+    assert list(replay[2].iterdir()) == []
+    assert 'attempt 4/4' in capsys.readouterr().err
+
+
+@pytest.mark.parametrize('status', [408, 429, 500, 502, 503, 504])
+def test_only_transient_http_statuses_are_retried(replay, monkeypatch, status):
+    calls, waits = [], []
+    monkeypatch.setattr('tools.restore_source_inputs.time.sleep', waits.append)
+
+    def handler(request):
+        calls.append(request.url)
+        return httpx.Response(status) if len(calls) == 1 else httpx.Response(200, content=replay[4])
+
+    with httpx.Client(transport=httpx.MockTransport(handler)) as client:
+        assert restore(*replay[:3], client=client)['passed']
+    assert len(calls) == 2 and waits == [2]
+
+
+@pytest.mark.parametrize('status', [400, 401, 403, 404])
+def test_permanent_http_failures_are_not_retried(replay, monkeypatch, status):
+    calls = []
+    monkeypatch.setattr('tools.restore_source_inputs.time.sleep', lambda seconds: pytest.fail('No retry allowed'))
+
+    def handler(request):
+        calls.append(request.url)
+        return httpx.Response(status)
+
+    with httpx.Client(transport=httpx.MockTransport(handler)) as client:
+        with pytest.raises(PraxisError, match=f'HTTP_ERROR: HTTP {status}'):
+            restore(*replay[:3], client=client)
+    assert len(calls) == 1
+    assert list(replay[2].iterdir()) == []
+
+
+def test_changed_bytes_after_a_transient_failure_still_fail_immediately(replay, monkeypatch):
+    calls, waits = [], []
+    monkeypatch.setattr('tools.restore_source_inputs.time.sleep', waits.append)
+
+    def handler(request):
+        calls.append(request.url)
+        return httpx.Response(503) if len(calls) == 1 else httpx.Response(200, content=b'new vendor revision')
+
+    with httpx.Client(transport=httpx.MockTransport(handler)) as client:
+        with pytest.raises(PraxisError, match='SOURCE_HASH_MISMATCH'):
+            restore(*replay[:3], client=client)
+    assert len(calls) == 2 and waits == [2]
+    assert list(replay[2].iterdir()) == []
+    assert not (replay[1].parent / 'imports/original').exists()
+
+
+def test_partial_stream_is_discarded_before_retry(replay, monkeypatch):
+    calls = []
+    monkeypatch.setattr('tools.restore_source_inputs.time.sleep', lambda seconds: None)
+
+    class BrokenStream(httpx.SyncByteStream):
+        def __iter__(self):
+            yield b'x' * 65536  # Enough to reach the destination before the timeout.
+            raise httpx.ReadTimeout('interrupted download')
+
+    def handler(request):
+        calls.append(request.url)
+        return (httpx.Response(200, stream=BrokenStream()) if len(calls) == 1
+                else httpx.Response(200, content=replay[4]))
+
+    with httpx.Client(transport=httpx.MockTransport(handler)) as client:
+        assert restore(*replay[:3], client=client)['passed']
+    assert len(calls) == 2
+    assert next(replay[2].iterdir()).read_bytes() == replay[4]
+    assert (replay[1].parent / 'imports/original/source.txt').read_bytes() == replay[4]
+
+
+def test_prepare_once_then_restore_offline_with_all_original_checks(replay, monkeypatch):
+    with monkeypatch.context() as preparation:
+        preparation.setattr('tools.restore_source_inputs.scrape', lambda *a, **k: pytest.fail('No extraction in preparation'))
+        preparation.setattr('tools.restore_source_inputs.version', lambda *a: pytest.fail('No extractor needed in preparation'))
+        with httpx.Client(transport=httpx.MockTransport(lambda request: httpx.Response(200, content=replay[4]))) as client:
+            result = restore(*replay[:3], client=client, download_only=True)
+    assert result['passed'] and result['archives'][0]['status'] == 'verified source bytes'
+    assert not (replay[1].parent / 'imports').exists()
+    with httpx.Client(transport=httpx.MockTransport(lambda request: pytest.fail('Offline replay used network'))) as client:
+        assert restore(*replay[:3], client=client, offline=True)['passed']
+    archive = replay[1].parent / 'imports/original'
+    assert {p.relative_to(archive): p.read_bytes() for p in archive.rglob('*') if p.is_file()} == {
+        p.relative_to(replay[3]): p.read_bytes() for p in replay[3].rglob('*') if p.is_file()}
+
+
+def test_missing_offline_cache_fails_without_attempting_network(replay):
+    with httpx.Client(transport=httpx.MockTransport(lambda request: pytest.fail('Offline replay used network'))) as client:
+        with pytest.raises(PraxisError, match='MISSING_CACHED_SOURCE'):
+            restore(*replay[:3], client=client, offline=True)
+    assert not (replay[1].parent / 'imports').exists()
+
+
+def test_cache_corruption_is_not_healed_or_downloaded_during_preparation(replay):
+    record = json.loads((replay[3] / 'import.json').read_bytes())
+    replay[2].mkdir()
+    (replay[2] / record['download']['sha256']).write_bytes(b'bad cache')
+    with httpx.Client(transport=httpx.MockTransport(lambda request: pytest.fail('Corruption must fail closed'))) as client:
+        with pytest.raises(PraxisError, match='SOURCE_HASH_MISMATCH'):
+            restore(*replay[:3], client=client, download_only=True)
+
+
+def test_owned_client_uses_longer_read_timeout_and_retains_transport_policy(replay, monkeypatch):
+    original, configurations = httpx.Client, []
+
+    def factory(**kwargs):
+        configurations.append(kwargs)
+        return original(transport=httpx.MockTransport(lambda request: httpx.Response(200, content=replay[4])), **kwargs)
+
+    monkeypatch.setattr('httpx.Client', factory)
+    assert restore(*replay[:3])['passed']
+    assert len(configurations) == 1
+    settings = configurations[0]
+    assert settings['timeout'].read == 60 and settings['timeout'].connect == 15
+    assert settings['trust_env'] is False and settings['follow_redirects'] is False
+
+
+@pytest.mark.parametrize('policy', [{'download_attempts': 0}, {'download_attempts': 6},
+                                    {'download_attempts': True}, {'read_timeout': 14}, {'read_timeout': 121}])
+def test_unbounded_or_invalid_replay_policies_are_rejected(replay, policy):
+    with pytest.raises(PraxisError, match='INVALID_REPLAY_POLICY'):
+        restore(*replay[:3], **policy)

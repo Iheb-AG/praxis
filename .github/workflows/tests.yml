@@ -22,6 +22,25 @@ jobs:
         with:
           name: public-documentation
           path: website/dist
+  project-documents:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      PRAXIS_REQUIRE_EXTERNAL_TOOLS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: '3.12'
+      - run: sudo apt-get update && sudo apt-get install -y --no-install-recommends texlive-luatex texlive-latex-extra texlive-fonts-recommended texlive-pictures fonts-texgyre lmodern poppler-utils
+      - run: uv sync --locked
+      - run: uv run python tools/check_project_documents.py --output .praxis-output/project-documents
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: native-project-documents
+          include-hidden-files: true
+          path: .praxis-output/project-documents
   knowledge-container:
     runs-on: ubuntu-24.04
     steps:
@@ -39,7 +58,35 @@ jobs:
         with:
           name: knowledge-container-evidence
           path: /tmp/praxis-container-report.json
+  source-evidence:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      PRAXIS_REQUIRE_EXTERNAL_TOOLS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: '3.12'
+      - run: uv sync --locked --extra web
+      - name: Reuse pinned raw manufacturer sources
+        uses: actions/cache@v4
+        with:
+          path: .praxis-output/source-downloads
+          key: ${{ runner.os }}-manufacturer-sources-v1-${{ hashFiles('sources/stm32f407g-disc1/source-replay.json') }}
+      - name: Acquire and verify manufacturer evidence once
+        run: |
+          set -o pipefail
+          mkdir -p .praxis-output
+          uv run python tools/restore_source_inputs.py --manifest sources/stm32f407g-disc1/source-replay.json --profile sources/stm32f407g-disc1/profile-timer-irq-v1.json --cache .praxis-output/source-downloads --download-only --download-attempts 4 --read-timeout 60 2>&1 | tee .praxis-output/source-download.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: source-acquisition-log
+          include-hidden-files: true
+          path: .praxis-output/source-download.log
   tests:
+    needs: source-evidence
     runs-on: ubuntu-24.04
     timeout-minutes: 35
     env:
@@ -57,8 +104,21 @@ jobs:
       - run: sudo apt-get update && sudo apt-get install -y --no-install-recommends kicad podman uidmap clang gcc-arm-none-eabi libnewlib-arm-none-eabi gcc-avr avr-libc device-tree-compiler libfdt1 openocd
       - run: uv sync --locked --extra ingest --extra test --extra web
       - run: uv run ruff check praxis tests tools server.py compiler.py
+      - name: Restore shared pinned source cache
+        uses: actions/cache/restore@v4
+        with:
+          path: .praxis-output/source-downloads
+          key: ${{ runner.os }}-manufacturer-sources-v1-${{ hashFiles('sources/stm32f407g-disc1/source-replay.json') }}
+          fail-on-cache-miss: true
       - name: Restore pinned manufacturer evidence
-        run: uv run python tools/restore_source_inputs.py --manifest sources/stm32f407g-disc1/source-replay.json --profile sources/stm32f407g-disc1/profile-timer-irq-v1.json --cache .praxis-output/source-downloads
+        run: |
+          set -o pipefail
+          mkdir -p .praxis-output
+          # Historical PDF hashes depend on Python's floating-point summation.
+          # Keep their replay runtime separate from the application test matrix.
+          replay_python="$(uv run python -c 'from pathlib import Path; from tools.restore_source_inputs import checked_manifest; print(checked_manifest(Path("sources/stm32f407g-disc1/source-replay.json"))[0]["extraction_runtime"]["python"])')"
+          uv python install "$replay_python"
+          UV_PYTHON="$replay_python" UV_PROJECT_ENVIRONMENT=.venv-source-replay uv run --locked --python "$replay_python" --extra web python tools/restore_source_inputs.py --manifest sources/stm32f407g-disc1/source-replay.json --profile sources/stm32f407g-disc1/profile-timer-irq-v1.json --cache .praxis-output/source-downloads --offline 2>&1 | tee .praxis-output/source-restore.log
       - uses: ./.github/actions/provision-toolchain
       - name: Full strict regression
         run: |
@@ -68,7 +128,9 @@ jobs:
         if: always()
         with:
           name: test-results-${{ matrix.python-version }}
+          include-hidden-files: true
           path: |
+            .praxis-output/source-restore.log
             .praxis-output/pytest-results.xml
             .praxis-output/pytest.log
       - run: uv run praxis lint --bundle bundles/stm32f401re && uv run praxis lint --bundle bundles/atmega328p
@@ -136,6 +198,7 @@ jobs:
         if: always()
         with:
           name: f407-application-acceptance
+          include-hidden-files: true
           path: |
             .praxis-output/ci-f407-acceptance/report.json
             .praxis-output/ci-f407-acceptance/trace.json

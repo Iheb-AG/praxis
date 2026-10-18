@@ -23,7 +23,12 @@ With `--hardware-profile`, this same server additionally exposes `list_debug_pro
 `plan_firmware(artifact_id, connection_id)`. No third MCP process is needed. See
 [inspection](hardware-inspection.md) and [programming/control](hardware-programming.md).
 Only an explicit `--hardware-authorization` additionally enables `flash_firmware` and
-`control_execution`. Without a hardware profile the server retains only its three build tools.
+`control_execution`. With no optional flags the server retains only its three build tools.
+The independent `--project-reports OUTPUT_ROOT` option enables
+`generate_project_report(specification, artifact_id=None)`, which produces
+[documentation for the user's requested firmware project](project-reporting.md), including
+HTML, a scoped connectivity SVG, authored design rationale and separate evidence statuses.
+Reporting does not enable hardware access.
 With a hardware profile and `--telemetry-artifact ARTIFACT_ID`, it also exposes the bounded
 [firmware telemetry tool](firmware-telemetry.md), without enabling write operations.
 
