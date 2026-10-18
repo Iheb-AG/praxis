@@ -10,7 +10,10 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
+import sys
 import tempfile
+import time
 from importlib.metadata import PackageNotFoundError, version
 from pathlib import Path
 
@@ -73,7 +76,78 @@ def checked_manifest(path):
     return data, records
 
 
-def restore(manifest: Path, profile: Path, cache: Path, *, client=None):
+def _transient(exc: PraxisError) -> bool:
+    import httpx
+    if exc.code == "DOWNLOAD_TIMEOUT":
+        return True
+    if exc.code == "DOWNLOAD_FAILED":
+        return isinstance(exc.__cause__, (httpx.TransportError, OSError))
+    return exc.code == "HTTP_ERROR" and re.match(r"HTTP (408|429|500|502|503|504)\b", exc.message) is not None
+
+
+def _download(record, pending, hosts, *, client, attempts, read_timeout):
+    try:
+        import httpx
+    except ImportError as exc:
+        raise PraxisError("MISSING_TOOL", "Install project-praxis[web] for online source restoration") from exc
+    source_hash = record["download"]["sha256"]
+    source = WebSource.model_validate({**record["source"],
+        "url": record["download"]["original_url"], "sha256": source_hash})
+    for attempt in range(1, attempts + 1):
+        pending.unlink(missing_ok=True)
+        print(f"Download {source.url} (SHA-256 {source_hash[:12]}…); attempt {attempt}/{attempts}",
+              file=sys.stderr, flush=True)
+        try:
+            if client is None:
+                with httpx.Client(timeout=httpx.Timeout(read_timeout, connect=15),
+                                  follow_redirects=False, trust_env=False) as owned:
+                    metadata = download(source, pending, hosts, client=owned)
+            else:
+                metadata = download(source, pending, hosts, client=client)
+            if metadata["bytes"] != record["download"]["bytes"]:
+                raise PraxisError("SOURCE_HASH_MISMATCH", "Downloaded source size differs")
+            return
+        except PraxisError as exc:
+            pending.unlink(missing_ok=True)
+            if not _transient(exc):
+                raise
+            if attempt == attempts:
+                raise PraxisError(exc.code, f"{source.url}: failed after {attempts} attempts; "
+                    f"last error: {exc.message}. Retry preparation or supply the exact pinned cache bytes.") from exc
+            delay = min(2 ** attempt, 8)
+            print(f"Transient failure: {exc}; retrying in {delay}s", file=sys.stderr, flush=True)
+            time.sleep(delay)
+
+
+def _source_file(record, cache, hosts, *, client, attempts, read_timeout, offline):
+    source_hash = record["download"]["sha256"]
+    raw = cache / source_hash
+    if raw.exists() or raw.is_symlink():
+        contents = read_inside(cache, source_hash, MAX_DOWNLOAD)
+        if digest(contents) != source_hash or len(contents) != record["download"]["bytes"]:
+            raise PraxisError("SOURCE_HASH_MISMATCH", "Cached source differs; restore its pinned bytes")
+        print(f"Verified cached source {source_hash}", file=sys.stderr, flush=True)
+        return raw
+    if offline:
+        raise PraxisError("MISSING_CACHED_SOURCE", f"Offline replay needs {source_hash}; run download-only preparation first")
+    with tempfile.TemporaryDirectory(prefix=".download-", dir=cache) as temporary:
+        pending = Path(temporary) / "source"
+        _download(record, pending, hosts, client=client, attempts=attempts, read_timeout=read_timeout)
+        # Never replace an existing immutable cache entry after a concurrent writer.
+        try:
+            os.link(pending, raw)
+        except FileExistsError:
+            contents = read_inside(cache, source_hash, MAX_DOWNLOAD)
+            if digest(contents) != source_hash or len(contents) != record["download"]["bytes"]:
+                raise PraxisError("SOURCE_HASH_MISMATCH", "Concurrent cache writer changed bytes") from None
+    return raw
+
+
+def restore(manifest: Path, profile: Path, cache: Path, *, client=None,
+            download_only=False, offline=False, download_attempts=4, read_timeout=60):
+    if (type(download_attempts) is not int or not 1 <= download_attempts <= 5
+            or type(read_timeout) is not int or not 15 <= read_timeout <= 120):
+        raise PraxisError("INVALID_REPLAY_POLICY", "Use 1–5 download attempts and a 15–120 second read timeout")
     root = profile.parent.resolve(strict=True)
     selected = Profile.model_validate_json(read_inside(root, profile.name, 8 * 1024 * 1024))
     data, records = checked_manifest(manifest)
@@ -93,7 +167,7 @@ def restore(manifest: Path, profile: Path, cache: Path, *, client=None):
         destination = root / name
         if not destination.resolve().is_relative_to(root) or destination.is_symlink():
             raise PraxisError("INVALID_PATH", "Replay archive escapes the source root")
-        if destination.exists():
+        if destination.exists() and not download_only:
             require_review(destination, selected.target.mcu)
             if (
                 read_inside(destination, "import.json", 4 * 1024 * 1024) != record_text.encode()
@@ -104,7 +178,7 @@ def restore(manifest: Path, profile: Path, cache: Path, *, client=None):
                 )
             results.append(dict(path=name, status="verified existing"))
             continue
-        for package, expected in record["extractors"].items():
+        for package, expected in (() if download_only else record["extractors"].items()):
             if package == "text":
                 continue
             try:
@@ -117,35 +191,11 @@ def restore(manifest: Path, profile: Path, cache: Path, *, client=None):
                 raise PraxisError(
                     "EXTRACTOR_VERSION", f"Requires {package}=={expected}; found {actual}"
                 )
-        source_hash = record["download"]["sha256"]
-        raw = cache / source_hash
-        if raw.exists() or raw.is_symlink():
-            contents = read_inside(cache, source_hash, MAX_DOWNLOAD)
-            if digest(contents) != source_hash or len(contents) != record["download"]["bytes"]:
-                raise PraxisError(
-                    "SOURCE_HASH_MISMATCH", "Cached source differs; restore its pinned bytes"
-                )
-        else:
-            source = WebSource.model_validate(
-                {
-                    **record["source"],
-                    "url": record["download"]["original_url"],
-                    "sha256": source_hash,
-                }
-            )
-            with tempfile.TemporaryDirectory(prefix=".download-", dir=cache) as temporary:
-                pending = Path(temporary) / "source"
-                metadata = download(source, pending, set(data["allowed_hosts"]), client=client)
-                if metadata["bytes"] != record["download"]["bytes"]:
-                    raise PraxisError("SOURCE_HASH_MISMATCH", "Downloaded source size differs")
-                # Never replace an existing immutable cache entry after a concurrent writer.
-                try:
-                    os.link(pending, raw)
-                except FileExistsError:
-                    if digest(read_inside(cache, source_hash, MAX_DOWNLOAD)) != source_hash:
-                        raise PraxisError(
-                            "SOURCE_HASH_MISMATCH", "Concurrent cache writer changed bytes"
-                        ) from None
+        raw = _source_file(record, cache, set(data["allowed_hosts"]), client=client,
+                           attempts=download_attempts, read_timeout=read_timeout, offline=offline)
+        if download_only:
+            results.append(dict(path=name, status="verified source bytes", sha256=raw.name))
+            continue
         destination.parent.mkdir(parents=True, exist_ok=True)
         with tempfile.TemporaryDirectory(prefix=".replay-", dir=destination.parent) as temporary:
             staging = Path(temporary) / "archive"
@@ -198,9 +248,15 @@ def main():
     parser.add_argument("--manifest", required=True, type=Path)
     parser.add_argument("--profile", required=True, type=Path)
     parser.add_argument("--cache", required=True, type=Path)
+    parser.add_argument("--download-only", action="store_true", help="Acquire and verify raw sources; do not extract or restore receipts")
+    parser.add_argument("--offline", action="store_true", help="Require every source in the verified cache; never download")
+    parser.add_argument("--download-attempts", type=int, default=4, help="Bounded transient retries, 1–5; default 4")
+    parser.add_argument("--read-timeout", type=int, default=60, help="HTTP read timeout, 15–120 seconds; default 60")
     args = parser.parse_args()
     try:
-        print(json.dumps(restore(args.manifest, args.profile, args.cache), indent=2))
+        print(json.dumps(restore(args.manifest, args.profile, args.cache,
+            download_only=args.download_only, offline=args.offline,
+            download_attempts=args.download_attempts, read_timeout=args.read_timeout), indent=2))
     except (PraxisError, OSError, ValidationError) as exc:
         parser.exit(1, f"{exc}\n")
     return 0
