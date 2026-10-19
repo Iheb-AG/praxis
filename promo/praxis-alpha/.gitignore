@@ -1,8 +1,0 @@
-# Large local renders and inspection intermediates; publish the MP4 as a release asset.
-*.mp4
-*.zip
-*.log
-look-draft/
-look-final/
-stills/
-stills-review/
