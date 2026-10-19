@@ -349,3 +349,10 @@ FastMCP API. Dependency versions are recorded in `uv.lock`. See the
 [architecture and source format](docs/architecture.md), [test scenarios](tests), and
 [milestone evidence](docs/STATUS.md) before treating this implementation as a release candidate.
 
+
+## Hardware-independent reference acquisition
+
+For sensors, displays, modules or other hardware outside the selected MCU bundle,
+use the optional [hardware reference MCP](docs/hardware-references.md). It accepts
+explicit public documentation URLs without a predefined catalog, preserving source
+hashes and complete extracted parts. It does not establish firmware or electrical support.

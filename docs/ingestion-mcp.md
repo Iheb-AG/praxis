@@ -8,9 +8,11 @@ could not expose acquired manuals for review or publish an expanded bundle.
 The implementation is [praxis/ingestion_server.py](../praxis/ingestion_server.py). It uses
 literal source search and filesystem identities, with no embeddings or model calls. Only
 explicit acquisition can contact the network. The three-tool knowledge server remains offline
-and serves one fixed immutable bundle. Authoring does not change a running retrieval session.
+and by default serves one fixed immutable bundle. Optional [project handoff](bundle-handoff.md)
+lets explicitly configured services adopt a validated new revision at tool boundaries without
+reconnecting; historical bundle files remain immutable.
 
-The service exposes thirteen tools. Its [manual review adapter](manual-review-compiler.md) is shared
+The service exposes fourteen tools, plus activation when handoff is enabled. Its [manual review adapter](manual-review-compiler.md) is shared
 with the offline CLI and prepares candidates, never automatically approved operating facts.
 
 ## Launch and separation
@@ -73,7 +75,8 @@ flash or execute firmware. The knowledge MCP cannot acquire or publish source ma
 | `acquire_source_evidence(source_id, pages=None)` | Explicit HTTPS acquisition of an allowlisted catalog identity; no arbitrary URL or recursive crawl |
 | `stage_cached_source(source_id, pages, output_id)` | Extract selected cached bytes into a new authoring archive without network; retained URL is declared provenance |
 | `record_source_review(source_id, notes)` | Immutable exact-byte editorial review receipt after actual review; explicitly not independent engineering approval |
-| `publish_reviewed_bundle(reviewed_profile, output_name)` | Existing compiler validates a profile in the configured source tree and publishes a new immutable revision |
+| `publish_reviewed_bundle(reviewed_profile, output_name, activate=True)` | Compiler validates and publishes a new immutable revision; optional configured handoff activates it after compatibility checks |
+| `activate_published_bundle(output_name, expected_revision)` | Handoff only: select an exact validated publication within the configured root; no client restart or hardware authorization |
 
 A registered text range contains at most 200 lines and 1 MiB. Extracted page responses preserve
 complete text/tables; search snippets do not. The in-memory extracted evidence snapshot is
@@ -115,7 +118,13 @@ sequenceDiagram
     A->>I: publish_reviewed_bundle(reviewed profile, new name)
     I->>C: Compile, validate links, graph, conflicts and workflow coverage
     C-->>I: Immutable bundle revision or blocking error
-    Note over K: Operator selects new bundle and restarts process
+    alt Project handoff configured
+        I->>I: Preflight and atomically activate new revision
+        A->>K: read_wiki_index (adopt revision; reset HEDG)
+        A->>B: get_build_profile (adopt and acknowledge revision)
+    else Fixed-bundle launch
+        Note over K,B: Operator selects bundle and restarts services
+    end
     A->>K: Index, exact topology, prerequisite documents
     K-->>A: Complete published Markdown
     Note over A: Generate application C/H from supported facts

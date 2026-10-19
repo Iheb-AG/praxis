@@ -7,7 +7,7 @@ from __future__ import annotations
 
 import json
 
-from praxis.electrical import circuit_pages, electrical_document
+from praxis.electrical import electrical_figure, electrical_document
 from praxis.latex_text import breakable, tex
 
 PREAMBLE = r'''\documentclass[11pt,a4paper]{article}
@@ -16,12 +16,14 @@ PREAMBLE = r'''\documentclass[11pt,a4paper]{article}
 \setmainfont{TeX Gyre Pagella}
 \setsansfont{TeX Gyre Heros}
 \setmonofont{Latin Modern Mono}
-\usepackage{microtype,graphicx,longtable,array,booktabs,fancyhdr,xurl}
+\usepackage{microtype,graphicx,longtable,array,booktabs,fancyhdr,xurl,needspace}
 \usepackage[unicode,hidelinks]{hyperref}
 \usepackage[europeanresistors]{circuitikz}
-\usetikzlibrary{arrows.meta}
+\usetikzlibrary{arrows.meta,backgrounds}
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{7pt}
+\setlength{\parskip}{5pt}
+\raggedbottom
+\setcounter{tocdepth}{1}
 \emergencystretch=3em
 \pagestyle{fancy}
 \fancyhf{}
@@ -48,29 +50,51 @@ def _refs(documents: list[str], lookup: dict) -> str:
 
 
 def _sequence(diagram: dict) -> str:
+    """Place each message below the actual preceding text box, never a fixed row."""
     participants = diagram['participants']
-    positions = {p['id']: i * 3.4 for i, p in enumerate(participants)}
-    height = len(diagram['messages']) * 1.55 + 1.0
-    code = [r'\begin{center}\resizebox{\linewidth}{!}{\begin{tikzpicture}[>=Stealth]']
-    for participant in participants:
-        x = positions[participant['id']]
-        code.append(f'\\node[draw,align=center,text width=2.6cm,minimum height=0.85cm] at ({x:g},0) '
-                    + '{\\small\\sffamily ' + tex(participant['label']) + '};')
-        code.append(f'\\draw[dashed,black!30] ({x:g},-0.5) -- ({x:g},-{height:g});')
+    count = len(participants)
+    positions = {p['id']: (i + .5) / count for i, p in enumerate(participants)}
+    code = [r'\begin{center}\begin{tikzpicture}[>=Stealth,x=\linewidth]']
+    for number, participant in enumerate(participants):
+        width = .90 / count
+        code.append(f'\\node[draw,anchor=north,align=center,text width={width:g}\\linewidth,'
+                    'minimum height=11mm,inner sep=3pt,font=\\small\\sffamily] '
+                    f'(actor{number}) at ({positions[participant["id"]]:g},0) '
+                    + '{' + tex(participant['label']) + '};')
+    code.append(r'\coordinate (row0) at ([yshift=-4mm]current bounding box.south);')
     for number, message in enumerate(diagram['messages'], 1):
         start, end = positions[message['sender']], positions[message['receiver']]
-        y = -number * 1.55
         label = tex(f'{number:02d}. {message["label"]}')
         if start == end:
-            code.append(f'\\draw[->] ({start:g},{y:g}) -- ++(1.15,0) -- ++(0,-0.4) -- ({start:g},{y - 0.4:g});')
-            code.append(f'\\node[above right,align=left,text width=2.8cm,fill=white,inner sep=2pt] at ({start:g},{y:g}) '
-                        + '{\\scriptsize ' + label + '};')
+            # Use the adjacent lane for the local-action label; keep the loop
+            # under the label, so it cannot cross this or the next message.
+            direction = 1 if start <= .5 else -1
+            mid = start + direction * .44 / count
+            width = min(.90, 2 / count - .05)
         else:
-            span = abs(start - end) - 0.3
-            code.append(f'\\draw[->] ({start:g},{y:g}) -- ({end:g},{y:g}) '
-                        f'node[midway,above,align=center,text width={span:g}cm,fill=white,inner sep=2pt] '
-                        + '{\\scriptsize ' + label + '};')
-    code.append(r'\end{tikzpicture}}\end{center}')
+            mid = (start + end) / 2
+            width = min(.90, max(abs(start - end) - .035, 2 / count - .05))
+        mid = max(width / 2 + .015, min(1 - width / 2 - .015, mid))
+        code.append(f'\\node[anchor=north,align=center,text width={width:g}\\linewidth,'
+                    'fill=white,inner sep=2pt,font=\\footnotesize] '
+                    f'(message{number}) at ({mid:g},0 |- row{number-1}) '
+                    + '{' + label + '};')
+        code.append(f'\\coordinate (arrow{number}) at ([yshift=-2pt]message{number}.south);')
+        if start == end:
+            turn = start + direction * .30 / count
+            code.append(f'\\coordinate (return{number}) at ([yshift=-3mm]arrow{number});')
+            code.append(f'\\draw[->] ({start:g},0 |- arrow{number}) -- '
+                        f'({turn:g},0 |- arrow{number}) -- ({turn:g},0 |- return{number}) '
+                        f'-- ({start:g},0 |- return{number});')
+            code.append(f'\\coordinate (row{number}) at ([yshift=-3mm]return{number});')
+        else:
+            code.append(f'\\draw[->] ({start:g},0 |- arrow{number}) -- ({end:g},0 |- arrow{number});')
+            code.append(f'\\coordinate (row{number}) at ([yshift=-3mm]arrow{number});')
+    code.append(r'\begin{pgfonlayer}{background}')
+    for number, _ in enumerate(participants):
+        code.append(f'\\draw[dashed,black!30] (actor{number}.south) -- '
+                    f'(actor{number}.south |- row{len(diagram["messages"])});')
+    code.extend([r'\end{pgfonlayer}', r'\end{tikzpicture}\end{center}'])
     return '\n'.join(code) + '\n'
 
 
@@ -78,20 +102,20 @@ def sources(report: dict) -> dict[str, bytes]:
     project = report['project']
     lookup = {r['id']: i for i, r in enumerate(report['references'], 1)}
     files = {}
-    title = (r'\begin{titlepage}\thispagestyle{empty}' + '\n'
-        + r'{\sffamily\small PROJECT ENGINEERING REPORT}\par\vspace{20mm}' + '\n'
-        + r'{\LARGE\bfseries ' + tex(project['title']) + r'\par}\vspace{8mm}' + '\n'
-        + _prose(project['objective']) + r'\vfill' + '\n'
-        + r'\begin{tabular}{@{}p{35mm}p{115mm}@{}}\toprule' + '\n'
+    title = (r'\thispagestyle{empty}' + '\n'
+        + r'{\sffamily\small PROJECT ENGINEERING REPORT}\par\vspace{5mm}' + '\n'
+        + r'{\LARGE\bfseries ' + tex(project['title']) + r'\par}\vspace{3mm}' + '\n'
+        + _prose(project['objective']) + r'\par\vspace{3mm}' + '\n'
+        + r'\begin{tabular}{@{}p{.24\linewidth}p{\dimexpr.76\linewidth-2\tabcolsep\relax}@{}}\toprule' + '\n'
         + r'Document ID & ' + tex(project['id']) + r'\\' + '\n'
         + r'Reference MCU & ' + tex(report['target']['mcu']) + r'\\' + '\n'
         + r'Reference PCB & ' + tex(report['target']['board_revision']) + r'\\' + '\n'
         + r'Knowledge scope & ' + ('Ready for the declared scope' if report['knowledge_scope_ready'] else 'Open gaps remain') + r'\\' + '\n'
         + r'Build evidence & ' + tex(report['build']['status'].replace('_', ' ')) + r'\\' + '\n'
         + r'Physical verification & Not assessed\\\bottomrule\end{tabular}' + '\n'
-        + r'\vspace{8mm}\par{\small Document status: design and evidence review. Overall project acceptance '
+        + r'\vspace{3mm}\par{\small Document status: design and evidence review. Overall project acceptance '
         + r'is not established. Physical PCB revision and assembly must be confirmed separately.}' + '\n'
-        + r'\end{titlepage}\tableofcontents\clearpage' + '\n')
+        + r'\tableofcontents\clearpage' + '\n')
     files['sections/00-front.tex'] = title
     requirements = [r'\section{Project scope and requirements}', _prose(project['objective'])]
     for requirement in report['requirements']:
@@ -108,20 +132,21 @@ def sources(report: dict) -> dict[str, bytes]:
         design.extend([r'\subsection{' + tex(explanation['title']) + '}', _prose(explanation['explanation']),
                        _refs(explanation['documents'], lookup)])
     for diagram in project.get('diagrams', []):
-        design.extend([r'\subsection{' + tex(diagram['title']) + '}', _prose(diagram['description']),
-                       _sequence(diagram), _refs(diagram['documents'], lookup)])
+        design.extend([r'\par\medskip\noindent\begin{minipage}{\linewidth}',
+                       r'\subsection{' + tex(diagram['title']) + '}', _prose(diagram['description']),
+                       _sequence(diagram), _refs(diagram['documents'], lookup), r'\end{minipage}\par'])
     files['sections/02-design.tex'] = '\n'.join(design)
-    electrical = [r'\clearpage\section{Electrical design}',
-        'The following sheets redraw the selected reference circuits with native electrical symbols. '
-        'Identical net labels denote connections. This is not the manufacturer\'s original sheet layout '
-        'or a complete board schematic. Unknown component internals are drawn as terminal blocks.']
-    for page_number, _ in enumerate(circuit_pages(report.get('electrical_drawings', [])), 1):
-        electrical.append(r'\begin{figure}[p]\centering'
-            + '\n' + r'\includegraphics[page=' + str(page_number) + r',width=\linewidth,height=.82\textheight,keepaspectratio]{figures/electrical.pdf}'
-            + '\n' + r'\caption{Selected electrical reference, sheet ' + str(page_number) + r'.}\end{figure}\clearpage')
+    electrical = [r'\Needspace{8\baselineskip}\section{Electrical design}',
+        'The selected reference circuits are redrawn below with native electrical symbols. '
+        'Identical net labels denote connections. Unknown component internals are terminal blocks. '
+        'These scoped drawings do not replace the complete manufacturer schematic.']
+    for figure in report.get('electrical_drawings', []):
+        electrical.extend([r'\par\medskip\noindent\begin{minipage}{\linewidth}',
+                           electrical_figure(figure), r'\end{minipage}\par'])
     if not report.get('electrical_drawings'):
         electrical.append('Component evidence is unavailable; no electrical drawing was inferred.')
-    electrical.append(r'\subsection{Proposed external connections}')
+    if project['proposed_wires']:
+        electrical.append(r'\subsection{Proposed external connections}')
     for wire in project['proposed_wires']:
         electrical.append(r'\textbf{' + tex(wire['from_endpoint'] + ' ↔ ' + wire['to_endpoint'])
                           + '}. ' + tex(wire['description']) + '\n')
@@ -139,24 +164,59 @@ def sources(report: dict) -> dict[str, bytes]:
     verify.extend([r'\subsection{Limitations and open work}', _list(project['limitations'] + report['limits']),
                    r'\subsection{Knowledge gaps}', _list(report['gaps'])])
     files['sections/04-verification.tex'] = '\n'.join(verify)
-    evidence = [r'\appendix\section{Traceability and exact identities}',
+    evidence = [r'\Needspace{8\baselineskip}\appendix\section{Traceability and exact identities}',
         r'Bundle revision: \texttt{' + breakable(report['bundle_revision']) + '}.',
         r'Report revision: \texttt{' + breakable(report['report_revision']) + '}.',
-        r'\subsection{Source documents}']
+        r'\subsection{Source documents}',
+        r'{\small\renewcommand{\arraystretch}{1.15}',
+        r'\begin{longtable}{@{}p{.06\linewidth}p{.48\linewidth}p{\dimexpr.46\linewidth-4\tabcolsep\relax}@{}}',
+        r'\toprule Key & Document / file & SHA-256\\\midrule\endhead']
     for row in report['references']:
-        evidence.append(r'\textbf{R' + str(lookup[row['id']]) + ': ' + tex(row['id']) + r'}\par '
-            + r'Complete document: \texttt{../' + breakable(row['file']) + r'}.\par SHA-256: \texttt{' + breakable(row['sha256']) + r'}.\par')
-    evidence.append(r'\subsection{Project attachments}')
+        evidence.append('R' + str(lookup[row['id']]) + ' & ' + tex(row['id'])
+            + r'\newline {\scriptsize\ttfamily ' + breakable('../' + row['file']) + '} & '
+            + r'{\scriptsize\ttfamily ' + breakable(row['sha256']) + r'}\\')
+    evidence.extend([r'\bottomrule\end{longtable}}', r'\subsection{Project attachments}',
+        r'{\footnotesize\renewcommand{\arraystretch}{1.0}',
+        r'\begin{longtable}{@{}p{.58\linewidth}p{\dimexpr.42\linewidth-2\tabcolsep\relax}@{}}',
+        r'\toprule File & SHA-256\\\midrule\endhead'])
     for row in report['project_files']:
-        evidence.append(tex(row['path']) + r'\par SHA-256: \texttt{' + breakable(row['sha256']) + r'}.\par')
-    evidence.append(r'\section{Complete selected net memberships}')
+        evidence.append(r'{\scriptsize\ttfamily ' + breakable(row['path']) + '} & '
+                        + r'{\scriptsize\ttfamily ' + breakable(row['sha256']) + r'}\\')
+    evidence.append(r'\bottomrule\end{longtable}}')
+    provenance = {}
     for net in report['nets']:
-        evidence.append(r'\subsection{' + tex(net['name']) + '}')
-        evidence.append(r'\begin{longtable}{@{}p{27mm}p{27mm}p{96mm}@{}}\toprule Endpoint & Pin & Provenance\\\midrule\endhead')
         for pin in net['endpoints']:
-            evidence.append(tex(pin['endpoint']) + ' & ' + tex(pin['pin']) + ' & '
-                            + breakable(pin['sources']) + r'\\')
-        evidence.append(r'\bottomrule\end{longtable}')
+            for source in pin['sources'].split(';'):
+                source = source.strip()
+                if source and source not in provenance:
+                    provenance[source] = 'N' + str(len(provenance) + 1)
+    evidence.extend([r'\Needspace{8\baselineskip}\section{Selected net connections}',
+        'Endpoints use component:pin notation. Terminals in the same row share the listed sources. '
+        'A differing pin label is shown in parentheses. Full source locators follow the table.',
+        r'{\small\renewcommand{\arraystretch}{1.2}',
+        r'\begin{longtable}{@{}p{.10\linewidth}p{.20\linewidth}p{.30\linewidth}p{\dimexpr.40\linewidth-6\tabcolsep\relax}@{}}',
+        r'\toprule Net & MCU pad & Header / component & Sources\\\midrule\endhead'])
+    for net in report['nets']:
+        groups = {}
+        for pin in net['endpoints']:
+            keys = tuple(provenance[s.strip()] for s in pin['sources'].split(';') if s.strip())
+            groups.setdefault(keys, []).append(pin)
+        for keys, pins in groups.items():
+            pads, terminals = [], []
+            for pin in pins:
+                label = pin['endpoint'] + (' (' + pin['pin'] + ')' if pin['pin'] != net['name'] else '')
+                is_mcu = pin['endpoint'].split(':')[0] == report['target']['primary_mcu_ref']
+                (pads if is_mcu else terminals).append(label)
+            evidence.append(' & '.join(tex(v) for v in
+                [net['name'], ', '.join(pads) or '—', ', '.join(terminals) or '—', ', '.join(keys)]) + r'\\')
+    evidence.extend([r'\bottomrule\end{longtable}}',
+        r'\Needspace{5\baselineskip}\subsection{Net source key}',
+        r'{\small\renewcommand{\arraystretch}{1.15}',
+        r'\begin{longtable}{@{}p{.08\linewidth}p{\dimexpr.92\linewidth-2\tabcolsep\relax}@{}}',
+        r'\toprule Key & Complete source locator\\\midrule\endhead'])
+    for source, key in provenance.items():
+        evidence.append(tex(key) + r' & {\footnotesize\ttfamily ' + breakable(source) + r'}\\')
+    evidence.append(r'\bottomrule\end{longtable}}')
     files['sections/05-evidence.tex'] = '\n'.join(evidence)
     main = [PREAMBLE, r'\begin{document}', *(r'\input{' + name + '}' for name in sorted(files)), r'\end{document}']
     files['report.tex'] = '\n'.join(main) + '\n'

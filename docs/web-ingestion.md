@@ -4,6 +4,9 @@ Praxis can acquire engineering PDFs, static HTML documentation and plain text fr
 HTTPS URLs. Acquisition is a separate online CLI or optional authoring-MCP step. Compilation and knowledge MCP retrieval remain
 offline and vectorless. There are no model calls, embeddings, recursive crawls or hidden searches.
 
+For hardware-independent acquisition through MCP without a fixed MCU or source catalog,
+see [Hardware reference MCP](hardware-references.md).
+
 ## Install and scrape
 
 ```bash

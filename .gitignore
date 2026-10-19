@@ -27,3 +27,22 @@ website/.generated/
 .vercel/
 node_modules/
 
+# Local benchmark and promotional work; retained on disk, excluded from publication.
+/benchmarks/
+/promo/
+/tools/benchmark_knowledge_mcp.py
+/tests/test_knowledge_benchmark.py
+/docs/knowledge-mcp-benchmark-evidence.json
+/docs/reports/knowledge-mcp-benchmark-2026-10-19.md
+/docs/reports/knowledge-mcp-samples-2026-10-19/
+
+# Local demo preparation, recording helpers and project instructions.
+/demo/
+/demos/
+/recordings/
+/prompt.txt
+/prompt.md
+/type-prompt.sh
+/praxis.md
+/examples/projects/prompt.template.md
+

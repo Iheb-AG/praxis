@@ -11,6 +11,7 @@ import zipfile
 from pathlib import Path, PurePosixPath
 
 REQUIRED = {
+    'praxis/project_workspace.py', 'tests/test_project_workspace.py', 'docs/project-workspaces.md',
     'praxis/latex_text.py', 'praxis/electrical.py', 'praxis/project_latex.py', 'praxis/project_pdf.py',
     'tests/test_project_documents.py', 'tools/check_project_documents.py',
     'praxis/project_report.py', 'tests/test_project_report.py', 'docs/project-reporting.md',

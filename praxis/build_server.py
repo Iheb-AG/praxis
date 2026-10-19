@@ -16,8 +16,22 @@ def create_build_server(bundle: Path, assets: Path, workspace: Path, artifacts: 
                         hardware_authorization: Path | None = None,
                         telemetry_artifact: str | None = None,
                         telemetry_kind: str = 'uart-loopback-v1',
-                        project_reports: Path | None = None) -> FastMCP:
+                        project_reports: Path | None = None,
+                        handoff: Path | None = None) -> FastMCP:
     service = BuildService(bundle, assets, workspace, artifacts, lock)
+    control = None
+    selection = None
+    profile_acknowledged = True
+    if handoff is not None:
+        from praxis.handoff import BundleHandoff
+        control = BundleHandoff(handoff)
+        control.check_launch(bundle)
+        control.check_build_launch(assets, workspace, artifacts, lock, hardware_profile)
+        selection = control.selection()
+        control.load_bundle(selection)
+        control.check_runtime_profile(selection)
+        service = BuildService(Path(selection.bundle_path), assets, workspace, artifacts, lock)
+        profile_acknowledged = False
     report_root = None
     if project_reports is not None:
         if project_reports.is_symlink() or project_reports.resolve().is_relative_to(service.bundle.root):
@@ -35,8 +49,11 @@ def create_build_server(bundle: Path, assets: Path, workspace: Path, artifacts: 
     if hardware_profile:
         from praxis.hardware import HardwareService
         from praxis.programming import CONTROLS, ProgrammingService
-        hardware = HardwareService(service.bundle, service.assets, hardware_profile,
+        selected_profile = Path(selection.hardware_profile) if selection else hardware_profile
+        hardware = HardwareService(service.bundle, service.assets, selected_profile,
                                    service.artifacts.parent / 'probe-locks')
+        # Explicit launch grants/telemetry must validate against the selected revision.
+        # Refresh below discards them rather than carrying them into a new revision.
         programming = ProgrammingService(service, hardware, hardware_authorization)
         if telemetry_artifact:
             from praxis.telemetry import TelemetryService
@@ -55,13 +72,48 @@ def create_build_server(bundle: Path, assets: Path, workspace: Path, artifacts: 
         'Optional telemetry reads one launch-selected artifact ABI, checks exact image bytes and '
         'returns firmware self-reports; it does not generate stimuli or capture wire traffic. '
         'Optional generate_project_report documents the requested application, cites published facts and '
-        'renders scoped connectivity. Report generation never establishes physical acceptance.')
+        'renders scoped connectivity. Report generation never establishes physical acceptance. '
+        + ('Project handoff is enabled: after publication call read_wiki_index and get_build_profile. '
+           'Services adopt the active revision without reconnecting. Old connections, authorization '
+           'and telemetry do not transfer across revisions.' if control else ''))
     readonly = ToolAnnotations(readOnlyHint=True, destructiveHint=False, openWorldHint=False)
 
-    def call(operation, *args):
+    def refresh():
+        nonlocal service, hardware, programming, telemetry, selection, profile_acknowledged
+        if not control:
+            return
+        active = control.selection()
+        if active == selection:
+            return
+        control.load_bundle(active)
+        control.check_runtime_profile(active)
+        control.check_build_inputs()
+        replacement = BuildService(Path(active.bundle_path), assets, workspace, artifacts, lock)
+        if report_root and report_root.is_relative_to(replacement.bundle.root):
+            raise PraxisError('INVALID_PATH', 'Project reports must stay outside the selected bundle')
+        next_hardware = next_programming = None
+        if active.hardware_profile:
+            from praxis.hardware import HardwareService
+            from praxis.programming import ProgrammingService
+            next_hardware = HardwareService(replacement.bundle, replacement.assets,
+                Path(active.hardware_profile), replacement.artifacts.parent / 'probe-locks')
+            # Never carry grants or probe connection IDs into a different revision.
+            next_programming = ProgrammingService(replacement, next_hardware)
+        service, hardware, programming = replacement, next_hardware, next_programming
+        telemetry, selection, profile_acknowledged = None, active, False
+
+    def call(operation, *args, acknowledge=False):
+        nonlocal profile_acknowledged
         with serial:
             try:
-                return operation(*args)
+                refresh()
+                if control and not profile_acknowledged and not acknowledge:
+                    raise PraxisError('BUNDLE_HANDOFF_REQUIRED',
+                        'Read read_wiki_index and call get_build_profile for the active revision before build/hardware/report operations')
+                result = operation(*args)
+                if acknowledge:
+                    profile_acknowledged = True
+                return result
             except PraxisError as exc:
                 raise ToolError(str(exc)) from exc
             except OSError as exc:
@@ -70,10 +122,12 @@ def create_build_server(bundle: Path, assets: Path, workspace: Path, artifacts: 
     @server.tool(annotations=readonly)
     def get_build_profile() -> dict:
         """Return target/revision, pinned assets, memory/clock contract and provisioning status."""
-        return {**call(service.profile),
+        return call(lambda: {**service.profile(),
                 'hardware_inspection': hardware.describe() if hardware else {'enabled': False},
                 'hardware_programming': programming.describe() if programming else {'enabled': False},
-                'firmware_telemetry': telemetry.describe() if telemetry else {'enabled': False}}
+                'firmware_telemetry': telemetry.describe() if telemetry else {'enabled': False},
+                **({'bundle_handoff': {**selection.model_dump(), 'reconnect_required': False}}
+                   if selection else {})}, acknowledge=True)
 
     @server.tool(annotations=ToolAnnotations(readOnlyHint=False, destructiveHint=False, openWorldHint=False))
     def build_firmware(source_directory: str) -> dict:
@@ -82,12 +136,12 @@ def create_build_server(bundle: Path, assets: Path, workspace: Path, artifacts: 
         No paths outside the workspace, arbitrary compiler flags, scripts or custom startup/linker files.
         Success returns a content-derived artifact_id only after compile and ELF checks pass.
         """
-        return call(service.build, source_directory)
+        return call(lambda: service.build(source_directory))
 
     @server.tool(annotations=readonly)
     def validate_firmware(artifact_id: str) -> dict:
         """Recheck a previously accepted artifact's hashes and F407 memory/vector contract."""
-        return call(service.validate, artifact_id)
+        return call(lambda: service.validate(artifact_id))
 
     if report_root is not None:
         def project_documentation(specification, artifact_id):
@@ -122,7 +176,7 @@ def create_build_server(bundle: Path, assets: Path, workspace: Path, artifacts: 
         @server.tool(annotations=readonly)
         def list_debug_probes() -> dict:
             """Enumerate ST-LINK USB descriptors without attaching; never auto-select a probe."""
-            return call(hardware.list_probes)
+            return call(lambda: hardware.list_probes())
 
         @server.tool(annotations=readonly)
         def inspect_target(probe_serial: str) -> dict:
@@ -130,7 +184,7 @@ def create_build_server(bundle: Path, assets: Path, workspace: Path, artifacts: 
 
             Debug attachment affects debug transport; it cannot identify the PCB or exact MCU package.
             """
-            return call(hardware.inspect_target, probe_serial)
+            return call(lambda: hardware.inspect_target(probe_serial))
 
         @server.tool(annotations=readonly)
         def inspect_execution(connection_id: str) -> dict:
@@ -139,7 +193,7 @@ def create_build_server(bundle: Path, assets: Path, workspace: Path, artifacts: 
             PC/SP/LR/xPSR are read only if already halted. Does not identify the running firmware artifact,
             prove optical output, or read SysTick CTRL/DHCSR observation flags.
             """
-            return call(hardware.inspect_execution, connection_id)
+            return call(lambda: hardware.inspect_execution(connection_id))
 
         @server.tool(annotations=readonly)
         def plan_firmware(artifact_id: str, connection_id: str) -> dict:
@@ -147,7 +201,7 @@ def create_build_server(bundle: Path, assets: Path, workspace: Path, artifacts: 
 
             Does not authorize programming. Physical PCB revision/wiring remain unconfirmed.
             """
-            return call(programming.plan_firmware, artifact_id, connection_id)
+            return call(lambda: programming.plan_firmware(artifact_id, connection_id))
 
         if telemetry:
             @server.tool(annotations=readonly)
@@ -157,7 +211,11 @@ def create_build_server(bundle: Path, assets: Path, workspace: Path, artifacts: 
                 1–5 coherent samples, 10–1000ms spacing. No caller address/symbol/artifact,
                 halt/reset or memory-write operation. Counters are firmware self-reports.
                 """
-                return call(telemetry.read, connection_id, samples, interval_ms)
+                def read():
+                    if telemetry is None:
+                        raise PraxisError('TELEMETRY_NOT_CONFIGURED', 'Telemetry is invalidated by bundle handoff; explicitly configure the new artifact')
+                    return telemetry.read(connection_id, samples, interval_ms)
+                return call(read)
 
             if telemetry_kind == 'can-loopback-v1':
                 @server.tool(annotations=readonly)
@@ -167,9 +225,13 @@ def create_build_server(bundle: Path, assets: Path, workspace: Path, artifacts: 
                     Gate snapshots bracket named reads. No caller address/register, FIFO action,
                     reset, halt or write. Requires the reviewed CAN/RCC bundle layout.
                     """
-                    return call(telemetry.read_can_diagnostics, connection_id)
+                    def read():
+                        if telemetry is None:
+                            raise PraxisError('TELEMETRY_NOT_CONFIGURED', 'Telemetry is invalidated by bundle handoff')
+                        return telemetry.read_can_diagnostics(connection_id)
+                    return call(read)
 
-        if hardware_authorization:
+        if hardware_authorization and programming.authorization:
             mutating = ToolAnnotations(readOnlyHint=False, destructiveHint=True,
                                        idempotentHint=False, openWorldHint=False)
 
@@ -181,7 +243,7 @@ def create_build_server(bundle: Path, assets: Path, workspace: Path, artifacts: 
                     Requires local operator scope. Success leaves target halted; never retries failures.
                     Inspect success/failure and limits. Sector contents outside the image are erased.
                     """
-                    return call(programming.flash_firmware, artifact_id, connection_id)
+                    return call(lambda: programming.flash_firmware(artifact_id, connection_id))
 
             if set(programming.authorization.actions) & CONTROLS:
                 @server.tool(annotations=mutating)
@@ -192,6 +254,6 @@ def create_build_server(bundle: Path, assets: Path, workspace: Path, artifacts: 
                     Observation window 0–5000ms. Running firmware may continue after return and expiry.
                     No arbitrary commands, addresses, breakpoints or stepping. Reports do not prove boot.
                     """
-                    return call(programming.control_execution, artifact_id, connection_id, operation, observation_ms)
+                    return call(lambda: programming.control_execution(artifact_id, connection_id, operation, observation_ms))
 
     return server

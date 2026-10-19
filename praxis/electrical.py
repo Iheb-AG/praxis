@@ -165,6 +165,24 @@ def circuit_pages(figures: list[dict]) -> list[list[dict]]:
     return pages
 
 
+def electrical_figure(figure: dict) -> str:
+    content = []
+    content.append(r'\subsection*{' + tex(figure['title']) + '}')
+    content.append(circuit(figure))
+    content.append(r'{\small ' + tex('; '.join(p['endpoint'] + ' (' + p['pin'] + ') = ' + p['net']
+        for p in figure['connections'])) + r'\par}')
+    if figure.get('groups'):
+        content.append('Declared switch groups: ' + tex(str(figure['groups'])) + '.')
+    if figure.get('omitted_pins'):
+        content.append('Pins outside the selected drawing scope: ' + tex(', '.join(figure['omitted_pins'])) + '.')
+    if figure.get('fitted') is False:
+        content.append('Documented as not fitted; no internal connection is asserted.')
+    if figure['kind'] == 'terminal_block':
+        content.append('Terminal representation only; no internal conducting state is inferred.')
+    content.append(r'{\footnotesize\emph{Source: }' + tex('; '.join(figure['sources'])) + r'\par}')
+    return '\n\n'.join(content) + '\n'
+
+
 def electrical_document(report: dict, preamble: str) -> str:
     pages = circuit_pages(report['electrical_drawings'])
     content = [preamble, r'\begin{document}']
@@ -175,19 +193,7 @@ def electrical_document(report: dict, preamble: str) -> str:
             'Sheet ' + str(page_number) + ' / ' + str(len(pages)) + '. Identical net labels denote connections. '
             'Distinct nets remain separate. External jumpers are proposed; physical assembly is unconfirmed.'])
         for figure in figures:
-            content.append(r'\subsection*{' + tex(figure['title']) + '}')
-            content.append(circuit(figure))
-            content.append(r'{\small ' + tex('; '.join(p['endpoint'] + ' (' + p['pin'] + ') = ' + p['net']
-                for p in figure['connections'])) + r'\par}')
-            if figure.get('groups'):
-                content.append('Declared switch groups: ' + tex(str(figure['groups'])) + '.')
-            if figure.get('omitted_pins'):
-                content.append('Pins outside the selected drawing scope: ' + tex(', '.join(figure['omitted_pins'])) + '.')
-            if figure.get('fitted') is False:
-                content.append('Documented as not fitted; no internal connection is asserted.')
-            if figure['kind'] == 'terminal_block':
-                content.append('Terminal representation only; no internal conducting state is inferred.')
-            content.append(r'{\footnotesize\emph{Source: }' + tex('; '.join(figure['sources'])) + r'\par}')
+            content.append(electrical_figure(figure))
     if not pages:
         content.append('Electrical component evidence is unavailable for this scope. No electrical circuit was inferred.')
     content.append(r'\end{document}')
