@@ -104,6 +104,39 @@ def test_image_bytes_and_whole_sector_plan(programming):
     assert s.describe()['enabled'] and 'flash' in s.describe()['actions']
 
 
+def test_bundle_handoff_invalidates_connections_and_programming_scope(programming, tmp_path):
+    from mcp.server.fastmcp.exceptions import ToolError
+    from praxis.build_server import create_build_server
+    from praxis.handoff import BundleHandoff, initialize
+    from test_bundle_handoff import candidate
+    original, artifact, _connection, _ = programming
+    build = original.build
+    control_root = tmp_path / 'handoff'
+    profile = tmp_path / 'hardware.json'
+    initialize(control_root, build.bundle.root, tmp_path / 'publications', build.assets.root,
+        build.workspace, build.artifacts, build.lock_path, profile)
+    control = BundleHandoff(control_root)
+    server = create_build_server(build.bundle.root, build.assets.root, build.workspace,
+        build.artifacts, build.lock_path, profile, original.authorization_path,
+        handoff=control_root)
+    def tool(name):
+        return server._tool_manager.get_tool(name).fn
+    assert tool('get_build_profile')()['hardware_programming']['enabled']
+    connection = tool('inspect_target')('TEST123')['connection_id']
+    bundle = candidate(control, source=build.bundle.root)
+    control.activate('next', bundle.manifest.bundle_revision)
+    updated = tool('get_build_profile')()
+    assert updated['bundle_revision'] == bundle.manifest.bundle_revision
+    assert not updated['hardware_programming']['enabled']
+    assert updated['hardware_inspection']['enabled']
+    with pytest.raises(ToolError, match='UNKNOWN_CONNECTION'):
+        tool('inspect_execution')(connection)
+    with pytest.raises(ToolError, match='AUTHORIZATION_REQUIRED'):
+        tool('flash_firmware')(artifact, connection)
+    with pytest.raises(ToolError, match='AUTHORIZATION_REQUIRED'):
+        tool('control_execution')(artifact, connection, 'reset_run')
+
+
 def test_authorization_absent_never_launches_mutating_backend(programming, monkeypatch):
     s, artifact, connection, _ = programming
     s = ProgrammingService(s.build, s.hardware)

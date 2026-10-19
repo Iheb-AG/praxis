@@ -76,6 +76,8 @@ def main(argv: list[str] | None = None) -> int:
     for name in ("lint", "serve", "verify", "evaluate"):
         sub = commands.add_parser(name)
         sub.add_argument("--bundle", required=True, type=Path)
+        if name == "serve":
+            sub.add_argument("--handoff", type=Path, help="Opt in to a provisioned project bundle handoff directory")
         if name == "verify":
             sub.add_argument("--source", required=True, type=Path)
             sub.add_argument("--mode", choices=("syntax", "object"), default="syntax")
@@ -92,6 +94,7 @@ def main(argv: list[str] | None = None) -> int:
         if name == "build":
             sub.add_argument("--source", required=True, help="Directory relative to the configured workspace")
         elif name == "build-serve":
+            sub.add_argument("--handoff", type=Path, help="Opt in to project revision handoff at tool boundaries")
             sub.add_argument("--project-reports", type=Path, help="Opt in to immutable project reporting under this output root")
             sub.add_argument("--hardware-profile", type=Path, help="Opt in to read-only ST-LINK inspection")
             sub.add_argument("--hardware-authorization", type=Path, help="Operator scope for target-bound programming/control")
@@ -156,6 +159,11 @@ def main(argv: list[str] | None = None) -> int:
         ingest_server.add_argument("--" + flag, required=True, type=Path)
     ingest_server.add_argument("--evidence-archive", action="append", default=[], type=Path,
                                help="Explicit existing evidence archive; repeat as needed")
+    ingest_server.add_argument("--handoff", type=Path, help="Opt in to automatic activation after validated publication")
+    handoff_init = commands.add_parser("handoff-init", help="Provision one target's project revision handoff; no hardware writes")
+    for flag in ("bundle", "publication-root", "assets", "workspace", "artifacts", "lock", "output"):
+        handoff_init.add_argument("--" + flag, required=True, type=Path)
+    handoff_init.add_argument("--hardware-profile", type=Path, help="Preserve pinned read-only inspection scope")
     args = parser.parse_args(argv)
     try:
         if args.command == "project-pdf":
@@ -183,7 +191,11 @@ def main(argv: list[str] | None = None) -> int:
         elif args.command == "ingest-serve":
             from praxis.ingestion_server import create_ingestion_server
             create_ingestion_server(args.profile, args.catalog, args.archive_root,
-                args.publication_root, args.evidence_archive).run(transport="stdio")
+                args.publication_root, args.evidence_archive, args.handoff).run(transport="stdio")
+        elif args.command == "handoff-init":
+            from praxis.handoff import initialize
+            print(json.dumps(initialize(args.output, args.bundle, args.publication_root, args.assets,
+                args.workspace, args.artifacts, args.lock, args.hardware_profile), sort_keys=True))
         elif args.command == "features":
             from praxis.bundle import Bundle
             from praxis.features import from_bundle
@@ -274,7 +286,7 @@ def main(argv: list[str] | None = None) -> int:
                               "revision": bundle.manifest.bundle_revision}, sort_keys=True))
         elif args.command == "serve":
             from praxis.server import create_server
-            create_server(args.bundle).run(transport="stdio")
+            create_server(args.bundle, args.handoff).run(transport="stdio")
         elif args.command == "evaluate":
             from praxis.bundle import Bundle
             from praxis.evaluation import evaluate
@@ -295,7 +307,7 @@ def main(argv: list[str] | None = None) -> int:
                 create_build_server(args.bundle, args.assets, args.workspace, args.artifacts, args.lock,
                                     args.hardware_profile, args.hardware_authorization,
                                     args.telemetry_artifact, args.telemetry_kind,
-                                    args.project_reports).run(transport="stdio")
+                                    args.project_reports, args.handoff).run(transport="stdio")
             else:
                 from praxis.firmware_build import BuildService
                 service = BuildService(args.bundle, args.assets, args.workspace, args.artifacts, args.lock)

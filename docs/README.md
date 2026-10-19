@@ -1,5 +1,7 @@
 # Project Praxis documentation
 
+- [Project bundle handoff: publish, adopt and continue without reconnecting MCP](bundle-handoff.md).
+
 - [Requested-project reporting: HTML, connectivity SVG, design explanations and evidence boundaries](project-reporting.md).
 
 - [TIM5 capture interrupts: source contracts, failure models, fixed telemetry and MCP replay](timer-irq.md).

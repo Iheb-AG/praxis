@@ -1,6 +1,7 @@
 """Only runtime dependencies are loaded here; ingestion and compilation are separate."""
 
 from pathlib import Path
+from threading import RLock
 
 from mcp.server.fastmcp import FastMCP
 from mcp.server.fastmcp.exceptions import ToolError
@@ -31,27 +32,54 @@ polarity, clock state, build commands actually executed, or compilation results.
 """
 
 
-def create_server(bundle_path: Path) -> FastMCP:
+def create_server(bundle_path: Path, handoff: Path | None = None) -> FastMCP:
     session = Session(Bundle(bundle_path))
+    selection = None
+    control = None
+    if handoff is not None:
+        from praxis.handoff import BundleHandoff
+        control = BundleHandoff(handoff)
+        control.check_launch(bundle_path)
+        selection = control.selection()
+        session = Session(control.load_bundle(selection))
     manifest = session.bundle.manifest
     identity = (f"\nSession target: {manifest.target.id}\n"
                 f"Session bundle revision: {manifest.bundle_revision}\n")
     advisory = session_advisory(manifest.bundle_revision)
     if advisory:
         identity += "\nKnown bundle advisory: " + advisory + "\n"
-    server = FastMCP("project-praxis", instructions=INSTRUCTIONS + identity, log_level="WARNING")
+    instructions = INSTRUCTIONS + identity
+    if control:
+        instructions = (INSTRUCTIONS.replace('serves exactly one hardware target and immutable bundle revision.',
+            'serves one hardware target with opt-in project revision handoff.')
+            + '\nProject handoff is enabled. read_wiki_index returns the active revision; startup identity '
+            'may change after explicit publication/activation. HEDG retrieval resets on every handoff. '
+            'Re-read the index and get_build_profile after activation; no client reconnect is needed.\n')
+    server = FastMCP("project-praxis", instructions=instructions, log_level="WARNING")
     annotations = ToolAnnotations(readOnlyHint=True, destructiveHint=False, openWorldHint=False)
+    serial = RLock()
 
     def call(operation, *args):
-        try:
-            return operation(*args)
-        except PraxisError as exc:
-            raise ToolError(str(exc)) from exc
+        nonlocal session, selection
+        with serial:
+            try:
+                if control:
+                    active = control.selection()
+                    if active != selection:
+                        replacement = Session(control.load_bundle(active))
+                        session, selection = replacement, active
+                result = getattr(session, operation)(*args)
+                if control and operation == 'read_wiki_index':
+                    result = (f'Praxis session bundle revision: `{selection.bundle_revision}`\n'
+                              f'Handoff generation: {selection.generation}\n\n' + result)
+                return result
+            except PraxisError as exc:
+                raise ToolError(str(exc)) from exc
 
     @server.tool(annotations=annotations)
     def read_wiki_index() -> str:
         """Read the complete target identity, clock assumptions, and HEDG routing index first."""
-        return call(session.read_wiki_index)
+        return call('read_wiki_index')
 
     @server.tool(annotations=annotations)
     def read_peripheral_doc(peripheral_name: str) -> str:
@@ -60,7 +88,7 @@ def create_server(bundle_path: Path) -> FastMCP:
         Names are target-scoped canonical identifiers or declared aliases, never file paths.
         PREREQUISITE_REQUIRED lists the documents to retrieve in order.
         """
-        return call(session.read_peripheral_doc, peripheral_name)
+        return call('read_peripheral_doc', peripheral_name)
 
     @server.tool(annotations=annotations)
     def query_schematic_netlist(query_target: str) -> str:
@@ -71,7 +99,7 @@ def create_server(bundle_path: Path) -> FastMCP:
         component values, polarity, pull configuration and clock/timing assumptions from Markdown.
         Net names are case-sensitive. MCU pin names are case-insensitive.
         """
-        return call(session.query_schematic_netlist, query_target)
+        return call('query_schematic_netlist', query_target)
 
     return server
 
