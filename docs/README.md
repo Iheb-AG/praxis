@@ -1,5 +1,7 @@
 # Project Praxis documentation
 
+- [Independent projects, portable setup and compatible bundle reuse](project-workspaces.md).
+
 - [Project bundle handoff: publish, adopt and continue without reconnecting MCP](bundle-handoff.md).
 
 - [Requested-project reporting: HTML, connectivity SVG, design explanations and evidence boundaries](project-reporting.md).

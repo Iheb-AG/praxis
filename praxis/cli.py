@@ -164,6 +164,17 @@ def main(argv: list[str] | None = None) -> int:
     for flag in ("bundle", "publication-root", "assets", "workspace", "artifacts", "lock", "output"):
         handoff_init.add_argument("--" + flag, required=True, type=Path)
     handoff_init.add_argument("--hardware-profile", type=Path, help="Preserve pinned read-only inspection scope")
+    project_init = commands.add_parser("project-init", help="Isolate source inputs, bundle selection and MCP settings for one project")
+    for flag in ("root", "profile", "assets", "lock"):
+        project_init.add_argument("--" + flag, required=True, type=Path)
+    project_init.add_argument("--id", required=True, dest="project_id")
+    project_init.add_argument("--mode", choices=("auto", "reuse", "fresh"), default="auto")
+    project_init.add_argument("--bundle", action="append", default=[], type=Path,
+                              help="Explicit reuse candidate; repeat in preference order, never used in fresh mode")
+    project_init.add_argument("--catalog", type=Path, help="Optional authoritative source catalog; otherwise ingestion is disabled")
+    project_init.add_argument("--workflow", action="append", default=[], help="Exact required initial workflow; repeat as needed")
+    project_init.add_argument("--hardware-profile", type=Path, help="Optional pinned inspection backend seed; never a write grant")
+    project_init.add_argument("--install-codex", action="store_true", help="Create project .codex/config.toml; never modify global settings or overwrite local config")
     args = parser.parse_args(argv)
     try:
         if args.command == "project-pdf":
@@ -196,6 +207,11 @@ def main(argv: list[str] | None = None) -> int:
             from praxis.handoff import initialize
             print(json.dumps(initialize(args.output, args.bundle, args.publication_root, args.assets,
                 args.workspace, args.artifacts, args.lock, args.hardware_profile), sort_keys=True))
+        elif args.command == "project-init":
+            from praxis.project_workspace import create_project
+            print(json.dumps(create_project(args.root, args.project_id, args.profile, args.assets,
+                args.lock, args.mode, args.bundle, args.catalog, args.workflow,
+                args.hardware_profile, args.install_codex), sort_keys=True))
         elif args.command == "features":
             from praxis.bundle import Bundle
             from praxis.features import from_bundle

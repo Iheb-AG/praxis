@@ -7,6 +7,10 @@ behavior is unchanged. The bundle files remain immutable in both modes.
 
 ## Provision a project
 
+For a new isolated project, [project-init](project-workspaces.md) provisions the
+source snapshot, initial bundle, handoff and local MCP settings together. The
+lower-level command below remains available for an existing managed workspace.
+
 Install the build/ingestion extras and provision the normal compiler lock and,
 optionally, read-only hardware profile first. Use real directories without symlinks.
 This example uses placeholders; replace them with absolute paths for your project.
