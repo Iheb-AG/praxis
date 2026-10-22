@@ -1,5 +1,10 @@
 # Publication readiness
 
+**Historical assessment.** The selected baseline and recorded evidence are now
+summarized in [CURRENT_STATUS.md](CURRENT_STATUS.md). Follow the
+[reliability plan](reliability-plan.md) for active work. Dated dependency and test
+statements below describe their original environment, not the current installation.
+
 Assessment date: 2026-10-15. Praxis is suitable for publication as an explicitly labeled
 **experimental development alpha**, once the public export and licensing review below are
 completed. It is **not ready for a qualified v1 release**. Passing tests and one working board

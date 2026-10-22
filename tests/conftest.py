@@ -44,6 +44,9 @@ def require_image(lock):
     available = False
     if image:
         result = subprocess.run(["podman", "image", "exists", image], timeout=10, capture_output=True)
+        if result.returncode not in (0, 1):
+            pytest.fail('Podman runtime unavailable; cannot establish whether the pinned image exists: '
+                        + result.stderr.decode('utf-8', errors='replace')[:2000])
         available = result.returncode == 0
     if not available:
         if os.environ.get("PRAXIS_REQUIRE_EXTERNAL_TOOLS") == "1":

@@ -1,5 +1,10 @@
 # Milestone evidence and release status
 
+**Historical development records.** For the selected public baseline, use
+[CURRENT_STATUS.md](CURRENT_STATUS.md), generated from the pinned status registry.
+The dated results below apply to their recorded revisions; they are not a fresh
+regression of the current checkout. Historical next-step notes may be superseded.
+
 Timer capture IRQ increment, 2026-10-15: **1,462 full-suite tests passed, zero skipped**,
 with required external tools. The new [source-bound IRQ workflow](timer-irq.md) adds
 TIM5 CH3 IRQ50 capture paired with TIM2 CH2 PWM, a fixed 180-byte software ABI,

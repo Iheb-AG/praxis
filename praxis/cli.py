@@ -175,9 +175,25 @@ def main(argv: list[str] | None = None) -> int:
     project_init.add_argument("--workflow", action="append", default=[], help="Exact required initial workflow; repeat as needed")
     project_init.add_argument("--hardware-profile", type=Path, help="Optional pinned inspection backend seed; never a write grant")
     project_init.add_argument("--install-codex", action="store_true", help="Create project .codex/config.toml; never modify global settings or overwrite local config")
+    project_check = commands.add_parser('project-check', help='Read-only project configuration and revision checks; no processes or hardware')
+    project_check.add_argument('--root', required=True, type=Path)
+    project_check.add_argument('--live', action='store_true', help='Start validated diagnostic MCP sessions; no build or hardware operations')
+    project_check.add_argument('--timeout', type=float, default=30, help='Per-service live timeout in seconds (maximum 120)')
+    status = commands.add_parser('status', help='Generate revision-bound support and recorded-evidence status')
+    status.add_argument('--registry', required=True, type=Path)
+    status.add_argument('--format', choices=('json', 'markdown'), default='json')
     args = parser.parse_args(argv)
     try:
-        if args.command == "project-pdf":
+        if args.command == 'status':
+            from praxis.status import generate, markdown
+            report = generate(args.registry)
+            print(markdown(report) if args.format == 'markdown' else json.dumps(report, sort_keys=True, indent=2), end='\n' if args.format == 'json' else '')
+        elif args.command == 'project-check':
+            from praxis.project_check import check_project
+            report = check_project(args.root, live=args.live, timeout=args.timeout)
+            print(json.dumps(report, sort_keys=True, indent=2))
+            return 0 if report['configuration_valid'] and (not args.live or report['live_services'] == 'passed') else 1
+        elif args.command == "project-pdf":
             from praxis.project_pdf import render_pdf
             print(json.dumps(render_pdf(args.report, args.output), sort_keys=True))
         elif args.command == "project-report":

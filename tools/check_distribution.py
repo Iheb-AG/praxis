@@ -11,6 +11,10 @@ import zipfile
 from pathlib import Path, PurePosixPath
 
 REQUIRED = {
+    'current-status.json', 'praxis/status.py', 'tests/test_status.py', 'tests/test_distribution_status.py',
+    'docs/CURRENT_STATUS.md',
+    'praxis/project_check.py', 'praxis/project_live.py', 'tests/test_project_check.py',
+    'tests/test_project_live.py', 'docs/reliability-plan.md',
     'praxis/project_workspace.py', 'tests/test_project_workspace.py', 'docs/project-workspaces.md',
     'praxis/latex_text.py', 'praxis/electrical.py', 'praxis/project_latex.py', 'praxis/project_pdf.py',
     'tests/test_project_documents.py', 'tools/check_project_documents.py',
@@ -242,6 +246,35 @@ def checked_names(names):
             raise ValueError(f'Generated binary or raw evidence in source distribution: {name}')
 
 
+def status_inputs(read):
+    """Every dependency of the public status registry must ship with pinned bytes.
+
+    The archive reader is supplied by the caller; never extract or execute inputs.
+    Private benchmark/demo records must not be added just to satisfy this check.
+    """
+    def document(name):
+        path = PurePosixPath(name)
+        if (not path.parts or path.is_absolute() or '..' in path.parts
+                or path.as_posix() != name):
+            raise ValueError('Invalid status input path: ' + name)
+        return read(name)
+
+    spec = json.loads(document('current-status.json'))
+    if spec.get('format') != 'praxis-status-registry-v1':
+        raise ValueError('Unexpected status registry format')
+    bundle = json.loads(document(spec['bundle'] + '/manifest.json'))
+    if bundle.get('bundle_revision') != spec['bundle_revision']:
+        raise ValueError('Packaged status bundle revision mismatch')
+    document(spec['review'])
+    for evidence in spec['evidence']:
+        raw = document(evidence['path'])
+        if hashlib.sha256(raw).hexdigest() != evidence['sha256']:
+            raise ValueError('Packaged status evidence pin mismatch: ' + evidence['path'])
+        if json.loads(raw).get('format') != evidence['format']:
+            raise ValueError('Packaged status evidence format mismatch: ' + evidence['path'])
+    return len(spec['evidence'])
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('directory', type=Path)
@@ -253,6 +286,7 @@ def main():
         wheel = set(archive.namelist())
     checked_names(wheel)
     if not {'praxis/telemetry.py', 'praxis/server.py', 'praxis/cli.py', 'praxis/project_report.py',
+            'praxis/status.py', 'praxis/project_check.py', 'praxis/project_live.py',
             'praxis/latex_text.py', 'praxis/electrical.py', 'praxis/project_latex.py', 'praxis/project_pdf.py',
             'praxis/adapters/manual.py', 'praxis/review.py', 'praxis/support.py',
             'praxis/definitions.py', 'praxis/workflow_review.py',
@@ -356,6 +390,16 @@ def main():
             missing.add(f'bundles/{bundle}/manifest.json')
     if missing:
         raise ValueError('Missing public files: ' + ', '.join(sorted(missing)))
+    with tarfile.open(sdists[0], 'r:gz') as archive:
+        prefix = next(iter(roots)) + '/'
+
+        def status_read(name):
+            member = archive_members.get(prefix + name)
+            if member is None or member.size > 16 * 1024 * 1024:
+                raise ValueError('Missing or oversized packaged status input: ' + name)
+            return archive.extractfile(member).read()
+
+        status_evidence = status_inputs(status_read)
     if (not branding['docs/images/praxis-banner.jpg'].startswith(b'\xff\xd8\xff')
             or not branding['docs/images/praxis-logo.png'].startswith(b'\x89PNG\r\n\x1a\n')):
         raise ValueError('Branding files have invalid image signatures or mismatched extensions')
@@ -379,6 +423,7 @@ def main():
                       'experimental_target_inputs_verified': experimental_inputs,
                       'publication_contracts_verified': publication_contracts,
                       'inventory_inputs_verified': inventory_inputs,
+                      'status_evidence_inputs_verified': status_evidence,
                       'branding_assets_passed': True}, indent=2))
     return 0
 

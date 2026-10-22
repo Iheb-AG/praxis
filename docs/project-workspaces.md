@@ -117,3 +117,53 @@ Tests exercise exact reuse, fresh/fallback compilation, mismatched targets/sourc
 missing workflows, source-path safety, existing-config preservation, independent
 selections from one seed, isolated reference stores, real stdio services and a real
 rootless target build. They do not establish physical behavior.
+## Check an existing project before starting work
+
+```sh
+praxis project-check --root /path/to/project
+```
+
+This read-only command checks the project identity, isolated storage paths, active
+bundle hashes, pinned build inputs, inspection-profile bindings and generated MCP
+launch settings. If `.codex/config.toml` exists, it compares its Praxis entries
+against the project's expected entries. Other MCP servers and unrelated client
+settings are ignored; timeout overrides are allowed. A changed interpreter,
+command, environment or permission-bearing argument requires explicit review.
+The checker never executes commands from configuration files or repairs files.
+
+Exit 0 means `configuration_valid=true`; exit 1 means one or more checks failed.
+Each failure includes a stable code and detail. An absent local Codex configuration
+is explicitly `not_configured`, because other clients can use the generated fragment.
+The active revision is checked again at the end to detect concurrent handoff.
+
+This is a provisioning check, not service discovery. Client trust, inherited global
+settings, live MCP connections, installed compiler images, PDF dependencies and
+physical hardware are not certified. Read `read_wiki_index` and `get_build_profile`
+through the actual client and compare their revisions before building. Do not copy
+configuration from another project to silence an error or edit immutable bundles.
+
+### Live MCP diagnosis
+
+```sh
+praxis project-check --root /path/to/project --live --timeout 30
+```
+
+After static validation passes, this starts temporary stdio sessions from captured
+canonical project commands. It never executes arbitrary configuration overrides.
+It initializes each enabled service, checks paginated tool discovery, reads the
+complete index, and requests build/ingestion profiles and the reference inventory.
+Knowledge content must match the selected bundle; build and ingestion must agree
+on the target, revision and handoff generation. Missing report tools, unexpected
+programming tools, startup failures and timeouts fail diagnosis. Disabled ingestion
+is explicitly reported when the project has no acquisition catalog.
+
+`--timeout` is a per-service deadline, greater than zero and at most 120 seconds.
+Temporary sessions close on success, failure or timeout. No compilation, downloads,
+publication, probe inspection, flashing or reset is requested. Service startup can
+initialize its normal local directories. The active selection is checked again
+after all sessions finish; concurrent revision changes require a rerun.
+
+Exit 0 in live mode requires both configuration validity and successful live checks.
+Inspect `configuration_valid`, `live_services` and each `services` entry separately.
+This does not reconnect or certify a chat's existing sessions, nor check client
+trust/global overrides, the installed sandbox image, PDF rendering or hardware.

@@ -59,7 +59,7 @@ No board or host Python installation is needed for knowledge retrieval.
 2. Copy the [OpenCode](examples/opencode.docker.example.json) or
    [Claude Desktop](examples/claude-desktop.docker.example.json) configuration into your client.
    Replace the Docker executable and bundle placeholders with absolute paths. Select
-   `bundles/stm32f407g-disc1-e01-arm-core-v2` for the current F407 baseline.
+   `bundles/stm32f407g-disc1-e01-timer-irq-v1` for the selected public F407 baseline.
 3. Restart the client and try:
 
    > Use Project Praxis to read the wiki index and confirm the target and board reference.
@@ -73,15 +73,15 @@ See [Docker setup](docs/docker.md) for launch commands and permissions, or the
 ## Alpha scope and evidence
 
 The primary reference board is **STM32F407G-DISC1, MB997-E-01**, using STM32F407VGT6.
-The bundle has **22 reviewed peripheral/core subsets and 32 operating-mode contracts**;
-these counts do not imply complete MCU coverage.
+See the **[current supported baseline](docs/CURRENT_STATUS.md)** for generated coverage,
+revision-bound software and retrieval evidence, historical physical observations,
+and independent-review status. Its [registry](current-status.json) pins the selected
+bundle and evidence hashes. Recorded test results do not certify the current checkout;
+reviewed operating subsets do not imply complete MCU coverage.
 
-| Layer | Current evidence |
-| --- | --- |
-| Knowledge MCP in Docker | Linux amd64; 110 real tool calls across three sessions passed |
-| Software regression | 903 tests passed; four native KiCad checks skipped |
-| Physical demonstrations | LED/button, UART loopback and scoped CAN internal-loopback observations |
-| Latest ARM-core example | Modeled and target-compiled; unflashed |
+For an initialized project, run `praxis project-check --root /path/to/project --live`
+to check configuration and fresh MCP service connections before starting work.
+This does not build firmware, access hardware or inspect an existing chat session.
 
 Experimental [F103, G071 and H743 bundles](docs/stm32-family-expansion.md) add source-backed
 register declarations through a reusable offline target matrix; their operating workflows,
@@ -89,7 +89,7 @@ board wiring and firmware support remain unreviewed. F401/AVR and synthetic inpu
 fixtures. USB, Ethernet, SDIO, bootloader handoff and several peripheral modes remain incomplete.
 The Docker image packages retrieval; ingestion, Linux/Podman builds and USB access require
 separate setup. No registry image has been published yet. See [release scope](docs/experimental-release.md),
-[test evidence](docs/STATUS.md) and [remaining qualification work](docs/PUBLICATION_READINESS.md).
+[historical test evidence](docs/STATUS.md) and [reliability work](docs/reliability-plan.md).
 
 ## Examples
 
@@ -104,8 +104,8 @@ Help add reviewed peripheral modes, exact board mappings, reproducible tests, or
 Hardware is optional for source and software contributions. Start with
 [CONTRIBUTING.md](CONTRIBUTING.md); use the repository's issue and pull-request templates.
 
-Next priorities are clean alpha onboarding, a versioned container release, scalable provenance,
-and timer PWM/capture and SPI routing. See the [roadmap](docs/experimental-release.md),
+Current priorities are reproducible project setup, service diagnostics, evidence-backed
+support reporting and independent qualification. See the [stabilization plan](docs/reliability-plan.md),
 [architecture](docs/system-design.md) and [sequence diagrams](docs/sequences.md).
 
 ## License

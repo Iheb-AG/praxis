@@ -1,6 +1,8 @@
 # Project Praxis documentation
 
 - [Independent projects, portable setup and compatible bundle reuse](project-workspaces.md).
+- [Reliability stabilization and remaining acceptance gates](reliability-plan.md).
+- [Current supported baseline: generated scope and revision-bound evidence](CURRENT_STATUS.md).
 
 - [Project bundle handoff: publish, adopt and continue without reconnecting MCP](bundle-handoff.md).
 
